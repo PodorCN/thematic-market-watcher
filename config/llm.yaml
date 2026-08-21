@@ -1,0 +1,28 @@
+# Per-stage LLM provider/model selection.
+# Change provider/model here to switch vendors -- no pipeline code changes.
+#
+# "default" is the fallback used when a caller doesn't pass provider/model
+# and doesn't specify a stage either (see lib/llm_client.py:_resolve).
+
+default:
+  provider: anthropic
+  model: claude-sonnet-5
+
+# Stage 2a -- fetch_candidates.py: LLM holds a hosted web-search tool and
+# gathers/lists raw headline candidates for the day. Needs a strong,
+# tool-use-capable model.
+market_headline_search:
+  provider: anthropic
+  model: claude-sonnet-5
+
+# Stage 2b -- judge.py: pure prompt+schema completion over the candidates
+# gathered above (no network access). Cheap model is fine here.
+headline_judge:
+  provider: anthropic
+  model: claude-haiku-4-5-20251001
+
+# Stage 3 -- analyze.py: pure prompt+schema completion synthesizing
+# raw_data.json + headlines.json into the day's structured analysis.
+analysis:
+  provider: anthropic
+  model: claude-sonnet-5

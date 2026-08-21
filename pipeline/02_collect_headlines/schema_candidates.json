@@ -1,0 +1,21 @@
+{
+  "type": "object",
+  "properties": {
+    "candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "headline": {"type": "string"},
+          "source": {"type": "string"},
+          "url": {"type": "string"},
+          "published_at": {"type": ["string", "null"]}
+        },
+        "required": ["headline", "source", "url", "published_at"],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": ["candidates"],
+  "additionalProperties": false
+}

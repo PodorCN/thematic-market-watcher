@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Water Market Digest — {{ report_date }}</title>
+<style>
+  :root {
+    --bg: #f7f9fa;
+    --card: #ffffff;
+    --text: #1a2733;
+    --muted: #5b6b76;
+    --border: #e1e7ea;
+    --accent: #0b6e8f;
+    --up: #1f9d55;
+    --down: #d64545;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 2rem 1rem 4rem;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+  }
+  main { max-width: 880px; margin: 0 auto; }
+  header.page-header { margin-bottom: 2rem; }
+  h1 { font-size: 1.6rem; margin: 0 0 0.25rem; }
+  .date { color: var(--muted); font-size: 0.95rem; }
+  section { margin-bottom: 2rem; }
+  h2 {
+    font-size: 1.05rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    margin: 0 0 0.75rem;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+  }
+  table { width: 100%; border-collapse: collapse; }
+  th, td { text-align: left; padding: 0.5rem 0.6rem; border-bottom: 1px solid var(--border); font-size: 0.92rem; }
+  th { color: var(--muted); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; }
+  tr:last-child td { border-bottom: none; }
+  .num { text-align: right; font-variant-numeric: tabular-nums; }
+  .up { color: var(--up); }
+  .down { color: var(--down); }
+  .sparkline { vertical-align: middle; }
+  .top-story { border-left: 4px solid var(--accent); }
+  .top-story h3 { margin: 0 0 0.4rem; font-size: 1.1rem; }
+  .top-story a { color: var(--accent); }
+  .theme { margin-bottom: 1rem; }
+  .theme:last-child { margin-bottom: 0; }
+  .theme h3 { margin: 0 0 0.3rem; font-size: 1rem; }
+  .theme ul { margin: 0.4rem 0 0; padding-left: 1.2rem; font-size: 0.85rem; }
+  .headline-list { list-style: none; margin: 0; padding: 0; }
+  .headline-list li { padding: 0.55rem 0; border-bottom: 1px solid var(--border); }
+  .headline-list li:last-child { border-bottom: none; }
+  .headline-list a { color: var(--text); text-decoration: none; font-weight: 500; }
+  .headline-list a:hover { color: var(--accent); }
+  .meta { color: var(--muted); font-size: 0.8rem; margin-top: 0.15rem; }
+  .badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.1rem 0.5rem;
+    border-radius: 999px;
+    background: #eef4f6;
+    color: var(--accent);
+    margin-right: 0.4rem;
+  }
+  footer { color: var(--muted); font-size: 0.8rem; margin-top: 3rem; text-align: center; }
+</style>
+</head>
+<body>
+<main>
+  <header class="page-header">
+    <h1>Water Market Digest</h1>
+    <div class="date">{{ report_date }}</div>
+  </header>
+
+  <section>
+    <h2>Market Summary</h2>
+    <div class="card">
+      <p>{{ analysis.market_summary }}</p>
+      <table>
+        <thead>
+          <tr><th>Ticker</th><th></th><th class="num">Last Close</th><th class="num">Change</th></tr>
+        </thead>
+        <tbody>
+          {% for t in tickers %}
+          <tr>
+            {% if t.error %}
+            <td>{{ t.symbol }}</td><td colspan="3" class="meta">no data ({{ t.error }})</td>
+            {% else %}
+            <td><strong>{{ t.symbol }}</strong><div class="meta">{{ t.name }}</div></td>
+            <td>{{ t.sparkline|safe }}</td>
+            <td class="num">{{ "%.2f"|format(t.last_close) }} {{ t.currency }}</td>
+            <td class="num {{ 'up' if t.change_pct >= 0 else 'down' }}">
+              {{ "%+.2f"|format(t.change_pct) }}%
+            </td>
+            {% endif %}
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>Top Story</h2>
+    <div class="card top-story">
+      <h3><a href="{{ analysis.top_story.url }}">{{ analysis.top_story.headline }}</a></h3>
+      <p>{{ analysis.top_story.why_it_matters }}</p>
+    </div>
+  </section>
+
+  {% if analysis.themes %}
+  <section>
+    <h2>Themes</h2>
+    <div class="card">
+      {% for theme in analysis.themes %}
+      <div class="theme">
+        <h3>{{ theme.title }}</h3>
+        <p>{{ theme.synthesis }}</p>
+        {% if theme.source_urls %}
+        <ul>
+          {% for url in theme.source_urls %}
+          <li><a href="{{ url }}">{{ url }}</a></li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  <section>
+    <h2>Outlook</h2>
+    <div class="card"><p>{{ analysis.outlook }}</p></div>
+  </section>
+
+  <section>
+    <h2>Headlines</h2>
+    <div class="card">
+      <ul class="headline-list">
+        {% for h in headlines %}
+        <li>
+          <span class="badge">{{ h.category }}</span>
+          <a href="{{ h.url }}">{{ h.headline }}</a>
+          <div class="meta">{{ h.source }}{% if h.published_at %} · {{ h.published_at }}{% endif %}</div>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    Generated automatically by the Daily Digest pipeline. See <a href="https://github.com/PodorCN/Thematic-Market-Water">source</a>.
+  </footer>
+</main>
+</body>
+</html>

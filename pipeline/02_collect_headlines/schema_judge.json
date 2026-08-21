@@ -1,0 +1,33 @@
+{
+  "type": "object",
+  "properties": {
+    "headlines": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "headline": {"type": "string"},
+          "source": {"type": "string"},
+          "url": {"type": "string"},
+          "published_at": {"type": ["string", "null"]},
+          "category": {
+            "type": "string",
+            "enum": [
+              "company_news",
+              "policy_regulation",
+              "climate_event",
+              "infrastructure",
+              "technology",
+              "market"
+            ]
+          },
+          "importance": {"type": "integer", "minimum": 1, "maximum": 5}
+        },
+        "required": ["headline", "source", "url", "published_at", "category", "importance"],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": ["headlines"],
+  "additionalProperties": false
+}
