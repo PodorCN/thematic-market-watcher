@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Stage 1 -- fetch_data.py
+"""Stage 1 -- fetch_data.py (data/ package)
 
 Pure code, no LLM. Downloads today's water-theme market data and writes
-data/<date>/raw_data.json. Runnable and testable in complete isolation
+archive/<date>/raw_data.json. Runnable and testable in complete isolation
 from every other stage.
 
 Usage:
-    python pipeline/01_fetch_data/fetch_data.py [--date YYYY-MM-DD]
+    python data/fetch_data.py [--date YYYY-MM-DD]
 """
 
 from __future__ import annotations
@@ -17,10 +17,10 @@ import sys
 from datetime import date, datetime, timezone
 from pathlib import Path
 
-REPO_ROOT = Path(__file__).resolve().parent.parent.parent
+REPO_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO_ROOT))
 
-from lib.market_data_provider import get_provider  # noqa: E402
+from data.market_data_provider import get_provider  # noqa: E402
 
 STAGE_DIR = Path(__file__).resolve().parent
 TICKERS_FILE = STAGE_DIR / "tickers.json"
@@ -37,7 +37,7 @@ def main() -> None:
     parser.add_argument("--provider", default="yfinance")
     args = parser.parse_args()
 
-    out_dir = REPO_ROOT / "data" / args.date
+    out_dir = REPO_ROOT / "archive" / args.date
     out_dir.mkdir(parents=True, exist_ok=True)
 
     tickers = load_tickers()

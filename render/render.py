@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
-"""Stage 4 -- render.py
+"""Stage 4 -- render.py (render/ package)
 
-Pure code, no LLM. Reads data/<date>/analysis.json (and raw_data.json for
-the ticker table/sparklines) and renders data/<date>/report.html via
-Jinja2. Deterministic and easy to debug: same inputs always produce the
-same HTML.
+Pure code, no LLM. Reads archive/<date>/analysis.json (and raw_data.json
+for the ticker table/sparklines) and renders archive/<date>/report.html
+via Jinja2. Deterministic and easy to debug: same inputs always produce
+the same HTML.
 
 Also copies the freshly rendered report to docs/index.html so GitHub
 Pages (serving /docs) always shows the latest digest.
 
 Usage:
-    python pipeline/04_render_html/render.py [--date YYYY-MM-DD]
+    python render/render.py [--date YYYY-MM-DD]
 """
 
 from __future__ import annotations
@@ -24,7 +24,7 @@ from pathlib import Path
 
 from jinja2 import Environment, FileSystemLoader
 
-REPO_ROOT = Path(__file__).resolve().parent.parent.parent
+REPO_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO_ROOT))
 
 STAGE_DIR = Path(__file__).resolve().parent
@@ -80,7 +80,7 @@ def main() -> None:
     parser.add_argument("--date", default=date.today().isoformat())
     args = parser.parse_args()
 
-    data_dir = REPO_ROOT / "data" / args.date
+    data_dir = REPO_ROOT / "archive" / args.date
     analysis = json.loads((data_dir / "analysis.json").read_text(encoding="utf-8"))
     raw_data = json.loads((data_dir / "raw_data.json").read_text(encoding="utf-8"))
     headlines = json.loads((data_dir / "headlines.json").read_text(encoding="utf-8"))

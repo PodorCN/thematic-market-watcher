@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Stage 2b -- judge.py
+"""Stage 2b -- judge.py (news/ package)
 
 Plain call_llm(): one prompt+schema completion, no tools, no network
 access on the model's side. Reads candidates.json (produced by
-fetch_candidates.py) and writes the curated data/<date>/headlines.json.
+fetch_candidates.py) and writes the curated archive/<date>/headlines.json.
 
 Usage:
-    python pipeline/02_collect_headlines/judge.py [--date YYYY-MM-DD]
+    python news/judge.py [--date YYYY-MM-DD]
 """
 
 from __future__ import annotations
@@ -17,10 +17,10 @@ import sys
 from datetime import date
 from pathlib import Path
 
-REPO_ROOT = Path(__file__).resolve().parent.parent.parent
+REPO_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO_ROOT))
 
-from lib.llm_client import call_llm  # noqa: E402
+from utils.llm_client import call_llm  # noqa: E402
 
 STAGE_DIR = Path(__file__).resolve().parent
 PROMPT_PATH = STAGE_DIR / "prompt_judge.md"
@@ -32,7 +32,7 @@ def main() -> None:
     parser.add_argument("--date", default=date.today().isoformat())
     args = parser.parse_args()
 
-    data_dir = REPO_ROOT / "data" / args.date
+    data_dir = REPO_ROOT / "archive" / args.date
     candidates = json.loads((data_dir / "candidates.json").read_text(encoding="utf-8"))
 
     prompt_template = PROMPT_PATH.read_text(encoding="utf-8")

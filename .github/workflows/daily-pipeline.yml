@@ -1,7 +1,7 @@
 name: Daily Digest
 
 on:
-  # TODO: schedule time/timezone not decided yet (see AGENTS.md open TODOs).
+  # TODO: schedule time/timezone not decided yet (see readme/AGENTS.md open TODOs).
   # Uncomment and set a cron once confirmed -- cron is always UTC, so
   # convert from whatever local time you want. Example: 0 0 * * * is
   # 08:00 Beijing time.
@@ -39,29 +39,29 @@ jobs:
           fi
 
       - name: 1. Fetch data
-        run: python pipeline/01_fetch_data/fetch_data.py --date "${{ steps.vars.outputs.date }}"
+        run: python data/fetch_data.py --date "${{ steps.vars.outputs.date }}"
 
       - name: 2. Collect & judge headlines
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
-          python pipeline/02_collect_headlines/fetch_candidates.py --date "${{ steps.vars.outputs.date }}"
-          python pipeline/02_collect_headlines/judge.py --date "${{ steps.vars.outputs.date }}"
+          python news/fetch_candidates.py --date "${{ steps.vars.outputs.date }}"
+          python news/judge.py --date "${{ steps.vars.outputs.date }}"
 
       - name: 3. Analyze
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-        run: python pipeline/03_analyze/analyze.py --date "${{ steps.vars.outputs.date }}"
+        run: python theme-engine/analyze.py --date "${{ steps.vars.outputs.date }}"
 
       - name: 4. Render HTML
-        run: python pipeline/04_render_html/render.py --date "${{ steps.vars.outputs.date }}"
+        run: python render/render.py --date "${{ steps.vars.outputs.date }}"
 
       - name: Commit results
         run: |
           git config user.name "daily-digest-bot"
           git config user.email "bot@users.noreply.github.com"
-          git add data/ docs/
+          git add archive/ docs/
           git commit -m "Daily digest ${{ steps.vars.outputs.date }}" || echo "nothing to commit"
           git push

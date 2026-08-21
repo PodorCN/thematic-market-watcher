@@ -1,9 +1,9 @@
 """Provider-independent LLM adapter.
 
-Pipeline scripts (judge.py / analyze.py / fetch_candidates.py) only ever
-import from this module. Nobody outside this file imports a vendor SDK
-directly, and nobody outside this file knows what "provider" a given stage
-is configured to use.
+Pipeline scripts (news/judge.py, theme-engine/analyze.py,
+news/fetch_candidates.py) only ever import from this module. Nobody
+outside this file imports a vendor SDK directly, and nobody outside this
+file knows what "provider" a given stage is configured to use.
 
 Two entry points:
 
@@ -18,10 +18,11 @@ Two entry points:
         (server-side) web-search tool it can call on its own before
         producing the final structured output. This is an intentional,
         narrow exception to "LLM only does one prompt+schema completion"
-        for the 02_collect_headlines/fetch_candidates.py stage only -- see
-        AGENTS.md section 4a for why. It still does not depend on any
-        coding-agent CLI's tool ecosystem (no Claude Code WebSearch/Bash);
-        the search tool is a feature of the model provider's own API.
+        for the news/fetch_candidates.py stage only -- see
+        readme/AGENTS.md section 4a for why. It still does not depend on
+        any coding-agent CLI's tool ecosystem (no Claude Code
+        WebSearch/Bash); the search tool is a feature of the model
+        provider's own API.
 
 Provider/model selection lives in config/llm.yaml, keyed by stage name.
 Add a new provider by adding one `_call_<provider>` / one

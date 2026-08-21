@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Stage 3 -- analyze.py
+"""Stage 3 -- analyze.py (theme-engine/ package)
 
 Plain call_llm(): one prompt+schema completion over raw_data.json +
-headlines.json. Writes data/<date>/analysis.json, which is the only input
-stage 4 (render.py) reads.
+headlines.json. Writes archive/<date>/analysis.json, which is the only
+input the render/ package reads.
 
 Usage:
-    python pipeline/03_analyze/analyze.py [--date YYYY-MM-DD]
+    python theme-engine/analyze.py [--date YYYY-MM-DD]
 """
 
 from __future__ import annotations
@@ -17,10 +17,10 @@ import sys
 from datetime import date
 from pathlib import Path
 
-REPO_ROOT = Path(__file__).resolve().parent.parent.parent
+REPO_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO_ROOT))
 
-from lib.llm_client import call_llm  # noqa: E402
+from utils.llm_client import call_llm  # noqa: E402
 
 STAGE_DIR = Path(__file__).resolve().parent
 PROMPT_PATH = STAGE_DIR / "prompt.md"
@@ -32,7 +32,7 @@ def main() -> None:
     parser.add_argument("--date", default=date.today().isoformat())
     args = parser.parse_args()
 
-    data_dir = REPO_ROOT / "data" / args.date
+    data_dir = REPO_ROOT / "archive" / args.date
     raw_data = json.loads((data_dir / "raw_data.json").read_text(encoding="utf-8"))
     headlines = json.loads((data_dir / "headlines.json").read_text(encoding="utf-8"))
 

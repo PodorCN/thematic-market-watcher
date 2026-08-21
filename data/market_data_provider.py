@@ -1,9 +1,8 @@
-"""Pluggable structured-data providers for pipeline/01_fetch_data.
+"""Pluggable structured-data providers for the data/ package.
 
 fetch_data.py never imports yfinance (or any other vendor) directly -- it
 only calls get_provider(name).fetch(tickers). Swapping data vendors later
-means adding one class here and changing config/data_source.yaml; no
-pipeline code changes.
+means adding one class here; no other code changes.
 """
 
 from __future__ import annotations

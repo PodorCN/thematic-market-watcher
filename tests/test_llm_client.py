@@ -1,4 +1,4 @@
-"""Unit tests for lib/llm_client.py.
+"""Unit tests for utils/llm_client.py.
 
 These mock the Anthropic SDK entirely -- no network calls, no API key
 needed. They test the adapter's own logic (structured-output extraction,
@@ -17,7 +17,7 @@ import pytest
 REPO_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO_ROOT))
 
-from lib import llm_client  # noqa: E402
+from utils import llm_client  # noqa: E402
 
 
 def _tool_use_block(name: str, input_: dict):
