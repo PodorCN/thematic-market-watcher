@@ -1,8 +1,9 @@
-# Thematic Market Water — Daily Digest Pipeline
+# Thematic Market Watcher — Project Guide
 
-This is the project-level guide for any coding agent/CLI (Claude Code,
-Codex, Cursor, aider, ...) working in this repo. `CLAUDE.md` (in this same
-`readme/` folder) is a symlink to this file — do not fork content into it.
+This is the project-level guide and PM document for any coding agent/CLI
+(Claude Code, Codex, Cursor, aider, opencode, ...) and any engineer
+working in this repo. `CLAUDE.md` (in this same `readme/` folder) points
+here — do not fork its content into it.
 
 Note: because these docs live under `readme/` rather than the repo root,
 tools that auto-load a root-level `AGENTS.md`/`CLAUDE.md` by convention
@@ -11,26 +12,31 @@ explicitly if it doesn't pick this up on its own.
 
 ## 1. What this is
 
-A daily pipeline: download water-sector market data -> collect and judge
-water-sector news headlines -> LLM analysis -> render a static HTML
-report. Runs once a day via GitHub Actions; each run's output is archived
-by date and the latest report is published to GitHub Pages via `docs/`.
+A daily pipeline: download market data for a configurable list of
+ETFs/indexes -> compute daily returns / covariance analytics -> collect
+and judge news headlines -> LLM analysis -> render a static HTML report.
+Runs once a day via GitHub Actions; each run's output is archived by date
+and the latest report is published to GitHub Pages via `docs/`.
+
+The tracked universe is configuration, not code: `config/tickers.json`
+(water theme today; add/remove symbols freely). Ad-hoc lists can also be
+passed per-run via `--tickers` — see [`data-fetcher.md`](./data-fetcher.md).
 
 ## 2. Hard constraints
 
 1. **Stages talk only through files.** Each stage is an independently
-   runnable script living in its own top-level package (`data/`, `news/`,
-   `theme-engine/`, `render/`). It reads its input file(s) from
+   runnable script living in its own top-level package (`returns/`,
+   `news/`, `theme-engine/`, `render/`). It reads its input file(s) from
    `archive/<date>/`, writes its output file(s) there, and never imports
    another stage's code. Any stage can be rerun, tested, or replaced in
    isolation.
 2. **Date-partitioned archive.** Every day's artifacts live under
    `archive/<YYYY-MM-DD>/`. That directory is the full history. (Not
-   called `data/` — that name is the stage-1 market-data *code* package;
-   see §3.)
+   called `data/` — that folder was renamed to `returns/`; see §3.)
 3. **Deterministic code and LLM reasoning are separated**, with one
    deliberate, narrow exception (4a below):
-   - Stage 1 (`data/fetch_data.py`): pure code, no LLM.
+   - Stage 1 (`returns/fetch_data.py`): pure code, no LLM.
+   - Stage 1b (`returns/compute_covariance.py`): pure code, no LLM.
    - Stage 2a (`news/fetch_candidates.py`): LLM call, **with a hosted
      web-search tool** — see 4a.
    - Stage 2b (`news/judge.py`): LLM call, pure prompt+schema, no tools.
@@ -69,24 +75,27 @@ by date and the latest report is published to GitHub Pages via `docs/`.
 
 ## 3. Repo layout
 
-Each top-level folder is a self-contained package for one concern —
-scripts within a folder may import each other, but no folder imports
-another pipeline-stage folder's code. `utils/` is the one shared
-cross-cutting package everything else is allowed to import.
+Each top-level folder is a self-contained package for exactly one
+concern/process — scripts within a folder may import each other, but no
+folder imports another pipeline-stage folder's code.
 
 ```
 readme/                  # docs package
   README.md               # human quickstart
   AGENTS.md                # this file, source of truth
-  CLAUDE.md -> AGENTS.md   # symlink
+  CLAUDE.md                # pointer to AGENTS.md
+  data-fetcher.md           # how to run the ETF fetcher & covariance tool
+  configuring-tickers.md    # how to control which tickers are tracked
 config/
-  llm.yaml                 # per-stage provider/model
-utils/
+  llm.yaml                 # per-stage LLM provider/model
+  tickers.json              # tracked ticker universe (edit freely)
+utils/                    # SHARED cross-cutting helpers ONLY
   llm_client.py             # the only place vendor SDKs are imported
-data/                     # stage 1: market data (pure code, no LLM)
-  fetch_data.py
-  market_data_provider.py   # pluggable structured-data source (yfinance today)
-  tickers.json               # water-theme tickers tracked (edit freely)
+returns/                  # stage 1: market data + return analytics (pure code)
+  fetch_data.py             # downloads daily prices -> archive/<date>/*.json
+  market_data_provider.py    # pluggable structured-data source (yfinance today)
+  daily_returns.py           # shared primitives: load_closes(), daily_returns()
+  compute_covariance.py       # EWMA covariance/correlation matrix
 news/                     # stage 2: headline collection + judging
   fetch_candidates.py       # LLM + hosted web-search tool (see 4a)
   prompt_candidates.md
@@ -109,10 +118,18 @@ archive/<YYYY-MM-DD>/     # daily output archive (the pipeline's shared "databas
   report.html
 docs/index.html           # copy of the latest report.html, for GitHub Pages
 tests/
-  test_llm_client.py
 run_all.sh                 # runs all stages for one date, locally
 .github/workflows/daily-pipeline.yml
 ```
+
+### Where new code goes
+
+| Kind of code | Home |
+|---|---|
+| Generic helper usable by ≥2 packages (parsing, dates, IO wrappers) | `utils/` |
+| Vendor SDK calls (LLM, future market-data vendors behind providers) | adapter inside the relevant package's provider module (`utils/llm_client.py`, `returns/market_data_provider.py`) |
+| Return-series math (returns, volatility, beta, ...) | `returns/daily_returns.py` + thin scripts beside it |
+| One pipeline stage | its own top-level package |
 
 ## 4. Running locally
 
@@ -123,14 +140,19 @@ pip install -r requirements.txt
 ./run_all.sh 2026-08-21     # a specific date
 ```
 
+On Windows there is no system Python; use the repo venv:
+`.\.venv\Scripts\python.exe`.
+
 Each stage also runs standalone with `--date YYYY-MM-DD`, reading/writing
 only `archive/<date>/`, e.g.:
 
 ```
 python theme-engine/analyze.py --date 2026-08-21
+python returns/fetch_data.py --tickers ZSP.TO,ZXLK.TO --history-days 365
+python returns/compute_covariance.py --input archive/<date>/raw_data.json
 ```
 
-Run tests (no API key needed — the Anthropic SDK is mocked):
+Run tests (no API key needed — SDKs are mocked):
 
 ```
 pytest
@@ -151,15 +173,36 @@ pytest
   `openai`-compatible backend stubbed (reads `OPENAI_BASE_URL` so it can
   point at any OpenAI-compatible gateway) ready to receive those details
   and become the new default once specified.
+- **Legacy ad-hoc artifacts**: `archive/custom_tickers*.json`,
+  `archive/zsp_bmo_sectors_1y.json` etc. predate the `--output` flag;
+  they are historical scratch data and safe to delete.
 
 ## 6. Conventions for future changes
 
+**Reuse first.** Before writing anything new:
+
+1. Search for an existing function that does the job (start in
+   `returns/daily_returns.py` and `utils/`) and call it.
+2. If an existing function almost fits, extend its signature — do not
+   fork a near-copy next to it.
+3. If an existing function has grown too complex to use safely
+   (many responsibilities, tangled flags, hard-to-test), **rewrite it
+   clean** and migrate callers; do not pile another wrapper on top.
+4. Never write a one-off inline script for something the pipeline tools
+   already do — extend the tool's CLI instead (see how `fetch_data.py`
+   grew `--tickers/--history-days/--output`).
+
+Other standing conventions:
+
 - Add a new market-data source by adding a `MarketDataProvider` subclass
-  in `data/market_data_provider.py` and registering it in `_PROVIDERS` —
+  in `returns/market_data_provider.py` and registering it in `_PROVIDERS` —
   don't touch `fetch_data.py`.
 - Add a new LLM provider by adding `_call_<provider>` (and optionally
   `_call_<provider>_with_web_search`) in `utils/llm_client.py` and
   registering it in the two dispatch dicts at the bottom of that file.
+- Downstream analytics must consume closes via
+  `returns.daily_returns.load_closes()` / `daily_returns()` — never
+  re-parse raw-data JSONs ad hoc.
 - Prompts are plain markdown files living next to the script that uses
   them (`news/`, `theme-engine/`), not embedded in any SKILL.md or
   agent-specific wrapper. If this pipeline is ever wrapped as a Claude

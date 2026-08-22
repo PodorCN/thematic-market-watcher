@@ -40,11 +40,11 @@ Each top-level folder is a self-contained package for one concern:
 | Folder | What it is |
 |---|---|
 | `utils/` | Provider-independent LLM adapter (`llm_client.py`) — the only place any vendor SDK is imported |
-| `data/` | Stage 1: market data fetching (pure code, no LLM) |
+| `returns/` | Stage 1: market data fetching + daily-return/covariance analytics (pure code, no LLM) |
 | `news/` | Stage 2: headline collection (LLM + hosted web search) and judging (pure LLM) |
 | `theme-engine/` | Stage 3: LLM synthesis of market data + headlines into structured analysis |
 | `render/` | Stage 4: pure-code HTML rendering (Jinja2) |
-| `config/` | Per-stage provider/model config (`llm.yaml`) |
+| `config/` | Pipeline config: per-stage provider/model (`llm.yaml`), tracked ticker universe (`tickers.json`) |
 | `tests/` | Unit tests (mocked SDK, no network) |
 | `readme/` | This file, plus `AGENTS.md`/`CLAUDE.md` |
 | `archive/<date>/` | The daily output archive — every stage's input/output JSON + the rendered report |
@@ -53,7 +53,8 @@ Each top-level folder is a self-contained package for one concern:
 
 | Stage | Script | LLM? | Reads | Writes |
 |---|---|---|---|---|
-| 1 | `data/fetch_data.py` | no | `data/tickers.json` | `archive/<date>/raw_data.json` |
+| 1 | `returns/fetch_data.py` | no | `config/tickers.json` | `archive/<date>/raw_data.json` |
+| 1b | `returns/compute_covariance.py` | no | `archive/<date>/raw_data.json` | `*_cov_hl<halflife>.csv` |
 | 2a | `news/fetch_candidates.py` | yes, with hosted web search | — | `archive/<date>/candidates.json` |
 | 2b | `news/judge.py` | yes, no tools | `candidates.json` | `archive/<date>/headlines.json` |
 | 3 | `theme-engine/analyze.py` | yes, no tools | `raw_data.json`, `headlines.json` | `archive/<date>/analysis.json` |

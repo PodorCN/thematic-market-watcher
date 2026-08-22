@@ -39,7 +39,7 @@ jobs:
           fi
 
       - name: 1. Fetch data
-        run: python data/fetch_data.py --date "${{ steps.vars.outputs.date }}"
+        run: python returns/fetch_data.py --date "${{ steps.vars.outputs.date }}"
 
       - name: 2. Collect & judge headlines
         env:

@@ -23,7 +23,7 @@ DATE="${1:-$(date -u +%F)}"
 echo "== Daily Digest pipeline for $DATE =="
 
 echo "-- 1. fetch_data"
-python data/fetch_data.py --date "$DATE"
+python returns/fetch_data.py --date "$DATE"
 
 echo "-- 2a. fetch_candidates"
 python news/fetch_candidates.py --date "$DATE"
