@@ -11,7 +11,10 @@ investigation starts with:
    with biggest-move days highlighted, to localize *which days*
    happened before you search news for those exact dates.
 
-Pure code, no LLM, no API key. Data comes from yfinance.
+Pure code, no LLM, no API key. Data comes from yfinance with
+`auto_adjust=True`, so **all returns shown are total returns**
+(dividends reinvested), not just price change — this matters for
+high-dividend names like Canadian bank ETFs.
 
 ## Quickstart
 

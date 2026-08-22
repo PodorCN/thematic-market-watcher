@@ -54,13 +54,19 @@ def load_default_tickers() -> list[str]:
 
 
 def fetch_closes(tickers: list[str], period: str = "6mo") -> pd.DataFrame:
-    """Wide DataFrame of adjusted closes (columns=tickers) via yfinance."""
+    """Wide DataFrame of closes (columns=tickers) via yfinance.
+
+    Uses auto_adjust=True (dividends/splits reinvested), so every return
+    computed from this frame is a TOTAL RETURN, not just price change.
+    For high-dividend names (e.g. ZEB.TO ~2.3% yield) the difference is
+    material: price-only vs total can diverge by double digits over 2y.
+    """
     import yfinance as yf
 
     closes = pd.DataFrame()
     for ticker in tickers:
         try:
-            hist = yf.Ticker(ticker).history(period=period)
+            hist = yf.Ticker(ticker).history(period=period, auto_adjust=True)
             if not hist.empty:
                 closes[ticker] = hist["Close"]
         except Exception as exc:  # noqa: BLE001 -- one bad ticker must not kill the run
@@ -69,10 +75,11 @@ def fetch_closes(tickers: list[str], period: str = "6mo") -> pd.DataFrame:
 
 
 def window_returns(closes: pd.Series) -> dict[str, float | None]:
-    """Percent return over each of WINDOWS, from most recent close.
+    """Total-return % over each of WINDOWS, from most recent close.
 
-    Windows longer than the available history yield None rather than a
-    misleading number computed off too little data.
+    "Total" because the input closes are dividend-adjusted (see
+    fetch_closes). Windows longer than the available history yield None
+    rather than a misleading number computed off too little data.
     """
     out: dict[str, float | None] = {}
     n = len(closes)
