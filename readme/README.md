@@ -1,9 +1,13 @@
-# Thematic Market Water — Daily Digest
+# Thematic Market Watcher — Daily Digest
 
-A daily pipeline that turns water-sector market data + news into a static
+A daily pipeline that turns theme-sector market data + news into a static
 HTML report: fetch market data → collect & judge news headlines → LLM
 analysis → render HTML. Runs on a schedule via GitHub Actions; the latest
 report is published via GitHub Pages from `docs/`.
+
+The tracked sector ("theme") and ticker universe are pure config in
+`config/tickers.json` — the current basket happens to be water-sector
+ETFs/companies, but nothing in the code is water-specific.
 
 See [`AGENTS.md`](./AGENTS.md) (in this same `readme/` folder) for the
 full design, hard constraints, and open TODOs (`CLAUDE.md` is a symlink

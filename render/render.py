@@ -27,6 +27,8 @@ from jinja2 import Environment, FileSystemLoader
 REPO_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO_ROOT))
 
+from utils.theme import load_theme  # noqa: E402
+
 STAGE_DIR = Path(__file__).resolve().parent
 
 
@@ -88,8 +90,12 @@ def main() -> None:
     env = Environment(loader=FileSystemLoader(str(STAGE_DIR)), autoescape=True)
     template = env.get_template("template.html.j2")
 
+    theme = load_theme()
+    digest_title = f"{theme['name'].title()} Market Watcher"
+
     html = template.render(
         report_date=args.date,
+        digest_title=digest_title,
         analysis=analysis,
         tickers=build_ticker_rows(raw_data),
         headlines=headlines.get("headlines", []),

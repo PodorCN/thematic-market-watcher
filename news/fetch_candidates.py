@@ -26,11 +26,12 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO_ROOT))
 
 from utils.llm_client import call_llm_with_web_search  # noqa: E402
+from utils.theme import load_theme  # noqa: E402
 
 STAGE_DIR = Path(__file__).resolve().parent
 PROMPT_PATH = STAGE_DIR / "prompt_candidates.md"
 SCHEMA_PATH = STAGE_DIR / "schema_candidates.json"
-TICKERS_PATH = REPO_ROOT / "data" / "tickers.json"
+TICKERS_PATH = REPO_ROOT / "config" / "tickers.json"
 
 
 def main() -> None:
@@ -41,9 +42,15 @@ def main() -> None:
     out_dir = REPO_ROOT / "archive" / args.date
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    tickers = json.loads(TICKERS_PATH.read_text(encoding="utf-8"))["tickers"]
+    config = json.loads(TICKERS_PATH.read_text(encoding="utf-8"))
+    tickers = config["tickers"]
+    theme = load_theme()
     prompt_template = PROMPT_PATH.read_text(encoding="utf-8")
-    prompt = prompt_template.replace("{{tickers}}", ", ".join(tickers))
+    prompt = (
+        prompt_template
+        .replace("{{theme_description}}", theme["description"])
+        .replace("{{tickers}}", ", ".join(tickers))
+    )
     schema = json.loads(SCHEMA_PATH.read_text(encoding="utf-8"))
 
     result = call_llm_with_web_search(prompt, schema, stage="market_headline_search")

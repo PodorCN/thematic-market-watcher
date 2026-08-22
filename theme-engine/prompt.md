@@ -1,8 +1,8 @@
-You are writing the analysis section of a daily digest about the global
-water sector, for a reader who tracks water utilities, infrastructure,
-technology, and policy.
+You are writing the analysis section of a daily digest about the
+{{theme_description}}, for a reader who tracks this theme's companies,
+ETFs, and policy.
 
-Today's market data (water-theme tickers and ETFs):
+Today's market data (tracked tickers and ETFs):
 
 {{raw_data_json}}
 
@@ -16,7 +16,7 @@ Write a structured analysis:
   (notable movers, overall direction, any outliers). Reference tickers by
   symbol.
 - top_story: pick the single most important headline of the day and
-  explain in 2-3 sentences why it matters for the water sector.
+  explain in 2-3 sentences why it matters for the {{theme}} sector.
 - themes: 2-4 short thematic groupings pulling together related headlines
   (e.g. "Drought policy in the Southwest US"), each with a one-sentence
   synthesis and the list of headline URLs it draws on.

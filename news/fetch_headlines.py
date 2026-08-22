@@ -39,7 +39,7 @@ import requests
 REPO_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO_ROOT))
 
-TICKERS_PATH = REPO_ROOT / "data" / "tickers.json"
+TICKERS_PATH = REPO_ROOT / "config" / "tickers.json"
 
 # Official Investing.com RSS feeds (public, no API key needed).
 RSS_FEEDS = {

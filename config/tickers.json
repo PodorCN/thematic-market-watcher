@@ -1,5 +1,9 @@
 {
-  "_comment": "Water-theme tickers tracked for the daily digest. Edit freely -- this is config, not code.",
+  "_comment": "Tickers tracked for the daily digest, plus the theme the prompts describe. Edit freely -- this is config, not code.",
+  "theme": {
+    "name": "water",
+    "description": "global water sector (water utilities, water infrastructure, water technology, drought/flood events, water policy and regulation)"
+  },
   "tickers": [
     "CGW",
     "PHO",

@@ -21,6 +21,7 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO_ROOT))
 
 from utils.llm_client import call_llm  # noqa: E402
+from utils.theme import load_theme  # noqa: E402
 
 STAGE_DIR = Path(__file__).resolve().parent
 PROMPT_PATH = STAGE_DIR / "prompt.md"
@@ -36,9 +37,12 @@ def main() -> None:
     raw_data = json.loads((data_dir / "raw_data.json").read_text(encoding="utf-8"))
     headlines = json.loads((data_dir / "headlines.json").read_text(encoding="utf-8"))
 
+    theme = load_theme()
     prompt_template = PROMPT_PATH.read_text(encoding="utf-8")
     prompt = (
         prompt_template
+        .replace("{{theme_description}}", theme["description"])
+        .replace("{{theme}}", theme["name"])
         .replace("{{raw_data_json}}", json.dumps(raw_data, ensure_ascii=False, indent=2))
         .replace("{{headlines_json}}", json.dumps(headlines["headlines"], ensure_ascii=False, indent=2))
     )

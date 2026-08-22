@@ -1,0 +1,117 @@
+{
+  "date": "2026-08-22",
+  "headlines": [
+    {
+      "headline": "El Nino Raises Risks: ETF Areas Likely to Benefit",
+      "source": "Zacks",
+      "url": "https://finance.yahoo.com/markets/commodities/articles/el-nino-raises-risks-etf-140000577.html",
+      "published_at": "2026-08-21T14:00:00Z",
+      "category": "climate_event",
+      "importance": 4
+    },
+    {
+      "headline": "Xylem (XYL) Could Be 23% Below Fair Value Following Its Q2 Profit Outlook Lift",
+      "source": "Simply Wall St.",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/xylem-xyl-could-23-below-011134910.html",
+      "published_at": "2026-08-20T01:11:34Z",
+      "category": "company_news",
+      "importance": 4
+    },
+    {
+      "headline": "What Should Xylem (XYL) Investors Make Of Its New CFO And Board Pick?",
+      "source": "Simply Wall St.",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/xylem-xyl-investors-cfo-board-211214804.html",
+      "published_at": "2026-08-19T21:12:14Z",
+      "category": "company_news",
+      "importance": 4
+    },
+    {
+      "headline": "Canada to match U.S. tariffs dollar for dollar after trade talks collapse",
+      "source": "investing.com",
+      "url": "https://www.investing.com/news/economy-news/canada-to-match-us-tariffs-dollar-for-dollar-after-trade-talks-collapse-4872372",
+      "published_at": "2026-08-22T13:00:00Z",
+      "category": "policy_regulation",
+      "importance": 4
+    },
+    {
+      "headline": "American Water Works Stock: Is Wall Street Bullish or Bearish?",
+      "source": "Barchart",
+      "url": "https://www.barchart.com/story/news/3847394/american-water-works-stock-is-wall-street-bullish-or-bearish",
+      "published_at": "2026-08-14T09:41:24Z",
+      "category": "company_news",
+      "importance": 3
+    },
+    {
+      "headline": "Did Wastewater Discharge and New Upgrades Just Shift American Water Works Company's (AWK) Risk Narrative?",
+      "source": "Simply Wall St.",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/did-wastewater-discharge-upgrades-just-111104624.html",
+      "published_at": "2026-08-18T13:11:34Z",
+      "category": "company_news",
+      "importance": 3
+    },
+    {
+      "headline": "WTRG Q2 Earnings Meet Estimates, Revenues Beat on Water Growth",
+      "source": "Zacks",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/wtrg-q2-earnings-meet-estimates-163900111.html",
+      "published_at": "2026-08-05T16:39:00Z",
+      "category": "company_news",
+      "importance": 3
+    },
+    {
+      "headline": "AWR Q2 Earnings Top Estimates on Water Rate Increases, Revenues Up Y/Y",
+      "source": "Zacks",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/awr-q2-earnings-top-estimates-161200436.html",
+      "published_at": "2026-08-07T16:12:00Z",
+      "category": "company_news",
+      "importance": 3
+    },
+    {
+      "headline": "CWCO Q2 Earnings Beat, Revenues Miss on Manufacturing Weakness",
+      "source": "Zacks",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/cwco-q2-earnings-beat-revenues-173300987.html",
+      "published_at": "2026-08-11T17:33:00Z",
+      "category": "company_news",
+      "importance": 3
+    },
+    {
+      "headline": "Veolia Environnement (ENXTPA:VIE), What Is Drawing Fresh Attention Now?",
+      "source": "Simply Wall St.",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/veolia-environnement-enxtpa-vie-drawing-061049788.html",
+      "published_at": "2026-08-14T06:10:49Z",
+      "category": "company_news",
+      "importance": 3
+    },
+    {
+      "headline": "Badger Meter's Growth Story Hinges on Cellular AMI and BlueEdge Demand",
+      "source": "Zacks",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/badger-meters-growth-story-hinges-121500621.html",
+      "published_at": "2026-07-29T12:15:00Z",
+      "category": "technology",
+      "importance": 3
+    },
+    {
+      "headline": "Xylem Stock: Analyst Estimates & Ratings",
+      "source": "Barchart",
+      "url": "https://www.barchart.com/story/news/3901206/xylem-stock-analyst-estimates-ratings",
+      "published_at": "2026-08-18T09:56:44Z",
+      "category": "market",
+      "importance": 3
+    },
+    {
+      "headline": "US service sector fuels acceleration in business activity, S&P Global says",
+      "source": "investing.com",
+      "url": "https://www.investing.com/news/economic-indicators/us-service-sector-fuels-acceleration-in-business-activity-sp-global-says-4871819",
+      "published_at": "2026-08-21T14:00:00Z",
+      "category": "market",
+      "importance": 3
+    },
+    {
+      "headline": "Manufacturing PMI Falls Short of Expectations, Signals Slower Growth",
+      "source": "investing.com",
+      "url": "https://www.investing.com/news/economic-indicators/manufacturing-pmi-falls-short-of-expectations-signals-slower-growth-93CH-4871790",
+      "published_at": "2026-08-21T14:00:00Z",
+      "category": "market",
+      "importance": 3
+    }
+  ]
+}

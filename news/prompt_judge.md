@@ -1,8 +1,7 @@
-You are curating today's water-sector news digest from a list of raw
+You are curating today's {{theme}}-sector news digest from a list of raw
 headline candidates. For each candidate, decide whether it is genuinely
-worth including in a daily digest read by people who track the water
-sector (utilities, infrastructure, technology, policy, climate events
-affecting water supply/demand, and relevant company news).
+worth including in a daily digest read by people who track the {{theme}}
+sector ({{theme_description}}, and relevant company news).
 
 Candidates:
 

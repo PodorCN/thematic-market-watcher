@@ -208,3 +208,8 @@ Other standing conventions:
   agent-specific wrapper. If this pipeline is ever wrapped as a Claude
   Code skill, the SKILL.md must reference these files rather than
   duplicating prompt text.
+- The tracked sector is pure config (`config/tickers.json` → `theme`
+  object) injected into prompts as `{{theme}}` / `{{theme_description}}`
+  via `utils/theme.py`. Never hardcode a sector name in prompts or
+  templates -- re-pointing the pipeline at a new theme must be a config
+  edit only.
