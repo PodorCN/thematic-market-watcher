@@ -1,9 +1,15 @@
 #!/usr/bin/env python3
 """Stage 2b -- judge.py (news/ package)
 
+NOTE FOR SUB-AGENTS: before changing judging rules, read
+readme/analysis-feedback.md -- the analysis stage logs feedback there
+(recency rule, dedupe quality, tagging noise). If you change the
+prompt/schema, leave a one-line note so downstream stages know.
+
 Plain call_llm(): one prompt+schema completion, no tools, no network
 access on the model's side. Reads candidates.json (produced by
-fetch_candidates.py) and writes the curated archive/<date>/headlines.json.
+fetch_candidates.py or fetch_headlines.py) and writes the curated
+archive/<date>/headlines.json.
 
 Usage:
     python news/judge.py [--date YYYY-MM-DD]

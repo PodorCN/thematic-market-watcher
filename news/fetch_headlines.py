@@ -1,12 +1,18 @@
 #!/usr/bin/env python3
 """Stage 2-pre -- fetch_headlines.py (news/ package)
 
+NOTE FOR SUB-AGENTS: before changing what this pulls, read
+readme/analysis-feedback.md -- the analysis stage logs news-quality
+feedback there (content-farm share, recency window, event coverage,
+ticker tagging). If you change sources or windows, leave a one-line
+note so downstream stages know the input regime changed.
+
 Deterministic headline fetcher, no LLM involved. Complements
 fetch_candidates.py (LLM + web search) with raw headlines pulled
 directly from reputable free sources:
 
   1. yfinance  -- per-ticker news via ``yf.Ticker(t).news`` for every
-                  ticker listed in data/tickers.json.
+                  ticker listed in config/tickers.json.
   2. Investing.com RSS -- market-wide headlines from Investing.com's
                   public RSS feeds. (investpy/investiny are dead since
                   Cloudflare blocking in 2022; the official RSS is the

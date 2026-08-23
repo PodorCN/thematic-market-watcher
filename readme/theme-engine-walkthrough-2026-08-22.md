@@ -138,6 +138,56 @@ Re-ran stage 1 after the initial write-up (`returns/fetch_data.py` +
   with utilities (~0.48); ZEB.TO near-zero/negative vs everything —
   its drawdown was idiosyncratic macro exposure, not sector beta.
 
+## Step 6 — Driver-level rewrite (owner feedback)
+
+Owner direction: themes must be **market-driver level**; single names
+appear only when systemically significant. Input-quality problems should
+be written up as feedback for the data/news sub-agents.
+
+- Rewrote `analysis.json` around four drivers: (1) US-Canada tariff war
+  (now the top story, with ZEB.TO -6.1% as its price confirmation),
+  (2) rates path / two-speed economy from the PMI split, (3) El Nino
+  climate re-pricing, (4) regulated-utility earnings pass-through.
+  XYL/AWK are demoted to context inside driver narratives and the
+  outlook explicitly frames single-name moves as driver confirmation
+  signals only.
+- Added `readme/analysis-feedback.md`: concrete input-quality feedback
+  to `returns` (universe drift, 30d history too shallow, no benchmark,
+  ragged calendars) and to `news` (~47% content-farm listicles, stale
+  May-July items, near-zero event coverage of drought/EPA/capex, noisy
+  ticker tagging, judge prompt lacks a recency rule).
+- Made the loop discoverable: AGENTS.md §6 now has a mandatory
+  "Feedback loop" paragraph pointing pullers at the file; docstring
+  NOTE FOR SUB-AGENTS headers added to `returns/fetch_data.py`,
+  `news/fetch_headlines.py`, `news/judge.py`, plus an ANALYSIS POLICY
+  note in `theme-engine/analyze.py`. Also fixed the stale
+  `data/tickers.json` reference in fetch_headlines' docstring.
+
+## Step 7 — De-watering the project (owner direction)
+
+Owner decided to remove water from the project entirely. The theme now
+lives in config (see `utils/theme.py`), so this was mostly a config +
+docs sweep, then a full pipeline re-run:
+
+- `config/tickers.json`: theme -> "broad market" (global equities and
+  macro drivers...); universe -> SPY QQQ XLF XLE XLU XLI TLT GLD
+  (beta / sectors / rates / real assets).
+- Docs de-watered: AGENTS.md §1, README.md intro,
+  configuring-tickers.md rewritten around theme+universe knobs.
+- `utils/theme.py` docstring example updated; test fixture headline
+  made sector-neutral ("Utilities rally on new EPA rules").
+- Re-ran stage 1 + 1b on the new universe (as_of 21:19 UTC), rebuilt
+  judge output from the existing candidate pool's macro items
+  (tariffs, PMIs, Hormuz/Iran sanctions, metals breakout, CTA flows,
+  EZ consumer confidence, Canada retail), and wrote a fresh driver-level
+  analysis: trade-policy shock / rates path (XLU-TLT spread) /
+  real-asset bid (GLD breakout) / positioning round-trip. Rendered
+  report title is now config-driven ("Broad Market Market Watcher").
+- Verification: ad-hoc script (config/artifact consistency, water-free
+  grep over active code+docs, all numeric claims vs raw_data) ALL PASS;
+  pytest 13 passed. Historical archive/ artifacts for earlier runs were
+  left untouched (they are a record of that day's run).
+
 ## Deliverables
 
 - `archive/2026-08-22/candidates.json` (64 items, stage-2a shape)

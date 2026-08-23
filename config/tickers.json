@@ -1,18 +1,18 @@
 {
   "_comment": "Tickers tracked for the daily digest, plus the theme the prompts describe. Edit freely -- this is config, not code.",
   "theme": {
-    "name": "water",
-    "description": "global water sector (water utilities, water infrastructure, water technology, drought/flood events, water policy and regulation)"
+    "name": "broad market",
+    "description": "global equities and macro drivers: broad equity beta, sector rotation (financials, energy, utilities, industrials), rates and duration, real assets, trade policy"
   },
   "tickers": [
-    "CGW",
-    "PHO",
-    "FIW",
-    "TBLU",
-    "AWK",
-    "XYL",
-    "WTRG",
-    "VIE.PA",
+    "SPY",
+    "QQQ",
+    "XLF",
+    "XLE",
+    "XLU",
+    "XLI",
+    "TLT",
+    "GLD",
     "ZEB.TO"
   ]
 }

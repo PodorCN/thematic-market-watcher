@@ -5,10 +5,10 @@ The tracked universe and its theme live in config/tickers.json:
     {
       "_comment": "...",
       "theme": {
-        "name": "water",
-        "description": "global water sector (...)"
+        "name": "broad market",
+        "description": "global equities and macro drivers (...)"
       },
-      "tickers": ["CGW", ...]
+      "tickers": ["SPY", ...]
     }
 
 Prompts must never hardcode the theme -- they use {{theme}} /

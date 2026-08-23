@@ -1,7 +1,13 @@
 """Stage 1 -- fetch_data.py (returns/ package)
 
-Pure code, no LLM. Downloads daily market data for a configurable list
-of ETFs/indexes and writes archive/<date>/<output>.json. Runnable and
+NOTE FOR SUB-AGENTS: before changing how/what this pulls, read
+readme/analysis-feedback.md -- the analysis stage logs data-quality
+feedback there (universe drift, history depth, benchmark coverage).
+If you change the universe, sources, or windows, leave a one-line
+note so downstream stages know the input regime changed.
+
+Pure-code stage that downloads daily market data for the configured
+universe and writes it into the date-partitioned archive. Runnable and
 testable in complete isolation from every other stage.
 
 Usage:

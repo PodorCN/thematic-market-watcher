@@ -5,9 +5,10 @@ HTML report: fetch market data → collect & judge news headlines → LLM
 analysis → render HTML. Runs on a schedule via GitHub Actions; the latest
 report is published via GitHub Pages from `docs/`.
 
-The tracked sector ("theme") and ticker universe are pure config in
-`config/tickers.json` — the current basket happens to be water-sector
-ETFs/companies, but nothing in the code is water-specific.
+The tracked theme and ticker universe are pure config in
+`config/tickers.json` — currently a broad-market macro universe
+(beta, sectors, rates, real assets); nothing in the code assumes any
+particular theme.
 
 See [`AGENTS.md`](./AGENTS.md) (in this same `readme/` folder) for the
 full design, hard constraints, and open TODOs (`CLAUDE.md` is a symlink

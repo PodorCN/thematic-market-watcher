@@ -5,6 +5,12 @@ Plain call_llm(): one prompt+schema completion over raw_data.json +
 headlines.json. Writes archive/<date>/analysis.json, which is the only
 input the render/ package reads.
 
+ANALYSIS POLICY: output is driver-level (trade policy, rates path,
+climate, regulation, earnings transmission). A single name appears only
+if it is systemically significant for the theme. Input-quality problems
+(news too thin/too concentrated, returns too shallow) must be written
+to readme/analysis-feedback.md so upstream pullers see them.
+
 Usage:
     python theme-engine/analyze.py [--date YYYY-MM-DD]
 """

@@ -18,9 +18,9 @@ and judge news headlines -> LLM analysis -> render a static HTML report.
 Runs once a day via GitHub Actions; each run's output is archived by date
 and the latest report is published to GitHub Pages via `docs/`.
 
-The tracked universe is configuration, not code: `config/tickers.json`
-(water theme today; add/remove symbols freely). Ad-hoc lists can also be
-passed per-run via `--tickers` — see [`data-fetcher.md`](./data-fetcher.md).
+The tracked universe and its theme are configuration, not code:
+`config/tickers.json` (broad-market macro universe today; add/remove
+symbols freely, and the theme name/description feeds every prompt).
 
 ## 2. Hard constraints
 
@@ -178,6 +178,14 @@ pytest
   they are historical scratch data and safe to delete.
 
 ## 6. Conventions for future changes
+
+**Feedback loop (mandatory).** The analysis stage writes its input-quality
+complaints to [`analysis-feedback.md`](./analysis-feedback.md). Any
+sub-agent or engineer touching `returns/` (data pulling) or `news/`
+(headline pulling / judging) MUST read that file before making changes
+and fix or explicitly acknowledge each item. When you change anything
+upstream — universe, sources, recency windows, tagging — leave a one-line
+note so the analyzer knows the input regime changed.
 
 **Reuse first.** Before writing anything new:
 

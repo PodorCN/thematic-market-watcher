@@ -18,9 +18,9 @@ from news.fetch_headlines import dedupe, fetch_yfinance_headlines, parse_rss  # 
 RSS_FIXTURE = """<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0"><channel>
   <item>
-    <title>Water utilities rally on new EPA rules</title>
+    <title>Utilities rally on new EPA rules</title>
     <link>https://www.investing.com/news/a-1</link>
-    <description>Shares of water utilities jumped after the announcement.</description>
+    <description>Shares of utilities jumped after the announcement.</description>
     <pubDate>Fri, 21 Aug 2026 12:00:00 +0000</pubDate>
   </item>
   <item>
@@ -39,12 +39,12 @@ def test_parse_rss_extracts_items():
     items = parse_rss(RSS_FIXTURE, "investing.com")
     assert len(items) == 2  # empty title dropped
     first = items[0]
-    assert first["headline"] == "Water utilities rally on new EPA rules"
+    assert first["headline"] == "Utilities rally on new EPA rules"
     assert first["source"] == "investing.com"
     assert first["url"] == "https://www.investing.com/news/a-1"
     assert first["published_at"] == "2026-08-21T12:00:00+00:00"
     assert first["ticker"] is None
-    assert first["summary"] == "Shares of water utilities jumped after the announcement."
+    assert first["summary"] == "Shares of utilities jumped after the announcement."
 
 
 def test_parse_rss_keeps_unparseable_date_as_raw_string():
