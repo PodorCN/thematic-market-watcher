@@ -1,0 +1,53 @@
+name: Public Macro Pages Daily
+
+on:
+  schedule:
+    # 09:10 Toronto during daylight time, 08:10 during standard time.
+    - cron: "10 13 * * *"
+  workflow_dispatch:
+    inputs:
+      date:
+        description: "Toronto snapshot date (YYYY-MM-DD), defaults to today"
+        required: false
+        default: ""
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Resolve Toronto date
+        id: vars
+        shell: bash
+        run: |
+          if [ -n "${{ github.event.inputs.date }}" ]; then
+            echo "date=${{ github.event.inputs.date }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "date=$(TZ=America/Toronto date +%F)" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Fetch and publish economic calendar
+        run: |
+          python econ/fetch_calendar.py --date "${{ steps.vars.outputs.date }}" --days 7 --countries US,CA,EMU,DE,FR,IT,ES,UK,CH --impacts HIGH,MEDIUM --with-history --history-events 15 --history-limit 12
+          python econ/render_calendar.py --date "${{ steps.vars.outputs.date }}"
+
+      - name: Archive latest Fed/BOC payload
+        run: python econ/archive_fed_boc.py --date "${{ steps.vars.outputs.date }}"
+
+      - name: Commit snapshots
+        run: |
+          git config user.name "public-pages-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add archive/ docs/data/ docs/economic-calendar/ docs/economic_calendar.html
+          git commit -m "Public page snapshots ${{ steps.vars.outputs.date }}" || echo "nothing to commit"
+          git push

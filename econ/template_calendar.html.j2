@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Global Economic Calendar — {{ start }} to {{ end }} | PodorM</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&display=swap">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+<style>
+  /* Nocturne theme */
+  :root {
+    --color-bg: #0f101c;
+    --color-bg-2: #161826;
+    --color-card: #232532;
+    --color-text: #e9e9ed;
+    --color-accent: #9184d9;
+    --color-accent-300: #d2cefd;
+    --color-accent-400: #b5abfc;
+    --color-divider: color-mix(in srgb, #e9e9ed 16%, transparent);
+    --color-neutral-300: #cfd3e5;
+    --color-neutral-400: #b2b6ca;
+    --color-neutral-500: #9397ab;
+    --color-neutral-600: #75798c;
+    --color-neutral-800: #3f424d;
+    --font-heading: "Inter", system-ui, sans-serif;
+    --font-body: "Inter", system-ui, sans-serif;
+    --font-mono: "JetBrains Mono", monospace;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --shadow-sm: 0 0 0 1px #3f424d;
+    --high: #e85d5d;
+    --medium: #e8a54a;
+    --low: #7a8a9a;
+  }
+  * , *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin:0; background:var(--color-bg); color:var(--color-text); font-family:var(--font-body); font-size:15px; line-height:1.55; }
+  a { color:var(--color-neutral-300); text-decoration:none; transition:color .18s ease; }
+  a:hover { color:var(--color-accent); }
+  /* header — PodorM */
+  .site-header {
+    position: fixed; top:0; left:0; right:0; z-index:20;
+    display:flex; justify-content:space-between; align-items:center;
+    padding:22px 56px;
+    font-family:var(--font-mono); font-size:12px; letter-spacing:.22em; text-transform:uppercase;
+    color:var(--color-neutral-400);
+    background: linear-gradient(to bottom, rgba(15,16,28,.92), rgba(15,16,28,0));
+    backdrop-filter: blur(6px);
+  }
+  .site-header .brand { color:var(--color-text); }
+  .site-header nav { display:flex; gap:36px; }
+  /* sections — PodorM */
+  .section { padding:120px 56px; display:flex; flex-direction:column; gap:44px; border-top:1px solid var(--color-neutral-800); }
+  .section.tinted { background: linear-gradient(180deg, #12131f, #0f101c); }
+  .section-head { display:flex; flex-direction:column; gap:14px; }
+  .section-head h2 { margin:0; font-family:var(--font-heading); font-weight:500; font-size:44px; letter-spacing:-.01em; }
+  .rule-fade { width:520px; max-width:100%; height:1px; background: linear-gradient(to right, var(--color-neutral-600), transparent); }
+  .caption { font-family:var(--font-mono); font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--color-neutral-500); }
+  .snapshot-control { display:flex; align-items:center; gap:10px; width:max-content; max-width:100%; margin-top:4px; padding:8px 10px; border:1px solid var(--color-neutral-800); border-radius:var(--radius-md); background:var(--color-card); }
+  .snapshot-control label { font-family:var(--font-mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--color-neutral-500); white-space:nowrap; }
+  /* cards — PodorM */
+  .card { background:var(--color-card); border-radius:var(--radius-md); padding:14px; }
+  .elev-sm { box-shadow: var(--shadow-sm); }
+  /* charts */
+  .charts-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(380px,1fr)); gap:16px; }
+  @media (min-width:1600px){ .charts-grid{ grid-template-columns: repeat(3,1fr);} }
+  .chart-card { display:flex; flex-direction:column; gap:10px; }
+  .chart-card h3 { margin:0; font-size:15px; font-weight:500; display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+  .chart-card .sub { font-size:12px; color:var(--color-neutral-500); font-family:var(--font-mono); }
+  .chart-card .sub strong { color:var(--color-neutral-300); font-weight:500; }
+  .chart-card canvas { width:100% !important; height:200px !important; }
+  .chart-group { display:flex; flex-direction:column; gap:16px; }
+  .chart-group-title { margin:0; font-family:var(--font-mono); font-size:13px; font-weight:400; letter-spacing:.16em; text-transform:uppercase; color:var(--color-accent-300); }
+  .trend-key { display:flex; align-items:center; gap:18px; color:var(--color-neutral-500); font-family:var(--font-mono); font-size:11px; }
+  .trend-key span { display:inline-flex; align-items:center; gap:7px; }
+  .trend-line { width:24px; height:0; border-top:2px solid var(--color-accent-400); }
+  .trend-line.forecast { border-top-color:var(--color-text); border-top-style:dashed; }
+  .forecast-pill { font-family:var(--font-mono); font-size:11px; padding:2px 8px; border-radius:999px; background:color-mix(in srgb, var(--color-accent) 14%, transparent); color:var(--color-accent-300); border:1px solid var(--color-neutral-800); }
+  .controls { background:var(--color-card); border:1px solid var(--color-neutral-800); border-radius:var(--radius-md); padding:14px; display:flex; flex-wrap:wrap; gap:12px; align-items:center; }
+  .controls input[type="search"] { flex:1; min-width:220px; background:#0f101c; border:1px solid var(--color-neutral-800); color:var(--color-text); padding:8px 10px; border-radius:6px; font-family:var(--font-mono); font-size:13px; }
+  .controls input::placeholder { color:var(--color-neutral-600); }
+  .btn { display:inline-flex; align-items:center; justify-content:center; font-family:var(--font-mono); font-size:12px; letter-spacing:.12em; text-transform:uppercase; padding:8px 12px; border-radius:var(--radius-md); border:1px solid var(--color-neutral-800); background:transparent; color:var(--color-neutral-400); cursor:pointer; }
+  .btn.active { border-color:var(--color-accent); color:var(--color-accent-300); background:color-mix(in srgb, var(--color-accent) 12%, transparent); }
+  .btn.high.active { border-color:var(--high); color:var(--high); background:color-mix(in srgb, var(--high) 12%, transparent); }
+  select { background:#0f101c; border:1px solid var(--color-neutral-800); color:var(--color-neutral-300); padding:8px 10px; border-radius:6px; font-family:var(--font-mono); font-size:12px; }
+  /* timeline table — dark */
+  .timeline-wrap { background:var(--color-card); border:1px solid var(--color-neutral-800); border-radius:var(--radius-md); overflow-x:auto; }
+  table { width:100%; border-collapse:collapse; }
+  th { text-align:left; padding:10px 12px; font-family:var(--font-mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--color-neutral-500); background:#1a1c2b; border-bottom:1px solid var(--color-neutral-800); white-space:nowrap; }
+  td { padding:10px 12px; font-size:13px; border-bottom:1px solid #2a2d3a; vertical-align:top; }
+  tr:last-child td { border-bottom:none; }
+  tr.high { background: color-mix(in srgb, var(--high) 9%, transparent); border-left-width:6px !important; }
+  tr.medium { background: color-mix(in srgb, var(--medium) 5%, transparent); }
+  tr:hover { background: rgba(145,132,217,.06); }
+  .cur { font-family:var(--font-mono); font-weight:700; font-size:13px; }
+  .flag-img { border:1px solid var(--color-neutral-800); border-radius:2px; vertical-align:middle; object-fit:cover; }
+  .time { font-family:var(--font-mono); font-size:12px; color:var(--color-neutral-300); }
+  .event-name { font-weight:500; font-size:14px; }
+  .muted { color:var(--color-neutral-500); font-family:var(--font-mono); font-size:11px; }
+  .importance { display:inline-flex; align-items:center; justify-content:center; min-width:62px; padding:4px 8px; border:1px solid transparent; border-radius:999px; font-family:var(--font-mono); font-size:12px; font-weight:700; letter-spacing:2px; line-height:1; }
+  .importance-high { color:#fff; background:var(--high); border-color:#ff8585; box-shadow:0 0 0 3px rgba(232,93,93,.14), 0 0 18px rgba(232,93,93,.2); font-size:14px; }
+  .importance-medium { color:#f4bd70; background:rgba(232,165,74,.1); border-color:rgba(232,165,74,.55); }
+  .importance-low { color:var(--color-neutral-500); background:rgba(117,121,140,.08); border-color:var(--color-neutral-800); }
+  .period-value { display:grid; grid-template-columns:32px auto; align-items:baseline; gap:7px; min-height:22px; white-space:nowrap; }
+  .period-label { color:var(--color-neutral-500); font-family:var(--font-mono); font-size:9px; letter-spacing:.06em; text-transform:uppercase; }
+  footer.site-footer { padding:72px 56px 56px; display:flex; justify-content:space-between; align-items:flex-end; gap:40px; border-top:1px solid var(--color-neutral-800); font-family:var(--font-mono); font-size:12px; letter-spacing:.2em; text-transform:uppercase; color:var(--color-neutral-500); }
+  footer .mark-col { display:flex; flex-direction:column; gap:18px; }
+  @media (max-width:900px){ .charts-grid{grid-template-columns:1fr;} .site-header{padding:16px 24px;} .site-header nav{gap:18px;} .section{padding:72px 24px;} }
+  @media (max-width:640px){ .site-header nav a:first-child{display:none;} .section-head h2{font-size:34px;} table{min-width:760px;} }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <a href="https://podorcn.github.io" class="brand">PodorM</a>
+  <nav>
+    <a href="#calendar">Calendar</a>
+    <a href="#trends">Trends</a>
+    <a href="#timeline">Timeline</a>
+  </nav>
+</header>
+
+<div style="height:68px"></div>
+
+<section id="calendar" class="section">
+  <div class="section-head">
+    <h2>Global Economic Calendar</h2>
+    <div class="rule-fade"></div>
+    <span class="caption">{{ start }} to {{ end }}</span>
+    <div class="snapshot-control">
+      <label for="snapshotDate">View snapshot</label>
+      <select id="snapshotDate" aria-label="View calendar snapshot by date"><option value="{{ archive_date }}">{{ archive_date }}</option></select>
+    </div>
+  </div>
+</section>
+
+{% if has_history %}
+<section id="trends" class="section tinted">
+  <div class="section-head">
+    <h2>Economic trends</h2>
+    <div class="rule-fade"></div>
+    <span class="caption">Recent releases, grouped by theme</span>
+  </div>
+  <div class="trend-key"><span><i class="trend-line"></i>Released data</span><span><i class="trend-line forecast"></i>Next forecast</span></div>
+  {% for group in chart_groups %}
+  <div class="chart-group">
+    <h3 class="chart-group-title">{{ group.name }}</h3>
+    <div class="charts-grid">
+      {% for ch in group.charts %}
+      <div class="card elev-sm chart-card">
+        <h3>{% if ch.flag_url %}<img src="{{ ch.flag_url }}" srcset="{{ ch.flag_url_2x }} 2x" width="24" height="18" alt="{{ ch.currency }}" class="flag-img">{% else %}<span>{{ ch.flag }}</span>{% endif %} {{ ch.event }}</h3>
+        <div class="sub">{% if ch.period_label %}{{ ch.period_label }} · {% endif %}Latest <strong>{{ ch.latest_actual }}{{ ch.unit or '' }}</strong>{% if ch.forecast is not none %} · Next forecast <span class="forecast-pill">{{ ch.forecast }}{{ ch.unit or '' }}</span>{% endif %}{% if ch.upcoming_label %} · {{ ch.upcoming_label }}{% endif %}</div>
+        <canvas id="{{ ch.chart_id }}" width="420" height="200"></canvas>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endfor %}
+</section>
+{% endif %}
+
+<section id="timeline" class="section">
+  <div class="section-head">
+    <h2>Timeline</h2>
+    <div class="rule-fade"></div>
+    <span class="caption">All times shown in Toronto</span>
+  </div>
+
+  <div class="controls">
+    <input id="search" type="search" placeholder="Search events">
+    <div style="display:flex; gap:8px;">
+      <button class="btn active" data-impact="ALL">All</button>
+      <button class="btn high" data-impact="HIGH">High</button>
+      <button class="btn medium" data-impact="MEDIUM">Medium</button>
+      <button class="btn" data-impact="LOW">Low</button>
+    </div>
+    <select id="currencyFilter"><option value="ALL">All currencies</option>{% for cur in currencies %}<option value="{{ cur }}">{{ cur }}</option>{% endfor %}</select>
+    <select id="dateFilter"><option value="ALL">All dates</option>{% for d in dates %}<option value="{{ d }}">{{ d }}</option>{% endfor %}</select>
+  </div>
+
+  {% for day, events in grouped.items() %}
+  <div class="day-group" data-date="{{ day }}" style="margin-bottom:28px">
+    <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:10px; border-bottom:1px solid var(--color-neutral-800); padding-bottom:8px;">
+      <span style="font-family:var(--font-mono); font-size:13px; letter-spacing:.18em; text-transform:uppercase; color:var(--color-neutral-300);">{{ day }} <span class="muted">{{ events[0].weekday }}</span></span>
+    </div>
+    <div class="timeline-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th style="width:110px">Time (Toronto)</th>
+          <th style="width:90px">Currency</th>
+          <th style="width:95px">Importance</th>
+          <th>Event</th>
+          <th style="width:90px">Actual</th>
+          <th style="width:90px">Forecast</th>
+          <th style="width:90px">Previous</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for e in events %}
+        {% set stars = '★★★' if e.impact=='HIGH' else ('★★' if e.impact=='MEDIUM' else '★') %}
+        {% set star_color = '#e85d5d' if e.impact=='HIGH' else ('#e8a54a' if e.impact=='MEDIUM' else '#75798c') %}
+        <tr class="{{ e.impact|lower }}" data-impact="{{ e.impact }}" data-currency="{{ e.currency }}" data-search="{{ e.search_text }}" style="border-left:4px solid {{ star_color }};">
+          <td class="time">{{ e.display_time }}</td>
+          <td>{% if e.flag_url %}<img src="{{ e.flag_url }}" srcset="{{ e.flag_url_2x }} 2x" width="20" height="15" alt="{{ e.currency }}" class="flag-img" style="margin-right:6px;">{% else %}{{ e.flag }}{% endif %}<span class="cur">{{ e.currency }}</span></td>
+          <td><span class="importance importance-{{ e.impact|lower }}" aria-label="{{ e.impact|title }} importance">{{ stars }}</span></td>
+          <td class="event-name">{{ e.event }}</td>
+          <td style="font-family:var(--font-mono); font-weight:700;">{% if e.period_rows %}{% for p in e.period_rows %}<div class="period-value"><span class="period-label">{{ p.period }}</span><span>{{ p.actual if p.actual is not none else '—' }}{{ p.unit if p.actual is not none else '' }}</span></div>{% endfor %}{% else %}{{ e.actual if e.actual is not none else '—' }}{{ e.unit if e.actual is not none and e.unit else '' }}{% endif %}</td>
+          <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">{% if e.period_rows %}{% for p in e.period_rows %}<div class="period-value"><span class="period-label">{{ p.period }}</span><span>{{ p.forecast if p.forecast is not none else '—' }}{{ p.unit if p.forecast is not none else '' }}</span></div>{% endfor %}{% else %}{{ e.forecast if e.forecast is not none else '—' }}{{ e.unit if e.forecast is not none and e.unit else '' }}{% endif %}</td>
+          <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">{% if e.period_rows %}{% for p in e.period_rows %}<div class="period-value"><span class="period-label">{{ p.period }}</span><span>{{ p.previous if p.previous is not none else '—' }}{{ p.unit if p.previous is not none else '' }}</span></div>{% endfor %}{% else %}{{ e.previous if e.previous is not none else '—' }}{{ e.unit if e.previous is not none and e.unit else '' }}{% endif %}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    </div>
+  </div>
+  {% endfor %}
+</section>
+
+<footer class="site-footer">
+  <div class="mark-col">
+    <span>Economic Calendar</span>
+  </div>
+  <nav>
+    <a href="https://podorcn.github.io">PodorM</a>
+  </nav>
+</footer>
+
+<script>
+const snapshotSelect = document.getElementById('snapshotDate');
+const currentSnapshot = {{ archive_date|tojson }};
+const isArchivedSnapshot = /\/economic-calendar\/archive\/[^/]+\.html$/.test(window.location.pathname);
+const snapshotManifestURL = isArchivedSnapshot ? '../../data/economic-calendar/dates.json' : 'data/economic-calendar/dates.json';
+
+async function initSnapshotHistory(){
+  if(!snapshotSelect) return;
+  try{
+    const response = await fetch(snapshotManifestURL, { cache:'no-store' });
+    if(!response.ok) throw new Error(`HTTP ${response.status}`);
+    const manifest = await response.json();
+    const dates = Array.isArray(manifest.dates) ? manifest.dates : [];
+    snapshotSelect.textContent = '';
+    dates.forEach(date=>{
+      const option = document.createElement('option');
+      option.value = date;
+      option.textContent = date === manifest.latest ? `${date} · Latest` : date;
+      snapshotSelect.appendChild(option);
+    });
+    snapshotSelect.value = dates.includes(currentSnapshot) ? currentSnapshot : manifest.latest;
+    snapshotSelect.addEventListener('change',()=>{
+      const date = snapshotSelect.value;
+      if(!date || date === currentSnapshot) return;
+      window.location.href = isArchivedSnapshot ? `${date}.html` : `economic-calendar/archive/${date}.html`;
+    });
+  }catch(error){
+    snapshotSelect.title = 'Snapshot history is temporarily unavailable';
+  }
+}
+
+const searchEl = document.getElementById('search');
+const impactBtns = document.querySelectorAll('.btn');
+const curSel = document.getElementById('currencyFilter');
+const dateSel = document.getElementById('dateFilter');
+let activeImpact='ALL';
+impactBtns.forEach(b=>{
+  if(!b.dataset.impact) return;
+  b.addEventListener('click',()=>{
+    impactBtns.forEach(x=>{ if(x.dataset.impact) x.classList.remove('active'); });
+    b.classList.add('active');
+    activeImpact=b.dataset.impact;
+    applyFilters();
+  });
+});
+if(searchEl) searchEl.addEventListener('input', applyFilters);
+if(curSel) curSel.addEventListener('change', applyFilters);
+if(dateSel) dateSel.addEventListener('change', applyFilters);
+function applyFilters(){
+  const q = (searchEl?.value || '').trim().toLowerCase();
+  const cur = curSel?.value || 'ALL';
+  const d = dateSel?.value || 'ALL';
+  document.querySelectorAll('tbody tr').forEach(tr=>{
+    const impOk = activeImpact==='ALL' || tr.dataset.impact===activeImpact;
+    const curOk = cur==='ALL' || tr.dataset.currency===cur;
+    const dateOk = d==='ALL' || tr.closest('.day-group').dataset.date===d;
+    const searchOk = !q || tr.dataset.search.includes(q);
+    tr.style.display = (impOk && curOk && dateOk && searchOk) ? '' : 'none';
+  });
+  document.querySelectorAll('.day-group').forEach(g=>{
+    const vis = Array.from(g.querySelectorAll('tbody tr')).some(tr=>tr.style.display!=='none');
+    g.style.display = vis ? '' : 'none';
+  });
+}
+const chartData = {{ chart_data|tojson }};
+chartData.forEach(ch=>{
+  const canvas = document.getElementById(ch.id);
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const labels = [...ch.labels];
+  let forecastDataset = null;
+  if(ch.forecast !== null && ch.forecast !== undefined){
+    const forecastData = Array(labels.length-1).fill(null).concat([ch.latest_actual, ch.forecast]);
+    forecastDataset = {
+      label: 'Forecast',
+      data: forecastData,
+      borderColor: '#e9e9ed',
+      backgroundColor: '#e9e9ed',
+      borderDash: [5,5],
+      pointRadius: 4,
+      pointStyle: 'star',
+      tension: 0.25,
+    };
+    labels.push('Forecast');
+  }
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [
+        {
+          label: 'Actual',
+          data: ch.actuals,
+          borderColor: '#b5abfc',
+          backgroundColor: 'transparent',
+          fill: false,
+          tension: 0.3,
+          pointRadius: 2,
+          borderWidth: 1.8,
+        },
+        ...(forecastDataset ? [forecastDataset] : [])
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: { intersect:false, mode:'index' },
+      plugins: {
+        legend: { display:false },
+        tooltip: { backgroundColor:'#1a1c2b', titleColor:'#e9e9ed', bodyColor:'#e9e9ed', borderColor:'#3f424d', borderWidth:1, callbacks:{ label: ctx=> ctx.dataset.label+': '+ctx.parsed.y+(ch.unit || '') }}
+      },
+      scales: {
+        x: { ticks:{ font:{size:10, family:'JetBrains Mono'}, color:'#9397ab', maxRotation:0, autoSkip:true, maxTicksLimit:8 }, grid:{ color:'#232532' }},
+        y: { ticks:{ font:{size:10, family:'JetBrains Mono'}, color:'#9397ab' }, grid:{ color:'#232532' } }
+      }
+    }
+  });
+});
+initSnapshotHistory();
+</script>
+</body>
+</html>

@@ -1,0 +1,732 @@
+{
+  "as_of": "2026-08-24T08:00:00-04:00",
+  "version": "2026-08-24-001",
+  "timezone": "America/Toronto",
+  "meetings": {
+    "fed": {
+      "label": "Fed · Sep 16-17 FOMC",
+      "decision_time_toronto": "2026-09-17T14:00:00-04:00",
+      "last_meeting": {
+        "date": "2026-07-30",
+        "decision": "Held at 4.25-4.50%",
+        "note": "Services inflation remained sticky while manufacturing and labour data weakened."
+      },
+      "pricing": {
+        "cut_25bp": 0.64,
+        "hold": 0.34,
+        "hike_25bp": 0.02,
+        "source": "CME FedWatch",
+        "implied_rate_before": 4.33,
+        "implied_rate_after": 4.08
+      }
+    },
+    "boc": {
+      "label": "BOC · Sep 17 Decision",
+      "decision_time_toronto": "2026-09-17T09:45:00-04:00",
+      "last_meeting": {
+        "date": "2026-07-30",
+        "decision": "Held at 2.75%",
+        "note": "Trade uncertainty offset resilient domestic demand."
+      },
+      "pricing": {
+        "cut_25bp": 0.41,
+        "hold": 0.54,
+        "hike_25bp": 0.05,
+        "source": "OIS",
+        "implied_rate_before": 2.75,
+        "implied_rate_after": 2.61
+      }
+    }
+  },
+  "drivers": {
+    "fed": {
+      "dovish": [
+        {
+          "id": "fed_dove_payrolls_20260808",
+          "icon": "LAB",
+          "title": "Labour Market Softening",
+          "published_at_toronto": "2026-08-08T08:30:00-04:00",
+          "source": "BLS",
+          "importance": "HIGH",
+          "weight": 2.0,
+          "data": {
+            "actual": "-23k",
+            "forecast": "+80k",
+            "previous": "+147k to +93k",
+            "delta_label": "miss -103k",
+            "delta_type": "miss"
+          },
+          "reason": "Payrolls turned negative and prior months were revised lower, signalling a labour-demand inflection and strengthening the insurance-cut case.",
+          "market_validation": [
+            {
+              "ticker": "RUT",
+              "label": "RUT -1.65% w",
+              "type": "down"
+            }
+          ]
+        },
+        {
+          "id": "fed_dove_ism_20260821",
+          "icon": "PMI",
+          "title": "ISM Manufacturing Back in Contraction",
+          "published_at_toronto": "2026-08-21T10:00:00-04:00",
+          "source": "ISM / S&P Global",
+          "source_url": "https://www.investing.com/news/economic-indicators/manufacturing-pmi-falls-short-of-expectations-signals-slower-growth-93CH-4871790",
+          "importance": "HIGH",
+          "weight": 1.5,
+          "data": {
+            "actual": "48.7",
+            "forecast": "49.5",
+            "previous": "49.1",
+            "delta_label": "miss -0.8",
+            "delta_type": "miss"
+          },
+          "reason": "Sub-50 output, new orders and employment point to weaker demand and hiring, while lower prices paid reduces the inflation obstacle to easing.",
+          "market_validation": [
+            {
+              "ticker": "XLI",
+              "label": "XLI -3.4% w",
+              "type": "down"
+            }
+          ]
+        },
+        {
+          "id": "fed_dove_consumer_20260821",
+          "icon": "CONS",
+          "title": "Consumer and Industrial Chain Under Pressure",
+          "published_at_toronto": "2026-08-21T07:00:00-04:00",
+          "source": "Company earnings",
+          "importance": "MEDIUM",
+          "weight": 1.5,
+          "data": {
+            "actual": "Comp 3.8%",
+            "forecast": "4.2%",
+            "previous": "4.5%",
+            "delta_label": "guidance cut",
+            "delta_type": "miss"
+          },
+          "reason": "Softer retail guidance and industrial orders can transmit through earnings, hiring and consumption, reinforcing the slowdown narrative.",
+          "market_validation": [
+            {
+              "ticker": "QQQ",
+              "label": "QQQ -2.05% w",
+              "type": "down"
+            }
+          ]
+        },
+        {
+          "id": "fed_dove_long_end_20260821",
+          "icon": "30Y",
+          "title": "Long-End Squeeze Creates Passive Tightening",
+          "published_at_toronto": "2026-08-21T16:00:00-04:00",
+          "source": "US Treasury market",
+          "importance": "MEDIUM",
+          "weight": 1.0,
+          "data": {
+            "actual": "30Y 5.27%",
+            "forecast": "4.80%",
+            "previous": "4.82%",
+            "delta_label": "+45bp",
+            "delta_type": "miss"
+          },
+          "reason": "Higher long rates have already tightened financial conditions, which can make a policy-rate cut necessary to offset passive tightening.",
+          "market_validation": [
+            {
+              "ticker": "TLT",
+              "label": "TLT -0.35% Fri",
+              "type": "down"
+            }
+          ]
+        }
+      ],
+      "hawkish": [
+        {
+          "id": "fed_hawk_services_20260821",
+          "icon": "SERV",
+          "title": "Services PMI Big Beat",
+          "published_at_toronto": "2026-08-21T09:45:00-04:00",
+          "source": "S&P Global",
+          "importance": "HIGH",
+          "weight": 2.0,
+          "data": {
+            "actual": "56.8",
+            "forecast": "54.0",
+            "previous": "54.3",
+            "delta_label": "beat +2.8",
+            "delta_type": "beat"
+          },
+          "reason": "Strong services demand, employment and prices paid point to persistent core-services inflation and raise the hurdle for a cut.",
+          "market_validation": [
+            {
+              "ticker": "XLF",
+              "label": "XLF +0.93% Fri",
+              "type": "up"
+            }
+          ]
+        },
+        {
+          "id": "fed_hawk_tariffs_20260822",
+          "icon": "TRF",
+          "title": "Tariff Inflation Shock",
+          "published_at_toronto": "2026-08-22T02:39:00-04:00",
+          "source": "Trade policy announcements",
+          "importance": "HIGH",
+          "weight": 2.0,
+          "data": {
+            "actual": "35% reciprocal",
+            "forecast": "phased",
+            "previous": "negotiating",
+            "delta_label": "broader than expected",
+            "delta_type": "beat"
+          },
+          "reason": "Broad reciprocal tariffs add direct imported inflation while inflation expectations are already elevated.",
+          "market_validation": [
+            {
+              "ticker": "GLD",
+              "label": "GLD +1.95% Fri",
+              "type": "up"
+            }
+          ]
+        },
+        {
+          "id": "fed_hawk_term_premium_20260814",
+          "icon": "UST",
+          "title": "Term Premium Blowout",
+          "published_at_toronto": "2026-08-14T13:00:00-04:00",
+          "source": "US Treasury auction",
+          "importance": "MEDIUM",
+          "weight": 1.5,
+          "data": {
+            "actual": "5.216%",
+            "forecast": "4.90%",
+            "previous": "4.85%",
+            "delta_label": "highest since 2001",
+            "delta_type": "beat"
+          },
+          "reason": "A fiscal and term-premium driven selloff can signal inflation or credibility risk rather than weaker growth, limiting room to ease.",
+          "market_validation": [
+            {
+              "ticker": "TLT",
+              "label": "TLT -0.35% Fri",
+              "type": "down"
+            }
+          ]
+        },
+        {
+          "id": "fed_hawk_energy_20260821",
+          "icon": "WTI",
+          "title": "Energy and Geopolitical Premium",
+          "published_at_toronto": "2026-08-21T14:30:00-04:00",
+          "source": "WTI close",
+          "importance": "MEDIUM",
+          "weight": 1.0,
+          "data": {
+            "actual": "WTI 87.1",
+            "forecast": "82.0",
+            "previous": "83.5",
+            "delta_label": "+4.1% w",
+            "delta_type": "beat"
+          },
+          "reason": "Higher energy prices feed headline inflation and can slow further progress in inflation expectations.",
+          "market_validation": [
+            {
+              "ticker": "XLE",
+              "label": "XLE +2.8% w",
+              "type": "up"
+            }
+          ]
+        },
+        {
+          "id": "fed_hawk_expectations_20260815",
+          "icon": "EXP",
+          "title": "Inflation Expectations De-Anchoring",
+          "published_at_toronto": "2026-08-15T10:00:00-04:00",
+          "source": "University of Michigan",
+          "importance": "MEDIUM",
+          "weight": 1.0,
+          "data": {
+            "actual": "1Y 4.5% / 5Y 3.1%",
+            "forecast": "4.4% / 3.0%",
+            "previous": "4.4% / 3.0%",
+            "delta_label": "beat +0.1",
+            "delta_type": "beat"
+          },
+          "reason": "Five-year expectations above 3% increase concern that inflation psychology is becoming persistent.",
+          "market_validation": []
+        }
+      ]
+    },
+    "boc": {
+      "dovish": [
+        {
+          "id": "boc_dove_tariffs_20260822",
+          "icon": "TRD",
+          "title": "US-Canada Reciprocal Tariffs",
+          "published_at_toronto": "2026-08-22T02:39:00-04:00",
+          "source": "Trade policy announcements",
+          "importance": "HIGH",
+          "weight": 2.0,
+          "data": {
+            "actual": "19% GDP exposure",
+            "forecast": "phased",
+            "previous": "negotiating",
+            "delta_label": "broad coverage",
+            "delta_type": "miss"
+          },
+          "reason": "Canada's dependence on US demand means tariffs can quickly reduce export orders, industrial output and employment.",
+          "market_validation": [
+            {
+              "ticker": "XLI",
+              "label": "XLI -3.4% w",
+              "type": "down"
+            }
+          ]
+        },
+        {
+          "id": "boc_dove_households_20260730",
+          "icon": "MTG",
+          "title": "Household Leverage and Mortgage Sensitivity",
+          "published_at_toronto": "2026-07-30T10:00:00-04:00",
+          "source": "BOC MPR / Statistics Canada",
+          "importance": "MEDIUM",
+          "weight": 1.5,
+          "data": {
+            "actual": "Debt/GDP 102%",
+            "forecast": "100%",
+            "previous": "101%",
+            "delta_label": "G7 high",
+            "delta_type": "miss"
+          },
+          "reason": "High leverage and mortgage renewals make Canadian demand unusually sensitive to elevated rates.",
+          "market_validation": []
+        },
+        {
+          "id": "boc_dove_global_pmi_20260821",
+          "icon": "PMI",
+          "title": "Global Manufacturing Pullback",
+          "published_at_toronto": "2026-08-21T10:00:00-04:00",
+          "source": "Global PMI releases",
+          "importance": "MEDIUM",
+          "weight": 1.0,
+          "data": {
+            "actual": "US ISM 48.7",
+            "forecast": "49.5",
+            "previous": "49.1",
+            "delta_label": "miss -0.8",
+            "delta_type": "miss"
+          },
+          "reason": "Global manufacturing weakness leads Canadian resource and industrial exports by one to two months.",
+          "market_validation": []
+        },
+        {
+          "id": "boc_dove_labour_20260730",
+          "icon": "JOB",
+          "title": "Labour Market Marginal Easing",
+          "published_at_toronto": "2026-07-30T10:00:00-04:00",
+          "source": "Statistics Canada",
+          "importance": "LOW",
+          "weight": 1.0,
+          "data": {
+            "actual": "Jobless 6.9%",
+            "forecast": "6.7%",
+            "previous": "6.8%",
+            "delta_label": "slack rising",
+            "delta_type": "miss"
+          },
+          "reason": "Higher unemployment and slower wage growth indicate more labour-market slack and less wage inflation pressure.",
+          "market_validation": []
+        }
+      ],
+      "hawkish": [
+        {
+          "id": "boc_hawk_retail_20260821",
+          "icon": "RTL",
+          "title": "Retail Sales Big Beat",
+          "published_at_toronto": "2026-08-21T08:30:00-04:00",
+          "source": "Statistics Canada",
+          "importance": "HIGH",
+          "weight": 1.5,
+          "data": {
+            "actual": "+0.6%",
+            "forecast": "+0.2%",
+            "previous": "+0.1%",
+            "delta_label": "beat +0.4",
+            "delta_type": "beat"
+          },
+          "reason": "Broad retail growth suggests consumption is not collapsing and gives the BOC room to wait.",
+          "market_validation": []
+        },
+        {
+          "id": "boc_hawk_oil_20260821",
+          "icon": "WTI",
+          "title": "Energy Tailwind Improves Terms of Trade",
+          "published_at_toronto": "2026-08-21T14:30:00-04:00",
+          "source": "WTI close",
+          "importance": "MEDIUM",
+          "weight": 1.5,
+          "data": {
+            "actual": "WTI 87.1",
+            "forecast": "82.0",
+            "previous": "83.5",
+            "delta_label": "+4.1% w",
+            "delta_type": "beat"
+          },
+          "reason": "Higher oil supports Canada's terms of trade, fiscal revenue and currency, reducing pressure for immediate easing.",
+          "market_validation": [
+            {
+              "ticker": "XLE",
+              "label": "XLE +2.8% w",
+              "type": "up"
+            }
+          ]
+        },
+        {
+          "id": "boc_hawk_gdp_20260828",
+          "icon": "GDP",
+          "title": "GDP Resilience to Be Tested",
+          "published_at_toronto": "2026-08-28T08:30:00-04:00",
+          "source": "Statistics Canada",
+          "importance": "HIGH",
+          "weight": 1.5,
+          "data": {
+            "actual": null,
+            "forecast": "+0.1% MoM / 1.2% annualized",
+            "previous": "+0.1% / 1.1%",
+            "delta_label": "pending",
+            "delta_type": "neutral"
+          },
+          "reason": "This is the hardest domestic release before the meeting; a strong print supports holding, while a contraction would pull decisively dovish.",
+          "market_validation": []
+        },
+        {
+          "id": "boc_hawk_us_spillover_20260821",
+          "icon": "US",
+          "title": "US Stickiness Spillover",
+          "published_at_toronto": "2026-08-21T09:45:00-04:00",
+          "source": "US data / rates",
+          "importance": "MEDIUM",
+          "weight": 1.0,
+          "data": {
+            "actual": "Services 56.8 / 30Y 5.27%",
+            "forecast": "54.0 / 4.90%",
+            "previous": "54.3 / 5.00%",
+            "delta_label": "beat",
+            "delta_type": "beat"
+          },
+          "reason": "A BOC cut while the Fed holds would widen the rate gap, weaken CAD and increase imported inflation.",
+          "market_validation": []
+        }
+      ]
+    }
+  },
+  "market": {
+    "since": "2026-07-30",
+    "as_of_close": "2026-08-21T16:00:00-04:00",
+    "tickers": [
+      {
+        "symbol": "SPY",
+        "price": 765.72,
+        "label_1d": "+0.41% Fri",
+        "label_1w": "-1.43% w",
+        "type_1d": "up",
+        "type_1w": "down"
+      },
+      {
+        "symbol": "QQQ",
+        "price": 713.44,
+        "label_1d": "+0.35% Fri",
+        "label_1w": "-2.05% w",
+        "type_1d": "up",
+        "type_1w": "down"
+      },
+      {
+        "symbol": "XLU",
+        "price": 42.77,
+        "label_1d": "-2.29% Fri",
+        "type_1d": "down"
+      },
+      {
+        "symbol": "XLF",
+        "price": 57.48,
+        "label_1d": "+0.93% Fri",
+        "type_1d": "up"
+      },
+      {
+        "symbol": "XLE",
+        "price": 63.64,
+        "label_1w": "+2.8% w",
+        "type_1w": "up"
+      },
+      {
+        "symbol": "TLT",
+        "price": 82.05,
+        "label_1d": "-0.35% Fri",
+        "type_1d": "down"
+      },
+      {
+        "symbol": "GLD",
+        "price": 423.36,
+        "label_1d": "+1.95% Fri",
+        "label_1w": "+5.5% w",
+        "type_1d": "up",
+        "type_1w": "up"
+      },
+      {
+        "symbol": "ZEB.TO",
+        "price": 73.49,
+        "label_1d": "+0.45% Fri",
+        "type_1d": "up"
+      }
+    ]
+  },
+  "calendar": [
+    {
+      "id": "core_pce_20260826",
+      "datetime_toronto": "2026-08-26T08:30:00-04:00",
+      "datetime_utc": "2026-08-26T12:30:00Z",
+      "currency": "USD",
+      "event": "Core PCE (MoM / YoY) · Fed preferred inflation",
+      "impact": "HIGH",
+      "forecast": {
+        "MoM": "0.20%",
+        "YoY": "2.80%"
+      },
+      "previous": {
+        "MoM": "0.26%",
+        "YoY": "2.81%"
+      },
+      "logic": "Above 0.30% MoM pulls hawkish; 0.20% or lower supports a dovish reversal.",
+      "hawk_if": "High to Hawk",
+      "dove_if": "Low to Dove"
+    },
+    {
+      "id": "us_gdp_20260826",
+      "datetime_toronto": "2026-08-26T08:30:00-04:00",
+      "datetime_utc": "2026-08-26T12:30:00Z",
+      "currency": "USD",
+      "event": "US GDP Annualized Q2 · Second Revision",
+      "impact": "MEDIUM",
+      "forecast": {
+        "Annualized": "3.0%"
+      },
+      "previous": {
+        "Initial": "2.8%"
+      },
+      "logic": "A 3.0% or stronger revision is resilient; below 2.5% reinforces manufacturing weakness.",
+      "hawk_if": "Strong to Hawk",
+      "dove_if": "Weak to Dove"
+    },
+    {
+      "id": "jackson_hole_20260827",
+      "datetime_toronto": "2026-08-26T20:00:00-04:00",
+      "datetime_utc": "2026-08-27T00:00:00Z",
+      "currency": "USD",
+      "event": "Jackson Hole Symposium · Aug 27-29",
+      "impact": "HIGH",
+      "forecast": {},
+      "previous": {},
+      "logic": "A higher neutral-rate message pulls hawkish; greater dual-mandate balance pulls dovish.",
+      "hawk_if": "Hawkish tone"
+    },
+    {
+      "id": "claims_20260827",
+      "datetime_toronto": "2026-08-27T08:30:00-04:00",
+      "datetime_utc": "2026-08-27T12:30:00Z",
+      "currency": "USD",
+      "event": "Initial Jobless Claims",
+      "impact": "MEDIUM",
+      "forecast": {
+        "Initial": "230k",
+        "Continuing": "1.87M"
+      },
+      "previous": {
+        "Initial": "228k",
+        "Continuing": "1.86M"
+      },
+      "logic": "Initial claims above 240k with continuing claims rising would confirm labour deterioration.",
+      "dove_if": "High to Dove"
+    },
+    {
+      "id": "cad_current_account_20260827",
+      "datetime_toronto": "2026-08-27T08:30:00-04:00",
+      "datetime_utc": "2026-08-27T12:30:00Z",
+      "currency": "CAD",
+      "event": "Canada Current Account",
+      "impact": "MEDIUM",
+      "forecast": {
+        "Balance": "-C$4.5B"
+      },
+      "previous": {
+        "Balance": "-C$2.1B"
+      },
+      "logic": "A wider deficit would indicate weaker external demand and pull dovish.",
+      "dove_if": "Worse to Dove"
+    },
+    {
+      "id": "cad_gdp_20260828",
+      "datetime_toronto": "2026-08-28T08:30:00-04:00",
+      "datetime_utc": "2026-08-28T12:30:00Z",
+      "currency": "CAD",
+      "event": "Canada GDP · BOC Decider",
+      "impact": "HIGH",
+      "forecast": {
+        "MoM": "+0.10%",
+        "Annualized": "1.20%"
+      },
+      "previous": {
+        "MoM": "+0.10%",
+        "Annualized": "1.10%"
+      },
+      "logic": "MoM at 0.20% or above supports holding; zero or lower can flip the balance dovish.",
+      "hawk_if": "Strong to Hawk",
+      "dove_if": "Weak to Dove"
+    },
+    {
+      "id": "fed_chair_speech_20260828",
+      "datetime_toronto": "2026-08-28T10:00:00-04:00",
+      "datetime_utc": "2026-08-28T14:00:00Z",
+      "currency": "USD",
+      "event": "Fed Chair Debut Speech",
+      "impact": "HIGH",
+      "forecast": {},
+      "previous": {},
+      "logic": "Inflation-risk emphasis pulls hawkish; dual-mandate balance pulls dovish.",
+      "hawk_if": "Hawkish tone",
+      "dove_if": "Balanced tone"
+    },
+    {
+      "id": "nfp_benchmark_20260828",
+      "datetime_toronto": "2026-08-28T10:00:00-04:00",
+      "datetime_utc": "2026-08-28T14:00:00Z",
+      "currency": "USD",
+      "event": "NFP Annual Benchmark Revision",
+      "impact": "HIGH",
+      "forecast": {
+        "Revision": "-620k"
+      },
+      "previous": {
+        "Last year": "-306k"
+      },
+      "logic": "A downward revision larger than 700k would show labour was already weaker than reported.",
+      "dove_if": "Large cut to Dove"
+    },
+    {
+      "id": "michigan_20260828",
+      "datetime_toronto": "2026-08-28T10:00:00-04:00",
+      "datetime_utc": "2026-08-28T14:00:00Z",
+      "currency": "USD",
+      "event": "University of Michigan Sentiment · Final",
+      "impact": "MEDIUM",
+      "forecast": {
+        "1Y inflation": "4.4%",
+        "5Y inflation": "3.0%"
+      },
+      "previous": {
+        "1Y inflation": "4.5%",
+        "5Y inflation": "3.1%"
+      },
+      "logic": "Expectations rising again would raise the hurdle for a September cut.",
+      "hawk_if": "High to Hawk"
+    },
+    {
+      "id": "cad_pmi_20260901",
+      "datetime_toronto": "2026-09-01T09:30:00-04:00",
+      "datetime_utc": "2026-09-01T13:30:00Z",
+      "currency": "CAD",
+      "event": "Canada Manufacturing PMI",
+      "impact": "MEDIUM",
+      "forecast": {
+        "PMI": "48.5"
+      },
+      "previous": {
+        "PMI": "49.0"
+      },
+      "logic": "A deeper sub-50 reading confirms export-order weakness and pulls the BOC dovish.",
+      "dove_if": "Low to Dove"
+    },
+    {
+      "id": "cad_lfs_20260904",
+      "datetime_toronto": "2026-09-04T08:30:00-04:00",
+      "datetime_utc": "2026-09-04T12:30:00Z",
+      "currency": "CAD",
+      "event": "Canada Labour Force Survey",
+      "impact": "HIGH",
+      "forecast": {
+        "Employment": "+10k",
+        "Jobless": "6.9%"
+      },
+      "previous": {
+        "Employment": "+8k",
+        "Jobless": "6.9%"
+      },
+      "logic": "Job losses or unemployment at 7.0% or higher would materially strengthen the BOC cut case.",
+      "dove_if": "Weak to Dove"
+    },
+    {
+      "id": "nfp_20260904",
+      "datetime_toronto": "2026-09-04T08:30:00-04:00",
+      "datetime_utc": "2026-09-04T12:30:00Z",
+      "currency": "USD",
+      "event": "US Payrolls · Last Jobs Before FOMC",
+      "impact": "HIGH",
+      "forecast": {
+        "Payrolls": "+155k",
+        "Jobless": "4.20%"
+      },
+      "previous": {
+        "Payrolls": "+114k",
+        "Jobless": "4.30%"
+      },
+      "logic": "Payrolls below 100k or a higher unemployment rate would materially strengthen the cut case.",
+      "dove_if": "Weak to Dove"
+    },
+    {
+      "id": "cpi_20260911",
+      "datetime_toronto": "2026-09-11T08:30:00-04:00",
+      "datetime_utc": "2026-09-11T12:30:00Z",
+      "currency": "USD",
+      "event": "US CPI · First Post-Tariff Test",
+      "impact": "HIGH",
+      "forecast": {
+        "YoY": "3.00%",
+        "MoM": "0.30%"
+      },
+      "previous": {
+        "YoY": "2.90%",
+        "MoM": "0.20%"
+      },
+      "logic": "A tariff-driven acceleration to 3.2% or higher could force the FOMC to skip a September cut.",
+      "hawk_if": "High to Hawk"
+    },
+    {
+      "id": "boc_20260917",
+      "datetime_toronto": "2026-09-17T09:45:00-04:00",
+      "datetime_utc": "2026-09-17T13:45:00Z",
+      "currency": "CAD",
+      "event": "BOC Rate Decision",
+      "impact": "HIGH",
+      "forecast": {},
+      "previous": {},
+      "logic": "The final BOC settlement of domestic growth, labour and Canada-US rate-spread risks.",
+      "hawk_if": "Showdown",
+      "dove_if": "Showdown"
+    },
+    {
+      "id": "fomc_20260917",
+      "datetime_toronto": "2026-09-17T14:00:00-04:00",
+      "datetime_utc": "2026-09-17T18:00:00Z",
+      "currency": "USD",
+      "event": "FOMC Decision, Dot Plot and Press Conference",
+      "impact": "HIGH",
+      "forecast": {},
+      "previous": {},
+      "logic": "The final Fed settlement after the remaining inflation and labour releases.",
+      "hawk_if": "Showdown",
+      "dove_if": "Showdown"
+    }
+  ],
+  "history": [],
+  "snapshot_date": "2026-08-24",
+  "archived_at": "2026-08-24T22:01:39.350725Z",
+  "stale": false
+}

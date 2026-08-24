@@ -1,0 +1,331 @@
+{
+  "as_of": "2026-08-24T08:00:00-04:00",
+  "version": "2026-08-24-001",
+  "timezone": "America/Toronto",
+  "meetings": {
+    "fed": {
+      "label": "Fed · 9/16–17 FOMC",
+      "date_start": "2026-09-16",
+      "date_end": "2026-09-17",
+      "decision_time_toronto": "2026-09-17T14:00:00-04:00",
+      "decision_time_utc": "2026-09-17T18:00:00Z",
+      "last_meeting": {
+        "date": "2026-07-30",
+        "decision": "维持 4.25–4.50%",
+        "note": "3票鹰派反对未加息，强调服务粘性 vs 制造/就业裂痕"
+      },
+      "pricing": {
+        "cut_25bp": 0.64,
+        "hold": 0.34,
+        "hike_25bp": 0.02,
+        "source": "CME FedWatch",
+        "implied_rate_before": 4.33,
+        "implied_rate_after": 4.08
+      }
+    },
+    "boc": {
+      "label": "BOC · 9/17 决议",
+      "date": "2026-09-17",
+      "decision_time_toronto": "2026-09-17T09:45:00-04:00",
+      "decision_time_utc": "2026-09-17T13:45:00Z",
+      "last_meeting": {
+        "date": "2026-07-30",
+        "decision": "维持 2.75%",
+        "note": "贸易不确定性抵消国内韧性"
+      },
+      "pricing": {
+        "cut_25bp": 0.41,
+        "hold": 0.54,
+        "hike_25bp": 0.05,
+        "source": "OIS",
+        "implied_before": 2.75,
+        "implied_after": 2.61
+      }
+    }
+  },
+  "drivers": {
+    "fed": {
+      "dovish": [
+        {
+          "id": "fed_dove_nfp_20260808",
+          "icon": "👷",
+          "title": "劳动市场转弱信号",
+          "published_at_toronto": "2026-08-08T08:30:00-04:00",
+          "published_at_utc": "2026-08-08T12:30:00Z",
+          "source": "BLS · 非农",
+          "source_url": "https://www.bls.gov/news.release/empsit.nr0.htm",
+          "importance": "HIGH",
+          "weight": 2.0,
+          "weight_breakdown": { "deviation": 0.8, "importance": 0.8, "surprise": 0.4 },
+          "data": {
+            "actual": "-2.3万",
+            "actual_raw": -23000,
+            "forecast": "+8.0万",
+            "forecast_raw": 80000,
+            "previous": "+14.7万→+9.3万",
+            "previous_raw": 93000,
+            "delta_label": "miss -10.3万",
+            "delta_type": "miss"
+          },
+          "reason": "为何是降息 driver？非农由韧性直接转负，且前两月合计下修，劳动需求拐点出现。",
+          "market_validation": [{ "ticker": "RUT", "label": "罗素 -1.65% w", "type": "down" }],
+          "tags": ["HIGH", "非农"]
+        },
+        {
+          "id": "fed_dove_ism_mfg_20260821",
+          "icon": "🏭",
+          "title": "ISM 制造业 PMI 掉回收缩",
+          "published_at_toronto": "2026-08-21T10:00:00-04:00",
+          "published_at_utc": "2026-08-21T14:00:00Z",
+          "source": "ISM / S&P Global",
+          "source_url": "https://www.investing.com/news/economic-indicators/manufacturing-pmi-falls-short-of-expectations-signals-slower-growth-93CH-4871790",
+          "importance": "HIGH",
+          "weight": 1.5,
+          "weight_breakdown": { "deviation": 0.5, "importance": 0.7, "surprise": 0.3 },
+          "data": {
+            "actual": "48.7",
+            "forecast": "49.5",
+            "previous": "49.1",
+            "delta_label": "miss -0.8",
+            "delta_type": "miss"
+          },
+          "reason": "为何是降息 driver？PMI<50且新订单47.2/就业48.1双收缩，价格支付52.1回落缓解通胀担忧。",
+          "market_validation": [{ "ticker": "XLI", "label": "XLI -3.4% w", "type": "down" }],
+          "tags": ["HIGH", "ISM"]
+        },
+        {
+          "id": "fed_dove_walmart_20260821",
+          "icon": "🛒",
+          "title": "消费与工业链承压",
+          "published_at_toronto": "2026-08-21T07:00:00-04:00",
+          "source": "Walmart Earnings",
+          "importance": "MEDIUM",
+          "weight": 1.5,
+          "data": { "actual": "同店3.8% 指引下调", "forecast": "4.2%", "previous": "4.5%", "delta_label": "miss", "delta_type": "miss" },
+          "reason": "为何是降息 driver？最大零售商下调指引，关税成本传导，盈利→就业→消费负反馈。",
+          "market_validation": [{ "ticker": "QQQ", "label": "QQQ -2.05% w", "type": "down" }]
+        },
+        {
+          "id": "fed_dove_longend_20260814",
+          "icon": "📉",
+          "title": "长端绞杀 → 金融条件被动紧缩",
+          "published_at_toronto": "2026-08-14T13:00:00-04:00",
+          "importance": "MEDIUM",
+          "weight": 1.0,
+          "data": { "actual": "30Y 5.27%", "forecast": "4.80%", "previous": "4.82%", "delta_label": "+45bp", "delta_type": "miss" },
+          "reason": "为何是降息 driver（反向）？久期绞杀已实质紧缩，Fed需以降息对冲被动加息。",
+          "market_validation": [{ "ticker": "TLT", "label": "TLT -0.35% Fri", "type": "down" }]
+        }
+      ],
+      "hawkish": [
+        {
+          "id": "fed_hawk_services_20260821",
+          "icon": "🔥",
+          "title": "服务业 PMI 大超预期",
+          "published_at_toronto": "2026-08-21T09:45:00-04:00",
+          "importance": "HIGH",
+          "weight": 2.0,
+          "data": { "actual": "56.8", "forecast": "54.0", "previous": "54.3", "delta_label": "beat +2.8", "delta_type": "beat" },
+          "reason": "为何是加息 driver？服务占GDP73%，新订单58.2/就业54.1走强，价格支付59.6指向核心服务通胀。",
+          "market_validation": [{ "ticker": "XLF", "label": "XLF +0.93% Fri", "type": "up" }]
+        },
+        {
+          "id": "fed_hawk_tariff_20260822",
+          "icon": "⛓️",
+          "title": "关税通胀冲击",
+          "published_at_toronto": "2026-08-22T02:39:00-04:00",
+          "importance": "HIGH",
+          "weight": 2.0,
+          "data": { "actual": "35% 等额报复", "forecast": "分段加征", "previous": "谈判中", "delta_label": "超预期全面", "delta_type": "miss" },
+          "reason": "为何是加息 driver？约2.5% GDP敞口被加税，1Y通胀预期4.5%，CPI超调风险。",
+          "market_validation": [{ "ticker": "GLD", "label": "GLD +1.95% Fri", "type": "up" }]
+        },
+        {
+          "id": "fed_hawk_term_premium_20260814",
+          "icon": "🏦",
+          "title": "期限溢价失控",
+          "published_at_toronto": "2026-08-14T13:00:00-04:00",
+          "importance": "MEDIUM",
+          "weight": 1.5,
+          "data": { "actual": "5.216% 拍卖", "forecast": "4.90%", "previous": "4.85%", "delta_label": "2001新高", "delta_type": "beat" },
+          "reason": "为何是加息 driver？财政期限溢价+信用担忧，黄金+13.8%月度避险。",
+          "market_validation": [{ "ticker": "TLT", "label": "TLT -0.35% Fri", "type": "down" }]
+        },
+        {
+          "id": "fed_hawk_oil_20260821",
+          "icon": "🛢️",
+          "title": "能源/地缘溢价",
+          "published_at_toronto": "2026-08-21T14:30:00-04:00",
+          "importance": "MEDIUM",
+          "weight": 1.5,
+          "data": { "actual": "WTI 87.1", "forecast": "82.0", "previous": "83.5", "delta_label": "周+4.1%", "delta_type": "beat" },
+          "reason": "为何是加息 driver？油价计入Headline CPI，最后一公里通胀门槛抬高。",
+          "market_validation": [{ "ticker": "XLE", "label": "XLE +2.8% w", "type": "up" }]
+        },
+        {
+          "id": "fed_hawk_expectation_20260815",
+          "icon": "💭",
+          "title": "通胀预期脱锚",
+          "published_at_toronto": "2026-08-15T10:00:00-04:00",
+          "importance": "MEDIUM",
+          "weight": 1.0,
+          "data": { "actual": "1Y 4.5% / 5Y 3.1%", "forecast": "4.4% / 3.0%", "previous": "4.4% / 3.0%", "delta_label": "beat +0.1", "delta_type": "beat" },
+          "reason": "为何是加息 driver？5年>3%说明暂时论失效，降息门槛抬高。",
+          "market_validation": []
+        }
+      ]
+    },
+    "boc": {
+      "dovish": [
+        {
+          "id": "boc_dove_tariff_20260822",
+          "icon": "🌉",
+          "title": "9/8 美加对等关税落地",
+          "published_at_toronto": "2026-08-22T02:39:00-04:00",
+          "importance": "HIGH",
+          "weight": 2.0,
+          "data": { "actual": "19% GDP敞口", "forecast": "分段", "previous": "谈判中", "delta_label": "全面覆盖", "delta_type": "miss" },
+          "reason": "为何是降息 driver？G7最依赖美国需求，关税砍单需预防式降息对冲。",
+          "market_validation": [{ "ticker": "XLI", "label": "XLI -3.4% w", "type": "down" }]
+        },
+        {
+          "id": "boc_dove_household_20260730",
+          "icon": "🏘️",
+          "title": "家庭杠杆与住房利率敏感",
+          "published_at_toronto": "2026-07-30T10:00:00-04:00",
+          "importance": "MEDIUM",
+          "weight": 1.5,
+          "data": { "actual": "102% 债务/GDP", "forecast": "100%", "previous": "101%", "delta_label": "G7最高", "delta_type": "miss" },
+          "reason": "为何是降息 driver？高杠杆+5年续作高峰，利率敏感。",
+          "market_validation": []
+        },
+        {
+          "id": "boc_dove_globalpmi_20260821",
+          "icon": "📦",
+          "title": "全球制造业共振回落",
+          "published_at_toronto": "2026-08-21T10:00:00-04:00",
+          "importance": "MEDIUM",
+          "weight": 1.0,
+          "data": { "actual": "美ISM 48.7", "forecast": "49.5", "previous": "49.1", "delta_label": "miss -0.8", "delta_type": "miss" },
+          "reason": "为何是降息 driver？出口以工业为主，PMI领先出口1-2月。",
+          "market_validation": []
+        },
+        {
+          "id": "boc_dove_labour_20260730",
+          "icon": "💼",
+          "title": "劳动市场边际松动",
+          "published_at_toronto": "2026-07-30T10:00:00-04:00",
+          "importance": "LOW",
+          "weight": 1.0,
+          "data": { "actual": "失业率6.9%", "forecast": "6.7%", "previous": "6.8%", "delta_label": "高于疫情前6.0%", "delta_type": "miss" },
+          "reason": "为何是降息 driver？工资3.2%回落，slack显现。",
+          "market_validation": []
+        }
+      ],
+      "hawkish": [
+        {
+          "id": "boc_hawk_retail_20260821",
+          "icon": "🛒",
+          "title": "零售超预期大 beat",
+          "published_at_toronto": "2026-08-21T08:30:00-04:00",
+          "importance": "HIGH",
+          "weight": 1.5,
+          "data": { "actual": "+0.6%", "forecast": "+0.2%", "previous": "+0.1%", "delta_label": "beat +0.4", "delta_type": "beat" },
+          "reason": "为何是按兵 driver？9分项7正增长，GDP影子指标。",
+          "market_validation": []
+        },
+        {
+          "id": "boc_hawk_oil_20260821",
+          "icon": "🛢️",
+          "title": "能源顺风：WTI 87 提振贸易条件",
+          "published_at_toronto": "2026-08-21T14:30:00-04:00",
+          "importance": "MEDIUM",
+          "weight": 1.5,
+          "data": { "actual": "WTI 87.1", "forecast": "82.0", "previous": "83.5", "delta_label": "周+4.1%", "delta_type": "beat" },
+          "reason": "为何是按兵 driver？贸易条件改善，输入通缩对冲。",
+          "market_validation": []
+        },
+        {
+          "id": "boc_hawk_gdp_20260828",
+          "icon": "📊",
+          "title": "GDP 韧性待验证",
+          "published_at_toronto": "2026-08-28T08:30:00-04:00",
+          "importance": "HIGH",
+          "weight": 1.5,
+          "data": { "actual": null, "forecast": "+0.1% MoM / 1.2%年化", "previous": "+0.1% / 1.1%", "delta_label": "待公布", "delta_type": "neutral" },
+          "reason": "为何是 driver？9/17前最硬数据，MoM≥0.2%则按兵坐实。",
+          "market_validation": []
+        },
+        {
+          "id": "boc_hawk_spillover_20260821",
+          "icon": "🇺🇸",
+          "title": "美国粘性外溢",
+          "published_at_toronto": "2026-08-21T09:45:00-04:00",
+          "importance": "MEDIUM",
+          "weight": 1.0,
+          "data": { "actual": "美Services 56.8 / 30Y5.27%", "forecast": "54.0 / 4.90%", "previous": "54.3 / 5.00%", "delta_label": "beat", "delta_type": "beat" },
+          "reason": "为何是按兵 driver？BOC不敢抢跑Fed，否则利差惩罚。",
+          "market_validation": []
+        }
+      ]
+    }
+  },
+  "market": {
+    "since": "2026-07-30",
+    "as_of_close": "2026-08-21T16:00:00-04:00",
+    "tickers": [
+      { "symbol": "SPY", "price": 765.72, "chg_1d": 0.0041, "label_1d": "+0.41% Fri", "chg_1w": -0.0143, "label_1w": "-1.43% w", "type_1d": "up", "type_1w": "down" },
+      { "symbol": "QQQ", "price": 713.44, "chg_1d": 0.0035, "label_1d": "+0.35% Fri", "chg_1w": -0.0205, "label_1w": "-2.05% w", "type_1d": "up", "type_1w": "down" },
+      { "symbol": "XLU", "price": 42.77, "chg_1d": -0.0229, "label_1d": "-2.29% Fri", "type_1d": "down" },
+      { "symbol": "XLF", "price": 57.48, "chg_1d": 0.0093, "label_1d": "+0.93% Fri", "type_1d": "up" },
+      { "symbol": "XLE", "price": 63.64, "chg_1d": -0.0017, "label_1d": "-0.17% Fri", "chg_1w": 0.028, "label_1w": "+2.8% w", "type_1d": "down", "type_1w": "up" },
+      { "symbol": "TLT", "price": 82.05, "chg_1d": -0.0035, "label_1d": "-0.35% Fri", "type_1d": "down" },
+      { "symbol": "GLD", "price": 423.36, "chg_1d": 0.0195, "label_1d": "+1.95% Fri", "chg_1w": 0.055, "label_1w": "+5.5% w", "type_1d": "up", "type_1w": "up" },
+      { "symbol": "ZEB.TO", "price": 73.49, "chg_1d": 0.0045, "label_1d": "+0.45% Fri", "type_1d": "up" }
+    ]
+  },
+  "calendar": [
+    {
+      "id": "core_pce_20260826",
+      "datetime_toronto": "2026-08-26T08:30:00-04:00",
+      "datetime_utc": "2026-08-26T12:30:00Z",
+      "currency": "USD",
+      "event": "Core PCE (MoM / YoY)",
+      "impact": "HIGH",
+      "forecast": { "mom": "0.20%", "yoy": "2.80%" },
+      "previous": { "mom": "0.26%", "yoy": "2.81%" },
+      "logic": "Core PCE >0.30% MoM → 鹰派绳结+5%；≤0.20% → 鸽派反攻",
+      "hawk_if": "高→鹰",
+      "dove_if": "低→鸽"
+    },
+    {
+      "id": "cad_gdp_20260828",
+      "datetime_toronto": "2026-08-28T08:30:00-04:00",
+      "datetime_utc": "2026-08-28T12:30:00Z",
+      "currency": "CAD",
+      "event": "CAD GDP (MoM / QoQ / 年化)",
+      "impact": "HIGH",
+      "forecast": { "mom": "+0.10%", "annualized": "1.20%", "qoq": "+0.30%" },
+      "previous": { "mom": "+0.10%", "annualized": "1.10%", "qoq": "+0.40%" },
+      "logic": "MoM≥0.20% → 鹰派坐实；≤0.0% → 鸽派反超",
+      "hawk_if": "强→鹰",
+      "dove_if": "弱→鸽"
+    }
+  ],
+  "history": [
+    {
+      "id": "fed_2019_midcycle",
+      "bank": "fed",
+      "title": "Fed 2019 中期调整 · 预防式降息 3次",
+      "period": "2018Q4–2019Q3",
+      "similarity": 0.86,
+      "tag": "相似度 86%",
+      "table": [
+        { "metric": "ISM 制造", "then": "47.8 收缩", "now": "48.7 收缩", "verdict": "同为 miss" }
+      ],
+      "verdict": "当时怎么选：Fed 先鹰后鸽，2019年7/9/10月连续降息3次",
+      "verdict_type": "dove",
+      "lesson": "对本次借鉴：若 Core PCE ≤2.8% 且初请破 24万，复刻2019路径"
+    }
+  ]
+}
