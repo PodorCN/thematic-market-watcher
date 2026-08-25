@@ -1,8 +1,7 @@
 {
   "as_of": "2026-08-23T18:35:00-04:00",
   "version": "2026-08-23-001",
-  "stale": false,
-  "stale_reason": "Sep 17 FOMC and BoC probabilities not independently re-verified on 2026-08-23 (CME FedWatch / OIS feeds JS-rendered, no public mirror); market/drivers/calendar carried forward from 2026-08-21 close. Source URLs added for all pricing entries. Re-verify on next FOMC-adjacent news cycle.",
+  "verification_note": "Sep 17 FOMC and BoC probabilities not independently re-verified on 2026-08-23 (CME FedWatch / OIS feeds JS-rendered, no public mirror); market/drivers/calendar carried forward from 2026-08-21 close. Source URLs added for all pricing entries. Re-verify on next FOMC-adjacent news cycle.",
   "timezone": "America/Toronto",
   "meetings": {
     "fed": {
@@ -749,5 +748,6 @@
   ],
   "history": [],
   "snapshot_date": "2026-08-23",
-  "archived_at": "2026-08-25T02:04:26.611152Z"
+  "archived_at": "2026-08-25T02:09:12.786605Z",
+  "stale": false
 }
