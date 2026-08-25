@@ -168,6 +168,7 @@ docs/data/
 | `id` | string | 是 | 稳定唯一，如 `fed_hawk_tariff_20260822` |
 | `icon` | string | 是 | emoji，前端直接渲染 |
 | `title` | string | 是 | 卡片标题 |
+| `summary` | string | 是 | **一句话英文结论**（如 "Job market is cracking: payrolls went negative."），卡片标题下方大号加粗展示；必须直白说明该数据意味着什么，数据细节交给 `data` 与 `reason` |
 | `published_at_toronto` | ISO8601 -04:00 | **是** | **发布时间（多伦多）**，前端标题右侧 `· YYYY-MM-DD HH:MM 多伦多` 直接展示 |
 | `source` / `source_url` | string | 否 | 点击卡片跳转 |
 | `importance` | `HIGH`/`MEDIUM`/`LOW` | 是 | 影响徽标颜色 |
