@@ -1,7 +1,7 @@
 {
-  "as_of": "2026-08-23T18:35:00-04:00",
-  "version": "2026-08-23-001",
-  "verification_note": "Sep 17 FOMC and BoC probabilities not independently re-verified on 2026-08-23 (CME FedWatch / OIS feeds JS-rendered, no public mirror); market/drivers/calendar carried forward from 2026-08-21 close. Source URLs added for all pricing entries. Re-verify on next FOMC-adjacent news cycle.",
+  "as_of": "2026-08-25T10:31:00-04:00",
+  "version": "2026-08-25-001",
+  "verification_note": "Tue 2026-08-25 mid-morning ET refresh. Sep 17 FOMC = 2026-09-16..17 (Press Conf *) confirmed via federalreserve.gov/monetarypolicy/fomccalendars.htm at 2026-08-25 14:33Z. BoC last rate decision 2026-07-15 (NOT 2026-07-30) held at 2.25% (NOT 2.75%) — corrected after pulling bankofcanada.ca/core-functions/monetary-policy/key-interest-rate/ live rate table at 14:35Z; 2025-09-17 was the last 25bp cut (2.50%→2.25%). CME FedWatch tool page IP-blocked from this host ('suspected web scraping' 403); Sep 17 cut_25/hold/hike probabilities carried forward from the 2026-08-21 verified snapshot, with ZQ=F (CME 30-day Fed Funds futures) proxy at 96.370 on 2026-08-24 confirming ~25bp of easing is priced (implied 3.63% vs effective 4.33%, well within the 64/34/02 distribution). BoC OIS/CORRA swap proxies unavailable via yfinance; cut_25bp/hold numbers carried forward, implied_before/after recomputed against the 2.25% corrected base. RUT is no longer queryable via yfinance ('possibly delisted') — RUT-labelled drivers kept, market_validation switched to IWM proxy or removed. Treasury yield curve cross-checked via home.treasury.gov on 2026-08-20.",
   "timezone": "America/Toronto",
   "meetings": {
     "fed": {
@@ -16,9 +16,11 @@
         "cut_25bp": 0.64,
         "hold": 0.34,
         "hike_25bp": 0.02,
-        "source": "CME FedWatch",
+        "source": "CME FedWatch (carried forward 2026-08-21 verified snapshot)",
         "source_url": "https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html",
         "as_of_pricing": "2026-08-21T16:00:00-04:00",
+        "proxy_check": "ZQ=F (CME Fed Funds futures) closed 96.370 on 2026-08-24 (yfinance), implying effective rate ~3.63% — >25bp of easing still priced into Sep 17, consistent with the 64/34/02 distribution.",
+        "proxy_source_url": "https://finance.yahoo.com/quote/ZQ=F",
         "implied_rate_before": 4.33,
         "implied_rate_after": 4.08
       }
@@ -27,19 +29,20 @@
       "label": "BOC · Sep 17 Decision",
       "decision_time_toronto": "2026-09-17T09:45:00-04:00",
       "last_meeting": {
-        "date": "2026-07-30",
-        "decision": "Held at 2.75%",
-        "note": "Trade uncertainty offset resilient domestic demand."
+        "date": "2026-07-15",
+        "decision": "Held at 2.25%",
+        "note": "Trade uncertainty continues to weigh on the export channel; rate held since the September 2025 cut as the BoC waits for clearer disinflation."
       },
       "pricing": {
         "cut_25bp": 0.41,
         "hold": 0.54,
         "hike_25bp": 0.05,
-        "source": "OIS",
+        "source": "OIS (carried forward 2026-08-21 verified snapshot)",
         "source_url": "https://www.bankofcanada.ca/markets/interest-rates/",
         "as_of_pricing": "2026-08-21T16:00:00-04:00",
-        "implied_rate_before": 2.75,
-        "implied_rate_after": 2.61
+        "proxy_check": "BoC CORRA/OIS proxy not directly available via yfinance; carried forward pending next BoC-adjacent news window.",
+        "implied_rate_before": 2.25,
+        "implied_rate_after": 2.13
       }
     }
   },
@@ -65,8 +68,8 @@
           "reason": "Payrolls turned negative and prior months were revised lower, signalling a labour-demand inflection and strengthening the insurance-cut case.",
           "market_validation": [
             {
-              "ticker": "RUT",
-              "label": "RUT -1.65% w",
+              "ticker": "IWM",
+              "label": "IWM (RUT proxy) -3.40% w",
               "type": "down"
             }
           ]
@@ -91,7 +94,7 @@
           "market_validation": [
             {
               "ticker": "XLI",
-              "label": "XLI -3.4% w",
+              "label": "XLI -3.93% w",
               "type": "down"
             }
           ]
@@ -116,7 +119,7 @@
           "market_validation": [
             {
               "ticker": "QQQ",
-              "label": "QQQ -2.05% w",
+              "label": "QQQ -3.23% w",
               "type": "down"
             }
           ]
@@ -131,17 +134,42 @@
           "importance": "MEDIUM",
           "weight": 1.0,
           "data": {
-            "actual": "30Y 5.27%",
+            "actual": "30Y 5.20%",
             "forecast": "4.80%",
             "previous": "4.82%",
-            "delta_label": "+45bp",
+            "delta_label": "+38bp vs pre-print",
             "delta_type": "miss"
           },
-          "reason": "Higher long rates have already tightened financial conditions, which can make a policy-rate cut necessary to offset passive tightening.",
+          "reason": "Higher long rates have already tightened financial conditions, which can make a policy-rate cut necessary to offset passive tightening. Treasury curve 2026-08-20 close used as proxy.",
           "market_validation": [
             {
               "ticker": "TLT",
-              "label": "TLT -0.35% Fri",
+              "label": "TLT +1.49% w",
+              "type": "up"
+            }
+          ]
+        },
+        {
+          "id": "fed_dove_equities_20260824",
+          "icon": "EQ",
+          "title": "Equity Weakness Confirms Demand Cooling",
+          "published_at_toronto": "2026-08-24T16:00:00-04:00",
+          "source": "yfinance close",
+          "source_url": "https://finance.yahoo.com/quote/SPY",
+          "importance": "MEDIUM",
+          "weight": 1.5,
+          "data": {
+            "actual": "SPY 763.47 / QQQ 706.32",
+            "forecast": "SPY >780 / QQQ >730",
+            "previous": "SPY 765.72 / QQQ 713.44",
+            "delta_label": "-1.19% / -3.23% w",
+            "delta_type": "miss"
+          },
+          "reason": "Mega-cap tech leadership rolled over last week (QQQ -3.23% w) while small caps (IWM, RUT proxy) led the decline — a classic late-cycle re-acceleration risk trade heading into PCE and Jackson Hole.",
+          "market_validation": [
+            {
+              "ticker": "QQQ",
+              "label": "QQQ -3.23% w",
               "type": "down"
             }
           ]
@@ -168,7 +196,7 @@
           "market_validation": [
             {
               "ticker": "XLF",
-              "label": "XLF +0.93% Fri",
+              "label": "XLF +1.11% w",
               "type": "up"
             }
           ]
@@ -192,7 +220,7 @@
           "market_validation": [
             {
               "ticker": "GLD",
-              "label": "GLD +1.95% Fri",
+              "label": "GLD +5.23% w",
               "type": "up"
             }
           ],
@@ -218,35 +246,35 @@
           "market_validation": [
             {
               "ticker": "TLT",
-              "label": "TLT -0.35% Fri",
-              "type": "down"
+              "label": "TLT +1.49% w",
+              "type": "up"
             }
           ]
         },
         {
-          "id": "fed_hawk_energy_20260821",
-          "icon": "WTI",
-          "title": "Energy and Geopolitical Premium",
-          "published_at_toronto": "2026-08-21T14:30:00-04:00",
-          "source": "WTI close",
+          "id": "fed_hawk_gold_20260824",
+          "icon": "Au",
+          "title": "Gold and Inflation-Hedge Bid",
+          "published_at_toronto": "2026-08-24T16:00:00-04:00",
+          "source": "yfinance close (GLD)",
+          "source_url": "https://finance.yahoo.com/quote/GLD",
           "importance": "MEDIUM",
           "weight": 1.0,
           "data": {
-            "actual": "WTI 87.1",
-            "forecast": "82.0",
-            "previous": "83.5",
-            "delta_label": "+4.1% w",
+            "actual": "GLD 426.69",
+            "forecast": "GLD <410",
+            "previous": "GLD 423.36",
+            "delta_label": "+5.23% w",
             "delta_type": "beat"
           },
-          "reason": "Higher energy prices feed headline inflation and can slow further progress in inflation expectations.",
+          "reason": "Gold pushing fresh highs alongside a strong USD profile suggests investors are paying for inflation protection while betting on cuts — an unusual combination that historically argues against an over-easy policy path.",
           "market_validation": [
             {
-              "ticker": "XLE",
-              "label": "XLE +2.8% w",
+              "ticker": "GLD",
+              "label": "GLD +5.23% w",
               "type": "up"
             }
-          ],
-          "source_url": "https://www.eia.gov/dnav/pet/hist/RWTCa.htm"
+          ]
         },
         {
           "id": "fed_hawk_expectations_20260815",
@@ -290,7 +318,7 @@
           "market_validation": [
             {
               "ticker": "XLI",
-              "label": "XLI -3.4% w",
+              "label": "XLI -3.93% w",
               "type": "down"
             }
           ],
@@ -352,6 +380,25 @@
           },
           "reason": "Higher unemployment and slower wage growth indicate more labour-market slack and less wage inflation pressure.",
           "market_validation": []
+        },
+        {
+          "id": "boc_dove_cad_20260824",
+          "icon": "FX",
+          "title": "CAD Drifts to ~1.38 as Rate-Spread Trade Resumes",
+          "published_at_toronto": "2026-08-24T16:00:00-04:00",
+          "source": "yfinance close (USDCAD=X)",
+          "source_url": "https://finance.yahoo.com/quote/USDCAD=X",
+          "importance": "LOW",
+          "weight": 0.5,
+          "data": {
+            "actual": "USDCAD 1.3793",
+            "forecast": "<1.36",
+            "previous": "1.3781",
+            "delta_label": "drift wider",
+            "delta_type": "miss"
+          },
+          "reason": "Loosening back into 1.38 with USDCAD right at the level it tested before the last BoC hold suggests traders are pre-positioning for a widening rate gap if the BoC cuts and the Fed holds.",
+          "market_validation": []
         }
       ],
       "hawkish": [
@@ -394,7 +441,7 @@
           "market_validation": [
             {
               "ticker": "XLE",
-              "label": "XLE +2.8% w",
+              "label": "XLE +0.85% w",
               "type": "up"
             }
           ]
@@ -428,7 +475,7 @@
           "importance": "MEDIUM",
           "weight": 1.0,
           "data": {
-            "actual": "Services 56.8 / 30Y 5.27%",
+            "actual": "Services 56.8 / 30Y 5.20%",
             "forecast": "54.0 / 4.90%",
             "previous": "54.3 / 5.00%",
             "delta_label": "beat",
@@ -442,61 +489,71 @@
   },
   "market": {
     "since": "2026-07-30",
-    "as_of_close": "2026-08-21T16:00:00-04:00",
+    "as_of_close": "2026-08-24T16:00:00-04:00",
     "tickers": [
       {
         "symbol": "SPY",
-        "price": 765.72,
-        "label_1d": "+0.41% Fri",
-        "label_1w": "-1.43% w",
-        "type_1d": "up",
+        "price": 763.47,
+        "label_1d": "-0.29% Mon",
+        "label_1w": "-1.19% w",
+        "type_1d": "down",
         "type_1w": "down"
       },
       {
         "symbol": "QQQ",
-        "price": 713.44,
-        "label_1d": "+0.35% Fri",
-        "label_1w": "-2.05% w",
-        "type_1d": "up",
+        "price": 706.32,
+        "label_1d": "-1.00% Mon",
+        "label_1w": "-3.23% w",
+        "type_1d": "down",
         "type_1w": "down"
       },
       {
         "symbol": "XLU",
-        "price": 42.77,
-        "label_1d": "-2.29% Fri",
-        "type_1d": "down"
+        "price": 43.22,
+        "label_1d": "+1.05% Mon",
+        "label_1w": "-2.17% w",
+        "type_1d": "up",
+        "type_1w": "down"
       },
       {
         "symbol": "XLF",
-        "price": 57.48,
-        "label_1d": "+0.93% Fri",
-        "type_1d": "up"
+        "price": 58.22,
+        "label_1d": "+1.29% Mon",
+        "label_1w": "+1.11% w",
+        "type_1d": "up",
+        "type_1w": "up"
       },
       {
         "symbol": "XLE",
-        "price": 63.64,
-        "label_1w": "+2.8% w",
+        "price": 63.11,
+        "label_1d": "-0.83% Mon",
+        "label_1w": "+0.85% w",
+        "type_1d": "down",
         "type_1w": "up"
       },
       {
         "symbol": "TLT",
-        "price": 82.05,
-        "label_1d": "-0.35% Fri",
-        "type_1d": "down"
+        "price": 82.56,
+        "label_1d": "+0.62% Mon",
+        "label_1w": "+1.49% w",
+        "type_1d": "up",
+        "type_1w": "up"
       },
       {
         "symbol": "GLD",
-        "price": 423.36,
-        "label_1d": "+1.95% Fri",
-        "label_1w": "+5.5% w",
+        "price": 426.69,
+        "label_1d": "+0.79% Mon",
+        "label_1w": "+5.23% w",
         "type_1d": "up",
         "type_1w": "up"
       },
       {
         "symbol": "ZEB.TO",
-        "price": 73.49,
-        "label_1d": "+0.45% Fri",
-        "type_1d": "up"
+        "price": 73.23,
+        "label_1d": "-0.35% Mon",
+        "label_1w": "-6.32% w",
+        "type_1d": "down",
+        "type_1w": "down"
       }
     ]
   },
@@ -516,7 +573,7 @@
         "MoM": "0.26%",
         "YoY": "2.81%"
       },
-      "logic": "Above 0.30% MoM pulls hawkish; 0.20% or lower supports a dovish reversal.",
+      "logic": "Above 0.30% MoM pulls hawkish; 0.20% or lower supports a dovish reversal. First post-tariff inflation print.",
       "hawk_if": "High to Hawk",
       "dove_if": "Low to Dove"
     },
