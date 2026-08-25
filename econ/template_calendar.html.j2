@@ -85,7 +85,14 @@
   .btn.high.active { border-color:var(--high); color:var(--high); background:color-mix(in srgb, var(--high) 12%, transparent); }
   select { background:#0f101c; border:1px solid var(--color-neutral-800); color:var(--color-neutral-300); padding:8px 10px; border-radius:6px; font-family:var(--font-mono); font-size:12px; }
   /* timeline table — dark */
+  .timeline-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; }
+  .timeline-region { min-width:0; }
+  .timeline-region-head { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:8px; font-family:var(--font-mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--color-accent-300); }
+  .timeline-region-count { color:var(--color-neutral-600); letter-spacing:.08em; }
   .timeline-wrap { background:var(--color-card); border:1px solid var(--color-neutral-800); border-radius:var(--radius-md); overflow-x:auto; }
+  .timeline-wrap table { min-width:760px; }
+  .timeline-empty { min-height:94px; display:flex; align-items:center; justify-content:center; border:1px dashed var(--color-neutral-800); border-radius:var(--radius-md); color:var(--color-neutral-600); font-family:var(--font-mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; }
+  .previous-day-pill { margin-left:9px; padding:3px 7px; border:1px solid var(--color-neutral-800); border-radius:999px; color:var(--color-neutral-500); font-size:9px; letter-spacing:.1em; }
   table { width:100%; border-collapse:collapse; }
   th { text-align:left; padding:10px 12px; font-family:var(--font-mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--color-neutral-500); background:#1a1c2b; border-bottom:1px solid var(--color-neutral-800); white-space:nowrap; }
   td { padding:10px 12px; font-size:13px; border-bottom:1px solid #2a2d3a; vertical-align:top; }
@@ -106,6 +113,7 @@
   .period-label { color:var(--color-neutral-500); font-family:var(--font-mono); font-size:9px; letter-spacing:.06em; text-transform:uppercase; }
   footer.site-footer { padding:72px 56px 56px; display:flex; justify-content:space-between; align-items:flex-end; gap:40px; border-top:1px solid var(--color-neutral-800); font-family:var(--font-mono); font-size:12px; letter-spacing:.2em; text-transform:uppercase; color:var(--color-neutral-500); }
   footer .mark-col { display:flex; flex-direction:column; gap:18px; }
+  @media (max-width:1100px){ .timeline-grid{grid-template-columns:1fr;} }
   @media (max-width:900px){ .charts-grid{grid-template-columns:1fr;} .site-header{padding:16px 24px;} .site-header nav{gap:18px;} .section{padding:72px 24px;} }
   @media (max-width:640px){ .site-header nav a:first-child{display:none;} .section-head h2{font-size:34px;} table{min-width:760px;} }
 </style>
@@ -178,40 +186,52 @@
     <select id="dateFilter"><option value="ALL">All dates</option>{% for d in dates %}<option value="{{ d }}">{{ d }}</option>{% endfor %}</select>
   </div>
 
-  {% for day, events in grouped.items() %}
-  <div class="day-group" data-date="{{ day }}" style="margin-bottom:28px">
+  {% for day in timeline_days %}
+  <div class="day-group" data-date="{{ day.date }}" style="margin-bottom:28px">
     <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:10px; border-bottom:1px solid var(--color-neutral-800); padding-bottom:8px;">
-      <span style="font-family:var(--font-mono); font-size:13px; letter-spacing:.18em; text-transform:uppercase; color:var(--color-neutral-300);">{{ day }} <span class="muted">{{ events[0].weekday }}</span></span>
+      <span style="font-family:var(--font-mono); font-size:13px; letter-spacing:.18em; text-transform:uppercase; color:var(--color-neutral-300);">{{ day.date }} <span class="muted">{{ day.weekday }}</span>{% if day.is_previous_day %}<span class="previous-day-pill">Previous day</span>{% endif %}</span>
     </div>
-    <div class="timeline-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th style="width:110px">Time (Toronto)</th>
-          <th style="width:90px">Currency</th>
-          <th style="width:95px">Importance</th>
-          <th>Event</th>
-          <th style="width:90px">Actual</th>
-          <th style="width:90px">Forecast</th>
-          <th style="width:90px">Previous</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for e in events %}
-        {% set stars = '★★★' if e.impact=='HIGH' else ('★★' if e.impact=='MEDIUM' else '★') %}
-        {% set star_color = '#e85d5d' if e.impact=='HIGH' else ('#e8a54a' if e.impact=='MEDIUM' else '#75798c') %}
-        <tr class="{{ e.impact|lower }}" data-impact="{{ e.impact }}" data-currency="{{ e.currency }}" data-search="{{ e.search_text }}" style="border-left:4px solid {{ star_color }};">
-          <td class="time">{{ e.display_time }}</td>
-          <td>{% if e.flag_url %}<img src="{{ e.flag_url }}" srcset="{{ e.flag_url_2x }} 2x" width="20" height="15" alt="{{ e.currency }}" class="flag-img" style="margin-right:6px;">{% else %}{{ e.flag }}{% endif %}<span class="cur">{{ e.currency }}</span></td>
-          <td><span class="importance importance-{{ e.impact|lower }}" aria-label="{{ e.impact|title }} importance">{{ stars }}</span></td>
-          <td class="event-name">{{ e.event }}</td>
-          <td style="font-family:var(--font-mono); font-weight:700;">{% if e.period_rows %}{% for p in e.period_rows %}<div class="period-value"><span class="period-label">{{ p.period }}</span><span>{{ p.actual if p.actual is not none else '—' }}{{ p.unit if p.actual is not none else '' }}</span></div>{% endfor %}{% else %}{{ e.actual if e.actual is not none else '—' }}{{ e.unit if e.actual is not none and e.unit else '' }}{% endif %}</td>
-          <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">{% if e.period_rows %}{% for p in e.period_rows %}<div class="period-value"><span class="period-label">{{ p.period }}</span><span>{{ p.forecast if p.forecast is not none else '—' }}{{ p.unit if p.forecast is not none else '' }}</span></div>{% endfor %}{% else %}{{ e.forecast if e.forecast is not none else '—' }}{{ e.unit if e.forecast is not none and e.unit else '' }}{% endif %}</td>
-          <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">{% if e.period_rows %}{% for p in e.period_rows %}<div class="period-value"><span class="period-label">{{ p.period }}</span><span>{{ p.previous if p.previous is not none else '—' }}{{ p.unit if p.previous is not none else '' }}</span></div>{% endfor %}{% else %}{{ e.previous if e.previous is not none else '—' }}{{ e.unit if e.previous is not none and e.unit else '' }}{% endif %}</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+    <div class="timeline-grid">
+      {% for region in ['us', 'other'] %}
+      {% set region_events = day.us_events if region == 'us' else day.other_events %}
+      <div class="timeline-region" data-region="{{ region }}">
+        <div class="timeline-region-head"><span>{{ 'United States' if region == 'us' else 'Other regions' }}</span><span class="timeline-region-count">{{ region_events|length }} events</span></div>
+        {% if region_events %}
+        <div class="timeline-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:110px">Time (Toronto)</th>
+              <th style="width:90px">Currency</th>
+              <th style="width:95px">Importance</th>
+              <th>Event</th>
+              <th style="width:90px">Actual</th>
+              <th style="width:90px">Forecast</th>
+              <th style="width:90px">Previous</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for e in region_events %}
+          {% set stars = '★★★' if e.impact=='HIGH' else ('★★' if e.impact=='MEDIUM' else '★') %}
+          {% set star_color = '#e85d5d' if e.impact=='HIGH' else ('#e8a54a' if e.impact=='MEDIUM' else '#75798c') %}
+          <tr class="{{ e.impact|lower }}" data-impact="{{ e.impact }}" data-currency="{{ e.currency }}" data-search="{{ e.search_text }}" style="border-left:4px solid {{ star_color }};">
+            <td class="time">{{ e.display_time }}</td>
+            <td>{% if e.flag_url %}<img src="{{ e.flag_url }}" srcset="{{ e.flag_url_2x }} 2x" width="20" height="15" alt="{{ e.currency }}" class="flag-img" style="margin-right:6px;">{% else %}{{ e.flag }}{% endif %}<span class="cur">{{ e.currency }}</span></td>
+            <td><span class="importance importance-{{ e.impact|lower }}" aria-label="{{ e.impact|title }} importance">{{ stars }}</span></td>
+            <td class="event-name">{{ e.event }}</td>
+            <td style="font-family:var(--font-mono); font-weight:700;">{% if e.period_rows %}{% for p in e.period_rows %}<div class="period-value"><span class="period-label">{{ p.period }}</span><span>{{ p.actual if p.actual is not none else '—' }}{{ p.unit if p.actual is not none else '' }}</span></div>{% endfor %}{% else %}{{ e.actual if e.actual is not none else '—' }}{{ e.unit if e.actual is not none and e.unit else '' }}{% endif %}</td>
+            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">{% if e.period_rows %}{% for p in e.period_rows %}<div class="period-value"><span class="period-label">{{ p.period }}</span><span>{{ p.forecast if p.forecast is not none else '—' }}{{ p.unit if p.forecast is not none else '' }}</span></div>{% endfor %}{% else %}{{ e.forecast if e.forecast is not none else '—' }}{{ e.unit if e.forecast is not none and e.unit else '' }}{% endif %}</td>
+            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">{% if e.period_rows %}{% for p in e.period_rows %}<div class="period-value"><span class="period-label">{{ p.period }}</span><span>{{ p.previous if p.previous is not none else '—' }}{{ p.unit if p.previous is not none else '' }}</span></div>{% endfor %}{% else %}{{ e.previous if e.previous is not none else '—' }}{{ e.unit if e.previous is not none and e.unit else '' }}{% endif %}</td>
+          </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+        </div>
+        {% else %}
+        <div class="timeline-empty">No scheduled events</div>
+        {% endif %}
+      </div>
+      {% endfor %}
     </div>
   </div>
   {% endfor %}
@@ -278,7 +298,7 @@ function applyFilters(){
   const q = (searchEl?.value || '').trim().toLowerCase();
   const cur = curSel?.value || 'ALL';
   const d = dateSel?.value || 'ALL';
-  document.querySelectorAll('tbody tr').forEach(tr=>{
+  document.querySelectorAll('#timeline tbody tr').forEach(tr=>{
     const impOk = activeImpact==='ALL' || tr.dataset.impact===activeImpact;
     const curOk = cur==='ALL' || tr.dataset.currency===cur;
     const dateOk = d==='ALL' || tr.closest('.day-group').dataset.date===d;

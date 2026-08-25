@@ -22,12 +22,29 @@ sys.path.insert(0, str(REPO_ROOT))
 from econ.core import EconomicCalendar  # noqa: E402
 
 
+def _resolve_window(
+    snapshot_date: str,
+    date_from: str | None,
+    date_to: str | None,
+    days: int,
+) -> tuple[str, str]:
+    snapshot = date.fromisoformat(snapshot_date)
+    start = date.fromisoformat(date_from) if date_from else snapshot - timedelta(days=1)
+    if date_to:
+        end = date.fromisoformat(date_to)
+    elif date_from:
+        end = start + timedelta(days=days - 1)
+    else:
+        end = snapshot + timedelta(days=days - 1)
+    return start.isoformat(), end.isoformat()
+
+
 def main() -> None:
     p = argparse.ArgumentParser(description="Fetch global economic calendar (fxstreet primary, ForexFactory fallback)")
-    p.add_argument("--date", default=date.today().isoformat(), help="archive date YYYY-MM-DD (also start date if --from not given)")
+    p.add_argument("--date", default=date.today().isoformat(), help="Toronto snapshot/archive date YYYY-MM-DD")
     p.add_argument("--from", dest="date_from", default=None, help="start date YYYY-MM-DD")
     p.add_argument("--to", dest="date_to", default=None, help="end date YYYY-MM-DD")
-    p.add_argument("--days", type=int, default=7, help="days ahead if --to not given (default 7)")
+    p.add_argument("--days", type=int, default=7, help="days from the snapshot date if --from/--to are omitted (default 7, plus the previous day)")
     p.add_argument("--countries", default=None, help="comma-separated fxstreet country codes: US,UK,EMU,JP,CN,... (default global)")
     p.add_argument("--currencies", default=None, help="filter by currency: USD,EUR,GBP,JPY,CNY,...")
     p.add_argument("--impacts", default=None, help="filter by impact: HIGH,MEDIUM,LOW (comma-separated)")
@@ -40,11 +57,9 @@ def main() -> None:
     p.add_argument("--csv", action="store_true", help="also write CSV alongside JSON")
     args = p.parse_args()
 
-    start = args.date_from or args.date
-    if args.date_to:
-        end = args.date_to
-    else:
-        end = (date.fromisoformat(start) + timedelta(days=args.days - 1)).isoformat()
+    if args.days < 1:
+        p.error("--days must be at least 1")
+    start, end = _resolve_window(args.date, args.date_from, args.date_to, args.days)
 
     countries = [c.strip().upper() for c in args.countries.split(",") if c.strip()] if args.countries else None
     currencies = [c.strip().upper() for c in args.currencies.split(",") if c.strip()] if args.currencies else None

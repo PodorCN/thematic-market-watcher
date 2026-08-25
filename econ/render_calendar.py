@@ -15,7 +15,7 @@ import re
 import sys
 import shutil
 from collections import defaultdict, OrderedDict
-from datetime import date, datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from statistics import median
 from zoneinfo import ZoneInfo
@@ -216,7 +216,7 @@ def _history_labels(series: list[dict]) -> list[str]:
     return [value.strftime(date_format) if value else raw for value, raw in zip(parsed_dates, raw_dates)]
 
 
-def build_context(data: dict) -> dict:
+def build_context(data: dict, snapshot_date: str | None = None) -> dict:
     events = [dict(event) for event in data.get("events", [])]
     # Normalize nulls and enrich
     for e in events:
@@ -268,6 +268,23 @@ def build_context(data: dict) -> dict:
     grouped = OrderedDict()
     for e in display_events:
         grouped.setdefault(e["date"], []).append(e)
+
+    previous_day = None
+    if snapshot_date:
+        try:
+            previous_day = (date.fromisoformat(snapshot_date) - timedelta(days=1)).isoformat()
+        except ValueError:
+            pass
+    timeline_days = [
+        {
+            "date": day,
+            "weekday": day_events[0].get("weekday", ""),
+            "is_previous_day": day == previous_day,
+            "us_events": [event for event in day_events if event.get("country") == "US"],
+            "other_events": [event for event in day_events if event.get("country") != "US"],
+        }
+        for day, day_events in grouped.items()
+    ]
 
     currencies = sorted({e["currency"] for e in events if e.get("currency")})
     dates = sorted(grouped.keys())
@@ -351,8 +368,9 @@ def build_context(data: dict) -> dict:
         for chart in charts
     ]
 
+    display_start = snapshot_date or (dates[0] if dates else data.get("start"))
     return {
-        "start": dates[0] if dates else data.get("start"),
+        "start": display_start,
         "end": dates[-1] if dates else data.get("end"),
         "fetched_at": data.get("fetched_at"),
         "source": data.get("source"),
@@ -363,6 +381,7 @@ def build_context(data: dict) -> dict:
         "currencies": currencies,
         "dates": dates,
         "grouped": grouped,
+        "timeline_days": timeline_days,
         "charts": charts,
         "chart_groups": chart_groups,
         "chart_data": chart_data,
@@ -391,7 +410,7 @@ def main() -> None:
         sys.exit(1)
 
     data = load_calendar(in_path)
-    ctx = build_context(data)
+    ctx = build_context(data, out_date)
     ctx["archive_date"] = out_date
 
     env = Environment(loader=FileSystemLoader(str(STAGE_DIR)), autoescape=True)
