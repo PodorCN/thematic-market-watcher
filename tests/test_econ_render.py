@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 
 import econ.render_calendar as render_calendar
+from econ.fetch_calendar import _resolve_window
 from econ.render_calendar import _chart_category, build_context
 
 
@@ -79,6 +80,25 @@ def test_context_groups_clear_chart_data_and_formats_frequency_labels():
     assert chart["upcoming_label"] == "Aug 26 at 8:30 AM"
     assert chart["labels"] == ["Apr '26", "May '26", "Jun '26"]
     assert "consensuses" not in context["chart_data"][0]
+
+
+def test_timeline_keeps_previous_day_and_splits_us_from_other_regions():
+    us_event = _event("US release", "us", "2026-08-24T12:30:00Z")
+    ca_event = _event("Canada release", "ca", "2026-08-24T12:30:00Z")
+    ca_event.update({"country": "CA", "currency": "CAD"})
+
+    context = build_context({"events": [us_event, ca_event]}, snapshot_date="2026-08-25")
+
+    assert context["start"] == "2026-08-25"
+    previous = context["timeline_days"][0]
+    assert previous["date"] == "2026-08-24"
+    assert previous["is_previous_day"] is True
+    assert [event["country"] for event in previous["us_events"]] == ["US"]
+    assert [event["country"] for event in previous["other_events"]] == ["CA"]
+
+
+def test_default_fetch_window_adds_previous_day_without_shortening_forecast():
+    assert _resolve_window("2026-08-25", None, None, 7) == ("2026-08-24", "2026-08-31")
 
 
 def test_housing_price_is_grouped_as_housing_not_inflation():
