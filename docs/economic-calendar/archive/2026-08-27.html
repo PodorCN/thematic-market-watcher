@@ -226,7 +226,7 @@
 
       <div class="card elev-sm chart-card">
         <h3><img src="https://flagcdn.com/w20/us.png" srcset="https://flagcdn.com/w40/us.png 2x" width="24" height="18" alt="USD" class="flag-img"> ISM Manufacturing PMI</h3>
-        <div class="sub">Latest <strong>55.6</strong> · Sep 01 at 10:00 AM</div>
+        <div class="sub">Latest <strong>55.6</strong> · Next forecast <span class="forecast-pill">55.3</span> · Sep 01 at 10:00 AM</div>
         <canvas id="chart-9" width="420" height="200"></canvas>
       </div>
 
@@ -558,7 +558,7 @@
 
 
       <div class="timeline-region" data-region="us">
-        <div class="timeline-region-head"><span>United States</span><span class="timeline-region-count">5 events</span></div>
+        <div class="timeline-region-head"><span>United States</span><span class="timeline-region-count">6 events</span></div>
 
         <div class="timeline-wrap">
         <table>
@@ -630,6 +630,18 @@
             <td><img src="https://flagcdn.com/w20/us.png" srcset="https://flagcdn.com/w40/us.png 2x" width="20" height="15" alt="USD" class="flag-img" style="margin-right:6px;"><span class="cur">USD</span></td>
             <td><span class="importance importance-medium" aria-label="Medium importance">★★</span></td>
             <td class="event-name">Fed&#39;s Hammack speech</td>
+            <td style="font-family:var(--font-mono); font-weight:700;">—</td>
+            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">—</td>
+            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">—</td>
+          </tr>
+
+
+
+          <tr class="medium" data-impact="MEDIUM" data-currency="USD" data-search="fed&#39;s collins speech usd us" style="border-left:4px solid #e8a54a;">
+            <td class="time">2:00 PM</td>
+            <td><img src="https://flagcdn.com/w20/us.png" srcset="https://flagcdn.com/w40/us.png 2x" width="20" height="15" alt="USD" class="flag-img" style="margin-right:6px;"><span class="cur">USD</span></td>
+            <td><span class="importance importance-medium" aria-label="Medium importance">★★</span></td>
+            <td class="event-name">Fed&#39;s Collins speech</td>
             <td style="font-family:var(--font-mono); font-weight:700;">—</td>
             <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">—</td>
             <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">—</td>
@@ -1169,7 +1181,7 @@
             <td><span class="importance importance-high" aria-label="High importance">★★★</span></td>
             <td class="event-name">ISM Manufacturing PMI</td>
             <td style="font-family:var(--font-mono); font-weight:700;">—</td>
-            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">—</td>
+            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">55.3</td>
             <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">55.6</td>
           </tr>
 
@@ -1326,7 +1338,7 @@
             <td><span class="importance importance-high" aria-label="High importance">★★★</span></td>
             <td class="event-name">Harmonized Index of Consumer Prices</td>
             <td style="font-family:var(--font-mono); font-weight:700;"><div class="period-value"><span class="period-label">MoM</span><span>—</span></div><div class="period-value"><span class="period-label">YoY</span><span>—</span></div></td>
-            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)"><div class="period-value"><span class="period-label">MoM</span><span>—</span></div><div class="period-value"><span class="period-label">YoY</span><span>—</span></div></td>
+            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)"><div class="period-value"><span class="period-label">MoM</span><span>—</span></div><div class="period-value"><span class="period-label">YoY</span><span>3.3%</span></div></td>
             <td style="font-family:var(--font-mono); color:var(--color-neutral-400)"><div class="period-value"><span class="period-label">MoM</span><span>0.2%</span></div><div class="period-value"><span class="period-label">YoY</span><span>2.9%</span></div></td>
           </tr>
 
@@ -1593,7 +1605,7 @@ function applyFilters(){
     g.style.display = vis ? '' : 'none';
   });
 }
-const chartData = [{"actuals": [54.0, -32.0, 42.0, -32.0, 41.0, 22.0, 63.0, 62.0, 109.0, 122.0, 98.0, 44.0], "forecast": null, "id": "chart-1", "labels": ["Aug \u002725", "Sep \u002725", "Oct \u002725", "Nov \u002725", "Dec \u002725", "Jan \u002726", "Feb \u002726", "Mar \u002726", "Apr \u002726", "May \u002726", "Jun \u002726", "Jul \u002726"], "latest_actual": 44.0, "unit": ""}, {"actuals": [0.2, 0.2, 1.1, 1.1, 0.6, 0.6, -0.2, -0.2, -0.3, -0.3, 0.8, 0.8], "forecast": null, "id": "chart-2", "labels": ["Feb 01", "Feb 01", "Mar 01", "Mar 01", "Apr 01", "Apr 01", "May 01", "May 01", "Jun 01", "Jun 01", "Jul 01", "Jul 01"], "latest_actual": 0.8, "unit": "%"}, {"actuals": [1.9, 1.9, 2.7, 2.7, 2.9, 2.9, 2.6, 2.6, 2.3, 2.3, 2.8, 2.8], "forecast": null, "id": "chart-3", "labels": ["Feb 01", "Feb 01", "Mar 01", "Mar 01", "Apr 01", "Apr 01", "May 01", "May 01", "Jun 01", "Jun 01", "Jul 01", "Jul 01"], "latest_actual": 2.8, "unit": "%"}, {"actuals": [0.2, 0.2, 0.2, 0.2, 0.4, 0.4, 0.4, 0.3, 0.2, 0.3, 0.1, 0.2], "forecast": 0.2, "id": "chart-4", "labels": ["Aug \u002725", "Sep \u002725", "Oct \u002725", "Nov \u002725", "Dec \u002725", "Jan \u002726", "Feb \u002726", "Mar \u002726", "Apr \u002726", "May \u002726", "Jun \u002726", "Jul \u002726"], "latest_actual": 0.2, "unit": "%"}, {"actuals": [2.9, 2.8, 2.7, 2.8, 3.0, 3.1, 3.0, 3.2, 3.3, 3.4, 3.3, 3.3], "forecast": 3.3, "id": "chart-5", "labels": ["Aug \u002725", "Sep \u002725", "Oct \u002725", "Nov \u002725", "Dec \u002725", "Jan \u002726", "Feb \u002726", "Mar \u002726", "Apr \u002726", "May \u002726", "Jun \u002726", "Jul \u002726"], "latest_actual": 3.3, "unit": "%"}, {"actuals": [2.0, 2.0, 2.8, 2.8, 2.9, 2.9, 2.7, 2.7, 2.4, 2.4, 2.8, 2.8], "forecast": null, "id": "chart-6", "labels": ["Feb 01", "Feb 01", "Mar 01", "Mar 01", "Apr 01", "Apr 01", "May 01", "May 01", "Jun 01", "Jun 01", "Jul 01", "Jul 01"], "latest_actual": 2.8, "unit": "%"}, {"actuals": [-0.2, -1.1, 1.0, 1.7, 2.1, 1.0, 2.6, 2.2, -1.6, 2.6, -0.6, -0.1], "forecast": 3.4, "id": "chart-7", "labels": ["Apr \u002723", "Jul \u002723", "Oct \u002723", "Jan \u002724", "Apr \u002724", "Jul \u002724", "Oct \u002724", "Jan \u002725", "Apr \u002725", "Jul \u002725", "Oct \u002725", "Jan \u002725"], "latest_actual": -0.1, "unit": "%"}, {"actuals": [1.9, 1.8, 0.2, 0.9, 1.1, 1.5, 1.2, 0.7, -2.0, -0.3, 1.8, -0.2], "forecast": null, "id": "chart-8", "labels": ["Jul \u002725", "Aug \u002725", "Sep \u002725", "Oct \u002725", "Nov \u002725", "Dec \u002725", "Jan \u002726", "Feb \u002726", "Mar \u002726", "Apr \u002726", "May \u002726", "Jun \u002726"], "latest_actual": -0.2, "unit": "%"}, {"actuals": [48.7, 49.1, 48.7, 48.2, 47.9, 52.6, 52.4, 52.7, 52.7, 54.0, 53.3, 55.6], "forecast": null, "id": "chart-9", "labels": ["Aug \u002725", "Sep \u002725", "Oct \u002725", "Nov \u002725", "Dec \u002725", "Jan \u002726", "Feb \u002726", "Mar \u002726", "Apr \u002726", "May \u002726", "Jun \u002726", "Jul \u002726"], "latest_actual": 55.6, "unit": ""}, {"actuals": [2.75, 2.75, 2.75, 2.75, 2.5, 2.25, 2.25, 2.25, 2.25, 2.25, 2.25, 2.25], "forecast": null, "id": "chart-10", "labels": ["Mar \u002725", "Apr \u002725", "Jun \u002725", "Jul \u002725", "Sep \u002725", "Oct \u002725", "Dec \u002725", "Jan \u002726", "Mar \u002726", "Apr \u002726", "Jun \u002726", "Jul \u002726"], "latest_actual": 2.25, "unit": "%"}];
+const chartData = [{"actuals": [54.0, -32.0, 42.0, -32.0, 41.0, 22.0, 63.0, 62.0, 109.0, 122.0, 98.0, 44.0], "forecast": null, "id": "chart-1", "labels": ["Aug \u002725", "Sep \u002725", "Oct \u002725", "Nov \u002725", "Dec \u002725", "Jan \u002726", "Feb \u002726", "Mar \u002726", "Apr \u002726", "May \u002726", "Jun \u002726", "Jul \u002726"], "latest_actual": 44.0, "unit": ""}, {"actuals": [0.2, 0.2, 1.1, 1.1, 0.6, 0.6, -0.2, -0.2, -0.3, -0.3, 0.8, 0.8], "forecast": null, "id": "chart-2", "labels": ["Feb 01", "Feb 01", "Mar 01", "Mar 01", "Apr 01", "Apr 01", "May 01", "May 01", "Jun 01", "Jun 01", "Jul 01", "Jul 01"], "latest_actual": 0.8, "unit": "%"}, {"actuals": [1.9, 1.9, 2.7, 2.7, 2.9, 2.9, 2.6, 2.6, 2.3, 2.3, 2.8, 2.8], "forecast": null, "id": "chart-3", "labels": ["Feb 01", "Feb 01", "Mar 01", "Mar 01", "Apr 01", "Apr 01", "May 01", "May 01", "Jun 01", "Jun 01", "Jul 01", "Jul 01"], "latest_actual": 2.8, "unit": "%"}, {"actuals": [0.2, 0.2, 0.2, 0.2, 0.4, 0.4, 0.4, 0.3, 0.2, 0.3, 0.1, 0.2], "forecast": 0.2, "id": "chart-4", "labels": ["Aug \u002725", "Sep \u002725", "Oct \u002725", "Nov \u002725", "Dec \u002725", "Jan \u002726", "Feb \u002726", "Mar \u002726", "Apr \u002726", "May \u002726", "Jun \u002726", "Jul \u002726"], "latest_actual": 0.2, "unit": "%"}, {"actuals": [2.9, 2.8, 2.7, 2.8, 3.0, 3.1, 3.0, 3.2, 3.3, 3.4, 3.3, 3.3], "forecast": 3.3, "id": "chart-5", "labels": ["Aug \u002725", "Sep \u002725", "Oct \u002725", "Nov \u002725", "Dec \u002725", "Jan \u002726", "Feb \u002726", "Mar \u002726", "Apr \u002726", "May \u002726", "Jun \u002726", "Jul \u002726"], "latest_actual": 3.3, "unit": "%"}, {"actuals": [2.0, 2.0, 2.8, 2.8, 2.9, 2.9, 2.7, 2.7, 2.4, 2.4, 2.8, 2.8], "forecast": null, "id": "chart-6", "labels": ["Feb 01", "Feb 01", "Mar 01", "Mar 01", "Apr 01", "Apr 01", "May 01", "May 01", "Jun 01", "Jun 01", "Jul 01", "Jul 01"], "latest_actual": 2.8, "unit": "%"}, {"actuals": [-0.2, -1.1, 1.0, 1.7, 2.1, 1.0, 2.6, 2.2, -1.6, 2.6, -0.6, -0.1], "forecast": 3.4, "id": "chart-7", "labels": ["Apr \u002723", "Jul \u002723", "Oct \u002723", "Jan \u002724", "Apr \u002724", "Jul \u002724", "Oct \u002724", "Jan \u002725", "Apr \u002725", "Jul \u002725", "Oct \u002725", "Jan \u002725"], "latest_actual": -0.1, "unit": "%"}, {"actuals": [1.9, 1.8, 0.2, 0.9, 1.1, 1.5, 1.2, 0.7, -2.0, -0.3, 1.8, -0.2], "forecast": null, "id": "chart-8", "labels": ["Jul \u002725", "Aug \u002725", "Sep \u002725", "Oct \u002725", "Nov \u002725", "Dec \u002725", "Jan \u002726", "Feb \u002726", "Mar \u002726", "Apr \u002726", "May \u002726", "Jun \u002726"], "latest_actual": -0.2, "unit": "%"}, {"actuals": [48.7, 49.1, 48.7, 48.2, 47.9, 52.6, 52.4, 52.7, 52.7, 54.0, 53.3, 55.6], "forecast": 55.3, "id": "chart-9", "labels": ["Aug \u002725", "Sep \u002725", "Oct \u002725", "Nov \u002725", "Dec \u002725", "Jan \u002726", "Feb \u002726", "Mar \u002726", "Apr \u002726", "May \u002726", "Jun \u002726", "Jul \u002726"], "latest_actual": 55.6, "unit": ""}, {"actuals": [2.75, 2.75, 2.75, 2.75, 2.5, 2.25, 2.25, 2.25, 2.25, 2.25, 2.25, 2.25], "forecast": null, "id": "chart-10", "labels": ["Mar \u002725", "Apr \u002725", "Jun \u002725", "Jul \u002725", "Sep \u002725", "Oct \u002725", "Dec \u002725", "Jan \u002726", "Mar \u002726", "Apr \u002726", "Jun \u002726", "Jul \u002726"], "latest_actual": 2.25, "unit": "%"}];
 chartData.forEach(ch=>{
   const canvas = document.getElementById(ch.id);
   if(!canvas) return;
