@@ -1,7 +1,7 @@
 {
-  "as_of": "2026-08-29T12:00:00-04:00",
-  "version": "2026-08-29-001",
-  "verification_note": "Sat 2026-08-29 12:00 ET cron (run 1/4 today, weekend incremental refresh). No market movement since Fri close (market.as_of_close 2026-08-28 retained; all labels remain Friday closes). Jackson Hole day 3 in progress (14:00Z): FXStreet feed headlines remain hawkish-trending — 'Warsh puts September rate hike back on the table', 'Warsh revives Fed hike bets', 'Warsh embarks on inflation fight' — no dovish pushback detected; Sep pricing carried forward 0.45/0.47/0.08 (CME FedWatch still IP-blocked; ZQ=F proxy basis unchanged from Fri close 96.215, implied 3.785% vs 3.625% mid). Calendar cross-verified against fresh FXStreet fetch (89 events, 29 HIGH): Chicago PMI Mon 8/31 fcst 57.0, ISM mfg Sep 1 fcst 55.3, JOLTS fcst 7.39M, ADP fcst +47k (added), BoC Sep 2 fcst 2.25/2.25, ISM services Sep 3 fcst 54.1. FIXED: nfp_20260904 carried a wrong forecast/previous (+155k/+114k) — corrected to fresh-calendar +45k fcst / -23k prev (the Aug 8 negative print) and retitled 'Last Before Sep FOMC' (Sep 4 precedes the Sep 15-16 meeting). BoC Sep 2 pricing carried 0.35/0.60/0.05 — no new CAD data on a Saturday; GDP +0.8% Q2 print still anchors hold. Fed target 3.50-3.75% and BoC 2.25% unchanged since last re-verification (Fri 23:50 ET run). All stable driver ids preserved; no drivers added/removed this run.",
+  "as_of": "2026-08-30T00:15:00-04:00",
+  "version": "2026-08-30-001",
+  "verification_note": "Sun 2026-08-30 00:15 ET cron (run 1/4 today, weekend incremental refresh). Jackson Hole concluded Sat 8/29 — FXStreet feed scan Sun 00:11 ET surfaced NO new Warsh/Fed headlines beyond bio boilerplate; hawkish drift from Fri intact, no dovish pushback. Sep Fed pricing carried 0.45/0.47/0.08 (CME FedWatch IP-blocked; ZQ=F proxy basis unchanged, Fri close 96.215, implied 3.785% vs 3.625% mid). BoC Sep 2 pricing carried 0.35/0.60/0.05. Rate levels re-verified 2026-08-30 00:12 ET at source: Fed 3.50-3.75% (monetary20260729a.htm, 9-3 dissent Hammack/Kashkari/Logan confirmed), BoC 2.25% (key-interest-rate observations, last data-date 2026-07-15). Meeting dates re-verified: FOMC Sep 15-16 + BoC Sep 2 09:45 ET both confirmed (fomccalendars.htm; bankofcanada.ca/press upcoming-events widget). Calendar cross-checked vs fresh 68-event FXStreet fetch (25 HIGH): FIXES — Chicago PMI time corrected to 09:45 ET / 13:45Z (prior 13:45 ET was wrong); ISM Services fcst 54.1 and claims fcst 205k filled in from fresh calendar; expired jackson_hole_20260829 entry removed (symposium concluded); CA jobs report Sep 4 added (Net Change fcst +15.8k prev +75.1k, UR fcst 6.4 prev 6.4). Market strip unchanged — weekend, all labels remain Fri 2026-08-28 closes. All stable driver ids preserved; no drivers added/removed this run.",
   "timezone": "America/Toronto",
   "meetings": {
     "fed": {
@@ -12,7 +12,7 @@
       "last_meeting": {
         "date": "2026-07-29",
         "decision": "Held at 3.50-3.75%",
-        "note": "9-3 dissent: Hammack, Kashkari, Logan preferred +25bp hike. Re-verified 2026-08-28 via federalreserve.gov/newsevents/pressreleases/monetary20260729a.htm (target range 3-1/2 to 3-3/4 percent maintained). Warsh's Aug 28 Jackson Hole speech validated the hawks: 'predominant focus right now should be on prices'."
+        "note": "9-3 dissent: Hammack, Kashkari, Logan preferred +25bp hike. Re-verified 2026-08-30 via federalreserve.gov/newsevents/pressreleases/monetary20260729a.htm (target range 3-1/2 to 3-3/4 percent maintained). Warsh's Aug 28 Jackson Hole speech validated the hawks: 'predominant focus right now should be on prices'."
       },
       "pricing": {
         "cut_25bp": 0.45,
@@ -34,7 +34,7 @@
       "last_meeting": {
         "date": "2026-07-15",
         "decision": "Held at 2.25%",
-        "note": "Held at 2.25% (unchanged since 2025-10-29 cut from 2.50%; held Jan 28 / Mar 18 / Apr 29 / Jun 10 / Jul 15 2026). Re-verified 2026-08-28 via bankofcanada.ca/core-functions/monetary-policy/key-interest-rate/ observations table. Next decision 2026-09-02 09:45 ET with press conference 10:30 ET (bankofcanada.ca/multimedia/press-conference-policy-rate-announcement-september-2026/)."
+        "note": "Held at 2.25% (unchanged since 2025-10-29 cut from 2.50%; held Jan 28 / Mar 18 / Apr 29 / Jun 10 / Jul 15 2026). Re-verified 2026-08-30 via bankofcanada.ca/core-functions/monetary-policy/key-interest-rate/ observations table (most recent data-date 2026-07-15, 2.25). Next decision 2026-09-02 09:45 ET with press conference 10:30 ET (re-verified 2026-08-30 via bankofcanada.ca/press/ upcoming-events widget)."
       },
       "pricing": {
         "cut_25bp": 0.35,
@@ -708,23 +708,9 @@
   },
   "calendar": [
     {
-      "id": "jackson_hole_20260829",
-      "datetime_toronto": "2026-08-29T10:00:00-04:00",
-      "datetime_utc": "2026-08-29T14:00:00Z",
-      "currency": "USD",
-      "country": "US",
-      "event": "Jackson Hole Symposium · Day 3 (final)",
-      "impact": "HIGH",
-      "forecast": {},
-      "previous": {},
-      "logic": "Sat 12:00 ET: day-3 panels in progress. FXStreet feed still hawkish-trending ('Warsh puts September rate hike back on the table', 'Warsh revives Fed hike bets') — no dove pushback visible. Sep pricing carried at 0.45/0.47/0.08 pending any surprise headline.",
-      "hawk_if": "More hawkish tone",
-      "dove_if": "Dove pushback"
-    },
-    {
       "id": "chicago_pmi_20260831",
-      "datetime_toronto": "2026-08-31T13:45:00-04:00",
-      "datetime_utc": "2026-08-31T17:45:00Z",
+      "datetime_toronto": "2026-08-31T09:45:00-04:00",
+      "datetime_utc": "2026-08-31T13:45:00Z",
       "currency": "USD",
       "country": "US",
       "event": "Chicago PMI",
@@ -780,7 +766,9 @@
       "country": "US",
       "event": "ISM Services PMI",
       "impact": "HIGH",
-      "forecast": {},
+      "forecast": {
+        "PMI": "54.1"
+      },
       "previous": {
         "PMI": "54.1"
       },
@@ -796,7 +784,9 @@
       "country": "US",
       "event": "Initial Jobless Claims",
       "impact": "MEDIUM",
-      "forecast": {},
+      "forecast": {
+        "Claims": "205k"
+      },
       "previous": {
         "Claims": "203k"
       },
@@ -851,6 +841,26 @@
         "PMI": "55.6"
       },
       "logic": "ISM proper (prev 55.6, fcst 55.3) vs S&P flash mfg 48.7 — the arbiter between the two manufacturing narratives before Sep FOMC.",
+      "hawk_if": "Strong to Hawk",
+      "dove_if": "Weak to Dove"
+    },
+    {
+      "id": "ca_jobs_20260904",
+      "datetime_toronto": "2026-09-04T08:30:00-04:00",
+      "datetime_utc": "2026-09-04T12:30:00Z",
+      "currency": "CAD",
+      "country": "CA",
+      "event": "Canada Employment Report (Net Change + Unemployment)",
+      "impact": "HIGH",
+      "forecast": {
+        "NetChange": "+15.8k",
+        "UR": "6.4"
+      },
+      "previous": {
+        "NetChange": "+75.1k",
+        "UR": "6.4"
+      },
+      "logic": "First post-decision CAD read (2 days after Sep 2 BoC). A big miss vs +15.8k fcst would vindicate any dovish tilt in the statement; a beat near the +75.1k prior would confirm the GDP-beat hold narrative.",
       "hawk_if": "Strong to Hawk",
       "dove_if": "Weak to Dove"
     },
