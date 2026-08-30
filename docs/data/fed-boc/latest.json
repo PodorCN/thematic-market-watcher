@@ -1,7 +1,7 @@
 {
-  "as_of": "2026-08-30T00:15:00-04:00",
-  "version": "2026-08-30-001",
-  "verification_note": "Sun 2026-08-30 00:15 ET cron (run 1/4 today, weekend incremental refresh). Jackson Hole concluded Sat 8/29 — FXStreet feed scan Sun 00:11 ET surfaced NO new Warsh/Fed headlines beyond bio boilerplate; hawkish drift from Fri intact, no dovish pushback. Sep Fed pricing carried 0.45/0.47/0.08 (CME FedWatch IP-blocked; ZQ=F proxy basis unchanged, Fri close 96.215, implied 3.785% vs 3.625% mid). BoC Sep 2 pricing carried 0.35/0.60/0.05. Rate levels re-verified 2026-08-30 00:12 ET at source: Fed 3.50-3.75% (monetary20260729a.htm, 9-3 dissent Hammack/Kashkari/Logan confirmed), BoC 2.25% (key-interest-rate observations, last data-date 2026-07-15). Meeting dates re-verified: FOMC Sep 15-16 + BoC Sep 2 09:45 ET both confirmed (fomccalendars.htm; bankofcanada.ca/press upcoming-events widget). Calendar cross-checked vs fresh 68-event FXStreet fetch (25 HIGH): FIXES — Chicago PMI time corrected to 09:45 ET / 13:45Z (prior 13:45 ET was wrong); ISM Services fcst 54.1 and claims fcst 205k filled in from fresh calendar; expired jackson_hole_20260829 entry removed (symposium concluded); CA jobs report Sep 4 added (Net Change fcst +15.8k prev +75.1k, UR fcst 6.4 prev 6.4). Market strip unchanged — weekend, all labels remain Fri 2026-08-28 closes. All stable driver ids preserved; no drivers added/removed this run.",
+  "as_of": "2026-08-30T12:40:00-04:00",
+  "version": "2026-08-30-002",
+  "verification_note": "Sun 2026-08-30 12:40 ET cron (run 2/4 today, weekend incremental refresh). Fed RSS (press_all.xml + speeches.xml) re-fetched 12:30 ET: NOTHING new since Warsh 'In Our Time' (Fri 8/28 14:00 GMT) — no weekend Fed communication; latest press item is an unrelated Aug 27 enforcement action. BoC key-interest-rate page HTTP 200 re-verified: 2.25%, last data-date 2026-07-15. CME FedWatch still HTTP 403 IP-block from this host (re-tested 12:30 ET); Sep Fed pricing carried 0.45/0.47/0.08 on ZQ=F proxy, official Fri close 96.220 (yfinance) -> implied 3.780% vs 3.625% mid (+15.5bp). BoC Sep 2 pricing carried 0.35/0.60/0.05. KEY FIX THIS RUN: replaced late-Friday electronic quotes with official yfinance settlement closes — GC=F 4529.90 (-1.73% d / -2.04% w, was 4504.1 late quote), CL=F 83.40 (-0.16% d / -4.20% w), USDCAD Fri close 1.3851 (-0.17% d / +0.51% w) with Sunday FX reopen back at 1.3901, ZEB.TO +0.16% d / +1.40% w. All ETF strip closes (SPY/QQQ/IWM/XLI/XLU/XLF/XLE/TLT/GLD) re-pulled and match prior values exactly. Calendar cross-checked vs fresh 68-event FXStreet fetch (25 HIGH): all 12 carried entries verified (JOLTS 7.39M, ADP +47k, ISM mfg 55.3, ISM svc 54.1, claims 205k, NFP +45k/UR 4.2, CA jobs +15.8k/6.4, BoC 2.25 + presser 10:30 ET); ADDED Fed Beige Book Sep 2 14:00 ET; NFP logic updated with UR fcst 4.2 vs prev 4.1. No drivers added/removed; all stable ids preserved; weights unchanged (no new weekend information).",
   "timezone": "America/Toronto",
   "meetings": {
     "fed": {
@@ -21,7 +21,7 @@
         "source": "ZQ=F proxy + CME FedWatch (FedWatch IP-blocked from this host; distribution re-anchored to true 3.625% mid)",
         "source_url": "https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html",
         "as_of_pricing": "2026-08-28T23:45:00-04:00",
-        "proxy_check": "ZQ=F closed 96.215 on 2026-08-28 (yfinance), implying FF avg ~3.785% vs current 3.625% mid — +16bp hawkish, up from +10bp yesterday. Hawkish Warsh Jackson Hole speech ('predominant focus on prices', 'otherwise we have work to do') repriced cuts out: 0.55/0.42/0.03 -> 0.45/0.47/0.08.",
+        "proxy_check": "ZQ=F official close 96.220 on 2026-08-28 (yfinance, re-verified Sun 2026-08-30 12:30 ET — weekend, unchanged), implying FF avg ~3.780% vs current 3.625% mid — +15.5bp hawkish. Hawkish Warsh Jackson Hole speech ('predominant focus on prices', 'otherwise we have work to do') repriced cuts out: 0.55/0.42/0.03 -> 0.45/0.47/0.08. CME FedWatch re-tested 2026-08-30: still HTTP 403 IP-block.",
         "proxy_source_url": "https://finance.yahoo.com/quote/ZQ=F",
         "implied_rate_before": 3.625,
         "implied_rate_after": 3.53
@@ -43,7 +43,7 @@
         "source": "OIS / implied via Fed-BoC spread (BoC CORRA panel not public since BAX to CORRA migration; carried forward + WTI/USDCAD adjuster)",
         "source_url": "https://www.bankofcanada.ca/markets/interest-rates/",
         "as_of_pricing": "2026-08-28T23:45:00-04:00",
-        "proxy_check": "BoC target 2.25% re-verified 2026-08-28 via bankofcanada.ca key-interest-rate page (last cut 2025-10-29, 2.50->2.25; held all 2026). GDP make-or-break printed STRONG (Q2 +0.8% QoQ / 3.3% ann., June +0.3% MoM beat) -> hold now base case: 0.45/0.51/0.04 -> 0.35/0.60/0.05. Offsetting doves: WTI -4.16% w, USDCAD 1.3902 (+0.88% w, CAD weaker post-Warsh USD bid).",
+        "proxy_check": "BoC target 2.25% re-verified 2026-08-28 via bankofcanada.ca key-interest-rate page (last cut 2025-10-29, 2.50->2.25; held all 2026). GDP make-or-break printed STRONG (Q2 +0.8% QoQ / 3.3% ann., June +0.3% MoM beat) -> hold now base case: 0.45/0.51/0.04 -> 0.35/0.60/0.05. Offsetting doves: WTI -4.20% w (official close 83.40), USDCAD Fri close 1.3851 (+0.51% w) — CAD firmed post-GDP, but Sunday 8/30 FX reopen slipped back to 1.3901 (post-Warsh USD bid).",
         "implied_rate_before": 2.25,
         "implied_rate_after": 2.18
       }
@@ -186,20 +186,20 @@
           "id": "fed_dove_oil_crash_20260825",
           "icon": "OIL",
           "title": "Oil Demand-Scare — Cumulative Hit Intact",
-          "summary": "WTI -4.2% w — demand scare deepened; disinflation tailwind for the doves.",
+          "summary": "WTI -4.2% w (official close 83.40) — demand scare held through Friday's settle; disinflation tailwind for the doves.",
           "published_at_toronto": "2026-08-27T16:00:00-04:00",
           "source": "yfinance CL=F / EIA WTI",
           "source_url": "https://finance.yahoo.com/quote/CL=F",
           "importance": "HIGH",
           "weight": 1.5,
           "data": {
-            "actual": "WTI 83.44",
+            "actual": "WTI 83.40",
             "forecast": "85.0",
             "previous": "83.53",
-            "delta_label": "-0.11% d / -4.16% w",
+            "delta_label": "-0.16% d / -4.20% w",
             "delta_type": "miss"
           },
-          "reason": "WTI $83.44, now -4.16% w — the demand-scare repricing deepened through Friday. Consistent with ISM mfg flash 48.7, negative payrolls and weak China PMIs; a direct disinflation impulse that argues for cuts even as Warsh stresses sticky services inflation.",
+          "reason": "WTI $83.40 official close (yfinance, re-verified Sun 8/30), -4.20% w — the demand-scare repricing held through Friday's settle. Consistent with ISM mfg flash 48.7, negative payrolls and weak China PMIs; a direct disinflation impulse that argues for cuts even as Warsh stresses sticky services inflation.",
           "market_validation": [
             {
               "ticker": "XLE",
@@ -330,24 +330,24 @@
           "id": "fed_hawk_gold_20260827",
           "icon": "Au",
           "title": "Gold's Record Run — Inflation-Hedge Bid Persists",
-          "summary": "GC=F $4504 (-2.3% d, -2.6% w): post-Warsh hawkish repricing broke the inflation-hedge bid.",
+          "summary": "GC=F $4529.9 official close (-1.7% d, -2.0% w): post-Warsh hawkish repricing broke the inflation-hedge bid.",
           "published_at_toronto": "2026-08-27T16:00:00-04:00",
           "source": "yfinance close (GC=F)",
           "source_url": "https://finance.yahoo.com/quote/GC=F",
           "importance": "MEDIUM",
           "weight": 0.5,
           "data": {
-            "actual": "GC=F 4504.1 / GLD 408.89",
+            "actual": "GC=F 4529.9 / GLD 408.89",
             "forecast": "GC=F <4500",
             "previous": "GC=F 4609.7 / GLD 422.60",
-            "delta_label": "GC -2.29% d / -2.60% w; GLD -3.24% d",
+            "delta_label": "GC -1.73% d / -2.04% w; GLD -3.24% d",
             "delta_type": "miss"
           },
-          "reason": "Gold dumped -2.29% (GC=F 4504.1, off the $4648 peak) as markets took Warsh hawkish — real-yield pressure beat the inflation-hedge bid. Driver kept at reduced 0.5 to preserve stable ID; if GC=F holds below $4500 the record-run signal is broken.",
+          "reason": "Gold dumped -1.73% at Friday's official settle (GC=F 4529.9, off the $4648 peak) as markets took Warsh hawkish — real-yield pressure beat the inflation-hedge bid; late-Friday electronic trade dipped to 4504.1 before the settle. Driver kept at reduced 0.5 to preserve stable ID; if GC=F holds below $4500 the record-run signal is broken.",
           "market_validation": [
             {
               "ticker": "GC=F",
-              "label": "GC=F -2.29% d",
+              "label": "GC=F -1.73% d",
               "type": "down"
             }
           ]
@@ -369,16 +369,16 @@
             "delta_label": "hawkish vs balanced expectation",
             "delta_type": "beat"
           },
-          "reason": "Warsh: 'the Fed's predominant focus right now should be on prices'; labour 'consistent with full employment' (4.1% jobless, claims near multi-decade lows); financial conditions 'hard pressed to describe as restrictive'; 'committed to a discipline, not to a decision'. Markets read it hawkish: ZQ=F -0.16 to 96.215 (implied 3.785%, +16bp over mid), GC=F -2.29%, 10Y +4.8bp, IWM -1.35%. Sep cut odds repriced from 55% to 45% on this desk's proxy.",
+          "reason": "Warsh: 'the Fed's predominant focus right now should be on prices'; labour 'consistent with full employment' (4.1% jobless, claims near multi-decade lows); financial conditions 'hard pressed to describe as restrictive'; 'committed to a discipline, not to a decision'. Markets read it hawkish: ZQ=F -0.16 to 96.220 official close (implied 3.780%, +15.5bp over mid), GC=F -1.73% settle, 10Y +4.8bp, IWM -1.35%. Sep cut odds repriced from 55% to 45% on this desk's proxy.",
           "market_validation": [
             {
               "ticker": "GC=F",
-              "label": "GC=F -2.29% d",
+              "label": "GC=F -1.73% d",
               "type": "down"
             },
             {
               "ticker": "ZQ=F",
-              "label": "ZQ=F -0.16 d (implied 3.785%)",
+              "label": "ZQ=F -0.16 d (implied 3.780%)",
               "type": "down"
             }
           ],
@@ -481,40 +481,40 @@
           "id": "boc_dove_cad_20260827",
           "icon": "FX",
           "title": "CAD Firms Slightly — Sep 2 BoC Dovish Wedge Narrows",
-          "summary": "USDCAD 1.3902 — CAD weaker through 1.39 despite the GDP beat; rate-spread trade dominates.",
+          "summary": "USDCAD Fri close 1.3851 (CAD firmed post-GDP) but Sunday FX reopen back at 1.3901 — rate-spread trade dominates.",
           "published_at_toronto": "2026-08-27T16:00:00-04:00",
           "source": "yfinance close (USDCAD=X)",
           "source_url": "https://finance.yahoo.com/quote/USDCAD=X",
           "importance": "LOW",
           "weight": 1.0,
           "data": {
-            "actual": "USDCAD 1.3902",
+            "actual": "USDCAD 1.3851 Fri / 1.3901 Sun reopen",
             "forecast": "<1.36",
             "previous": "1.3875",
-            "delta_label": "+0.19% d / +0.88% w",
+            "delta_label": "-0.17% d Fri / +0.51% w; +0.36% Sun reopen",
             "delta_type": "miss"
           },
-          "reason": "USDCAD 1.3902 on Fri (+0.19% d, +0.88% w) — CAD weakened even with a GDP beat because the post-Warsh USD bid and Fed-BoC spread dominate. Rate-spread trade remains the cleanest dovish signal into Sep 2.",
+          "reason": "Official Friday close 1.3851 (-0.17% d, +0.51% w) — CAD actually firmed after the GDP beat, but Sunday 8/30's FX reopen slipped back to 1.3901 (+0.36%) as the post-Warsh USD bid and Fed-BoC spread reasserted. Rate-spread trade remains the cleanest signal into Sep 2.",
           "market_validation": []
         },
         {
           "id": "boc_dove_oil_crash_20260827",
           "icon": "OIL",
           "title": "Oil Demand-Scare — CAD Terms of Trade Eroded",
-          "summary": "WTI $83.44, -4.16% w — CAD terms of trade keep eroding into the Sep 2 decision.",
+          "summary": "WTI $83.40, -4.20% w — CAD terms of trade keep eroding into the Sep 2 decision.",
           "published_at_toronto": "2026-08-27T16:00:00-04:00",
           "source": "yfinance CL=F / EIA",
           "source_url": "https://finance.yahoo.com/quote/CL=F",
           "importance": "HIGH",
           "weight": 1.5,
           "data": {
-            "actual": "WTI 83.44",
+            "actual": "WTI 83.40",
             "forecast": "85.0",
             "previous": "83.53",
-            "delta_label": "-0.11% d / -4.16% w",
+            "delta_label": "-0.16% d / -4.20% w",
             "delta_type": "miss"
           },
-          "reason": "Oil's weekly slide deepened to -4.16%, eroding Canada's terms of trade and the BoC's hawkish buffer. Partly offset by today's strong GDP; net still dovish for the Sep 2 calculus.",
+          "reason": "Oil's weekly slide settled at -4.20% (official close 83.40), eroding Canada's terms of trade and the BoC's hawkish buffer. Partly offset by today's strong GDP; net still dovish for the Sep 2 calculus.",
           "market_validation": [
             {
               "ticker": "XLE",
@@ -549,20 +549,20 @@
           "id": "boc_hawk_oil_20260821",
           "icon": "WTI",
           "title": "Energy Tailwind Reversed — Marked Neutral",
-          "summary": "WTI at $83.19; energy tailwind has flipped to headwind for CAD.",
+          "summary": "WTI at $83.40 official close; energy tailwind has flipped to headwind for CAD.",
           "published_at_toronto": "2026-08-27T16:00:00-04:00",
           "source": "WTI close",
           "source_url": "https://www.eia.gov/dnav/pet/hist/RWTCa.htm",
           "importance": "MEDIUM",
           "weight": 0.5,
           "data": {
-            "actual": "WTI 83.44",
+            "actual": "WTI 83.40",
             "forecast": "82.0",
             "previous": "83.53",
-            "delta_label": "-0.11% d / -4.16% w",
+            "delta_label": "-0.16% d / -4.20% w",
             "delta_type": "neutral"
           },
-          "reason": "WTI $83.44 (-4.16% w) — energy tailwind fully flipped to headwind. Kept at 0.5/neutral to preserve stable ID.",
+          "reason": "WTI $83.40 official close (-4.20% w) — energy tailwind fully flipped to headwind. Kept at 0.5/neutral to preserve stable ID.",
           "market_validation": [
             {
               "ticker": "XLE",
@@ -592,7 +592,7 @@
           "market_validation": [
             {
               "ticker": "ZEB.TO",
-              "label": "ZEB.TO -0.04% d / +1.20% w",
+              "label": "ZEB.TO +0.16% d / +1.40% w",
               "type": "up"
             }
           ]
@@ -608,13 +608,13 @@
           "importance": "MEDIUM",
           "weight": 1.5,
           "data": {
-            "actual": "Warsh hawkish JH / 30Y 5.21% / USDCAD 1.3902",
+            "actual": "Warsh hawkish JH / 30Y 5.21% / USDCAD 1.3901 Sun reopen",
             "forecast": "balanced Fed / 30Y 4.90% / USDCAD <1.36",
             "previous": "Services 56.8 / 30Y 5.19% / Fed 9-3 dissent",
             "delta_label": "Fed hawkish shift + CAD weak",
             "delta_type": "beat"
           },
-          "reason": "A BoC cut 5 days ahead of a hawkish Fed (Warsh: 'predominant focus on prices') would widen the rate gap into a strengthening USD — USDCAD already 1.3902 (+0.88% w). The Fed path now constrains the BoC more than at any point this year. Weight 1.0 -> 1.5.",
+          "reason": "A BoC cut 5 days ahead of a hawkish Fed (Warsh: 'predominant focus on prices') would widen the rate gap into a strengthening USD — USDCAD back at 1.3901 on Sunday 8/30's FX reopen after a brief post-GDP firming to Friday's 1.3851 close. The Fed path now constrains the BoC more than at any point this year. Weight 1.0 -> 1.5.",
           "market_validation": []
         }
       ]
@@ -699,9 +699,9 @@
       {
         "symbol": "ZEB.TO",
         "price": 74.37,
-        "label_1d": "-0.04% Fri",
-        "label_1w": "+1.20% w",
-        "type_1d": "down",
+        "label_1d": "+0.16% Fri",
+        "label_1w": "+1.40% w",
+        "type_1d": "up",
         "type_1w": "up"
       }
     ]
@@ -827,6 +827,20 @@
       "dove_if": "Showdown"
     },
     {
+      "id": "beige_book_20260902",
+      "datetime_toronto": "2026-09-02T14:00:00-04:00",
+      "datetime_utc": "2026-09-02T18:00:00Z",
+      "currency": "USD",
+      "country": "US",
+      "event": "Fed Beige Book",
+      "impact": "MEDIUM",
+      "forecast": {},
+      "previous": {},
+      "logic": "Fresh FXStreet calendar addition (Sep 2 18:00Z). Anecdotal district read on labour and prices two weeks before the Sep 15-16 FOMC — watch for tariff pass-through language backing Warsh's '54% of the PCE basket >3%' point.",
+      "hawk_if": "Price-pressure anecdotes to Hawk",
+      "dove_if": "Labour-slack anecdotes to Dove"
+    },
+    {
       "id": "ism_mfg_20260901",
       "datetime_toronto": "2026-09-01T10:00:00-04:00",
       "datetime_utc": "2026-09-01T14:00:00Z",
@@ -878,7 +892,7 @@
       "previous": {
         "Payrolls": "-23k"
       },
-      "logic": "Fresh FXStreet calendar: fcst +45k vs prev -23k (the Aug 8 negative print). A second consecutive sub-50k print would re-arm the labour-crack narrative despite Warsh's 'full employment' framing — last jobs report before the Sep 15-16 FOMC.",
+      "logic": "Fresh FXStreet calendar: fcst +45k vs prev -23k (the Aug 8 negative print); unemployment fcst 4.2 vs prev 4.1. A second consecutive sub-50k print — or a 4.2%+ jobless rate — would re-arm the labour-crack narrative despite Warsh's 'full employment' framing — last jobs report before the Sep 15-16 FOMC.",
       "dove_if": "Weak to Dove"
     },
     {
@@ -917,6 +931,6 @@
   ],
   "history": [],
   "snapshot_date": "2026-08-30",
-  "archived_at": "2026-08-30T04:16:16.260773Z",
+  "archived_at": "2026-08-30T16:35:33.560963Z",
   "stale": false
 }
