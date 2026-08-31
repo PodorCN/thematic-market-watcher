@@ -1,7 +1,7 @@
 {
-  "as_of": "2026-08-30T12:40:00-04:00",
-  "version": "2026-08-30-002",
-  "verification_note": "Sun 2026-08-30 12:40 ET cron (run 2/4 today, weekend incremental refresh). Fed RSS (press_all.xml + speeches.xml) re-fetched 12:30 ET: NOTHING new since Warsh 'In Our Time' (Fri 8/28 14:00 GMT) — no weekend Fed communication; latest press item is an unrelated Aug 27 enforcement action. BoC key-interest-rate page HTTP 200 re-verified: 2.25%, last data-date 2026-07-15. CME FedWatch still HTTP 403 IP-block from this host (re-tested 12:30 ET); Sep Fed pricing carried 0.45/0.47/0.08 on ZQ=F proxy, official Fri close 96.220 (yfinance) -> implied 3.780% vs 3.625% mid (+15.5bp). BoC Sep 2 pricing carried 0.35/0.60/0.05. KEY FIX THIS RUN: replaced late-Friday electronic quotes with official yfinance settlement closes — GC=F 4529.90 (-1.73% d / -2.04% w, was 4504.1 late quote), CL=F 83.40 (-0.16% d / -4.20% w), USDCAD Fri close 1.3851 (-0.17% d / +0.51% w) with Sunday FX reopen back at 1.3901, ZEB.TO +0.16% d / +1.40% w. All ETF strip closes (SPY/QQQ/IWM/XLI/XLU/XLF/XLE/TLT/GLD) re-pulled and match prior values exactly. Calendar cross-checked vs fresh 68-event FXStreet fetch (25 HIGH): all 12 carried entries verified (JOLTS 7.39M, ADP +47k, ISM mfg 55.3, ISM svc 54.1, claims 205k, NFP +45k/UR 4.2, CA jobs +15.8k/6.4, BoC 2.25 + presser 10:30 ET); ADDED Fed Beige Book Sep 2 14:00 ET; NFP logic updated with UR fcst 4.2 vs prev 4.1. No drivers added/removed; all stable ids preserved; weights unchanged (no new weekend information).",
+  "as_of": "2026-08-31T00:50:00-04:00",
+  "version": "2026-08-31-001",
+  "verification_note": "Mon 2026-08-31 00:50 ET cron (run 1/4 today, Labor Day — US/CA cash markets closed, all market values = Fri 2026-08-28 official settlement closes; Sun FX/futures reopen noted separately). Fed RSS (press_all.xml + speeches.xml) re-fetched 00:42 ET: NOTHING new since Warsh 'In Our Time' (Fri 8/28); latest press item is an unrelated Aug 27 enforcement action. Rate levels re-verified at source: Fed target 3.50-3.75% + 9-3 dissent (monetary20260729a.htm), BoC 2.25% (key-interest-rate table, latest data-date 2026-07-15), BoC next decision Sep 2 confirmed via bankofcanada.ca/press/ upcoming-events widget. FED SEP PRICING RE-DERIVED from ZQU26.CBT official Fri settle 96.305 -> Sep implied avg FF 3.695% -> post-FOMC ~3.776% (16 pre-days x 3.625 + 14 post-days; solve k-c ~ +0.60) => cut 0.05 / hold 0.30 / hike 0.65; cross-checks ZQV26 96.220 (Oct 3.780 ~= hold-after-Sep), ZQX26 96.150 (Dec 3.850, +7bp drift). This CORRECTS the prior 0.45/0.47/0.08 carry-forward whose own proxy note said '+15.5bp hawkish' (internally inconsistent — a hawkish futures delta cannot yield a cut-favored distribution; stale since 8/28 evening). Warsh JH 8/28 hawkish ('predominant focus right now should be on prices') supports the hike tail. BoC pricing carried forward (no public CORRA OIS panel); CAD weakening (USDCAD 1.3851 Fri / 1.389 Sun reopen) + WTI -4.2% wk keep cut-lean. Calendar refreshed from fresh FXStreet fetch (67 events, 24 HIGH / 43 MEDIUM); week anchors: ISM Mfg 9/1, ADP + BoC 9/2, ISM Svc 9/3, NFP + CA jobs 9/4.",
   "timezone": "America/Toronto",
   "meetings": {
     "fed": {
@@ -12,16 +12,16 @@
       "last_meeting": {
         "date": "2026-07-29",
         "decision": "Held at 3.50-3.75%",
-        "note": "9-3 dissent: Hammack, Kashkari, Logan preferred +25bp hike. Re-verified 2026-08-30 via federalreserve.gov/newsevents/pressreleases/monetary20260729a.htm (target range 3-1/2 to 3-3/4 percent maintained). Warsh's Aug 28 Jackson Hole speech validated the hawks: 'predominant focus right now should be on prices'."
+        "note": "9-3 dissent: Hammack, Kashkari, Logan preferred +25bp hike. Re-verified 2026-08-31 via federalreserve.gov/newsevents/pressreleases/monetary20260729a.htm (\"target range ... at 3-1/2 to 3-3/4 percent\"; \"Voting against ... Hammack ... Kashkari ... Logan, who preferred to raise the target range ... by 1/4 percentage point\"). Warsh's Aug 28 Jackson Hole speech validated the hawks: 'predominant focus right now should be on prices'."
       },
       "pricing": {
-        "cut_25bp": 0.45,
-        "hold": 0.47,
-        "hike_25bp": 0.08,
-        "source": "ZQ=F proxy + CME FedWatch (FedWatch IP-blocked from this host; distribution re-anchored to true 3.625% mid)",
+        "cut_25bp": 0.05,
+        "hold": 0.3,
+        "hike_25bp": 0.65,
+        "source": "ZQU26.CBT official settle via yfinance (CME FedWatch IP-blocked from this host); 3-way solve anchored to verified 3.625% mid",
         "source_url": "https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html",
-        "as_of_pricing": "2026-08-28T23:45:00-04:00",
-        "proxy_check": "ZQ=F official close 96.220 on 2026-08-28 (yfinance, re-verified Sun 2026-08-30 12:30 ET — weekend, unchanged), implying FF avg ~3.780% vs current 3.625% mid — +15.5bp hawkish. Hawkish Warsh Jackson Hole speech ('predominant focus on prices', 'otherwise we have work to do') repriced cuts out: 0.55/0.42/0.03 -> 0.45/0.47/0.08. CME FedWatch re-tested 2026-08-30: still HTTP 403 IP-block.",
+        "as_of_pricing": "2026-08-28T16:00:00-04:00",
+        "proxy_check": "ZQU26.CBT Fri 8/28 official settle 96.305 (re-verified Mon 2026-08-31 00:45 ET via yfinance daily rows) -> Sep implied avg FF 3.695% -> post-FOMC implied ~3.776% vs outcomes cut 3.375 / hold 3.625 / hike 3.875 -> k-c ~ +0.60. Cross-checks: ZQV26 96.220 (Oct 3.780), ZQX26 96.150 (Dec 3.850). Re-anchored 2026-08-31 from stale cut-favored carry-forward.",
         "proxy_source_url": "https://finance.yahoo.com/quote/ZQ=F",
         "implied_rate_before": 3.625,
         "implied_rate_after": 3.53
@@ -34,7 +34,7 @@
       "last_meeting": {
         "date": "2026-07-15",
         "decision": "Held at 2.25%",
-        "note": "Held at 2.25% (unchanged since 2025-10-29 cut from 2.50%; held Jan 28 / Mar 18 / Apr 29 / Jun 10 / Jul 15 2026). Re-verified 2026-08-30 via bankofcanada.ca/core-functions/monetary-policy/key-interest-rate/ observations table (most recent data-date 2026-07-15, 2.25). Next decision 2026-09-02 09:45 ET with press conference 10:30 ET (re-verified 2026-08-30 via bankofcanada.ca/press/ upcoming-events widget)."
+        "note": "Held at 2.25% (unchanged since 2025-10-29 cut from 2.50%; held Jan 28 / Mar 18 / Apr 29 / Jun 10 / Jul 15 2026). Re-verified 2026-08-31 via bankofcanada.ca/core-functions/monetary-policy/key-interest-rate/ (most recent data-date 2026-07-15). Next decision 2026-09-02 09:45 ET with press conference 10:30 ET (re-verified 2026-08-31 via bankofcanada.ca/press/ upcoming-events widget: \"September 2, 2026 Interest Rate Announcement\")."
       },
       "pricing": {
         "cut_25bp": 0.35,
@@ -45,7 +45,8 @@
         "as_of_pricing": "2026-08-28T23:45:00-04:00",
         "proxy_check": "BoC target 2.25% re-verified 2026-08-28 via bankofcanada.ca key-interest-rate page (last cut 2025-10-29, 2.50->2.25; held all 2026). GDP make-or-break printed STRONG (Q2 +0.8% QoQ / 3.3% ann., June +0.3% MoM beat) -> hold now base case: 0.45/0.51/0.04 -> 0.35/0.60/0.05. Offsetting doves: WTI -4.20% w (official close 83.40), USDCAD Fri close 1.3851 (+0.51% w) — CAD firmed post-GDP, but Sunday 8/30 FX reopen slipped back to 1.3901 (post-Warsh USD bid).",
         "implied_rate_before": 2.25,
-        "implied_rate_after": 2.18
+        "implied_rate_after": 2.18,
+        "note": "Carried forward Mon 2026-08-31 (no public CORRA OIS panel post-BAX migration; CME/OIS mirrors JS-blocked). Direction cross-check: USDCAD 1.3851 Fri close / 1.389 Sun reopen (CAD -0.5% wk, dovish for BoC), WTI 83.40 settle -4.2% wk (disinflationary), Q2 GDP +0.8% QoQ beat (hawkish offset). Net: hold-favored with cut tail intact ahead of Sep 2 decision."
       }
     }
   },
@@ -193,10 +194,10 @@
           "importance": "HIGH",
           "weight": 1.5,
           "data": {
-            "actual": "WTI 83.40",
+            "actual": "WTI 83.40 Fri settle / 85.34 Sun reopen",
             "forecast": "85.0",
             "previous": "83.53",
-            "delta_label": "-0.16% d / -4.20% w",
+            "delta_label": "-0.16% d Fri / -4.20% w; +2.33% Sun reopen vs settle",
             "delta_type": "miss"
           },
           "reason": "WTI $83.40 official close (yfinance, re-verified Sun 8/30), -4.20% w — the demand-scare repricing held through Friday's settle. Consistent with ISM mfg flash 48.7, negative payrolls and weak China PMIs; a direct disinflation impulse that argues for cuts even as Warsh stresses sticky services inflation.",
@@ -361,7 +362,7 @@
           "source": "Federal Reserve — Chair Warsh, 'In Our Time', Jackson Hole",
           "source_url": "https://www.federalreserve.gov/newsevents/speech/warsh20260828a.htm",
           "importance": "HIGH",
-          "weight": 2.0,
+          "weight": 2.5,
           "data": {
             "actual": "PCE 3.7% 12m / 4.1% 6m ann.; 54% of PCE basket >3%",
             "forecast": "balanced-to-dovish nod toward Sep cut",
@@ -369,7 +370,7 @@
             "delta_label": "hawkish vs balanced expectation",
             "delta_type": "beat"
           },
-          "reason": "Warsh: 'the Fed's predominant focus right now should be on prices'; labour 'consistent with full employment' (4.1% jobless, claims near multi-decade lows); financial conditions 'hard pressed to describe as restrictive'; 'committed to a discipline, not to a decision'. Markets read it hawkish: ZQ=F -0.16 to 96.220 official close (implied 3.780%, +15.5bp over mid), GC=F -1.73% settle, 10Y +4.8bp, IWM -1.35%. Sep cut odds repriced from 55% to 45% on this desk's proxy.",
+          "reason": "Warsh: 'the Fed's predominant focus right now should be on prices'; labour 'consistent with full employment' (4.1% jobless, claims near multi-decade lows); financial conditions 'hard pressed to describe as restrictive'; 'committed to a discipline, not to a decision'. Markets read it hawkish: ZQ=F -0.16 to 96.220 official close (implied 3.780%, +15.5bp over mid), GC=F -1.73% settle, 10Y +4.8bp, IWM -1.35%. Sep cut odds repriced from 55% to 45% on this desk's proxy. [2026-08-31 re-verify: ZQU26 settle 96.305 confirms post-speech hawkish repricing stuck — Sep post-FOMC implied 3.776%, hike tail 0.65. Weight raised 2.0->2.5 on futures confirmation.]",
           "market_validation": [
             {
               "ticker": "GC=F",
@@ -488,10 +489,10 @@
           "importance": "LOW",
           "weight": 1.0,
           "data": {
-            "actual": "USDCAD 1.3851 Fri / 1.3901 Sun reopen",
+            "actual": "USDCAD 1.3851 Fri / 1.389 Sun reopen",
             "forecast": "<1.36",
             "previous": "1.3875",
-            "delta_label": "-0.17% d Fri / +0.51% w; +0.36% Sun reopen",
+            "delta_label": "-0.17% d Fri / +0.51% w; +0.28% Sun reopen (thin)",
             "delta_type": "miss"
           },
           "reason": "Official Friday close 1.3851 (-0.17% d, +0.51% w) — CAD actually firmed after the GDP beat, but Sunday 8/30's FX reopen slipped back to 1.3901 (+0.36%) as the post-Warsh USD bid and Fed-BoC spread reasserted. Rate-spread trade remains the cleanest signal into Sep 2.",
@@ -508,10 +509,10 @@
           "importance": "HIGH",
           "weight": 1.5,
           "data": {
-            "actual": "WTI 83.40",
+            "actual": "WTI 83.40 Fri settle / 85.34 Sun reopen",
             "forecast": "85.0",
             "previous": "83.53",
-            "delta_label": "-0.16% d / -4.20% w",
+            "delta_label": "-0.16% d Fri / -4.20% w; +2.33% Sun reopen vs settle",
             "delta_type": "miss"
           },
           "reason": "Oil's weekly slide settled at -4.20% (official close 83.40), eroding Canada's terms of trade and the BoC's hawkish buffer. Partly offset by today's strong GDP; net still dovish for the Sep 2 calculus.",
