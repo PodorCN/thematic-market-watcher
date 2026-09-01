@@ -1,0 +1,13 @@
+{
+  "_comment": "US small-cap theme — Russell 2000 / S&P SmallCap 600 and related ETFs.",
+  "tickers": [
+    "IWM",
+    "IJR",
+    "VB",
+    "IWC",
+    "VTWO",
+    "SCHA",
+    "RWJ",
+    "UWM"
+  ]
+}

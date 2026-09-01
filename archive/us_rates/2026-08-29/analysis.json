@@ -1,0 +1,37 @@
+{
+  "market_summary": "Yields ended flat-to-up on Aug 29 despite hawkish Jackson Hole: 10Y 4.67%, 2Y 4.20%, 30Y 5.19%, funds 3.63% per H.15, matching our tracked TLT 83.13, IEF 93.23, SHY 82.04. DXY 99.16 held firm. The long end's muted +1 bp reaction to Warsh suggests investors believe the Fed will curb inflation without forcing a bear-steepener, keeping mortgage rates stuck at 6.66%.",
+  "top_story": {
+    "headline": "Fed Chair Warsh at Jackson Hole Opens Door to September Hike — 'Work to Do' if Inflation Stays Above 2%",
+    "url": "https://www.pbs.org/newshour/economy/warsh-raises-stakes-for-feds-next-meeting-and-other-takeaways-from-jackson-hole-conference",
+    "why_it_matters": "Warsh's first detailed inflation defense — PCE 3.7%, >50% of basket >3% — shifted September hike odds to ~60% (from 40%) and reframed the hold as data-dependent, not dovish. With only one CPI before Sep 15–16, a hot August print flips the Fed from patient to hiking, repricing TLT/IEF duration and small-cap beta at once."
+  },
+  "themes": [
+    {
+      "title": "Three Hawks vs Nine Holds — FOMC Split Deepens",
+      "synthesis": "July minutes show three dissents (Hammack/Kashkari/Logan) for +25 bps — most since 2016 — on broad-based price pressure; majority chose to await intermeeting data, but market already prices a full hike by September and another by Q1 2027.",
+      "source_urls": [
+        "https://www.federalreserve.gov/monetarypolicy/fomcminutes20260729.htm",
+        "https://www.cnbc.com/2026/07/29/fed-meeting-today-live-updates.html"
+      ]
+    },
+    {
+      "title": "Curve Bears Steepener Doubts — Long End Unconvinced",
+      "synthesis": "Nominal yields rose 25–30 bps intermeeting on real rates, but 10Y barely moved post-Warsh while 30Y topped 5.2% then faded; survey medians still see no change into 2028 vs market's near-term hike, anchoring inflation compensation.",
+      "source_urls": [
+        "https://www.federalreserve.gov/releases/h15/",
+        "https://www.pbs.org/newshour/economy/warsh-raises-stakes-for-feds-next-meeting-and-other-takeaways-from-jackson-hole-conference"
+      ]
+    },
+    {
+      "title": "Data Dependency Narrowed to One CPI",
+      "synthesis": "Warsh explicitly rejected forward guidance, tying September to the Aug CPI/Payrolls days before the meeting; PCE 3.7% and oil-driven gasoline softness mean that single CPI (Cleveland nowcast 0.38% MoM) decides hike vs hold.",
+      "source_urls": [
+        "https://finance.yahoo.com/economy/policy/articles/warshs-jackson-hole-speech-course-050258340.html",
+        "https://www.federalreserve.gov/monetarypolicy/fomcminutes20260729.htm"
+      ]
+    }
+  ],
+  "outlook": "Watch Sep 11 August CPI and Sep 4 payrolls — a second negative payroll plus tame CPI keeps Fed on hold and duration bid; a firm CPI forces a 25 bps hike Sep 16 and flattens TLT/IEF; middle path keeps yields chopping around 4.6–4.7% 10Y.",
+  "date": "2026-08-29",
+  "theme": "us_rates"
+}

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Water Market Digest — {{ report_date }}</title>
+<title>Thematic Market Digest — {{ report_theme }} — {{ report_date }}</title>
 <style>
   :root {
     --bg: #f7f9fa;
@@ -12,8 +12,23 @@
     --muted: #5b6b76;
     --border: #e1e7ea;
     --accent: #0b6e8f;
-    --up: #1f9d55;
-    --down: #d64545;
+    /* Unified palette — up/down + theme accents + category */
+    --up: #059669;
+    --up-bg: #ecfdf5;
+    --up-border: #a7f3d0;
+    --down: #dc2626;
+    --down-bg: #fef2f2;
+    --down-border: #fecaca;
+    --neutral: #64748b;
+    --accent-cb: #0b4d3e;
+    --accent-sc: #7c3aed;
+    --accent-rates: #b45309;
+    --accent-tariff: #be123c;
+    --cat-company-bg: #dbeafe; --cat-company-fg: #1e40af;
+    --cat-policy-bg: #fef3c7; --cat-policy-fg: #92400e;
+    --cat-market-bg: #dcfce7; --cat-market-fg: #166534;
+    --cat-tech-bg: #fce7f3; --cat-tech-fg: #9d174d;
+    --cat-infra-bg: #ede9fe; --cat-infra-fg: #6d28d9;
   }
   * { box-sizing: border-box; }
   body {
@@ -24,7 +39,8 @@
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
     line-height: 1.5;
   }
-  main { max-width: 880px; margin: 0 auto; }
+  main { max-width: 1440px; margin: 0 auto; width: 96vw; padding: 0 0.5rem; }
+  @media (max-width: 768px) { main { width: 100vw; padding: 0 0.75rem; } }
   header.page-header { margin-bottom: 2rem; }
   h1 { font-size: 1.6rem; margin: 0 0 0.25rem; }
   .date { color: var(--muted); font-size: 0.95rem; }
@@ -74,42 +90,190 @@
     margin-right: 0.4rem;
   }
   footer { color: var(--muted); font-size: 0.8rem; margin-top: 3rem; text-align: center; }
+  .timeline { position: relative; margin: 0.6rem 0 0; padding-left: 0; }
+  .timeline::before { content: ""; position: absolute; left: 108px; top: 8px; bottom: 8px; width: 2px; background: var(--border); border-radius: 999px; }
+  .tl-item { display: grid; grid-template-columns: 96px 18px 1fr; gap: 0.6rem; padding: 0.55rem 0; align-items: start; }
+  .tl-date { text-align: right; padding-right: 0.2rem; }
+  .tl-day { font-weight: 700; font-size: 0.85rem; }
+  .tl-trade { font-size: 0.75rem; line-height: 1.2; }
+  .tl-dot { width: 10px; height: 10px; border-radius: 999px; margin-top: 0.25rem; border: 2px solid #fff; box-shadow: 0 0 0 2px var(--border); justify-self: center; }
+  .tl-content { min-width: 0; }
+  @media (max-width: 560px) { .timeline::before { left: 76px; } .tl-item { grid-template-columns: 64px 18px 1fr; } }
 </style>
 </head>
 <body>
 <main>
+  <nav style="margin-bottom:1.2rem;font-size:0.85rem;">
+    <a href="../" style="color:var(--muted);text-decoration:none;">← All themes</a>
+    <span style="color:var(--border);margin:0 0.4rem;">·</span>
+    <span style="color:var(--accent);font-weight:600;">{{ report_theme }}</span>
+    <span style="float:right;color:var(--muted);">
+      <a href="../canadian_banks/" style="color:var(--muted);">Canadian Banks</a> ·
+      <a href="../us_smallcap/" style="color:var(--muted);">US Small Cap</a> ·
+      <a href="../us_rates/" style="color:var(--muted);">US Rates</a> ·
+      <a href="../tariff_war/" style="color:var(--muted);">Tariff War</a> ·
+      <a href="../canadian-financial-study/" style="color:var(--accent);font-weight:700;">Study</a>
+    </span>
+  </nav>
   <header class="page-header">
-    <h1>Water Market Digest</h1>
-    <div class="date">{{ report_date }}</div>
+    <div style="display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap;">
+      <h1 style="margin:0;">Thematic Market Digest — {{ report_theme }}</h1>
+      {% if main_proxy %}<span class="badge" style="background:{{ report_accent }};color:#fff;border:1px solid {{ report_accent }};font-size:0.75rem;padding:0.2rem 0.6rem;">Main proxy: {{ main_proxy }}</span>{% endif %}
+    </div>
+    <div class="date" style="margin-top:0.25rem;">{{ report_date }} · 90-day history · Full-width</div>
   </header>
 
+  {% if thesis %}
   <section>
-    <h2>Market Summary</h2>
+    <h2>Why This Theme — Investment Thesis</h2>
+    <div class="card" style="border-left:4px solid {{ report_accent }};">
+      <p style="font-weight:750;margin:0 0 0.45rem;font-size:1.02rem;">{{ thesis.headline }}</p>
+      <p style="margin:0 0 0.8rem;color:var(--text);font-size:0.92rem;background:#f8fafc;border:1px solid var(--border);border-radius:8px;padding:0.65rem 0.8rem;">{{ thesis.one_liner }}</p>
+      <ul style="margin:0;padding-left:1.2rem;">
+        {% for b in thesis.bullets %}
+        <li style="margin:0.45rem 0;font-size:0.92rem;line-height:1.45;">{{ b }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </section>
+  {% endif %}
+
+  {% if proxy_info %}
+  <section>
+    <h2>Main Proxy — {{ main_proxy }}</h2>
+    <div class="card" style="border-left:4px solid {{ report_accent }};">
+      <p style="font-weight:750;margin:0 0 0.25rem;font-size:1.02rem;">{{ proxy_info.name }}</p>
+      <p style="margin:0 0 0.35rem;color:var(--muted);font-size:0.85rem;">Tracks: {{ proxy_info.tracks }}</p>
+      <p style="margin:0 0 0.5rem;font-size:0.92rem;line-height:1.45;">{{ proxy_info.why_main }}</p>
+      <div class="meta" style="background:#f8fafc;border:1px solid var(--border);border-radius:999px;display:inline-block;padding:0.15rem 0.6rem;">{{ proxy_info.aum_mer }}</div>
+    </div>
+  </section>
+  {% endif %}
+
+  {% if overlay_chart %}
+  <section>
+    <h2>Index Trend — {{ report_theme_label }} · Main vs Benchmark</h2>
+    <div class="card" style="margin-bottom:1rem;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.6rem;flex-wrap:wrap;gap:0.5rem;">
+        <div><strong>{{ overlay_symbols|join(" vs ") }} — Indexed to 100</strong> <span class="meta">Main proxy vs {{ benchmark_label }}</span></div>
+        <div class="meta" style="display:flex;gap:10px;flex-wrap:wrap;">
+          {% set _col = {'ZEB.TO':'#0b4d3e','HFIN.TO':'#94a3b8','IWM':'#7c3aed','TLT':'#b45309','XLI':'#be123c','SPY':'#64748b'} %}
+          {% for sym in overlay_symbols %}
+          <span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:12px;height:3px;background:{{ _col.get(sym, '#64748b') }};border-radius:999px;display:inline-block{% if sym == 'SPY' %};border-top:2px dashed #64748b;height:0{% endif %}"></span>{{ sym }}</span>
+          {% endfor %}
+        </div>
+      </div>
+      <div style="overflow-x:auto;">{{ overlay_chart|safe }}</div>
+      <div class="meta" style="margin-top:0.4rem;">Indexed to 100 at start of 90-day window — flat if both move together, divergence is theme alpha vs S&P 500. Source: yfinance 90-day history.</div>
+    </div>
+  </section>
+  {% elif primary_charts %}
+  <section>
+    <h2>Index Trend — {{ report_theme_label }} {% if main_proxy %}<span class="meta" style="font-weight:400;text-transform:none;letter-spacing:0;">· Main proxy {{ main_proxy }}</span>{% endif %}</h2>
+    {% for pc in primary_charts %}
+    <div class="card" style="margin-bottom:1rem;">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:0.6rem;flex-wrap:wrap;gap:0.5rem;">
+        <div><strong>{{ pc.symbol }}</strong> <span class="meta">{{ pc.name }}</span> <span class="badge" style="background:#f1f5f9;color:var(--muted);border:1px solid var(--border);">{{ pc.window_label }}</span></div>
+        <div class="num {{ 'up' if pc.change_pct >= 0 else 'down' }}" style="font-weight:700;">{{ "%.2f"|format(pc.last_close) }} {{ pc.currency }} · {{ "%+.2f"|format(pc.change_pct) }}% <span class="meta" style="font-weight:400;">{{ pc.window_label }}</span></div>
+      </div>
+      <div style="overflow-x:auto;">{{ pc.svg|safe }}</div>
+      <div class="meta" style="margin-top:0.4rem;">90-day trend (yfinance). Full-width responsive.</div>
+    </div>
+    {% endfor %}
+  </section>
+  {% endif %}
+
+  <section>
+    <h2>Market Summary — At a Glance</h2>
     <div class="card">
       <p>{{ analysis.market_summary }}</p>
-      <table>
-        <thead>
-          <tr><th>Ticker</th><th></th><th class="num">Last Close</th><th class="num">Change</th></tr>
-        </thead>
+      {% if snapshot %}
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0.7rem;margin:0.9rem 0 0.6rem;">
+        <div style="background:#f8fafc;border:1px solid var(--border);border-radius:10px;padding:0.75rem 0.9rem;">
+          <div class="meta" style="font-size:0.68rem;letter-spacing:0.06em;text-transform:uppercase;">Proxies</div>
+          <div style="font-size:1.25rem;font-weight:800;">{{ snapshot.count }}</div>
+          <div class="meta" style="font-size:0.78rem;">{{ snapshot.window_label }}</div>
+        </div>
+        <div style="background:{% if snapshot.avg_change >=0 %}var(--up-bg){% else %}var(--down-bg){% endif %};border:1px solid {% if snapshot.avg_change >=0 %}var(--up-border){% else %}var(--down-border){% endif %};border-radius:10px;padding:0.75rem 0.9rem;">
+          <div class="meta" style="font-size:0.68rem;letter-spacing:0.06em;text-transform:uppercase;color:{% if snapshot.avg_change >=0 %}var(--up){% else %}var(--down){% endif %};">Theme</div>
+          <div class="num {{ 'up' if snapshot.avg_change >=0 else 'down' }}" style="font-size:1.25rem;font-weight:800;">{{ "%+.2f"|format(snapshot.avg_change) }}%</div>
+          <div class="meta" style="font-size:0.78rem;">mean · median {{ "%+.2f"|format(snapshot.median_change) }}%</div>
+        </div>
+        <div style="background:#f8fafc;border:1px solid var(--border);border-radius:10px;padding:0.75rem 0.9rem;">
+          <div class="meta" style="font-size:0.68rem;letter-spacing:0.06em;text-transform:uppercase;">Breadth</div>
+          <div style="font-size:1.15rem;font-weight:800;"><span class="up">{{ snapshot.up }} up</span> · <span class="down">{{ snapshot.down }} down</span></div>
+          <div class="meta" style="font-size:0.78rem;">{{ "%.0f"|format(snapshot.up/snapshot.count*100) }}% positive</div>
+        </div>
+        <div style="background:#f8fafc;border:1px solid var(--border);border-radius:10px;padding:0.75rem 0.9rem;">
+          <div class="meta" style="font-size:0.68rem;letter-spacing:0.06em;text-transform:uppercase;">Best / Worst</div>
+          <div style="font-size:0.92rem;font-weight:700;"><span class="up">{{ snapshot.best.symbol }} {{ "%+.2f"|format(snapshot.best.change) }}%</span> <span style="color:var(--muted);">·</span> <span class="down">{{ snapshot.worst.symbol }} {{ "%+.2f"|format(snapshot.worst.change) }}%</span></div>
+          <div class="meta" style="font-size:0.78rem;">Range {{ "%.2f"|format(snapshot.spread) }}pp · Std {{ "%.2f"|format(snapshot.stdev) }}pp</div>
+        </div>
+        {% if snapshot.main_proxy %}
+        <div style="background:{% if snapshot.main_proxy.change >=0 %}var(--up-bg){% else %}var(--down-bg){% endif %};border:1px solid {% if snapshot.main_proxy.change >=0 %}var(--up-border){% else %}var(--down-border){% endif %};border-radius:10px;padding:0.75rem 0.9rem;">
+          <div class="meta" style="font-size:0.68rem;letter-spacing:0.06em;text-transform:uppercase;color:{% if snapshot.main_proxy.change >=0 %}var(--up){% else %}var(--down){% endif %};">Main {{ snapshot.main_proxy.symbol }}</div>
+          <div class="num {{ 'up' if snapshot.main_proxy.change >=0 else 'down' }}" style="font-size:1.25rem;font-weight:800;">{{ "%+.2f"|format(snapshot.main_proxy.change) }}%</div>
+          <div class="meta" style="font-size:0.78rem;">vs mean {{ "%+.2f"|format(snapshot.main_proxy.change - snapshot.avg_change) }}pp · {{ snapshot.main_proxy.window_label }}</div>
+        </div>
+        {% endif %}
+      </div>
+      {% if snapshot.count_excluded and snapshot.count_excluded > 0 %}
+      <div class="meta" style="margin-top:0.5rem;font-size:0.78rem;color:#92400e;">⚠️ {{ snapshot.excluded_symbols|join(", ") }} excluded (stale window) — not counted in mean/std</div>
+      {% endif %}
+      <details style="margin-top:0.8rem;"><summary class="meta" style="cursor:pointer;">Details — per-ticker ({{ snapshot.window_label }})</summary>
+      <table style="margin-top:0.6rem;">
+        <thead><tr><th>Ticker</th><th></th><th class="num">Last</th><th class="num">1D Change<br><span class="meta" style="font-weight:400;text-transform:none;">{{ snapshot.window_label if snapshot else '1D' }}</span></th></tr></thead>
         <tbody>
           {% for t in tickers %}
+          <tr>{% if t.error %}<td>{{ t.symbol }}</td><td colspan="3" class="meta">no data</td>{% else %}<td><strong>{{ t.symbol }}</strong><div class="meta">{{ t.window_label }}</div></td><td>{{ t.sparkline|safe }}</td><td class="num">{{ "%.2f"|format(t.last_close) }}</td><td class="num {{ 'up' if t.change_pct >=0 else 'down' }}">{{ "%+.2f"|format(t.change_pct) }}%<div class="meta" style="font-size:0.7rem;">{{ t.window_label }}</div></td>{% endif %}</tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      </details>
+      {% endif %}
+    </div>
+  </section>
+
+  {% if overall_status %}
+  <section>
+    <h2>Thesis Health — {{ overall_status.overall }} <span class="meta" style="font-weight:400;text-transform:none;letter-spacing:0;">· {{ overall_status.counts.Confirming }} Confirming · {{ overall_status.counts.Watch }} Watch · {{ overall_status.counts.Breaking }} Breaking</span></h2>
+    <div class="card" style="border-left:4px solid {{ overall_status.color }};background:{{ overall_status.bg }};">
+      <div style="display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap;margin-bottom:0.6rem;">
+        <span style="display:inline-flex;align-items:center;gap:6px;background:{{ overall_status.bg }};color:{{ overall_status.color }};border:1px solid {{ overall_status.color }}40;padding:0.25rem 0.7rem;border-radius:999px;font-weight:800;font-size:0.9rem;"><span style="width:9px;height:9px;border-radius:50%;background:{{ overall_status.color }};display:inline-block;"></span>{{ overall_status.overall }}</span>
+        <span class="meta">Updated: <strong>{{ report_date }}</strong> · 5 pre-committed KPIs — you check, you don't reinterpret.</span>
+        <span class="meta" style="margin-left:auto;">Window: {{ snapshot.window_label if snapshot else report_date }} · Next refresh on next archive date</span>
+      </div>
+      <table>
+        <thead><tr><th>KPI</th><th>Now</th><th>Confirming</th><th>Breaking</th><th>Status</th><th>Source</th></tr></thead>
+        <tbody>
+          {% for k in thesis_kpis %}
           <tr>
-            {% if t.error %}
-            <td>{{ t.symbol }}</td><td colspan="3" class="meta">no data ({{ t.error }})</td>
-            {% else %}
-            <td><strong>{{ t.symbol }}</strong><div class="meta">{{ t.name }}</div></td>
-            <td>{{ t.sparkline|safe }}</td>
-            <td class="num">{{ "%.2f"|format(t.last_close) }} {{ t.currency }}</td>
-            <td class="num {{ 'up' if t.change_pct >= 0 else 'down' }}">
-              {{ "%+.2f"|format(t.change_pct) }}%
+            <td style="font-weight:600;">{{ k.kpi }}</td>
+            <td class="num" style="font-weight:700;">{{ k.now }}</td>
+            <td class="meta">{{ k.confirm }}</td>
+            <td class="meta">{{ k.break }}</td>
+            <td><span class="badge" style="background:{% if k.status=='Confirming' %}#ecfdf5;color:#065f46;border:1px solid #a7f3d0{% elif k.status=='Breaking' %}#fef2f2;color:#991b1b;border:1px solid #fecaca{% else %}#fffbeb;color:#92400e;border:1px solid #fde68a{% endif %}">{{ k.status }}</span></td>
+            <td class="meta">{{ k.source }}</td>
+          </tr>
+          <tr>
+            <td colspan="6" style="background:#f8fafc;border-top:none;padding:0.5rem 0.7rem 0.7rem;">
+              <details style="font-size:0.82rem;">
+                <summary style="cursor:pointer;color:var(--accent);font-weight:600;">Line-by-line: why this row, why this threshold, when it updates</summary>
+                <div style="margin-top:0.5rem;line-height:1.45;display:grid;gap:0.4rem;">
+                  <div><strong style="color:var(--text);">Why this KPI?</strong> {{ k.why_kpi }}</div>
+                  <div><strong style="color:var(--text);">Why this threshold?</strong> {{ k.why_threshold }}</div>
+                  <div><strong style="color:var(--text);">When updated?</strong> {{ k.when_updated }}</div>
+                </div>
+              </details>
             </td>
-            {% endif %}
           </tr>
           {% endfor %}
         </tbody>
       </table>
+      <p class="meta" style="margin-top:0.6rem;">Overall = <strong style="color:{{ overall_status.color }};">{{ overall_status.overall }}</strong> because {{ overall_status.counts.Confirming }} confirming, {{ overall_status.counts.Watch }} watch, {{ overall_status.counts.Breaking }} breaking. Watch ≥2 or Confirming &lt;50% → Watch; Breaking ≥2 → Breaking. Updated: <strong>{{ report_date }}</strong> · Next refresh on next archive date.</p>
     </div>
   </section>
+  {% endif %}
 
   <section>
     <h2>Top Story</h2>
@@ -119,20 +283,24 @@
     </div>
   </section>
 
-  {% if analysis.themes %}
+  {% if enriched_themes %}
   <section>
-    <h2>Themes</h2>
+    <h2>Themes — Drivers Clustered <span class="meta" style="font-weight:400;text-transform:none;letter-spacing:0;">· {{ enriched_themes|length }} clusters, each ~ one date</span></h2>
     <div class="card">
-      {% for theme in analysis.themes %}
-      <div class="theme">
-        <h3>{{ theme.title }}</h3>
-        <p>{{ theme.synthesis }}</p>
-        {% if theme.source_urls %}
-        <ul>
-          {% for url in theme.source_urls %}
-          <li><a href="{{ url }}">{{ url }}</a></li>
+      {% for th in enriched_themes %}
+      <div class="theme" style="padding:0.9rem 0;border-bottom:1px solid var(--border);">
+        <div style="display:flex;justify-content:space-between;gap:0.8rem;align-items:baseline;flex-wrap:wrap;">
+          <h3 style="margin:0;">{{ th.title }}</h3>
+          {% if th.theme_date %}<span class="badge" style="background:#f1f5f9;color:var(--muted);border:1px solid var(--border);">{{ th.theme_date }}</span>{% endif %}
+        </div>
+        <p style="margin:0.35rem 0 0;">{{ th.synthesis }}</p>
+        {% if th.short_links %}
+        <div class="meta" style="margin-top:0.45rem;">Sources:
+          {% for domain, url in th.short_links %}
+          <a href="{{ url }}" style="color:var(--accent);text-decoration:none;border:1px solid var(--border);background:#f8fafc;padding:0.1rem 0.4rem;border-radius:999px;font-size:0.75rem;margin-right:0.3rem;">{{ domain }}</a>
           {% endfor %}
-        </ul>
+          {% if th.source_urls|length > 3 %}<span class="meta">+{{ th.source_urls|length - 3 }} more</span>{% endif %}
+        </div>
         {% endif %}
       </div>
       {% endfor %}
@@ -140,20 +308,122 @@
   </section>
   {% endif %}
 
+  {% if bear_case %}
+  <section>
+    <h2>Bear Case — What Would Prove This Wrong <span class="meta" style="font-weight:400;text-transform:none;letter-spacing:0;">· Invalidation triggers, not boilerplate</span></h2>
+    <div class="card" style="border-left:4px solid var(--down);">
+      <p style="font-weight:700;margin:0 0 0.5rem;">{{ bear_case.title }}</p>
+      <ul style="margin:0;padding-left:1.2rem;">
+        {% for t in bear_case.triggers %}
+        <li style="margin:0.4rem 0;font-size:0.92rem;"><strong style="color:var(--down);">Trigger →</strong> {{ t }}</li>
+        {% endfor %}
+      </ul>
+      <div style="margin-top:0.8rem;padding:0.6rem 0.8rem;background:#f8fafc;border:1px solid var(--border);border-radius:8px;">
+        <div class="meta" style="font-weight:600;">What <em>doesn't</em> break it:</div>
+        <div style="font-size:0.88rem;">{{ bear_case.non_triggers }}</div>
+        <div class="meta" style="margin-top:0.4rem;font-style:italic;">Interview follow-up: {{ bear_case.interview_q }}</div>
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
+  {% if crowding %}
+  <section>
+    <h2>Positioning & Crowding — Is This Consensus? <span class="meta" style="font-weight:400;text-transform:none;letter-spacing:0;">· ETF flows · 13F · Options · Prediction markets</span></h2>
+    <div class="card">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0.9rem;">
+        <div style="background:#f8fafc;border:1px solid var(--border);border-radius:10px;padding:0.9rem;">
+          <div class="meta" style="text-transform:uppercase;letter-spacing:0.06em;font-size:0.7rem;">ETF Flows</div>
+          <div style="font-size:0.92rem;margin-top:0.3rem;">{{ crowding.etf_flows }}</div>
+        </div>
+        <div style="background:#f8fafc;border:1px solid var(--border);border-radius:10px;padding:0.9rem;">
+          <div class="meta" style="text-transform:uppercase;letter-spacing:0.06em;font-size:0.7rem;">13F / Ownership</div>
+          <div style="font-size:0.92rem;margin-top:0.3rem;">{{ crowding.ownership }}</div>
+        </div>
+        <div style="background:#f8fafc;border:1px solid var(--border);border-radius:10px;padding:0.9rem;">
+          <div class="meta" style="text-transform:uppercase;letter-spacing:0.06em;font-size:0.7rem;">Options Skew</div>
+          <div style="font-size:0.92rem;margin-top:0.3rem;">{{ crowding.options }}</div>
+        </div>
+        <div style="background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:0.9rem;">
+          <div class="meta" style="text-transform:uppercase;letter-spacing:0.06em;font-size:0.7rem;">Prediction Markets — Real-time Consensus</div>
+          <div style="font-size:0.92rem;margin-top:0.3rem;">{{ crowding.prediction }}</div>
+          <div class="meta" style="margin-top:0.3rem;">Kalshi TRADE API + Polymarket Gamma/CLOB — free, matches institutional; genuinely differentiated vs pure fundamental.</div>
+        </div>
+      </div>
+      <p class="meta" style="margin-top:0.7rem;">If crowding is high + thesis still Watch, size down even if thesis is Confirming — this is the timing overlay you flagged as missing.</p>
+    </div>
+  </section>
+  {% endif %}
+
+  <section>
+    <h2>Headline Timeline — Drivers for {{ main_proxy }} <span class="meta" style="font-weight:400;text-transform:none;letter-spacing:0;">· Past 3 months — one top driver per trading day ({{ timeline|length }} days)</span></h2>
+    <div class="card">
+      <p class="meta" style="margin-top:0">Every row is <strong>why this day moved {{ main_proxy }}</strong> — the top <code>importance</code> headline for that date, filtered as a driver for the main proxy. Left = headline date; right-hand <code style="background:#f1f5f9;padding:0 4px;border-radius:4px;">{{ main_proxy }}</code> shows the proxy's close & day-over-day change on that driver day.</p>
+      <div class="timeline">
+        {% for e in timeline %}
+        <div class="tl-item">
+          <div class="tl-date">
+            <div class="tl-day">{{ e.timeline_date or e.published_at or '—' }}</div>
+            <div class="tl-trade meta">{{ e.window_label }}{% if e.index_close is not none %} · {{ "%.2f"|format(e.index_close) }} {% if e.index_change_pct is not none %}<span class="{{ 'up' if e.index_change_pct >= 0 else 'down' }}">{{ "%+.2f"|format(e.index_change_pct) }}%</span>{% endif %}{% endif %}</div>
+          </div>
+          <div class="tl-dot" style="background:{{ report_accent }}"></div>
+          <div class="tl-content">
+            {% set _cat_bg = {'company_news':'var(--cat-company-bg)','policy_regulation':'var(--cat-policy-bg)','market':'var(--cat-market-bg)','technology':'var(--cat-tech-bg)','infrastructure':'var(--cat-infra-bg)','climate_event':'var(--cat-infra-bg)'} %}
+            {% set _cat_fg = {'company_news':'var(--cat-company-fg)','policy_regulation':'var(--cat-policy-fg)','market':'var(--cat-market-fg)','technology':'var(--cat-tech-fg)','infrastructure':'var(--cat-infra-fg)','climate_event':'var(--cat-infra-fg)'} %}
+            <span class="badge" style="background:{{ _cat_bg.get(e.category,'#f1f5f9') }};color:{{ _cat_fg.get(e.category,'var(--muted)') }};border:1px solid var(--border);">{{ e.category }}</span>
+            <span class="meta" style="margin-left:0.3rem;">★{{ e.importance }}</span>
+            {% if e.driver %}
+            <span class="badge" style="background:#fffbeb;color:#92400e;border:1px solid #fde68a;margin-left:0.35rem;">driver for {{ main_proxy }}</span>
+            {% endif %}
+            <a href="{{ e.url }}" style="display:block;margin:0.15rem 0 0;font-weight:600;color:var(--text);text-decoration:none;">{{ e.headline }}</a>
+            <div class="meta">{{ e.source }} · <span class="meta" style="color:var(--accent);">Selected as driver for {{ main_proxy }}: top importance for {{ e.timeline_date }}</span></div>
+            {% if e.driver %}
+            <div style="margin-top:0.4rem;background:#fffbeb;border-left:3px solid #f59e0b;padding:0.45rem 0.65rem;border-radius:6px;font-size:0.85rem;color:#78350f;line-height:1.4;">
+              <strong style="color:#b45309;">Why this moves {{ main_proxy }} →</strong> {{ e.driver }}
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
   <section>
     <h2>Outlook</h2>
     <div class="card"><p>{{ analysis.outlook }}</p></div>
   </section>
 
   <section>
-    <h2>Headlines</h2>
+    <h2>What to Watch — Key Data Points</h2>
+    <div class="card">
+      <table>
+        <thead><tr><th>Date</th><th>Event / Catalyst</th><th>Impact</th></tr></thead>
+        <tbody>
+          {% for w in watchlist %}
+          <tr>
+            <td style="white-space:nowrap;font-weight:600;">{{ w.date }}</td>
+            <td>{{ w.event }}</td>
+            <td><span class="badge" style="background:{% if w.impact == 'High' %}#fee2e2;color:#991b1b{% elif w.impact == 'Medium' %}#fef9c3;color:#854d0e{% else %}#f1f5f9;color:#334155{% endif %}">{{ w.impact }}</span></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <p class="meta" style="margin-top:0.8rem;">Add to calendar: FOMC/CPI are the fastest repricers for the index above; watch the <code>{{ primary_charts[0].symbol if primary_charts else 'primary' }}</code> reaction at each print.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>All Headlines — Last 90 Days (Ranked)</h2>
     <div class="card">
       <ul class="headline-list">
         {% for h in headlines %}
         <li>
-          <span class="badge">{{ h.category }}</span>
+          {% set _cat_bg2 = {'company_news':'var(--cat-company-bg)','policy_regulation':'var(--cat-policy-bg)','market':'var(--cat-market-bg)','technology':'var(--cat-tech-bg)','infrastructure':'var(--cat-infra-bg)','climate_event':'var(--cat-infra-bg)'} %}
+          {% set _cat_fg2 = {'company_news':'var(--cat-company-fg)','policy_regulation':'var(--cat-policy-fg)','market':'var(--cat-market-fg)','technology':'var(--cat-tech-fg)','infrastructure':'var(--cat-infra-fg)','climate_event':'var(--cat-infra-fg)'} %}
+          <span class="badge" style="background:{{ _cat_bg2.get(h.category,'#f1f5f9') }};color:{{ _cat_fg2.get(h.category,'var(--muted)') }};border:1px solid var(--border);">{{ h.category }}</span>
           <a href="{{ h.url }}">{{ h.headline }}</a>
-          <div class="meta">{{ h.source }}{% if h.published_at %} · {{ h.published_at }}{% endif %}</div>
+          <div class="meta">{{ h.source }}{% if h.published_at %} · {{ h.published_at }}{% endif %} · ★{{ h.importance }}</div>
         </li>
         {% endfor %}
       </ul>
@@ -161,7 +431,7 @@
   </section>
 
   <footer>
-    Generated automatically by the Daily Digest pipeline. See <a href="https://github.com/PodorCN/Thematic-Market-Water">source</a>.
+    Generated automatically by the Daily Digest pipeline. See <a href="https://github.com/PodorCN/thematic-market-watcher">source</a>.
   </footer>
 </main>
 </body>

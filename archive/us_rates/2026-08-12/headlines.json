@@ -1,0 +1,24 @@
+{
+  "headlines": [
+    {
+      "headline": "July CPI 0.1% MoM, 3.4% YoY — Trims September Hike Odds to ~42%",
+      "source": "BLS",
+      "url": "https://www.bls.gov/cpi/2026-07-cpi",
+      "published_at": "2026-08-12",
+      "category": "policy_regulation",
+      "importance": 5,
+      "driver": "For TLT: Positive — cool CPI cut hike odds 20pp and lifted TLT; shows TLT's high beta to CPI — single print moves TLT 1-2% vs SHY 0.2%."
+    },
+    {
+      "headline": "July PPI Flat MoM — Core Goods Disinflation Helps Doubt Hike Case",
+      "source": "BLS",
+      "url": "https://www.bls.gov/ppi/2026-07-ppi",
+      "published_at": "2026-08-14",
+      "category": "policy_regulation",
+      "importance": 3,
+      "driver": "For TLT: Positive — flat PPI reinforced 'Fed can stay patient' and pushed hike odds to low 30s, directly supporting TLT's duration bid into Jackson Hole."
+    }
+  ],
+  "date": "2026-08-12",
+  "theme": "us_rates"
+}

@@ -1,0 +1,33 @@
+{
+  "headlines": [
+    {
+      "headline": "Big Six Q2 Earnings Preview: NIM Expansion Seen Offsetting Higher Provisions — Bay Street",
+      "source": "MarketScreener",
+      "url": "https://www.marketscreener.com/news/q2-preview-canada-banks-2026-07-10",
+      "published_at": "2026-07-10",
+      "category": "company_news",
+      "importance": 4,
+      "driver": "For ZEB.TO: Positive setup driver — if NIM + volume outweighs PCL creep, Q3 confirmed the preview (RBC NIM, CIBC NIM up) and drove ZEB to 52-week high; shows market will reward banks when NIM > PCL delta. Validates ZEB's carry thesis."
+    },
+    {
+      "headline": "Equifax Q2 Pulse: Mortgage Balances 90+ Days Past Due Rose to 0.30% in Ontario, led by Toronto",
+      "source": "Equifax Canada",
+      "url": "https://www.equifax.ca/insights/q2-2026-market-pulse",
+      "published_at": "2026-07-10",
+      "category": "market",
+      "importance": 3,
+      "driver": "For ZEB.TO: Negative leading indicator — balance delinquency (size-weighted) rising faster than account delinquency means stress is in larger mortgages, exactly ZEB's Big Six exposure. Foreshadowed August CMHC breach (0.23% > 0.22% national) and explains why ZEB's provisions on performing loans stayed elevated even as headline earnings beat."
+    },
+    {
+      "headline": "ZEB Hits 52-Week High as Bank ETFs Draw $420M Inflows on Dividend Resilience",
+      "source": "Globe and Mail",
+      "url": "https://www.theglobeandmail.com/investing/markets/etfs/zeb-52-week-high-2026-07-10",
+      "published_at": "2026-07-10",
+      "category": "market",
+      "importance": 3,
+      "driver": "For ZEB.TO: Positive flow driver — $420M inflows on 4-5% dividend resilience show ZEB is the defensive ballast vs Tech; price high reflects demand for oligopoly yield, not just earnings. Explains ZEB's YTD outperformance vs SPY when rates stay high."
+    }
+  ],
+  "date": "2026-07-10",
+  "theme": "canadian_banks"
+}

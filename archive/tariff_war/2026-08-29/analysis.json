@@ -1,0 +1,38 @@
+{
+  "market_summary": "Tariff-sensitive tape was flat on Aug 29: SPY 771.10, XLI 178.80, XLB 53.23, XME 123.00, SLX 109.73, ITA 234.26, with FXI 35.24/MCHI 54.90 soft on China overhang and CAD 1.3901 steady ahead of Sep 8 retaliation. Industrials and materials diverging — XLI defense capex bid vs XLB commodity pricing power — as effective tariff rate sits at 9.6% (+7.6 pp).",
+  "top_story": {
+    "headline": "USTR's 60-Economy Section 301 Tariffs (10–12.5%) Take Effect — Replaces Struck-Down IEEPA Regime",
+    "url": "https://www.federalregister.gov/documents/2026/07/28/2026-15181/notice-of-actions-in-section-301-investigations-of-acts-policies-and-practices-of-various-economies",
+    "why_it_matters": "The July 28 Federal Register notice rebuilds the tariff wall struck down 6-3 in March (Learning Resources v. Trump) on the sturdier Section 301 foundation, imposing 10% or 12.5% (net of MFN) on 60 partners. It sets the legal floor for every subsequent stack — Canada 50% Section 338, China 70% chips — and creates the TRQ carve-outs that will decide who keeps margin."
+  },
+  "themes": [
+    {
+      "title": "Canada Flashpoint — 5% of Imports, 100% of Politics",
+      "synthesis": "Washington's 50% Section 338 on ~5% of Canada imports and Ottawa's Sep 8 dollar-for-dollar retaliation are surgically narrow but hit autos Jan 1, 2027 at 50% and risk USMCA withdrawal optics; Russell notes U.S. growth impact muted, Canada hit harder due to export concentration.",
+      "source_urls": [
+        "https://russellinvestments.com/content/ri/us/en/insights/russell-research/2026/08/338-tariffs-US-Canada.html",
+        "https://www.federalregister.gov/documents/2026/07/28/2026-15181/notice-of-actions-in-section-301-investigations-of-acts-policies-and-practices-of-various-economies"
+      ]
+    },
+    {
+      "title": "China Stack Nears Legal Ceiling — 70% for Chips",
+      "synthesis": "Pending 7.5% overcapacity tariff on 16 partners/22 sectors would bring China chips to 70% (50% IP + 12.5% forced labor + 7.5%) — exactly the 20% second-term replacement ceiling set in Busan/Beijing — leaving no room for broader hikes before the Sep 24 summit and Nov 10 truce expiry.",
+      "source_urls": [
+        "https://www.techtimes.com/articles/325383/20260824/china-semiconductor-tariffs-near-70-new-overcapacity-layer-stacks-before-summit.htm",
+        "https://www.csis.org/analysis/section-301-tariffs-and-china-risky-gambit"
+      ]
+    },
+    {
+      "title": "Earnings Flattered, Margins Squeezed — Refund vs Pass-Through",
+      "synthesis": "$100B of $168B IEEPA duties refunded by July 31 (Walmart $2.9B) is a one-time Q3 earnings windfall, while 82% of manufacturers now pass costs through (from 44% in 2025) — a Yale 9.6% effective rate that compresses metal fabricators regardless of top-line tariff narratives.",
+      "source_urls": [
+        "https://getfinancebrief.com/story/finance-tariff-refund-earnings-windfall",
+        "https://mapshock.com/briefings/tariff-driven-supply-chain-restructuring-operational-risk",
+        "https://smartinvestmenttoday.com/2026/08/21/did-trumps-tariffs-cause-the-recent-us-manufacturing-surge-six-charts-say-otherwise/"
+      ]
+    }
+  ],
+  "outlook": "Watch USTR Federal Register before Sep 24 for overcapacity final rate, Canada retaliation Sep 8 and USMCA rhetoric, and XLI-XLB spread — if XLB leads, commodity-cycle tariffs dominate margins; if XLI leads, capex resilience offsets duties into Q4 earnings.",
+  "date": "2026-08-29",
+  "theme": "tariff_war"
+}

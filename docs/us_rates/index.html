@@ -1,0 +1,756 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thematic Market Digest — us_rates — 2026-08-29</title>
+<style>
+  :root {
+    --bg: #f7f9fa;
+    --card: #ffffff;
+    --text: #1a2733;
+    --muted: #5b6b76;
+    --border: #e1e7ea;
+    --accent: #0b6e8f;
+    /* Unified palette — up/down + theme accents + category */
+    --up: #059669;
+    --up-bg: #ecfdf5;
+    --up-border: #a7f3d0;
+    --down: #dc2626;
+    --down-bg: #fef2f2;
+    --down-border: #fecaca;
+    --neutral: #64748b;
+    --accent-cb: #0b4d3e;
+    --accent-sc: #7c3aed;
+    --accent-rates: #b45309;
+    --accent-tariff: #be123c;
+    --cat-company-bg: #dbeafe; --cat-company-fg: #1e40af;
+    --cat-policy-bg: #fef3c7; --cat-policy-fg: #92400e;
+    --cat-market-bg: #dcfce7; --cat-market-fg: #166534;
+    --cat-tech-bg: #fce7f3; --cat-tech-fg: #9d174d;
+    --cat-infra-bg: #ede9fe; --cat-infra-fg: #6d28d9;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 2rem 1rem 4rem;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+  }
+  main { max-width: 1440px; margin: 0 auto; width: 96vw; padding: 0 0.5rem; }
+  @media (max-width: 768px) { main { width: 100vw; padding: 0 0.75rem; } }
+  header.page-header { margin-bottom: 2rem; }
+  h1 { font-size: 1.6rem; margin: 0 0 0.25rem; }
+  .date { color: var(--muted); font-size: 0.95rem; }
+  section { margin-bottom: 2rem; }
+  h2 {
+    font-size: 1.05rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    margin: 0 0 0.75rem;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+  }
+  table { width: 100%; border-collapse: collapse; }
+  th, td { text-align: left; padding: 0.5rem 0.6rem; border-bottom: 1px solid var(--border); font-size: 0.92rem; }
+  th { color: var(--muted); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; }
+  tr:last-child td { border-bottom: none; }
+  .num { text-align: right; font-variant-numeric: tabular-nums; }
+  .up { color: var(--up); }
+  .down { color: var(--down); }
+  .sparkline { vertical-align: middle; }
+  .top-story { border-left: 4px solid var(--accent); }
+  .top-story h3 { margin: 0 0 0.4rem; font-size: 1.1rem; }
+  .top-story a { color: var(--accent); }
+  .theme { margin-bottom: 1rem; }
+  .theme:last-child { margin-bottom: 0; }
+  .theme h3 { margin: 0 0 0.3rem; font-size: 1rem; }
+  .theme ul { margin: 0.4rem 0 0; padding-left: 1.2rem; font-size: 0.85rem; }
+  .headline-list { list-style: none; margin: 0; padding: 0; }
+  .headline-list li { padding: 0.55rem 0; border-bottom: 1px solid var(--border); }
+  .headline-list li:last-child { border-bottom: none; }
+  .headline-list a { color: var(--text); text-decoration: none; font-weight: 500; }
+  .headline-list a:hover { color: var(--accent); }
+  .meta { color: var(--muted); font-size: 0.8rem; margin-top: 0.15rem; }
+  .badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.1rem 0.5rem;
+    border-radius: 999px;
+    background: #eef4f6;
+    color: var(--accent);
+    margin-right: 0.4rem;
+  }
+  footer { color: var(--muted); font-size: 0.8rem; margin-top: 3rem; text-align: center; }
+  .timeline { position: relative; margin: 0.6rem 0 0; padding-left: 0; }
+  .timeline::before { content: ""; position: absolute; left: 108px; top: 8px; bottom: 8px; width: 2px; background: var(--border); border-radius: 999px; }
+  .tl-item { display: grid; grid-template-columns: 96px 18px 1fr; gap: 0.6rem; padding: 0.55rem 0; align-items: start; }
+  .tl-date { text-align: right; padding-right: 0.2rem; }
+  .tl-day { font-weight: 700; font-size: 0.85rem; }
+  .tl-trade { font-size: 0.75rem; line-height: 1.2; }
+  .tl-dot { width: 10px; height: 10px; border-radius: 999px; margin-top: 0.25rem; border: 2px solid #fff; box-shadow: 0 0 0 2px var(--border); justify-self: center; }
+  .tl-content { min-width: 0; }
+  @media (max-width: 560px) { .timeline::before { left: 76px; } .tl-item { grid-template-columns: 64px 18px 1fr; } }
+</style>
+</head>
+<body>
+<main>
+  <nav style="margin-bottom:1.2rem;font-size:0.85rem;">
+    <a href="../" style="color:var(--muted);text-decoration:none;">← All themes</a>
+    <span style="color:var(--border);margin:0 0.4rem;">·</span>
+    <span style="color:var(--accent);font-weight:600;">us_rates</span>
+    <span style="float:right;color:var(--muted);">
+      <a href="../canadian_banks/" style="color:var(--muted);">Canadian Banks</a> ·
+      <a href="../us_smallcap/" style="color:var(--muted);">US Small Cap</a> ·
+      <a href="../us_rates/" style="color:var(--muted);">US Rates</a> ·
+      <a href="../tariff_war/" style="color:var(--muted);">Tariff War</a> ·
+      <a href="../canadian-financial-study/" style="color:var(--accent);font-weight:700;">Study</a>
+    </span>
+  </nav>
+  <header class="page-header">
+    <div style="display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap;">
+      <h1 style="margin:0;">Thematic Market Digest — us_rates</h1>
+      <span class="badge" style="background:#b45309;color:#fff;border:1px solid #b45309;font-size:0.75rem;padding:0.2rem 0.6rem;">Main proxy: TLT</span>
+    </div>
+    <div class="date" style="margin-top:0.25rem;">2026-08-29 · 90-day history · Full-width</div>
+  </header>
+
+  
+  <section>
+    <h2>Why This Theme — Investment Thesis</h2>
+    <div class="card" style="border-left:4px solid #b45309;">
+      <p style="font-weight:750;margin:0 0 0.45rem;font-size:1.02rem;">Why US Rates is the carry + convexity hedge</p>
+      <p style="margin:0 0 0.8rem;color:var(--text);font-size:0.92rem;background:#f8fafc;border:1px solid var(--border);border-radius:8px;padding:0.65rem 0.8rem;">4.6% 10Y + 3.63% funds = carry with negative equity correlation — paid to wait for pivot. See Drivers for path-dependent payoff.</p>
+      <ul style="margin:0;padding-left:1.2rem;">
+        
+        <li style="margin:0.45rem 0;font-size:0.92rem;line-height:1.45;">Diversifier: TLT/IEF –0.2 to –0.4 correlation to SPX; SHY/BIL 3.8–4.0% carry with near-zero duration.</li>
+        
+      </ul>
+    </div>
+  </section>
+  
+
+  
+  <section>
+    <h2>Main Proxy — TLT</h2>
+    <div class="card" style="border-left:4px solid #b45309;">
+      <p style="font-weight:750;margin:0 0 0.25rem;font-size:1.02rem;">iShares 20+ Year Treasury Bond ETF</p>
+      <p style="margin:0 0 0.35rem;color:var(--muted);font-size:0.85rem;">Tracks: Long-dated U.S. Treasuries (20Y+), effective duration ~17y, yield ~4.6%</p>
+      <p style="margin:0 0 0.5rem;font-size:0.92rem;line-height:1.45;">Investable proxy for the rates theme vs. ^TNX (yield, not tradable). TLT converts the 10Y/30Y view into P&amp;L: +8% per 100 bps parallel fall. Paired with SHY/BIL (front-end) and TIP (inflation) in the theme basket, but TLT is the duration bellwether.</p>
+      <div class="meta" style="background:#f8fafc;border:1px solid var(--border);border-radius:999px;display:inline-block;padding:0.15rem 0.6rem;">AUM ~$48B · Expense 0.15% · 30Y 5.19% vs 10Y 4.67% on 2026-08-28</div>
+    </div>
+  </section>
+  
+
+  
+  <section>
+    <h2>Index Trend — US Rates &amp; Fed · Main vs Benchmark</h2>
+    <div class="card" style="margin-bottom:1rem;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.6rem;flex-wrap:wrap;gap:0.5rem;">
+        <div><strong>TLT vs SPY — Indexed to 100</strong> <span class="meta">Main proxy vs S&amp;P 500 (SPY)</span></div>
+        <div class="meta" style="display:flex;gap:10px;flex-wrap:wrap;">
+          
+          
+          <span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:12px;height:3px;background:#b45309;border-radius:999px;display:inline-block"></span>TLT</span>
+          
+          <span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:12px;height:3px;background:#64748b;border-radius:999px;display:inline-block;border-top:2px dashed #64748b;height:0"></span>SPY</span>
+          
+        </div>
+      </div>
+      <div style="overflow-x:auto;"><svg width="1100" height="240" viewBox="0 0 1100 240" role="img" aria-label="overlay indexed trend" style="background:#fff;border:1px solid #e2e8f0;border-radius:8px;width:100%;height:auto;"><line x1="48" y1="14.0" x2="1084" y2="14.0" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 4"/><text x="42" y="17.0" text-anchor="end" font-size="10" fill="#64748b">111.4</text><line x1="48" y1="63.5" x2="1084" y2="63.5" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 4"/><text x="42" y="66.5" text-anchor="end" font-size="10" fill="#64748b">106.9</text><line x1="48" y1="113.0" x2="1084" y2="113.0" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 4"/><text x="42" y="116.0" text-anchor="end" font-size="10" fill="#64748b">102.4</text><line x1="48" y1="162.5" x2="1084" y2="162.5" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 4"/><text x="42" y="165.5" text-anchor="end" font-size="10" fill="#64748b">98.0</text><line x1="48" y1="212.0" x2="1084" y2="212.0" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 4"/><text x="42" y="215.0" text-anchor="end" font-size="10" fill="#64748b">93.5</text><polyline points="48.0,140.1 59.8,142.5 71.5,140.5 83.3,145.9 95.1,144.8 106.9,153.3 118.6,154.4 130.4,150.5 142.2,158.8 154.0,152.8 165.7,144.4 177.5,149.9 189.3,144.4 201.0,151.1 212.8,158.4 224.6,160.8 236.4,159.3 248.1,175.4 259.9,176.7 271.7,183.6 283.5,172.2 295.2,168.3 307.0,162.4 318.8,157.0 330.5,154.4 342.3,148.8 354.1,148.5 365.9,147.9 377.6,145.6 389.4,150.0 401.2,147.6 413.0,153.2 424.7,158.9 436.5,152.4 448.3,155.5 460.0,141.4 471.8,144.1 483.6,144.7 495.4,138.7 507.1,136.9 518.9,131.5 530.7,140.0 542.5,138.6 554.2,123.4 566.0,123.8 577.8,123.6 589.5,122.5 601.3,135.7 613.1,143.2 624.9,143.4 636.6,144.1 648.4,155.8 660.2,158.2 672.0,156.5 683.7,156.8 695.5,163.2 707.3,161.8 719.0,159.8 730.8,160.1 742.6,156.1 754.4,164.3 766.1,167.2 777.9,170.1 789.7,173.6 801.5,172.5 813.2,166.1 825.0,159.8 836.8,177.7 848.5,178.4 860.3,185.5 872.1,182.0 883.9,173.8 895.6,171.5 907.4,177.7 919.2,174.6 931.0,183.6 942.7,182.0 954.5,183.0 966.3,176.8 978.0,183.9 989.8,192.8 1001.6,188.8 1013.4,171.2 1025.1,180.0 1036.9,183.8 1048.7,177.2 1060.5,165.4 1072.2,167.6 1084.0,169.8" fill="none" stroke="#b45309" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><polyline points="48.0,140.1 59.8,144.4 71.5,135.8 83.3,133.9 95.1,139.3 106.9,139.5 118.6,128.5 130.4,125.4 142.2,129.5 154.0,120.5 165.7,104.9 177.5,108.4 189.3,99.0 201.0,96.3 212.8,98.1 224.6,91.7 236.4,82.5 248.1,96.5 259.9,97.4 271.7,105.0 283.5,93.3 295.2,91.0 307.0,86.5 318.8,78.8 330.5,79.0 342.3,72.5 354.1,69.6 365.9,66.4 377.6,64.8 389.4,73.1 401.2,68.6 413.0,99.1 424.7,96.5 436.5,99.8 448.3,117.9 460.0,98.7 471.8,92.5 483.6,72.2 495.4,79.2 507.1,93.8 518.9,81.8 530.7,85.4 542.5,102.3 554.2,102.8 566.0,101.2 577.8,109.5 589.5,90.7 601.3,81.7 613.1,83.3 624.9,84.8 636.6,74.7 648.4,80.2 660.2,83.9 672.0,74.0 683.7,68.9 695.5,78.0 707.3,73.8 719.0,69.2 730.8,75.6 742.6,87.1 754.4,89.0 766.1,79.4 777.9,80.7 789.7,95.1 801.5,94.0 813.2,93.7 825.0,90.9 836.8,108.7 848.5,89.6 860.3,81.3 872.1,64.7 883.9,43.4 895.6,45.8 907.4,47.7 919.2,40.4 931.0,40.7 942.7,44.6 954.5,41.6 966.3,33.2 978.0,35.6 989.8,41.3 1001.6,49.4 1013.4,46.9 1025.1,57.0 1036.9,52.1 1048.7,55.7 1060.5,51.8 1072.2,51.6 1084.0,43.7" fill="none" stroke="#64748b" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="6 4"/><text x="1088.0" y="39.7" font-size="10" fill="#64748b" font-weight="600">SPY</text><text x="48.0" y="232.0" text-anchor="middle" font-size="10" fill="#64748b">04-22</text><text x="566.0" y="232.0" text-anchor="middle" font-size="10" fill="#64748b">06-25</text><text x="1084.0" y="232.0" text-anchor="middle" font-size="10" fill="#64748b">08-27</text></svg></div>
+      <div class="meta" style="margin-top:0.4rem;">Indexed to 100 at start of 90-day window — flat if both move together, divergence is theme alpha vs S&P 500. Source: yfinance 90-day history.</div>
+    </div>
+  </section>
+  
+
+  <section>
+    <h2>Market Summary — At a Glance</h2>
+    <div class="card">
+      <p>Yields ended flat-to-up on Aug 29 despite hawkish Jackson Hole: 10Y 4.67%, 2Y 4.20%, 30Y 5.19%, funds 3.63% per H.15, matching our tracked TLT 83.13, IEF 93.23, SHY 82.04. DXY 99.16 held firm. The long end&#39;s muted +1 bp reaction to Warsh suggests investors believe the Fed will curb inflation without forcing a bear-steepener, keeping mortgage rates stuck at 6.66%.</p>
+      
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0.7rem;margin:0.9rem 0 0.6rem;">
+        <div style="background:#f8fafc;border:1px solid var(--border);border-radius:10px;padding:0.75rem 0.9rem;">
+          <div class="meta" style="font-size:0.68rem;letter-spacing:0.06em;text-transform:uppercase;">Proxies</div>
+          <div style="font-size:1.25rem;font-weight:800;">10</div>
+          <div class="meta" style="font-size:0.78rem;">1D 2026-08-26→2026-08-27</div>
+        </div>
+        <div style="background:var(--down-bg);border:1px solid var(--down-border);border-radius:10px;padding:0.75rem 0.9rem;">
+          <div class="meta" style="font-size:0.68rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--down);">Theme</div>
+          <div class="num down" style="font-size:1.25rem;font-weight:800;">-0.01%</div>
+          <div class="meta" style="font-size:0.78rem;">mean · median -0.01%</div>
+        </div>
+        <div style="background:#f8fafc;border:1px solid var(--border);border-radius:10px;padding:0.75rem 0.9rem;">
+          <div class="meta" style="font-size:0.68rem;letter-spacing:0.06em;text-transform:uppercase;">Breadth</div>
+          <div style="font-size:1.15rem;font-weight:800;"><span class="up">4 up</span> · <span class="down">6 down</span></div>
+          <div class="meta" style="font-size:0.78rem;">40% positive</div>
+        </div>
+        <div style="background:#f8fafc;border:1px solid var(--border);border-radius:10px;padding:0.75rem 0.9rem;">
+          <div class="meta" style="font-size:0.68rem;letter-spacing:0.06em;text-transform:uppercase;">Best / Worst</div>
+          <div style="font-size:0.92rem;font-weight:700;"><span class="up">^FVX +0.34%</span> <span style="color:var(--muted);">·</span> <span class="down">^IRX -0.33%</span></div>
+          <div class="meta" style="font-size:0.78rem;">Range 0.67pp · Std 0.18pp</div>
+        </div>
+        
+        <div style="background:var(--down-bg);border:1px solid var(--down-border);border-radius:10px;padding:0.75rem 0.9rem;">
+          <div class="meta" style="font-size:0.68rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--down);">Main TLT</div>
+          <div class="num down" style="font-size:1.25rem;font-weight:800;">-0.20%</div>
+          <div class="meta" style="font-size:0.78rem;">vs mean -0.19pp · 1D 2026-08-26→2026-08-27</div>
+        </div>
+        
+      </div>
+      
+      <details style="margin-top:0.8rem;"><summary class="meta" style="cursor:pointer;">Details — per-ticker (1D 2026-08-26→2026-08-27)</summary>
+      <table style="margin-top:0.6rem;">
+        <thead><tr><th>Ticker</th><th></th><th class="num">Last</th><th class="num">1D Change<br><span class="meta" style="font-weight:400;text-transform:none;">1D 2026-08-26→2026-08-27</span></th></tr></thead>
+        <tbody>
+          
+          <tr><td><strong>^TNX</strong><div class="meta">1D 2026-08-26→2026-08-27</div></td><td><svg width="120" height="32" viewBox="0 0 120 32" class="sparkline" role="img" aria-label="price trend"><polyline points="0.0,32.0 1.4,29.9 2.7,30.9 4.1,29.0 5.5,27.7 6.8,23.2 8.2,25.2 9.5,26.0 10.9,21.2 12.3,23.3 13.6,27.6 15.0,25.0 16.4,27.0 17.7,23.8 19.1,20.0 20.5,18.7 21.8,20.2 23.2,10.6 24.5,8.7 25.9,5.5 27.3,12.3 28.6,11.3 30.0,13.3 31.4,17.9 32.7,18.7 34.1,20.6 35.5,20.7 36.8,19.2 38.2,20.6 39.5,18.0 40.9,19.0 42.3,14.8 43.6,13.7 45.0,15.4 46.4,14.4 47.7,20.0 49.1,18.3 50.5,19.6 51.8,22.5 53.2,20.0 54.5,20.9 55.9,16.7 57.3,17.9 58.6,24.3 60.0,25.0 61.4,26.5 62.7,26.3 64.1,23.2 65.5,19.2 66.8,18.4 68.2,18.9 69.5,15.3 70.9,12.5 72.3,14.6 73.6,12.5 75.0,9.6 76.4,11.4 77.7,14.2 79.1,12.5 80.5,14.5 81.8,10.4 83.2,8.3 84.5,6.2 85.9,3.0 87.3,4.7 88.6,7.4 90.0,10.0 91.4,8.7 92.7,5.8 94.1,0.0 95.5,4.2 96.8,8.4 98.2,9.1 99.5,5.3 100.9,6.0 102.3,3.3 103.6,4.3 105.0,4.5 106.4,7.4 107.7,3.5 109.1,1.5 110.5,2.8 111.8,6.5 113.2,3.5 114.5,0.5 115.9,2.9 117.3,7.5 118.6,5.7 120.0,5.2" fill="none" stroke="#059669" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" /></svg></td><td class="num">4.67</td><td class="num up">+0.17%<div class="meta" style="font-size:0.7rem;">1D 2026-08-26→2026-08-27</div></td></tr>
+          
+          <tr><td><strong>^IRX</strong><div class="meta">1D 2026-08-26→2026-08-27</div></td><td><svg width="120" height="32" viewBox="0 0 120 32" class="sparkline" role="img" aria-label="price trend"><polyline points="0.0,27.1 1.4,27.1 2.7,27.4 4.1,27.7 5.5,27.7 6.8,27.7 8.2,28.4 9.5,29.7 10.9,27.7 12.3,26.5 13.6,26.5 15.0,26.7 16.4,27.1 17.7,26.5 19.1,26.1 20.5,26.5 21.8,28.0 23.2,28.0 24.5,30.6 25.9,29.7 27.3,32.0 28.6,28.8 30.0,28.4 31.4,28.8 32.7,28.4 34.1,27.7 35.5,28.0 36.8,23.9 38.2,24.1 39.5,23.5 40.9,23.9 42.3,23.2 43.6,22.8 45.0,21.9 46.4,21.9 47.7,23.5 49.1,24.1 50.5,24.1 51.8,22.6 53.2,20.4 54.5,19.0 55.9,16.1 57.3,14.8 58.6,14.8 60.0,16.1 61.4,18.3 62.7,16.1 64.1,9.4 65.5,13.5 66.8,17.7 68.2,14.8 69.5,10.3 70.9,10.6 72.3,15.9 73.6,14.2 75.0,9.9 76.4,13.5 77.7,15.1 79.1,13.9 80.5,12.6 81.8,12.9 83.2,9.7 84.5,7.7 85.9,0.6 87.3,0.0 88.6,1.0 90.0,5.8 91.4,19.0 92.7,16.8 94.1,15.9 95.5,13.5 96.8,9.7 98.2,10.3 99.5,9.4 100.9,12.3 102.3,11.2 103.6,9.7 105.0,12.6 106.4,12.9 107.7,13.9 109.1,13.2 110.5,12.9 111.8,13.5 113.2,13.2 114.5,12.3 115.9,13.2 117.3,12.9 118.6,14.8 120.0,16.4" fill="none" stroke="#dc2626" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" /></svg></td><td class="num">3.68</td><td class="num down">-0.33%<div class="meta" style="font-size:0.7rem;">1D 2026-08-26→2026-08-27</div></td></tr>
+          
+          <tr><td><strong>^TYX</strong><div class="meta">1D 2026-08-26→2026-08-27</div></td><td><svg width="120" height="32" viewBox="0 0 120 32" class="sparkline" role="img" aria-label="price trend"><polyline points="0.0,28.8 1.4,27.6 2.7,27.8 4.1,25.9 5.5,25.8 6.8,22.7 8.2,22.7 9.5,24.2 10.9,20.1 12.3,23.0 13.6,25.9 15.0,24.0 16.4,25.6 17.7,22.8 19.1,19.6 20.5,18.5 21.8,21.0 23.2,12.8 24.5,11.4 25.9,9.0 27.3,13.6 28.6,13.9 30.0,17.3 31.4,20.0 32.7,21.1 34.1,22.9 35.5,22.3 36.8,22.5 38.2,24.2 39.5,22.5 40.9,23.4 42.3,21.9 43.6,20.1 45.0,21.1 46.4,20.1 47.7,25.3 49.1,23.6 50.5,23.9 51.8,26.9 53.2,27.1 54.5,28.8 55.9,25.6 57.3,26.1 58.6,32.0 60.0,31.9 61.4,31.4 62.7,31.7 64.1,28.8 65.5,24.2 66.8,22.9 68.2,22.3 69.5,18.8 70.9,17.2 72.3,18.1 73.6,16.8 75.0,14.9 76.4,15.2 77.7,16.0 79.1,14.9 80.5,17.3 81.8,13.5 83.2,12.6 84.5,11.4 85.9,9.7 87.3,10.4 88.6,13.0 90.0,15.0 91.4,11.7 92.7,7.1 94.1,2.4 95.5,5.5 96.8,8.4 98.2,9.5 99.5,6.8 100.9,6.9 102.3,4.7 103.6,5.2 105.0,4.4 106.4,6.8 107.7,3.1 109.1,0.0 110.5,1.7 111.8,8.1 113.2,5.1 114.5,2.3 115.9,5.5 117.3,9.5 118.6,8.7 120.0,8.3" fill="none" stroke="#059669" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" /></svg></td><td class="num">5.19</td><td class="num up">+0.10%<div class="meta" style="font-size:0.7rem;">1D 2026-08-26→2026-08-27</div></td></tr>
+          
+          <tr><td><strong>^FVX</strong><div class="meta">1D 2026-08-26→2026-08-27</div></td><td><svg width="120" height="32" viewBox="0 0 120 32" class="sparkline" role="img" aria-label="price trend"><polyline points="0.0,32.0 1.4,29.8 2.7,31.7 4.1,30.1 5.5,28.0 6.8,23.2 8.2,25.7 9.5,25.8 10.9,21.6 12.3,22.8 13.6,26.9 15.0,24.4 16.4,26.3 17.7,23.0 19.1,19.8 20.5,19.4 21.8,19.9 23.2,11.9 24.5,10.6 25.9,7.7 27.3,13.8 28.6,12.0 30.0,12.0 31.4,16.3 32.7,16.6 34.1,17.6 35.5,18.3 36.8,16.1 38.2,16.6 39.5,14.5 40.9,16.0 42.3,10.6 43.6,10.5 45.0,12.2 46.4,11.5 47.7,15.9 49.1,14.5 50.5,16.0 51.8,18.2 53.2,13.6 54.5,13.8 55.9,10.2 57.3,11.7 58.6,16.7 60.0,17.5 61.4,19.4 62.7,18.6 64.1,16.1 65.5,13.4 66.8,13.5 68.2,14.7 69.5,12.0 70.9,9.0 72.3,11.3 73.6,9.0 75.0,5.7 76.4,8.2 77.7,12.1 79.1,10.5 80.5,11.0 81.8,7.8 83.2,5.3 84.5,3.2 85.9,0.0 87.3,2.1 88.6,3.8 90.0,5.9 91.4,6.4 92.7,5.0 94.1,0.1 95.5,3.6 96.8,7.5 98.2,8.0 99.5,4.2 100.9,5.8 102.3,3.3 103.6,4.5 105.0,5.0 106.4,8.7 107.7,5.8 109.1,5.0 110.5,5.5 111.8,6.3 113.2,4.3 114.5,2.2 115.9,3.1 117.3,6.4 118.6,4.7 120.0,3.8" fill="none" stroke="#059669" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" /></svg></td><td class="num">4.40</td><td class="num up">+0.34%<div class="meta" style="font-size:0.7rem;">1D 2026-08-26→2026-08-27</div></td></tr>
+          
+          <tr><td><strong>TLT</strong><div class="meta">1D 2026-08-26→2026-08-27</div></td><td><svg width="120" height="32" viewBox="0 0 120 32" class="sparkline" role="img" aria-label="price trend"><polyline points="0.0,8.0 1.4,9.1 2.7,8.2 4.1,10.7 5.5,10.1 6.8,14.0 8.2,14.5 9.5,12.7 10.9,16.5 12.3,13.8 13.6,10.0 15.0,12.5 16.4,10.0 17.7,13.0 19.1,16.3 20.5,17.4 21.8,16.7 23.2,24.1 24.5,24.7 25.9,27.8 27.3,22.6 28.6,20.8 30.0,18.1 31.4,15.7 32.7,14.5 34.1,12.0 35.5,11.9 36.8,11.6 38.2,10.5 39.5,12.5 40.9,11.4 42.3,14.0 43.6,16.6 45.0,13.6 46.4,15.0 47.7,8.6 49.1,9.8 50.5,10.1 51.8,7.4 53.2,6.6 54.5,4.1 55.9,8.0 57.3,7.3 58.6,0.4 60.0,0.6 61.4,0.5 62.7,0.0 64.1,6.0 65.5,9.4 66.8,9.5 68.2,9.9 69.5,15.1 70.9,16.3 72.3,15.5 73.6,15.6 75.0,18.5 76.4,17.9 77.7,17.0 79.1,17.1 80.5,15.3 81.8,19.0 83.2,20.4 84.5,21.7 85.9,23.2 87.3,22.8 88.6,19.8 90.0,17.0 91.4,25.1 92.7,25.4 94.1,28.6 95.5,27.0 96.8,23.3 98.2,22.3 99.5,25.1 100.9,23.7 102.3,27.8 103.6,27.0 105.0,27.5 106.4,24.7 107.7,27.9 109.1,32.0 110.5,30.2 111.8,22.2 113.2,26.2 114.5,27.9 115.9,24.9 117.3,19.5 118.6,20.5 120.0,21.5" fill="none" stroke="#dc2626" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" /></svg></td><td class="num">83.13</td><td class="num down">-0.20%<div class="meta" style="font-size:0.7rem;">1D 2026-08-26→2026-08-27</div></td></tr>
+          
+          <tr><td><strong>IEF</strong><div class="meta">1D 2026-08-26→2026-08-27</div></td><td><svg width="120" height="32" viewBox="0 0 120 32" class="sparkline" role="img" aria-label="price trend"><polyline points="0.0,2.4 1.4,4.5 2.7,1.9 4.1,5.0 5.5,6.2 6.8,12.6 8.2,10.0 9.5,9.0 10.9,14.0 12.3,12.0 13.6,5.3 15.0,9.4 16.4,5.9 17.7,10.4 19.1,14.9 20.5,14.9 21.8,15.8 23.2,26.4 24.5,26.9 25.9,32.0 27.3,23.1 28.6,22.3 30.0,21.1 31.4,15.5 32.7,14.9 34.1,11.8 35.5,10.3 36.8,12.6 38.2,11.6 39.5,15.0 40.9,13.3 42.3,20.4 43.6,21.8 45.0,18.1 46.4,19.4 47.7,10.2 49.1,12.5 50.5,11.0 51.8,7.6 53.2,14.7 54.5,9.9 55.9,15.0 57.3,13.3 58.6,4.7 60.0,3.8 61.4,0.4 62.7,0.0 64.1,6.9 65.5,10.2 66.8,8.9 68.2,8.1 69.5,14.9 70.9,17.6 72.3,14.7 73.6,15.9 75.0,20.7 76.4,17.0 77.7,13.7 79.1,14.6 80.5,12.9 81.8,17.1 83.2,20.4 84.5,23.4 85.9,26.9 87.3,24.4 88.6,20.8 90.0,16.9 91.4,22.4 92.7,21.8 94.1,25.5 95.5,22.8 96.8,16.7 98.2,15.9 99.5,21.0 100.9,17.9 102.3,23.7 103.6,22.1 105.0,20.8 106.4,16.0 107.7,19.7 109.1,22.6 110.5,21.3 111.8,14.9 113.2,20.3 114.5,22.8 115.9,20.1 117.3,13.0 118.6,15.7 120.0,17.0" fill="none" stroke="#dc2626" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" /></svg></td><td class="num">93.23</td><td class="num down">-0.10%<div class="meta" style="font-size:0.7rem;">1D 2026-08-26→2026-08-27</div></td></tr>
+          
+          <tr><td><strong>SHY</strong><div class="meta">1D 2026-08-26→2026-08-27</div></td><td><svg width="120" height="32" viewBox="0 0 120 32" class="sparkline" role="img" aria-label="price trend"><polyline points="0.0,22.2 1.4,23.9 2.7,20.2 4.1,21.0 5.5,23.1 6.8,27.6 8.2,23.9 9.5,23.3 10.9,27.5 12.3,25.8 13.6,21.3 15.0,24.2 16.4,21.3 17.7,24.6 19.1,27.0 20.5,25.8 21.8,27.0 23.2,31.2 24.5,29.5 25.9,32.0 27.3,27.5 28.6,27.9 30.0,28.7 31.4,25.0 32.7,24.6 34.1,22.9 35.5,21.3 36.8,23.2 38.2,23.2 39.5,24.9 40.9,22.4 42.3,29.4 43.6,27.8 45.0,26.1 46.4,26.1 47.7,19.9 49.1,20.7 50.5,19.1 51.8,18.3 53.2,28.6 54.5,24.0 55.9,27.4 57.3,24.9 58.6,20.7 60.0,19.9 61.4,15.8 62.7,16.6 64.1,19.1 65.5,20.4 66.8,16.3 68.2,14.6 69.5,19.6 70.9,20.4 72.3,17.5 73.6,18.8 75.0,22.5 76.4,16.7 77.7,13.8 79.1,13.8 80.5,14.2 81.8,15.4 83.2,18.3 84.5,20.8 85.9,23.3 87.3,20.0 88.6,19.2 90.0,16.3 91.4,14.2 92.7,13.4 94.1,13.8 95.5,12.9 96.8,8.7 98.2,7.5 99.5,11.7 100.9,6.7 102.3,9.2 103.6,8.7 105.0,6.7 106.4,2.1 107.7,3.3 109.1,3.3 110.5,2.5 111.8,0.8 113.2,2.5 114.5,3.3 115.9,3.3 117.3,0.0 118.6,1.2 120.0,1.7" fill="none" stroke="#dc2626" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" /></svg></td><td class="num">82.04</td><td class="num down">-0.01%<div class="meta" style="font-size:0.7rem;">1D 2026-08-26→2026-08-27</div></td></tr>
+          
+          <tr><td><strong>BIL</strong><div class="meta">1D 2026-08-26→2026-08-27</div></td><td><svg width="120" height="32" viewBox="0 0 120 32" class="sparkline" role="img" aria-label="price trend"><polyline points="0.0,32.0 1.4,31.4 2.7,30.9 4.1,30.6 5.5,30.3 6.8,30.3 8.2,30.1 9.5,29.2 10.9,28.7 12.3,28.4 13.6,28.7 15.0,28.1 16.4,27.5 17.7,27.0 19.1,26.7 20.5,26.7 21.8,26.1 23.2,25.6 24.5,25.6 25.9,25.0 27.3,24.5 28.6,24.5 30.0,23.9 31.4,23.3 32.7,23.1 34.1,22.8 35.5,21.9 36.8,21.7 38.2,22.0 39.5,21.4 40.9,21.4 42.3,20.3 43.6,20.0 45.0,20.0 46.4,19.7 47.7,19.4 49.1,18.6 50.5,18.6 51.8,18.3 53.2,18.0 54.5,16.9 55.9,16.9 57.3,16.6 58.6,16.4 60.0,16.1 61.4,15.2 62.7,15.0 64.1,15.0 65.5,14.2 66.8,13.0 68.2,13.3 69.5,12.8 70.9,12.8 72.3,12.5 73.6,11.4 75.0,11.4 76.4,11.1 77.7,10.8 79.1,10.5 80.5,9.9 81.8,9.7 83.2,9.7 84.5,9.1 85.9,9.1 87.3,8.3 88.6,8.0 90.0,7.7 91.4,7.4 92.7,7.1 94.1,6.3 95.5,5.9 96.8,5.9 98.2,5.6 99.5,5.1 100.9,4.2 102.3,4.2 103.6,3.9 105.0,3.4 106.4,3.4 107.7,2.8 109.1,2.3 110.5,2.0 111.8,1.7 113.2,1.7 114.5,0.8 115.9,0.6 117.3,0.3 118.6,0.0 120.0,0.0" fill="none" stroke="#059669" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" /></svg></td><td class="num">91.63</td><td class="num up">+0.00%<div class="meta" style="font-size:0.7rem;">1D 2026-08-26→2026-08-27</div></td></tr>
+          
+          <tr><td><strong>TIP</strong><div class="meta">1D 2026-08-26→2026-08-27</div></td><td><svg width="120" height="32" viewBox="0 0 120 32" class="sparkline" role="img" aria-label="price trend"><polyline points="0.0,10.7 1.4,7.4 2.7,3.1 4.1,3.6 5.5,4.4 6.8,10.7 8.2,7.5 9.5,0.9 10.9,4.7 12.3,6.2 13.6,4.7 15.0,7.0 16.4,0.0 17.7,1.7 19.1,5.3 20.5,5.3 21.8,7.3 23.2,14.9 24.5,17.3 25.9,24.3 27.3,19.4 28.6,19.4 30.0,19.2 31.4,10.9 32.7,9.8 34.1,4.1 35.5,3.6 36.8,2.7 38.2,2.9 39.5,6.7 40.9,6.5 42.3,16.6 43.6,18.8 45.0,15.2 46.4,17.3 47.7,9.9 49.1,9.7 50.5,6.8 51.8,6.8 53.2,20.7 54.5,13.9 55.9,22.5 57.3,23.2 58.6,15.2 60.0,11.8 61.4,8.0 62.7,4.2 64.1,13.1 65.5,17.0 66.8,13.9 68.2,10.9 69.5,17.0 70.9,19.3 72.3,18.0 73.6,17.8 75.0,22.0 76.4,20.1 77.7,18.9 79.1,20.9 80.5,15.1 81.8,19.3 83.2,22.6 84.5,24.7 85.9,30.1 87.3,29.9 88.6,32.0 90.0,26.8 91.4,24.7 92.7,25.3 94.1,27.4 95.5,27.1 96.8,23.4 98.2,24.4 99.5,26.9 100.9,22.9 102.3,27.1 103.6,26.5 105.0,26.0 106.4,21.3 107.7,24.6 109.1,28.9 110.5,24.0 111.8,14.5 113.2,14.3 114.5,21.9 115.9,19.6 117.3,12.0 118.6,14.5 120.0,15.9" fill="none" stroke="#dc2626" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" /></svg></td><td class="num">107.44</td><td class="num down">-0.07%<div class="meta" style="font-size:0.7rem;">1D 2026-08-26→2026-08-27</div></td></tr>
+          
+          <tr><td><strong>DX-Y.NYB</strong><div class="meta">1D 2026-08-26→2026-08-27</div></td><td><svg width="120" height="32" viewBox="0 0 120 32" class="sparkline" role="img" aria-label="price trend"><polyline points="0.0,32.0 1.6,27.9 3.3,23.9 4.9,27.0 6.6,23.6 8.2,25.6 9.9,24.7 11.5,23.4 13.2,24.9 14.8,24.5 16.4,26.5 18.1,27.6 19.7,24.6 21.4,24.4 23.0,21.3 24.7,22.5 26.3,15.7 27.9,15.9 29.6,17.4 31.2,17.0 32.9,17.9 34.5,19.0 36.2,20.2 37.8,21.2 39.5,15.5 41.1,7.8 42.7,6.0 44.4,2.0 46.0,0.0 47.7,1.8 49.3,2.6 51.0,5.1 52.6,4.3 54.2,2.2 55.9,7.7 57.5,7.8 59.2,4.8 60.8,5.7 62.5,6.8 64.1,6.5 65.8,3.4 67.4,6.8 69.0,11.3 70.7,9.0 72.3,8.8 74.0,6.3 75.6,4.4 77.3,4.8 78.9,1.8 80.5,1.4 82.2,1.0 83.8,2.4 85.5,8.3 87.1,16.4 88.8,18.5 90.4,16.9 92.1,17.6 93.7,19.6 95.3,16.8 97.0,20.5 98.6,18.4 100.3,18.3 101.9,16.4 103.6,16.9 105.2,19.8 106.8,20.1 108.5,20.0 110.1,28.4 111.8,27.7 113.4,28.7 115.1,26.7 116.7,27.5 118.4,24.9 120.0,25.0" fill="none" stroke="#dc2626" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" /></svg></td><td class="num">99.16</td><td class="num down">-0.01%<div class="meta" style="font-size:0.7rem;">1D 2026-08-26→2026-08-27</div></td></tr>
+          
+        </tbody>
+      </table>
+      </details>
+      
+    </div>
+  </section>
+
+  
+  <section>
+    <h2>Thesis Health — Watch <span class="meta" style="font-weight:400;text-transform:none;letter-spacing:0;">· 1 Confirming · 2 Watch · 0 Breaking</span></h2>
+    <div class="card" style="border-left:4px solid #d97706;background:#fffbeb;">
+      <div style="display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap;margin-bottom:0.6rem;">
+        <span style="display:inline-flex;align-items:center;gap:6px;background:#fffbeb;color:#d97706;border:1px solid #d9770640;padding:0.25rem 0.7rem;border-radius:999px;font-weight:800;font-size:0.9rem;"><span style="width:9px;height:9px;border-radius:50%;background:#d97706;display:inline-block;"></span>Watch</span>
+        <span class="meta">Updated: <strong>2026-08-29</strong> · 5 pre-committed KPIs — you check, you don't reinterpret.</span>
+        <span class="meta" style="margin-left:auto;">Window: 1D 2026-08-26→2026-08-27 · Next refresh on next archive date</span>
+      </div>
+      <table>
+        <thead><tr><th>KPI</th><th>Now</th><th>Confirming</th><th>Breaking</th><th>Status</th><th>Source</th></tr></thead>
+        <tbody>
+          
+          <tr>
+            <td style="font-weight:600;">PCE YoY</td>
+            <td class="num" style="font-weight:700;">3.7%</td>
+            <td class="meta">&lt;3.0%</td>
+            <td class="meta">&gt;4.0%</td>
+            <td><span class="badge" style="background:#fffbeb;color:#92400e;border:1px solid #fde68a">Watch</span></td>
+            <td class="meta">BEA / FRED</td>
+          </tr>
+          <tr>
+            <td colspan="6" style="background:#f8fafc;border-top:none;padding:0.5rem 0.7rem 0.7rem;">
+              <details style="font-size:0.82rem;">
+                <summary style="cursor:pointer;color:var(--accent);font-weight:600;">Line-by-line: why this row, why this threshold, when it updates</summary>
+                <div style="margin-top:0.5rem;line-height:1.45;display:grid;gap:0.4rem;">
+                  <div><strong style="color:var(--text);">Why this KPI?</strong> Inflation breadth — &gt;50% basket &gt;3% means sticky, not transitory.</div>
+                  <div><strong style="color:var(--text);">Why this threshold?</strong> &lt;3.0% = 40th pct, &gt;4.0% = 90th pct of PCE 2019–24.</div>
+                  <div><strong style="color:var(--text);">When updated?</strong> Monthly — BEA PCE, FRED.</div>
+                </div>
+              </details>
+            </td>
+          </tr>
+          
+          <tr>
+            <td style="font-weight:600;">10Y Real Yield</td>
+            <td class="num" style="font-weight:700;">2.34%</td>
+            <td class="meta">&lt;2.0%</td>
+            <td class="meta">&gt;2.8%</td>
+            <td><span class="badge" style="background:#fffbeb;color:#92400e;border:1px solid #fde68a">Watch</span></td>
+            <td class="meta">FRED DGS10 - TIPS</td>
+          </tr>
+          <tr>
+            <td colspan="6" style="background:#f8fafc;border-top:none;padding:0.5rem 0.7rem 0.7rem;">
+              <details style="font-size:0.82rem;">
+                <summary style="cursor:pointer;color:var(--accent);font-weight:600;">Line-by-line: why this row, why this threshold, when it updates</summary>
+                <div style="margin-top:0.5rem;line-height:1.45;display:grid;gap:0.4rem;">
+                  <div><strong style="color:var(--text);">Why this KPI?</strong> Real yield drives TLT duration P&amp;L.</div>
+                  <div><strong style="color:var(--text);">Why this threshold?</strong> &lt;2.0% = 30th pct (TLT rallies), &gt;2.8% = 85th pct (TLT -6%).</div>
+                  <div><strong style="color:var(--text);">When updated?</strong> Daily — FRED DGS10.</div>
+                </div>
+              </details>
+            </td>
+          </tr>
+          
+          <tr>
+            <td style="font-weight:600;">ZEB/SPY Corr (rates hedge)</td>
+            <td class="num" style="font-weight:700;">0.38</td>
+            <td class="meta">&lt;0.45</td>
+            <td class="meta">&gt;0.65</td>
+            <td><span class="badge" style="background:#ecfdf5;color:#065f46;border:1px solid #a7f3d0">Confirming</span></td>
+            <td class="meta">yfinance</td>
+          </tr>
+          <tr>
+            <td colspan="6" style="background:#f8fafc;border-top:none;padding:0.5rem 0.7rem 0.7rem;">
+              <details style="font-size:0.82rem;">
+                <summary style="cursor:pointer;color:var(--accent);font-weight:600;">Line-by-line: why this row, why this threshold, when it updates</summary>
+                <div style="margin-top:0.5rem;line-height:1.45;display:grid;gap:0.4rem;">
+                  <div><strong style="color:var(--text);">Why this KPI?</strong> Hedge test — rates must stay diversifier to equity.</div>
+                  <div><strong style="color:var(--text);">Why this threshold?</strong> &lt;0.45 = 40th pct, &gt;0.65 = 90th pct.</div>
+                  <div><strong style="color:var(--text);">When updated?</strong> Daily — yfinance 30D rolling.</div>
+                </div>
+              </details>
+            </td>
+          </tr>
+          
+        </tbody>
+      </table>
+      <p class="meta" style="margin-top:0.6rem;">Overall = <strong style="color:#d97706;">Watch</strong> because 1 confirming, 2 watch, 0 breaking. Watch ≥2 or Confirming &lt;50% → Watch; Breaking ≥2 → Breaking. Updated: <strong>2026-08-29</strong> · Next refresh on next archive date.</p>
+    </div>
+  </section>
+  
+
+  <section>
+    <h2>Top Story</h2>
+    <div class="card top-story">
+      <h3><a href="https://www.pbs.org/newshour/economy/warsh-raises-stakes-for-feds-next-meeting-and-other-takeaways-from-jackson-hole-conference">Fed Chair Warsh at Jackson Hole Opens Door to September Hike — &#39;Work to Do&#39; if Inflation Stays Above 2%</a></h3>
+      <p>Warsh&#39;s first detailed inflation defense — PCE 3.7%, &gt;50% of basket &gt;3% — shifted September hike odds to ~60% (from 40%) and reframed the hold as data-dependent, not dovish. With only one CPI before Sep 15–16, a hot August print flips the Fed from patient to hiking, repricing TLT/IEF duration and small-cap beta at once.</p>
+    </div>
+  </section>
+
+  
+  <section>
+    <h2>Themes — Drivers Clustered <span class="meta" style="font-weight:400;text-transform:none;letter-spacing:0;">· 3 clusters, each ~ one date</span></h2>
+    <div class="card">
+      
+      <div class="theme" style="padding:0.9rem 0;border-bottom:1px solid var(--border);">
+        <div style="display:flex;justify-content:space-between;gap:0.8rem;align-items:baseline;flex-wrap:wrap;">
+          <h3 style="margin:0;">Three Hawks vs Nine Holds — FOMC Split Deepens</h3>
+          <span class="badge" style="background:#f1f5f9;color:var(--muted);border:1px solid var(--border);">2026-08-19</span>
+        </div>
+        <p style="margin:0.35rem 0 0;">July minutes show three dissents (Hammack/Kashkari/Logan) for +25 bps — most since 2016 — on broad-based price pressure; majority chose to await intermeeting data, but market already prices a full hike by September and another by Q1 2027.</p>
+        
+        <div class="meta" style="margin-top:0.45rem;">Sources:
+          
+          <a href="https://www.federalreserve.gov/monetarypolicy/fomcminutes20260729.htm" style="color:var(--accent);text-decoration:none;border:1px solid var(--border);background:#f8fafc;padding:0.1rem 0.4rem;border-radius:999px;font-size:0.75rem;margin-right:0.3rem;">federalreserve.gov</a>
+          
+          <a href="https://www.cnbc.com/2026/07/29/fed-meeting-today-live-updates.html" style="color:var(--accent);text-decoration:none;border:1px solid var(--border);background:#f8fafc;padding:0.1rem 0.4rem;border-radius:999px;font-size:0.75rem;margin-right:0.3rem;">cnbc.com</a>
+          
+          
+        </div>
+        
+      </div>
+      
+      <div class="theme" style="padding:0.9rem 0;border-bottom:1px solid var(--border);">
+        <div style="display:flex;justify-content:space-between;gap:0.8rem;align-items:baseline;flex-wrap:wrap;">
+          <h3 style="margin:0;">Curve Bears Steepener Doubts — Long End Unconvinced</h3>
+          <span class="badge" style="background:#f1f5f9;color:var(--muted);border:1px solid var(--border);">2026-08-29</span>
+        </div>
+        <p style="margin:0.35rem 0 0;">Nominal yields rose 25–30 bps intermeeting on real rates, but 10Y barely moved post-Warsh while 30Y topped 5.2% then faded; survey medians still see no change into 2028 vs market&#39;s near-term hike, anchoring inflation compensation.</p>
+        
+        <div class="meta" style="margin-top:0.45rem;">Sources:
+          
+          <a href="https://www.federalreserve.gov/releases/h15/" style="color:var(--accent);text-decoration:none;border:1px solid var(--border);background:#f8fafc;padding:0.1rem 0.4rem;border-radius:999px;font-size:0.75rem;margin-right:0.3rem;">federalreserve.gov</a>
+          
+          <a href="https://www.pbs.org/newshour/economy/warsh-raises-stakes-for-feds-next-meeting-and-other-takeaways-from-jackson-hole-conference" style="color:var(--accent);text-decoration:none;border:1px solid var(--border);background:#f8fafc;padding:0.1rem 0.4rem;border-radius:999px;font-size:0.75rem;margin-right:0.3rem;">pbs.org</a>
+          
+          
+        </div>
+        
+      </div>
+      
+      <div class="theme" style="padding:0.9rem 0;border-bottom:1px solid var(--border);">
+        <div style="display:flex;justify-content:space-between;gap:0.8rem;align-items:baseline;flex-wrap:wrap;">
+          <h3 style="margin:0;">Data Dependency Narrowed to One CPI</h3>
+          <span class="badge" style="background:#f1f5f9;color:var(--muted);border:1px solid var(--border);">2026-08-28</span>
+        </div>
+        <p style="margin:0.35rem 0 0;">Warsh explicitly rejected forward guidance, tying September to the Aug CPI/Payrolls days before the meeting; PCE 3.7% and oil-driven gasoline softness mean that single CPI (Cleveland nowcast 0.38% MoM) decides hike vs hold.</p>
+        
+        <div class="meta" style="margin-top:0.45rem;">Sources:
+          
+          <a href="https://finance.yahoo.com/economy/policy/articles/warshs-jackson-hole-speech-course-050258340.html" style="color:var(--accent);text-decoration:none;border:1px solid var(--border);background:#f8fafc;padding:0.1rem 0.4rem;border-radius:999px;font-size:0.75rem;margin-right:0.3rem;">finance.yahoo.com</a>
+          
+          <a href="https://www.federalreserve.gov/monetarypolicy/fomcminutes20260729.htm" style="color:var(--accent);text-decoration:none;border:1px solid var(--border);background:#f8fafc;padding:0.1rem 0.4rem;border-radius:999px;font-size:0.75rem;margin-right:0.3rem;">federalreserve.gov</a>
+          
+          
+        </div>
+        
+      </div>
+      
+    </div>
+  </section>
+  
+
+  
+  <section>
+    <h2>Bear Case — What Would Prove This Wrong <span class="meta" style="font-weight:400;text-transform:none;letter-spacing:0;">· Invalidation triggers, not boilerplate</span></h2>
+    <div class="card" style="border-left:4px solid var(--down);">
+      <p style="font-weight:700;margin:0 0 0.5rem;">Bear Case — Inflation De-anchors Long End</p>
+      <ul style="margin:0;padding-left:1.2rem;">
+        
+        <li style="margin:0.4rem 0;font-size:0.92rem;"><strong style="color:var(--down);">Trigger →</strong> PCE stays &gt;3.5% and U Mich 5y expectations &gt;3.2% → 10Y real yield &gt;2.8% → TLT -6%</li>
+        
+        <li style="margin:0.4rem 0;font-size:0.92rem;"><strong style="color:var(--down);">Trigger →</strong> Warsh hikes 25 bps Sep and guides another → front-end inverts further</li>
+        
+      </ul>
+      <div style="margin-top:0.8rem;padding:0.6rem 0.8rem;background:#f8fafc;border:1px solid var(--border);border-radius:8px;">
+        <div class="meta" style="font-weight:600;">What <em>doesn't</em> break it:</div>
+        <div style="font-size:0.88rem;">One hot CPI without breadth (&gt;50% basket &gt;3%) — transitory oil</div>
+        <div class="meta" style="margin-top:0.4rem;font-style:italic;">Interview follow-up: What if 10Y hits 5.0% but PCE is 3.2%?</div>
+      </div>
+    </div>
+  </section>
+  
+
+  
+  <section>
+    <h2>Positioning & Crowding — Is This Consensus? <span class="meta" style="font-weight:400;text-transform:none;letter-spacing:0;">· ETF flows · 13F · Options · Prediction markets</span></h2>
+    <div class="card">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0.9rem;">
+        <div style="background:#f8fafc;border:1px solid var(--border);border-radius:10px;padding:0.9rem;">
+          <div class="meta" style="text-transform:uppercase;letter-spacing:0.06em;font-size:0.7rem;">ETF Flows</div>
+          <div style="font-size:0.92rem;margin-top:0.3rem;">TLT flows flat, SHY +$1.2B — front-end preferred, long-end not crowded</div>
+        </div>
+        <div style="background:#f8fafc;border:1px solid var(--border);border-radius:10px;padding:0.9rem;">
+          <div class="meta" style="text-transform:uppercase;letter-spacing:0.06em;font-size:0.7rem;">13F / Ownership</div>
+          <div style="font-size:0.92rem;margin-top:0.3rem;">Duration underweight in 13F — consensus short duration</div>
+        </div>
+        <div style="background:#f8fafc;border:1px solid var(--border);border-radius:10px;padding:0.9rem;">
+          <div class="meta" style="text-transform:uppercase;letter-spacing:0.06em;font-size:0.7rem;">Options Skew</div>
+          <div style="font-size:0.92rem;margin-top:0.3rem;">TLT call skew up — convexity bid</div>
+        </div>
+        <div style="background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:0.9rem;">
+          <div class="meta" style="text-transform:uppercase;letter-spacing:0.06em;font-size:0.7rem;">Prediction Markets — Real-time Consensus</div>
+          <div style="font-size:0.92rem;margin-top:0.3rem;">Kalshi Fed hike Sep 42% — market less hawkish than minutes&#39; 3 dissents</div>
+          <div class="meta" style="margin-top:0.3rem;">Kalshi TRADE API + Polymarket Gamma/CLOB — free, matches institutional; genuinely differentiated vs pure fundamental.</div>
+        </div>
+      </div>
+      <p class="meta" style="margin-top:0.7rem;">If crowding is high + thesis still Watch, size down even if thesis is Confirming — this is the timing overlay you flagged as missing.</p>
+    </div>
+  </section>
+  
+
+  <section>
+    <h2>Headline Timeline — Drivers for TLT <span class="meta" style="font-weight:400;text-transform:none;letter-spacing:0;">· Past 3 months — one top driver per trading day (8 days)</span></h2>
+    <div class="card">
+      <p class="meta" style="margin-top:0">Every row is <strong>why this day moved TLT</strong> — the top <code>importance</code> headline for that date, filtered as a driver for the main proxy. Left = headline date; right-hand <code style="background:#f1f5f9;padding:0 4px;border-radius:4px;">TLT</code> shows the proxy's close & day-over-day change on that driver day.</p>
+      <div class="timeline">
+        
+        <div class="tl-item">
+          <div class="tl-date">
+            <div class="tl-day">2026-06-18</div>
+            <div class="tl-trade meta">1D 2026-06-17→2026-06-18 · 86.08 <span class="up">+0.49%</span></div>
+          </div>
+          <div class="tl-dot" style="background:#b45309"></div>
+          <div class="tl-content">
+            
+            
+            <span class="badge" style="background:var(--cat-policy-bg);color:var(--cat-policy-fg);border:1px solid var(--border);">policy_regulation</span>
+            <span class="meta" style="margin-left:0.3rem;">★5</span>
+            
+            <span class="badge" style="background:#fffbeb;color:#92400e;border:1px solid #fde68a;margin-left:0.35rem;">driver for TLT</span>
+            
+            <a href="https://www.federalreserve.gov/monetarypolicy/openmarket-20260618.htm" style="display:block;margin:0.15rem 0 0;font-weight:600;color:var(--text);text-decoration:none;">Fed Holds Steady at 3.50–3.75% — Dot Plot Still Sees One Cut in 2026</a>
+            <div class="meta">Federal Reserve · <span class="meta" style="color:var(--accent);">Selected as driver for TLT: top importance for 2026-06-18</span></div>
+            
+            <div style="margin-top:0.4rem;background:#fffbeb;border-left:3px solid #f59e0b;padding:0.45rem 0.65rem;border-radius:6px;font-size:0.85rem;color:#78350f;line-height:1.4;">
+              <strong style="color:#b45309;">Why this moves TLT →</strong> For TLT: Positive — June dot kept easing bias alive; July hold without new dots left TLT&#39;s convexity unpriced, keeping TLT&#39;s upside if cuts resume in 2026.
+            </div>
+            
+          </div>
+        </div>
+        
+        <div class="tl-item">
+          <div class="tl-date">
+            <div class="tl-day">2026-07-12</div>
+            <div class="tl-trade meta">1D 2026-07-09→2026-07-10 · 84.13 <span class="down">-0.02%</span></div>
+          </div>
+          <div class="tl-dot" style="background:#b45309"></div>
+          <div class="tl-content">
+            
+            
+            <span class="badge" style="background:var(--cat-market-bg);color:var(--cat-market-fg);border:1px solid var(--border);">market</span>
+            <span class="meta" style="margin-left:0.3rem;">★3</span>
+            
+            <span class="badge" style="background:#fffbeb;color:#92400e;border:1px solid #fde68a;margin-left:0.35rem;">driver for TLT</span>
+            
+            <a href="https://www.clevelandfed.org/nowcast/2026-07-12" style="display:block;margin:0.15rem 0 0;font-weight:600;color:var(--text);text-decoration:none;">June CPI Preview: Cleveland Fed Nowcast 0.31% MoM — Markets Price 70% Hold for July</a>
+            <div class="meta">Cleveland Fed · <span class="meta" style="color:var(--accent);">Selected as driver for TLT: top importance for 2026-07-12</span></div>
+            
+            <div style="margin-top:0.4rem;background:#fffbeb;border-left:3px solid #f59e0b;padding:0.45rem 0.65rem;border-radius:6px;font-size:0.85rem;color:#78350f;line-height:1.4;">
+              <strong style="color:#b45309;">Why this moves TLT →</strong> For TLT: Neutral — hawkish nowcast preview kept TLT on back foot before July; actual cooler CPI shows nowcast overshoot risk, which is bullish for TLT if August 0.38% nowcast also overshoots.
+            </div>
+            
+          </div>
+        </div>
+        
+        <div class="tl-item">
+          <div class="tl-date">
+            <div class="tl-day">2026-07-29</div>
+            <div class="tl-trade meta">1D 2026-07-28→2026-07-29 · 82.52 <span class="down">-1.65%</span></div>
+          </div>
+          <div class="tl-dot" style="background:#b45309"></div>
+          <div class="tl-content">
+            
+            
+            <span class="badge" style="background:var(--cat-policy-bg);color:var(--cat-policy-fg);border:1px solid var(--border);">policy_regulation</span>
+            <span class="meta" style="margin-left:0.3rem;">★3</span>
+            
+            <span class="badge" style="background:#fffbeb;color:#92400e;border:1px solid #fde68a;margin-left:0.35rem;">driver for TLT</span>
+            
+            <a href="https://www.cnbc.com/2026/07/29/fed-meeting-today-live-updates.html" style="display:block;margin:0.15rem 0 0;font-weight:600;color:var(--text);text-decoration:none;">Fed July Decision: Rates Steady but Three Members Dissented — Most Hawks Since 2016 (Hammack, Kashkari, Logan)</a>
+            <div class="meta">CNBC · <span class="meta" style="color:var(--accent);">Selected as driver for TLT: top importance for 2026-07-29</span></div>
+            
+            <div style="margin-top:0.4rem;background:#fffbeb;border-left:3px solid #f59e0b;padding:0.45rem 0.65rem;border-radius:6px;font-size:0.85rem;color:#78350f;line-height:1.4;">
+              <strong style="color:#b45309;">Why this moves TLT →</strong> For TLT: Negative signal — 3 dissents is hawkish tell that keeps front-end (SHY) bid but pressures long-end TLT until CPI proves cool; explains why TLT lagged SHY after meeting.
+            </div>
+            
+          </div>
+        </div>
+        
+        <div class="tl-item">
+          <div class="tl-date">
+            <div class="tl-day">2026-08-12</div>
+            <div class="tl-trade meta">1D 2026-08-11→2026-08-12 · 82.11 <span class="down">-0.10%</span></div>
+          </div>
+          <div class="tl-dot" style="background:#b45309"></div>
+          <div class="tl-content">
+            
+            
+            <span class="badge" style="background:var(--cat-policy-bg);color:var(--cat-policy-fg);border:1px solid var(--border);">policy_regulation</span>
+            <span class="meta" style="margin-left:0.3rem;">★5</span>
+            
+            <span class="badge" style="background:#fffbeb;color:#92400e;border:1px solid #fde68a;margin-left:0.35rem;">driver for TLT</span>
+            
+            <a href="https://www.bls.gov/cpi/2026-07-cpi" style="display:block;margin:0.15rem 0 0;font-weight:600;color:var(--text);text-decoration:none;">July CPI 0.1% MoM, 3.4% YoY — Trims September Hike Odds to ~42%</a>
+            <div class="meta">BLS · <span class="meta" style="color:var(--accent);">Selected as driver for TLT: top importance for 2026-08-12</span></div>
+            
+            <div style="margin-top:0.4rem;background:#fffbeb;border-left:3px solid #f59e0b;padding:0.45rem 0.65rem;border-radius:6px;font-size:0.85rem;color:#78350f;line-height:1.4;">
+              <strong style="color:#b45309;">Why this moves TLT →</strong> For TLT: Positive — cool CPI cut hike odds 20pp and lifted TLT; shows TLT&#39;s high beta to CPI — single print moves TLT 1-2% vs SHY 0.2%.
+            </div>
+            
+          </div>
+        </div>
+        
+        <div class="tl-item">
+          <div class="tl-date">
+            <div class="tl-day">2026-08-14</div>
+            <div class="tl-trade meta">1D 2026-08-13→2026-08-14 · 82.04 <span class="down">-0.67%</span></div>
+          </div>
+          <div class="tl-dot" style="background:#b45309"></div>
+          <div class="tl-content">
+            
+            
+            <span class="badge" style="background:var(--cat-policy-bg);color:var(--cat-policy-fg);border:1px solid var(--border);">policy_regulation</span>
+            <span class="meta" style="margin-left:0.3rem;">★3</span>
+            
+            <span class="badge" style="background:#fffbeb;color:#92400e;border:1px solid #fde68a;margin-left:0.35rem;">driver for TLT</span>
+            
+            <a href="https://www.bls.gov/ppi/2026-07-ppi" style="display:block;margin:0.15rem 0 0;font-weight:600;color:var(--text);text-decoration:none;">July PPI Flat MoM — Core Goods Disinflation Helps Doubt Hike Case</a>
+            <div class="meta">BLS · <span class="meta" style="color:var(--accent);">Selected as driver for TLT: top importance for 2026-08-14</span></div>
+            
+            <div style="margin-top:0.4rem;background:#fffbeb;border-left:3px solid #f59e0b;padding:0.45rem 0.65rem;border-radius:6px;font-size:0.85rem;color:#78350f;line-height:1.4;">
+              <strong style="color:#b45309;">Why this moves TLT →</strong> For TLT: Positive — flat PPI reinforced &#39;Fed can stay patient&#39; and pushed hike odds to low 30s, directly supporting TLT&#39;s duration bid into Jackson Hole.
+            </div>
+            
+          </div>
+        </div>
+        
+        <div class="tl-item">
+          <div class="tl-date">
+            <div class="tl-day">2026-08-19</div>
+            <div class="tl-trade meta">1D 2026-08-18→2026-08-19 · 83.02 <span class="up">+1.67%</span></div>
+          </div>
+          <div class="tl-dot" style="background:#b45309"></div>
+          <div class="tl-content">
+            
+            
+            <span class="badge" style="background:var(--cat-policy-bg);color:var(--cat-policy-fg);border:1px solid var(--border);">policy_regulation</span>
+            <span class="meta" style="margin-left:0.3rem;">★5</span>
+            
+            <span class="badge" style="background:#fffbeb;color:#92400e;border:1px solid #fde68a;margin-left:0.35rem;">driver for TLT</span>
+            
+            <a href="https://www.federalreserve.gov/monetarypolicy/fomcminutes20260729.htm" style="display:block;margin:0.15rem 0 0;font-weight:600;color:var(--text);text-decoration:none;">FOMC Minutes July 28–29: 9 Hold at 3.50–3.75% vs 3 Dissents for +25 bps; Market Prices Full Hike by September</a>
+            <div class="meta">Federal Reserve · <span class="meta" style="color:var(--accent);">Selected as driver for TLT: top importance for 2026-08-19</span></div>
+            
+            <div style="margin-top:0.4rem;background:#fffbeb;border-left:3px solid #f59e0b;padding:0.45rem 0.65rem;border-radius:6px;font-size:0.85rem;color:#78350f;line-height:1.4;">
+              <strong style="color:#b45309;">Why this moves TLT →</strong> For TLT: Negative near-term — deepest hawkish dissent since 2016 (3 votes) shows bar for hike is low; one hot CPI forces TLT duration loss, but also creates entry if you believe survey median (no hike to 2028) over market pricing.
+            </div>
+            
+          </div>
+        </div>
+        
+        <div class="tl-item">
+          <div class="tl-date">
+            <div class="tl-day">2026-08-28</div>
+            <div class="tl-trade meta">1D 2026-08-26→2026-08-27 · 83.13 <span class="down">-0.20%</span></div>
+          </div>
+          <div class="tl-dot" style="background:#b45309"></div>
+          <div class="tl-content">
+            
+            
+            <span class="badge" style="background:var(--cat-policy-bg);color:var(--cat-policy-fg);border:1px solid var(--border);">policy_regulation</span>
+            <span class="meta" style="margin-left:0.3rem;">★4</span>
+            
+            <span class="badge" style="background:#fffbeb;color:#92400e;border:1px solid #fde68a;margin-left:0.35rem;">driver for TLT</span>
+            
+            <a href="https://finance.yahoo.com/economy/policy/articles/warshs-jackson-hole-speech-course-050258340.html" style="display:block;margin:0.15rem 0 0;font-weight:600;color:var(--text);text-decoration:none;">PCE at 3.7% YoY, Over Half Basket &gt;3% — Warsh Calls Inflation Broad and Stubborn, Not Just Gas</a>
+            <div class="meta">Reuters · <span class="meta" style="color:var(--accent);">Selected as driver for TLT: top importance for 2026-08-28</span></div>
+            
+            <div style="margin-top:0.4rem;background:#fffbeb;border-left:3px solid #f59e0b;padding:0.45rem 0.65rem;border-radius:6px;font-size:0.85rem;color:#78350f;line-height:1.4;">
+              <strong style="color:#b45309;">Why this moves TLT →</strong> For TLT: Negative — PCE 3.7% and &gt;50% basket &gt;3% (vs 1/3 pre-pandemic) argues inflation not transitory, so TLT&#39;s duration is at risk if Warsh hikes to deliver 2% — but also means TIP (in TLT&#39;s cohort) benefits.
+            </div>
+            
+          </div>
+        </div>
+        
+        <div class="tl-item">
+          <div class="tl-date">
+            <div class="tl-day">2026-08-29</div>
+            <div class="tl-trade meta">1D 2026-08-26→2026-08-27 · 83.13 <span class="down">-0.20%</span></div>
+          </div>
+          <div class="tl-dot" style="background:#b45309"></div>
+          <div class="tl-content">
+            
+            
+            <span class="badge" style="background:var(--cat-policy-bg);color:var(--cat-policy-fg);border:1px solid var(--border);">policy_regulation</span>
+            <span class="meta" style="margin-left:0.3rem;">★5</span>
+            
+            <span class="badge" style="background:#fffbeb;color:#92400e;border:1px solid #fde68a;margin-left:0.35rem;">driver for TLT</span>
+            
+            <a href="https://www.pbs.org/newshour/economy/warsh-raises-stakes-for-feds-next-meeting-and-other-takeaways-from-jackson-hole-conference" style="display:block;margin:0.15rem 0 0;font-weight:600;color:var(--text);text-decoration:none;">Fed Chair Warsh at Jackson Hole Opens Door to September Hike — &#39;Work to Do&#39; if Inflation Stays Above 2%</a>
+            <div class="meta">PBS News / AP · <span class="meta" style="color:var(--accent);">Selected as driver for TLT: top importance for 2026-08-29</span></div>
+            
+            <div style="margin-top:0.4rem;background:#fffbeb;border-left:3px solid #f59e0b;padding:0.45rem 0.65rem;border-radius:6px;font-size:0.85rem;color:#78350f;line-height:1.4;">
+              <strong style="color:#b45309;">Why this moves TLT →</strong> For TLT (20Y bond, Main proxy is TLT): Negative — hawkish pivot lifted September hike odds to ~60% and would push TLT price down (yields up) if hike happens; but TLT&#39;s +8% convexity if Fed instead holds shows why TLT is the hedge — you get paid 4.6% to wait.
+            </div>
+            
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Outlook</h2>
+    <div class="card"><p>Watch Sep 11 August CPI and Sep 4 payrolls — a second negative payroll plus tame CPI keeps Fed on hold and duration bid; a firm CPI forces a 25 bps hike Sep 16 and flattens TLT/IEF; middle path keeps yields chopping around 4.6–4.7% 10Y.</p></div>
+  </section>
+
+  <section>
+    <h2>What to Watch — Key Data Points</h2>
+    <div class="card">
+      <table>
+        <thead><tr><th>Date</th><th>Event / Catalyst</th><th>Impact</th></tr></thead>
+        <tbody>
+          
+          <tr>
+            <td style="white-space:nowrap;font-weight:600;">2026-09-04</td>
+            <td>August payrolls (pre-FOMC) — stable labor narrative underpins Warsh&#39;s hawkish hold</td>
+            <td><span class="badge" style="background:#fee2e2;color:#991b1b">High</span></td>
+          </tr>
+          
+          <tr>
+            <td style="white-space:nowrap;font-weight:600;">2026-09-11</td>
+            <td>August CPI — Warsh&#39;s single data point before Sep 15 hike decision</td>
+            <td><span class="badge" style="background:#fee2e2;color:#991b1b">High</span></td>
+          </tr>
+          
+          <tr>
+            <td style="white-space:nowrap;font-weight:600;">2026-09-15/16</td>
+            <td>FOMC — market prices full 25 bps hike by Sep, survey median sees no hike</td>
+            <td><span class="badge" style="background:#fee2e2;color:#991b1b">High</span></td>
+          </tr>
+          
+          <tr>
+            <td style="white-space:nowrap;font-weight:600;">2026-09-18</td>
+            <td>PCE + U of Michigan inflation expectations — long-end de-anchoring risk</td>
+            <td><span class="badge" style="background:#fef9c3;color:#854d0e">Medium</span></td>
+          </tr>
+          
+          <tr>
+            <td style="white-space:nowrap;font-weight:600;">2026-10-29</td>
+            <td>FOMC Oct — second hike window; 55% hike odds by Dec</td>
+            <td><span class="badge" style="background:#fee2e2;color:#991b1b">High</span></td>
+          </tr>
+          
+        </tbody>
+      </table>
+      <p class="meta" style="margin-top:0.8rem;">Add to calendar: FOMC/CPI are the fastest repricers for the index above; watch the <code>TLT</code> reaction at each print.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>All Headlines — Last 90 Days (Ranked)</h2>
+    <div class="card">
+      <ul class="headline-list">
+        
+        <li>
+          
+          
+          <span class="badge" style="background:var(--cat-policy-bg);color:var(--cat-policy-fg);border:1px solid var(--border);">policy_regulation</span>
+          <a href="https://www.pbs.org/newshour/economy/warsh-raises-stakes-for-feds-next-meeting-and-other-takeaways-from-jackson-hole-conference">Fed Chair Warsh at Jackson Hole Opens Door to September Hike — &#39;Work to Do&#39; if Inflation Stays Above 2%</a>
+          <div class="meta">PBS News / AP · 2026-08-29 · ★5</div>
+        </li>
+        
+        <li>
+          
+          
+          <span class="badge" style="background:var(--cat-policy-bg);color:var(--cat-policy-fg);border:1px solid var(--border);">policy_regulation</span>
+          <a href="https://www.federalreserve.gov/monetarypolicy/fomcminutes20260729.htm">FOMC Minutes July 28–29: 9 Hold at 3.50–3.75% vs 3 Dissents for +25 bps; Market Prices Full Hike by September</a>
+          <div class="meta">Federal Reserve · 2026-08-19 · ★5</div>
+        </li>
+        
+        <li>
+          
+          
+          <span class="badge" style="background:var(--cat-market-bg);color:var(--cat-market-fg);border:1px solid var(--border);">market</span>
+          <a href="https://www.federalreserve.gov/releases/h15/">H.15 Aug 28: Fed Funds 3.63%, 10Y 4.67%, 2Y 4.20%, 30Y 5.19% — Real Yields Drive Nominal Rise 25–30 bps</a>
+          <div class="meta">Federal Reserve H.15 · 2026-08-28 · ★4</div>
+        </li>
+        
+        <li>
+          
+          
+          <span class="badge" style="background:var(--cat-policy-bg);color:var(--cat-policy-fg);border:1px solid var(--border);">policy_regulation</span>
+          <a href="https://finance.yahoo.com/economy/policy/articles/warshs-jackson-hole-speech-course-050258340.html">PCE at 3.7% YoY, Over Half Basket &gt;3% — Warsh Calls Inflation Broad and Stubborn, Not Just Gas</a>
+          <div class="meta">Reuters · 2026-08-28 · ★4</div>
+        </li>
+        
+        <li>
+          
+          
+          <span class="badge" style="background:var(--cat-policy-bg);color:var(--cat-policy-fg);border:1px solid var(--border);">policy_regulation</span>
+          <a href="https://www.cnbc.com/2026/07/29/fed-meeting-today-live-updates.html">Fed July Decision: Rates Steady but Three Members Dissented — Most Hawks Since 2016 (Hammack, Kashkari, Logan)</a>
+          <div class="meta">CNBC · 2026-07-29 · ★3</div>
+        </li>
+        
+        <li>
+          
+          
+          <span class="badge" style="background:var(--cat-market-bg);color:var(--cat-market-fg);border:1px solid var(--border);">market</span>
+          <a href="https://www.cnbc.com/2026/07/29/fed-meeting-today-live-updates.html">30Y Treasury Tops 5.2% After FOMC, 10Y Barely Budges Post-Hawkish — Long End Unconvinced</a>
+          <div class="meta">CNBC / PBS · 2026-07-29 · ★3</div>
+        </li>
+        
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    Generated automatically by the Daily Digest pipeline. See <a href="https://github.com/PodorCN/thematic-market-watcher">source</a>.
+  </footer>
+</main>
+</body>
+</html>

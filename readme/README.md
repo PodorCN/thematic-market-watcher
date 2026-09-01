@@ -1,6 +1,6 @@
-# Thematic Market Water — Daily Digest
+# Thematic Market Watcher — Daily Digest
 
-A daily pipeline that turns water-sector market data + news into a static
+A daily pipeline that turns theme-specific market data + news into a static
 HTML report: fetch market data → collect & judge news headlines → LLM
 analysis → render HTML. Runs on a schedule via GitHub Actions; the latest
 report is published via GitHub Pages from `docs/`.

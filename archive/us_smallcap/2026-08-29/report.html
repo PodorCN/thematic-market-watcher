@@ -1,0 +1,782 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thematic Market Digest — us_smallcap — 2026-08-29</title>
+<style>
+  :root {
+    --bg: #f7f9fa;
+    --card: #ffffff;
+    --text: #1a2733;
+    --muted: #5b6b76;
+    --border: #e1e7ea;
+    --accent: #0b6e8f;
+    /* Unified palette — up/down + theme accents + category */
+    --up: #059669;
+    --up-bg: #ecfdf5;
+    --up-border: #a7f3d0;
+    --down: #dc2626;
+    --down-bg: #fef2f2;
+    --down-border: #fecaca;
+    --neutral: #64748b;
+    --accent-cb: #0b4d3e;
+    --accent-sc: #7c3aed;
+    --accent-rates: #b45309;
+    --accent-tariff: #be123c;
+    --cat-company-bg: #dbeafe; --cat-company-fg: #1e40af;
+    --cat-policy-bg: #fef3c7; --cat-policy-fg: #92400e;
+    --cat-market-bg: #dcfce7; --cat-market-fg: #166534;
+    --cat-tech-bg: #fce7f3; --cat-tech-fg: #9d174d;
+    --cat-infra-bg: #ede9fe; --cat-infra-fg: #6d28d9;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 2rem 1rem 4rem;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+  }
+  main { max-width: 1440px; margin: 0 auto; width: 96vw; padding: 0 0.5rem; }
+  @media (max-width: 768px) { main { width: 100vw; padding: 0 0.75rem; } }
+  header.page-header { margin-bottom: 2rem; }
+  h1 { font-size: 1.6rem; margin: 0 0 0.25rem; }
+  .date { color: var(--muted); font-size: 0.95rem; }
+  section { margin-bottom: 2rem; }
+  h2 {
+    font-size: 1.05rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    margin: 0 0 0.75rem;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+  }
+  table { width: 100%; border-collapse: collapse; }
+  th, td { text-align: left; padding: 0.5rem 0.6rem; border-bottom: 1px solid var(--border); font-size: 0.92rem; }
+  th { color: var(--muted); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; }
+  tr:last-child td { border-bottom: none; }
+  .num { text-align: right; font-variant-numeric: tabular-nums; }
+  .up { color: var(--up); }
+  .down { color: var(--down); }
+  .sparkline { vertical-align: middle; }
+  .top-story { border-left: 4px solid var(--accent); }
+  .top-story h3 { margin: 0 0 0.4rem; font-size: 1.1rem; }
+  .top-story a { color: var(--accent); }
+  .theme { margin-bottom: 1rem; }
+  .theme:last-child { margin-bottom: 0; }
+  .theme h3 { margin: 0 0 0.3rem; font-size: 1rem; }
+  .theme ul { margin: 0.4rem 0 0; padding-left: 1.2rem; font-size: 0.85rem; }
+  .headline-list { list-style: none; margin: 0; padding: 0; }
+  .headline-list li { padding: 0.55rem 0; border-bottom: 1px solid var(--border); }
+  .headline-list li:last-child { border-bottom: none; }
+  .headline-list a { color: var(--text); text-decoration: none; font-weight: 500; }
+  .headline-list a:hover { color: var(--accent); }
+  .meta { color: var(--muted); font-size: 0.8rem; margin-top: 0.15rem; }
+  .badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.1rem 0.5rem;
+    border-radius: 999px;
+    background: #eef4f6;
+    color: var(--accent);
+    margin-right: 0.4rem;
+  }
+  footer { color: var(--muted); font-size: 0.8rem; margin-top: 3rem; text-align: center; }
+  .timeline { position: relative; margin: 0.6rem 0 0; padding-left: 0; }
+  .timeline::before { content: ""; position: absolute; left: 108px; top: 8px; bottom: 8px; width: 2px; background: var(--border); border-radius: 999px; }
+  .tl-item { display: grid; grid-template-columns: 96px 18px 1fr; gap: 0.6rem; padding: 0.55rem 0; align-items: start; }
+  .tl-date { text-align: right; padding-right: 0.2rem; }
+  .tl-day { font-weight: 700; font-size: 0.85rem; }
+  .tl-trade { font-size: 0.75rem; line-height: 1.2; }
+  .tl-dot { width: 10px; height: 10px; border-radius: 999px; margin-top: 0.25rem; border: 2px solid #fff; box-shadow: 0 0 0 2px var(--border); justify-self: center; }
+  .tl-content { min-width: 0; }
+  @media (max-width: 560px) { .timeline::before { left: 76px; } .tl-item { grid-template-columns: 64px 18px 1fr; } }
+</style>
+</head>
+<body>
+<main>
+  <nav style="margin-bottom:1.2rem;font-size:0.85rem;">
+    <a href="../" style="color:var(--muted);text-decoration:none;">← All themes</a>
+    <span style="color:var(--border);margin:0 0.4rem;">·</span>
+    <span style="color:var(--accent);font-weight:600;">us_smallcap</span>
+    <span style="float:right;color:var(--muted);">
+      <a href="../canadian_banks/" style="color:var(--muted);">Canadian Banks</a> ·
+      <a href="../us_smallcap/" style="color:var(--muted);">US Small Cap</a> ·
+      <a href="../us_rates/" style="color:var(--muted);">US Rates</a> ·
+      <a href="../tariff_war/" style="color:var(--muted);">Tariff War</a> ·
+      <a href="../canadian-financial-study/" style="color:var(--accent);font-weight:700;">Study</a>
+    </span>
+  </nav>
+  <header class="page-header">
+    <div style="display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap;">
+      <h1 style="margin:0;">Thematic Market Digest — us_smallcap</h1>
+      <span class="badge" style="background:#7c3aed;color:#fff;border:1px solid #7c3aed;font-size:0.75rem;padding:0.2rem 0.6rem;">Main proxy: IWM</span>
+    </div>
+    <div class="date" style="margin-top:0.25rem;">2026-08-29 · 90-day history · Full-width</div>
+  </header>
+
+  
+  <section>
+    <h2>Why This Theme — Investment Thesis</h2>
+    <div class="card" style="border-left:4px solid #7c3aed;">
+      <p style="font-weight:750;margin:0 0 0.45rem;font-size:1.02rem;">Why US Small Cap is the most levered bet on falling rates</p>
+      <p style="margin:0 0 0.8rem;color:var(--text);font-size:0.92rem;background:#f8fafc;border:1px solid var(--border);border-radius:8px;padding:0.65rem 0.8rem;">34% discount + 40% floating-rate debt = 25 bps easing ≈ 2% earnings — plus $334B mechanical flows. See Drivers for torque.</p>
+      <ul style="margin:0;padding-left:1.2rem;">
+        
+        <li style="margin:0.45rem 0;font-size:0.92rem;line-height:1.45;">Torque + value: widest discount since 2002, 80% domestic — hedges Mag-7 concentration, high-beta if broadening holds.</li>
+        
+      </ul>
+    </div>
+  </section>
+  
+
+  
+  <section>
+    <h2>Main Proxy — IWM</h2>
+    <div class="card" style="border-left:4px solid #7c3aed;">
+      <p style="font-weight:750;margin:0 0 0.25rem;font-size:1.02rem;">iShares Russell 2000 ETF</p>
+      <p style="margin:0 0 0.35rem;color:var(--muted);font-size:0.85rem;">Tracks: Russell 2000 — 2,000 U.S. small caps, 80% domestic revenue, avg. mkt cap ~$3B</p>
+      <p style="margin:0 0 0.5rem;font-size:0.92rem;line-height:1.45;">Market&#39;s standard small-cap anchor ($62B AUM, 0.19% fee). More diversified than S&amp;P 600 (IJR) or microcap (IWC), and directly maps to the &#39;rates-beta + domestic breadth&#39; thesis: ~40% floating-rate debt makes it the cleanest Fed-sensitive proxy.</p>
+      <div class="meta" style="background:#f8fafc;border:1px solid var(--border);border-radius:999px;display:inline-block;padding:0.15rem 0.6rem;">AUM ~$62B · Expense 0.19% · 27 record closes in 2026</div>
+    </div>
+  </section>
+  
+
+  
+  <section>
+    <h2>Index Trend — US Small Cap · Main vs Benchmark</h2>
+    <div class="card" style="margin-bottom:1rem;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.6rem;flex-wrap:wrap;gap:0.5rem;">
+        <div><strong>IWM vs SPY — Indexed to 100</strong> <span class="meta">Main proxy vs S&amp;P 500 (SPY)</span></div>
+        <div class="meta" style="display:flex;gap:10px;flex-wrap:wrap;">
+          
+          
+          <span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:12px;height:3px;background:#7c3aed;border-radius:999px;display:inline-block"></span>IWM</span>
+          
+          <span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:12px;height:3px;background:#64748b;border-radius:999px;display:inline-block;border-top:2px dashed #64748b;height:0"></span>SPY</span>
+          
+        </div>
+      </div>
+      <div style="overflow-x:auto;"><svg width="1100" height="240" viewBox="0 0 1100 240" role="img" aria-label="overlay indexed trend" style="background:#fff;border:1px solid #e2e8f0;border-radius:8px;width:100%;height:auto;"><line x1="48" y1="14.0" x2="1084" y2="14.0" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 4"/><text x="42" y="17.0" text-anchor="end" font-size="10" fill="#64748b">112.1</text><line x1="48" y1="63.5" x2="1084" y2="63.5" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 4"/><text x="42" y="66.5" text-anchor="end" font-size="10" fill="#64748b">108.3</text><line x1="48" y1="113.0" x2="1084" y2="113.0" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 4"/><text x="42" y="116.0" text-anchor="end" font-size="10" fill="#64748b">104.5</text><line x1="48" y1="162.5" x2="1084" y2="162.5" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 4"/><text x="42" y="165.5" text-anchor="end" font-size="10" fill="#64748b">100.7</text><line x1="48" y1="212.0" x2="1084" y2="212.0" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 4"/><text x="42" y="215.0" text-anchor="end" font-size="10" fill="#64748b">96.9</text><polyline points="48.0,172.0 59.8,176.6 71.5,171.2 83.3,168.9 95.1,184.2 106.9,192.8 118.6,165.0 130.4,158.8 142.2,165.4 154.0,143.2 165.7,123.2 177.5,144.7 189.3,135.6 201.0,130.1 212.8,143.2 224.6,142.7 236.4,134.3 248.1,166.7 259.9,174.4 271.7,188.5 283.5,156.0 295.2,143.6 307.0,131.1 318.8,105.6 330.5,106.3 342.3,98.4 354.1,106.0 365.9,112.8 377.6,100.2 389.4,119.0 401.2,98.5 413.0,147.5 424.7,135.9 436.5,131.6 448.3,145.6 460.0,106.1 471.8,94.1 483.6,82.7 495.4,94.9 507.1,105.3 518.9,78.2 530.7,65.9 542.5,79.5 554.2,73.0 566.0,62.5 577.8,58.1 589.5,62.2 601.3,55.2 613.1,60.5 624.9,68.8 636.6,62.5 648.4,75.4 660.2,88.2 672.0,70.4 683.7,76.3 695.5,88.2 707.3,83.4 719.0,77.4 730.8,78.2 742.6,85.6 754.4,93.8 766.1,73.7 777.9,86.8 789.7,94.8 801.5,99.2 813.2,90.9 825.0,88.8 836.8,111.5 848.5,92.5 860.3,99.1 872.1,75.2 883.9,49.2 895.6,58.4 907.4,65.6 919.2,49.9 931.0,57.4 942.7,52.6 954.5,44.5 966.3,40.7 978.0,33.2 989.8,38.0 1001.6,56.2 1013.4,49.2 1025.1,68.4 1036.9,57.5 1048.7,66.9 1060.5,61.0 1072.2,62.4 1084.0,58.2" fill="none" stroke="#7c3aed" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><polyline points="48.0,172.0 59.8,177.1 71.5,167.0 83.3,164.7 95.1,171.1 106.9,171.3 118.6,158.3 130.4,154.6 142.2,159.5 154.0,148.9 165.7,130.4 177.5,134.5 189.3,123.4 201.0,120.3 212.8,122.4 224.6,114.8 236.4,104.0 248.1,120.6 259.9,121.5 271.7,130.6 283.5,116.7 295.2,114.0 307.0,108.7 318.8,99.6 330.5,99.8 342.3,92.2 354.1,88.7 365.9,84.9 377.6,83.0 389.4,92.8 401.2,87.6 413.0,123.5 424.7,120.5 436.5,124.5 448.3,145.8 460.0,123.2 471.8,115.8 483.6,91.8 495.4,100.0 507.1,117.3 518.9,103.1 530.7,107.4 542.5,127.4 554.2,128.0 566.0,126.0 577.8,135.8 589.5,113.7 601.3,103.0 613.1,104.9 624.9,106.7 636.6,94.7 648.4,101.3 660.2,105.6 672.0,93.9 683.7,88.0 695.5,98.6 707.3,93.7 719.0,88.2 730.8,95.8 742.6,109.5 754.4,111.7 766.1,100.3 777.9,101.9 789.7,118.9 801.5,117.5 813.2,117.2 825.0,113.9 836.8,135.0 848.5,112.4 860.3,102.6 872.1,82.9 883.9,57.7 895.6,60.6 907.4,62.8 919.2,54.2 931.0,54.6 942.7,59.2 954.5,55.6 966.3,45.7 978.0,48.5 989.8,55.3 1001.6,64.9 1013.4,61.9 1025.1,73.8 1036.9,68.1 1048.7,72.2 1060.5,67.7 1072.2,67.4 1084.0,58.2" fill="none" stroke="#64748b" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="6 4"/><text x="1088.0" y="54.2" font-size="10" fill="#64748b" font-weight="600">SPY</text><text x="48.0" y="232.0" text-anchor="middle" font-size="10" fill="#64748b">04-22</text><text x="566.0" y="232.0" text-anchor="middle" font-size="10" fill="#64748b">06-25</text><text x="1084.0" y="232.0" text-anchor="middle" font-size="10" fill="#64748b">08-27</text></svg></div>
+      <div class="meta" style="margin-top:0.4rem;">Indexed to 100 at start of 90-day window — flat if both move together, divergence is theme alpha vs S&P 500. Source: yfinance 90-day history.</div>
+    </div>
+  </section>
+  
+
+  <section>
+    <h2>Market Summary — At a Glance</h2>
+    <div class="card">
+      <p>US small caps closed Aug 29 with a split tape: IWM 299.81, IJR 146.78, VB 304.28 all fractionally lower after a 22.7% YTD record run, while flows tell the rotation story — IWM +$733M on Aug 27 as QQQ bled $4.55B. Russell 2000 sits 12 points under its 3,069.71 ATH with monthly RSI 70.8 and StochRSI 89.4, technically intact but overbought.</p>
+      
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0.7rem;margin:0.9rem 0 0.6rem;">
+        <div style="background:#f8fafc;border:1px solid var(--border);border-radius:10px;padding:0.75rem 0.9rem;">
+          <div class="meta" style="font-size:0.68rem;letter-spacing:0.06em;text-transform:uppercase;">Proxies</div>
+          <div style="font-size:1.25rem;font-weight:800;">8</div>
+          <div class="meta" style="font-size:0.78rem;">1D 2026-08-26→2026-08-27</div>
+        </div>
+        <div style="background:var(--up-bg);border:1px solid var(--up-border);border-radius:10px;padding:0.75rem 0.9rem;">
+          <div class="meta" style="font-size:0.68rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--up);">Theme</div>
+          <div class="num up" style="font-size:1.25rem;font-weight:800;">+0.25%</div>
+          <div class="meta" style="font-size:0.78rem;">mean · median +0.29%</div>
+        </div>
+        <div style="background:#f8fafc;border:1px solid var(--border);border-radius:10px;padding:0.75rem 0.9rem;">
+          <div class="meta" style="font-size:0.68rem;letter-spacing:0.06em;text-transform:uppercase;">Breadth</div>
+          <div style="font-size:1.15rem;font-weight:800;"><span class="up">7 up</span> · <span class="down">1 down</span></div>
+          <div class="meta" style="font-size:0.78rem;">88% positive</div>
+        </div>
+        <div style="background:#f8fafc;border:1px solid var(--border);border-radius:10px;padding:0.75rem 0.9rem;">
+          <div class="meta" style="font-size:0.68rem;letter-spacing:0.06em;text-transform:uppercase;">Best / Worst</div>
+          <div style="font-size:0.92rem;font-weight:700;"><span class="up">IWC +0.66%</span> <span style="color:var(--muted);">·</span> <span class="down">RWJ -0.11%</span></div>
+          <div class="meta" style="font-size:0.78rem;">Range 0.77pp · Std 0.25pp</div>
+        </div>
+        
+        <div style="background:var(--up-bg);border:1px solid var(--up-border);border-radius:10px;padding:0.75rem 0.9rem;">
+          <div class="meta" style="font-size:0.68rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--up);">Main IWM</div>
+          <div class="num up" style="font-size:1.25rem;font-weight:800;">+0.29%</div>
+          <div class="meta" style="font-size:0.78rem;">vs mean +0.04pp · 1D 2026-08-26→2026-08-27</div>
+        </div>
+        
+      </div>
+      
+      <details style="margin-top:0.8rem;"><summary class="meta" style="cursor:pointer;">Details — per-ticker (1D 2026-08-26→2026-08-27)</summary>
+      <table style="margin-top:0.6rem;">
+        <thead><tr><th>Ticker</th><th></th><th class="num">Last</th><th class="num">1D Change<br><span class="meta" style="font-weight:400;text-transform:none;">1D 2026-08-26→2026-08-27</span></th></tr></thead>
+        <tbody>
+          
+          <tr><td><strong>IWM</strong><div class="meta">1D 2026-08-26→2026-08-27</div></td><td><svg width="120" height="32" viewBox="0 0 120 32" class="sparkline" role="img" aria-label="price trend"><polyline points="0.0,27.8 1.4,28.7 2.7,27.7 4.1,27.2 5.5,30.3 6.8,32.0 8.2,26.4 9.5,25.2 10.9,26.5 12.3,22.1 13.6,18.0 15.0,22.3 16.4,20.5 17.7,19.4 19.1,22.0 20.5,22.0 21.8,20.3 23.2,26.8 24.5,28.3 25.9,31.1 27.3,24.6 28.6,22.1 30.0,19.6 31.4,14.5 32.7,14.7 34.1,13.1 35.5,14.6 36.8,16.0 38.2,13.4 39.5,17.2 40.9,13.1 42.3,22.9 43.6,20.6 45.0,19.7 46.4,22.5 47.7,14.6 49.1,12.2 50.5,9.9 51.8,12.4 53.2,14.5 54.5,9.0 55.9,6.6 57.3,9.3 58.6,8.0 60.0,5.9 61.4,5.0 62.7,5.8 64.1,4.4 65.5,5.5 66.8,7.1 68.2,5.9 69.5,8.5 70.9,11.0 72.3,7.5 73.6,8.7 75.0,11.0 76.4,10.1 77.7,8.9 79.1,9.0 80.5,10.5 81.8,12.2 83.2,8.1 84.5,10.7 85.9,12.4 87.3,13.2 88.6,11.6 90.0,11.1 91.4,15.7 92.7,11.9 94.1,13.2 95.5,8.4 96.8,3.2 98.2,5.1 99.5,6.5 100.9,3.4 102.3,4.9 103.6,3.9 105.0,2.3 106.4,1.5 107.7,0.0 109.1,1.0 110.5,4.6 111.8,3.2 113.2,7.1 114.5,4.9 115.9,6.8 117.3,5.6 118.6,5.9 120.0,5.0" fill="none" stroke="#059669" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" /></svg></td><td class="num">299.81</td><td class="num up">+0.29%<div class="meta" style="font-size:0.7rem;">1D 2026-08-26→2026-08-27</div></td></tr>
+          
+          <tr><td><strong>IJR</strong><div class="meta">1D 2026-08-26→2026-08-27</div></td><td><svg width="120" height="32" viewBox="0 0 120 32" class="sparkline" role="img" aria-label="price trend"><polyline points="0.0,27.6 1.4,27.7 2.7,26.3 4.1,25.9 5.5,27.3 6.8,29.2 8.2,24.9 9.5,24.3 10.9,26.6 12.3,23.1 13.6,21.6 15.0,23.9 16.4,22.6 17.7,24.4 19.1,27.3 20.5,28.2 21.8,26.6 23.2,30.6 24.5,29.8 25.9,32.0 27.3,27.1 28.6,26.4 30.0,24.3 31.4,20.4 32.7,20.3 34.1,20.2 35.5,22.1 36.8,22.4 38.2,20.2 39.5,22.5 40.9,19.2 42.3,23.8 43.6,22.2 45.0,19.9 46.4,21.6 47.7,15.5 49.1,13.0 50.5,12.8 51.8,14.2 53.2,17.7 54.5,13.1 55.9,13.0 57.3,13.9 58.6,10.9 60.0,7.5 61.4,5.5 62.7,5.6 64.1,3.9 65.5,5.2 66.8,7.2 68.2,6.6 69.5,9.1 70.9,12.2 72.3,9.0 73.6,8.8 75.0,9.9 76.4,9.2 77.7,7.7 79.1,5.9 80.5,8.0 81.8,9.7 83.2,7.0 84.5,8.4 85.9,10.1 87.3,10.1 88.6,8.9 90.0,7.5 91.4,11.1 92.7,8.9 94.1,9.0 95.5,4.7 96.8,0.1 98.2,2.7 99.5,4.7 100.9,2.7 102.3,4.3 103.6,3.7 105.0,2.5 106.4,1.3 107.7,0.0 109.1,1.1 110.5,5.0 111.8,4.6 113.2,7.4 114.5,5.7 115.9,6.6 117.3,6.8 118.6,6.6 120.0,6.6" fill="none" stroke="#059669" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" /></svg></td><td class="num">146.78</td><td class="num up">+0.01%<div class="meta" style="font-size:0.7rem;">1D 2026-08-26→2026-08-27</div></td></tr>
+          
+          <tr><td><strong>VB</strong><div class="meta">1D 2026-08-26→2026-08-27</div></td><td><svg width="120" height="32" viewBox="0 0 120 32" class="sparkline" role="img" aria-label="price trend"><polyline points="0.0,26.6 1.4,27.6 2.7,27.5 4.1,27.3 5.5,30.3 6.8,31.8 8.2,26.5 9.5,26.0 10.9,27.5 12.3,24.1 13.6,19.9 15.0,24.2 16.4,22.6 17.7,22.2 19.1,24.5 20.5,25.2 21.8,23.8 23.2,29.1 24.5,29.5 25.9,32.0 27.3,26.2 28.6,24.4 30.0,21.7 31.4,17.7 32.7,18.1 34.1,16.6 35.5,17.1 36.8,17.6 38.2,15.3 39.5,17.3 40.9,15.2 42.3,22.6 43.6,21.4 45.0,19.3 46.4,23.7 47.7,16.3 49.1,14.2 50.5,12.1 51.8,14.0 53.2,17.6 54.5,14.0 55.9,13.3 57.3,15.6 58.6,13.3 60.0,10.9 61.4,10.1 62.7,8.2 64.1,6.3 65.5,8.0 66.8,9.2 68.2,7.8 69.5,11.1 70.9,14.5 72.3,10.9 73.6,11.5 75.0,13.5 76.4,12.8 77.7,12.6 79.1,11.7 80.5,13.4 81.8,15.5 83.2,12.6 84.5,13.5 85.9,15.0 87.3,14.4 88.6,12.8 90.0,11.7 91.4,16.8 92.7,13.9 94.1,14.5 95.5,9.9 96.8,3.8 98.2,6.4 99.5,7.5 100.9,3.3 102.3,4.2 103.6,3.2 105.0,2.2 106.4,0.8 107.7,0.0 109.1,1.4 110.5,5.8 111.8,3.4 113.2,6.6 114.5,4.7 115.9,6.6 117.3,6.5 118.6,5.5 120.0,5.2" fill="none" stroke="#059669" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" /></svg></td><td class="num">304.28</td><td class="num up">+0.10%<div class="meta" style="font-size:0.7rem;">1D 2026-08-26→2026-08-27</div></td></tr>
+          
+          <tr><td><strong>IWC</strong><div class="meta">1D 2026-08-26→2026-08-27</div></td><td><svg width="120" height="32" viewBox="0 0 120 32" class="sparkline" role="img" aria-label="price trend"><polyline points="0.0,23.9 1.4,26.7 2.7,25.5 4.1,25.7 5.5,28.6 6.8,32.0 8.2,26.2 9.5,22.9 10.9,22.7 12.3,18.1 13.6,15.2 15.0,20.7 16.4,18.5 17.7,16.7 19.1,19.0 20.5,17.3 21.8,17.1 23.2,22.9 24.5,26.9 25.9,29.2 27.3,23.5 28.6,18.9 30.0,17.2 31.4,12.5 32.7,11.2 34.1,10.0 35.5,12.1 36.8,11.7 38.2,11.9 39.5,16.6 40.9,12.0 42.3,23.6 43.6,20.7 45.0,21.6 46.4,24.0 47.7,16.2 49.1,14.3 50.5,11.6 51.8,15.1 53.2,14.9 54.5,10.3 55.9,8.5 57.3,10.3 58.6,10.3 60.0,9.9 61.4,7.0 62.7,2.8 64.1,1.0 65.5,0.7 66.8,3.9 68.2,2.6 69.5,5.4 70.9,7.4 72.3,4.4 73.6,6.4 75.0,8.7 76.4,8.2 77.7,8.1 79.1,9.9 80.5,10.9 81.8,13.6 83.2,10.1 84.5,12.7 85.9,14.5 87.3,16.1 88.6,13.3 90.0,13.7 91.4,17.4 92.7,14.0 94.1,15.6 95.5,9.4 96.8,3.6 98.2,5.0 99.5,5.2 100.9,2.1 102.3,4.4 103.6,3.5 105.0,2.7 106.4,1.9 107.7,0.0 109.1,1.7 110.5,3.1 111.8,2.1 113.2,5.5 114.5,3.2 115.9,5.1 117.3,2.6 118.6,4.5 120.0,3.0" fill="none" stroke="#059669" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" /></svg></td><td class="num">198.34</td><td class="num up">+0.66%<div class="meta" style="font-size:0.7rem;">1D 2026-08-26→2026-08-27</div></td></tr>
+          
+          <tr><td><strong>VTWO</strong><div class="meta">1D 2026-08-26→2026-08-27</div></td><td><svg width="120" height="32" viewBox="0 0 120 32" class="sparkline" role="img" aria-label="price trend"><polyline points="0.0,27.8 1.4,28.8 2.7,27.7 4.1,27.2 5.5,30.3 6.8,32.0 8.2,26.4 9.5,25.3 10.9,26.6 12.3,22.1 13.6,18.1 15.0,22.4 16.4,20.6 17.7,19.5 19.1,22.1 20.5,22.0 21.8,20.4 23.2,26.7 24.5,28.4 25.9,31.2 27.3,24.7 28.6,22.2 30.0,19.7 31.4,14.6 32.7,14.8 34.1,13.2 35.5,14.7 36.8,16.0 38.2,13.5 39.5,17.4 40.9,13.2 42.3,22.9 43.6,20.7 45.0,19.8 46.4,22.7 47.7,14.7 49.1,12.3 50.5,10.0 51.8,12.4 53.2,14.7 54.5,9.3 55.9,6.7 57.3,9.3 58.6,8.1 60.0,6.0 61.4,7.1 62.7,5.8 64.1,4.4 65.5,5.5 66.8,7.2 68.2,5.9 69.5,8.4 70.9,11.0 72.3,7.4 73.6,8.6 75.0,11.1 76.4,10.0 77.7,8.8 79.1,8.9 80.5,10.4 81.8,12.1 83.2,8.2 84.5,10.8 85.9,12.3 87.3,13.1 88.6,11.5 90.0,11.1 91.4,15.7 92.7,11.9 94.1,13.1 95.5,8.4 96.8,3.2 98.2,5.0 99.5,6.5 100.9,3.4 102.3,4.9 103.6,3.8 105.0,2.2 106.4,1.5 107.7,0.0 109.1,0.9 110.5,4.6 111.8,3.1 113.2,6.9 114.5,4.8 115.9,6.7 117.3,5.6 118.6,5.8 120.0,4.9" fill="none" stroke="#059669" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" /></svg></td><td class="num">121.21</td><td class="num up">+0.31%<div class="meta" style="font-size:0.7rem;">1D 2026-08-26→2026-08-27</div></td></tr>
+          
+          <tr><td><strong>SCHA</strong><div class="meta">1D 2026-08-26→2026-08-27</div></td><td><svg width="120" height="32" viewBox="0 0 120 32" class="sparkline" role="img" aria-label="price trend"><polyline points="0.0,28.4 1.4,29.6 2.7,28.6 4.1,27.6 5.5,30.4 6.8,32.0 8.2,27.2 9.5,25.8 10.9,26.5 12.3,22.0 13.6,19.3 15.0,22.9 16.4,19.8 17.7,19.8 19.1,22.5 20.5,22.4 21.8,22.0 23.2,26.1 24.5,27.8 25.9,29.8 27.3,24.7 28.6,21.9 30.0,20.7 31.4,16.2 32.7,16.1 34.1,14.8 35.5,15.6 36.8,15.1 38.2,14.0 39.5,15.4 40.9,13.4 42.3,21.7 43.6,19.5 45.0,18.4 46.4,20.9 47.7,12.8 49.1,9.9 50.5,7.5 51.8,10.2 53.2,12.9 54.5,7.5 55.9,5.5 57.3,9.9 58.6,8.9 60.0,3.4 61.4,4.6 62.7,3.3 64.1,0.0 65.5,3.7 66.8,8.7 68.2,7.8 69.5,11.7 70.9,13.0 72.3,8.3 73.6,8.7 75.0,13.0 76.4,11.2 77.7,11.5 79.1,13.5 80.5,14.9 81.8,16.2 83.2,10.8 84.5,12.1 85.9,13.4 87.3,15.7 88.6,16.2 90.0,18.4 91.4,23.4 92.7,17.5 94.1,18.4 95.5,14.0 96.8,7.7 98.2,10.3 99.5,12.2 100.9,9.3 102.3,10.7 103.6,9.9 105.0,7.4 106.4,5.7 107.7,3.4 109.1,2.4 110.5,7.9 111.8,8.3 113.2,10.6 114.5,9.3 115.9,11.9 117.3,11.0 118.6,10.2 120.0,9.7" fill="none" stroke="#059669" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" /></svg></td><td class="num">34.77</td><td class="num up">+0.17%<div class="meta" style="font-size:0.7rem;">1D 2026-08-26→2026-08-27</div></td></tr>
+          
+          <tr><td><strong>RWJ</strong><div class="meta">1D 2026-08-26→2026-08-27</div></td><td><svg width="120" height="32" viewBox="0 0 120 32" class="sparkline" role="img" aria-label="price trend"><polyline points="0.0,26.4 1.4,26.7 2.7,25.5 4.1,24.8 5.5,24.9 6.8,25.7 8.2,23.2 9.5,22.7 10.9,25.5 12.3,23.4 13.6,22.4 15.0,23.6 16.4,22.8 17.7,25.7 19.1,27.6 20.5,29.1 21.8,27.9 23.2,30.7 24.5,29.9 25.9,32.0 27.3,28.7 28.6,27.4 30.0,25.6 31.4,23.3 32.7,21.7 34.1,20.8 35.5,21.9 36.8,21.0 38.2,20.1 39.5,22.1 40.9,19.7 42.3,21.8 43.6,20.3 45.0,19.1 46.4,19.9 47.7,15.9 49.1,13.8 50.5,14.4 51.8,15.6 53.2,18.7 54.5,15.4 55.9,16.7 57.3,17.1 58.6,14.5 60.0,12.5 61.4,9.6 62.7,10.5 64.1,10.9 65.5,10.5 66.8,11.0 68.2,10.6 69.5,11.6 70.9,14.1 72.3,12.1 73.6,10.9 75.0,10.0 76.4,10.4 77.7,8.3 79.1,4.9 80.5,6.6 81.8,8.2 83.2,7.0 84.5,7.2 85.9,9.5 87.3,7.8 88.6,5.4 90.0,2.7 91.4,4.3 92.7,5.9 94.1,6.3 95.5,3.1 96.8,0.0 98.2,2.2 99.5,4.3 100.9,2.9 102.3,4.3 103.6,4.2 105.0,3.7 106.4,1.8 107.7,1.7 109.1,4.0 110.5,5.9 111.8,4.4 113.2,6.7 114.5,4.7 115.9,5.3 117.3,5.3 118.6,5.1 120.0,5.3" fill="none" stroke="#dc2626" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" /></svg></td><td class="num">61.21</td><td class="num down">-0.11%<div class="meta" style="font-size:0.7rem;">1D 2026-08-26→2026-08-27</div></td></tr>
+          
+          <tr><td><strong>UWM</strong><div class="meta">1D 2026-08-26→2026-08-27</div></td><td><svg width="120" height="32" viewBox="0 0 120 32" class="sparkline" role="img" aria-label="price trend"><polyline points="0.0,27.3 1.4,28.3 2.7,27.3 4.1,26.9 5.5,30.0 6.8,32.0 8.2,26.1 9.5,24.9 10.9,26.4 12.3,21.4 13.6,17.0 15.0,22.0 16.4,20.0 17.7,18.9 19.1,21.8 20.5,21.6 21.8,19.8 23.2,27.1 24.5,28.9 25.9,31.9 27.3,25.1 28.6,22.3 30.0,19.5 31.4,14.0 32.7,14.2 34.1,12.4 35.5,14.2 36.8,15.6 38.2,12.9 39.5,17.1 40.9,12.5 42.3,23.7 43.6,21.3 45.0,20.4 46.4,23.5 47.7,14.8 49.1,12.1 50.5,9.6 51.8,12.3 53.2,14.8 54.5,9.0 55.9,6.0 57.3,9.2 58.6,7.7 60.0,5.4 61.4,6.5 62.7,5.4 64.1,3.8 65.5,4.8 66.8,6.9 68.2,5.6 69.5,8.6 70.9,11.5 72.3,7.4 73.6,9.0 75.0,11.6 76.4,10.6 77.7,9.2 79.1,9.5 80.5,11.1 81.8,12.9 83.2,8.5 84.5,11.6 85.9,13.7 87.3,14.5 88.6,12.7 90.0,12.2 91.4,17.2 92.7,13.2 94.1,14.6 95.5,9.4 96.8,3.6 98.2,5.6 99.5,7.3 100.9,3.8 102.3,5.6 103.6,4.5 105.0,2.6 106.4,1.9 107.7,0.0 109.1,1.3 110.5,5.3 111.8,3.9 113.2,8.4 114.5,6.0 115.9,8.0 117.3,6.8 118.6,7.1 120.0,6.2" fill="none" stroke="#059669" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" /></svg></td><td class="num">66.29</td><td class="num up">+0.59%<div class="meta" style="font-size:0.7rem;">1D 2026-08-26→2026-08-27</div></td></tr>
+          
+        </tbody>
+      </table>
+      </details>
+      
+    </div>
+  </section>
+
+  
+  <section>
+    <h2>Thesis Health — Confirming <span class="meta" style="font-weight:400;text-transform:none;letter-spacing:0;">· 2 Confirming · 1 Watch · 0 Breaking</span></h2>
+    <div class="card" style="border-left:4px solid #059669;background:#ecfdf5;">
+      <div style="display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap;margin-bottom:0.6rem;">
+        <span style="display:inline-flex;align-items:center;gap:6px;background:#ecfdf5;color:#059669;border:1px solid #05966940;padding:0.25rem 0.7rem;border-radius:999px;font-weight:800;font-size:0.9rem;"><span style="width:9px;height:9px;border-radius:50%;background:#059669;display:inline-block;"></span>Confirming</span>
+        <span class="meta">Updated: <strong>2026-08-29</strong> · 5 pre-committed KPIs — you check, you don't reinterpret.</span>
+        <span class="meta" style="margin-left:auto;">Window: 1D 2026-08-26→2026-08-27 · Next refresh on next archive date</span>
+      </div>
+      <table>
+        <thead><tr><th>KPI</th><th>Now</th><th>Confirming</th><th>Breaking</th><th>Status</th><th>Source</th></tr></thead>
+        <tbody>
+          
+          <tr>
+            <td style="font-weight:600;">Russell Discount to Large</td>
+            <td class="num" style="font-weight:700;">34%</td>
+            <td class="meta">&gt;30% (cheap)</td>
+            <td class="meta">&lt;15% (crowded)</td>
+            <td><span class="badge" style="background:#ecfdf5;color:#065f46;border:1px solid #a7f3d0">Confirming</span></td>
+            <td class="meta">BofA Research</td>
+          </tr>
+          <tr>
+            <td colspan="6" style="background:#f8fafc;border-top:none;padding:0.5rem 0.7rem 0.7rem;">
+              <details style="font-size:0.82rem;">
+                <summary style="cursor:pointer;color:var(--accent);font-weight:600;">Line-by-line: why this row, why this threshold, when it updates</summary>
+                <div style="margin-top:0.5rem;line-height:1.45;display:grid;gap:0.4rem;">
+                  <div><strong style="color:var(--text);">Why this KPI?</strong> Valuation edge — 34% discount is widest since 2002, thesis needs cheap entry to re-rate.</div>
+                  <div><strong style="color:var(--text);">Why this threshold?</strong> &gt;30% = 60th pct cheap, &lt;15% = 10th pct crowded — 34% now is confirming.</div>
+                  <div><strong style="color:var(--text);">When updated?</strong> Monthly — BofA Research + FactSet, pipeline monthly.</div>
+                </div>
+              </details>
+            </td>
+          </tr>
+          
+          <tr>
+            <td style="font-weight:600;">IWM Short Interest</td>
+            <td class="num" style="font-weight:700;">3.2%</td>
+            <td class="meta">&lt;4%</td>
+            <td class="meta">&gt;6%</td>
+            <td><span class="badge" style="background:#ecfdf5;color:#065f46;border:1px solid #a7f3d0">Confirming</span></td>
+            <td class="meta">Citi positioning</td>
+          </tr>
+          <tr>
+            <td colspan="6" style="background:#f8fafc;border-top:none;padding:0.5rem 0.7rem 0.7rem;">
+              <details style="font-size:0.82rem;">
+                <summary style="cursor:pointer;color:var(--accent);font-weight:600;">Line-by-line: why this row, why this threshold, when it updates</summary>
+                <div style="margin-top:0.5rem;line-height:1.45;display:grid;gap:0.4rem;">
+                  <div><strong style="color:var(--text);">Why this KPI?</strong> Crowding — low short interest means not crowded long.</div>
+                  <div><strong style="color:var(--text);">Why this threshold?</strong> &lt;4% = 30th pct, &gt;6% = 80th pct short squeeze risk.</div>
+                  <div><strong style="color:var(--text);">When updated?</strong> Weekly — Citi positioning, Friday close.</div>
+                </div>
+              </details>
+            </td>
+          </tr>
+          
+          <tr>
+            <td style="font-weight:600;">Sept Hike Odds</td>
+            <td class="num" style="font-weight:700;">42%</td>
+            <td class="meta">&lt;35%</td>
+            <td class="meta">&gt;60%</td>
+            <td><span class="badge" style="background:#fffbeb;color:#92400e;border:1px solid #fde68a">Watch</span></td>
+            <td class="meta">CME FedWatch / Polymarket</td>
+          </tr>
+          <tr>
+            <td colspan="6" style="background:#f8fafc;border-top:none;padding:0.5rem 0.7rem 0.7rem;">
+              <details style="font-size:0.82rem;">
+                <summary style="cursor:pointer;color:var(--accent);font-weight:600;">Line-by-line: why this row, why this threshold, when it updates</summary>
+                <div style="margin-top:0.5rem;line-height:1.45;display:grid;gap:0.4rem;">
+                  <div><strong style="color:var(--text);">Why this KPI?</strong> Rates beta — IWM is most Fed-sensitive; hike odds drive IWM beta.</div>
+                  <div><strong style="color:var(--text);">Why this threshold?</strong> &lt;35% = dovish, &gt;60% = hawkish — 42% now watch.</div>
+                  <div><strong style="color:var(--text);">When updated?</strong> Real-time — CME FedWatch + Polymarket, daily.</div>
+                </div>
+              </details>
+            </td>
+          </tr>
+          
+        </tbody>
+      </table>
+      <p class="meta" style="margin-top:0.6rem;">Overall = <strong style="color:#059669;">Confirming</strong> because 2 confirming, 1 watch, 0 breaking. Watch ≥2 or Confirming &lt;50% → Watch; Breaking ≥2 → Breaking. Updated: <strong>2026-08-29</strong> · Next refresh on next archive date.</p>
+    </div>
+  </section>
+  
+
+  <section>
+    <h2>Top Story</h2>
+    <div class="card top-story">
+      <h3><a href="https://khancapitals.com/small-cap-rotation-2026/">Russell 2000 Closes at Record 3,068, Up 22.7% YTD — Now +9.5 pp Ahead of S&amp;P 500 as September Hike Odds Collapse</a></h3>
+      <p>The record 27 closes this year is a rates trade, not an earnings trade: with small caps carrying more floating-rate debt, every 25 bps of Fed pricing is ~2% of Russell operating earnings (BofA). The CPI/PPI cool-down that drove September hike odds from ~58% post-FOMC to ~30s is the single variable repricing the most rate-sensitive index.</p>
+    </div>
+  </section>
+
+  
+  <section>
+    <h2>Themes — Drivers Clustered <span class="meta" style="font-weight:400;text-transform:none;letter-spacing:0;">· 3 clusters, each ~ one date</span></h2>
+    <div class="card">
+      
+      <div class="theme" style="padding:0.9rem 0;border-bottom:1px solid var(--border);">
+        <div style="display:flex;justify-content:space-between;gap:0.8rem;align-items:baseline;flex-wrap:wrap;">
+          <h3 style="margin:0;">Flows Confirm Rotation — But It&#39;s Mechanical</h3>
+          <span class="badge" style="background:#f1f5f9;color:var(--muted);border:1px solid var(--border);">2026-08-27</span>
+        </div>
+        <p style="margin:0.35rem 0 0;">$334B of June reconstitution buying plus Aug 27&#39;s $733M IWM inflow vs QQQ $4.55B outflow shows broadening beyond AI megacaps, yet earnings are lagging the price; Russell strength is flow + multiple, not profit growth yet.</p>
+        
+        <div class="meta" style="margin-top:0.45rem;">Sources:
+          
+          <a href="https://247wallst.com/investing/2026/07/01/passive-indexers-are-shuffling-billions-into-the-russell-2000-just-in-time-for-a-brutal-fed-reality-check/" style="color:var(--accent);text-decoration:none;border:1px solid var(--border);background:#f8fafc;padding:0.1rem 0.4rem;border-radius:999px;font-size:0.75rem;margin-right:0.3rem;">247wallst.com</a>
+          
+          <a href="https://www.etfaction.com/invescos-qqq-sheds-4-55b-as-spdr-and-ishares-lead-broad-inflows/" style="color:var(--accent);text-decoration:none;border:1px solid var(--border);background:#f8fafc;padding:0.1rem 0.4rem;border-radius:999px;font-size:0.75rem;margin-right:0.3rem;">etfaction.com</a>
+          
+          
+        </div>
+        
+      </div>
+      
+      <div class="theme" style="padding:0.9rem 0;border-bottom:1px solid var(--border);">
+        <div style="display:flex;justify-content:space-between;gap:0.8rem;align-items:baseline;flex-wrap:wrap;">
+          <h3 style="margin:0;">Overbought But Not Broken — Citi Crowding Warning</h3>
+          <span class="badge" style="background:#f1f5f9;color:var(--muted);border:1px solid var(--border);">2026-08-18</span>
+        </div>
+        <p style="margin:0.35rem 0 0;">Monthly StochRSI 89.4 and RSI 70.8 are rare; history says &gt;85 on monthly StochRSI precedes 10–15% corrections in 2–3 months, and Citi flags long exposure extended with short covering exhausted and weekly flow momentum fading.</p>
+        
+        <div class="meta" style="margin-top:0.45rem;">Sources:
+          
+          <a href="https://www.tradevae.com/news/stock-markets/small-caps-at-the-cusp-of-history-momentum-intact-but-overbought-signals-mount/" style="color:var(--accent);text-decoration:none;border:1px solid var(--border);background:#f8fafc;padding:0.1rem 0.4rem;border-radius:999px;font-size:0.75rem;margin-right:0.3rem;">tradevae.com</a>
+          
+          
+        </div>
+        
+      </div>
+      
+      <div class="theme" style="padding:0.9rem 0;border-bottom:1px solid var(--border);">
+        <div style="display:flex;justify-content:space-between;gap:0.8rem;align-items:baseline;flex-wrap:wrap;">
+          <h3 style="margin:0;">September 11 CPI Is the Fuse</h3>
+          <span class="badge" style="background:#f1f5f9;color:var(--muted);border:1px solid var(--border);">2026-08-16</span>
+        </div>
+        <p style="margin:0.35rem 0 0;">Cleveland Fed nowcasts 0.38% MoM for August CPI — the first print with post-ceasefire oil — so the same rate relief that lifted IWM 8.6% in two weeks versus SPX 1.6% can reverse fastest in small caps if the print is hot.</p>
+        
+        <div class="meta" style="margin-top:0.45rem;">Sources:
+          
+          <a href="https://www.smallcapnewsroom.com/post/small-caps-best-year-since-2003-a-mid-august-reality-check-august-16-2026" style="color:var(--accent);text-decoration:none;border:1px solid var(--border);background:#f8fafc;padding:0.1rem 0.4rem;border-radius:999px;font-size:0.75rem;margin-right:0.3rem;">smallcapnewsroom.com</a>
+          
+          <a href="https://www.regardsofwallstreet.com/news/russell-2000-record-high-small-caps-beating-nasdaq-100" style="color:var(--accent);text-decoration:none;border:1px solid var(--border);background:#f8fafc;padding:0.1rem 0.4rem;border-radius:999px;font-size:0.75rem;margin-right:0.3rem;">regardsofwallstreet.com</a>
+          
+          
+        </div>
+        
+      </div>
+      
+    </div>
+  </section>
+  
+
+  
+  <section>
+    <h2>Bear Case — What Would Prove This Wrong <span class="meta" style="font-weight:400;text-transform:none;letter-spacing:0;">· Invalidation triggers, not boilerplate</span></h2>
+    <div class="card" style="border-left:4px solid var(--down);">
+      <p style="font-weight:700;margin:0 0 0.5rem;">Bear Case — Growth Scare Unwinds Rate Relief</p>
+      <ul style="margin:0;padding-left:1.2rem;">
+        
+        <li style="margin:0.4rem 0;font-size:0.92rem;"><strong style="color:var(--down);">Trigger →</strong> Payrolls -2 months + retail -0.6% → small caps give back beta first</li>
+        
+        <li style="margin:0.4rem 0;font-size:0.92rem;"><strong style="color:var(--down);">Trigger →</strong> September CPI 0.38% MoM hot → hike odds back to 60% → IWM -8% in 2 weeks</li>
+        
+      </ul>
+      <div style="margin-top:0.8rem;padding:0.6rem 0.8rem;background:#f8fafc;border:1px solid var(--border);border-radius:8px;">
+        <div class="meta" style="font-weight:600;">What <em>doesn't</em> break it:</div>
+        <div style="font-size:0.88rem;">Single soft CPI alone — need growth + rates both turning</div>
+        <div class="meta" style="margin-top:0.4rem;font-style:italic;">Interview follow-up: When would you cut IWM even though discount is still 30%?</div>
+      </div>
+    </div>
+  </section>
+  
+
+  
+  <section>
+    <h2>Positioning & Crowding — Is This Consensus? <span class="meta" style="font-weight:400;text-transform:none;letter-spacing:0;">· ETF flows · 13F · Options · Prediction markets</span></h2>
+    <div class="card">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0.9rem;">
+        <div style="background:#f8fafc;border:1px solid var(--border);border-radius:10px;padding:0.9rem;">
+          <div class="meta" style="text-transform:uppercase;letter-spacing:0.06em;font-size:0.7rem;">ETF Flows</div>
+          <div style="font-size:0.92rem;margin-top:0.3rem;">IWM +$733M vs QQQ -$4.55B Aug 27 — rotation funded, but Citi says longs extended, weekly flows moderating</div>
+        </div>
+        <div style="background:#f8fafc;border:1px solid var(--border);border-radius:10px;padding:0.9rem;">
+          <div class="meta" style="text-transform:uppercase;letter-spacing:0.06em;font-size:0.7rem;">13F / Ownership</div>
+          <div style="font-size:0.92rem;margin-top:0.3rem;">Russell longs extended, shorts covered — crowded long into ATH</div>
+        </div>
+        <div style="background:#f8fafc;border:1px solid var(--border);border-radius:10px;padding:0.9rem;">
+          <div class="meta" style="text-transform:uppercase;letter-spacing:0.06em;font-size:0.7rem;">Options Skew</div>
+          <div style="font-size:0.92rem;margin-top:0.3rem;">IWM put skew steepening — hedging pick-up</div>
+        </div>
+        <div style="background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:0.9rem;">
+          <div class="meta" style="text-transform:uppercase;letter-spacing:0.06em;font-size:0.7rem;">Prediction Markets — Real-time Consensus</div>
+          <div style="font-size:0.92rem;margin-top:0.3rem;">Polymarket Sept hike 42% (vs 60% pre-CPI) — market pricing holds, not hikes</div>
+          <div class="meta" style="margin-top:0.3rem;">Kalshi TRADE API + Polymarket Gamma/CLOB — free, matches institutional; genuinely differentiated vs pure fundamental.</div>
+        </div>
+      </div>
+      <p class="meta" style="margin-top:0.7rem;">If crowding is high + thesis still Watch, size down even if thesis is Confirming — this is the timing overlay you flagged as missing.</p>
+    </div>
+  </section>
+  
+
+  <section>
+    <h2>Headline Timeline — Drivers for IWM <span class="meta" style="font-weight:400;text-transform:none;letter-spacing:0;">· Past 3 months — one top driver per trading day (9 days)</span></h2>
+    <div class="card">
+      <p class="meta" style="margin-top:0">Every row is <strong>why this day moved IWM</strong> — the top <code>importance</code> headline for that date, filtered as a driver for the main proxy. Left = headline date; right-hand <code style="background:#f1f5f9;padding:0 4px;border-radius:4px;">IWM</code> shows the proxy's close & day-over-day change on that driver day.</p>
+      <div class="timeline">
+        
+        <div class="tl-item">
+          <div class="tl-date">
+            <div class="tl-day">2025-08-14</div>
+            <div class="tl-trade meta">1D</div>
+          </div>
+          <div class="tl-dot" style="background:#7c3aed"></div>
+          <div class="tl-content">
+            
+            
+            <span class="badge" style="background:var(--cat-market-bg);color:var(--cat-market-fg);border:1px solid var(--border);">market</span>
+            <span class="meta" style="margin-left:0.3rem;">★3</span>
+            
+            <span class="badge" style="background:#fffbeb;color:#92400e;border:1px solid #fde68a;margin-left:0.35rem;">driver for IWM</span>
+            
+            <a href="https://moneyflows.com/blog/small-cap-power-thrust-signals/" style="display:block;margin:0.15rem 0 0;font-weight:600;color:var(--text);text-decoration:none;">IWM +5.42% in Two Days — Historical Analog Implies +14% in 6M, +36% in 12M on Such Thrusts</a>
+            <div class="meta">MoneyFlows · <span class="meta" style="color:var(--accent);">Selected as driver for IWM: top importance for 2025-08-14</span></div>
+            
+            <div style="margin-top:0.4rem;background:#fffbeb;border-left:3px solid #f59e0b;padding:0.45rem 0.65rem;border-radius:6px;font-size:0.85rem;color:#78350f;line-height:1.4;">
+              <strong style="color:#b45309;">Why this moves IWM →</strong> For IWM: Positive thrust — 5.4% 2-day jump historically averages +14% in 6m/+36% in 12m as breadth capitulation signal; for IWM it validates momentum chase at 27th record, but sample includes recessions so not a guarantee.
+            </div>
+            
+          </div>
+        </div>
+        
+        <div class="tl-item">
+          <div class="tl-date">
+            <div class="tl-day">2026-06-20</div>
+            <div class="tl-trade meta">1D 2026-06-17→2026-06-18 · 295.59 <span class="up">+1.97%</span></div>
+          </div>
+          <div class="tl-dot" style="background:#7c3aed"></div>
+          <div class="tl-content">
+            
+            
+            <span class="badge" style="background:var(--cat-market-bg);color:var(--cat-market-fg);border:1px solid var(--border);">market</span>
+            <span class="meta" style="margin-left:0.3rem;">★4</span>
+            
+            <span class="badge" style="background:#fffbeb;color:#92400e;border:1px solid #fde68a;margin-left:0.35rem;">driver for IWM</span>
+            
+            <a href="https://www.reuters.com/markets/us-smallcap-correction-2026-06-20" style="display:block;margin:0.15rem 0 0;font-weight:600;color:var(--text);text-decoration:none;">Russell 2000 Enters Correction — Falls 10% From May Peak as Rate-Hold Bets Build</a>
+            <div class="meta">Reuters · <span class="meta" style="color:var(--accent);">Selected as driver for IWM: top importance for 2026-06-20</span></div>
+            
+            <div style="margin-top:0.4rem;background:#fffbeb;border-left:3px solid #f59e0b;padding:0.45rem 0.65rem;border-radius:6px;font-size:0.85rem;color:#78350f;line-height:1.4;">
+              <strong style="color:#b45309;">Why this moves IWM →</strong> For IWM: Positive base — 10% correction into June created 34% discount to large caps (widest since 2002) that made July relief rally possible; cheap entry is why IWM could lead despite no AI narrative.
+            </div>
+            
+          </div>
+        </div>
+        
+        <div class="tl-item">
+          <div class="tl-date">
+            <div class="tl-day">2026-07-01</div>
+            <div class="tl-trade meta">1D 2026-06-30→2026-07-01 · 299.32 <span class="down">-0.38%</span></div>
+          </div>
+          <div class="tl-dot" style="background:#7c3aed"></div>
+          <div class="tl-content">
+            
+            
+            <span class="badge" style="background:var(--cat-market-bg);color:var(--cat-market-fg);border:1px solid var(--border);">market</span>
+            <span class="meta" style="margin-left:0.3rem;">★3</span>
+            
+            <span class="badge" style="background:#fffbeb;color:#92400e;border:1px solid #fde68a;margin-left:0.35rem;">driver for IWM</span>
+            
+            <a href="https://247wallst.com/investing/2026/07/01/passive-indexers-are-shuffling-billions-into-the-russell-2000-just-in-time-for-a-brutal-fed-reality-check/" style="display:block;margin:0.15rem 0 0;font-weight:600;color:var(--text);text-decoration:none;">Passive Reconstitution Funneled $334B Into Russell 2000 — 2026 Rally Driven by Flows, Not Earnings</a>
+            <div class="meta">24/7 Wall St. · <span class="meta" style="color:var(--accent);">Selected as driver for IWM: top importance for 2026-07-01</span></div>
+            
+            <div style="margin-top:0.4rem;background:#fffbeb;border-left:3px solid #f59e0b;padding:0.45rem 0.65rem;border-radius:6px;font-size:0.85rem;color:#78350f;line-height:1.4;">
+              <strong style="color:#b45309;">Why this moves IWM →</strong> For IWM: Positive but mechanical — $334B June reconstitution forced passive buying = ~4x Russell turnover, explains IWM +21.8% YTD without earnings growth. Good for IWM price near-term, but means rally is vulnerable when flows fade after quad witch.
+            </div>
+            
+          </div>
+        </div>
+        
+        <div class="tl-item">
+          <div class="tl-date">
+            <div class="tl-day">2026-07-15</div>
+            <div class="tl-trade meta">1D 2026-07-14→2026-07-15 · 295.77 <span class="up">+0.43%</span></div>
+          </div>
+          <div class="tl-dot" style="background:#7c3aed"></div>
+          <div class="tl-content">
+            
+            
+            <span class="badge" style="background:var(--cat-policy-bg);color:var(--cat-policy-fg);border:1px solid var(--border);">policy_regulation</span>
+            <span class="meta" style="margin-left:0.3rem;">★4</span>
+            
+            <span class="badge" style="background:#fffbeb;color:#92400e;border:1px solid #fde68a;margin-left:0.35rem;">driver for IWM</span>
+            
+            <a href="https://www.bloomberg.com/news/june-cpi-russell-rally-2026-07-15" style="display:block;margin:0.15rem 0 0;font-weight:600;color:var(--text);text-decoration:none;">June CPI 3.1% Fuels Fed Cut Bets — Russell 2000 Rallies 4.2% in Two Sessions</a>
+            <div class="meta">Bloomberg · <span class="meta" style="color:var(--accent);">Selected as driver for IWM: top importance for 2026-07-15</span></div>
+            
+            <div style="margin-top:0.4rem;background:#fffbeb;border-left:3px solid #f59e0b;padding:0.45rem 0.65rem;border-radius:6px;font-size:0.85rem;color:#78350f;line-height:1.4;">
+              <strong style="color:#b45309;">Why this moves IWM →</strong> For IWM: Positive template — June CPI prototype for IWM&#39;s CPI-beta; showed that 4.2% 2-day IWM rally repeats when CPI cools, establishing IWM as CPI-duration trade.
+            </div>
+            
+          </div>
+        </div>
+        
+        <div class="tl-item">
+          <div class="tl-date">
+            <div class="tl-day">2026-08-05</div>
+            <div class="tl-trade meta">1D 2026-08-04→2026-08-05 · 299.77 <span class="down">-0.64%</span></div>
+          </div>
+          <div class="tl-dot" style="background:#7c3aed"></div>
+          <div class="tl-content">
+            
+            
+            <span class="badge" style="background:var(--cat-market-bg);color:var(--cat-market-fg);border:1px solid var(--border);">market</span>
+            <span class="meta" style="margin-left:0.3rem;">★4</span>
+            
+            <span class="badge" style="background:#fffbeb;color:#92400e;border:1px solid #fde68a;margin-left:0.35rem;">driver for IWM</span>
+            
+            <a href="https://www.marketwatch.com/story/russell-breakout-2900-2026-08-05" style="display:block;margin:0.15rem 0 0;font-weight:600;color:var(--text);text-decoration:none;">Russell 2000 Closes Above 2,900 for First Time Since 2021 — Breakout Confirmed</a>
+            <div class="meta">MarketWatch · <span class="meta" style="color:var(--accent);">Selected as driver for IWM: top importance for 2026-08-05</span></div>
+            
+            <div style="margin-top:0.4rem;background:#fffbeb;border-left:3px solid #f59e0b;padding:0.45rem 0.65rem;border-radius:6px;font-size:0.85rem;color:#78350f;line-height:1.4;">
+              <strong style="color:#b45309;">Why this moves IWM →</strong> For IWM: Positive technical — break above 2021 peak 2,900 triggered momentum chasing and FOMO; 3,000 magnet explains why IWM could grind to 3,068 despite overbought.
+            </div>
+            
+          </div>
+        </div>
+        
+        <div class="tl-item">
+          <div class="tl-date">
+            <div class="tl-day">2026-08-14</div>
+            <div class="tl-trade meta">1D 2026-08-13→2026-08-14 · 305.09 <span class="up">+0.52%</span></div>
+          </div>
+          <div class="tl-dot" style="background:#7c3aed"></div>
+          <div class="tl-content">
+            
+            
+            <span class="badge" style="background:var(--cat-market-bg);color:var(--cat-market-fg);border:1px solid var(--border);">market</span>
+            <span class="meta" style="margin-left:0.3rem;">★5</span>
+            
+            <span class="badge" style="background:#fffbeb;color:#92400e;border:1px solid #fde68a;margin-left:0.35rem;">driver for IWM</span>
+            
+            <a href="https://khancapitals.com/small-cap-rotation-2026/" style="display:block;margin:0.15rem 0 0;font-weight:600;color:var(--text);text-decoration:none;">Russell 2000 Closes at Record 3,068, Up 22.7% YTD — Now +9.5 pp Ahead of S&amp;P 500 as September Hike Odds Collapse</a>
+            <div class="meta">Khan Capital · <span class="meta" style="color:var(--accent);">Selected as driver for IWM: top importance for 2026-08-14</span></div>
+            
+            <div style="margin-top:0.4rem;background:#fffbeb;border-left:3px solid #f59e0b;padding:0.45rem 0.65rem;border-radius:6px;font-size:0.85rem;color:#78350f;line-height:1.4;">
+              <strong style="color:#b45309;">Why this moves IWM →</strong> For IWM: Positive — rate-relief repricing is IWM&#39;s #1 driver; each 25 bps of Fed pricing = ~2% Russell earnings (BofA) vs ~0.2% for QQQ, so September hold odds 60% directly lifts IWM&#39;s floating-rate-heavy constituents. Record close validates IWM as high-beta rates play, not earnings.
+            </div>
+            
+          </div>
+        </div>
+        
+        <div class="tl-item">
+          <div class="tl-date">
+            <div class="tl-day">2026-08-16</div>
+            <div class="tl-trade meta">1D 2026-08-13→2026-08-14 · 305.09 <span class="up">+0.52%</span></div>
+          </div>
+          <div class="tl-dot" style="background:#7c3aed"></div>
+          <div class="tl-content">
+            
+            
+            <span class="badge" style="background:var(--cat-policy-bg);color:var(--cat-policy-fg);border:1px solid var(--border);">policy_regulation</span>
+            <span class="meta" style="margin-left:0.3rem;">★4</span>
+            
+            <span class="badge" style="background:#fffbeb;color:#92400e;border:1px solid #fde68a;margin-left:0.35rem;">driver for IWM</span>
+            
+            <a href="https://www.smallcapnewsroom.com/post/small-caps-best-year-since-2003-a-mid-august-reality-check-august-16-2026" style="display:block;margin:0.15rem 0 0;font-weight:600;color:var(--text);text-decoration:none;">July CPI 3.4% and Flat PPI Remove September Hike Threat — Most Rate-Sensitive Corner Gets Fuel</a>
+            <div class="meta">SmallCapNewsroom · <span class="meta" style="color:var(--accent);">Selected as driver for IWM: top importance for 2026-08-16</span></div>
+            
+            <div style="margin-top:0.4rem;background:#fffbeb;border-left:3px solid #f59e0b;padding:0.45rem 0.65rem;border-radius:6px;font-size:0.85rem;color:#78350f;line-height:1.4;">
+              <strong style="color:#b45309;">Why this moves IWM →</strong> For IWM: Positive — two cool prints (CPI 0.1% MoM, PPI flat) removed hike premium; July CPI shifted September hold odds to 64% and gave IWM its most rate-sensitive bid — IWM +8.6% in 2 weeks vs SPX +1.6% was the transmission.
+            </div>
+            
+          </div>
+        </div>
+        
+        <div class="tl-item">
+          <div class="tl-date">
+            <div class="tl-day">2026-08-18</div>
+            <div class="tl-trade meta">1D 2026-08-17→2026-08-18 · 300.23 <span class="down">-1.26%</span></div>
+          </div>
+          <div class="tl-dot" style="background:#7c3aed"></div>
+          <div class="tl-content">
+            
+            
+            <span class="badge" style="background:var(--cat-market-bg);color:var(--cat-market-fg);border:1px solid var(--border);">market</span>
+            <span class="meta" style="margin-left:0.3rem;">★4</span>
+            
+            <span class="badge" style="background:#fffbeb;color:#92400e;border:1px solid #fde68a;margin-left:0.35rem;">driver for IWM</span>
+            
+            <a href="https://www.tradevae.com/news/stock-markets/small-caps-at-the-cusp-of-history-momentum-intact-but-overbought-signals-mount/" style="display:block;margin:0.15rem 0 0;font-weight:600;color:var(--text);text-decoration:none;">Small Caps at Cusp of History: Monthly StochRSI 89.4 Flags 10–15% Correction Risk Despite 27 Record Closes</a>
+            <div class="meta">TradEVAe · <span class="meta" style="color:var(--accent);">Selected as driver for IWM: top importance for 2026-08-18</span></div>
+            
+            <div style="margin-top:0.4rem;background:#fffbeb;border-left:3px solid #f59e0b;padding:0.45rem 0.65rem;border-radius:6px;font-size:0.85rem;color:#78350f;line-height:1.4;">
+              <strong style="color:#b45309;">Why this moves IWM →</strong> For IWM: Negative risk — StochRSI 89.4 &gt;85 historically precedes 10-15% pullback in 2-3m even in bull markets; IWM&#39;s 27 record closes + extended longs means crowded long, so this driver caps chasing IWM at ATH despite YTD +22.7%.
+            </div>
+            
+          </div>
+        </div>
+        
+        <div class="tl-item">
+          <div class="tl-date">
+            <div class="tl-day">2026-08-27</div>
+            <div class="tl-trade meta">1D 2026-08-26→2026-08-27 · 299.81 <span class="up">+0.29%</span></div>
+          </div>
+          <div class="tl-dot" style="background:#7c3aed"></div>
+          <div class="tl-content">
+            
+            
+            <span class="badge" style="background:var(--cat-market-bg);color:var(--cat-market-fg);border:1px solid var(--border);">market</span>
+            <span class="meta" style="margin-left:0.3rem;">★5</span>
+            
+            <span class="badge" style="background:#fffbeb;color:#92400e;border:1px solid #fde68a;margin-left:0.35rem;">driver for IWM</span>
+            
+            <a href="https://www.etfaction.com/invescos-qqq-sheds-4-55b-as-spdr-and-ishares-lead-broad-inflows/" style="display:block;margin:0.15rem 0 0;font-weight:600;color:var(--text);text-decoration:none;">IWM Gathers $733M as QQQ Sheds $4.55B — Rotation From Megacap Growth to Small/Mid Caps Accelerates</a>
+            <div class="meta">ETF Action · <span class="meta" style="color:var(--accent);">Selected as driver for IWM: top importance for 2026-08-27</span></div>
+            
+            <div style="margin-top:0.4rem;background:#fffbeb;border-left:3px solid #f59e0b;padding:0.45rem 0.65rem;border-radius:6px;font-size:0.85rem;color:#78350f;line-height:1.4;">
+              <strong style="color:#b45309;">Why this moves IWM →</strong> For IWM: Positive flow — $733M inflow vs QQQ $4.55B outflow is direct buying pressure for IWM&#39;s 2000 names; shows allocators de-grossing AI megacap into breadth, lifting IWM even though fundamentals lag price.
+            </div>
+            
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Outlook</h2>
+    <div class="card"><p>Watch August CPI (Sep 11), FOMC minutes depth on the triple dissent, and payrolls Sep 4 — if inflation stays tame and no hike, broadening extends; if retail –0.6% and negative payrolls resume, small caps give back beta fastest.</p></div>
+  </section>
+
+  <section>
+    <h2>What to Watch — Key Data Points</h2>
+    <div class="card">
+      <table>
+        <thead><tr><th>Date</th><th>Event / Catalyst</th><th>Impact</th></tr></thead>
+        <tbody>
+          
+          <tr>
+            <td style="white-space:nowrap;font-weight:600;">2026-09-04</td>
+            <td>August payrolls — second consecutive negative print would flip rotation to recession scare</td>
+            <td><span class="badge" style="background:#fee2e2;color:#991b1b">High</span></td>
+          </tr>
+          
+          <tr>
+            <td style="white-space:nowrap;font-weight:600;">2026-09-11</td>
+            <td>August CPI (first with post-ceasefire oil) — Cleveland nowcast 0.38% MoM, fuse for September hike odds</td>
+            <td><span class="badge" style="background:#fee2e2;color:#991b1b">High</span></td>
+          </tr>
+          
+          <tr>
+            <td style="white-space:nowrap;font-weight:600;">2026-09-15/16</td>
+            <td>FOMC Sep meeting — hold vs hike; 60% hike odds priced, risk for floating-rate small caps</td>
+            <td><span class="badge" style="background:#fee2e2;color:#991b1b">High</span></td>
+          </tr>
+          
+          <tr>
+            <td style="white-space:nowrap;font-weight:600;">2026-09-18</td>
+            <td>Quadruple witching + Russell 2000 reconstitution flows fade — liquidity test</td>
+            <td><span class="badge" style="background:#fef9c3;color:#854d0e">Medium</span></td>
+          </tr>
+          
+          <tr>
+            <td style="white-space:nowrap;font-weight:600;">2026-10-09</td>
+            <td>Q3 small-cap earnings kickoff — watch 38% consensus growth revision trend</td>
+            <td><span class="badge" style="background:#fef9c3;color:#854d0e">Medium</span></td>
+          </tr>
+          
+        </tbody>
+      </table>
+      <p class="meta" style="margin-top:0.8rem;">Add to calendar: FOMC/CPI are the fastest repricers for the index above; watch the <code>IWM</code> reaction at each print.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>All Headlines — Last 90 Days (Ranked)</h2>
+    <div class="card">
+      <ul class="headline-list">
+        
+        <li>
+          
+          
+          <span class="badge" style="background:var(--cat-market-bg);color:var(--cat-market-fg);border:1px solid var(--border);">market</span>
+          <a href="https://khancapitals.com/small-cap-rotation-2026/">Russell 2000 Closes at Record 3,068, Up 22.7% YTD — Now +9.5 pp Ahead of S&amp;P 500 as September Hike Odds Collapse</a>
+          <div class="meta">Khan Capital · 2026-08-14 · ★5</div>
+        </li>
+        
+        <li>
+          
+          
+          <span class="badge" style="background:var(--cat-market-bg);color:var(--cat-market-fg);border:1px solid var(--border);">market</span>
+          <a href="https://www.etfaction.com/invescos-qqq-sheds-4-55b-as-spdr-and-ishares-lead-broad-inflows/">IWM Gathers $733M as QQQ Sheds $4.55B — Rotation From Megacap Growth to Small/Mid Caps Accelerates</a>
+          <div class="meta">ETF Action · 2026-08-27 · ★5</div>
+        </li>
+        
+        <li>
+          
+          
+          <span class="badge" style="background:var(--cat-market-bg);color:var(--cat-market-fg);border:1px solid var(--border);">market</span>
+          <a href="https://www.tradevae.com/news/stock-markets/small-caps-at-the-cusp-of-history-momentum-intact-but-overbought-signals-mount/">Small Caps at Cusp of History: Monthly StochRSI 89.4 Flags 10–15% Correction Risk Despite 27 Record Closes</a>
+          <div class="meta">TradEVAe · 2026-08-18 · ★4</div>
+        </li>
+        
+        <li>
+          
+          
+          <span class="badge" style="background:var(--cat-policy-bg);color:var(--cat-policy-fg);border:1px solid var(--border);">policy_regulation</span>
+          <a href="https://www.smallcapnewsroom.com/post/small-caps-best-year-since-2003-a-mid-august-reality-check-august-16-2026">July CPI 3.4% and Flat PPI Remove September Hike Threat — Most Rate-Sensitive Corner Gets Fuel</a>
+          <div class="meta">SmallCapNewsroom · 2026-08-16 · ★4</div>
+        </li>
+        
+        <li>
+          
+          
+          <span class="badge" style="background:var(--cat-market-bg);color:var(--cat-market-fg);border:1px solid var(--border);">market</span>
+          <a href="https://247wallst.com/investing/2026/07/01/passive-indexers-are-shuffling-billions-into-the-russell-2000-just-in-time-for-a-brutal-fed-reality-check/">Passive Reconstitution Funneled $334B Into Russell 2000 — 2026 Rally Driven by Flows, Not Earnings</a>
+          <div class="meta">24/7 Wall St. · 2026-07-01 · ★3</div>
+        </li>
+        
+        <li>
+          
+          
+          <span class="badge" style="background:var(--cat-market-bg);color:var(--cat-market-fg);border:1px solid var(--border);">market</span>
+          <a href="https://www.tradevae.com/news/stock-markets/small-caps-at-the-cusp-of-history-momentum-intact-but-overbought-signals-mount/">Citi: Russell 2000 Longs Extended, Short Exposure Trimmed — New Money Slowing as Crowding Builds</a>
+          <div class="meta">TradEVAe / Citi · 2026-08-18 · ★3</div>
+        </li>
+        
+        <li>
+          
+          
+          <span class="badge" style="background:var(--cat-market-bg);color:var(--cat-market-fg);border:1px solid var(--border);">market</span>
+          <a href="https://moneyflows.com/blog/small-cap-power-thrust-signals/">IWM +5.42% in Two Days — Historical Analog Implies +14% in 6M, +36% in 12M on Such Thrusts</a>
+          <div class="meta">MoneyFlows · 2025-08-14 · ★3</div>
+        </li>
+        
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    Generated automatically by the Daily Digest pipeline. See <a href="https://github.com/PodorCN/thematic-market-watcher">source</a>.
+  </footer>
+</main>
+</body>
+</html>

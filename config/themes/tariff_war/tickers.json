@@ -1,0 +1,15 @@
+{
+  "_comment": "Tariff-war theme — broad market + tariff-sensitive sectors + China/Canada exposure + CAD/USD.",
+  "tickers": [
+    "SPY",
+    "XLI",
+    "XLB",
+    "XME",
+    "SLX",
+    "ITA",
+    "FXI",
+    "MCHI",
+    "^GSPTSE",
+    "CAD=X"
+  ]
+}

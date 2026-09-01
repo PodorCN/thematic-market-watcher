@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Canadian Financials — Interactive Thematic Dashboard</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  :root{--bg:#f7f9fa;--card:#fff;--text:#1a2733;--muted:#5b6b76;--border:#e1e7ea;--accent:#0b4d3e;--up:#059669;--down:#dc2626}
+  *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;line-height:1.6}
+  main{max-width:1440px;margin:0 auto;width:96vw;padding:1.5rem 0.5rem 3rem}
+  header.hero{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.6rem 1.8rem;margin-bottom:1.2rem}
+  h2{font-size:1.35rem;margin:2.2rem 0 0.7rem;border-left:4px solid var(--accent);padding-left:0.7rem}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.2rem 1.4rem;margin-bottom:1rem}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:1rem} @media(max-width:900px){.grid2{grid-template-columns:1fr}}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem} @media(max-width:900px){.grid3{grid-template-columns:1fr}}
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem} @media(max-width:1100px){.grid4{grid-template-columns:repeat(2,1fr)}}
+  table{width:100%;border-collapse:collapse} th,td{padding:0.5rem 0.6rem;border-bottom:1px solid var(--border);font-size:0.88rem}
+</style>
+</head>
+<body>
+<main>
+<nav style="font-size:0.85rem;margin-bottom:0.8rem;">
+<a href="../" style="color:var(--muted);text-decoration:none;">← All themes</a> · <a href="../canadian_banks/">Canadian Banks Daily</a> · <span style="color:var(--accent);font-weight:700;">Interactive Study</span>
+</nav>
+<header class="hero">
+<h1>Canadian Financials — Interactive Thematic Dashboard</h1>
+<p style="color:var(--muted);">Why this theme works, how to own it, and how you'd know you're wrong — with live, reproducible data rules. Every chart is backed by a disclosed source you can pull with <code>Python + SQL + API + git</code>.</p>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1rem;">
+<div style="text-align:center;background:#f8fafc;border:1px solid var(--border);border-radius:10px;padding:0.9rem;"><div style="font-size:0.72rem;color:var(--muted);">Horizon</div><div style="font-size:1.4rem;font-weight:800;">12–24M</div><div style="font-size:0.78rem;color:var(--muted);">Falsifiable by 2027-02-28</div></div>
+<div style="text-align:center;background:#f8fafc;border:1px solid var(--border);border-radius:10px;padding:0.9rem;"><div style="font-size:0.72rem;color:var(--muted);">Carry Floor</div><div style="font-size:1.4rem;font-weight:800;color:var(--up);">6–7%</div><div style="font-size:0.78rem;color:var(--muted);">4.2% div + buyback</div></div>
+<div style="text-align:center;background:#f8fafc;border:1px solid var(--border);border-radius:10px;padding:0.9rem;"><div style="font-size:0.72rem;color:var(--muted);">ZEB vs SPY (90D)</div><div id="zebSpyOutperf" style="font-size:1.4rem;font-weight:800;">—</div><div style="font-size:0.78rem;color:var(--muted);">Indexed 100 → now</div></div>
+<div style="text-align:center;background:#f8fafc;border:1px solid var(--border);border-radius:10px;padding:0.9rem;"><div style="font-size:0.72rem;color:var(--muted);">Thesis Status</div><div style="font-size:1.4rem;font-weight:800;color:var(--up);">● On Track</div><div style="font-size:0.78rem;color:var(--muted);">PCL 36 bps · Delinq 0.24%</div></div>
+</div>
+</header>
+
+<div style="position:sticky;top:0;z-index:10;background:var(--bg);padding:0.6rem 0;border-bottom:1px solid var(--border);margin-bottom:1rem;display:flex;gap:0.5rem;overflow:auto;">
+<a href="#s1" style="font-size:0.82rem;padding:0.3rem 0.7rem;border-radius:999px;border:1px solid var(--border);background:#fff;text-decoration:none;color:var(--muted);">1 Thesis</a>
+<a href="#s2" style="font-size:0.82rem;padding:0.3rem 0.7rem;border-radius:999px;border:1px solid var(--border);background:#fff;text-decoration:none;color:var(--muted);">2 Why Now</a>
+<a href="#s3" style="font-size:0.82rem;padding:0.3rem 0.7rem;border-radius:999px;border:1px solid var(--border);background:#fff;text-decoration:none;color:var(--muted);">3 Sizing</a>
+<a href="#s5" style="font-size:0.82rem;padding:0.3rem 0.7rem;border-radius:999px;border:1px solid var(--border);background:#fff;text-decoration:none;color:var(--muted);">5 Universe</a>
+<a href="#s6" style="font-size:0.82rem;padding:0.3rem 0.7rem;border-radius:999px;border:1px solid var(--border);background:#fff;text-decoration:none;color:var(--muted);">6 Portfolio</a>
+<a href="#s12" style="font-size:0.82rem;padding:0.3rem 0.7rem;border-radius:999px;border:1px solid var(--border);background:#fff;text-decoration:none;color:var(--muted);">12 KPIs</a>
+</div>
+
+<h2 id="s1">1. Executive Summary</h2>
+<div class="card">
+<p><strong>Thesis:</strong> Oligopoly banks are a 6–7% carry ballast with a 10–15% provision-release kicker when BoC cuts — Q3 2026 proved earnings &gt; credit drag while collateral still holds (LTV 58%). <strong>Wrong if both</strong> performing PCL &gt;20 bps ×2Q and national 90+ delinquency &gt;0.35% by 2027-02-28.</p>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem;">
+<div><canvas id="chartThesisGauge" height="180"></canvas></div>
+<div><table><tr><th>Driver</th><th>Now</th><th>Threshold</th></tr><tr><td>Performing PCL</td><td>14 bps</td><td style="color:var(--down);">&gt;20 bps ×2Q</td></tr><tr><td>90+ Delinq</td><td>0.24%</td><td style="color:var(--down);">&gt;0.35%</td></tr></table></div>
+</div>
+</div>
+
+<h2 id="s2">2. Why Now — Inflection</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+<div class="card"><h3>Delinquency: National vs Toronto</h3><canvas id="chartDelinq" height="200"></canvas><p style="font-size:0.82rem;color:var(--muted);">Source: CMHC (0.24% Q4 2025, Toronto +45% yoy) · TransUnion 0.41% Ontario balance-weighted.</p></div>
+<div class="card"><h3>NIM vs PCL — Earnings Beat Through Credit</h3><canvas id="chartNimPcl" height="200"></canvas><p style="font-size:0.82rem;color:var(--muted);">RBC PPPT +13% ($8.7B) with PCL 36 bps; CIBC PPPT +20%.</p></div>
+</div>
+
+<h2 id="s3">3. Market Sizing — TAM Tree (Sliders)</h2>
+<div class="card">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+<div>
+<div style="display:flex;justify-content:space-between;font-size:0.85rem;"><span>TAM</span><span id="valTAM">$2.40T</span></div><input type="range" id="sliderTAM" min="2.0" max="2.8" step="0.05" value="2.40">
+<div style="display:flex;justify-content:space-between;font-size:0.85rem;"><span>Big Six share</span><span id="valShare">68%</span></div><input type="range" id="sliderShare" min="55" max="80" value="68">
+<div style="display:flex;justify-content:space-between;font-size:0.85rem;"><span>Uninsured %</span><span id="valUninsured">86%</span></div><input type="range" id="sliderUninsured" min="70" max="92" value="86">
+<div style="display:flex;justify-content:space-between;font-size:0.85rem;"><span>NIM</span><span id="valNIM">2.07%</span></div><input type="range" id="sliderNIM" min="1.5" max="2.6" step="0.05" value="2.07">
+</div>
+<div style="background:#f8fafc;border:1px solid var(--border);border-radius:10px;padding:1rem;">
+<div>SAM: <span id="outSAM" style="font-weight:800;">$1.63T</span></div><div>NII Pool: <span id="outNII" style="font-weight:800;color:#0b4d3e;">$33.8B</span></div><canvas id="chartTAM" height="140"></canvas>
+</div>
+</div>
+</div>
+
+<h2 id="s5">5. Universe & Exposure Scoring — Quant Backbone</h2>
+<div class="card">
+<div style="display:flex;gap:0.6rem;"><input id="searchUniverse" placeholder="Filter ticker" style="flex:1;padding:0.5rem;border:1px solid var(--border);border-radius:8px;"><select id="filterExposure" style="padding:0.5rem;border:1px solid var(--border);border-radius:8px;"><option value="">All</option><option value="pure">Pure &gt;60%</option></select></div>
+<table id="tableUniverse"><thead><tr><th>Ticker</th><th>Structured</th><th>NLP</th><th>SEDI</th><th>Exposure</th><th>Weight</th></tr></thead><tbody></tbody></table>
+<p style="font-size:0.82rem;color:var(--muted);">Rule: exposure = 0.7*(CDN P&C/total) + 0.3*(mortgage interest/total); NLP = 0.5*TF-IDF_z + 0.5*forward_tone_z.</p>
+</div>
+
+<h2 id="s6">6. Portfolio — ZEB vs SPY 90D (Indexed)</h2>
+<div class="card"><canvas id="chartZebSpy" height="220"></canvas><p style="font-size:0.82rem;color:var(--muted);">Main proxy ZEB.TO (green) vs S&P 500 SPY (gray, dashed) — indexed 100 at start of 90-day window.</p></div>
+
+<h2 id="s12">12. Monitoring Dashboard — 5 KPIs</h2>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;">
+<div style="border-left:4px solid #059669;background:#f8fafc;padding:0.9rem;border-radius:8px;"><div style="font-size:0.82rem;">Performing PCL</div><div style="font-size:1.5rem;font-weight:800;">14 bps</div><div style="font-size:0.78rem;">Confirmed &lt;10 · Breaking &gt;20 ×2Q</div></div>
+<div style="border-left:4px solid #059669;background:#f8fafc;padding:0.9rem;border-radius:8px;"><div style="font-size:0.82rem;">GTA Delinq</div><div style="font-size:1.5rem;font-weight:800;">0.41%</div><div style="font-size:0.78rem;">Confirmed &lt;0.45% · Breaking &gt;0.60%</div></div>
+<div style="border-left:4px solid #f59e0b;background:#f8fafc;padding:0.9rem;border-radius:8px;"><div style="font-size:0.82rem;">LTV GTA</div><div style="font-size:1.5rem;font-weight:800;">62%</div><div style="font-size:0.78rem;">Confirmed &lt;62% · Breaking &gt;66%</div></div>
+</div>
+
+<footer style="text-align:center;color:var(--muted);font-size:0.82rem;margin-top:2rem;">
+Built as a reproducible pipeline — <code>git</code> + <code>SQL</code> + <code>API</code> + <code>cron</code> → <code>archive/canadian_banks/&lt;date&gt;/</code> · <a href="../canadian_banks/">Back to ZEB Daily →</a>
+</footer>
+</main>
+<script>
+const zebHist = [{"date": "2026-04-22", "close": 64.2585}, {"date": "2026-04-23", "close": 64.3773}, {"date": "2026-04-24", "close": 64.6148}, {"date": "2026-04-27", "close": 64.7732}, {"date": "2026-04-28", "close": 64.8722}, {"date": "2026-04-29", "close": 64.1133}, {"date": "2026-04-30", "close": 65.4724}, {"date": "2026-05-01", "close": 65.5517}, {"date": "2026-05-04", "close": 64.7284}, {"date": "2026-05-05", "close": 64.9863}, {"date": "2026-05-06", "close": 66.3949}, {"date": "2026-05-07", "close": 65.889}, {"date": "2026-05-08", "close": 65.9485}, {"date": "2026-05-11", "close": 65.8295}, {"date": "2026-05-12", "close": 66.1767}, {"date": "2026-05-13", "close": 65.3434}, {"date": "2026-05-14", "close": 66.4148}, {"date": "2026-05-15", "close": 66.2362}, {"date": "2026-05-19", "close": 66.6231}, {"date": "2026-05-20", "close": 67.8532}, {"date": "2026-05-21", "close": 68.617}, {"date": "2026-05-22", "close": 69.0833}, {"date": "2026-05-25", "close": 69.6884}, {"date": "2026-05-26", "close": 69.361}, {"date": "2026-05-27", "close": 69.0337}, {"date": "2026-05-28", "close": 68.0346}, {"date": "2026-05-29", "close": 68.0644}, {"date": "2026-06-01", "close": 67.2592}, {"date": "2026-06-02", "close": 68.5913}, {"date": "2026-06-03", "close": 68.2931}, {"date": "2026-06-04", "close": 69.4164}, {"date": "2026-06-05", "close": 69.2971}, {"date": "2026-06-08", "close": 69.7047}, {"date": "2026-06-09", "close": 70.2812}, {"date": "2026-06-10", "close": 70.0625}, {"date": "2026-06-11", "close": 70.997}, {"date": "2026-06-12", "close": 71.7922}, {"date": "2026-06-15", "close": 72.001}, {"date": "2026-06-16", "close": 72.6769}, {"date": "2026-06-17", "close": 73.4225}, {"date": "2026-06-18", "close": 73.8003}, {"date": "2026-06-19", "close": 74.2178}, {"date": "2026-06-22", "close": 74.5657}, {"date": "2026-06-23", "close": 74.8639}, {"date": "2026-06-24", "close": 74.5061}, {"date": "2026-06-25", "close": 74.9832}, {"date": "2026-06-26", "close": 74.5856}, {"date": "2026-06-29", "close": 75.0916}, {"date": "2026-06-30", "close": 75.6394}, {"date": "2026-07-02", "close": 74.5836}, {"date": "2026-07-03", "close": 74.972}, {"date": "2026-07-06", "close": 75.8884}, {"date": "2026-07-07", "close": 76.3167}, {"date": "2026-07-08", "close": 74.7131}, {"date": "2026-07-09", "close": 75.6294}, {"date": "2026-07-10", "close": 76.7848}, {"date": "2026-07-13", "close": 76.6753}, {"date": "2026-07-14", "close": 77.2331}, {"date": "2026-07-15", "close": 78.4383}, {"date": "2026-07-16", "close": 78.0498}, {"date": "2026-07-17", "close": 77.8008}, {"date": "2026-07-20", "close": 76.0378}, {"date": "2026-07-21", "close": 76.3466}, {"date": "2026-07-22", "close": 76.4063}, {"date": "2026-07-23", "close": 75.5}, {"date": "2026-07-24", "close": 75.988}, {"date": "2026-07-27", "close": 76.3366}, {"date": "2026-07-28", "close": 77.1932}, {"date": "2026-07-29", "close": 74.7131}, {"date": "2026-07-30", "close": 76.0085}, {"date": "2026-07-31", "close": 76.1283}, {"date": "2026-08-04", "close": 76.0384}, {"date": "2026-08-05", "close": 76.5175}, {"date": "2026-08-06", "close": 76.5275}, {"date": "2026-08-07", "close": 76.3977}, {"date": "2026-08-10", "close": 76.2979}, {"date": "2026-08-11", "close": 76.1382}, {"date": "2026-08-12", "close": 77.3558}, {"date": "2026-08-13", "close": 77.755}, {"date": "2026-08-14", "close": 78.1343}, {"date": "2026-08-17", "close": 78.0145}, {"date": "2026-08-18", "close": 76.8468}, {"date": "2026-08-19", "close": 74.3119}, {"date": "2026-08-20", "close": 73.0145}, {"date": "2026-08-21", "close": 73.3438}, {"date": "2026-08-24", "close": 73.0843}, {"date": "2026-08-25", "close": 75.0504}, {"date": "2026-08-26", "close": 74.8508}, {"date": "2026-08-27", "close": 74.252}, {"date": "2026-08-28", "close": 74.37}];
+const spyHist = [{"date": "2026-04-22", "close": 709.3825}, {"date": "2026-04-23", "close": 706.6296}, {"date": "2026-04-24", "close": 712.1055}, {"date": "2026-04-27", "close": 713.3323}, {"date": "2026-04-28", "close": 709.8612}, {"date": "2026-04-29", "close": 709.7515}, {"date": "2026-04-30", "close": 716.8133}, {"date": "2026-05-01", "close": 718.7982}, {"date": "2026-05-04", "close": 716.165}, {"date": "2026-05-05", "close": 721.9102}, {"date": "2026-05-06", "close": 731.9443}, {"date": "2026-05-07", "close": 729.7001}, {"date": "2026-05-08", "close": 735.7246}, {"date": "2026-05-11", "close": 737.4003}, {"date": "2026-05-12", "close": 736.2831}, {"date": "2026-05-13", "close": 740.4025}, {"date": "2026-05-14", "close": 746.2475}, {"date": "2026-05-15", "close": 737.2706}, {"date": "2026-05-18", "close": 736.752}, {"date": "2026-05-19", "close": 731.8446}, {"date": "2026-05-20", "close": 739.3453}, {"date": "2026-05-21", "close": 740.8115}, {"date": "2026-05-22", "close": 743.724}, {"date": "2026-05-26", "close": 748.6613}, {"date": "2026-05-27", "close": 748.5316}, {"date": "2026-05-28", "close": 752.6609}, {"date": "2026-05-29", "close": 754.5361}, {"date": "2026-06-01", "close": 756.5908}, {"date": "2026-06-02", "close": 757.6182}, {"date": "2026-06-03", "close": 752.3019}, {"date": "2026-06-04", "close": 755.1446}, {"date": "2026-06-05", "close": 735.6548}, {"date": "2026-06-08", "close": 737.3204}, {"date": "2026-06-09", "close": 735.1561}, {"date": "2026-06-10", "close": 723.5659}, {"date": "2026-06-11", "close": 735.8643}, {"date": "2026-06-12", "close": 739.844}, {"date": "2026-06-15", "close": 752.8904}, {"date": "2026-06-16", "close": 748.402}, {"date": "2026-06-17", "close": 739.056}, {"date": "2026-06-18", "close": 746.74}, {"date": "2026-06-22", "close": 744.39}, {"date": "2026-06-23", "close": 733.58}, {"date": "2026-06-24", "close": 733.24}, {"date": "2026-06-25", "close": 734.3}, {"date": "2026-06-26", "close": 728.99}, {"date": "2026-06-29", "close": 741.0}, {"date": "2026-06-30", "close": 746.77}, {"date": "2026-07-01", "close": 745.76}, {"date": "2026-07-02", "close": 744.78}, {"date": "2026-07-06", "close": 751.28}, {"date": "2026-07-07", "close": 747.71}, {"date": "2026-07-08", "close": 745.4}, {"date": "2026-07-09", "close": 751.71}, {"date": "2026-07-10", "close": 754.95}, {"date": "2026-07-13", "close": 749.17}, {"date": "2026-07-14", "close": 751.83}, {"date": "2026-07-15", "close": 754.81}, {"date": "2026-07-16", "close": 750.72}, {"date": "2026-07-17", "close": 743.29}, {"date": "2026-07-20", "close": 742.09}, {"date": "2026-07-21", "close": 748.28}, {"date": "2026-07-22", "close": 747.41}, {"date": "2026-07-23", "close": 738.18}, {"date": "2026-07-24", "close": 738.93}, {"date": "2026-07-27", "close": 739.09}, {"date": "2026-07-28", "close": 740.86}, {"date": "2026-07-29", "close": 729.46}, {"date": "2026-07-30", "close": 741.69}, {"date": "2026-07-31", "close": 747.03}, {"date": "2026-08-03", "close": 757.67}, {"date": "2026-08-04", "close": 771.33}, {"date": "2026-08-05", "close": 769.79}, {"date": "2026-08-06", "close": 768.56}, {"date": "2026-08-07", "close": 773.26}, {"date": "2026-08-10", "close": 773.03}, {"date": "2026-08-11", "close": 770.56}, {"date": "2026-08-12", "close": 772.49}, {"date": "2026-08-13", "close": 777.88}, {"date": "2026-08-14", "close": 776.34}, {"date": "2026-08-17", "close": 772.67}, {"date": "2026-08-18", "close": 767.45}, {"date": "2026-08-19", "close": 769.06}, {"date": "2026-08-20", "close": 762.6}, {"date": "2026-08-21", "close": 765.72}, {"date": "2026-08-24", "close": 763.47}, {"date": "2026-08-25", "close": 765.91}, {"date": "2026-08-26", "close": 766.08}, {"date": "2026-08-27", "close": 771.1}];
+new Chart(document.getElementById('chartThesisGauge'), {type:'doughnut',data:{labels:['On Track','Distance'],datasets:[{data:[70,30],backgroundColor:['#059669','#e2e8f0'],borderWidth:0}]},options:{cutout:'70%',plugins:{legend:{display:false}}}}});
+new Chart(document.getElementById('chartDelinq'), {type:'line',data:{labels:['Q4 24','Q1 25','Q2 25'],datasets:[{label:'National',data:[0.21,0.22,0.24],borderColor:'#64748b',tension:0.3},{label:'Toronto',data:[0.20,0.24,0.29],borderColor:'#0b4d3e',borderWidth:3,tension:0.3}]},options:{plugins:{legend:{position:'bottom'}}}});
+new Chart(document.getElementById('chartNimPcl'), {type:'bar',data:{labels:['RBC','TD','BMO','CIBC'],datasets:[{label:'NIM %',data:[2.07,2.05,2.26,2.07],backgroundColor:'#0b4d3e'},{label:'PCL bps',data:[36,32,41,38],backgroundColor:'#f59e0b'}]},options:{plugins:{legend:{position:'bottom'}}}});
+let chartTAM = new Chart(document.getElementById('chartTAM'), {type:'bar',data:{labels:['TAM','SAM','NII*30'],datasets:[{data:[2.4,1.63,1.01],backgroundColor:['#e2e8f0','#94a3b8','#0b4d3e']}]},options:{plugins:{legend:{display:false}}}});
+function updateTAM(){
+  const tam=parseFloat(document.getElementById('sliderTAM').value);
+  const share=parseFloat(document.getElementById('sliderShare').value)/100;
+  const uninsured=parseFloat(document.getElementById('sliderUninsured').value)/100;
+  const nim=parseFloat(document.getElementById('sliderNIM').value)/100;
+  document.getElementById('valTAM').textContent='$'+tam.toFixed(2)+'T';
+  document.getElementById('valShare').textContent=(share*100).toFixed(0)+'%';
+  document.getElementById('valUninsured').textContent=(uninsured*100).toFixed(0)+'%';
+  document.getElementById('valNIM').textContent=(nim*100).toFixed(2)+'%';
+  const sam=tam*share*0.68;
+  const nii=sam*uninsured*nim;
+  document.getElementById('outSAM').textContent='$'+sam.toFixed(2)+'T';
+  document.getElementById('outNII').textContent='$'+nii.toFixed(2)+'T';
+  chartTAM.data.datasets[0].data=[tam,sam,nii*30]; chartTAM.update();
+}
+['sliderTAM','sliderShare','sliderUninsured','sliderNIM'].forEach(id=>document.getElementById(id).addEventListener('input',updateTAM));
+const universe=[{ticker:'RY.TO',cdn:68,nlp:1.2,sedi:0.8,exp:72},{ticker:'TD.TO',cdn:65,nlp:1.1,sedi:0.3,exp:68},{ticker:'BMO.TO',cdn:58,nlp:0.9,sedi:-0.2,exp:61},{ticker:'BNS.TO',cdn:62,nlp:0.2,sedi:-0.6,exp:45},{ticker:'CM.TO',cdn:60,nlp:0.7,sedi:0.1,exp:58},{ticker:'NA.TO',cdn:70,nlp:1.4,sedi:1.2,exp:75}];
+function renderUniverse(){
+  const q=document.getElementById('searchUniverse').value.toLowerCase();
+  const f=document.getElementById('filterExposure').value;
+  let rows=universe.filter(r=>!q||r.ticker.toLowerCase().includes(q));
+  if(f==='pure') rows=rows.filter(r=>r.exp>60);
+  rows.sort((a,b)=>b.exp-a.exp);
+  document.querySelector('#tableUniverse tbody').innerHTML=rows.map(r=>`<tr><td><strong>${r.ticker}</strong></td><td>${r.cdn}%</td><td style="color:${r.nlp>0.5?'#059669':'#5b6b76'}">${r.nlp.toFixed(1)}σ</td><td>${r.sedi>0?'+':''}${r.sedi.toFixed(1)}</td><td><span style="background:${r.exp>60?'#0b4d3e':'#f1f5f9'};color:${r.exp>60?'#fff':'#5b6b76'};padding:0.15rem 0.5rem;border-radius:999px;font-size:0.75rem;">${r.exp}%</span></td><td>${r.exp>60?'1/N':'0.5/N'}</td></tr>`).join('');
+}
+document.getElementById('searchUniverse').addEventListener('input',renderUniverse);
+document.getElementById('filterExposure').addEventListener('change',renderUniverse);
+renderUniverse();
+(function(){
+  const zBase=zebHist[0]?.close||1, sBase=spyHist[0]?.close||1;
+  const zIdx=zebHist.map(p=>p.close/zBase*100);
+  const sIdx=spyHist.map(p=>p.close/sBase*100);
+  const labels=zebHist.map(p=>p.date.slice(5));
+  new Chart(document.getElementById('chartZebSpy'), {type:'line',data:{labels:labels,datasets:[{label:'ZEB.TO',data:zIdx,borderColor:'#0b4d3e',borderWidth:2,tension:0.3,pointRadius:0},{label:'SPY',data:sIdx,borderColor:'#64748b',borderWidth:1.8,borderDash:[6,4],tension:0.3,pointRadius:0}]},options:{plugins:{legend:{position:'bottom'}}}});
+  const zRet=zIdx[zIdx.length-1]-100, sRet=sIdx[sIdx.length-1]-100, diff=zRet-sRet;
+  const el=document.getElementById('zebSpyOutperf');
+  if(el){el.textContent=(diff>=0?'+':'')+diff.toFixed(1)+'pp vs SPY'; el.style.color=diff>=0?'#059669':'#dc2626';}
+})();
+</script>
+</body>
+</html>

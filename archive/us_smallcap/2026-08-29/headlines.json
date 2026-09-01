@@ -1,0 +1,69 @@
+{
+  "headlines": [
+    {
+      "headline": "Russell 2000 Closes at Record 3,068, Up 22.7% YTD — Now +9.5 pp Ahead of S&P 500 as September Hike Odds Collapse",
+      "source": "Khan Capital",
+      "url": "https://khancapitals.com/small-cap-rotation-2026/",
+      "published_at": "2026-08-14",
+      "category": "market",
+      "importance": 5,
+      "driver": "For IWM: Positive — rate-relief repricing is IWM's #1 driver; each 25 bps of Fed pricing = ~2% Russell earnings (BofA) vs ~0.2% for QQQ, so September hold odds 60% directly lifts IWM's floating-rate-heavy constituents. Record close validates IWM as high-beta rates play, not earnings."
+    },
+    {
+      "headline": "IWM Gathers $733M as QQQ Sheds $4.55B — Rotation From Megacap Growth to Small/Mid Caps Accelerates",
+      "source": "ETF Action",
+      "url": "https://www.etfaction.com/invescos-qqq-sheds-4-55b-as-spdr-and-ishares-lead-broad-inflows/",
+      "published_at": "2026-08-27",
+      "category": "market",
+      "importance": 5,
+      "driver": "For IWM: Positive flow — $733M inflow vs QQQ $4.55B outflow is direct buying pressure for IWM's 2000 names; shows allocators de-grossing AI megacap into breadth, lifting IWM even though fundamentals lag price."
+    },
+    {
+      "headline": "Small Caps at Cusp of History: Monthly StochRSI 89.4 Flags 10–15% Correction Risk Despite 27 Record Closes",
+      "source": "TradEVAe",
+      "url": "https://www.tradevae.com/news/stock-markets/small-caps-at-the-cusp-of-history-momentum-intact-but-overbought-signals-mount/",
+      "published_at": "2026-08-18",
+      "category": "market",
+      "importance": 4,
+      "driver": "For IWM: Negative risk — StochRSI 89.4 >85 historically precedes 10-15% pullback in 2-3m even in bull markets; IWM's 27 record closes + extended longs means crowded long, so this driver caps chasing IWM at ATH despite YTD +22.7%."
+    },
+    {
+      "headline": "July CPI 3.4% and Flat PPI Remove September Hike Threat — Most Rate-Sensitive Corner Gets Fuel",
+      "source": "SmallCapNewsroom",
+      "url": "https://www.smallcapnewsroom.com/post/small-caps-best-year-since-2003-a-mid-august-reality-check-august-16-2026",
+      "published_at": "2026-08-16",
+      "category": "policy_regulation",
+      "importance": 4,
+      "driver": "For IWM: Positive — two cool prints (CPI 0.1% MoM, PPI flat) removed hike premium; July CPI shifted September hold odds to 64% and gave IWM its most rate-sensitive bid — IWM +8.6% in 2 weeks vs SPX +1.6% was the transmission."
+    },
+    {
+      "headline": "Passive Reconstitution Funneled $334B Into Russell 2000 — 2026 Rally Driven by Flows, Not Earnings",
+      "source": "24/7 Wall St.",
+      "url": "https://247wallst.com/investing/2026/07/01/passive-indexers-are-shuffling-billions-into-the-russell-2000-just-in-time-for-a-brutal-fed-reality-check/",
+      "published_at": "2026-07-01",
+      "category": "market",
+      "importance": 3,
+      "driver": "For IWM: Positive but mechanical — $334B June reconstitution forced passive buying = ~4x Russell turnover, explains IWM +21.8% YTD without earnings growth. Good for IWM price near-term, but means rally is vulnerable when flows fade after quad witch."
+    },
+    {
+      "headline": "Citi: Russell 2000 Longs Extended, Short Exposure Trimmed — New Money Slowing as Crowding Builds",
+      "source": "TradEVAe / Citi",
+      "url": "https://www.tradevae.com/news/stock-markets/small-caps-at-the-cusp-of-history-momentum-intact-but-overbought-signals-mount/",
+      "published_at": "2026-08-18",
+      "category": "market",
+      "importance": 3,
+      "driver": "For IWM: Negative positioning — longs extended, shorts covered, weekly flows moderating = crowded long. IWM's upside now needs fresh catalysts (CPI, payrolls), not just short squeeze, so chasing here is paying for good news."
+    },
+    {
+      "headline": "IWM +5.42% in Two Days — Historical Analog Implies +14% in 6M, +36% in 12M on Such Thrusts",
+      "source": "MoneyFlows",
+      "url": "https://moneyflows.com/blog/small-cap-power-thrust-signals/",
+      "published_at": "2025-08-14",
+      "category": "market",
+      "importance": 3,
+      "driver": "For IWM: Positive thrust — 5.4% 2-day jump historically averages +14% in 6m/+36% in 12m as breadth capitulation signal; for IWM it validates momentum chase at 27th record, but sample includes recessions so not a guarantee."
+    }
+  ],
+  "date": "2026-08-29",
+  "theme": "us_smallcap"
+}

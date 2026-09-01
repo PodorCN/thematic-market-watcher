@@ -1,0 +1,78 @@
+{
+  "headlines": [
+    {
+      "headline": "CMHC: Ontario Mortgage Delinquencies Pass National Average for First Time Since 2012 — Toronto +60% YoY to 0.24%",
+      "source": "Yahoo Finance / CMHC",
+      "url": "https://ca.finance.yahoo.com/news/cmhc-ontario-mortgage-delinquencies-pass-120000666.html",
+      "published_at": "2026-08-29",
+      "category": "policy_regulation",
+      "importance": 5,
+      "driver": "For ZEB.TO: Negative but contained — first breach since 2012 signals geographically concentrated credit stress in Toronto condos, keeping performing-loan PCL elevated and capping ZEB's P/E expansion; offset is 58-62% GTA LTV cushion keeps actual losses ~7 bps, so ZEB's 11% Big Six earnings beat still holds, just with higher provision drag."
+    },
+    {
+      "headline": "Royal Bank of Canada Reports Q3 2026: Net Income $6.0B, Up 11% YoY on Wealth & Capital Markets Strength, PCL 36 bps",
+      "source": "CNW/Newswire",
+      "url": "https://www.newswire.ca/news-releases/royal-bank-of-canada-reports-third-quarter-2026-results-873288683.html",
+      "published_at": "2026-08-27",
+      "category": "company_news",
+      "importance": 5,
+      "driver": "For ZEB.TO: Positive — RBC's $6.0B (+11%) on wealth/capital-markets strength is 1/6 of ZEB; 36 bps PCL with 13% pre-provision growth shows Big Six can grow through credit normalization. Lifts ZEB's equal-weight earnings power and justifies 13.5% CET1."
+    },
+    {
+      "headline": "TD Bank Group Q3 2026: Adjusted EPS $2.77 (+26% YoY), Net Income $4.67B, Revenue Growth Outpaces Expenses",
+      "source": "CNW/Newswire",
+      "url": "https://www.newswire.ca/news-releases/td-bank-group-reports-third-quarter-2026-results-878614719.html",
+      "published_at": "2026-08-27",
+      "category": "company_news",
+      "importance": 4,
+      "driver": "For ZEB.TO: Positive — TD's +26% EPS beat (+$0.30 vs consensus) on NII + fees is the biggest single contributor to ZEB's 1-day +0.16% vs HFIN -0.81% divergence on Aug 27; shows dispersion inside equal-weight is stock-specific, not sector."
+    },
+    {
+      "headline": "BMO Mortgage Delinquencies Climb to 0.56% as Residential Portfolio Grows to $164.2B",
+      "source": "Canadian Mortgage Trends",
+      "url": "https://www.canadianmortgagetrends.com/2026/08/bmo-mortgage-delinquencies-climb-as-portfolio-growth-resumes/",
+      "published_at": "2026-08-26",
+      "category": "market",
+      "importance": 4,
+      "driver": "For ZEB.TO: Negative — BMO's 0.56% 90+ rate (vs 0.37% yoy) is highest among Big Six and drags ZEB equally despite BMO's 1/6 weight; signals loan growth (+$2.1B qoq) not yet translating to credit improvement, keeps ZEB's sector PCL floor elevated."
+    },
+    {
+      "headline": "CIBC Mortgage Delinquencies Rise to 0.51%, but Losses Remain Low on 58% LTV Cushion — GTA 0.66%",
+      "source": "Canadian Mortgage Trends",
+      "url": "https://www.canadianmortgagetrends.com/2026/08/cibc-mortgage-delinquencies-rise-but-losses-remain-low/",
+      "published_at": "2026-08-27",
+      "category": "market",
+      "importance": 4,
+      "driver": "For ZEB.TO: Positive on loss, negative on provision — 58% LTV (GTA 62%) cushions loss-given-default to 7 bps, so ZEB's book value holds; but GTA 0.66% delinquency forces CIBC to keep performing provisions, muting ZEB's EPS leverage."
+    },
+    {
+      "headline": "Mortgage Stress Builds in Ontario and B.C.: Balance-Level Delinquency 0.41% in Ontario, +10 bps YoY",
+      "source": "Canadian Mortgage Trends / TransUnion",
+      "url": "https://www.canadianmortgagetrends.com/2026/08/mortgage-stress-builds-in-ontario-and-b-c-as-origination-growth-slows/",
+      "published_at": "2026-08-26",
+      "category": "market",
+      "importance": 3,
+      "driver": "For ZEB.TO: Negative concentration — Ontario 0.41% balance delinquency (+10 bps) vs national 0.31% shows stress in larger mortgages — exactly ZEB's Big Six GTA exposure. Explains why ZEB's breadth was 1 up /10 down on Aug 28 despite headline beat."
+    },
+    {
+      "headline": "Canada's Big Six Beat Q3 Estimates on Capital Markets Strength Despite Trade Uncertainty",
+      "source": "MarketScreener/Reuters",
+      "url": "https://www.marketscreener.com/news/canada-s-rbc-td-cibc-surpass-profit-estimates--ce7858dedc89f62d",
+      "published_at": "2026-08-27",
+      "category": "company_news",
+      "importance": 3,
+      "driver": "For ZEB.TO: Positive breadth — all six beat on pre-provision earnings (RBC +13%, CIBC +20% PPPT) proves oligopoly pricing power; ZEB benefits equally vs cap-weighted TSX, but market faded beat (TSX +0.06%) as priced in — flow, not beat, drove ZEB's 52-week high in July."
+    },
+    {
+      "headline": "Residential Mortgage Industry Report Spring 2026: National 90+ Day Delinquency 0.24% vs 0.21% YoY, Toronto +45%",
+      "source": "CMHC",
+      "url": "https://www.cmhc-schl.gc.ca/professionals/housing-markets-data-and-research/housing-research/research-reports/housing-finance/residential-mortgage-industry-report",
+      "published_at": "2026-08-29",
+      "category": "policy_regulation",
+      "importance": 3,
+      "driver": "For ZEB.TO: Negative outlier — National 0.24% highest since Q1-2021, Toronto +45% is the driver of Ontario's breach; for ZEB it means GTA-weighted provisions will stay above national, capping re-rating until delinquency peaks, but still low vs 1990 levels so no capital raise risk."
+    }
+  ],
+  "date": "2026-08-29",
+  "theme": "canadian_banks"
+}

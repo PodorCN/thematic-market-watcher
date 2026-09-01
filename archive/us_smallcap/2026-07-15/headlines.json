@@ -1,0 +1,24 @@
+{
+  "headlines": [
+    {
+      "headline": "June CPI 3.1% Fuels Fed Cut Bets — Russell 2000 Rallies 4.2% in Two Sessions",
+      "source": "Bloomberg",
+      "url": "https://www.bloomberg.com/news/june-cpi-russell-rally-2026-07-15",
+      "published_at": "2026-07-15",
+      "category": "policy_regulation",
+      "importance": 4,
+      "driver": "For IWM: Positive template — June CPI prototype for IWM's CPI-beta; showed that 4.2% 2-day IWM rally repeats when CPI cools, establishing IWM as CPI-duration trade."
+    },
+    {
+      "headline": "IWM Sees $1.1B Weekly Inflow — Largest Since March as Rotation Talk Builds",
+      "source": "ETF.com",
+      "url": "https://www.etf.com/flows/iwm-1-1b-inflow-2026-07-15",
+      "published_at": "2026-07-15",
+      "category": "market",
+      "importance": 3,
+      "driver": "For IWM: Positive flow — $1.1B weekly inflow marks narrative shift from correction to leadership change; flow acceleration confirms IWM's rotation is funded, not just short covering."
+    }
+  ],
+  "date": "2026-07-15",
+  "theme": "us_smallcap"
+}

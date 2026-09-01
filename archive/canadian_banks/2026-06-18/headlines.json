@@ -1,0 +1,33 @@
+{
+  "headlines": [
+    {
+      "headline": "Bank of Canada Holds Rate at 4.75% — Warns Renewal Cliff Will Test Borrowers Into 2026",
+      "source": "Bank of Canada",
+      "url": "https://www.bankofcanada.ca/core-functions/monetary-policy/key-interest-rate/",
+      "published_at": "2026-06-18",
+      "category": "policy_regulation",
+      "importance": 4,
+      "driver": "For ZEB.TO (equal-weight Big Six): Hawkish hold is double-edged — near-term negative because 60% of mortgages renewing 2025-26 face +$420/mo payment shock, lifting performing-loan PCL; longer-term positive because BoC's 4.75% keeps NIM wide (2.07% ex-trading) while stress test prevents solvency event — ZEB trades on NIM vs PCL spread, so hold extends earnings durability, not a multiple re-rating."
+    },
+    {
+      "headline": "OSFI Keeps Domestic Stability Buffer at 3.5%, Flags High Household Debt Vulnerability",
+      "source": "OSFI",
+      "url": "https://www.osfi-bsif.gc.ca/en/publications/guidance",
+      "published_at": "2026-06-18",
+      "category": "policy_regulation",
+      "importance": 3,
+      "driver": "For ZEB.TO: Neutral to slightly positive — 3.5% buffer hold keeps CET1 hurdle high (RBC 13.5% vs 11.5% minimum) but avoids a hike that would force banks to retain capital instead of paying 4-5% dividend + buybacks (BMO NCIB). Signals regulator sees risk but not systemic — allows ZEB's 6-7% shareholder yield to compound, no de-rating."
+    },
+    {
+      "headline": "Canadian Housing Starts Fall 9% in May as Pre-Sale Condo Market Cools",
+      "source": "CMHC",
+      "url": "https://www.cmhc-schl.gc.ca/observer/2026/housing-starts-may-2026",
+      "published_at": "2026-06-15",
+      "category": "market",
+      "importance": 3,
+      "driver": "For ZEB.TO: Near-term mild negative — 9% fewer starts = slower mortgage + HELOC origination and fee income for Big Six in GTA condo corridor; offset is long-run positive — tighter supply supports home prices and 58% LTV cushion, limiting loss-given-default. Net: small drag on loan growth this quarter, but protects ZEB's collateral value and keeps future PCL contained — not a sell signal."
+    }
+  ],
+  "date": "2026-06-18",
+  "theme": "canadian_banks"
+}

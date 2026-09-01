@@ -1,0 +1,16 @@
+{
+  "_comment": "Canadian banking theme — Big Six + bank/financial ETFs + TSX composite for context.",
+  "tickers": [
+    "RY.TO",
+    "TD.TO",
+    "BMO.TO",
+    "BNS.TO",
+    "CM.TO",
+    "NA.TO",
+    "ZEB.TO",
+    "HFIN.TO",
+    "ZWB.TO",
+    "XFN.TO",
+    "^GSPTSE"
+  ]
+}

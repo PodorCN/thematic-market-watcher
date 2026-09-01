@@ -1,0 +1,24 @@
+{
+  "headlines": [
+    {
+      "headline": "Fed Holds Steady at 3.50–3.75% — Dot Plot Still Sees One Cut in 2026",
+      "source": "Federal Reserve",
+      "url": "https://www.federalreserve.gov/monetarypolicy/openmarket-20260618.htm",
+      "published_at": "2026-06-18",
+      "category": "policy_regulation",
+      "importance": 5,
+      "driver": "For TLT: Positive — June dot kept easing bias alive; July hold without new dots left TLT's convexity unpriced, keeping TLT's upside if cuts resume in 2026."
+    },
+    {
+      "headline": "10Y Yield Spikes to 4.55% on Hawkish Dots — 2Y/10Y Curve Steepens",
+      "source": "Bloomberg",
+      "url": "https://www.bloomberg.com/markets/yields-2026-06-18",
+      "published_at": "2026-06-18",
+      "category": "market",
+      "importance": 4,
+      "driver": "For TLT: Negative then positive — June spike to 4.55% steepened curve and hurt TLT; but created 4.6% entry for TLT's carry, which is now the theme's yield anchor."
+    }
+  ],
+  "date": "2026-06-18",
+  "theme": "us_rates"
+}

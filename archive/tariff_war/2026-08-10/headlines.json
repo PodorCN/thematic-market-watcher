@@ -1,0 +1,15 @@
+{
+  "headlines": [
+    {
+      "headline": "CSIS: Section 301 Legal Durability Questioned — 25 States Sue Over 60-Country Tariffs",
+      "source": "CSIS",
+      "url": "https://www.csis.org/analysis/section-301-tariffs-and-china-risky-gambit",
+      "published_at": "2026-08-10",
+      "category": "policy_regulation",
+      "importance": 3,
+      "driver": "For XLI: Negative risk — 25-state lawsuit (35% injunction odds) keeps XLI pricing volatile; if injunction hits, XLI's embedded tariff price must be unwound in 30 days or lose share to non-raisers."
+    }
+  ],
+  "date": "2026-08-10",
+  "theme": "tariff_war"
+}

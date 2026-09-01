@@ -1,0 +1,24 @@
+{
+  "headlines": [
+    {
+      "headline": "USTR Announces 60-Country Section 301 Forced-Labor Probe to Replace IEEPA — 10% and 12.5% Tracks",
+      "source": "USTR",
+      "url": "https://ustr.gov/301-forced-labor-proposal-2026-06-02",
+      "published_at": "2026-07-15",
+      "category": "policy_regulation",
+      "importance": 5,
+      "driver": "For XLI: Positive blueprint — 10% vs 12.5% tracks drive country-level dispersion that XLI can arbitrage via sourcing (Central America/Jordan FTA, TRQs for US cotton)."
+    },
+    {
+      "headline": "Canada Threatens Dollar-for-Dollar Retaliation if 50% Section 338 Hits — USMCA Talks Stall",
+      "source": "Bloomberg",
+      "url": "https://www.bloomberg.com/news/canada-retaliation-2026-07-15",
+      "published_at": "2026-07-15",
+      "category": "policy_regulation",
+      "importance": 4,
+      "driver": "For XLI: Negative — retaliation threat is bilateral escalation driver that raises XLI's cross-border cost and USMCA withdrawal volatility, hedging XLI's near-term pricing gains."
+    }
+  ],
+  "date": "2026-07-15",
+  "theme": "tariff_war"
+}

@@ -1,0 +1,24 @@
+{
+  "headlines": [
+    {
+      "headline": "June FOMC Minutes: Staff Sees Inflation Sticky at 3% Into Q3 on Tariff Pass-Through",
+      "source": "Federal Reserve",
+      "url": "https://www.federalreserve.gov/monetarypolicy/fomcminutes20260618.htm",
+      "published_at": "2026-07-12",
+      "category": "policy_regulation",
+      "importance": 3,
+      "driver": "For TLT: Negative — staff sticky 3% into Q3 anchors market's no-cut-to-2028 view, keeping TLT range-bound 4.5-4.7% until CPI breaks; explains why TLT hasn't rallied despite hold."
+    },
+    {
+      "headline": "June CPI Preview: Cleveland Fed Nowcast 0.31% MoM — Markets Price 70% Hold for July",
+      "source": "Cleveland Fed",
+      "url": "https://www.clevelandfed.org/nowcast/2026-07-12",
+      "published_at": "2026-07-12",
+      "category": "market",
+      "importance": 3,
+      "driver": "For TLT: Neutral — hawkish nowcast preview kept TLT on back foot before July; actual cooler CPI shows nowcast overshoot risk, which is bullish for TLT if August 0.38% nowcast also overshoots."
+    }
+  ],
+  "date": "2026-07-12",
+  "theme": "us_rates"
+}

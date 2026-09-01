@@ -1,0 +1,24 @@
+{
+  "headlines": [
+    {
+      "headline": "Supreme Court Strikes Down IEEPA Tariffs 6-3 — $168B Collected Now Subject to Refund",
+      "source": "Supreme Court",
+      "url": "https://www.supremecourt.gov/opinions/2026-06-15-ieepa.html",
+      "published_at": "2026-06-15",
+      "category": "policy_regulation",
+      "importance": 5,
+      "driver": "For XLI: Positive — legal reset removed emergency tariffs and triggered XLI +2.1% relief rally; forced shift to 301 gives XLI more durable, predictable protection than IEEPA's emergency basis."
+    },
+    {
+      "headline": "Markets Rally on Tariff Reset — XLI +2.1%, XLB +1.8% as IEEPA Voided",
+      "source": "Reuters",
+      "url": "https://www.reuters.com/markets/tariff-reset-rally-2026-06-15",
+      "published_at": "2026-06-15",
+      "category": "market",
+      "importance": 4,
+      "driver": "For XLI: Positive — voided IEEPA lifted XLI more than XLB on relief, showing XLI is more sensitive to tariff-policy certainty than commodity price alone."
+    }
+  ],
+  "date": "2026-06-15",
+  "theme": "tariff_war"
+}

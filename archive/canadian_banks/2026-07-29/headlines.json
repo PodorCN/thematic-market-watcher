@@ -1,0 +1,24 @@
+{
+  "headlines": [
+    {
+      "headline": "CIBC Reports June Mortgage Renewals: 68% See Payment Increase, Average +$420/mo",
+      "source": "CIBC Investor Presentation",
+      "url": "https://www.cibc.com/en/investor-relations/presentations-2026-07-29.html",
+      "published_at": "2026-07-29",
+      "category": "company_news",
+      "importance": 3,
+      "driver": "For ZEB.TO: Negative quant driver — $420/mo shock on 68% of renewals quantifies the renewal cliff that lifts PCL on performing loans (RBC 36 bps, BMO 0.56%). Directly links household cash-flow squeeze to ZEB's earnings risk, but also shows borrowers have equity to absorb — losses stay 7 bps, so ZEB trades on provision trajectory, not default wave."
+    },
+    {
+      "headline": "HFIN Rebalances: Shifts Weight to RY/TD on Momentum, Trims BNS",
+      "source": "Hamilton ETFs",
+      "url": "https://hamiltonetfs.com/hfin-rebalance-2026-07-29",
+      "published_at": "2026-07-29",
+      "category": "market",
+      "importance": 2,
+      "driver": "For ZEB.TO: Neutral — HFIN's active tilt to RY/TD explains why HFIN outperformed ZEB (equal-weight) in July; comparison highlights ZEB's virtue: no momentum chase, pure equal-weight beta is more defensive if RY/TD mean-revert. Useful for ZEB vs HFIN relative value, not absolute direction."
+    }
+  ],
+  "date": "2026-07-29",
+  "theme": "canadian_banks"
+}

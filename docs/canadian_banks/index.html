@@ -1,0 +1,886 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thematic Market Digest — canadian_banks — 2026-08-29</title>
+<style>
+  :root {
+    --bg: #f7f9fa;
+    --card: #ffffff;
+    --text: #1a2733;
+    --muted: #5b6b76;
+    --border: #e1e7ea;
+    --accent: #0b6e8f;
+    /* Unified palette — up/down + theme accents + category */
+    --up: #059669;
+    --up-bg: #ecfdf5;
+    --up-border: #a7f3d0;
+    --down: #dc2626;
+    --down-bg: #fef2f2;
+    --down-border: #fecaca;
+    --neutral: #64748b;
+    --accent-cb: #0b4d3e;
+    --accent-sc: #7c3aed;
+    --accent-rates: #b45309;
+    --accent-tariff: #be123c;
+    --cat-company-bg: #dbeafe; --cat-company-fg: #1e40af;
+    --cat-policy-bg: #fef3c7; --cat-policy-fg: #92400e;
+    --cat-market-bg: #dcfce7; --cat-market-fg: #166534;
+    --cat-tech-bg: #fce7f3; --cat-tech-fg: #9d174d;
+    --cat-infra-bg: #ede9fe; --cat-infra-fg: #6d28d9;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 2rem 1rem 4rem;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+  }
+  main { max-width: 1440px; margin: 0 auto; width: 96vw; padding: 0 0.5rem; }
+  @media (max-width: 768px) { main { width: 100vw; padding: 0 0.75rem; } }
+  header.page-header { margin-bottom: 2rem; }
+  h1 { font-size: 1.6rem; margin: 0 0 0.25rem; }
+  .date { color: var(--muted); font-size: 0.95rem; }
+  section { margin-bottom: 2rem; }
+  h2 {
+    font-size: 1.05rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    margin: 0 0 0.75rem;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+  }
+  table { width: 100%; border-collapse: collapse; }
+  th, td { text-align: left; padding: 0.5rem 0.6rem; border-bottom: 1px solid var(--border); font-size: 0.92rem; }
+  th { color: var(--muted); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; }
+  tr:last-child td { border-bottom: none; }
+  .num { text-align: right; font-variant-numeric: tabular-nums; }
+  .up { color: var(--up); }
+  .down { color: var(--down); }
+  .sparkline { vertical-align: middle; }
+  .top-story { border-left: 4px solid var(--accent); }
+  .top-story h3 { margin: 0 0 0.4rem; font-size: 1.1rem; }
+  .top-story a { color: var(--accent); }
+  .theme { margin-bottom: 1rem; }
+  .theme:last-child { margin-bottom: 0; }
+  .theme h3 { margin: 0 0 0.3rem; font-size: 1rem; }
+  .theme ul { margin: 0.4rem 0 0; padding-left: 1.2rem; font-size: 0.85rem; }
+  .headline-list { list-style: none; margin: 0; padding: 0; }
+  .headline-list li { padding: 0.55rem 0; border-bottom: 1px solid var(--border); }
+  .headline-list li:last-child { border-bottom: none; }
+  .headline-list a { color: var(--text); text-decoration: none; font-weight: 500; }
+  .headline-list a:hover { color: var(--accent); }
+  .meta { color: var(--muted); font-size: 0.8rem; margin-top: 0.15rem; }
+  .badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.1rem 0.5rem;
+    border-radius: 999px;
+    background: #eef4f6;
+    color: var(--accent);
+    margin-right: 0.4rem;
+  }
+  footer { color: var(--muted); font-size: 0.8rem; margin-top: 3rem; text-align: center; }
+  .timeline { position: relative; margin: 0.6rem 0 0; padding-left: 0; }
+  .timeline::before { content: ""; position: absolute; left: 108px; top: 8px; bottom: 8px; width: 2px; background: var(--border); border-radius: 999px; }
+  .tl-item { display: grid; grid-template-columns: 96px 18px 1fr; gap: 0.6rem; padding: 0.55rem 0; align-items: start; }
+  .tl-date { text-align: right; padding-right: 0.2rem; }
+  .tl-day { font-weight: 700; font-size: 0.85rem; }
+  .tl-trade { font-size: 0.75rem; line-height: 1.2; }
+  .tl-dot { width: 10px; height: 10px; border-radius: 999px; margin-top: 0.25rem; border: 2px solid #fff; box-shadow: 0 0 0 2px var(--border); justify-self: center; }
+  .tl-content { min-width: 0; }
+  @media (max-width: 560px) { .timeline::before { left: 76px; } .tl-item { grid-template-columns: 64px 18px 1fr; } }
+</style>
+</head>
+<body>
+<main>
+  <nav style="margin-bottom:1.2rem;font-size:0.85rem;">
+    <a href="../" style="color:var(--muted);text-decoration:none;">← All themes</a>
+    <span style="color:var(--border);margin:0 0.4rem;">·</span>
+    <span style="color:var(--accent);font-weight:600;">canadian_banks</span>
+    <span style="float:right;color:var(--muted);">
+      <a href="../canadian_banks/" style="color:var(--muted);">Canadian Banks</a> ·
+      <a href="../us_smallcap/" style="color:var(--muted);">US Small Cap</a> ·
+      <a href="../us_rates/" style="color:var(--muted);">US Rates</a> ·
+      <a href="../tariff_war/" style="color:var(--muted);">Tariff War</a> ·
+      <a href="../canadian-financial-study/" style="color:var(--accent);font-weight:700;">Study</a>
+    </span>
+  </nav>
+  <header class="page-header">
+    <div style="display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap;">
+      <h1 style="margin:0;">Thematic Market Digest — canadian_banks</h1>
+      <span class="badge" style="background:#0b4d3e;color:#fff;border:1px solid #0b4d3e;font-size:0.75rem;padding:0.2rem 0.6rem;">Main proxy: ZEB.TO</span>
+    </div>
+    <div class="date" style="margin-top:0.25rem;">2026-08-29 · 90-day history · Full-width</div>
+  </header>
+
+  
+  <section>
+    <h2>Why This Theme — Investment Thesis</h2>
+    <div class="card" style="border-left:4px solid #0b4d3e;">
+      <p style="font-weight:750;margin:0 0 0.45rem;font-size:1.02rem;">Why Canadian Banks work as a defensive diversifier to Big Tech</p>
+      <p style="margin:0 0 0.8rem;color:var(--text);font-size:0.92rem;background:#f8fafc;border:1px solid var(--border);border-radius:8px;padding:0.65rem 0.8rem;">Oligopoly (Big Six) + 4–5% yield, 0.3–0.4 correlation to Nasdaq — ballast that compounds when rates stay high. Details in Drivers below.</p>
+      <ul style="margin:0;padding-left:1.2rem;">
+        
+        <li style="margin:0.45rem 0;font-size:0.92rem;line-height:1.45;">Defensive carry: 88% oligopoly, ROE 15–18%, CET1 13%+ → 5–7% dividend growth + buybacks even in slowdowns.</li>
+        
+      </ul>
+    </div>
+  </section>
+  
+
+  
+  <section>
+    <h2>Main Proxy — ZEB.TO</h2>
+    <div class="card" style="border-left:4px solid #0b4d3e;">
+      <p style="font-weight:750;margin:0 0 0.25rem;font-size:1.02rem;">BMO Equal Weight Banks Index ETF</p>
+      <p style="margin:0 0 0.35rem;color:var(--muted);font-size:0.85rem;">Tracks: Equal-weight basket of Canada&#39;s Big Six banks (RY, TD, BMO, BNS, CM, NA)</p>
+      <p style="margin:0 0 0.5rem;font-size:0.92rem;line-height:1.45;">Purest equal-weight beta to the oligopoly — no single-name concentration, 0.28% MER, ~$1.5B AUM. Unlike cap-weighted XFN (adds insurers) or leveraged HFIN, ZEB moves exactly with the thesis: Big Six earnings + provisions + dividends.</p>
+      <div class="meta" style="background:#f8fafc;border:1px solid var(--border);border-radius:999px;display:inline-block;padding:0.15rem 0.6rem;">AUM ~C$1.5B · MER 0.28% · Yield ~4.2%</div>
+    </div>
+  </section>
+  
+
+  
+  <section>
+    <h2>Index Trend — Canadian Banks · Main vs Benchmark</h2>
+    <div class="card" style="margin-bottom:1rem;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.6rem;flex-wrap:wrap;gap:0.5rem;">
+        <div><strong>ZEB.TO vs HFIN.TO vs SPY — Indexed to 100</strong> <span class="meta">Main proxy vs S&amp;P 500 (SPY)</span></div>
+        <div class="meta" style="display:flex;gap:10px;flex-wrap:wrap;">
+          
+          
+          <span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:12px;height:3px;background:#0b4d3e;border-radius:999px;display:inline-block"></span>ZEB.TO</span>
+          
+          <span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:12px;height:3px;background:#94a3b8;border-radius:999px;display:inline-block"></span>HFIN.TO</span>
+          
+          <span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:12px;height:3px;background:#64748b;border-radius:999px;display:inline-block;border-top:2px dashed #64748b;height:0"></span>SPY</span>
+          
+        </div>
+      </div>
+      <div style="overflow-x:auto;"><svg width="1100" height="240" viewBox="0 0 1100 240" role="img" aria-label="overlay indexed trend" style="background:#fff;border:1px solid #e2e8f0;border-radius:8px;width:100%;height:auto;"><line x1="48" y1="14.0" x2="1084" y2="14.0" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 4"/><text x="42" y="17.0" text-anchor="end" font-size="10" fill="#64748b">124.8</text><line x1="48" y1="63.5" x2="1084" y2="63.5" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 4"/><text x="42" y="66.5" text-anchor="end" font-size="10" fill="#64748b">117.8</text><line x1="48" y1="113.0" x2="1084" y2="113.0" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 4"/><text x="42" y="116.0" text-anchor="end" font-size="10" fill="#64748b">110.7</text><line x1="48" y1="162.5" x2="1084" y2="162.5" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 4"/><text x="42" y="165.5" text-anchor="end" font-size="10" fill="#64748b">103.7</text><line x1="48" y1="212.0" x2="1084" y2="212.0" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 4"/><text x="42" y="215.0" text-anchor="end" font-size="10" fill="#64748b">96.7</text><polyline points="48.0,188.6 59.6,187.3 71.3,184.7 82.9,183.0 94.6,181.9 106.2,190.2 117.8,175.3 129.5,174.4 141.1,183.4 152.8,180.6 164.4,165.2 176.0,170.7 187.7,170.1 199.3,171.4 211.0,167.6 222.6,176.7 234.2,165.0 245.9,166.9 257.5,162.7 269.2,149.2 280.8,140.8 292.4,135.7 304.1,129.1 315.7,132.7 327.4,136.3 339.0,147.2 350.7,146.9 362.3,155.7 373.9,141.1 385.6,144.4 397.2,132.1 408.9,133.4 420.5,128.9 432.1,122.6 443.8,125.0 455.4,114.7 467.1,106.0 478.7,103.7 490.3,96.3 502.0,88.1 513.6,84.0 525.3,79.4 536.9,75.6 548.5,72.3 560.2,76.3 571.8,71.0 583.5,75.4 595.1,69.8 606.7,63.8 618.4,75.4 630.0,71.2 641.7,61.1 653.3,56.4 664.9,74.0 676.6,64.0 688.2,51.3 699.9,52.5 711.5,46.4 723.1,33.2 734.8,37.4 746.4,40.1 758.1,59.5 769.7,56.1 781.3,55.4 793.0,65.4 804.6,60.0 816.3,56.2 827.9,46.8 839.6,74.0 851.2,59.8 862.8,58.5 874.5,59.5 886.1,54.2 897.8,54.1 909.4,55.5 921.0,56.6 932.7,58.4 944.3,45.0 956.0,40.7 967.6,36.5 979.2,37.8 990.9,50.6 1002.5,78.4 1014.2,92.6 1025.8,89.0 1037.4,91.9 1049.1,70.3 1060.7,72.5 1072.4,79.1 1084.0,77.8" fill="none" stroke="#0b4d3e" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><polyline points="48.0,188.6 59.8,185.1 71.5,183.6 83.3,188.1 95.1,185.9 106.9,192.8 118.6,178.2 130.4,181.0 142.2,188.2 154.0,181.0 165.7,174.5 177.5,178.5 189.3,173.2 201.0,173.2 212.8,175.7 224.6,180.7 236.4,172.5 248.1,174.0 259.9,170.2 271.7,152.7 283.5,143.7 295.2,143.7 307.0,139.5 318.8,143.0 330.5,144.7 342.3,154.2 354.1,153.9 365.9,164.4 377.6,150.6 389.4,153.6 401.2,139.2 413.0,135.8 424.7,134.3 436.5,126.3 448.3,124.3 460.0,122.0 471.8,108.0 483.6,105.5 495.4,96.2 507.1,86.4 518.9,82.9 530.7,83.9 542.5,81.9 554.2,79.4 566.0,76.6 577.8,72.6 589.5,78.1 601.3,71.6 613.1,67.7 624.9,65.4 636.6,60.7 648.4,54.6 660.2,48.3 672.0,65.4 683.7,58.2 695.5,53.1 707.3,53.1 719.0,50.1 730.8,38.3 742.6,39.5 754.4,41.1 766.1,58.7 777.9,58.2 789.7,57.9 801.5,66.5 813.2,58.4 825.0,48.1 836.8,34.5 848.5,66.7 860.3,56.1 872.1,52.2 883.9,47.4 895.6,46.4 907.4,52.0 919.2,55.0 931.0,56.1 942.7,60.1 954.5,54.0 966.3,49.0 978.0,50.2 989.8,52.2 1001.6,64.6 1013.4,87.8 1025.1,107.2 1036.9,100.1 1048.7,99.6 1060.5,81.7 1072.2,82.0 1084.0,88.5" fill="none" stroke="#94a3b8" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><polyline points="48.0,188.6 59.8,191.3 71.5,185.9 83.3,184.7 95.1,188.1 106.9,188.2 118.6,181.2 130.4,179.2 142.2,181.9 154.0,176.2 165.7,166.2 177.5,168.4 189.3,162.4 201.0,160.8 212.8,161.9 224.6,157.8 236.4,152.0 248.1,160.9 259.9,161.4 271.7,166.3 283.5,158.8 295.2,157.4 307.0,154.5 318.8,149.6 330.5,149.7 342.3,145.6 354.1,143.8 365.9,141.7 377.6,140.7 389.4,146.0 401.2,143.2 413.0,162.5 424.7,160.9 436.5,163.0 448.3,174.5 460.0,162.3 471.8,158.4 483.6,145.4 495.4,149.9 507.1,159.1 518.9,151.5 530.7,153.8 542.5,164.6 554.2,164.9 566.0,163.9 577.8,169.1 589.5,157.2 601.3,151.5 613.1,152.5 624.9,153.4 636.6,147.0 648.4,150.5 660.2,152.8 672.0,146.6 683.7,143.4 695.5,149.1 707.3,146.4 719.0,143.5 730.8,147.6 742.6,154.9 754.4,156.1 766.1,150.0 777.9,150.8 789.7,160.0 801.5,159.3 813.2,159.1 825.0,157.3 836.8,168.7 848.5,156.5 860.3,151.2 872.1,140.7 883.9,127.1 895.6,128.6 907.4,129.8 919.2,125.2 931.0,125.4 942.7,127.9 954.5,125.9 966.3,120.6 978.0,122.1 989.8,125.8 1001.6,130.9 1013.4,129.3 1025.1,135.8 1036.9,132.7 1048.7,134.9 1060.5,132.5 1072.2,132.3 1084.0,127.3" fill="none" stroke="#64748b" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="6 4"/><text x="1088.0" y="123.3" font-size="10" fill="#64748b" font-weight="600">SPY</text><text x="48.0" y="232.0" text-anchor="middle" font-size="10" fill="#64748b">04-22</text><text x="571.8" y="232.0" text-anchor="middle" font-size="10" fill="#64748b">06-25</text><text x="1084.0" y="232.0" text-anchor="middle" font-size="10" fill="#64748b">08-28</text></svg></div>
+      <div class="meta" style="margin-top:0.4rem;">Indexed to 100 at start of 90-day window — flat if both move together, divergence is theme alpha vs S&P 500. Source: yfinance 90-day history.</div>
+    </div>
+  </section>
+  
+
+  <section>
+    <h2>Market Summary — At a Glance</h2>
+    <div class="card">
+      <p>Canadian banks were mixed on Aug 29 despite a blockbuster Q3 earnings week: TD +1.19% led on a 26% adjusted EPS beat, while CM –2.85%, RY –1.61% and ZEB –0.80% gave back post-earnings gains. XFN and ZWB also slipped, with only the TSX Composite marginally positive (+0.06%), signaling profit-taking after all six lenders beat Bay Street estimates on capital-markets strength.</p>
+      
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0.7rem;margin:0.9rem 0 0.6rem;">
+        <div style="background:#f8fafc;border:1px solid var(--border);border-radius:10px;padding:0.75rem 0.9rem;">
+          <div class="meta" style="font-size:0.68rem;letter-spacing:0.06em;text-transform:uppercase;">Proxies</div>
+          <div style="font-size:1.25rem;font-weight:800;">10</div>
+          <div class="meta" style="font-size:0.78rem;">1D 2026-08-27→2026-08-28</div>
+        </div>
+        <div style="background:var(--up-bg);border:1px solid var(--up-border);border-radius:10px;padding:0.75rem 0.9rem;">
+          <div class="meta" style="font-size:0.68rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--up);">Theme</div>
+          <div class="num up" style="font-size:1.25rem;font-weight:800;">+0.07%</div>
+          <div class="meta" style="font-size:0.78rem;">mean · median +0.20%</div>
+        </div>
+        <div style="background:#f8fafc;border:1px solid var(--border);border-radius:10px;padding:0.75rem 0.9rem;">
+          <div class="meta" style="font-size:0.68rem;letter-spacing:0.06em;text-transform:uppercase;">Breadth</div>
+          <div style="font-size:1.15rem;font-weight:800;"><span class="up">7 up</span> · <span class="down">3 down</span></div>
+          <div class="meta" style="font-size:0.78rem;">70% positive</div>
+        </div>
+        <div style="background:#f8fafc;border:1px solid var(--border);border-radius:10px;padding:0.75rem 0.9rem;">
+          <div class="meta" style="font-size:0.68rem;letter-spacing:0.06em;text-transform:uppercase;">Best / Worst</div>
+          <div style="font-size:0.92rem;font-weight:700;"><span class="up">TD.TO +0.46%</span> <span style="color:var(--muted);">·</span> <span class="down">^GSPTSE -0.76%</span></div>
+          <div class="meta" style="font-size:0.78rem;">Range 1.22pp · Std 0.36pp</div>
+        </div>
+        
+        <div style="background:var(--up-bg);border:1px solid var(--up-border);border-radius:10px;padding:0.75rem 0.9rem;">
+          <div class="meta" style="font-size:0.68rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--up);">Main ZEB.TO</div>
+          <div class="num up" style="font-size:1.25rem;font-weight:800;">+0.16%</div>
+          <div class="meta" style="font-size:0.78rem;">vs mean +0.09pp · 1D 2026-08-27→2026-08-28</div>
+        </div>
+        
+      </div>
+      
+      <div class="meta" style="margin-top:0.5rem;font-size:0.78rem;color:#92400e;">⚠️ HFIN.TO excluded (stale window) — not counted in mean/std</div>
+      
+      <details style="margin-top:0.8rem;"><summary class="meta" style="cursor:pointer;">Details — per-ticker (1D 2026-08-27→2026-08-28)</summary>
+      <table style="margin-top:0.6rem;">
+        <thead><tr><th>Ticker</th><th></th><th class="num">Last</th><th class="num">1D Change<br><span class="meta" style="font-weight:400;text-transform:none;">1D 2026-08-27→2026-08-28</span></th></tr></thead>
+        <tbody>
+          
+          <tr><td><strong>RY.TO</strong><div class="meta">1D 2026-08-27→2026-08-28</div></td><td><svg width="120" height="32" viewBox="0 0 120 32" class="sparkline" role="img" aria-label="price trend"><polyline points="0.0,32.0 1.3,32.0 2.7,31.9 4.0,31.4 5.4,30.3 6.7,31.8 8.1,29.7 9.4,29.8 10.8,30.6 12.1,30.2 13.5,28.1 14.8,28.1 16.2,27.5 17.5,28.2 18.9,27.0 20.2,28.5 21.6,25.8 22.9,25.7 24.3,25.7 25.6,23.4 27.0,21.8 28.3,21.2 29.7,20.1 31.0,21.0 32.4,21.3 33.7,21.9 35.1,20.0 36.4,21.6 37.8,19.9 39.1,19.3 40.4,16.8 41.8,17.0 43.1,16.0 44.5,14.4 45.8,14.5 47.2,13.4 48.5,13.0 49.9,13.2 51.2,11.7 52.6,10.9 53.9,10.0 55.3,10.5 56.6,9.2 58.0,8.4 59.3,8.6 60.7,8.0 62.0,8.6 63.4,7.2 64.7,5.8 66.1,7.4 67.4,7.4 68.8,5.1 70.1,4.3 71.5,6.8 72.8,4.8 74.2,3.4 75.5,3.8 76.9,2.3 78.2,0.0 79.6,1.2 80.9,1.7 82.2,4.8 83.6,3.9 84.9,3.8 86.3,5.8 87.6,5.2 89.0,3.8 90.3,2.2 91.7,6.6 93.0,4.6 94.4,5.1 95.7,5.1 97.1,3.9 98.4,3.6 99.8,4.5 101.1,4.8 102.5,5.3 103.8,3.1 105.2,2.2 106.5,1.6 107.9,1.9 109.2,3.7 110.6,8.3 111.9,10.0 113.3,10.5 114.6,10.4 116.0,8.4 117.3,7.7 118.7,9.9 120.0,9.6" fill="none" stroke="#059669" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" /></svg></td><td class="num">284.17</td><td class="num up">+0.25%<div class="meta" style="font-size:0.7rem;">1D 2026-08-27→2026-08-28</div></td></tr>
+          
+          <tr><td><strong>TD.TO</strong><div class="meta">1D 2026-08-27→2026-08-28</div></td><td><svg width="120" height="32" viewBox="0 0 120 32" class="sparkline" role="img" aria-label="price trend"><polyline points="0.0,32.0 1.3,31.1 2.7,31.4 4.0,30.8 5.4,30.8 6.7,32.0 8.1,28.8 9.4,29.2 10.8,30.5 12.1,30.7 13.5,27.0 14.8,28.0 16.2,28.2 17.5,28.7 18.9,27.5 20.2,28.9 21.6,26.6 22.9,26.9 24.3,26.8 25.6,24.8 27.0,22.2 28.3,20.8 29.7,19.0 31.0,20.1 32.4,20.3 33.7,19.3 35.1,17.8 36.4,22.1 37.8,18.9 39.1,19.3 40.4,17.6 41.8,17.9 43.1,16.2 44.5,15.8 45.8,16.0 47.2,13.6 48.5,11.9 49.9,11.6 51.2,10.5 52.6,8.6 53.9,7.5 55.3,6.8 56.6,6.9 58.0,6.3 59.3,6.8 60.7,5.3 62.0,6.1 63.4,5.2 64.7,3.8 66.1,6.9 67.4,6.1 68.8,4.9 70.1,3.9 71.5,8.2 72.8,6.4 74.2,4.2 75.5,4.4 76.9,2.4 78.2,0.0 79.6,1.2 80.9,1.9 82.2,5.7 83.6,5.0 84.9,4.4 86.3,7.1 87.6,6.0 89.0,6.2 90.3,5.1 91.7,10.3 93.0,7.2 94.4,7.0 95.7,7.1 97.1,5.4 98.4,5.1 99.8,5.7 101.1,6.2 102.5,5.9 103.8,3.2 105.2,3.5 106.5,2.6 107.9,2.6 109.2,5.4 110.6,11.2 111.9,13.3 113.3,13.5 114.6,13.3 116.0,10.1 117.3,9.0 118.7,7.1 120.0,6.4" fill="none" stroke="#059669" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" /></svg></td><td class="num">168.61</td><td class="num up">+0.46%<div class="meta" style="font-size:0.7rem;">1D 2026-08-27→2026-08-28</div></td></tr>
+          
+          <tr><td><strong>BMO.TO</strong><div class="meta">1D 2026-08-27→2026-08-28</div></td><td><svg width="120" height="32" viewBox="0 0 120 32" class="sparkline" role="img" aria-label="price trend"><polyline points="0.0,31.0 1.3,30.3 2.7,30.1 4.0,30.2 5.4,30.6 6.7,32.0 8.1,29.8 9.4,29.5 10.8,31.4 12.1,30.5 13.5,27.2 14.8,29.0 16.2,28.5 17.5,28.4 18.9,28.6 20.2,30.3 21.6,28.1 22.9,28.1 24.3,27.0 25.6,24.2 27.0,22.4 28.3,21.0 29.7,19.8 31.0,20.3 32.4,19.3 33.7,20.6 35.1,20.2 36.4,19.5 37.8,17.4 39.1,19.3 40.4,17.0 41.8,17.2 43.1,17.0 44.5,16.4 45.8,17.1 47.2,15.4 48.5,13.8 49.9,13.7 51.2,12.7 52.6,11.3 53.9,10.3 55.3,9.7 56.6,8.1 58.0,7.6 59.3,8.0 60.7,6.7 62.0,6.2 63.4,5.4 64.7,5.1 66.1,7.2 67.4,7.1 68.8,5.4 70.1,3.6 71.5,7.1 72.8,5.1 74.2,3.6 75.5,3.8 76.9,3.0 78.2,1.1 79.6,1.8 80.9,2.6 82.2,5.3 83.6,4.2 84.9,4.2 86.3,6.1 87.6,5.0 89.0,4.3 90.3,2.7 91.7,7.3 93.0,4.3 94.4,3.6 95.7,2.7 97.1,2.6 98.4,2.5 99.8,2.6 101.1,2.5 102.5,3.2 103.8,1.1 105.2,0.7 106.5,0.0 107.9,0.5 109.2,2.3 110.6,8.7 111.9,10.8 113.3,10.0 114.6,10.9 116.0,10.2 117.3,10.2 118.7,10.9 120.0,10.6" fill="none" stroke="#059669" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" /></svg></td><td class="num">239.23</td><td class="num up">+0.23%<div class="meta" style="font-size:0.7rem;">1D 2026-08-27→2026-08-28</div></td></tr>
+          
+          <tr><td><strong>BNS.TO</strong><div class="meta">1D 2026-08-27→2026-08-28</div></td><td><svg width="120" height="32" viewBox="0 0 120 32" class="sparkline" role="img" aria-label="price trend"><polyline points="0.0,31.9 1.3,32.0 2.7,31.1 4.0,30.3 5.4,29.5 6.7,31.0 8.1,28.7 9.4,28.2 10.8,30.2 12.1,30.1 13.5,27.3 14.8,27.6 16.2,28.2 17.5,28.9 18.9,28.4 20.2,29.6 21.6,28.1 22.9,28.1 24.3,27.9 25.6,25.5 27.0,24.3 28.3,23.5 29.7,22.7 31.0,22.6 32.4,22.0 33.7,23.7 35.1,23.1 36.4,25.0 37.8,21.9 39.1,22.2 40.4,20.3 41.8,21.1 43.1,20.4 44.5,19.4 45.8,19.4 47.2,17.8 48.5,15.4 49.9,14.3 51.2,12.9 52.6,10.4 53.9,9.0 55.3,8.5 56.6,9.0 58.0,9.5 59.3,10.8 60.7,9.6 62.0,9.7 63.4,9.1 64.7,8.8 66.1,11.2 67.4,9.8 68.8,8.5 70.1,8.6 71.5,10.8 72.8,9.0 74.2,6.5 75.5,6.1 76.9,5.2 78.2,3.4 79.6,4.5 80.9,5.2 82.2,8.4 83.6,7.3 84.9,7.4 86.3,9.1 87.6,8.1 89.0,8.1 90.3,5.8 91.7,9.9 93.0,7.7 94.4,7.8 95.7,8.1 97.1,6.6 98.4,6.9 99.8,6.6 101.1,7.1 102.5,6.8 103.8,4.4 105.2,4.0 106.5,3.2 107.9,3.5 109.2,5.1 110.6,9.8 111.9,11.9 113.3,10.5 114.6,10.9 116.0,1.2 117.3,0.0 118.7,1.1 120.0,1.7" fill="none" stroke="#dc2626" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" /></svg></td><td class="num">128.36</td><td class="num down">-0.37%<div class="meta" style="font-size:0.7rem;">1D 2026-08-27→2026-08-28</div></td></tr>
+          
+          <tr><td><strong>CM.TO</strong><div class="meta">1D 2026-08-27→2026-08-28</div></td><td><svg width="120" height="32" viewBox="0 0 120 32" class="sparkline" role="img" aria-label="price trend"><polyline points="0.0,29.7 1.3,29.8 2.7,28.2 4.0,27.2 5.4,28.1 6.7,30.9 8.1,26.1 9.4,24.9 10.8,28.4 12.1,28.0 13.5,24.3 14.8,26.8 16.2,27.3 17.5,25.8 18.9,24.4 20.2,26.9 21.6,23.5 22.9,23.9 24.3,22.6 25.6,19.3 27.0,17.9 28.3,16.3 29.7,14.8 31.0,15.9 32.4,16.3 33.7,26.8 35.1,27.4 36.4,32.0 37.8,27.8 39.1,28.9 40.4,26.0 41.8,25.7 43.1,24.4 44.5,22.4 45.8,23.4 47.2,20.6 48.5,17.3 49.9,16.8 51.2,15.9 52.6,16.7 53.9,18.2 55.3,15.4 56.6,14.0 58.0,11.9 59.3,13.1 60.7,13.1 62.0,14.2 63.4,12.8 64.7,10.4 66.1,12.5 67.4,12.3 68.8,9.8 70.1,8.7 71.5,12.5 72.8,10.1 74.2,5.9 75.5,7.1 76.9,6.2 78.2,2.8 79.6,2.6 80.9,2.2 82.2,7.6 83.6,7.4 84.9,7.1 86.3,9.4 87.6,7.5 89.0,5.9 90.3,3.3 91.7,10.0 93.0,7.5 94.4,7.0 95.7,7.0 97.1,6.5 98.4,7.2 99.8,7.5 101.1,6.7 102.5,7.5 103.8,3.8 105.2,1.6 106.5,0.0 107.9,0.5 109.2,3.2 110.6,10.9 111.9,14.7 113.3,14.1 114.6,15.4 116.0,9.9 117.3,9.8 118.7,15.5 120.0,15.6" fill="none" stroke="#dc2626" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" /></svg></td><td class="num">159.09</td><td class="num down">-0.04%<div class="meta" style="font-size:0.7rem;">1D 2026-08-27→2026-08-28</div></td></tr>
+          
+          <tr><td><strong>NA.TO</strong><div class="meta">1D 2026-08-27→2026-08-28</div></td><td><svg width="120" height="32" viewBox="0 0 120 32" class="sparkline" role="img" aria-label="price trend"><polyline points="0.0,28.2 1.3,28.8 2.7,27.2 4.0,28.1 5.4,28.3 6.7,29.3 8.1,26.1 9.4,26.0 10.8,27.9 12.1,26.6 13.5,24.2 14.8,24.8 16.2,23.8 17.5,24.6 18.9,24.1 20.2,26.4 21.6,25.5 22.9,26.5 24.3,24.5 25.6,22.2 27.0,20.8 28.3,20.6 29.7,19.2 31.0,20.0 32.4,27.0 33.7,27.9 35.1,29.2 36.4,32.0 37.8,29.2 39.1,30.3 40.4,27.4 41.8,26.7 43.1,26.6 44.5,24.3 45.8,25.4 47.2,23.2 48.5,22.2 49.9,21.1 51.2,18.7 52.6,15.7 53.9,13.4 55.3,12.4 56.6,11.2 58.0,10.2 59.3,10.4 60.7,10.6 62.0,12.1 63.4,12.0 64.7,9.5 66.1,12.0 67.4,9.9 68.8,7.1 70.1,5.4 71.5,10.1 72.8,8.6 74.2,4.5 75.5,5.8 76.9,4.3 78.2,0.0 79.6,0.8 80.9,1.0 82.2,6.4 83.6,6.3 84.9,6.1 86.3,7.5 87.6,6.6 89.0,5.7 90.3,3.6 91.7,10.1 93.0,6.8 94.4,7.1 95.7,7.6 97.1,7.3 98.4,6.9 99.8,6.4 101.1,7.7 102.5,8.5 103.8,5.4 105.2,3.6 106.5,3.3 107.9,3.0 109.2,7.7 110.6,11.0 111.9,15.4 113.3,14.1 114.6,15.1 116.0,10.6 117.3,18.4 118.7,18.6 120.0,17.8" fill="none" stroke="#059669" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" /></svg></td><td class="num">213.86</td><td class="num up">+0.44%<div class="meta" style="font-size:0.7rem;">1D 2026-08-27→2026-08-28</div></td></tr>
+          
+          <tr><td><strong>ZEB.TO</strong><div class="meta">1D 2026-08-27→2026-08-28</div></td><td><svg width="120" height="32" viewBox="0 0 120 32" class="sparkline" role="img" aria-label="price trend"><polyline points="0.0,31.7 1.3,31.4 2.7,30.9 4.0,30.5 5.4,30.3 6.7,32.0 8.1,29.0 9.4,28.8 10.8,30.6 12.1,30.0 13.5,26.9 14.8,28.0 16.2,27.9 17.5,28.2 18.9,27.4 20.2,29.3 21.6,26.9 22.9,27.3 24.3,26.4 25.6,23.6 27.0,21.9 28.3,20.9 29.7,19.5 31.0,20.3 32.4,21.0 33.7,23.2 35.1,23.2 36.4,25.0 37.8,22.0 39.1,22.7 40.4,20.2 41.8,20.4 43.1,19.5 44.5,18.2 45.8,18.7 47.2,16.6 48.5,14.8 49.9,14.4 51.2,12.9 52.6,11.2 53.9,10.4 55.3,9.4 56.6,8.7 58.0,8.0 59.3,8.8 60.7,7.7 62.0,8.6 63.4,7.5 64.7,6.3 66.1,8.6 67.4,7.7 68.8,5.7 70.1,4.7 71.5,8.3 72.8,6.3 74.2,3.7 75.5,3.9 76.9,2.7 78.2,0.0 79.6,0.9 80.9,1.4 82.2,5.4 83.6,4.7 84.9,4.5 86.3,6.6 87.6,5.5 89.0,4.7 90.3,2.8 91.7,8.3 93.0,5.4 94.4,5.2 95.7,5.4 97.1,4.3 98.4,4.3 99.8,4.6 101.1,4.8 102.5,5.1 103.8,2.4 105.2,1.5 106.5,0.7 107.9,0.9 109.2,3.6 110.6,9.2 111.9,12.1 113.3,11.4 114.6,12.0 116.0,7.6 117.3,8.0 118.7,9.4 120.0,9.1" fill="none" stroke="#059669" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" /></svg></td><td class="num">74.37</td><td class="num up">+0.16%<div class="meta" style="font-size:0.7rem;">1D 2026-08-27→2026-08-28</div></td></tr>
+          
+          <tr><td><strong>HFIN.TO</strong><div class="meta">1D 2026-08-26→2026-08-27</div></td><td><svg width="120" height="32" viewBox="0 0 120 32" class="sparkline" role="img" aria-label="price trend"><polyline points="0.0,31.1 1.4,30.4 2.7,30.1 4.1,31.0 5.5,30.6 6.8,32.0 8.2,29.0 9.5,29.6 10.9,31.1 12.3,29.6 13.6,28.3 15.0,29.1 16.4,28.0 17.7,28.0 19.1,28.5 20.5,29.6 21.8,27.9 23.2,28.2 24.5,27.4 25.9,23.9 27.3,22.1 28.6,22.1 30.0,21.2 31.4,21.9 32.7,22.3 34.1,24.2 35.5,24.1 36.8,26.3 38.2,23.5 39.5,24.1 40.9,21.2 42.3,20.5 43.6,20.2 45.0,18.5 46.4,18.1 47.7,17.7 49.1,14.8 50.5,14.3 51.8,12.5 53.2,10.5 54.5,9.8 55.9,10.0 57.3,9.6 58.6,9.1 60.0,8.5 61.4,7.7 62.7,8.8 64.1,7.5 65.5,6.7 66.8,6.3 68.2,5.3 69.5,4.1 70.9,2.8 72.3,6.3 73.6,4.8 75.0,3.8 76.4,3.8 77.7,3.2 79.1,0.8 80.5,1.0 81.8,1.3 83.2,4.9 84.5,4.8 85.9,4.7 87.3,6.5 88.6,4.8 90.0,2.7 91.4,0.0 92.7,6.5 94.1,4.4 95.5,3.6 96.8,2.6 98.2,2.4 99.5,3.5 100.9,4.1 102.3,4.4 103.6,5.2 105.0,3.9 106.4,2.9 107.7,3.2 109.1,3.6 110.5,6.1 111.8,10.8 113.2,14.7 114.5,13.3 115.9,13.2 117.3,9.5 118.6,9.6 120.0,10.9" fill="none" stroke="#dc2626" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" /></svg></td><td class="num">31.91</td><td class="num down">-0.81%<div class="meta" style="font-size:0.7rem;">1D 2026-08-26→2026-08-27</div></td></tr>
+          
+          <tr><td><strong>ZWB.TO</strong><div class="meta">1D 2026-08-27→2026-08-28</div></td><td><svg width="120" height="32" viewBox="0 0 120 32" class="sparkline" role="img" aria-label="price trend"><polyline points="0.0,31.9 1.3,31.8 2.7,31.1 4.0,30.8 5.4,30.4 6.7,32.0 8.1,29.2 9.4,28.9 10.8,30.9 12.1,30.5 13.5,27.1 14.8,28.2 16.2,28.2 17.5,28.4 18.9,27.6 20.2,29.4 21.6,27.2 22.9,27.4 24.3,26.5 25.6,23.7 27.0,22.0 28.3,21.1 29.7,19.6 31.0,20.4 32.4,21.1 33.7,23.4 35.1,23.5 36.4,24.7 37.8,22.3 39.1,22.8 40.4,20.5 41.8,20.4 43.1,19.8 44.5,18.4 45.8,18.9 47.2,16.8 48.5,14.9 49.9,14.8 51.2,13.1 52.6,11.5 53.9,10.5 55.3,9.9 56.6,9.0 58.0,8.3 59.3,9.1 60.7,8.1 62.0,8.8 63.4,7.7 64.7,6.5 66.1,8.8 67.4,7.9 68.8,5.9 70.1,5.3 71.5,8.6 72.8,6.6 74.2,3.6 75.5,4.2 76.9,2.6 78.2,0.0 79.6,1.2 80.9,1.4 82.2,5.5 83.6,4.5 84.9,4.5 86.3,6.8 87.6,5.6 89.0,4.7 90.3,2.6 91.7,8.5 93.0,5.4 94.4,5.2 95.7,5.3 97.1,4.2 98.4,4.2 99.8,4.4 101.1,4.7 102.5,5.0 103.8,2.0 105.2,1.2 106.5,0.4 107.9,0.5 109.2,3.4 110.6,9.6 111.9,12.6 113.3,11.9 114.6,12.6 116.0,7.6 117.3,8.5 118.7,9.7 120.0,9.3" fill="none" stroke="#059669" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" /></svg></td><td class="num">30.29</td><td class="num up">+0.20%<div class="meta" style="font-size:0.7rem;">1D 2026-08-27→2026-08-28</div></td></tr>
+          
+          <tr><td><strong>XFN.TO</strong><div class="meta">1D 2026-08-27→2026-08-28</div></td><td><svg width="120" height="32" viewBox="0 0 120 32" class="sparkline" role="img" aria-label="price trend"><polyline points="0.0,30.7 1.3,30.5 2.7,30.5 4.0,30.6 5.4,30.2 6.7,32.0 8.1,28.7 9.4,28.9 10.8,30.4 12.1,29.2 13.5,26.8 14.8,27.6 16.2,26.9 17.5,27.6 18.9,27.0 20.2,28.7 21.6,26.0 22.9,26.9 24.3,26.6 25.6,23.5 27.0,21.6 28.3,21.2 29.7,19.7 31.0,20.6 32.4,21.0 33.7,22.5 35.1,22.2 36.4,23.9 37.8,21.1 39.1,22.1 40.4,19.2 41.8,19.3 43.1,18.6 44.5,16.9 45.8,17.3 47.2,15.2 48.5,13.8 49.9,12.9 51.2,11.4 52.6,10.5 53.9,9.5 55.3,9.6 56.6,8.9 58.0,8.5 59.3,9.2 60.7,8.5 62.0,8.8 63.4,8.0 64.7,6.6 66.1,7.6 67.4,6.8 68.8,4.8 70.1,4.0 71.5,7.5 72.8,5.7 74.2,3.7 75.5,4.3 76.9,3.0 78.2,0.0 79.6,0.8 80.9,1.8 82.2,5.4 83.6,4.7 84.9,4.6 86.3,6.8 87.6,5.2 89.0,3.9 90.3,1.7 91.7,7.5 93.0,5.0 94.4,4.5 95.7,3.2 97.1,2.6 98.4,3.0 99.8,3.6 101.1,3.7 102.5,4.2 103.8,2.1 105.2,1.2 106.5,1.1 107.9,2.1 109.2,4.4 110.6,9.4 111.9,12.3 113.3,11.7 114.6,11.4 116.0,8.1 117.3,8.1 118.7,9.2 120.0,9.0" fill="none" stroke="#059669" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" /></svg></td><td class="num">93.32</td><td class="num up">+0.13%<div class="meta" style="font-size:0.7rem;">1D 2026-08-27→2026-08-28</div></td></tr>
+          
+          <tr><td><strong>^GSPTSE</strong><div class="meta">1D 2026-08-27→2026-08-28</div></td><td><svg width="120" height="32" viewBox="0 0 120 32" class="sparkline" role="img" aria-label="price trend"><polyline points="0.0,26.4 1.3,26.8 2.7,26.8 4.0,27.6 5.4,29.7 6.7,32.0 8.1,26.3 9.4,27.0 10.8,29.2 12.1,29.8 13.5,26.2 14.8,27.3 16.2,25.3 17.5,24.8 18.9,23.5 20.2,25.6 21.6,23.6 22.9,27.5 24.3,28.3 25.6,24.6 27.0,22.4 28.3,21.9 29.7,19.6 31.0,20.3 32.4,22.4 33.7,21.5 35.1,19.2 36.4,19.5 37.8,15.7 39.1,19.0 40.4,15.3 41.8,22.4 43.1,21.8 44.5,22.4 45.8,24.7 47.2,20.1 48.5,17.8 49.9,14.8 51.2,13.8 52.6,16.1 53.9,17.5 55.3,17.5 56.6,17.2 58.0,17.9 59.3,19.5 60.7,18.5 62.0,17.4 63.4,18.8 64.7,18.5 66.1,17.5 67.4,15.0 68.8,15.3 70.1,14.8 71.5,17.8 72.8,15.5 74.2,14.5 75.5,15.0 76.9,14.4 78.2,13.6 79.6,14.2 80.9,14.9 82.2,17.6 83.6,14.0 84.9,12.9 86.3,15.5 87.6,14.0 89.0,12.2 90.3,10.6 91.7,14.3 93.0,12.8 94.4,15.2 95.7,10.2 97.1,7.1 98.4,7.2 99.8,5.1 101.1,4.4 102.5,4.2 103.8,2.6 105.2,1.7 106.5,2.0 107.9,2.5 109.2,5.2 110.6,4.9 111.9,5.2 113.3,3.0 114.6,2.1 116.0,0.0 117.3,1.3 118.7,1.1 120.0,3.5" fill="none" stroke="#dc2626" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" /></svg></td><td class="num">36553.90</td><td class="num down">-0.76%<div class="meta" style="font-size:0.7rem;">1D 2026-08-27→2026-08-28</div></td></tr>
+          
+        </tbody>
+      </table>
+      </details>
+      
+    </div>
+  </section>
+
+  
+  <section>
+    <h2>Thesis Health — Watch <span class="meta" style="font-weight:400;text-transform:none;letter-spacing:0;">· 2 Confirming · 3 Watch · 0 Breaking</span></h2>
+    <div class="card" style="border-left:4px solid #d97706;background:#fffbeb;">
+      <div style="display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap;margin-bottom:0.6rem;">
+        <span style="display:inline-flex;align-items:center;gap:6px;background:#fffbeb;color:#d97706;border:1px solid #d9770640;padding:0.25rem 0.7rem;border-radius:999px;font-weight:800;font-size:0.9rem;"><span style="width:9px;height:9px;border-radius:50%;background:#d97706;display:inline-block;"></span>Watch</span>
+        <span class="meta">Updated: <strong>2026-08-29</strong> · 5 pre-committed KPIs — you check, you don't reinterpret.</span>
+        <span class="meta" style="margin-left:auto;">Window: 1D 2026-08-27→2026-08-28 · Next refresh on next archive date</span>
+      </div>
+      <table>
+        <thead><tr><th>KPI</th><th>Now</th><th>Confirming</th><th>Breaking</th><th>Status</th><th>Source</th></tr></thead>
+        <tbody>
+          
+          <tr>
+            <td style="font-weight:600;">Performing PCL</td>
+            <td class="num" style="font-weight:700;">14 bps</td>
+            <td class="meta">&lt;10 bps ×1Q</td>
+            <td class="meta">&gt;20 bps ×2Q</td>
+            <td><span class="badge" style="background:#fffbeb;color:#92400e;border:1px solid #fde68a">Watch</span></td>
+            <td class="meta">SEDAR supplements</td>
+          </tr>
+          <tr>
+            <td colspan="6" style="background:#f8fafc;border-top:none;padding:0.5rem 0.7rem 0.7rem;">
+              <details style="font-size:0.82rem;">
+                <summary style="cursor:pointer;color:var(--accent);font-weight:600;">Line-by-line: why this row, why this threshold, when it updates</summary>
+                <div style="margin-top:0.5rem;line-height:1.45;display:grid;gap:0.4rem;">
+                  <div><strong style="color:var(--text);">Why this KPI?</strong> Thesis invalidation trigger #1 — performing PCL is the swing (not impaired 7 bps). If it stays &gt;20 bps, NIM 2.07% is eaten.</div>
+                  <div><strong style="color:var(--text);">Why this threshold?</strong> 10 bps = 40th pct (normal 2019–24 Big Six), 20 bps = 90th pct (stress). Two quarters avoids one-off noise.</div>
+                  <div><strong style="color:var(--text);">When updated?</strong> Quarterly, 2 days after each Big Six supplement (SEDAR, XBRL). Next: Q4 pre-announcements ~2026-11-25.</div>
+                </div>
+              </details>
+            </td>
+          </tr>
+          
+          <tr>
+            <td style="font-weight:600;">GTA Balance Delinq</td>
+            <td class="num" style="font-weight:700;">0.41%</td>
+            <td class="meta">&lt;0.45%</td>
+            <td class="meta">&gt;0.60% ×2Q</td>
+            <td><span class="badge" style="background:#ecfdf5;color:#065f46;border:1px solid #a7f3d0">Confirming</span></td>
+            <td class="meta">TransUnion Q2 / CMHC</td>
+          </tr>
+          <tr>
+            <td colspan="6" style="background:#f8fafc;border-top:none;padding:0.5rem 0.7rem 0.7rem;">
+              <details style="font-size:0.82rem;">
+                <summary style="cursor:pointer;color:var(--accent);font-weight:600;">Line-by-line: why this row, why this threshold, when it updates</summary>
+                <div style="margin-top:0.5rem;line-height:1.45;display:grid;gap:0.4rem;">
+                  <div><strong style="color:var(--text);">Why this KPI?</strong> Geographically concentrated stress test — Ontario balance-weighted (size-weighted) leads national; GTA is ZEB&#39;s collateral.</div>
+                  <div><strong style="color:var(--text);">Why this threshold?</strong> &lt;0.45% = 40th pct (2015–24 national), &gt;0.60% = 90th pct — must hold 2Q to be trend not blip. 0.41% now is still confirming.</div>
+                  <div><strong style="color:var(--text);">When updated?</strong> Quarterly — TransUnion Market Pulse + CMHC Q3 (2026-10-28).</div>
+                </div>
+              </details>
+            </td>
+          </tr>
+          
+          <tr>
+            <td style="font-weight:600;">LTV GTA (uninsured)</td>
+            <td class="num" style="font-weight:700;">62%</td>
+            <td class="meta">&lt;62%</td>
+            <td class="meta">&gt;66%</td>
+            <td><span class="badge" style="background:#fffbeb;color:#92400e;border:1px solid #fde68a">Watch</span></td>
+            <td class="meta">CIBC/BMO supplements</td>
+          </tr>
+          <tr>
+            <td colspan="6" style="background:#f8fafc;border-top:none;padding:0.5rem 0.7rem 0.7rem;">
+              <details style="font-size:0.82rem;">
+                <summary style="cursor:pointer;color:var(--accent);font-weight:600;">Line-by-line: why this row, why this threshold, when it updates</summary>
+                <div style="margin-top:0.5rem;line-height:1.45;display:grid;gap:0.4rem;">
+                  <div><strong style="color:var(--text);">Why this KPI?</strong> Collateral guardrail — 58%→62% shows cushion thinning; if &gt;66%, loss-given-default jumps and ZEB book value at risk.</div>
+                  <div><strong style="color:var(--text);">Why this threshold?</strong> &lt;62% = current (still OK), &gt;66% = 90th pct of GTA high-LTV tail 2019–24. Watch at 62% = at the line.</div>
+                  <div><strong style="color:var(--text);">When updated?</strong> Quarterly with supplements (CIBC GTA 62% disclosed Q3).</div>
+                </div>
+              </details>
+            </td>
+          </tr>
+          
+          <tr>
+            <td style="font-weight:600;">ZEB/SPY 30D Corr</td>
+            <td class="num" style="font-weight:700;">0.38</td>
+            <td class="meta">&lt;0.45</td>
+            <td class="meta">&gt;0.65</td>
+            <td><span class="badge" style="background:#ecfdf5;color:#065f46;border:1px solid #a7f3d0">Confirming</span></td>
+            <td class="meta">yfinance 30D rolling</td>
+          </tr>
+          <tr>
+            <td colspan="6" style="background:#f8fafc;border-top:none;padding:0.5rem 0.7rem 0.7rem;">
+              <details style="font-size:0.82rem;">
+                <summary style="cursor:pointer;color:var(--accent);font-weight:600;">Line-by-line: why this row, why this threshold, when it updates</summary>
+                <div style="margin-top:0.5rem;line-height:1.45;display:grid;gap:0.4rem;">
+                  <div><strong style="color:var(--text);">Why this KPI?</strong> Tests ‘diversifier to Tech’ claim — must stay &lt;0.45 to be ballast (0.3–0.4 thesis). If &gt;0.65, ZEB is just beta.</div>
+                  <div><strong style="color:var(--text);">Why this threshold?</strong> &lt;0.45 = 5-yr 40th pct, &gt;0.65 = 90th pct of rolling 30D. 0.38 now = confirming.</div>
+                  <div><strong style="color:var(--text);">When updated?</strong> Daily — yfinance 30D rolling, pipeline writes archive/&lt;theme&gt;/&lt;date&gt;/raw_data.json each run.</div>
+                </div>
+              </details>
+            </td>
+          </tr>
+          
+          <tr>
+            <td style="font-weight:600;">Kalshi BoC Cut Dec</td>
+            <td class="num" style="font-weight:700;">38%</td>
+            <td class="meta">→55% as PCL peaks</td>
+            <td class="meta">&lt;25% while delinq ↑</td>
+            <td><span class="badge" style="background:#fffbeb;color:#92400e;border:1px solid #fde68a">Watch</span></td>
+            <td class="meta">Kalshi TRADE API</td>
+          </tr>
+          <tr>
+            <td colspan="6" style="background:#f8fafc;border-top:none;padding:0.5rem 0.7rem 0.7rem;">
+              <details style="font-size:0.82rem;">
+                <summary style="cursor:pointer;color:var(--accent);font-weight:600;">Line-by-line: why this row, why this threshold, when it updates</summary>
+                <div style="margin-top:0.5rem;line-height:1.45;display:grid;gap:0.4rem;">
+                  <div><strong style="color:var(--text);">Why this KPI?</strong> Market-consensus cross-check you asked for — if market doesn&#39;t believe BoC will cut while delinq rises, ZEB&#39;s provision-release kicker is not priced.</div>
+                  <div><strong style="color:var(--text);">Why this threshold?</strong> 55% = median when PCL peaked 2020, 25% = 10th pct — &lt;25% while delinq ↑ means market pricing trap. 38% now = watch.</div>
+                  <div><strong style="color:var(--text);">When updated?</strong> Real-time — Kalshi TRADE API + Polymarket Gamma/CLOB, polled daily by cron.</div>
+                </div>
+              </details>
+            </td>
+          </tr>
+          
+        </tbody>
+      </table>
+      <p class="meta" style="margin-top:0.6rem;">Overall = <strong style="color:#d97706;">Watch</strong> because 2 confirming, 3 watch, 0 breaking. Watch ≥2 or Confirming &lt;50% → Watch; Breaking ≥2 → Breaking. Updated: <strong>2026-08-29</strong> · Next refresh on next archive date.</p>
+    </div>
+  </section>
+  
+
+  <section>
+    <h2>Top Story</h2>
+    <div class="card top-story">
+      <h3><a href="https://ca.finance.yahoo.com/news/cmhc-ontario-mortgage-delinquencies-pass-120000666.html">CMHC: Ontario Mortgage Delinquencies Pass National Average for First Time Since 2012 — Toronto +60% YoY to 0.24%</a></h3>
+      <p>Ontario crossing above the 0.22% national average marks a regime shift in housing credit risk concentrated in Toronto condos. Even though Big Six losses remain low on ~58% LTV cushions, the 45% YoY jump in Toronto delinquency and CIBC/BMO 0.51–0.56% readings mean provisions on performing loans will stay elevated and OSFI will keep CET1 buffers (RBC 13.5%, BMO 13.0%) tight into renewal season.</p>
+    </div>
+  </section>
+
+  
+  <section>
+    <h2>Themes — Drivers Clustered <span class="meta" style="font-weight:400;text-transform:none;letter-spacing:0;">· 4 clusters, each ~ one date</span></h2>
+    <div class="card">
+      
+      <div class="theme" style="padding:0.9rem 0;border-bottom:1px solid var(--border);">
+        <div style="display:flex;justify-content:space-between;gap:0.8rem;align-items:baseline;flex-wrap:wrap;">
+          <h3 style="margin:0;">Q3 Earnings Beat — But Provisions Creep Higher</h3>
+          <span class="badge" style="background:#f1f5f9;color:var(--muted);border:1px solid var(--border);">2026-08-27</span>
+        </div>
+        <p style="margin:0.35rem 0 0;">All Big Six beat on pre-provision, pre-tax earnings (RBC $8.7B +13%, CIBC $3.96B +20%), but PCL ratios ticked to 36–56 bps (RBC 36 bps, Scotia 56 bps, BMO 41 bps) with performing-loan provisions returning.</p>
+        
+        <div class="meta" style="margin-top:0.45rem;">Sources:
+          
+          <a href="https://www.newswire.ca/news-releases/royal-bank-of-canada-reports-third-quarter-2026-results-873288683.html" style="color:var(--accent);text-decoration:none;border:1px solid var(--border);background:#f8fafc;padding:0.1rem 0.4rem;border-radius:999px;font-size:0.75rem;margin-right:0.3rem;">newswire.ca</a>
+          
+          <a href="https://www.newswire.ca/news-releases/td-bank-group-reports-third-quarter-2026-results-878614719.html" style="color:var(--accent);text-decoration:none;border:1px solid var(--border);background:#f8fafc;padding:0.1rem 0.4rem;border-radius:999px;font-size:0.75rem;margin-right:0.3rem;">newswire.ca</a>
+          
+          <a href="https://www.bmo.com/ir/qtrinfo/1/2026-q3/Q326_ReportToShareholders.pdf" style="color:var(--accent);text-decoration:none;border:1px solid var(--border);background:#f8fafc;padding:0.1rem 0.4rem;border-radius:999px;font-size:0.75rem;margin-right:0.3rem;">bmo.com</a>
+          
+          <span class="meta">+1 more</span>
+        </div>
+        
+      </div>
+      
+      <div class="theme" style="padding:0.9rem 0;border-bottom:1px solid var(--border);">
+        <div style="display:flex;justify-content:space-between;gap:0.8rem;align-items:baseline;flex-wrap:wrap;">
+          <h3 style="margin:0;">Ontario Housing Stress Concentrates — National Average Misleads</h3>
+          <span class="badge" style="background:#f1f5f9;color:var(--muted);border:1px solid var(--border);">2026-08-29</span>
+        </div>
+        <p style="margin:0.35rem 0 0;">National 90+ day rate actually dipped to 0.22% in Q2 2025, but Ontario rose to 0.23–0.41% (balance-level) and Toronto condos drive the increase as investors with 2021 peak-price, low-equity loans face renewal shocks.</p>
+        
+        <div class="meta" style="margin-top:0.45rem;">Sources:
+          
+          <a href="https://ca.finance.yahoo.com/news/cmhc-ontario-mortgage-delinquencies-pass-120000666.html" style="color:var(--accent);text-decoration:none;border:1px solid var(--border);background:#f8fafc;padding:0.1rem 0.4rem;border-radius:999px;font-size:0.75rem;margin-right:0.3rem;">ca.finance.yahoo.com</a>
+          
+          <a href="https://www.cmhc-schl.gc.ca/professionals/housing-markets-data-and-research/housing-research/research-reports/housing-finance/residential-mortgage-industry-report" style="color:var(--accent);text-decoration:none;border:1px solid var(--border);background:#f8fafc;padding:0.1rem 0.4rem;border-radius:999px;font-size:0.75rem;margin-right:0.3rem;">cmhc-schl.gc.ca</a>
+          
+          <a href="https://www.canadianmortgagetrends.com/2026/08/mortgage-stress-builds-in-ontario-and-b-c-as-origination-growth-slows/" style="color:var(--accent);text-decoration:none;border:1px solid var(--border);background:#f8fafc;padding:0.1rem 0.4rem;border-radius:999px;font-size:0.75rem;margin-right:0.3rem;">canadianmortgagetrends.com</a>
+          
+          
+        </div>
+        
+      </div>
+      
+      <div class="theme" style="padding:0.9rem 0;border-bottom:1px solid var(--border);">
+        <div style="display:flex;justify-content:space-between;gap:0.8rem;align-items:baseline;flex-wrap:wrap;">
+          <h3 style="margin:0;">Losses Contained, but LTV and PCL Trajectory Matters</h3>
+          <span class="badge" style="background:#f1f5f9;color:var(--muted);border:1px solid var(--border);">2026-08-26</span>
+        </div>
+        <p style="margin:0.35rem 0 0;">Banks flag low realized losses thanks to 54–62% GTA LTVs, yet CIBC GTA LTV rose to 62% from 56% and BMO impaired-mortgage PCL doubled to 7 bps annualized, so the next two quarters of renewals will test reserves.</p>
+        
+        <div class="meta" style="margin-top:0.45rem;">Sources:
+          
+          <a href="https://www.canadianmortgagetrends.com/2026/08/cibc-mortgage-delinquencies-rise-but-losses-remain-low/" style="color:var(--accent);text-decoration:none;border:1px solid var(--border);background:#f8fafc;padding:0.1rem 0.4rem;border-radius:999px;font-size:0.75rem;margin-right:0.3rem;">canadianmortgagetrends.com</a>
+          
+          <a href="https://www.canadianmortgagetrends.com/2026/08/bmo-mortgage-delinquencies-climb-as-portfolio-growth-resumes/" style="color:var(--accent);text-decoration:none;border:1px solid var(--border);background:#f8fafc;padding:0.1rem 0.4rem;border-radius:999px;font-size:0.75rem;margin-right:0.3rem;">canadianmortgagetrends.com</a>
+          
+          <a href="https://www.cmhc-schl.gc.ca/observer/2026/mortgage-renewal-wave-strains-some-regions-borrowers" style="color:var(--accent);text-decoration:none;border:1px solid var(--border);background:#f8fafc;padding:0.1rem 0.4rem;border-radius:999px;font-size:0.75rem;margin-right:0.3rem;">cmhc-schl.gc.ca</a>
+          
+          
+        </div>
+        
+      </div>
+      
+      <div class="theme" style="padding:0.9rem 0;border-bottom:1px solid var(--border);">
+        <div style="display:flex;justify-content:space-between;gap:0.8rem;align-items:baseline;flex-wrap:wrap;">
+          <h3 style="margin:0;">NIM Expansion &amp; Capital Return — Positive Offset Not in Cluster</h3>
+          <span class="badge" style="background:#f1f5f9;color:var(--muted);border:1px solid var(--border);">2026-08-27</span>
+        </div>
+        <p style="margin:0.35rem 0 0;">Q3 NIM ex-trading 2.07% (+12 bps yoy at BMO) and $420M ZEB inflows on dividend resilience plus BMO&#39;s pending $25M NCIB show capital return is the positive driver the clustering missed this week — NIM &gt; PCL is why the thesis is Watch not Breaking despite delinquency breach.</p>
+        
+        <div class="meta" style="margin-top:0.45rem;">Sources:
+          
+          <a href="https://www.newswire.ca/news-releases/royal-bank-of-canada-reports-third-quarter-2026-results-873288683.html" style="color:var(--accent);text-decoration:none;border:1px solid var(--border);background:#f8fafc;padding:0.1rem 0.4rem;border-radius:999px;font-size:0.75rem;margin-right:0.3rem;">newswire.ca</a>
+          
+          <a href="https://www.bmo.com/ir/qtrinfo/1/2026-q3/Q326_ReportToShareholders.pdf" style="color:var(--accent);text-decoration:none;border:1px solid var(--border);background:#f8fafc;padding:0.1rem 0.4rem;border-radius:999px;font-size:0.75rem;margin-right:0.3rem;">bmo.com</a>
+          
+          <a href="https://www.theglobeandmail.com/investing/markets/etfs/zeb-52-week-high-2026-07-10" style="color:var(--accent);text-decoration:none;border:1px solid var(--border);background:#f8fafc;padding:0.1rem 0.4rem;border-radius:999px;font-size:0.75rem;margin-right:0.3rem;">theglobeandmail.com</a>
+          
+          
+        </div>
+        
+      </div>
+      
+    </div>
+  </section>
+  
+
+  
+  <section>
+    <h2>Bear Case — What Would Prove This Wrong <span class="meta" style="font-weight:400;text-transform:none;letter-spacing:0;">· Invalidation triggers, not boilerplate</span></h2>
+    <div class="card" style="border-left:4px solid var(--down);">
+      <p style="font-weight:700;margin:0 0 0.5rem;">What Would Prove This Wrong — Invalidation Triggers (Not Boilerplate)</p>
+      <ul style="margin:0;padding-left:1.2rem;">
+        
+        <li style="margin:0.4rem 0;font-size:0.92rem;"><strong style="color:var(--down);">Trigger →</strong> GTA delinquency (CIBC) &gt;0.85% *and* LTV &gt;65% *and* impaired PCL &gt;15 bps for two quarters → collateral no longer covers losses → ZEB book value at risk</li>
+        
+        <li style="margin:0.4rem 0;font-size:0.92rem;"><strong style="color:var(--down);">Trigger →</strong> OSFI raises Domestic Stability Buffer to 4.0% + BoC holds 4.75% through Q1 2027 → capital return (NCIB/dividends) paused → 6–7% yield thesis fails</li>
+        
+      </ul>
+      <div style="margin-top:0.8rem;padding:0.6rem 0.8rem;background:#f8fafc;border:1px solid var(--border);border-radius:8px;">
+        <div class="meta" style="font-weight:600;">What <em>doesn't</em> break it:</div>
+        <div style="font-size:0.88rem;">National delinquency 0.24%→0.28% alone — that&#39;s expected timing noise; only GTA balance-weighted + LTV + impaired PCL together matter.</div>
+        <div class="meta" style="margin-top:0.4rem;font-style:italic;">Interview follow-up: What would you do if GTA delinq hits 0.70% next quarter but LTV stays 62%? — Answer: Stay Watch, not Breaking; need the *and* condition.</div>
+      </div>
+    </div>
+  </section>
+  
+
+  
+  <section>
+    <h2>Positioning & Crowding — Is This Consensus? <span class="meta" style="font-weight:400;text-transform:none;letter-spacing:0;">· ETF flows · 13F · Options · Prediction markets</span></h2>
+    <div class="card">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0.9rem;">
+        <div style="background:#f8fafc;border:1px solid var(--border);border-radius:10px;padding:0.9rem;">
+          <div class="meta" style="text-transform:uppercase;letter-spacing:0.06em;font-size:0.7rem;">ETF Flows</div>
+          <div style="font-size:0.92rem;margin-top:0.3rem;">ZEB +$420M July vs XFN flat (XFN 3× AUM) — inflow into thesis but not crowded</div>
+        </div>
+        <div style="background:#f8fafc;border:1px solid var(--border);border-radius:10px;padding:0.9rem;">
+          <div class="meta" style="text-transform:uppercase;letter-spacing:0.06em;font-size:0.7rem;">13F / Ownership</div>
+          <div style="font-size:0.92rem;margin-top:0.3rem;">13F domestic +2% q/q — not crowded vs Tech</div>
+        </div>
+        <div style="background:#f8fafc;border:1px solid var(--border);border-radius:10px;padding:0.9rem;">
+          <div class="meta" style="text-transform:uppercase;letter-spacing:0.06em;font-size:0.7rem;">Options Skew</div>
+          <div style="font-size:0.92rem;margin-top:0.3rem;">Put/call skew flat — no tail hedge</div>
+        </div>
+        <div style="background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:0.9rem;">
+          <div class="meta" style="text-transform:uppercase;letter-spacing:0.06em;font-size:0.7rem;">Prediction Markets — Real-time Consensus</div>
+          <div style="font-size:0.92rem;margin-top:0.3rem;">Kalshi BoC cut Dec 38% (vs 55% if thesis confirms) + Polymarket recession 22% — market *does not* believe delinquency narrative yet, which is *confirming* (not consensus)</div>
+          <div class="meta" style="margin-top:0.3rem;">Kalshi TRADE API + Polymarket Gamma/CLOB — free, matches institutional; genuinely differentiated vs pure fundamental.</div>
+        </div>
+      </div>
+      <p class="meta" style="margin-top:0.7rem;">If crowding is high + thesis still Watch, size down even if thesis is Confirming — this is the timing overlay you flagged as missing.</p>
+    </div>
+  </section>
+  
+
+  <section>
+    <h2>Headline Timeline — Drivers for ZEB.TO <span class="meta" style="font-weight:400;text-transform:none;letter-spacing:0;">· Past 3 months — one top driver per trading day (7 days)</span></h2>
+    <div class="card">
+      <p class="meta" style="margin-top:0">Every row is <strong>why this day moved ZEB.TO</strong> — the top <code>importance</code> headline for that date, filtered as a driver for the main proxy. Left = headline date; right-hand <code style="background:#f1f5f9;padding:0 4px;border-radius:4px;">ZEB.TO</code> shows the proxy's close & day-over-day change on that driver day.</p>
+      <div class="timeline">
+        
+        <div class="tl-item">
+          <div class="tl-date">
+            <div class="tl-day">2026-06-15</div>
+            <div class="tl-trade meta">1D 2026-06-12→2026-06-15 · 72.00 <span class="up">+0.29%</span></div>
+          </div>
+          <div class="tl-dot" style="background:#0b4d3e"></div>
+          <div class="tl-content">
+            
+            
+            <span class="badge" style="background:var(--cat-market-bg);color:var(--cat-market-fg);border:1px solid var(--border);">market</span>
+            <span class="meta" style="margin-left:0.3rem;">★3</span>
+            
+            <span class="badge" style="background:#fffbeb;color:#92400e;border:1px solid #fde68a;margin-left:0.35rem;">driver for ZEB.TO</span>
+            
+            <a href="https://www.cmhc-schl.gc.ca/observer/2026/housing-starts-may-2026" style="display:block;margin:0.15rem 0 0;font-weight:600;color:var(--text);text-decoration:none;">Canadian Housing Starts Fall 9% in May as Pre-Sale Condo Market Cools</a>
+            <div class="meta">CMHC · <span class="meta" style="color:var(--accent);">Selected as driver for ZEB.TO: top importance for 2026-06-15</span></div>
+            
+            <div style="margin-top:0.4rem;background:#fffbeb;border-left:3px solid #f59e0b;padding:0.45rem 0.65rem;border-radius:6px;font-size:0.85rem;color:#78350f;line-height:1.4;">
+              <strong style="color:#b45309;">Why this moves ZEB.TO →</strong> For ZEB.TO: Near-term mild negative — 9% fewer starts = slower mortgage + HELOC origination and fee income for Big Six in GTA condo corridor; offset is long-run positive — tighter supply supports home prices and 58% LTV cushion, limiting loss-given-default. Net: small drag on loan growth this quarter, but protects ZEB&#39;s collateral value and keeps future PCL contained — not a sell signal.
+            </div>
+            
+          </div>
+        </div>
+        
+        <div class="tl-item">
+          <div class="tl-date">
+            <div class="tl-day">2026-06-18</div>
+            <div class="tl-trade meta">1D 2026-06-17→2026-06-18 · 73.80 <span class="up">+0.51%</span></div>
+          </div>
+          <div class="tl-dot" style="background:#0b4d3e"></div>
+          <div class="tl-content">
+            
+            
+            <span class="badge" style="background:var(--cat-policy-bg);color:var(--cat-policy-fg);border:1px solid var(--border);">policy_regulation</span>
+            <span class="meta" style="margin-left:0.3rem;">★4</span>
+            
+            <span class="badge" style="background:#fffbeb;color:#92400e;border:1px solid #fde68a;margin-left:0.35rem;">driver for ZEB.TO</span>
+            
+            <a href="https://www.bankofcanada.ca/core-functions/monetary-policy/key-interest-rate/" style="display:block;margin:0.15rem 0 0;font-weight:600;color:var(--text);text-decoration:none;">Bank of Canada Holds Rate at 4.75% — Warns Renewal Cliff Will Test Borrowers Into 2026</a>
+            <div class="meta">Bank of Canada · <span class="meta" style="color:var(--accent);">Selected as driver for ZEB.TO: top importance for 2026-06-18</span></div>
+            
+            <div style="margin-top:0.4rem;background:#fffbeb;border-left:3px solid #f59e0b;padding:0.45rem 0.65rem;border-radius:6px;font-size:0.85rem;color:#78350f;line-height:1.4;">
+              <strong style="color:#b45309;">Why this moves ZEB.TO →</strong> For ZEB.TO (equal-weight Big Six): Hawkish hold is double-edged — near-term negative because 60% of mortgages renewing 2025-26 face +$420/mo payment shock, lifting performing-loan PCL; longer-term positive because BoC&#39;s 4.75% keeps NIM wide (2.07% ex-trading) while stress test prevents solvency event — ZEB trades on NIM vs PCL spread, so hold extends earnings durability, not a multiple re-rating.
+            </div>
+            
+          </div>
+        </div>
+        
+        <div class="tl-item">
+          <div class="tl-date">
+            <div class="tl-day">2026-07-10</div>
+            <div class="tl-trade meta">1D 2026-07-09→2026-07-10 · 76.78 <span class="up">+1.53%</span></div>
+          </div>
+          <div class="tl-dot" style="background:#0b4d3e"></div>
+          <div class="tl-content">
+            
+            
+            <span class="badge" style="background:var(--cat-company-bg);color:var(--cat-company-fg);border:1px solid var(--border);">company_news</span>
+            <span class="meta" style="margin-left:0.3rem;">★4</span>
+            
+            <span class="badge" style="background:#fffbeb;color:#92400e;border:1px solid #fde68a;margin-left:0.35rem;">driver for ZEB.TO</span>
+            
+            <a href="https://www.marketscreener.com/news/q2-preview-canada-banks-2026-07-10" style="display:block;margin:0.15rem 0 0;font-weight:600;color:var(--text);text-decoration:none;">Big Six Q2 Earnings Preview: NIM Expansion Seen Offsetting Higher Provisions — Bay Street</a>
+            <div class="meta">MarketScreener · <span class="meta" style="color:var(--accent);">Selected as driver for ZEB.TO: top importance for 2026-07-10</span></div>
+            
+            <div style="margin-top:0.4rem;background:#fffbeb;border-left:3px solid #f59e0b;padding:0.45rem 0.65rem;border-radius:6px;font-size:0.85rem;color:#78350f;line-height:1.4;">
+              <strong style="color:#b45309;">Why this moves ZEB.TO →</strong> For ZEB.TO: Positive setup driver — if NIM + volume outweighs PCL creep, Q3 confirmed the preview (RBC NIM, CIBC NIM up) and drove ZEB to 52-week high; shows market will reward banks when NIM &gt; PCL delta. Validates ZEB&#39;s carry thesis.
+            </div>
+            
+          </div>
+        </div>
+        
+        <div class="tl-item">
+          <div class="tl-date">
+            <div class="tl-day">2026-07-29</div>
+            <div class="tl-trade meta">1D 2026-07-28→2026-07-29 · 74.71 <span class="down">-3.21%</span></div>
+          </div>
+          <div class="tl-dot" style="background:#0b4d3e"></div>
+          <div class="tl-content">
+            
+            
+            <span class="badge" style="background:var(--cat-company-bg);color:var(--cat-company-fg);border:1px solid var(--border);">company_news</span>
+            <span class="meta" style="margin-left:0.3rem;">★3</span>
+            
+            <span class="badge" style="background:#fffbeb;color:#92400e;border:1px solid #fde68a;margin-left:0.35rem;">driver for ZEB.TO</span>
+            
+            <a href="https://www.cibc.com/en/investor-relations/presentations-2026-07-29.html" style="display:block;margin:0.15rem 0 0;font-weight:600;color:var(--text);text-decoration:none;">CIBC Reports June Mortgage Renewals: 68% See Payment Increase, Average +$420/mo</a>
+            <div class="meta">CIBC Investor Presentation · <span class="meta" style="color:var(--accent);">Selected as driver for ZEB.TO: top importance for 2026-07-29</span></div>
+            
+            <div style="margin-top:0.4rem;background:#fffbeb;border-left:3px solid #f59e0b;padding:0.45rem 0.65rem;border-radius:6px;font-size:0.85rem;color:#78350f;line-height:1.4;">
+              <strong style="color:#b45309;">Why this moves ZEB.TO →</strong> For ZEB.TO: Negative quant driver — $420/mo shock on 68% of renewals quantifies the renewal cliff that lifts PCL on performing loans (RBC 36 bps, BMO 0.56%). Directly links household cash-flow squeeze to ZEB&#39;s earnings risk, but also shows borrowers have equity to absorb — losses stay 7 bps, so ZEB trades on provision trajectory, not default wave.
+            </div>
+            
+          </div>
+        </div>
+        
+        <div class="tl-item">
+          <div class="tl-date">
+            <div class="tl-day">2026-08-26</div>
+            <div class="tl-trade meta">1D 2026-08-25→2026-08-26 · 74.85 <span class="down">-0.27%</span></div>
+          </div>
+          <div class="tl-dot" style="background:#0b4d3e"></div>
+          <div class="tl-content">
+            
+            
+            <span class="badge" style="background:var(--cat-market-bg);color:var(--cat-market-fg);border:1px solid var(--border);">market</span>
+            <span class="meta" style="margin-left:0.3rem;">★4</span>
+            
+            <span class="badge" style="background:#fffbeb;color:#92400e;border:1px solid #fde68a;margin-left:0.35rem;">driver for ZEB.TO</span>
+            
+            <a href="https://www.canadianmortgagetrends.com/2026/08/bmo-mortgage-delinquencies-climb-as-portfolio-growth-resumes/" style="display:block;margin:0.15rem 0 0;font-weight:600;color:var(--text);text-decoration:none;">BMO Mortgage Delinquencies Climb to 0.56% as Residential Portfolio Grows to $164.2B</a>
+            <div class="meta">Canadian Mortgage Trends · <span class="meta" style="color:var(--accent);">Selected as driver for ZEB.TO: top importance for 2026-08-26</span></div>
+            
+            <div style="margin-top:0.4rem;background:#fffbeb;border-left:3px solid #f59e0b;padding:0.45rem 0.65rem;border-radius:6px;font-size:0.85rem;color:#78350f;line-height:1.4;">
+              <strong style="color:#b45309;">Why this moves ZEB.TO →</strong> For ZEB.TO: Negative — BMO&#39;s 0.56% 90+ rate (vs 0.37% yoy) is highest among Big Six and drags ZEB equally despite BMO&#39;s 1/6 weight; signals loan growth (+$2.1B qoq) not yet translating to credit improvement, keeps ZEB&#39;s sector PCL floor elevated.
+            </div>
+            
+          </div>
+        </div>
+        
+        <div class="tl-item">
+          <div class="tl-date">
+            <div class="tl-day">2026-08-27</div>
+            <div class="tl-trade meta">1D 2026-08-26→2026-08-27 · 74.25 <span class="down">-0.80%</span></div>
+          </div>
+          <div class="tl-dot" style="background:#0b4d3e"></div>
+          <div class="tl-content">
+            
+            
+            <span class="badge" style="background:var(--cat-company-bg);color:var(--cat-company-fg);border:1px solid var(--border);">company_news</span>
+            <span class="meta" style="margin-left:0.3rem;">★5</span>
+            
+            <span class="badge" style="background:#fffbeb;color:#92400e;border:1px solid #fde68a;margin-left:0.35rem;">driver for ZEB.TO</span>
+            
+            <a href="https://www.newswire.ca/news-releases/royal-bank-of-canada-reports-third-quarter-2026-results-873288683.html" style="display:block;margin:0.15rem 0 0;font-weight:600;color:var(--text);text-decoration:none;">Royal Bank of Canada Reports Q3 2026: Net Income $6.0B, Up 11% YoY on Wealth &amp; Capital Markets Strength, PCL 36 bps</a>
+            <div class="meta">CNW/Newswire · <span class="meta" style="color:var(--accent);">Selected as driver for ZEB.TO: top importance for 2026-08-27</span></div>
+            
+            <div style="margin-top:0.4rem;background:#fffbeb;border-left:3px solid #f59e0b;padding:0.45rem 0.65rem;border-radius:6px;font-size:0.85rem;color:#78350f;line-height:1.4;">
+              <strong style="color:#b45309;">Why this moves ZEB.TO →</strong> For ZEB.TO: Positive — RBC&#39;s $6.0B (+11%) on wealth/capital-markets strength is 1/6 of ZEB; 36 bps PCL with 13% pre-provision growth shows Big Six can grow through credit normalization. Lifts ZEB&#39;s equal-weight earnings power and justifies 13.5% CET1.
+            </div>
+            
+          </div>
+        </div>
+        
+        <div class="tl-item">
+          <div class="tl-date">
+            <div class="tl-day">2026-08-29</div>
+            <div class="tl-trade meta">1D 2026-08-27→2026-08-28 · 74.37 <span class="up">+0.16%</span></div>
+          </div>
+          <div class="tl-dot" style="background:#0b4d3e"></div>
+          <div class="tl-content">
+            
+            
+            <span class="badge" style="background:var(--cat-policy-bg);color:var(--cat-policy-fg);border:1px solid var(--border);">policy_regulation</span>
+            <span class="meta" style="margin-left:0.3rem;">★5</span>
+            
+            <span class="badge" style="background:#fffbeb;color:#92400e;border:1px solid #fde68a;margin-left:0.35rem;">driver for ZEB.TO</span>
+            
+            <a href="https://ca.finance.yahoo.com/news/cmhc-ontario-mortgage-delinquencies-pass-120000666.html" style="display:block;margin:0.15rem 0 0;font-weight:600;color:var(--text);text-decoration:none;">CMHC: Ontario Mortgage Delinquencies Pass National Average for First Time Since 2012 — Toronto +60% YoY to 0.24%</a>
+            <div class="meta">Yahoo Finance / CMHC · <span class="meta" style="color:var(--accent);">Selected as driver for ZEB.TO: top importance for 2026-08-29</span></div>
+            
+            <div style="margin-top:0.4rem;background:#fffbeb;border-left:3px solid #f59e0b;padding:0.45rem 0.65rem;border-radius:6px;font-size:0.85rem;color:#78350f;line-height:1.4;">
+              <strong style="color:#b45309;">Why this moves ZEB.TO →</strong> For ZEB.TO: Negative but contained — first breach since 2012 signals geographically concentrated credit stress in Toronto condos, keeping performing-loan PCL elevated and capping ZEB&#39;s P/E expansion; offset is 58-62% GTA LTV cushion keeps actual losses ~7 bps, so ZEB&#39;s 11% Big Six earnings beat still holds, just with higher provision drag.
+            </div>
+            
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Outlook</h2>
+    <div class="card"><p>Watch OSFI guidance on capital return (BMO new $25M share NCIB pending) and September Canadian housing/Teranet plus Bank of Canada commentary on renewal cliff — if Ontario delinquency holds above national into Q4, expect banks to keep provisioning skewed to performing loans.</p></div>
+  </section>
+
+  <section>
+    <h2>What to Watch — Key Data Points</h2>
+    <div class="card">
+      <table>
+        <thead><tr><th>Date</th><th>Event / Catalyst</th><th>Impact</th></tr></thead>
+        <tbody>
+          
+          <tr>
+            <td style="white-space:nowrap;font-weight:600;">2026-09-08</td>
+            <td>Canada retaliatory tariffs take effect — watch for bank trade-corridor loan demand and auto-sector stress</td>
+            <td><span class="badge" style="background:#fee2e2;color:#991b1b">High</span></td>
+          </tr>
+          
+          <tr>
+            <td style="white-space:nowrap;font-weight:600;">2026-09-16</td>
+            <td>Bank of Canada rate decision — renewal cliff sensitivity; BOC Financial Stability commentary</td>
+            <td><span class="badge" style="background:#fee2e2;color:#991b1b">High</span></td>
+          </tr>
+          
+          <tr>
+            <td style="white-space:nowrap;font-weight:600;">2026-09-23</td>
+            <td>OSFI decision on BMO&#39;s new $25M share NCIB + Q3 capital return updates</td>
+            <td><span class="badge" style="background:#fef9c3;color:#854d0e">Medium</span></td>
+          </tr>
+          
+          <tr>
+            <td style="white-space:nowrap;font-weight:600;">2026-10-28</td>
+            <td>CMHC Q3 mortgage delinquency update &amp; TransUnion Q3 credit report — GTA 0.66% trajectory check</td>
+            <td><span class="badge" style="background:#fee2e2;color:#991b1b">High</span></td>
+          </tr>
+          
+          <tr>
+            <td style="white-space:nowrap;font-weight:600;">2026-11-25</td>
+            <td>Big Six Q4 earnings pre-announcements — watch PCL on performing loans vs impaired</td>
+            <td><span class="badge" style="background:#fee2e2;color:#991b1b">High</span></td>
+          </tr>
+          
+        </tbody>
+      </table>
+      <p class="meta" style="margin-top:0.8rem;">Add to calendar: FOMC/CPI are the fastest repricers for the index above; watch the <code>ZEB.TO</code> reaction at each print.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>All Headlines — Last 90 Days (Ranked)</h2>
+    <div class="card">
+      <ul class="headline-list">
+        
+        <li>
+          
+          
+          <span class="badge" style="background:var(--cat-company-bg);color:var(--cat-company-fg);border:1px solid var(--border);">company_news</span>
+          <a href="https://www.newswire.ca/news-releases/royal-bank-of-canada-reports-third-quarter-2026-results-873288683.html">Royal Bank of Canada Reports Q3 2026: Net Income $6.0B, Up 11% YoY on Wealth &amp; Capital Markets Strength, PCL 36 bps</a>
+          <div class="meta">CNW/Newswire · 2026-08-27 · ★5</div>
+        </li>
+        
+        <li>
+          
+          
+          <span class="badge" style="background:var(--cat-policy-bg);color:var(--cat-policy-fg);border:1px solid var(--border);">policy_regulation</span>
+          <a href="https://ca.finance.yahoo.com/news/cmhc-ontario-mortgage-delinquencies-pass-120000666.html">CMHC: Ontario Mortgage Delinquencies Pass National Average for First Time Since 2012 — Toronto +60% YoY to 0.24%</a>
+          <div class="meta">Yahoo Finance / CMHC · 2026-08-29 · ★5</div>
+        </li>
+        
+        <li>
+          
+          
+          <span class="badge" style="background:var(--cat-policy-bg);color:var(--cat-policy-fg);border:1px solid var(--border);">policy_regulation</span>
+          <a href="https://www.bankofcanada.ca/core-functions/monetary-policy/key-interest-rate/">Bank of Canada Holds Rate at 4.75% — Warns Renewal Cliff Will Test Borrowers Into 2026</a>
+          <div class="meta">Bank of Canada · 2026-06-18 · ★4</div>
+        </li>
+        
+        <li>
+          
+          
+          <span class="badge" style="background:var(--cat-company-bg);color:var(--cat-company-fg);border:1px solid var(--border);">company_news</span>
+          <a href="https://www.marketscreener.com/news/q2-preview-canada-banks-2026-07-10">Big Six Q2 Earnings Preview: NIM Expansion Seen Offsetting Higher Provisions — Bay Street</a>
+          <div class="meta">MarketScreener · 2026-07-10 · ★4</div>
+        </li>
+        
+        <li>
+          
+          
+          <span class="badge" style="background:var(--cat-market-bg);color:var(--cat-market-fg);border:1px solid var(--border);">market</span>
+          <a href="https://www.canadianmortgagetrends.com/2026/08/bmo-mortgage-delinquencies-climb-as-portfolio-growth-resumes/">BMO Mortgage Delinquencies Climb to 0.56% as Residential Portfolio Grows to $164.2B</a>
+          <div class="meta">Canadian Mortgage Trends · 2026-08-26 · ★4</div>
+        </li>
+        
+        <li>
+          
+          
+          <span class="badge" style="background:var(--cat-company-bg);color:var(--cat-company-fg);border:1px solid var(--border);">company_news</span>
+          <a href="https://www.newswire.ca/news-releases/td-bank-group-reports-third-quarter-2026-results-878614719.html">TD Bank Group Q3 2026: Adjusted EPS $2.77 (+26% YoY), Net Income $4.67B, Revenue Growth Outpaces Expenses</a>
+          <div class="meta">CNW/Newswire · 2026-08-27 · ★4</div>
+        </li>
+        
+        <li>
+          
+          
+          <span class="badge" style="background:var(--cat-market-bg);color:var(--cat-market-fg);border:1px solid var(--border);">market</span>
+          <a href="https://www.canadianmortgagetrends.com/2026/08/cibc-mortgage-delinquencies-rise-but-losses-remain-low/">CIBC Mortgage Delinquencies Rise to 0.51%, but Losses Remain Low on 58% LTV Cushion — GTA 0.66%</a>
+          <div class="meta">Canadian Mortgage Trends · 2026-08-27 · ★4</div>
+        </li>
+        
+        <li>
+          
+          
+          <span class="badge" style="background:var(--cat-market-bg);color:var(--cat-market-fg);border:1px solid var(--border);">market</span>
+          <a href="https://www.cmhc-schl.gc.ca/observer/2026/housing-starts-may-2026">Canadian Housing Starts Fall 9% in May as Pre-Sale Condo Market Cools</a>
+          <div class="meta">CMHC · 2026-06-15 · ★3</div>
+        </li>
+        
+        <li>
+          
+          
+          <span class="badge" style="background:var(--cat-policy-bg);color:var(--cat-policy-fg);border:1px solid var(--border);">policy_regulation</span>
+          <a href="https://www.osfi-bsif.gc.ca/en/publications/guidance">OSFI Keeps Domestic Stability Buffer at 3.5%, Flags High Household Debt Vulnerability</a>
+          <div class="meta">OSFI · 2026-06-18 · ★3</div>
+        </li>
+        
+        <li>
+          
+          
+          <span class="badge" style="background:var(--cat-market-bg);color:var(--cat-market-fg);border:1px solid var(--border);">market</span>
+          <a href="https://www.equifax.ca/insights/q2-2026-market-pulse">Equifax Q2 Pulse: Mortgage Balances 90+ Days Past Due Rose to 0.30% in Ontario, led by Toronto</a>
+          <div class="meta">Equifax Canada · 2026-07-10 · ★3</div>
+        </li>
+        
+        <li>
+          
+          
+          <span class="badge" style="background:var(--cat-market-bg);color:var(--cat-market-fg);border:1px solid var(--border);">market</span>
+          <a href="https://www.theglobeandmail.com/investing/markets/etfs/zeb-52-week-high-2026-07-10">ZEB Hits 52-Week High as Bank ETFs Draw $420M Inflows on Dividend Resilience</a>
+          <div class="meta">Globe and Mail · 2026-07-10 · ★3</div>
+        </li>
+        
+        <li>
+          
+          
+          <span class="badge" style="background:var(--cat-company-bg);color:var(--cat-company-fg);border:1px solid var(--border);">company_news</span>
+          <a href="https://www.cibc.com/en/investor-relations/presentations-2026-07-29.html">CIBC Reports June Mortgage Renewals: 68% See Payment Increase, Average +$420/mo</a>
+          <div class="meta">CIBC Investor Presentation · 2026-07-29 · ★3</div>
+        </li>
+        
+        <li>
+          
+          
+          <span class="badge" style="background:var(--cat-market-bg);color:var(--cat-market-fg);border:1px solid var(--border);">market</span>
+          <a href="https://www.canadianmortgagetrends.com/2026/08/mortgage-stress-builds-in-ontario-and-b-c-as-origination-growth-slows/">Mortgage Stress Builds in Ontario and B.C.: Balance-Level Delinquency 0.41% in Ontario, +10 bps YoY</a>
+          <div class="meta">Canadian Mortgage Trends / TransUnion · 2026-08-26 · ★3</div>
+        </li>
+        
+        <li>
+          
+          
+          <span class="badge" style="background:var(--cat-company-bg);color:var(--cat-company-fg);border:1px solid var(--border);">company_news</span>
+          <a href="https://www.marketscreener.com/news/canada-s-rbc-td-cibc-surpass-profit-estimates--ce7858dedc89f62d">Canada&#39;s Big Six Beat Q3 Estimates on Capital Markets Strength Despite Trade Uncertainty</a>
+          <div class="meta">MarketScreener/Reuters · 2026-08-27 · ★3</div>
+        </li>
+        
+        <li>
+          
+          
+          <span class="badge" style="background:var(--cat-policy-bg);color:var(--cat-policy-fg);border:1px solid var(--border);">policy_regulation</span>
+          <a href="https://www.cmhc-schl.gc.ca/professionals/housing-markets-data-and-research/housing-research/research-reports/housing-finance/residential-mortgage-industry-report">Residential Mortgage Industry Report Spring 2026: National 90+ Day Delinquency 0.24% vs 0.21% YoY, Toronto +45%</a>
+          <div class="meta">CMHC · 2026-08-29 · ★3</div>
+        </li>
+        
+        <li>
+          
+          
+          <span class="badge" style="background:var(--cat-market-bg);color:var(--cat-market-fg);border:1px solid var(--border);">market</span>
+          <a href="https://hamiltonetfs.com/hfin-rebalance-2026-07-29">HFIN Rebalances: Shifts Weight to RY/TD on Momentum, Trims BNS</a>
+          <div class="meta">Hamilton ETFs · 2026-07-29 · ★2</div>
+        </li>
+        
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    Generated automatically by the Daily Digest pipeline. See <a href="https://github.com/PodorCN/thematic-market-watcher">source</a>.
+  </footer>
+</main>
+</body>
+</html>

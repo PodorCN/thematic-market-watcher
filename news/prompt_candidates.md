@@ -1,12 +1,10 @@
 You are gathering today's raw news candidates for a daily digest about the
-global water sector (water utilities, water infrastructure, water
-technology, drought/flood events, water policy and regulation, and the
-water-theme stocks/ETFs listed below).
+thematic area described by the tickers below.
 
 Use your web search tool to find recent (last 24-48 hours) news headlines
 relevant to this theme. Search broadly -- company news for the tickers
-below, sector news, policy/regulatory news, and major water-related
-climate events. Run multiple searches with different queries if it helps
+below, sector news, policy/regulatory news, and major related
+events. Run multiple searches with different queries if it helps
 you find more relevant, non-duplicate stories.
 
 Tickers in today's tracked universe: {{tickers}}

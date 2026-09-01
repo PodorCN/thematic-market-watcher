@@ -1,0 +1,15 @@
+{
+  "_comment": "US rates theme — Treasury yields and bond ETFs plus DXY for FX context. FRED series to be added in phase 2.",
+  "tickers": [
+    "^TNX",
+    "^IRX",
+    "^TYX",
+    "^FVX",
+    "TLT",
+    "IEF",
+    "SHY",
+    "BIL",
+    "TIP",
+    "DX-Y.NYB"
+  ]
+}

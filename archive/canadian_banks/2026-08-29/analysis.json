@@ -1,0 +1,50 @@
+{
+  "market_summary": "Canadian banks were mixed on Aug 29 despite a blockbuster Q3 earnings week: TD +1.19% led on a 26% adjusted EPS beat, while CM –2.85%, RY –1.61% and ZEB –0.80% gave back post-earnings gains. XFN and ZWB also slipped, with only the TSX Composite marginally positive (+0.06%), signaling profit-taking after all six lenders beat Bay Street estimates on capital-markets strength.",
+  "top_story": {
+    "headline": "CMHC: Ontario Mortgage Delinquencies Pass National Average for First Time Since 2012 — Toronto +60% YoY to 0.24%",
+    "url": "https://ca.finance.yahoo.com/news/cmhc-ontario-mortgage-delinquencies-pass-120000666.html",
+    "why_it_matters": "Ontario crossing above the 0.22% national average marks a regime shift in housing credit risk concentrated in Toronto condos. Even though Big Six losses remain low on ~58% LTV cushions, the 45% YoY jump in Toronto delinquency and CIBC/BMO 0.51–0.56% readings mean provisions on performing loans will stay elevated and OSFI will keep CET1 buffers (RBC 13.5%, BMO 13.0%) tight into renewal season."
+  },
+  "themes": [
+    {
+      "title": "Q3 Earnings Beat — But Provisions Creep Higher",
+      "synthesis": "All Big Six beat on pre-provision, pre-tax earnings (RBC $8.7B +13%, CIBC $3.96B +20%), but PCL ratios ticked to 36–56 bps (RBC 36 bps, Scotia 56 bps, BMO 41 bps) with performing-loan provisions returning.",
+      "source_urls": [
+        "https://www.newswire.ca/news-releases/royal-bank-of-canada-reports-third-quarter-2026-results-873288683.html",
+        "https://www.newswire.ca/news-releases/td-bank-group-reports-third-quarter-2026-results-878614719.html",
+        "https://www.bmo.com/ir/qtrinfo/1/2026-q3/Q326_ReportToShareholders.pdf",
+        "https://www.marketscreener.com/news/canada-s-rbc-td-cibc-surpass-profit-estimates--ce7858dedc89f62d"
+      ]
+    },
+    {
+      "title": "Ontario Housing Stress Concentrates — National Average Misleads",
+      "synthesis": "National 90+ day rate actually dipped to 0.22% in Q2 2025, but Ontario rose to 0.23–0.41% (balance-level) and Toronto condos drive the increase as investors with 2021 peak-price, low-equity loans face renewal shocks.",
+      "source_urls": [
+        "https://ca.finance.yahoo.com/news/cmhc-ontario-mortgage-delinquencies-pass-120000666.html",
+        "https://www.cmhc-schl.gc.ca/professionals/housing-markets-data-and-research/housing-research/research-reports/housing-finance/residential-mortgage-industry-report",
+        "https://www.canadianmortgagetrends.com/2026/08/mortgage-stress-builds-in-ontario-and-b-c-as-origination-growth-slows/"
+      ]
+    },
+    {
+      "title": "Losses Contained, but LTV and PCL Trajectory Matters",
+      "synthesis": "Banks flag low realized losses thanks to 54–62% GTA LTVs, yet CIBC GTA LTV rose to 62% from 56% and BMO impaired-mortgage PCL doubled to 7 bps annualized, so the next two quarters of renewals will test reserves.",
+      "source_urls": [
+        "https://www.canadianmortgagetrends.com/2026/08/cibc-mortgage-delinquencies-rise-but-losses-remain-low/",
+        "https://www.canadianmortgagetrends.com/2026/08/bmo-mortgage-delinquencies-climb-as-portfolio-growth-resumes/",
+        "https://www.cmhc-schl.gc.ca/observer/2026/mortgage-renewal-wave-strains-some-regions-borrowers"
+      ]
+    },
+    {
+      "title": "NIM Expansion & Capital Return — Positive Offset Not in Cluster",
+      "synthesis": "Q3 NIM ex-trading 2.07% (+12 bps yoy at BMO) and $420M ZEB inflows on dividend resilience plus BMO's pending $25M NCIB show capital return is the positive driver the clustering missed this week — NIM > PCL is why the thesis is Watch not Breaking despite delinquency breach.",
+      "source_urls": [
+        "https://www.newswire.ca/news-releases/royal-bank-of-canada-reports-third-quarter-2026-results-873288683.html",
+        "https://www.bmo.com/ir/qtrinfo/1/2026-q3/Q326_ReportToShareholders.pdf",
+        "https://www.theglobeandmail.com/investing/markets/etfs/zeb-52-week-high-2026-07-10"
+      ]
+    }
+  ],
+  "outlook": "Watch OSFI guidance on capital return (BMO new $25M share NCIB pending) and September Canadian housing/Teranet plus Bank of Canada commentary on renewal cliff — if Ontario delinquency holds above national into Q4, expect banks to keep provisioning skewed to performing loans.",
+  "date": "2026-08-29",
+  "theme": "canadian_banks"
+}

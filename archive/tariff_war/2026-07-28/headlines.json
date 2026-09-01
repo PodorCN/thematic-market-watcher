@@ -1,0 +1,24 @@
+{
+  "headlines": [
+    {
+      "headline": "Section 301 Becomes Law: Federal Register Publishes 10–12.5% Duties on 60 Economies",
+      "source": "Federal Register",
+      "url": "https://www.federalregister.gov/documents/2026/07/28/2026-15181/notice-of-actions-in-section-301-investigations",
+      "published_at": "2026-07-28",
+      "category": "policy_regulation",
+      "importance": 5,
+      "driver": "For XLI: Positive implementation — 345-page notice codifies TRQs that determine XLI's sector hit dispersion; machinery and autos in 22 sectors now have clear cost, allowing XLI firms to re-price contracts."
+    },
+    {
+      "headline": "Chip Industry Braces for 70% Stack — 50% IP + 12.5% Forced Labor + Pending 7.5% Overcapacity",
+      "source": "Semiconductor Industry Association",
+      "url": "https://www.semiconductors.org/news/70-stack-2026-07-28",
+      "published_at": "2026-07-28",
+      "category": "market",
+      "importance": 4,
+      "driver": "For XLI: Positive for XLI's automation/robotics exposure — 70% stack justifies on-shore chip/automation capex that flows to XLI's industrials, offsetting higher input costs."
+    }
+  ],
+  "date": "2026-07-28",
+  "theme": "tariff_war"
+}

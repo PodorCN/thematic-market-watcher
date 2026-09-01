@@ -1,0 +1,24 @@
+{
+  "headlines": [
+    {
+      "headline": "Russell 2000 Enters Correction — Falls 10% From May Peak as Rate-Hold Bets Build",
+      "source": "Reuters",
+      "url": "https://www.reuters.com/markets/us-smallcap-correction-2026-06-20",
+      "published_at": "2026-06-20",
+      "category": "market",
+      "importance": 4,
+      "driver": "For IWM: Positive base — 10% correction into June created 34% discount to large caps (widest since 2002) that made July relief rally possible; cheap entry is why IWM could lead despite no AI narrative."
+    },
+    {
+      "headline": "Bank of America: Small Caps Trade at 34% Discount to Large Caps — Widest Since 2002",
+      "source": "Bank of America Research",
+      "url": "https://www.bofa.com/research/smallcap-discount-2026-06-20",
+      "published_at": "2026-06-20",
+      "category": "market",
+      "importance": 3,
+      "driver": "For IWM: Positive valuation — 34% discount is IWM's fundamental fuel; 40% of Russell is health care + financials, cheap without AI, so broadening beyond Mag-7 directly lifts IWM's P/E, not just price."
+    }
+  ],
+  "date": "2026-06-20",
+  "theme": "us_smallcap"
+}

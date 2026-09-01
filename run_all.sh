@@ -20,21 +20,37 @@ if [ -f .env ]; then
 fi
 
 DATE="${1:-$(date -u +%F)}"
-echo "== Daily Digest pipeline for $DATE =="
+THEME="${2:-all}"
+THEMES=("canadian_banks" "us_smallcap" "us_rates" "tariff_war")
 
-echo "-- 1. fetch_data"
-python data/fetch_data.py --date "$DATE"
+run_theme() {
+  local theme="$1"
+  echo "===== Theme: $theme — $DATE ====="
+  echo "-- 1. fetch_data ($theme)"
+  python data/fetch_data.py --date "$DATE" --theme "$theme"
 
-echo "-- 2a. fetch_candidates"
-python news/fetch_candidates.py --date "$DATE"
+  echo "-- 2a. fetch_candidates ($theme)"
+  python news/fetch_candidates.py --date "$DATE" --theme "$theme"
 
-echo "-- 2b. judge"
-python news/judge.py --date "$DATE"
+  echo "-- 2b. judge ($theme)"
+  python news/judge.py --date "$DATE" --theme "$theme"
 
-echo "-- 3. analyze"
-python theme-engine/analyze.py --date "$DATE"
+  echo "-- 3. analyze ($theme)"
+  python theme-engine/analyze.py --date "$DATE" --theme "$theme"
 
-echo "-- 4. render"
-python render/render.py --date "$DATE"
+  echo "-- 4. render ($theme)"
+  python render/render.py --date "$DATE" --theme "$theme"
 
-echo "== done: archive/$DATE/report.html =="
+  echo "== done: archive/$theme/$DATE/report.html =="
+}
+
+if [ "$THEME" = "all" ]; then
+  echo "== Daily Digest pipeline for $DATE — all themes =="
+  for t in "${THEMES[@]}"; do
+    run_theme "$t"
+  done
+  echo "== all themes done =="
+else
+  echo "== Daily Digest pipeline for $DATE — theme: $THEME =="
+  run_theme "$THEME"
+fi

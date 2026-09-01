@@ -1,0 +1,24 @@
+{
+  "headlines": [
+    {
+      "headline": "Russell 2000 Closes Above 2,900 for First Time Since 2021 — Breakout Confirmed",
+      "source": "MarketWatch",
+      "url": "https://www.marketwatch.com/story/russell-breakout-2900-2026-08-05",
+      "published_at": "2026-08-05",
+      "category": "market",
+      "importance": 4,
+      "driver": "For IWM: Positive technical — break above 2021 peak 2,900 triggered momentum chasing and FOMO; 3,000 magnet explains why IWM could grind to 3,068 despite overbought."
+    },
+    {
+      "headline": "Fed Holds at 3.50–3.75% Again — Waller/Daly Hint September Cut if Inflation Holds",
+      "source": "Wall Street Journal",
+      "url": "https://www.wsj.com/economy/fed-holds-august-2026-08-05",
+      "published_at": "2026-08-05",
+      "category": "policy_regulation",
+      "importance": 3,
+      "driver": "For IWM: Positive — hold with dovish dissent kept cut hope alive; for IWM's floating-rate balance sheets, any hint of cut is direct earnings relief vs QQQ's fixed-rate fortress."
+    }
+  ],
+  "date": "2026-08-05",
+  "theme": "us_smallcap"
+}

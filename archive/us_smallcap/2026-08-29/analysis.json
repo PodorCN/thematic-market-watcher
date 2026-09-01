@@ -1,0 +1,36 @@
+{
+  "market_summary": "US small caps closed Aug 29 with a split tape: IWM 299.81, IJR 146.78, VB 304.28 all fractionally lower after a 22.7% YTD record run, while flows tell the rotation story — IWM +$733M on Aug 27 as QQQ bled $4.55B. Russell 2000 sits 12 points under its 3,069.71 ATH with monthly RSI 70.8 and StochRSI 89.4, technically intact but overbought.",
+  "top_story": {
+    "headline": "Russell 2000 Closes at Record 3,068, Up 22.7% YTD — Now +9.5 pp Ahead of S&P 500 as September Hike Odds Collapse",
+    "url": "https://khancapitals.com/small-cap-rotation-2026/",
+    "why_it_matters": "The record 27 closes this year is a rates trade, not an earnings trade: with small caps carrying more floating-rate debt, every 25 bps of Fed pricing is ~2% of Russell operating earnings (BofA). The CPI/PPI cool-down that drove September hike odds from ~58% post-FOMC to ~30s is the single variable repricing the most rate-sensitive index."
+  },
+  "themes": [
+    {
+      "title": "Flows Confirm Rotation — But It's Mechanical",
+      "synthesis": "$334B of June reconstitution buying plus Aug 27's $733M IWM inflow vs QQQ $4.55B outflow shows broadening beyond AI megacaps, yet earnings are lagging the price; Russell strength is flow + multiple, not profit growth yet.",
+      "source_urls": [
+        "https://247wallst.com/investing/2026/07/01/passive-indexers-are-shuffling-billions-into-the-russell-2000-just-in-time-for-a-brutal-fed-reality-check/",
+        "https://www.etfaction.com/invescos-qqq-sheds-4-55b-as-spdr-and-ishares-lead-broad-inflows/"
+      ]
+    },
+    {
+      "title": "Overbought But Not Broken — Citi Crowding Warning",
+      "synthesis": "Monthly StochRSI 89.4 and RSI 70.8 are rare; history says >85 on monthly StochRSI precedes 10–15% corrections in 2–3 months, and Citi flags long exposure extended with short covering exhausted and weekly flow momentum fading.",
+      "source_urls": [
+        "https://www.tradevae.com/news/stock-markets/small-caps-at-the-cusp-of-history-momentum-intact-but-overbought-signals-mount/"
+      ]
+    },
+    {
+      "title": "September 11 CPI Is the Fuse",
+      "synthesis": "Cleveland Fed nowcasts 0.38% MoM for August CPI — the first print with post-ceasefire oil — so the same rate relief that lifted IWM 8.6% in two weeks versus SPX 1.6% can reverse fastest in small caps if the print is hot.",
+      "source_urls": [
+        "https://www.smallcapnewsroom.com/post/small-caps-best-year-since-2003-a-mid-august-reality-check-august-16-2026",
+        "https://www.regardsofwallstreet.com/news/russell-2000-record-high-small-caps-beating-nasdaq-100"
+      ]
+    }
+  ],
+  "outlook": "Watch August CPI (Sep 11), FOMC minutes depth on the triple dissent, and payrolls Sep 4 — if inflation stays tame and no hike, broadening extends; if retail –0.6% and negative payrolls resume, small caps give back beta fastest.",
+  "date": "2026-08-29",
+  "theme": "us_smallcap"
+}

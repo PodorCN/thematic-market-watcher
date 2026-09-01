@@ -23,19 +23,32 @@ sys.path.insert(0, str(REPO_ROOT))
 from utils.llm_client import call_llm  # noqa: E402
 
 STAGE_DIR = Path(__file__).resolve().parent
-PROMPT_PATH = STAGE_DIR / "prompt_judge.md"
+DEFAULT_PROMPT_PATH = STAGE_DIR / "prompt_judge.md"
 SCHEMA_PATH = STAGE_DIR / "schema_judge.json"
+
+
+def _prompt_path(theme: str | None) -> Path:
+    if theme:
+        p = REPO_ROOT / "config" / "themes" / theme / "prompt_judge.md"
+        if p.exists():
+            return p
+    return DEFAULT_PROMPT_PATH
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--date", default=date.today().isoformat())
+    parser.add_argument("--theme", default=None, help="Theme name")
     args = parser.parse_args()
 
-    data_dir = REPO_ROOT / "archive" / args.date
+    if args.theme:
+        data_dir = REPO_ROOT / "archive" / args.theme / args.date
+    else:
+        data_dir = REPO_ROOT / "archive" / args.date
     candidates = json.loads((data_dir / "candidates.json").read_text(encoding="utf-8"))
 
-    prompt_template = PROMPT_PATH.read_text(encoding="utf-8")
+    prompt_path = _prompt_path(args.theme)
+    prompt_template = prompt_path.read_text(encoding="utf-8")
     prompt = prompt_template.replace(
         "{{candidates_json}}", json.dumps(candidates["candidates"], ensure_ascii=False, indent=2)
     )
@@ -43,6 +56,8 @@ def main() -> None:
 
     result = call_llm(prompt, schema, stage="headline_judge")
     result["date"] = args.date
+    if args.theme:
+        result["theme"] = args.theme
     result["headlines"].sort(key=lambda h: h["importance"], reverse=True)
 
     out_path = data_dir / "headlines.json"

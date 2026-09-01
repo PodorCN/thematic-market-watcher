@@ -1,4 +1,4 @@
-# Thematic Market Water — Daily Digest Pipeline
+# Thematic Market Watcher — Daily Digest Pipeline
 
 This is the project-level guide for any coding agent/CLI (Claude Code,
 Codex, Cursor, aider, ...) working in this repo. `CLAUDE.md` (in this same
@@ -11,8 +11,8 @@ explicitly if it doesn't pick this up on its own.
 
 ## 1. What this is
 
-A daily pipeline: download water-sector market data -> collect and judge
-water-sector news headlines -> LLM analysis -> render a static HTML
+A daily pipeline: download theme-specific market data -> collect and judge
+theme-specific news headlines -> LLM analysis -> render a static HTML
 report. Runs once a day via GitHub Actions; each run's output is archived
 by date and the latest report is published to GitHub Pages via `docs/`.
 
@@ -86,7 +86,7 @@ utils/
 data/                     # stage 1: market data (pure code, no LLM)
   fetch_data.py
   market_data_provider.py   # pluggable structured-data source (yfinance today)
-  tickers.json               # water-theme tickers tracked (edit freely)
+  tickers.json               # theme tickers tracked (edit freely)
 news/                     # stage 2: headline collection + judging
   fetch_candidates.py       # LLM + hosted web-search tool (see 4a)
   prompt_candidates.md

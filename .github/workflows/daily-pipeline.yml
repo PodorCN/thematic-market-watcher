@@ -13,6 +13,10 @@ on:
         description: "Date to run for (YYYY-MM-DD), defaults to today (UTC)"
         required: false
         default: ""
+      theme:
+        description: "Theme to run (all, canadian_banks, us_smallcap, us_rates, tariff_war)"
+        required: false
+        default: "all"
 
 jobs:
   pipeline:
@@ -39,24 +43,62 @@ jobs:
           fi
 
       - name: 1. Fetch data
-        run: python data/fetch_data.py --date "${{ steps.vars.outputs.date }}"
+        run: |
+          THEME="${{ github.event.inputs.theme || 'all' }}"
+          if [ "$THEME" = "all" ]; then
+            for t in canadian_banks us_smallcap us_rates tariff_war; do
+              echo "fetch_data $t"
+              python data/fetch_data.py --date "${{ steps.vars.outputs.date }}" --theme "$t"
+            done
+          else
+            python data/fetch_data.py --date "${{ steps.vars.outputs.date }}" --theme "$THEME"
+          fi
 
       - name: 2. Collect & judge headlines
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
+          MOONSHOT_API_KEY: ${{ secrets.MOONSHOT_API_KEY }}
         run: |
-          python news/fetch_candidates.py --date "${{ steps.vars.outputs.date }}"
-          python news/judge.py --date "${{ steps.vars.outputs.date }}"
+          THEME="${{ github.event.inputs.theme || 'all' }}"
+          if [ "$THEME" = "all" ]; then
+            for t in canadian_banks us_smallcap us_rates tariff_war; do
+              echo "candidates+judge $t"
+              python news/fetch_candidates.py --date "${{ steps.vars.outputs.date }}" --theme "$t"
+              python news/judge.py --date "${{ steps.vars.outputs.date }}" --theme "$t"
+            done
+          else
+            python news/fetch_candidates.py --date "${{ steps.vars.outputs.date }}" --theme "$THEME"
+            python news/judge.py --date "${{ steps.vars.outputs.date }}" --theme "$THEME"
+          fi
 
       - name: 3. Analyze
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-        run: python theme-engine/analyze.py --date "${{ steps.vars.outputs.date }}"
+          OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
+          MOONSHOT_API_KEY: ${{ secrets.MOONSHOT_API_KEY }}
+        run: |
+          THEME="${{ github.event.inputs.theme || 'all' }}"
+          if [ "$THEME" = "all" ]; then
+            for t in canadian_banks us_smallcap us_rates tariff_war; do
+              python theme-engine/analyze.py --date "${{ steps.vars.outputs.date }}" --theme "$t"
+            done
+          else
+            python theme-engine/analyze.py --date "${{ steps.vars.outputs.date }}" --theme "$THEME"
+          fi
 
       - name: 4. Render HTML
-        run: python render/render.py --date "${{ steps.vars.outputs.date }}"
+        run: |
+          THEME="${{ github.event.inputs.theme || 'all' }}"
+          if [ "$THEME" = "all" ]; then
+            for t in canadian_banks us_smallcap us_rates tariff_war; do
+              python render/render.py --date "${{ steps.vars.outputs.date }}" --theme "$t"
+            done
+          else
+            python render/render.py --date "${{ steps.vars.outputs.date }}" --theme "$THEME"
+          fi
 
       - name: Commit results
         run: |

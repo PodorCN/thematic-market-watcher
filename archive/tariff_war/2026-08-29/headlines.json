@@ -1,0 +1,69 @@
+{
+  "headlines": [
+    {
+      "headline": "USTR's 60-Economy Section 301 Tariffs (10–12.5%) Take Effect — Replaces Struck-Down IEEPA Regime",
+      "source": "Federal Register / USTR",
+      "url": "https://www.federalregister.gov/documents/2026/07/28/2026-15181/notice-of-actions-in-section-301-investigations-of-acts-policies-and-practices-of-various-economies",
+      "published_at": "2026-07-28",
+      "category": "policy_regulation",
+      "importance": 5,
+      "driver": "For XLI (Industrials, Main proxy): Positive — rebuilds tariff wall on sturdier 301 footing after 6-3 loss; XLI's constituents (defense, machinery) gain pricing power and import protection, and TRQs reward US-cotton sourcing — directly lifts XLI's order books vs XLB."
+    },
+    {
+      "headline": "China Semiconductor Stack Nears 70%: 50% IP + 12.5% Forced Labor + 7.5% Overcapacity Before Sept 24 Summit",
+      "source": "TechTimes",
+      "url": "https://www.techtimes.com/articles/325383/20260824/china-semiconductor-tariffs-near-70-new-overcapacity-layer-stacks-before-summit.htm",
+      "published_at": "2026-08-24",
+      "category": "policy_regulation",
+      "importance": 5,
+      "driver": "For XLI: Positive — 70% stack on China semis protects US industrials' chip supply chain and justifies reshoring capex that flows to XLI names (automation, robotics in 22 sectors). Negative for XLI's China-exposed supply, but net pricing power for domestic XLI."
+    },
+    {
+      "headline": "Section 338: US Slaps 50% on ~5% of Canada Imports; Canada Dollar-for-Dollar Retaliation Sep 8 — USMCA at Risk",
+      "source": "Russell Investments",
+      "url": "https://russellinvestments.com/content/ri/us/en/insights/russell-research/2026/08/338-tariffs-US-Canada.html",
+      "published_at": "2026-08-01",
+      "category": "policy_regulation",
+      "importance": 4,
+      "driver": "For XLI: Mixed — 50% on ~5% of Canada imports is surgically narrow but hits XLI's auto/aero supply chains Jan 1 2027; Canada retaliation risks USMCA withdrawal volatility for XLI's cross-border manufacturers, but near-term industrials pricing up as imports fall."
+    },
+    {
+      "headline": "$100B Tariff Refunds Flatter Q3 Earnings — Walmart $2.9B, Apple $2.2B, But No Consumer Pass-Through Yet",
+      "source": "GetFinanceBrief",
+      "url": "https://getfinancebrief.com/story/finance-tariff-refund-earnings-windfall",
+      "published_at": "2026-08-23",
+      "category": "market",
+      "importance": 4,
+      "driver": "For XLI: Positive near-term — $100B refund is direct cash to XLI importers (Ford $1.3B) boosting Q3 EPS and cash flow for buybacks; but refunds are one-time, so XLI's underlying demand (ISM 50.3) matters more than headline EPS."
+    },
+    {
+      "headline": "82% of Manufacturers Now Passing Tariff Costs — Absorption Buffer Exhausted, Margin Compression Next",
+      "source": "Mapshock",
+      "url": "https://mapshock.com/briefings/tariff-driven-supply-chain-restructuring-operational-risk",
+      "published_at": "2026-08-20",
+      "category": "market",
+      "importance": 4,
+      "driver": "For XLI: Positive for pricing, negative for volume — 82% pass-through (vs 44%) means XLI's constituents finally have pricing power, but 4.2% of primary metal inputs and Yale 9.6% effective rate mean margin compression ahead for XLI's SME suppliers, raising distress risk in XLI's supply chain."
+    },
+    {
+      "headline": "Tariff Decoupling Hits Ceiling at ~33% Effective — $30B Non-Strategic Relief Valve vs Strategic Hold",
+      "source": "Informed Clearly",
+      "url": "https://informedclearly.com/en/trade-war/61490/us-china-trade-war-tariff-decoupling-2026",
+      "published_at": "2026-08-27",
+      "category": "market",
+      "importance": 3,
+      "driver": "For XLI: Neutral — 33% effective ceiling shows supply-chain interdependence limits decoupling; XLI's $30B non-strategic relief is narrow, so XLI's large caps with on-shore capacity win, while China-plus-one assemblers in XLI see limited benefit."
+    },
+    {
+      "headline": "Tariffs Wedge Industrials vs Materials: XLB Breaks Out, XLI $179→$185 on Defense/Capex vs Steel Pricing Power",
+      "source": "Convex / Seeking Alpha",
+      "url": "https://seekingalpha.com/article/4939737-economically-sensitive-materials-sector-breaking-out",
+      "published_at": "2026-08-24",
+      "category": "market",
+      "importance": 3,
+      "driver": "For XLI: Positive — XLI $179→$185 forecast on defense capex ($850B) vs XLB commodity pricing shows XLI's driver is capex resilience, not just steel price; XLI-XLB spread tells which tariff channel dominates XLI's return."
+    }
+  ],
+  "date": "2026-08-29",
+  "theme": "tariff_war"
+}

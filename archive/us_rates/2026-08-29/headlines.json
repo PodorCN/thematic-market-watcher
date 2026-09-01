@@ -1,0 +1,60 @@
+{
+  "headlines": [
+    {
+      "headline": "Fed Chair Warsh at Jackson Hole Opens Door to September Hike — 'Work to Do' if Inflation Stays Above 2%",
+      "source": "PBS News / AP",
+      "url": "https://www.pbs.org/newshour/economy/warsh-raises-stakes-for-feds-next-meeting-and-other-takeaways-from-jackson-hole-conference",
+      "published_at": "2026-08-29",
+      "category": "policy_regulation",
+      "importance": 5,
+      "driver": "For TLT (20Y bond, Main proxy is TLT): Negative — hawkish pivot lifted September hike odds to ~60% and would push TLT price down (yields up) if hike happens; but TLT's +8% convexity if Fed instead holds shows why TLT is the hedge — you get paid 4.6% to wait."
+    },
+    {
+      "headline": "FOMC Minutes July 28–29: 9 Hold at 3.50–3.75% vs 3 Dissents for +25 bps; Market Prices Full Hike by September",
+      "source": "Federal Reserve",
+      "url": "https://www.federalreserve.gov/monetarypolicy/fomcminutes20260729.htm",
+      "published_at": "2026-08-19",
+      "category": "policy_regulation",
+      "importance": 5,
+      "driver": "For TLT: Negative near-term — deepest hawkish dissent since 2016 (3 votes) shows bar for hike is low; one hot CPI forces TLT duration loss, but also creates entry if you believe survey median (no hike to 2028) over market pricing."
+    },
+    {
+      "headline": "H.15 Aug 28: Fed Funds 3.63%, 10Y 4.67%, 2Y 4.20%, 30Y 5.19% — Real Yields Drive Nominal Rise 25–30 bps",
+      "source": "Federal Reserve H.15",
+      "url": "https://www.federalreserve.gov/releases/h15/",
+      "published_at": "2026-08-28",
+      "category": "market",
+      "importance": 4,
+      "driver": "For TLT: Neutral — real yields drove 25-30 bps rise, not inflation expectations (anchored); means TLT's selloff was growth-driven, not de-anchoring, so long-end has cushion vs 5.2% 30Y top."
+    },
+    {
+      "headline": "PCE at 3.7% YoY, Over Half Basket >3% — Warsh Calls Inflation Broad and Stubborn, Not Just Gas",
+      "source": "Reuters",
+      "url": "https://finance.yahoo.com/economy/policy/articles/warshs-jackson-hole-speech-course-050258340.html",
+      "published_at": "2026-08-28",
+      "category": "policy_regulation",
+      "importance": 4,
+      "driver": "For TLT: Negative — PCE 3.7% and >50% basket >3% (vs 1/3 pre-pandemic) argues inflation not transitory, so TLT's duration is at risk if Warsh hikes to deliver 2% — but also means TIP (in TLT's cohort) benefits."
+    },
+    {
+      "headline": "Fed July Decision: Rates Steady but Three Members Dissented — Most Hawks Since 2016 (Hammack, Kashkari, Logan)",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/07/29/fed-meeting-today-live-updates.html",
+      "published_at": "2026-07-29",
+      "category": "policy_regulation",
+      "importance": 3,
+      "driver": "For TLT: Negative signal — 3 dissents is hawkish tell that keeps front-end (SHY) bid but pressures long-end TLT until CPI proves cool; explains why TLT lagged SHY after meeting."
+    },
+    {
+      "headline": "30Y Treasury Tops 5.2% After FOMC, 10Y Barely Budges Post-Hawkish — Long End Unconvinced",
+      "source": "CNBC / PBS",
+      "url": "https://www.cnbc.com/2026/07/29/fed-meeting-today-live-updates.html",
+      "published_at": "2026-07-29",
+      "category": "market",
+      "importance": 3,
+      "driver": "For TLT: Positive for TLT holders — long end's muted +1 bp after hawkish comments shows market believes Fed will eventually curb inflation, so TLT's bear-steepener risk is doubted and 5.19% may be near top for TLT entry."
+    }
+  ],
+  "date": "2026-08-29",
+  "theme": "us_rates"
+}
