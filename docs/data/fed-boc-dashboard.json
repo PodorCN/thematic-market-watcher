@@ -1,7 +1,7 @@
 {
   "as_of": "2026-08-31T13:05:00-04:00",
-  "version": "2026-08-31-002",
-  "verification_note": "Mon 2026-08-31 13:05 ET cron (run 2 of day / 12:00 ET slot; version -002). CORRECTION to run-001 premise: today Aug 31 is NOT a holiday (Labor/Labour Day 2026 = Sep 7) — US/CA cash markets are OPEN; all market values below are Mon ~12:58 ET INTRADAY via yfinance, not closes. Fed RSS re-fetched 12:55 ET: nothing new since Warsh 'In Our Time' (Fri 8/28); latest press item remains the Aug 27 enforcement action. BoC re-verified: Sep 2 decision confirmed (bankofcanada.ca/press upcoming-events), target 2.25% (key-interest-rate latest data-date 2026-07-15). FED SEP PRICING re-derived from ZQU26.CBT Mon intraday 96.2925 (Fri settle 96.305, -1.25bp further hawkish drift) -> Sep implied avg FF 3.7075% -> post-FOMC ~3.802% (16 pre-days x 3.625 + 14 post-days; solve h-c ~ +0.71) => cut 0.05 / hold 0.20 / hike 0.75. Cross-checks ZQV26 96.195, ZQX26 96.135 — whole strip drifting hawkish. BoC pricing nudged 0.35/0.60/0.05 -> 0.30/0.65/0.05: oil rebound (WTI 85.36, +2.4% vs Fri settle) eases the disinflation impulse, hawkish Fed spillover tightens the constraint, USDCAD flat 1.3857. EUR CPI released 08:00 ET today (12:00Z): YoY 2.9 in line, MoM 0.2 vs 0.3 fcst, HICP YoY 2.9 vs 3.1 fcst — mildly dovish global read, not a direct Fed/BoC driver. LONG-END FLIP: 10Y 4.760% / 30Y 5.258% Mon intraday (10Y re-took 4.75% per the dovish driver's own flip condition) — fed_dove_long_end_20260827 retired, fed_hawk_long_end_20260831 added. Chicago PMI dropped from watcher calendar: past 09:45 ET slot, absent from fresh FXStreet fetch, no verifiable actual. Calendar refreshed from fresh FXStreet fetch (77 events, 24 HIGH / 53 MEDIUM; was 67/24+43 at 00:50): fcst updates JOLTS 7.30M, ISM mfg 55.2, ISM svc 54.3, NFP +58k (UR fcst 4.1), CA jobs +15.0k; new items incl. Fed speakers Barr 9/1, Waller 9/3, Hammack 9/3 (Hammack added to watcher calendar — July hawk dissenter speaking pre-blackout). Broad Mon tape risk-off: SPY -0.45%, IWM -0.90%, VIX 15.18 (+5.2%), GC=F 4484 (-1.0%), TLT -0.63%.",
+  "version": "2026-09-01-001",
+  "verification_note": "Tue 2026-09-01 01:13 ET cron (run 1 of day / 00:00 ET slot; version -001). INCREMENTAL REFRESH. Fed meeting schedule re-fetched from federalreserve.gov: Sep 15-16; Jul 29 statement re-fetched and confirms 3.50-3.75% plus 9-3 vote (Hammack/Kashkari/Logan preferred +25bp). BoC press page re-fetched: Sep 2 decision; rate table and Jul 15 statement confirm 2.25%. CME FedWatch request was genuinely attempted at 01:12 ET but returned the host's 600-byte IP-block response. Fed pricing therefore uses ZQU26.CBT official Aug 31 settle 96.295 (Sep avg 3.705%; post-FOMC about 3.796%) and remains 0.05 cut / 0.20 hold / 0.75 hike. The BoC CORRA page was fetched, but it does not expose a verifiable three-way Sep 2 decision probability distribution; desk OIS proxy remains 0.30 cut / 0.65 hold / 0.05 hike. Because both requested primary probability panels were unavailable, as_of is intentionally retained at 2026-08-31T13:05:00-04:00 so the Sep 1 archive is stale=true rather than pretending complete verification. Market strip refreshed to official Aug 31 daily closes via yfinance observed 01:13 ET; Sep 1 overnight futures/FX quotes were observed but not substituted for official closes. Fresh FXStreet calendar: 83 events (24 HIGH / 59 MEDIUM), with Barr Sep 1 and Ivey PMI Sep 4 added to watcher calendar; unverified out-of-window Sep 11 CPI removed.",
   "timezone": "America/Toronto",
   "meetings": {
     "fed": {
@@ -18,10 +18,10 @@
         "cut_25bp": 0.05,
         "hold": 0.2,
         "hike_25bp": 0.75,
-        "source": "ZQU26.CBT Mon 2026-08-31 intraday via yfinance (CME FedWatch IP-blocked from this host); 3-way solve anchored to verified 3.625% mid",
+        "source": "ZQU26.CBT 2026-08-31 official daily settle via yfinance (CME FedWatch IP-blocked); 3-way solve anchored to verified 3.625% mid",
         "source_url": "https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html",
-        "as_of_pricing": "2026-08-31T12:58:00-04:00",
-        "proxy_check": "ZQU26.CBT Mon 8/31 ~12:58 ET intraday 96.2925 (Fri official settle 96.305) -> Sep implied avg FF 3.7075% -> post-FOMC implied ~3.802% vs outcomes cut 3.375 / hold 3.625 / hike 3.875 -> h-c ~ +0.71. Cross-checks: ZQV26 96.195 (Oct 3.805), ZQX26 96.135 (Dec 3.865) — strip-wide hawkish drift continues post-Warsh.",
+        "as_of_pricing": "2026-08-31T16:00:00-04:00",
+        "proxy_check": "ZQU26.CBT Aug 31 official settle 96.295 -> Sep implied avg FF 3.705%; 16 pre-days at 3.625 + 14 post-days implies post-FOMC ~3.796%. Cross-check ZQV26 96.200 and ZQX26 96.140. Distribution held at cut 0.05 / hold 0.20 / hike 0.75; CME page returned IP-block response at 2026-09-01 01:12 ET.",
         "proxy_source_url": "https://finance.yahoo.com/quote/ZQ=F",
         "implied_rate_before": 3.625,
         "implied_rate_after": 3.8
@@ -42,11 +42,11 @@
         "hike_25bp": 0.05,
         "source": "OIS / implied via Fed-BoC spread (BoC CORRA panel not public since BAX to CORRA migration; carried forward + WTI/USDCAD adjuster)",
         "source_url": "https://www.bankofcanada.ca/markets/interest-rates/",
-        "as_of_pricing": "2026-08-31T13:00:00-04:00",
-        "proxy_check": "BoC target 2.25% re-verified 2026-08-31 via bankofcanada.ca key-interest-rate page (latest data-date 2026-07-15); next decision Sep 2 09:45 ET + presser 10:30 ET confirmed via bankofcanada.ca/press widget. GDP beat (Q2 +0.8% QoQ, June +0.3% MoM) base case hold; offsetting doves faded: WTI rebounded to 85.36 (+2.4% vs settle), USDCAD flat 1.3857.",
+        "as_of_pricing": "2026-08-31T16:00:00-04:00",
+        "proxy_check": "BoC target 2.25% and Sep 2 decision re-verified 2026-09-01 01:12 ET from bankofcanada.ca. Public CORRA page fetched but no three-way meeting distribution exposed; carried forward 0.30 cut / 0.65 hold / 0.05 hike. Aug 31 official closes: WTI 85.76, USDCAD 1.3899 daily row, ZEB.TO 73.72.",
         "implied_rate_before": 2.25,
         "implied_rate_after": 2.2,
-        "note": "Nudged Mon 2026-08-31 13:00 ET (no public CORRA OIS panel post-BAX migration; CME/OIS mirrors JS-blocked). Signals since Fri: WTI 85.36 Mon intraday (+2.4% vs Fri settle 83.40) — disinflation impulse easing; Fed Sep hike tail now 0.75 (ZQU26 96.2925) — spillover constraint tighter; USDCAD 1.3857 flat vs Fri 1.3851 — no fresh CAD stress. Q2 GDP +0.8% QoQ beat stands. Net: hold-favored firms to 0.65, cut tail 0.30 into the Sep 2 09:45 ET decision."
+        "note": "STALE probability panel: no verifiable public three-way CORRA OIS distribution retrieved this run. Distribution carried forward; see verification_note."
       }
     }
   },
@@ -135,24 +135,24 @@
           "id": "fed_dove_equities_20260827",
           "icon": "EQ",
           "title": "Equity Rally Confirms Risk-On Into Jackson Hole",
-          "summary": "SPY -0.45% / IWM -0.90% Mon intraday — second straight red session post-Warsh; the risk-on leg is stalling.",
+          "summary": "Aug 31 close: SPY -0.30%, QQQ +0.05%, IWM -1.96%; small caps remained the weak link.",
           "published_at_toronto": "2026-08-27T16:00:00-04:00",
           "source": "yfinance close",
           "source_url": "https://finance.yahoo.com/quote/SPY",
           "importance": "MEDIUM",
           "weight": 1.0,
           "data": {
-            "actual": "SPY 765.85 / QQQ 715.12 / IWM 293.09 (Mon i/d)",
+            "actual": "SPY 767.05 / QQQ 716.76 / IWM 293.93 (Mon close)",
             "forecast": "SPY <760 / QQQ <700",
             "previous": "SPY 769.35 / QQQ 716.43 / IWM 295.75 (Fri close)",
-            "delta_label": "-0.45 / -0.18 / -0.90 Mon i/d; +0.47 / +0.42 / -1.40 w",
+            "delta_label": "-0.30% / +0.05% / -1.96% Mon close",
             "delta_type": "neutral"
           },
-          "reason": "Mon 2026-08-31 ~12:58 ET intraday: SPY -0.45%, QQQ -0.18%, IWM -0.90% — follows Friday's post-Warsh stall (IWM -1.35% d). Rate-sensitive small caps keep leading the decline; weekly still green for mega-caps only. Two red sessions cap this driver at 1.0; a weekly red close Friday would retire it.",
+          "reason": "Official Aug 31 closes via yfinance confirm a second soft post-Warsh session: SPY and IWM fell while QQQ was nearly flat. Stable ID retained at weight 1.0; no side flip.",
           "market_validation": [
             {
               "ticker": "IWM",
-              "label": "IWM -0.90% Mon i/d / -1.40% w",
+              "label": "IWM -1.96% Mon close / -2.01% w",
               "type": "down"
             }
           ]
@@ -168,18 +168,18 @@
           "importance": "HIGH",
           "weight": 1.0,
           "data": {
-            "actual": "WTI 85.36 Mon i/d / 83.40 Fri settle",
+            "actual": "WTI 85.76 Aug 31 settle",
             "forecast": "85.0",
-            "previous": "83.53",
-            "delta_label": "+2.35% Mon i/d vs settle / -4.20% w",
+            "previous": "83.40 Aug 28 settle",
+            "delta_label": "+2.83% Mon / weekly draw partly reversed",
             "delta_type": "neutral"
           },
           "reason": "The weekly -4.20% demand-scare repricing (official Fri close 83.40) still stands, but oil has now rebounded two sessions running (Sun reopen 85.34 -> Mon 85.36, +2.35% vs settle). Disinflation impulse fading at the margin; weight trimmed 1.5 -> 1.0. A settle back above 86 flips this neutral.",
           "market_validation": [
             {
               "ticker": "XLE",
-              "label": "XLE +0.92% Mon i/d / -1.51% w",
-              "type": "down"
+              "label": "XLE +2.04% Mon close / +1.35% w",
+              "type": "up"
             }
           ]
         },
@@ -187,20 +187,20 @@
           "id": "fed_dove_vix_20260827",
           "icon": "VIX",
           "title": "VIX at Multi-Week Low — Calmest Tape Pre-Jackson Hole",
-          "summary": "VIX 15.18 Mon intraday (+5.2% d) — calm cracked slightly post-Warsh but vol remains low in absolute terms.",
+          "summary": "VIX closed 14.92 on Aug 31: volatility stayed low despite rate volatility.",
           "published_at_toronto": "2026-08-27T16:00:00-04:00",
           "source": "yfinance ^VIX",
           "source_url": "https://finance.yahoo.com/quote/%5EVIX",
           "importance": "MEDIUM",
           "weight": 1.0,
           "data": {
-            "actual": "VIX 15.18 (Mon i/d)",
+            "actual": "VIX 14.92 (Mon close)",
             "forecast": ">17",
-            "previous": "14.43 (Fri close)",
-            "delta_label": "+5.20% d Mon i/d / +4.6% vs Fri w-ago",
+            "previous": "14.51 (prior valid yfinance close)",
+            "delta_label": "+2.83% Mon close",
             "delta_type": "neutral"
           },
-          "reason": "VIX popped to 15.18 (+5.2%) as the post-Warsh hawkish repricing extended into Monday's risk-off tape. Still below 16 and far from stress — complacency leg weakened but not broken. Held at 1.0.",
+          "reason": "VIX closed 14.92 on Aug 31, still below 16. Low absolute volatility keeps this a modest 1.0 dovish/risk-tolerance signal.",
           "market_validation": []
         },
         {
@@ -305,24 +305,24 @@
           "id": "fed_hawk_gold_20260827",
           "icon": "Au",
           "title": "Gold's Record Run — Inflation-Hedge Bid Persists",
-          "summary": "GC=F $4484 Mon intraday (-1.0% d), below the $4500 line — the record-run signal is now broken.",
+          "summary": "GC=F settled $4,431.1 Aug 31, firmly below $4,500; the old record-run signal remains broken.",
           "published_at_toronto": "2026-08-27T16:00:00-04:00",
           "source": "yfinance close (GC=F)",
           "source_url": "https://finance.yahoo.com/quote/GC=F",
           "importance": "MEDIUM",
           "weight": 0.5,
           "data": {
-            "actual": "GC=F 4484.2 Mon i/d / GLD 406.61",
+            "actual": "GC=F 4431.1 Mon settle / GLD 408.42",
             "forecast": "GC=F <4500",
-            "previous": "GC=F 4529.9 / GLD 408.89 (Fri close)",
-            "delta_label": "GC -1.01% d Mon i/d; -2.7% from Fri w-ago",
+            "previous": "GC=F 4478.1 / GLD 408.89",
+            "delta_label": "GC -1.05% Mon settle",
             "delta_type": "miss"
           },
-          "reason": "Gold broke $4500 Monday (GC=F 4484.2, -1.01% intraday) as the hawkish repricing extended — real-yield pressure keeps beating the inflation-hedge bid. Record-run signal confirmed broken per the driver's own condition. Kept at 0.5 to preserve stable ID; retirement candidate next run if GC holds below 4500.",
+          "reason": "Official Aug 31 settlement remained below $4,500. Stable ID retained at 0.5 for history; no stronger hawkish inference is warranted.",
           "market_validation": [
             {
-              "ticker": "GC=F",
-              "label": "GC=F -1.01% d Mon i/d",
+              "ticker": "GLD",
+              "label": "GLD -0.11% Mon close / -4.28% w",
               "type": "down"
             }
           ]
@@ -366,24 +366,24 @@
           "id": "fed_hawk_long_end_20260831",
           "icon": "30Y",
           "title": "Long-End Flips Hawkish — 10Y Re-takes 4.75%",
-          "summary": "10Y 4.760% / 30Y 5.258% Monday intraday — the dovish easing trend at the long end is broken.",
+          "summary": "10Y 4.758% / 30Y 5.249% at Aug 31 close: 10Y held above the 4.75% flip line.",
           "published_at_toronto": "2026-08-31T13:00:00-04:00",
           "source": "US Treasury market via yfinance ^TNX/^TYX",
           "source_url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2026",
           "importance": "MEDIUM",
           "weight": 1.0,
           "data": {
-            "actual": "10Y 4.760 / 30Y 5.258 (Mon i/d)",
+            "actual": "10Y 4.758 / 30Y 5.249 (Mon close)",
             "forecast": "10Y <4.75",
-            "previous": "10Y 4.720 / 30Y 5.206 (Fri close)",
-            "delta_label": "10Y +4.0bp d / 30Y +5.2bp d Mon i/d",
+            "previous": "10Y 4.672 / 30Y 5.191 (prior valid close)",
+            "delta_label": "10Y +8.6bp / 30Y +5.8bp",
             "delta_type": "beat"
           },
-          "reason": "The retired dovish long-end driver carried an explicit flip condition: 'if 10Y re-takes 4.75%+ this flips hawkish' — met Monday (10Y 4.760%, +4.0bp; 30Y 5.258%, +5.2bp; TLT -0.63% intraday). Back-to-back selloffs since Warsh's speech signal the market is pricing a higher-for-longer Fed, validating the hawkish front-end repricing (Sep hike tail 0.75).",
+          "reason": "Aug 31 official yfinance closes kept the 10Y above the prior driver flip condition at 4.75%. The new hawkish ID remains at weight 1.0.",
           "market_validation": [
             {
               "ticker": "TLT",
-              "label": "TLT -0.63% Mon i/d",
+              "label": "TLT -0.73% Mon close / +0.57% w",
               "type": "down"
             }
           ],
@@ -513,18 +513,18 @@
           "importance": "HIGH",
           "weight": 1.0,
           "data": {
-            "actual": "WTI 85.36 Mon i/d / 83.40 Fri settle",
+            "actual": "WTI 85.76 Aug 31 settle",
             "forecast": "85.0",
-            "previous": "83.53",
-            "delta_label": "+2.35% Mon i/d vs settle / -4.20% w",
+            "previous": "83.40 Aug 28 settle",
+            "delta_label": "+2.83% Mon / weekly draw partly reversed",
             "delta_type": "neutral"
           },
           "reason": "Oil's weekly slide (-4.20%, official close 83.40) eroded Canada's terms of trade, but the two-day rebound to 85.36 pauses the erosion. Weight trimmed 1.5 -> 1.0 ahead of the Sep 2 decision; net still dovish but fading.",
           "market_validation": [
             {
               "ticker": "XLE",
-              "label": "XLE +0.92% Mon i/d / -1.51% w",
-              "type": "down"
+              "label": "XLE +2.04% Mon close / +1.35% w",
+              "type": "up"
             }
           ]
         }
@@ -561,17 +561,17 @@
           "importance": "MEDIUM",
           "weight": 0.5,
           "data": {
-            "actual": "WTI 85.36 Mon i/d",
+            "actual": "WTI 85.76 Aug 31 settle",
             "forecast": "82.0",
-            "previous": "83.53",
-            "delta_label": "+2.35% d Mon i/d / -4.20% w",
+            "previous": "83.40 Aug 28 settle",
+            "delta_label": "+2.83% Mon / weekly draw partly reversed",
             "delta_type": "neutral"
           },
           "reason": "WTI rebounded to 85.36 Monday intraday (+2.35% vs Fri settle 83.40) — the headwind phase is easing. Kept at 0.5/neutral to preserve stable ID; a sustained move back above 86 would re-open the energy-tailwind case.",
           "market_validation": [
             {
               "ticker": "XLE",
-              "label": "XLE +0.92% Mon i/d / -1.51% w",
+              "label": "XLE +2.04% Mon close / +1.35% w",
               "type": "up"
             }
           ]
@@ -606,20 +606,20 @@
           "id": "boc_hawk_us_spillover_20260827",
           "icon": "US",
           "title": "US Stickiness Spillover — Fed Path Constrains BoC",
-          "summary": "Fed Sep hike tail now 0.75 (ZQU26 96.2925); a BoC cut Wednesday would widen the gap into a hawkish Fed.",
+          "summary": "Fed Sep hike tail proxy remains 0.75; Aug 31 10Y close 4.758% keeps the cross-border constraint tight.",
           "published_at_toronto": "2026-08-27T16:00:00-04:00",
           "source": "US data / rates",
           "source_url": "https://www.pmi.spglobal.com/",
           "importance": "MEDIUM",
           "weight": 1.5,
           "data": {
-            "actual": "Fed hike tail 0.75 / 10Y 4.760% / USDCAD 1.3857 (Mon i/d)",
+            "actual": "Fed hike tail 0.75 / 10Y 4.758% / USDCAD 1.3899 Aug 31 row",
             "forecast": "balanced Fed / 30Y 4.90% / USDCAD <1.36",
             "previous": "Warsh hawkish JH / 30Y 5.21% / USDCAD 1.3901 Sun reopen",
             "delta_label": "Fed hawkish drift extending",
             "delta_type": "beat"
           },
-          "reason": "Fed Sep pricing drifted further hawkish Monday (ZQU26 96.2925 -> hike tail 0.75 vs 0.65 at Friday settle) — the constraint on a dovish BoC is tightening, not loosening, 48h before the decision. USDCAD stable at 1.3857 takes some FX-stress edge off, but cutting into a hawkish Fed remains the governing risk. Held at 1.5.",
+          "reason": "ZQU26 Aug 31 settle 96.295 leaves this desk proxy at 0.05 cut / 0.20 hold / 0.75 hike; 10Y closed above 4.75%. Stable ID and 1.5 weight retained.",
           "market_validation": []
         }
       ]
@@ -627,91 +627,105 @@
   },
   "market": {
     "since": "2026-07-30",
-    "as_of_close": "2026-08-31T12:58:00-04:00",
+    "as_of_close": "2026-08-31T16:00:00-04:00",
     "tickers": [
       {
         "symbol": "SPY",
-        "price": 765.85,
-        "label_1d": "-0.45% Mon i/d",
+        "price": 767.05,
+        "label_1d": "-0.30% Mon close",
         "label_1w": "+0.47% w",
         "type_1d": "down",
         "type_1w": "up"
       },
       {
         "symbol": "QQQ",
-        "price": 715.12,
-        "label_1d": "-0.18% Mon i/d",
-        "label_1w": "+0.42% w",
-        "type_1d": "down",
+        "price": 716.76,
+        "label_1d": "+0.05% Mon close",
+        "label_1w": "+1.48% w",
+        "type_1d": "up",
         "type_1w": "up"
       },
       {
         "symbol": "IWM",
-        "price": 293.09,
-        "label_1d": "-0.90% Mon i/d",
-        "label_1w": "-1.40% w",
+        "price": 293.93,
+        "label_1d": "-1.96% Mon close",
+        "label_1w": "-2.01% w",
         "type_1d": "down",
         "type_1w": "down"
       },
       {
         "symbol": "XLI",
-        "price": 175.11,
-        "label_1d": "-1.15% Mon i/d",
-        "label_1w": "-1.73% w",
+        "price": 175.13,
+        "label_1d": "-2.05% Mon close",
+        "label_1w": "-2.84% w",
         "type_1d": "down",
         "type_1w": "down"
       },
       {
         "symbol": "XLU",
-        "price": 42.11,
-        "label_1d": "-1.45% Mon i/d",
-        "label_1w": "-0.09% w",
+        "price": 42.23,
+        "label_1d": "-2.20% Mon close",
+        "label_1w": "-1.26% w",
         "type_1d": "down",
         "type_1w": "down"
       },
       {
         "symbol": "XLF",
-        "price": 57.725,
-        "label_1d": "-0.65% Mon i/d",
-        "label_1w": "+1.08% w",
+        "price": 57.71,
+        "label_1d": "-0.67% Mon close",
+        "label_1w": "-0.88% w",
         "type_1d": "down",
-        "type_1w": "up"
-      },
-      {
-        "symbol": "XLE",
-        "price": 63.255,
-        "label_1d": "+0.92% Mon i/d",
-        "label_1w": "-1.51% w",
-        "type_1d": "up",
         "type_1w": "down"
       },
       {
+        "symbol": "XLE",
+        "price": 63.96,
+        "label_1d": "+2.04% Mon close",
+        "label_1w": "+1.35% w",
+        "type_1d": "up",
+        "type_1w": "up"
+      },
+      {
         "symbol": "TLT",
-        "price": 82.36,
-        "label_1d": "-0.63% Mon i/d",
-        "label_1w": "+1.01% w",
+        "price": 82.52,
+        "label_1d": "-0.73% Mon close",
+        "label_1w": "+0.57% w",
         "type_1d": "down",
         "type_1w": "up"
       },
       {
         "symbol": "GLD",
-        "price": 406.61,
-        "label_1d": "-0.56% Mon i/d",
-        "label_1w": "-3.42% w",
+        "price": 408.42,
+        "label_1d": "-0.11% Mon close",
+        "label_1w": "-4.28% w",
         "type_1d": "down",
         "type_1w": "down"
       },
       {
         "symbol": "ZEB.TO",
-        "price": 73.9,
-        "label_1d": "-0.63% Mon i/d",
-        "label_1w": "+1.40% w",
+        "price": 73.72,
+        "label_1d": "-0.72% Mon close",
+        "label_1w": "+0.51% w",
         "type_1d": "down",
         "type_1w": "up"
       }
     ]
   },
   "calendar": [
+    {
+      "id": "fed_barr_20260901",
+      "datetime_toronto": "2026-09-01T09:05:00-04:00",
+      "datetime_utc": "2026-09-01T13:05:00Z",
+      "currency": "USD",
+      "country": "US",
+      "event": "Fed's Barr Speech",
+      "impact": "MEDIUM",
+      "forecast": {},
+      "previous": {},
+      "logic": "Fresh FXStreet event. Watch for confirmation or pushback on Warsh’s price-first Jackson Hole framing.",
+      "hawk_if": "Inflation focus to Hawk",
+      "dove_if": "Labour concern to Dove"
+    },
     {
       "id": "cad_pmi_20260901",
       "datetime_toronto": "2026-09-01T09:30:00-04:00",
@@ -758,7 +772,7 @@
       "previous": {
         "PMI": "55.6"
       },
-      "logic": "ISM proper (prev 55.6, fcst 55.2 per fresh FXStreet fetch) vs S&P flash mfg 48.7 — the arbiter between the two manufacturing narratives lands TOMORROW 10:00 ET.",
+      "logic": "Fresh FXStreet: Sep 1 10:00 ET, forecast 55.2 vs 55.6 previous. This is today’s arbiter between the strong prior ISM and weak S&P flash narrative.",
       "hawk_if": "Strong to Hawk",
       "dove_if": "Weak to Dove"
     },
@@ -898,23 +912,22 @@
       "dove_if": "Weak to Dove"
     },
     {
-      "id": "cpi_20260911",
-      "datetime_toronto": "2026-09-11T08:30:00-04:00",
-      "datetime_utc": "2026-09-11T12:30:00Z",
-      "currency": "USD",
-      "country": "US",
-      "event": "US CPI · First Post-Tariff Test",
-      "impact": "HIGH",
+      "id": "ivey_20260904",
+      "datetime_toronto": "2026-09-04T10:00:00-04:00",
+      "datetime_utc": "2026-09-04T14:00:00Z",
+      "currency": "CAD",
+      "country": "CA",
+      "event": "Ivey PMI (s.a.)",
+      "impact": "MEDIUM",
       "forecast": {
-        "YoY": "3.00%",
-        "MoM": "0.30%"
+        "PMI": "56.2"
       },
       "previous": {
-        "YoY": "2.90%",
-        "MoM": "0.20%"
+        "PMI": "55.1"
       },
-      "logic": "A tariff-driven acceleration to 3.2% or higher could force the FOMC to skip the next cut.",
-      "hawk_if": "High to Hawk"
+      "logic": "Fresh FXStreet: forecast 56.2 vs 55.1. Post-BoC confirmation check on Canadian activity.",
+      "hawk_if": "High to Hawk",
+      "dove_if": "Low to Dove"
     },
     {
       "id": "fomc_20260916",
