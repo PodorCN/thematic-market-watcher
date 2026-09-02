@@ -1,7 +1,7 @@
 {
-  "as_of": "2026-08-31T13:05:00-04:00",
-  "version": "2026-09-02-001",
-  "verification_note": "Wed 2026-09-02 01:35 ET cron (run 1 of day / 00:00 ET slot; version -001). INCREMENTAL REFRESH. Fed schedule re-fetched from federalreserve.gov: next FOMC Sep 15-16; Jul 29 statement remains the latest and confirms 3.50-3.75% plus the 9-3 vote. Fed speech index was checked: Barr's Sep 1 speech was delivered but was about second-chance lending and contained no monetary-policy signal. BoC primary pages re-fetched: Sep 2 decision at 09:45 ET and press conference about 10:30 ET remain pending; current rate remains 2.25% from Jul 15. CME FedWatch was genuinely attempted but remained IP-blocked. Fed pricing uses ZQU26.CBT Sep 1 official settle 96.2925 (Sep implied average 3.7075%) and is held at 0.05 cut / 0.20 hold / 0.75 hike. A live TMX CORRA futures quote and BoC CORRA pages were checked, but neither exposed a defensible public three-way Sep 2 decision distribution; the prior desk proxy 0.30 cut / 0.65 hold / 0.05 hike is retained. Because both requested primary probability panels remain incomplete, as_of is intentionally retained at 2026-08-31T13:05:00-04:00 so this Sep 2 archive is stale=true. Fresh FXStreet calendar: 81 events (21 HIGH / 60 MEDIUM). Sep 1 actuals cross-checked against TradingEconomics: US ISM manufacturing 54.6 vs 55.2 forecast / 55.6 previous; prices paid 71.1 vs 72.0 / 71.1; JOLTS 7.271M vs 7.300M / 7.359M; Canada manufacturing PMI 53.0 vs 52.7 TradingEconomics forecast / 53.5 previous. Market strip refreshed to official Sep 1 daily closes via yfinance observed 01:32 ET.",
+  "as_of": "2026-09-02T14:12:00-04:00",
+  "version": "2026-09-02-002",
+  "verification_note": "Wed 2026-09-02 14:12 ET cron (run 3/4, 12:00 ET slot; version -002). FULL INTRADAY REFRESH. Fed schedule re-fetched from federalreserve.gov: next FOMC Sep 15-16; Jul 29 statement remains latest, held 3.50-3.75% with 9-3 vote. CME FedWatch page/endpoints were genuinely attempted but remain HTTP 403 from this host. Fed pricing therefore uses live Sep 2 ZQU26.CBT 96.295 and ZQV26.CBT 96.205 via yfinance: strip-implied pre-meeting rate 3.615%, next-month rate 3.795%, rounded three-way solve cut 0.00 / hold 0.30 / hike 0.70. BoC Sep 2 statement was fetched after release: held overnight target 2.25% (Bank Rate 2.50%, deposit 2.20%); next scheduled decision Oct 28 with MPR. TMX/MX CRA CORRA futures and BoC Valet CORRA/policy series were reachable; the Oct distribution is a scenario split rather than a direct single-meeting panel because the quarterly contract spans both Oct 28 and Dec 9: cut 0.00 / hold 0.40 / hike 0.60. Fresh FXStreet calendar: 83 events (21 HIGH / 62 MEDIUM). ADP printed +38k vs +47k forecast / +44k prior; factory orders +0.9% vs +0.6% / -0.3%. Market strip refreshed with live Sep 2 yfinance daily rows observed 14:12 ET. No source is carried forward as unavailable; stale=false.",
   "timezone": "America/Toronto",
   "meetings": {
     "fed": {
@@ -15,38 +15,39 @@
         "note": "9-3 dissent: Hammack, Kashkari, Logan preferred +25bp hike. Re-verified 2026-08-31 via federalreserve.gov/newsevents/pressreleases/monetary20260729a.htm (\"target range ... at 3-1/2 to 3-3/4 percent\"; \"Voting against ... Hammack ... Kashkari ... Logan, who preferred to raise the target range ... by 1/4 percentage point\"). Warsh's Aug 28 Jackson Hole speech validated the hawks: 'predominant focus right now should be on prices'."
       },
       "pricing": {
-        "cut_25bp": 0.05,
-        "hold": 0.2,
-        "hike_25bp": 0.75,
-        "source": "ZQU26.CBT 2026-09-01 official daily settle via yfinance (CME FedWatch IP-blocked); 3-way desk solve anchored to verified 3.625% mid",
+        "cut_25bp": 0.0,
+        "hold": 0.3,
+        "hike_25bp": 0.7,
+        "source": "CME Fed Funds futures proxy via yfinance (CME FedWatch HTTP 403)",
         "source_url": "https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html",
-        "as_of_pricing": "2026-09-01T16:00:00-04:00",
-        "proxy_check": "ZQU26.CBT Sep 1 official settle 96.2925 -> Sep implied average FF 3.7075%; cross-check ZQV26 96.195 and ZQX26 96.130. Distribution held at cut 0.05 / hold 0.20 / hike 0.75; CME page remained IP-blocked at 2026-09-02 01:27 ET.",
-        "proxy_source_url": "https://finance.yahoo.com/quote/ZQ=F",
-        "implied_rate_before": 3.625,
-        "implied_rate_after": 3.8
+        "as_of_pricing": "2026-09-02T14:12:00-04:00",
+        "proxy_check": "ZQU26.CBT 96.295 and ZQV26.CBT 96.205 at Sep 2 14:12 ET. r0=2*(100-ZQU26)-(100-ZQV26)=3.615%; Oct implied 3.795%, about +18bp: rounded cut 0.00 / hold 0.30 / hike 0.70.",
+        "proxy_source_url": "https://finance.yahoo.com/quote/ZQU26.CBT",
+        "implied_rate_before": 3.615,
+        "implied_rate_after": 3.795
       }
     },
     "boc": {
-      "label": "BOC · Sep 2 Decision",
-      "decision_time_toronto": "2026-09-02T09:45:00-04:00",
-      "date": "2026-09-02",
+      "label": "BOC · Oct 28 Decision + MPR",
+      "decision_time_toronto": "2026-10-28T09:45:00-04:00",
+      "date": "2026-10-28",
       "last_meeting": {
-        "date": "2026-07-15",
+        "date": "2026-09-02",
         "decision": "Held at 2.25%",
-        "note": "Held at 2.25% (unchanged since 2025-10-29 cut from 2.50%; held Jan 28 / Mar 18 / Apr 29 / Jun 10 / Jul 15 2026). Re-verified 2026-08-31 via bankofcanada.ca/core-functions/monetary-policy/key-interest-rate/ (most recent data-date 2026-07-15). Next decision 2026-09-02 09:45 ET with press conference 10:30 ET (re-verified 2026-08-31 via bankofcanada.ca/press/ upcoming-events widget: \"September 2, 2026 Interest Rate Announcement\")."
+        "note": "BoC held the overnight target at 2.25% on Sep 2 (Bank Rate 2.50%, deposit rate 2.20%). Statement cited high energy prices, tariffs, tightened financial conditions, CPI near 3%, and limited spillover beyond gasoline; next decision Oct 28 includes the MPR. Verified 2026-09-02 at bankofcanada.ca/2026/09/fad-press-release-2026-09-02/."
       },
       "pricing": {
-        "cut_25bp": 0.3,
-        "hold": 0.65,
-        "hike_25bp": 0.05,
-        "source": "OIS / implied via Fed-BoC spread (BoC CORRA panel not public since BAX to CORRA migration; carried forward + WTI/USDCAD adjuster)",
-        "source_url": "https://www.bankofcanada.ca/markets/interest-rates/",
-        "as_of_pricing": "2026-08-31T16:00:00-04:00",
-        "proxy_check": "BoC target 2.25% and Sep 2 decision time re-verified 2026-09-02 01:30 ET. TMX CORRA futures and BoC CORRA pages were fetched, but no defensible public three-way meeting distribution was exposed; retained 0.30 cut / 0.65 hold / 0.05 hike.",
+        "cut_25bp": 0.0,
+        "hold": 0.4,
+        "hike_25bp": 0.6,
+        "source": "TMX/MX 3-month CORRA futures + BoC Valet; Oct scenario estimate (quarterly contract spans Oct and Dec decisions)",
+        "source_url": "https://www.m-x.ca/en/trading/data/quotes?symbol=CRA%2A",
+        "as_of_pricing": "2026-09-02T14:12:00-04:00",
+        "proxy_check": "Post-Sep-hold CRA quotes and BoC V39079/AVG.INTWO were reachable. Quarterly strip spans Oct 28 and Dec 9, so 0.00 cut / 0.40 hold / 0.60 hike is an explicitly rounded scenario estimate, not a direct exchange three-way panel.",
+        "proxy_source_url": "https://www.bankofcanada.ca/valet/observations/AVG.INTWO/json?start_date=2026-08-20",
         "implied_rate_before": 2.25,
-        "implied_rate_after": 2.2,
-        "note": "STALE probability panel: no verifiable public three-way Sep 2 CORRA OIS distribution retrieved this run. Distribution carried forward; see verification_note."
+        "implied_rate_after": 2.4,
+        "note": "LIMITED CONFIDENCE: quarterly CORRA contract embeds two remaining 2026 decisions; no direct single-meeting public OIS probability panel was available."
       }
     }
   },
@@ -256,6 +257,36 @@
             "MEDIUM",
             "JOLTS"
           ]
+        },
+        {
+          "id": "fed_dove_adp_20260902",
+          "icon": "ADP",
+          "title": "ADP Employment Misses Before Payrolls",
+          "summary": "Private payroll growth slowed to 38k, below the 47k forecast.",
+          "published_at_toronto": "2026-09-02T08:15:00-04:00",
+          "source": "ADP via FXStreet economic calendar",
+          "source_url": "https://tradingeconomics.com/united-states/adp-employment-change",
+          "importance": "HIGH",
+          "weight": 1.0,
+          "data": {
+            "actual": "+38k",
+            "forecast": "+47k",
+            "previous": "+44k",
+            "delta_label": "miss -9k",
+            "delta_type": "miss"
+          },
+          "reason": "The modest private-payroll miss reinforces JOLTS cooling ahead of Friday NFP, but it is too small to overwhelm sticky prices or the hawkish Fed-futures strip.",
+          "market_validation": [
+            {
+              "ticker": "IWM",
+              "label": "+1.02% Wed i/d / -1.81% w",
+              "type": "up"
+            }
+          ],
+          "tags": [
+            "HIGH",
+            "labour"
+          ]
         }
       ],
       "hawkish": [
@@ -451,6 +482,36 @@
             "HIGH",
             "ISM"
           ]
+        },
+        {
+          "id": "fed_hawk_factory_orders_20260902",
+          "icon": "ORD",
+          "title": "Factory Orders Beat Expectations",
+          "summary": "Factory orders rose 0.9%, beating the 0.6% forecast and offsetting part of the ADP miss.",
+          "published_at_toronto": "2026-09-02T10:00:00-04:00",
+          "source": "US Census via FXStreet economic calendar",
+          "source_url": "https://tradingeconomics.com/united-states/factory-orders",
+          "importance": "MEDIUM",
+          "weight": 1.0,
+          "data": {
+            "actual": "+0.9%",
+            "forecast": "+0.6%",
+            "previous": "-0.3%",
+            "delta_label": "beat +0.3pp",
+            "delta_type": "beat"
+          },
+          "reason": "The rebound in orders shows goods demand remains firm, counterbalancing labour softness without being strong enough to displace inflation as the dominant Fed driver.",
+          "market_validation": [
+            {
+              "ticker": "XLI",
+              "label": "+0.03% Wed i/d / -4.19% w",
+              "type": "up"
+            }
+          ],
+          "tags": [
+            "MEDIUM",
+            "growth"
+          ]
         }
       ]
     },
@@ -614,24 +675,24 @@
           "id": "boc_hawk_oil_20260821",
           "icon": "WTI",
           "title": "Energy Tailwind Reopens Above $90 WTI",
-          "summary": "WTI at $90.22 restores Canada's terms-of-trade and inflation tailwind.",
+          "summary": "WTI near $91 and a large US inventory draw reinforce Canada’s terms-of-trade and inflation tailwind.",
           "published_at_toronto": "2026-08-27T16:00:00-04:00",
           "source": "WTI close",
           "source_url": "https://www.eia.gov/dnav/pet/hist/RWTCa.htm",
           "importance": "MEDIUM",
           "weight": 1.5,
           "data": {
-            "actual": "WTI 90.22 Sep 1 settle",
+            "actual": "WTI 91.14 Sep 2 i/d",
             "forecast": "85.0",
-            "previous": "85.76 Aug 31 settle",
-            "delta_label": "+5.20% Tue / +8.95% w",
+            "previous": "90.22 Sep 1 settle",
+            "delta_label": "+1.02% Wed i/d / +10.84% w",
             "delta_type": "beat"
           },
-          "reason": "WTI surged 5.2% on Sep 1 and closed above $90, reopening the energy/inflation tailwind for Canada. Stable id raised from 0.5 to 1.5 on a confirmed official daily settlement.",
+          "reason": "WTI held above $90 and extended higher after a larger-than-expected US crude draw. The BoC explicitly cited high energy prices in its Sep 2 hold, making this a live Canadian inflation driver.",
           "market_validation": [
             {
               "ticker": "XLE",
-              "label": "+1.27% Tue close / +4.37% w",
+              "label": "+0.36% Wed i/d / +4.12% w",
               "type": "up"
             }
           ]
@@ -653,7 +714,7 @@
             "delta_label": "MoM beat +0.1; ann. -0.1 vs fcst but rebound from -0.1",
             "delta_type": "beat"
           },
-          "reason": "StatCan verified 2026-08-28: Q2 real GDP +0.8% QoQ (~3.3% annualized), Q1 revised 0.0 -> +0.1%, led by exports, household spending and business investment. The pre-decision make-or-break printed strong — Sep 2 hold is now the base case (pricing shifted to 0.35 cut / 0.60 hold). Weight raised 1.5 -> 2.0 as the decisive domestic data point.",
+          "reason": "StatCan verified 2026-08-28: Q2 real GDP +0.8% QoQ (~3.3% annualized), Q1 revised 0.0 -> +0.1%, led by exports, household spending and business investment. The pre-decision make-or-break printed strong — The GDP rebound was validated by the Sep 2 hold at 2.25%. Weight raised 1.5 -> 2.0 as the decisive domestic data point.",
           "market_validation": [
             {
               "ticker": "ZEB.TO",
@@ -711,146 +772,152 @@
             "MEDIUM",
             "PMI"
           ]
+        },
+        {
+          "id": "boc_hawk_hold_20260902",
+          "icon": "BOC",
+          "title": "BoC Holds 2.25% and Flags Energy/Tariff Inflation",
+          "summary": "The BoC held at 2.25% as high oil and tariffs kept inflation risks alive.",
+          "published_at_toronto": "2026-09-02T09:45:00-04:00",
+          "source": "Bank of Canada rate statement",
+          "source_url": "https://www.bankofcanada.ca/2026/09/fad-press-release-2026-09-02/",
+          "importance": "HIGH",
+          "weight": 2.0,
+          "data": {
+            "actual": "Hold 2.25%",
+            "forecast": "Hold 2.25%",
+            "previous": "Hold 2.25%",
+            "delta_label": "hawkish hold",
+            "delta_type": "beat"
+          },
+          "reason": "The decision matched consensus, but the Bank emphasized persistently high energy prices, tariffs, tighter financial conditions and CPI near 3%. CAD firmed and Canadian banks rallied after the release, validating a hawkish hold rather than an easing signal.",
+          "market_validation": [
+            {
+              "ticker": "USDCAD=X",
+              "label": "1.3843 (-0.06% Wed i/d)",
+              "type": "down"
+            },
+            {
+              "ticker": "ZEB.TO",
+              "label": "+1.27% Wed i/d / -1.13% w",
+              "type": "up"
+            }
+          ],
+          "tags": [
+            "HIGH",
+            "BoC"
+          ]
         }
       ]
     }
   },
   "market": {
     "since": "2026-07-30",
-    "as_of_close": "2026-09-01T16:00:00-04:00",
+    "as_of_close": "2026-09-02T14:12:00-04:00",
     "tickers": [
       {
         "symbol": "SPY",
-        "price": 761.78,
-        "label_1d": "-0.69% Tue close",
-        "label_1w": "-0.54% w",
-        "type_1d": "down",
+        "price": 765.23,
+        "chg_1d": 0.004529,
+        "chg_1w": -0.00111,
+        "label_1d": "+0.45% Wed i/d",
+        "label_1w": "-0.11% w",
+        "type_1d": "up",
         "type_1w": "down"
       },
       {
         "symbol": "QQQ",
-        "price": 707.64,
-        "label_1d": "-1.27% Tue close",
-        "label_1w": "-0.43% w",
-        "type_1d": "down",
+        "price": 708.59,
+        "chg_1d": 0.001343,
+        "chg_1w": -0.003908,
+        "label_1d": "+0.13% Wed i/d",
+        "label_1w": "-0.39% w",
+        "type_1d": "up",
         "type_1w": "down"
       },
       {
         "symbol": "IWM",
-        "price": 290.57,
-        "label_1d": "-1.14% Tue close",
-        "label_1w": "-2.89% w",
-        "type_1d": "down",
+        "price": 293.59,
+        "chg_1d": 0.010393,
+        "chg_1w": -0.018848,
+        "label_1d": "+1.04% Wed i/d",
+        "label_1w": "-1.88% w",
+        "type_1d": "up",
         "type_1w": "down"
       },
       {
         "symbol": "XLI",
-        "price": 172.73,
-        "label_1d": "-1.37% Tue close",
-        "label_1w": "-3.18% w",
-        "type_1d": "down",
+        "price": 172.82,
+        "chg_1d": 0.000521,
+        "chg_1w": -0.041699,
+        "label_1d": "+0.05% Wed i/d",
+        "label_1w": "-4.17% w",
+        "type_1d": "up",
         "type_1w": "down"
       },
       {
         "symbol": "XLU",
-        "price": 42.56,
-        "label_1d": "+0.78% Tue close",
-        "label_1w": "-1.73% w",
+        "price": 42.6,
+        "chg_1d": 0.00094,
+        "chg_1w": -0.016394,
+        "label_1d": "+0.09% Wed i/d",
+        "label_1w": "-1.64% w",
         "type_1d": "up",
         "type_1w": "down"
       },
       {
         "symbol": "XLF",
-        "price": 57.2,
-        "label_1d": "-0.88% Tue close",
-        "label_1w": "-1.90% w",
-        "type_1d": "down",
+        "price": 57.66,
+        "chg_1d": 0.008042,
+        "chg_1w": -0.010299,
+        "label_1d": "+0.80% Wed i/d",
+        "label_1w": "-1.03% w",
+        "type_1d": "up",
         "type_1w": "down"
       },
       {
         "symbol": "XLE",
-        "price": 64.77,
-        "label_1d": "+1.27% Tue close",
-        "label_1w": "+4.37% w",
+        "price": 65.0,
+        "chg_1d": 0.003474,
+        "chg_1w": 0.041086,
+        "label_1d": "+0.35% Wed i/d",
+        "label_1w": "+4.11% w",
         "type_1d": "up",
         "type_1w": "up"
       },
       {
         "symbol": "TLT",
-        "price": 81.87,
-        "label_1d": "-0.79% Tue close",
-        "label_1w": "-1.92% w",
-        "type_1d": "down",
+        "price": 81.88,
+        "chg_1d": 0.000166,
+        "chg_1w": -0.019006,
+        "label_1d": "+0.02% Wed i/d",
+        "label_1w": "-1.90% w",
+        "type_1d": "up",
         "type_1w": "down"
       },
       {
         "symbol": "GLD",
-        "price": 396.75,
-        "label_1d": "-2.86% Tue close",
-        "label_1w": "-7.32% w",
-        "type_1d": "down",
+        "price": 401.55,
+        "chg_1d": 0.012103,
+        "chg_1w": -0.046919,
+        "label_1d": "+1.21% Wed i/d",
+        "label_1w": "-4.69% w",
+        "type_1d": "up",
         "type_1w": "down"
       },
       {
         "symbol": "ZEB.TO",
-        "price": 73.22,
-        "label_1d": "-0.68% Tue close",
-        "label_1w": "-2.63% w",
-        "type_1d": "down",
+        "price": 74.15,
+        "chg_1d": 0.012701,
+        "chg_1w": -0.011333,
+        "label_1d": "+1.27% Wed i/d",
+        "label_1w": "-1.13% w",
+        "type_1d": "up",
         "type_1w": "down"
       }
     ]
   },
   "calendar": [
-    {
-      "id": "adp_20260902",
-      "datetime_toronto": "2026-09-02T08:15:00-04:00",
-      "datetime_utc": "2026-09-02T12:15:00Z",
-      "currency": "USD",
-      "country": "US",
-      "event": "ADP Employment Change",
-      "impact": "HIGH",
-      "forecast": {
-        "ADP": "+48k"
-      },
-      "previous": {
-        "ADP": "+44k"
-      },
-      "logic": "Released 90 minutes before the BoC decision; a weak print colours the same-day risk tone even if it does not move the BoC itself.",
-      "dove_if": "Weak to Dove"
-    },
-    {
-      "id": "boc_20260902",
-      "datetime_toronto": "2026-09-02T09:45:00-04:00",
-      "datetime_utc": "2026-09-02T13:45:00Z",
-      "currency": "CAD",
-      "country": "CA",
-      "event": "BOC Rate Decision · Sep 2",
-      "impact": "HIGH",
-      "forecast": {
-        "Rate": "2.25%"
-      },
-      "previous": {
-        "Rate": "2.25%"
-      },
-      "logic": "Decision 09:45 ET (FXStreet 13:45Z), press conf 10:30 ET (bankofcanada.ca, re-verified 8/31). GDP beat (+0.8% Q2 QoQ, June +0.3% MoM) made HOLD the base case: desk pricing 0.30 cut / 0.65 hold / 0.05 hike (oil rebound + hawkish Fed spillover firmed the hold). Doves need a weak Mon CA PMI (prev 53.5) to reopen the cut case.",
-      "hawk_if": "Showdown",
-      "dove_if": "Showdown"
-    },
-    {
-      "id": "beige_book_20260902",
-      "datetime_toronto": "2026-09-02T14:00:00-04:00",
-      "datetime_utc": "2026-09-02T18:00:00Z",
-      "currency": "USD",
-      "country": "US",
-      "event": "Fed Beige Book",
-      "impact": "MEDIUM",
-      "forecast": {},
-      "previous": {},
-      "logic": "Fresh FXStreet calendar addition (Sep 2 18:00Z). Anecdotal district read on labour and prices two weeks before the Sep 15-16 FOMC — watch for tariff pass-through language backing Warsh's '54% of the PCE basket >3%' point.",
-      "hawk_if": "Price-pressure anecdotes to Hawk",
-      "dove_if": "Labour-slack anecdotes to Dove"
-    },
     {
       "id": "claims_20260903",
       "datetime_toronto": "2026-09-03T08:30:00-04:00",
@@ -979,13 +1046,13 @@
       "impact": "HIGH",
       "forecast": {},
       "previous": {},
-      "logic": "Post-Warsh repricing EXTENDED Monday: cut 5% / hold 20% / hike 75% (ZQU26.CBT 96.2925 intraday proxy, FedWatch IP-blocked). SEP day — dots + press conference settle the growth/labour/tariff/PCE debate. Calendar re-verified via federalreserve.gov/monetarypolicy/fomccalendars.htm.",
+      "logic": "Live Sep 2 futures proxy: cut 0% / hold 30% / hike 70% (ZQU26/ZQV26; CME FedWatch HTTP 403). SEP and press conference settle the labour-versus-inflation debate.",
       "hawk_if": "Showdown",
       "dove_if": "Showdown"
     }
   ],
   "history": [],
   "snapshot_date": "2026-09-02",
-  "archived_at": "2026-09-02T17:07:34.757172Z",
-  "stale": true
+  "archived_at": "2026-09-02T17:58:22.305140Z",
+  "stale": false
 }
