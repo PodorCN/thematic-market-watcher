@@ -1,7 +1,7 @@
 {
   "as_of": "2026-08-31T13:05:00-04:00",
-  "version": "2026-09-01-001",
-  "verification_note": "Tue 2026-09-01 01:13 ET cron (run 1 of day / 00:00 ET slot; version -001). INCREMENTAL REFRESH. Fed meeting schedule re-fetched from federalreserve.gov: Sep 15-16; Jul 29 statement re-fetched and confirms 3.50-3.75% plus 9-3 vote (Hammack/Kashkari/Logan preferred +25bp). BoC press page re-fetched: Sep 2 decision; rate table and Jul 15 statement confirm 2.25%. CME FedWatch request was genuinely attempted at 01:12 ET but returned the host's 600-byte IP-block response. Fed pricing therefore uses ZQU26.CBT official Aug 31 settle 96.295 (Sep avg 3.705%; post-FOMC about 3.796%) and remains 0.05 cut / 0.20 hold / 0.75 hike. The BoC CORRA page was fetched, but it does not expose a verifiable three-way Sep 2 decision probability distribution; desk OIS proxy remains 0.30 cut / 0.65 hold / 0.05 hike. Because both requested primary probability panels were unavailable, as_of is intentionally retained at 2026-08-31T13:05:00-04:00 so the Sep 1 archive is stale=true rather than pretending complete verification. Market strip refreshed to official Aug 31 daily closes via yfinance observed 01:13 ET; Sep 1 overnight futures/FX quotes were observed but not substituted for official closes. Fresh FXStreet calendar: 83 events (24 HIGH / 59 MEDIUM), with Barr Sep 1 and Ivey PMI Sep 4 added to watcher calendar; unverified out-of-window Sep 11 CPI removed.",
+  "version": "2026-09-02-001",
+  "verification_note": "Wed 2026-09-02 01:35 ET cron (run 1 of day / 00:00 ET slot; version -001). INCREMENTAL REFRESH. Fed schedule re-fetched from federalreserve.gov: next FOMC Sep 15-16; Jul 29 statement remains the latest and confirms 3.50-3.75% plus the 9-3 vote. Fed speech index was checked: Barr's Sep 1 speech was delivered but was about second-chance lending and contained no monetary-policy signal. BoC primary pages re-fetched: Sep 2 decision at 09:45 ET and press conference about 10:30 ET remain pending; current rate remains 2.25% from Jul 15. CME FedWatch was genuinely attempted but remained IP-blocked. Fed pricing uses ZQU26.CBT Sep 1 official settle 96.2925 (Sep implied average 3.7075%) and is held at 0.05 cut / 0.20 hold / 0.75 hike. A live TMX CORRA futures quote and BoC CORRA pages were checked, but neither exposed a defensible public three-way Sep 2 decision distribution; the prior desk proxy 0.30 cut / 0.65 hold / 0.05 hike is retained. Because both requested primary probability panels remain incomplete, as_of is intentionally retained at 2026-08-31T13:05:00-04:00 so this Sep 2 archive is stale=true. Fresh FXStreet calendar: 81 events (21 HIGH / 60 MEDIUM). Sep 1 actuals cross-checked against TradingEconomics: US ISM manufacturing 54.6 vs 55.2 forecast / 55.6 previous; prices paid 71.1 vs 72.0 / 71.1; JOLTS 7.271M vs 7.300M / 7.359M; Canada manufacturing PMI 53.0 vs 52.7 TradingEconomics forecast / 53.5 previous. Market strip refreshed to official Sep 1 daily closes via yfinance observed 01:32 ET.",
   "timezone": "America/Toronto",
   "meetings": {
     "fed": {
@@ -18,10 +18,10 @@
         "cut_25bp": 0.05,
         "hold": 0.2,
         "hike_25bp": 0.75,
-        "source": "ZQU26.CBT 2026-08-31 official daily settle via yfinance (CME FedWatch IP-blocked); 3-way solve anchored to verified 3.625% mid",
+        "source": "ZQU26.CBT 2026-09-01 official daily settle via yfinance (CME FedWatch IP-blocked); 3-way desk solve anchored to verified 3.625% mid",
         "source_url": "https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html",
-        "as_of_pricing": "2026-08-31T16:00:00-04:00",
-        "proxy_check": "ZQU26.CBT Aug 31 official settle 96.295 -> Sep implied avg FF 3.705%; 16 pre-days at 3.625 + 14 post-days implies post-FOMC ~3.796%. Cross-check ZQV26 96.200 and ZQX26 96.140. Distribution held at cut 0.05 / hold 0.20 / hike 0.75; CME page returned IP-block response at 2026-09-01 01:12 ET.",
+        "as_of_pricing": "2026-09-01T16:00:00-04:00",
+        "proxy_check": "ZQU26.CBT Sep 1 official settle 96.2925 -> Sep implied average FF 3.7075%; cross-check ZQV26 96.195 and ZQX26 96.130. Distribution held at cut 0.05 / hold 0.20 / hike 0.75; CME page remained IP-blocked at 2026-09-02 01:27 ET.",
         "proxy_source_url": "https://finance.yahoo.com/quote/ZQ=F",
         "implied_rate_before": 3.625,
         "implied_rate_after": 3.8
@@ -43,10 +43,10 @@
         "source": "OIS / implied via Fed-BoC spread (BoC CORRA panel not public since BAX to CORRA migration; carried forward + WTI/USDCAD adjuster)",
         "source_url": "https://www.bankofcanada.ca/markets/interest-rates/",
         "as_of_pricing": "2026-08-31T16:00:00-04:00",
-        "proxy_check": "BoC target 2.25% and Sep 2 decision re-verified 2026-09-01 01:12 ET from bankofcanada.ca. Public CORRA page fetched but no three-way meeting distribution exposed; carried forward 0.30 cut / 0.65 hold / 0.05 hike. Aug 31 official closes: WTI 85.76, USDCAD 1.3899 daily row, ZEB.TO 73.72.",
+        "proxy_check": "BoC target 2.25% and Sep 2 decision time re-verified 2026-09-02 01:30 ET. TMX CORRA futures and BoC CORRA pages were fetched, but no defensible public three-way meeting distribution was exposed; retained 0.30 cut / 0.65 hold / 0.05 hike.",
         "implied_rate_before": 2.25,
         "implied_rate_after": 2.2,
-        "note": "STALE probability panel: no verifiable public three-way CORRA OIS distribution retrieved this run. Distribution carried forward; see verification_note."
+        "note": "STALE probability panel: no verifiable public three-way Sep 2 CORRA OIS distribution retrieved this run. Distribution carried forward; see verification_note."
       }
     }
   },
@@ -74,7 +74,7 @@
           "market_validation": [
             {
               "ticker": "IWM",
-              "label": "IWM -0.90% Mon i/d / -1.40% w",
+              "label": "-1.14% Tue close / -2.89% w",
               "type": "down"
             }
           ]
@@ -82,25 +82,25 @@
         {
           "id": "fed_dove_ism_20260821",
           "icon": "PMI",
-          "title": "ISM Manufacturing Back in Contraction",
-          "summary": "Factories are shrinking again — demand is cooling, not overheating.",
-          "published_at_toronto": "2026-08-21T10:00:00-04:00",
-          "source": "ISM / S&P Global",
-          "source_url": "https://www.pmi.spglobal.com/",
+          "title": "Manufacturing Expansion Cools Slightly",
+          "summary": "ISM stayed in expansion at 54.6, but missed forecast and slowed from July.",
+          "published_at_toronto": "2026-09-01T10:00:00-04:00",
+          "source": "ISM via FXStreet / TradingEconomics calendar",
+          "source_url": "https://tradingeconomics.com/united-states/business-confidence",
           "importance": "HIGH",
-          "weight": 1.5,
+          "weight": 0.5,
           "data": {
-            "actual": "48.7",
-            "forecast": "49.5",
-            "previous": "49.1",
-            "delta_label": "miss -0.8",
-            "delta_type": "miss"
+            "actual": "54.6",
+            "forecast": "55.2",
+            "previous": "55.6",
+            "delta_label": "miss -0.6; still expansion",
+            "delta_type": "neutral"
           },
-          "reason": "Sub-50 S&P Global flash manufacturing (48.7), soft orders and employment point to weaker demand, while lower prices paid reduce the inflation obstacle to easing. Arbiter lands TOMORROW: Sep 1 ISM mfg fcst 55.2 (prev 55.6) per fresh FXStreet fetch; ISM proper printed 55.6 last release. Chicago PMI dropped from FXStreet window without a confirmed actual — removed from watcher calendar.",
+          "reason": "Sep 1 ISM manufacturing eased to 54.6 from 55.6 and missed the 55.2 forecast, but remained clearly above 50. The prior contraction thesis is no longer valid; stable id retained on its original side at 0.5 only.",
           "market_validation": [
             {
               "ticker": "XLI",
-              "label": "XLI -1.15% Mon i/d / -1.73% w",
+              "label": "-1.37% Tue close / -3.18% w",
               "type": "down"
             }
           ]
@@ -126,8 +126,8 @@
           "market_validation": [
             {
               "ticker": "QQQ",
-              "label": "QQQ +0.42% w (Fri close)",
-              "type": "up"
+              "label": "-1.27% Tue close / -0.43% w",
+              "type": "down"
             }
           ]
         },
@@ -135,24 +135,24 @@
           "id": "fed_dove_equities_20260827",
           "icon": "EQ",
           "title": "Equity Rally Confirms Risk-On Into Jackson Hole",
-          "summary": "Aug 31 close: SPY -0.30%, QQQ +0.05%, IWM -1.96%; small caps remained the weak link.",
+          "summary": "Sep 1 risk-off close: SPY -0.69%, QQQ -1.27%, IWM -1.14%.",
           "published_at_toronto": "2026-08-27T16:00:00-04:00",
           "source": "yfinance close",
           "source_url": "https://finance.yahoo.com/quote/SPY",
           "importance": "MEDIUM",
           "weight": 1.0,
           "data": {
-            "actual": "SPY 767.05 / QQQ 716.76 / IWM 293.93 (Mon close)",
+            "actual": "SPY 761.78 / QQQ 707.64 / IWM 290.57 (Tue close)",
             "forecast": "SPY <760 / QQQ <700",
-            "previous": "SPY 769.35 / QQQ 716.43 / IWM 295.75 (Fri close)",
-            "delta_label": "-0.30% / +0.05% / -1.96% Mon close",
-            "delta_type": "neutral"
+            "previous": "SPY 767.05 / QQQ 716.76 / IWM 293.93",
+            "delta_label": "-0.69% / -1.27% / -1.14% Tue",
+            "delta_type": "miss"
           },
-          "reason": "Official Aug 31 closes via yfinance confirm a second soft post-Warsh session: SPY and IWM fell while QQQ was nearly flat. Stable ID retained at weight 1.0; no side flip.",
+          "reason": "Sep 1 official closes extended the risk-off move across large caps, tech and small caps. Stable id remains dovish at weight 1.0 as tighter financial conditions validate the growth-risk side.",
           "market_validation": [
             {
               "ticker": "IWM",
-              "label": "IWM -1.96% Mon close / -2.01% w",
+              "label": "-1.14% Tue close / -2.89% w",
               "type": "down"
             }
           ]
@@ -161,24 +161,24 @@
           "id": "fed_dove_oil_crash_20260825",
           "icon": "OIL",
           "title": "Oil Demand-Scare — Cumulative Hit Intact",
-          "summary": "WTI 85.36 Mon intraday (+2.4% vs Fri settle 83.40) — two-day rebound challenges the demand-scare leg; weekly -4.2% hit intact.",
+          "summary": "WTI surged to $90.22 on Sep 1, invalidating the prior demand-scare signal.",
           "published_at_toronto": "2026-08-27T16:00:00-04:00",
           "source": "yfinance CL=F / EIA WTI",
           "source_url": "https://finance.yahoo.com/quote/CL=F",
           "importance": "HIGH",
-          "weight": 1.0,
+          "weight": 0.5,
           "data": {
-            "actual": "WTI 85.76 Aug 31 settle",
-            "forecast": "85.0",
-            "previous": "83.40 Aug 28 settle",
-            "delta_label": "+2.83% Mon / weekly draw partly reversed",
-            "delta_type": "neutral"
+            "actual": "WTI 90.22 Sep 1 settle",
+            "forecast": "<85",
+            "previous": "85.76 Aug 31 settle",
+            "delta_label": "+5.20% Tue / +8.95% w",
+            "delta_type": "beat"
           },
-          "reason": "The weekly -4.20% demand-scare repricing (official Fri close 83.40) still stands, but oil has now rebounded two sessions running (Sun reopen 85.34 -> Mon 85.36, +2.35% vs settle). Disinflation impulse fading at the margin; weight trimmed 1.5 -> 1.0. A settle back above 86 flips this neutral.",
+          "reason": "WTI's Sep 1 surge above $90 invalidated the demand-scare interpretation. Stable id is retained on its original side at the minimum 0.5; the live oil signal is now hawkish/inflationary.",
           "market_validation": [
             {
               "ticker": "XLE",
-              "label": "XLE +2.04% Mon close / +1.35% w",
+              "label": "+1.27% Tue close / +4.37% w",
               "type": "up"
             }
           ]
@@ -187,20 +187,20 @@
           "id": "fed_dove_vix_20260827",
           "icon": "VIX",
           "title": "VIX at Multi-Week Low — Calmest Tape Pre-Jackson Hole",
-          "summary": "VIX closed 14.92 on Aug 31: volatility stayed low despite rate volatility.",
+          "summary": "VIX jumped to 16.34 on Sep 1 as equities sold off.",
           "published_at_toronto": "2026-08-27T16:00:00-04:00",
           "source": "yfinance ^VIX",
           "source_url": "https://finance.yahoo.com/quote/%5EVIX",
           "importance": "MEDIUM",
           "weight": 1.0,
           "data": {
-            "actual": "VIX 14.92 (Mon close)",
+            "actual": "VIX 16.34 (Tue close)",
             "forecast": ">17",
-            "previous": "14.51 (prior valid yfinance close)",
-            "delta_label": "+2.83% Mon close",
-            "delta_type": "neutral"
+            "previous": "14.92",
+            "delta_label": "+9.52% Tue",
+            "delta_type": "miss"
           },
-          "reason": "VIX closed 14.92 on Aug 31, still below 16. Low absolute volatility keeps this a modest 1.0 dovish/risk-tolerance signal.",
+          "reason": "VIX rose above 16 as equities sold off. It remains below a stress regime, so the risk-off dovish signal stays at 1.0.",
           "market_validation": []
         },
         {
@@ -226,6 +226,36 @@
             "MEDIUM",
             "UoM"
           ]
+        },
+        {
+          "id": "fed_dove_jolts_20260901",
+          "icon": "JOLTS",
+          "title": "Job Openings Edge Lower",
+          "summary": "JOLTS openings fell to 7.271M, slightly below forecast and the prior month.",
+          "published_at_toronto": "2026-09-01T10:00:00-04:00",
+          "source": "BLS JOLTS via FXStreet / TradingEconomics calendar",
+          "source_url": "https://tradingeconomics.com/united-states/job-offers",
+          "importance": "MEDIUM",
+          "weight": 1.0,
+          "data": {
+            "actual": "7.271M",
+            "forecast": "7.300M",
+            "previous": "7.359M",
+            "delta_label": "miss -0.029M; -0.088M m/m",
+            "delta_type": "miss"
+          },
+          "reason": "Openings declined 88k from the prior month and undershot consensus by 29k. The miss is modest, so it adds a 1.0 dovish labour-demand signal rather than displacing Friday payrolls as the main catalyst.",
+          "market_validation": [
+            {
+              "ticker": "IWM",
+              "label": "-1.14% Tue close / -2.89% w",
+              "type": "down"
+            }
+          ],
+          "tags": [
+            "MEDIUM",
+            "JOLTS"
+          ]
         }
       ],
       "hawkish": [
@@ -250,8 +280,8 @@
           "market_validation": [
             {
               "ticker": "XLF",
-              "label": "XLF +0.38% d / +1.08% w",
-              "type": "up"
+              "label": "-0.88% Tue close / -1.90% w",
+              "type": "down"
             }
           ]
         },
@@ -276,7 +306,7 @@
           "market_validation": [
             {
               "ticker": "GLD",
-              "label": "GLD -3.24% d / -3.42% w",
+              "label": "-2.86% Tue close / -7.32% w",
               "type": "down"
             }
           ]
@@ -305,24 +335,24 @@
           "id": "fed_hawk_gold_20260827",
           "icon": "Au",
           "title": "Gold's Record Run — Inflation-Hedge Bid Persists",
-          "summary": "GC=F settled $4,431.1 Aug 31, firmly below $4,500; the old record-run signal remains broken.",
+          "summary": "Gold futures settled $4,348 on Sep 1; the old record-run signal remains broken.",
           "published_at_toronto": "2026-08-27T16:00:00-04:00",
           "source": "yfinance close (GC=F)",
           "source_url": "https://finance.yahoo.com/quote/GC=F",
           "importance": "MEDIUM",
           "weight": 0.5,
           "data": {
-            "actual": "GC=F 4431.1 Mon settle / GLD 408.42",
+            "actual": "GC=F 4348.0 / GLD 396.75 (Tue close)",
             "forecast": "GC=F <4500",
-            "previous": "GC=F 4478.1 / GLD 408.89",
-            "delta_label": "GC -1.05% Mon settle",
+            "previous": "GC=F 4431.1 / GLD 408.42",
+            "delta_label": "GC -1.88% / GLD -2.86% Tue",
             "delta_type": "miss"
           },
-          "reason": "Official Aug 31 settlement remained below $4,500. Stable ID retained at 0.5 for history; no stronger hawkish inference is warranted.",
+          "reason": "Gold extended its decline below $4,500. Stable id remains 0.5 for history; this no longer carries a strong hawkish inflation-hedge interpretation.",
           "market_validation": [
             {
               "ticker": "GLD",
-              "label": "GLD -0.11% Mon close / -4.28% w",
+              "label": "-2.86% Tue close / -7.32% w",
               "type": "down"
             }
           ]
@@ -366,30 +396,60 @@
           "id": "fed_hawk_long_end_20260831",
           "icon": "30Y",
           "title": "Long-End Flips Hawkish — 10Y Re-takes 4.75%",
-          "summary": "10Y 4.758% / 30Y 5.249% at Aug 31 close: 10Y held above the 4.75% flip line.",
+          "summary": "10Y 4.796% / 30Y 5.268% at Sep 1 close: the long-end hawkish move extended.",
           "published_at_toronto": "2026-08-31T13:00:00-04:00",
           "source": "US Treasury market via yfinance ^TNX/^TYX",
           "source_url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2026",
           "importance": "MEDIUM",
           "weight": 1.0,
           "data": {
-            "actual": "10Y 4.758 / 30Y 5.249 (Mon close)",
+            "actual": "10Y 4.796 / 30Y 5.268 (Tue close)",
             "forecast": "10Y <4.75",
-            "previous": "10Y 4.672 / 30Y 5.191 (prior valid close)",
-            "delta_label": "10Y +8.6bp / 30Y +5.8bp",
+            "previous": "10Y 4.758 / 30Y 5.249",
+            "delta_label": "10Y +3.8bp / 30Y +1.9bp",
             "delta_type": "beat"
           },
-          "reason": "Aug 31 official yfinance closes kept the 10Y above the prior driver flip condition at 4.75%. The new hawkish ID remains at weight 1.0.",
+          "reason": "Sep 1 official yfinance closes extended the move above the 4.75% flip line. Stable hawkish id remains at 1.0; TLT fell 0.79%.",
           "market_validation": [
             {
               "ticker": "TLT",
-              "label": "TLT -0.73% Mon close / +0.57% w",
+              "label": "-0.79% Tue close / -1.92% w",
               "type": "down"
             }
           ],
           "tags": [
             "MEDIUM",
             "rates"
+          ]
+        },
+        {
+          "id": "fed_hawk_ism_20260901",
+          "icon": "ISM",
+          "title": "Manufacturing Expansion and Prices Stay Hot",
+          "summary": "ISM held at 54.6 and prices paid stayed at 71.1 — growth cooled, but inflation pressure did not.",
+          "published_at_toronto": "2026-09-01T10:00:00-04:00",
+          "source": "ISM via FXStreet / TradingEconomics calendar",
+          "source_url": "https://tradingeconomics.com/united-states/business-confidence",
+          "importance": "HIGH",
+          "weight": 1.5,
+          "data": {
+            "actual": "PMI 54.6 / prices 71.1",
+            "forecast": "55.2 / 72.0",
+            "previous": "55.6 / 71.1",
+            "delta_label": "growth miss; prices still elevated",
+            "delta_type": "neutral"
+          },
+          "reason": "Headline activity stayed well above 50 while prices paid remained 71.1. The mixed print does not justify a 2.0+ weight, but the combination supports the Fed's wait-or-hike bias ahead of payrolls.",
+          "market_validation": [
+            {
+              "ticker": "TLT",
+              "label": "-0.79% Tue close / -1.92% w",
+              "type": "down"
+            }
+          ],
+          "tags": [
+            "HIGH",
+            "ISM"
           ]
         }
       ]
@@ -417,7 +477,7 @@
           "market_validation": [
             {
               "ticker": "XLI",
-              "label": "XLI -1.73% w (Fri close)",
+              "label": "-1.37% Tue close / -3.18% w",
               "type": "down"
             }
           ]
@@ -445,21 +505,21 @@
         {
           "id": "boc_dove_global_pmi_20260821",
           "icon": "PMI",
-          "title": "Global Manufacturing Pullback",
-          "summary": "Global factory slowdown leads Canadian exports lower.",
-          "published_at_toronto": "2026-08-21T10:00:00-04:00",
-          "source": "Global PMI releases",
-          "source_url": "https://www.pmi.spglobal.com/",
+          "title": "Canada Manufacturing Growth Moderates",
+          "summary": "Canada PMI eased to 53.0 from 53.5 but remained in expansion and beat the 52.7 alternative forecast.",
+          "published_at_toronto": "2026-09-01T09:30:00-04:00",
+          "source": "S&P Global Canada PMI via FXStreet / TradingEconomics",
+          "source_url": "https://tradingeconomics.com/canada/manufacturing-pmi",
           "importance": "MEDIUM",
-          "weight": 1.0,
+          "weight": 0.5,
           "data": {
-            "actual": "US ISM 48.7",
-            "forecast": "49.5",
-            "previous": "49.1",
-            "delta_label": "miss -0.8",
-            "delta_type": "miss"
+            "actual": "53.0",
+            "forecast": "52.7 (TradingEconomics)",
+            "previous": "53.5",
+            "delta_label": "-0.5 m/m; +0.3 vs forecast",
+            "delta_type": "neutral"
           },
-          "reason": "Global manufacturing weakness leads Canadian resource and industrial exports by one to two months. Sep 1 Canadian Mfg PMI (prev 53.5 per FXStreet) and US ISM (fcst 55.3) are the pre-decision reads.",
+          "reason": "The PMI slowed half a point but stayed expansionary and beat the available 52.7 forecast. The old global-pullback thesis is now only a 0.5 dovish residual ahead of the BoC decision.",
           "market_validation": []
         },
         {
@@ -506,24 +566,24 @@
           "id": "boc_dove_oil_crash_20260827",
           "icon": "OIL",
           "title": "Oil Demand-Scare — CAD Terms of Trade Eroded",
-          "summary": "WTI 85.36 Mon intraday (+2.4% vs Fri settle) — terms-of-trade erosion pausing; weekly -4.2% hit intact.",
+          "summary": "WTI surged to $90.22, reversing the terms-of-trade erosion behind this dovish driver.",
           "published_at_toronto": "2026-08-27T16:00:00-04:00",
           "source": "yfinance CL=F / EIA",
           "source_url": "https://finance.yahoo.com/quote/CL=F",
           "importance": "HIGH",
-          "weight": 1.0,
+          "weight": 0.5,
           "data": {
-            "actual": "WTI 85.76 Aug 31 settle",
-            "forecast": "85.0",
-            "previous": "83.40 Aug 28 settle",
-            "delta_label": "+2.83% Mon / weekly draw partly reversed",
-            "delta_type": "neutral"
+            "actual": "WTI 90.22 Sep 1 settle",
+            "forecast": "<85",
+            "previous": "85.76 Aug 31 settle",
+            "delta_label": "+5.20% Tue / +8.95% w",
+            "delta_type": "beat"
           },
-          "reason": "Oil's weekly slide (-4.20%, official close 83.40) eroded Canada's terms of trade, but the two-day rebound to 85.36 pauses the erosion. Weight trimmed 1.5 -> 1.0 ahead of the Sep 2 decision; net still dovish but fading.",
+          "reason": "The oil rebound has become a full reversal above $90. Stable id stays on its historical side at 0.5, but the current terms-of-trade signal now supports the BoC hawks.",
           "market_validation": [
             {
               "ticker": "XLE",
-              "label": "XLE +2.04% Mon close / +1.35% w",
+              "label": "+1.27% Tue close / +4.37% w",
               "type": "up"
             }
           ]
@@ -553,25 +613,25 @@
         {
           "id": "boc_hawk_oil_20260821",
           "icon": "WTI",
-          "title": "Energy Tailwind Reversed — Marked Neutral",
-          "summary": "WTI at $83.40 official close; energy tailwind has flipped to headwind for CAD.",
+          "title": "Energy Tailwind Reopens Above $90 WTI",
+          "summary": "WTI at $90.22 restores Canada's terms-of-trade and inflation tailwind.",
           "published_at_toronto": "2026-08-27T16:00:00-04:00",
           "source": "WTI close",
           "source_url": "https://www.eia.gov/dnav/pet/hist/RWTCa.htm",
           "importance": "MEDIUM",
-          "weight": 0.5,
+          "weight": 1.5,
           "data": {
-            "actual": "WTI 85.76 Aug 31 settle",
-            "forecast": "82.0",
-            "previous": "83.40 Aug 28 settle",
-            "delta_label": "+2.83% Mon / weekly draw partly reversed",
-            "delta_type": "neutral"
+            "actual": "WTI 90.22 Sep 1 settle",
+            "forecast": "85.0",
+            "previous": "85.76 Aug 31 settle",
+            "delta_label": "+5.20% Tue / +8.95% w",
+            "delta_type": "beat"
           },
-          "reason": "WTI rebounded to 85.36 Monday intraday (+2.35% vs Fri settle 83.40) — the headwind phase is easing. Kept at 0.5/neutral to preserve stable ID; a sustained move back above 86 would re-open the energy-tailwind case.",
+          "reason": "WTI surged 5.2% on Sep 1 and closed above $90, reopening the energy/inflation tailwind for Canada. Stable id raised from 0.5 to 1.5 on a confirmed official daily settlement.",
           "market_validation": [
             {
               "ticker": "XLE",
-              "label": "XLE +2.04% Mon close / +1.35% w",
+              "label": "+1.27% Tue close / +4.37% w",
               "type": "up"
             }
           ]
@@ -597,8 +657,8 @@
           "market_validation": [
             {
               "ticker": "ZEB.TO",
-              "label": "ZEB.TO +0.16% d / +1.40% w",
-              "type": "up"
+              "label": "-0.68% Tue close / -2.63% w",
+              "type": "down"
             }
           ]
         },
@@ -621,161 +681,127 @@
           },
           "reason": "ZQU26 Aug 31 settle 96.295 leaves this desk proxy at 0.05 cut / 0.20 hold / 0.75 hike; 10Y closed above 4.75%. Stable ID and 1.5 weight retained.",
           "market_validation": []
+        },
+        {
+          "id": "boc_hawk_pmi_20260901",
+          "icon": "PMI",
+          "title": "Canada Factory PMI Holds Expansion",
+          "summary": "A 53.0 factory PMI gives the BoC another reason to hold at 2.25%.",
+          "published_at_toronto": "2026-09-01T09:30:00-04:00",
+          "source": "S&P Global Canada PMI via FXStreet / TradingEconomics",
+          "source_url": "https://tradingeconomics.com/canada/manufacturing-pmi",
+          "importance": "MEDIUM",
+          "weight": 1.0,
+          "data": {
+            "actual": "53.0",
+            "forecast": "52.7 (TradingEconomics)",
+            "previous": "53.5",
+            "delta_label": "beat +0.3; expansion intact",
+            "delta_type": "beat"
+          },
+          "reason": "Manufacturing remained above 50 and exceeded the available forecast. It reinforces the GDP/retail resilience case for a hold, but the small surprise limits the weight to 1.0.",
+          "market_validation": [
+            {
+              "ticker": "ZEB.TO",
+              "label": "-0.68% Tue close / -2.63% w",
+              "type": "down"
+            }
+          ],
+          "tags": [
+            "MEDIUM",
+            "PMI"
+          ]
         }
       ]
     }
   },
   "market": {
     "since": "2026-07-30",
-    "as_of_close": "2026-08-31T16:00:00-04:00",
+    "as_of_close": "2026-09-01T16:00:00-04:00",
     "tickers": [
       {
         "symbol": "SPY",
-        "price": 767.05,
-        "label_1d": "-0.30% Mon close",
-        "label_1w": "+0.47% w",
+        "price": 761.78,
+        "label_1d": "-0.69% Tue close",
+        "label_1w": "-0.54% w",
         "type_1d": "down",
-        "type_1w": "up"
+        "type_1w": "down"
       },
       {
         "symbol": "QQQ",
-        "price": 716.76,
-        "label_1d": "+0.05% Mon close",
-        "label_1w": "+1.48% w",
-        "type_1d": "up",
-        "type_1w": "up"
+        "price": 707.64,
+        "label_1d": "-1.27% Tue close",
+        "label_1w": "-0.43% w",
+        "type_1d": "down",
+        "type_1w": "down"
       },
       {
         "symbol": "IWM",
-        "price": 293.93,
-        "label_1d": "-1.96% Mon close",
-        "label_1w": "-2.01% w",
+        "price": 290.57,
+        "label_1d": "-1.14% Tue close",
+        "label_1w": "-2.89% w",
         "type_1d": "down",
         "type_1w": "down"
       },
       {
         "symbol": "XLI",
-        "price": 175.13,
-        "label_1d": "-2.05% Mon close",
-        "label_1w": "-2.84% w",
+        "price": 172.73,
+        "label_1d": "-1.37% Tue close",
+        "label_1w": "-3.18% w",
         "type_1d": "down",
         "type_1w": "down"
       },
       {
         "symbol": "XLU",
-        "price": 42.23,
-        "label_1d": "-2.20% Mon close",
-        "label_1w": "-1.26% w",
-        "type_1d": "down",
+        "price": 42.56,
+        "label_1d": "+0.78% Tue close",
+        "label_1w": "-1.73% w",
+        "type_1d": "up",
         "type_1w": "down"
       },
       {
         "symbol": "XLF",
-        "price": 57.71,
-        "label_1d": "-0.67% Mon close",
-        "label_1w": "-0.88% w",
+        "price": 57.2,
+        "label_1d": "-0.88% Tue close",
+        "label_1w": "-1.90% w",
         "type_1d": "down",
         "type_1w": "down"
       },
       {
         "symbol": "XLE",
-        "price": 63.96,
-        "label_1d": "+2.04% Mon close",
-        "label_1w": "+1.35% w",
+        "price": 64.77,
+        "label_1d": "+1.27% Tue close",
+        "label_1w": "+4.37% w",
         "type_1d": "up",
         "type_1w": "up"
       },
       {
         "symbol": "TLT",
-        "price": 82.52,
-        "label_1d": "-0.73% Mon close",
-        "label_1w": "+0.57% w",
+        "price": 81.87,
+        "label_1d": "-0.79% Tue close",
+        "label_1w": "-1.92% w",
         "type_1d": "down",
-        "type_1w": "up"
+        "type_1w": "down"
       },
       {
         "symbol": "GLD",
-        "price": 408.42,
-        "label_1d": "-0.11% Mon close",
-        "label_1w": "-4.28% w",
+        "price": 396.75,
+        "label_1d": "-2.86% Tue close",
+        "label_1w": "-7.32% w",
         "type_1d": "down",
         "type_1w": "down"
       },
       {
         "symbol": "ZEB.TO",
-        "price": 73.72,
-        "label_1d": "-0.72% Mon close",
-        "label_1w": "+0.51% w",
+        "price": 73.22,
+        "label_1d": "-0.68% Tue close",
+        "label_1w": "-2.63% w",
         "type_1d": "down",
-        "type_1w": "up"
+        "type_1w": "down"
       }
     ]
   },
   "calendar": [
-    {
-      "id": "fed_barr_20260901",
-      "datetime_toronto": "2026-09-01T09:05:00-04:00",
-      "datetime_utc": "2026-09-01T13:05:00Z",
-      "currency": "USD",
-      "country": "US",
-      "event": "Fed's Barr Speech",
-      "impact": "MEDIUM",
-      "forecast": {},
-      "previous": {},
-      "logic": "Fresh FXStreet event. Watch for confirmation or pushback on Warsh’s price-first Jackson Hole framing.",
-      "hawk_if": "Inflation focus to Hawk",
-      "dove_if": "Labour concern to Dove"
-    },
-    {
-      "id": "cad_pmi_20260901",
-      "datetime_toronto": "2026-09-01T09:30:00-04:00",
-      "datetime_utc": "2026-09-01T13:30:00Z",
-      "currency": "CAD",
-      "country": "CA",
-      "event": "Canada Manufacturing PMI",
-      "impact": "MEDIUM",
-      "forecast": {},
-      "previous": {
-        "PMI": "53.5"
-      },
-      "logic": "Prev 53.5 per FXStreet (prior 49.0 figure was stale). A big drop would be the doves' last card before the Sep 2 decision.",
-      "dove_if": "Low to Dove"
-    },
-    {
-      "id": "jolts_20260901",
-      "datetime_toronto": "2026-09-01T10:00:00-04:00",
-      "datetime_utc": "2026-09-01T14:00:00Z",
-      "currency": "USD",
-      "country": "US",
-      "event": "JOLTS Job Openings",
-      "impact": "MEDIUM",
-      "forecast": {
-        "Openings": "7.30M"
-      },
-      "previous": {
-        "Openings": "7.359M"
-      },
-      "logic": "Fresh FXStreet fcst 7.30M (prev 7.359M). A drop below 7.3M would re-arm the labour-cracking narrative after the benign -79k benchmark revision.",
-      "dove_if": "Low to Dove"
-    },
-    {
-      "id": "ism_mfg_20260901",
-      "datetime_toronto": "2026-09-01T10:00:00-04:00",
-      "datetime_utc": "2026-09-01T14:00:00Z",
-      "currency": "USD",
-      "country": "US",
-      "event": "ISM Manufacturing PMI",
-      "impact": "HIGH",
-      "forecast": {
-        "PMI": "55.2"
-      },
-      "previous": {
-        "PMI": "55.6"
-      },
-      "logic": "Fresh FXStreet: Sep 1 10:00 ET, forecast 55.2 vs 55.6 previous. This is today’s arbiter between the strong prior ISM and weak S&P flash narrative.",
-      "hawk_if": "Strong to Hawk",
-      "dove_if": "Weak to Dove"
-    },
     {
       "id": "adp_20260902",
       "datetime_toronto": "2026-09-02T08:15:00-04:00",
@@ -785,7 +811,7 @@
       "event": "ADP Employment Change",
       "impact": "HIGH",
       "forecast": {
-        "ADP": "+47k"
+        "ADP": "+48k"
       },
       "previous": {
         "ADP": "+44k"
@@ -841,6 +867,20 @@
       },
       "logic": "8/27 printed 203k vs 208k fcst — near multi-decade lows on a 4-week basis per Warsh. A jump above 230k would revive the labour-crack trade.",
       "dove_if": "High to Dove"
+    },
+    {
+      "id": "fed_waller_20260903",
+      "datetime_toronto": "2026-09-03T08:30:00-04:00",
+      "datetime_utc": "2026-09-03T12:30:00Z",
+      "currency": "USD",
+      "country": "US",
+      "event": "Fed's Waller Speech",
+      "impact": "MEDIUM",
+      "forecast": {},
+      "previous": {},
+      "logic": "Fresh FXStreet event. Watch whether Waller validates or pushes back on Warsh's price-first Jackson Hole framing before payrolls.",
+      "hawk_if": "Inflation focus to Hawk",
+      "dove_if": "Labour concern to Dove"
     },
     {
       "id": "ism_services_20260903",
