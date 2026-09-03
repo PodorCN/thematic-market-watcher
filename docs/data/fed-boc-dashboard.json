@@ -1,7 +1,7 @@
 {
-  "as_of": "2026-09-02T14:12:00-04:00",
-  "version": "2026-09-02-002",
-  "verification_note": "Wed 2026-09-02 14:12 ET cron (run 3/4, 12:00 ET slot; version -002). FULL INTRADAY REFRESH. Fed schedule re-fetched from federalreserve.gov: next FOMC Sep 15-16; Jul 29 statement remains latest, held 3.50-3.75% with 9-3 vote. CME FedWatch page/endpoints were genuinely attempted but remain HTTP 403 from this host. Fed pricing therefore uses live Sep 2 ZQU26.CBT 96.295 and ZQV26.CBT 96.205 via yfinance: strip-implied pre-meeting rate 3.615%, next-month rate 3.795%, rounded three-way solve cut 0.00 / hold 0.30 / hike 0.70. BoC Sep 2 statement was fetched after release: held overnight target 2.25% (Bank Rate 2.50%, deposit 2.20%); next scheduled decision Oct 28 with MPR. TMX/MX CRA CORRA futures and BoC Valet CORRA/policy series were reachable; the Oct distribution is a scenario split rather than a direct single-meeting panel because the quarterly contract spans both Oct 28 and Dec 9: cut 0.00 / hold 0.40 / hike 0.60. Fresh FXStreet calendar: 83 events (21 HIGH / 62 MEDIUM). ADP printed +38k vs +47k forecast / +44k prior; factory orders +0.9% vs +0.6% / -0.3%. Market strip refreshed with live Sep 2 yfinance daily rows observed 14:12 ET. No source is carried forward as unavailable; stale=false.",
+  "as_of": "2026-09-03T02:04:00-04:00",
+  "version": "2026-09-03-001",
+  "verification_note": "Thu 2026-09-03 02:04 ET cron (run 1/4, 00:00 ET slot; version -001). FULL OVERNIGHT INCREMENTAL REFRESH. Fed schedule and Jul 29 statement re-fetched from federalreserve.gov: next FOMC Sep 15-16; target held 3.50-3.75% with 9-3 vote. CME FedWatch page genuinely attempted and returned HTTP 403. Fed pricing uses live Sep 3 ZQU26.CBT 96.300 and ZQV26.CBT 96.215 via yfinance: strip-implied pre-meeting rate 3.615%, next-month rate 3.785%, rounded cut 0.00 / hold 0.30 / hike 0.70. BoC Sep 2 statement and rate table re-fetched: held 2.25%; next decision Oct 28 with MPR. TMX CRAU26 97.660/97.665 and BoC Valet V39079/AVG.INTWO were reachable; the quarterly contract spans Oct 28 and Dec 9, so Oct remains an explicit scenario estimate cut 0.00 / hold 0.40 / hike 0.60 (not a direct single-meeting panel). Fresh FXStreet calendar: 56 events (15 HIGH / 41 MEDIUM); upcoming ISM services 54.3 vs 54.1, US NFP +58k vs -23k, Canada jobs +15.0k vs +75.1k, and Ivey s.a. 56.2 vs 55.1. BLS was HTTP 403; BEA schedule was HTTP 200 and lists Sep 3 trade data; Statistics Canada labour landing page was HTTP 200. Market strip refreshed to official Sep 2 closes observed Sep 3 02:04 ET. stale=false.",
   "timezone": "America/Toronto",
   "meetings": {
     "fed": {
@@ -20,11 +20,11 @@
         "hike_25bp": 0.7,
         "source": "CME Fed Funds futures proxy via yfinance (CME FedWatch HTTP 403)",
         "source_url": "https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html",
-        "as_of_pricing": "2026-09-02T14:12:00-04:00",
-        "proxy_check": "ZQU26.CBT 96.295 and ZQV26.CBT 96.205 at Sep 2 14:12 ET. r0=2*(100-ZQU26)-(100-ZQV26)=3.615%; Oct implied 3.795%, about +18bp: rounded cut 0.00 / hold 0.30 / hike 0.70.",
+        "as_of_pricing": "2026-09-03T02:04:00-04:00",
+        "proxy_check": "ZQU26.CBT 96.300 and ZQV26.CBT 96.215 observed Sep 3 02:04 ET. r0=2*(100-ZQU26)-(100-ZQV26)=3.615%; Oct implied 3.785%, about +17bp: rounded cut 0.00 / hold 0.30 / hike 0.70.",
         "proxy_source_url": "https://finance.yahoo.com/quote/ZQU26.CBT",
         "implied_rate_before": 3.615,
-        "implied_rate_after": 3.795
+        "implied_rate_after": 3.785
       }
     },
     "boc": {
@@ -42,8 +42,8 @@
         "hike_25bp": 0.6,
         "source": "TMX/MX 3-month CORRA futures + BoC Valet; Oct scenario estimate (quarterly contract spans Oct and Dec decisions)",
         "source_url": "https://www.m-x.ca/en/trading/data/quotes?symbol=CRA%2A",
-        "as_of_pricing": "2026-09-02T14:12:00-04:00",
-        "proxy_check": "Post-Sep-hold CRA quotes and BoC V39079/AVG.INTWO were reachable. Quarterly strip spans Oct 28 and Dec 9, so 0.00 cut / 0.40 hold / 0.60 hike is an explicitly rounded scenario estimate, not a direct exchange three-way panel.",
+        "as_of_pricing": "2026-09-03T02:04:00-04:00",
+        "proxy_check": "CRAU26 live bid/ask 97.660/97.665 at Sep 3 02:04 ET; V39079 remained 2.25 and latest AVG.INTWO fixings were 2.27 (Aug 31) / 2.29 (Sep 1). Contract spans Oct 28 and Dec 9, so 0.00 cut / 0.40 hold / 0.60 hike remains an explicitly rounded scenario estimate, not a direct exchange panel.",
         "proxy_source_url": "https://www.bankofcanada.ca/valet/observations/AVG.INTWO/json?start_date=2026-08-20",
         "implied_rate_before": 2.25,
         "implied_rate_after": 2.4,
@@ -75,8 +75,8 @@
           "market_validation": [
             {
               "ticker": "IWM",
-              "label": "-1.14% Tue close / -2.89% w",
-              "type": "down"
+              "label": "+1.18% Wed close / -1.65% w",
+              "type": "up"
             }
           ]
         },
@@ -101,8 +101,8 @@
           "market_validation": [
             {
               "ticker": "XLI",
-              "label": "-1.37% Tue close / -3.18% w",
-              "type": "down"
+              "label": "+0.03% Wed close / -4.19% w",
+              "type": "up"
             }
           ]
         },
@@ -127,8 +127,8 @@
           "market_validation": [
             {
               "ticker": "QQQ",
-              "label": "-1.27% Tue close / -0.43% w",
-              "type": "down"
+              "label": "+0.23% Wed close / -0.30% w",
+              "type": "up"
             }
           ]
         },
@@ -153,8 +153,8 @@
           "market_validation": [
             {
               "ticker": "IWM",
-              "label": "-1.14% Tue close / -2.89% w",
-              "type": "down"
+              "label": "+1.18% Wed close / -1.65% w",
+              "type": "up"
             }
           ]
         },
@@ -169,17 +169,17 @@
           "importance": "HIGH",
           "weight": 0.5,
           "data": {
-            "actual": "WTI 90.22 Sep 1 settle",
+            "actual": "WTI 91.01 Sep 2 settle",
             "forecast": "<85",
-            "previous": "85.76 Aug 31 settle",
-            "delta_label": "+5.20% Tue / +8.95% w",
+            "previous": "90.22 Sep 1 settle",
+            "delta_label": "+0.88% Wed / +10.68% w",
             "delta_type": "beat"
           },
-          "reason": "WTI's Sep 1 surge above $90 invalidated the demand-scare interpretation. Stable id is retained on its original side at the minimum 0.5; the live oil signal is now hawkish/inflationary.",
+          "reason": "WTI held above $90 at the Sep 2 settle, so the old demand-scare interpretation remains invalid. Stable id is retained on its original side at the minimum 0.5; the live oil signal is hawkish/inflationary.",
           "market_validation": [
             {
               "ticker": "XLE",
-              "label": "+1.27% Tue close / +4.37% w",
+              "label": "+0.51% Wed close / +4.28% w",
               "type": "up"
             }
           ]
@@ -195,13 +195,13 @@
           "importance": "MEDIUM",
           "weight": 1.0,
           "data": {
-            "actual": "VIX 16.34 (Tue close)",
+            "actual": "VIX 15.20 (Wed close)",
             "forecast": ">17",
-            "previous": "14.92",
-            "delta_label": "+9.52% Tue",
+            "previous": "16.34",
+            "delta_label": "-6.98% Wed",
             "delta_type": "miss"
           },
-          "reason": "VIX rose above 16 as equities sold off. It remains below a stress regime, so the risk-off dovish signal stays at 1.0.",
+          "reason": "VIX eased after Tuesday’s spike and remains below a stress regime, so this is only a 1.0 financial-conditions signal.",
           "market_validation": []
         },
         {
@@ -249,8 +249,8 @@
           "market_validation": [
             {
               "ticker": "IWM",
-              "label": "-1.14% Tue close / -2.89% w",
-              "type": "down"
+              "label": "+1.18% Wed close / -1.65% w",
+              "type": "up"
             }
           ],
           "tags": [
@@ -279,7 +279,7 @@
           "market_validation": [
             {
               "ticker": "IWM",
-              "label": "+1.02% Wed i/d / -1.81% w",
+              "label": "+1.18% Wed close / -1.65% w",
               "type": "up"
             }
           ],
@@ -311,8 +311,8 @@
           "market_validation": [
             {
               "ticker": "XLF",
-              "label": "-0.88% Tue close / -1.90% w",
-              "type": "down"
+              "label": "+0.80% Wed close / -1.03% w",
+              "type": "up"
             }
           ]
         },
@@ -337,8 +337,8 @@
           "market_validation": [
             {
               "ticker": "GLD",
-              "label": "-2.86% Tue close / -7.32% w",
-              "type": "down"
+              "label": "+1.52% Wed close / -4.40% w",
+              "type": "up"
             }
           ]
         },
@@ -373,18 +373,18 @@
           "importance": "MEDIUM",
           "weight": 0.5,
           "data": {
-            "actual": "GC=F 4348.0 / GLD 396.75 (Tue close)",
+            "actual": "GC=F 4366.3 / GLD 402.78 (Wed close)",
             "forecast": "GC=F <4500",
-            "previous": "GC=F 4431.1 / GLD 408.42",
-            "delta_label": "GC -1.88% / GLD -2.86% Tue",
+            "previous": "GC=F 4348.0 / GLD 396.75",
+            "delta_label": "GC +0.42% / GLD +1.52% Wed",
             "delta_type": "miss"
           },
-          "reason": "Gold extended its decline below $4,500. Stable id remains 0.5 for history; this no longer carries a strong hawkish inflation-hedge interpretation.",
+          "reason": "Gold rebounded modestly on Sep 2 but remained below $4,500 and down on the week. Stable id remains 0.5 for history; it is not a strong current hawkish inflation-hedge signal.",
           "market_validation": [
             {
               "ticker": "GLD",
-              "label": "-2.86% Tue close / -7.32% w",
-              "type": "down"
+              "label": "+1.52% Wed close / -4.40% w",
+              "type": "up"
             }
           ]
         },
@@ -434,18 +434,18 @@
           "importance": "MEDIUM",
           "weight": 1.0,
           "data": {
-            "actual": "10Y 4.796 / 30Y 5.268 (Tue close)",
+            "actual": "10Y 4.796 / 30Y 5.267 (Wed close)",
             "forecast": "10Y <4.75",
-            "previous": "10Y 4.758 / 30Y 5.249",
-            "delta_label": "10Y +3.8bp / 30Y +1.9bp",
+            "previous": "10Y 4.796 / 30Y 5.268",
+            "delta_label": "10Y +0.0bp / 30Y -0.1bp",
             "delta_type": "beat"
           },
-          "reason": "Sep 1 official yfinance closes extended the move above the 4.75% flip line. Stable hawkish id remains at 1.0; TLT fell 0.79%.",
+          "reason": "Sep 2 official yfinance closes held the 10Y above the 4.75% flip line while the 30Y was essentially unchanged. Stable hawkish id remains at 1.0.",
           "market_validation": [
             {
               "ticker": "TLT",
-              "label": "-0.79% Tue close / -1.92% w",
-              "type": "down"
+              "label": "+0.10% Wed close / -1.44% w",
+              "type": "up"
             }
           ],
           "tags": [
@@ -474,8 +474,8 @@
           "market_validation": [
             {
               "ticker": "TLT",
-              "label": "-0.79% Tue close / -1.92% w",
-              "type": "down"
+              "label": "+0.10% Wed close / -1.44% w",
+              "type": "up"
             }
           ],
           "tags": [
@@ -504,7 +504,7 @@
           "market_validation": [
             {
               "ticker": "XLI",
-              "label": "+0.03% Wed i/d / -4.19% w",
+              "label": "+0.03% Wed close / -4.19% w",
               "type": "up"
             }
           ],
@@ -538,8 +538,8 @@
           "market_validation": [
             {
               "ticker": "XLI",
-              "label": "-1.37% Tue close / -3.18% w",
-              "type": "down"
+              "label": "+0.03% Wed close / -4.19% w",
+              "type": "up"
             }
           ]
         },
@@ -644,7 +644,7 @@
           "market_validation": [
             {
               "ticker": "XLE",
-              "label": "+1.27% Tue close / +4.37% w",
+              "label": "+0.51% Wed close / +4.28% w",
               "type": "up"
             }
           ]
@@ -692,7 +692,7 @@
           "market_validation": [
             {
               "ticker": "XLE",
-              "label": "+0.36% Wed i/d / +4.12% w",
+              "label": "+0.51% Wed close / +4.28% w",
               "type": "up"
             }
           ]
@@ -718,8 +718,8 @@
           "market_validation": [
             {
               "ticker": "ZEB.TO",
-              "label": "-0.68% Tue close / -2.63% w",
-              "type": "down"
+              "label": "+1.98% Wed close / -0.24% w",
+              "type": "up"
             }
           ]
         },
@@ -764,8 +764,8 @@
           "market_validation": [
             {
               "ticker": "ZEB.TO",
-              "label": "-0.68% Tue close / -2.63% w",
-              "type": "down"
+              "label": "+1.98% Wed close / -0.24% w",
+              "type": "up"
             }
           ],
           "tags": [
@@ -799,7 +799,7 @@
             },
             {
               "ticker": "ZEB.TO",
-              "label": "+1.27% Wed i/d / -1.13% w",
+              "label": "+1.98% Wed close / -0.24% w",
               "type": "up"
             }
           ],
@@ -813,55 +813,55 @@
   },
   "market": {
     "since": "2026-07-30",
-    "as_of_close": "2026-09-02T14:12:00-04:00",
+    "as_of_close": "2026-09-02T16:00:00-04:00",
     "tickers": [
       {
         "symbol": "SPY",
-        "price": 765.23,
-        "chg_1d": 0.004529,
-        "chg_1w": -0.00111,
-        "label_1d": "+0.45% Wed i/d",
-        "label_1w": "-0.11% w",
+        "price": 765.16,
+        "chg_1d": 0.004437,
+        "chg_1w": -0.001201,
+        "label_1d": "+0.44% Wed close",
+        "label_1w": "-0.12% w",
         "type_1d": "up",
         "type_1w": "down"
       },
       {
         "symbol": "QQQ",
-        "price": 708.59,
-        "chg_1d": 0.001343,
-        "chg_1w": -0.003908,
-        "label_1d": "+0.13% Wed i/d",
-        "label_1w": "-0.39% w",
+        "price": 709.24,
+        "chg_1d": 0.002261,
+        "chg_1w": -0.002994,
+        "label_1d": "+0.23% Wed close",
+        "label_1w": "-0.30% w",
         "type_1d": "up",
         "type_1w": "down"
       },
       {
         "symbol": "IWM",
-        "price": 293.59,
-        "chg_1d": 0.010393,
-        "chg_1w": -0.018848,
-        "label_1d": "+1.04% Wed i/d",
-        "label_1w": "-1.88% w",
+        "price": 294.01,
+        "chg_1d": 0.011839,
+        "chg_1w": -0.016459,
+        "label_1d": "+1.18% Wed close",
+        "label_1w": "-1.65% w",
         "type_1d": "up",
         "type_1w": "down"
       },
       {
         "symbol": "XLI",
-        "price": 172.82,
-        "chg_1d": 0.000521,
-        "chg_1w": -0.041699,
-        "label_1d": "+0.05% Wed i/d",
-        "label_1w": "-4.17% w",
+        "price": 172.78,
+        "chg_1d": 0.000289,
+        "chg_1w": -0.041921,
+        "label_1d": "+0.03% Wed close",
+        "label_1w": "-4.19% w",
         "type_1d": "up",
         "type_1w": "down"
       },
       {
         "symbol": "XLU",
-        "price": 42.6,
-        "chg_1d": 0.00094,
-        "chg_1w": -0.016394,
-        "label_1d": "+0.09% Wed i/d",
-        "label_1w": "-1.64% w",
+        "price": 42.67,
+        "chg_1d": 0.002585,
+        "chg_1w": -0.019306,
+        "label_1d": "+0.26% Wed close",
+        "label_1w": "-1.93% w",
         "type_1d": "up",
         "type_1w": "down"
       },
@@ -870,48 +870,48 @@
         "price": 57.66,
         "chg_1d": 0.008042,
         "chg_1w": -0.010299,
-        "label_1d": "+0.80% Wed i/d",
+        "label_1d": "+0.80% Wed close",
         "label_1w": "-1.03% w",
         "type_1d": "up",
         "type_1w": "down"
       },
       {
         "symbol": "XLE",
-        "price": 65.0,
-        "chg_1d": 0.003474,
-        "chg_1w": 0.041086,
-        "label_1d": "+0.35% Wed i/d",
-        "label_1w": "+4.11% w",
+        "price": 65.1,
+        "chg_1d": 0.005095,
+        "chg_1w": 0.042768,
+        "label_1d": "+0.51% Wed close",
+        "label_1w": "+4.28% w",
         "type_1d": "up",
         "type_1w": "up"
       },
       {
         "symbol": "TLT",
-        "price": 81.88,
-        "chg_1d": 0.000166,
-        "chg_1w": -0.019006,
-        "label_1d": "+0.02% Wed i/d",
-        "label_1w": "-1.90% w",
+        "price": 81.95,
+        "chg_1d": 0.000977,
+        "chg_1w": -0.014448,
+        "label_1d": "+0.10% Wed close",
+        "label_1w": "-1.44% w",
         "type_1d": "up",
         "type_1w": "down"
       },
       {
         "symbol": "GLD",
-        "price": 401.55,
-        "chg_1d": 0.012103,
-        "chg_1w": -0.046919,
-        "label_1d": "+1.21% Wed i/d",
-        "label_1w": "-4.69% w",
+        "price": 402.78,
+        "chg_1d": 0.015198,
+        "chg_1w": -0.044005,
+        "label_1d": "+1.52% Wed close",
+        "label_1w": "-4.40% w",
         "type_1d": "up",
         "type_1w": "down"
       },
       {
         "symbol": "ZEB.TO",
-        "price": 74.15,
-        "chg_1d": 0.012701,
-        "chg_1w": -0.011333,
-        "label_1d": "+1.27% Wed i/d",
-        "label_1w": "-1.13% w",
+        "price": 74.67,
+        "chg_1d": 0.019803,
+        "chg_1w": -0.002416,
+        "label_1d": "+1.98% Wed close",
+        "label_1w": "-0.24% w",
         "type_1d": "up",
         "type_1w": "down"
       }
@@ -1046,7 +1046,7 @@
       "impact": "HIGH",
       "forecast": {},
       "previous": {},
-      "logic": "Live Sep 2 futures proxy: cut 0% / hold 30% / hike 70% (ZQU26/ZQV26; CME FedWatch HTTP 403). SEP and press conference settle the labour-versus-inflation debate.",
+      "logic": "Live Sep 3 futures proxy: cut 0% / hold 30% / hike 70% (ZQU26/ZQV26; CME FedWatch HTTP 403). SEP and press conference settle the labour-versus-inflation debate.",
       "hawk_if": "Showdown",
       "dove_if": "Showdown"
     }
