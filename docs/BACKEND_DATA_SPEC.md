@@ -141,6 +141,16 @@ Polymarket 取数优先级：`pricing.polymarket` 快照（如有）> 最新视�
 - 每次会议周期更新 `polymarket_event_slug`（slug 按会议变化，前端内置 map 只是 stopgap）。
 - 不填 `polymarket` 时前端实时请求 `https://gamma-api.polymarket.com/events?slug=...`，按 groupItemTitle 关键词 decrease / no change / increase 把 Yes 价格加总为 Cut/Hold/Hike。
 
+### 4.2 Scoring v2（前端计算，JSON 只给 base weight）
+
+- `weight` 仍是 0–3、0.5 步长的 **base** 值；前端按 `published_at_toronto` vs 快照 `as_of` 算年龄并衰减：
+  `≤7d ×1.0` · `8–14d ×0.75` · `15–30d ×0.5` · `>30d ×0.25`，effective = base × decay。
+- 排序、均值、两侧求和一律用 effective；卡片 Weight 显示 effective，hover 显示 base × decay 分解。
+- Net 归一化：`net = 3 × (hawk_eff − dove_eff) / total_eff`，恒落在 ±3 内；
+  +3 = 100% hike 侧权重，−3 = 100% cut 侧，0 = 平衡。方向词有 ±0.25 死区。
+- 对齐校验：rope 方向 vs `pricing` 的 market-implied 最大项（HOLD 容忍 |net|≤1），
+  一致显示 ✓ aligned，不一致显示 ⚠ divergence。bot 端无需改动。
+
 ## 5. `drivers` — 驱动卡片（核心）
 
 > **前端逻辑：** 按 `weight` 降序渲染，左=鸽 右=鹰；中轴净差 = Σ鹰 - Σ鸽，映射到 -3~+3 刻度；`weight` 0–3、0.5一档、1.5为中枢正态，大部分 1.0–2.0，2.5≈必加息（当前无）、3=单事件决胜。

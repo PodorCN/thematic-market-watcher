@@ -321,10 +321,11 @@ footer.site-footer{padding:56px;display:flex;justify-content:space-between;align
   </div>
 
   <div class="formula">
-    <div><b>Weight Formula</b> <span style="color:var(--color-neutral-500);font-size:12px">0–3, 0.5 steps · 3 = single event can flip the decision</span></div>
+    <div><b>Weight Formula</b> <span style="color:var(--color-neutral-500);font-size:12px">0–3 base, 0.5 steps · effective = base × age decay · net = 3×diff/total (±3 scale)</span></div>
     <span class="pill"><b>Deviation</b> actual vs forecast gap</span>
     <span class="pill"><b>Importance</b> CPI/GDP=High · PMI/Retail=Med-High</span>
     <span class="pill"><b>Surprise</b> vs consensus & vol</span>
+    <span class="pill"><b>Age decay</b> &le;7d ×1 · 8–14d ×0.75 · 15–30d ×0.5 · &gt;30d ×0.25</span>
     <div class="legend">
       <span><i class="dot" style="background:#3f424d"></i> 0 No impact</span>
       <span><i class="dot" style="background:rgba(145,132,217,.35)"></i> 0.5–1 Light</span>
@@ -1111,7 +1112,34 @@ function freshnessBadge(publishedAt,asOf){
   return `<span class="fresh ${tier}" title="Headline age vs snapshot ${escapeHTML(asOf||'now')}: ${escapeHTML(label)}">● ${escapeHTML(label)} · ${word}</span>`;
 }
 
+/* Scoring v2: base weight (0-3, 0.5 steps) decays with age so stale news
+   stops pulling the rope. Effective weight = base x decay:
+   age <=7d x1.0 · 8-14d x0.75 · 15-30d x0.5 · >30d x0.25.
+   Net score is normalized: net = 3 x (hawk_eff - dove_eff) / total_eff,
+   so +3 = 100% hike-side weight, -3 = 100% cut-side, 0 = balanced. */
+function driverAgeDays(publishedAt,asOf){
+  const published=publishedAt?new Date(publishedAt):null;
+  const reference=asOf?new Date(asOf):new Date();
+  if(!published||Number.isNaN(published.getTime())||Number.isNaN(reference.getTime())) return 0;
+  return Math.max(0,(reference-published)/86400000);
+}
+
+function decayFactor(ageDays){
+  if(ageDays<=7) return 1;
+  if(ageDays<=14) return 0.75;
+  if(ageDays<=30) return 0.5;
+  return 0.25;
+}
+
+function effectiveWeight(driver,asOf){
+  const base=Number(driver.weight||0);
+  const days=driverAgeDays(driver.published_at_toronto,asOf);
+  const decay=decayFactor(days);
+  return {base,eff:base*decay,decay,days};
+}
+
 function renderDriver(driver,direction,asOf){
+  const effW=effectiveWeight(driver,asOf);
   const data=driver.data||{};
   const deltaType=['beat','miss','neutral'].includes(data.delta_type)?data.delta_type:'neutral';
   const sourceURL=safeURL(driver.source_url);
@@ -1137,15 +1165,43 @@ function renderDriver(driver,direction,asOf){
       <div class="reason"><b>Why ${direction==='dovish'?'dovish':'hawkish'}?</b> ${escapeHTML(driver.reason||'Impact analysis pending.')}</div>
       <div class="source"><span class="badge ${direction==='dovish'?'dove':'hawk'}">${direction}</span>${source}${validations}</div>
     </div>
-    <span class="weight">Weight ${Number(driver.weight||0).toFixed(1)}</span>
+    <span class="weight" title="base ${effW.base.toFixed(1)} × ${effW.decay} (${Math.floor(effW.days)}d old) = ${effW.eff.toFixed(1)}">Weight ${effW.eff.toFixed(1)}</span>
   </div>`;
 }
 
-function renderDrivers(bank,bankDrivers,asOf){
+function marketTopOutcome(pricing){
+  if(!pricing) return null;
+  const cut=Math.round((pricing.cut_25bp||0)*100);
+  const hold=Math.round((pricing.hold||0)*100);
+  const hike=Math.max(0,100-cut-hold);
+  const top=Math.max(cut,hold,hike);
+  return {cut,hold,hike,top:cut===top?'CUT':hike===top?'HIKE':'HOLD'};
+}
+
+/* Rope-vs-market alignment: the rope is an independent fundamental read;
+   this flags whether it agrees with market-implied pricing. */
+function ropeMarketCheck(net,direction,pricing){
+  const m=marketTopOutcome(pricing);
+  if(!m) return '';
+  const mLabel=`futures ${m.top} ${Math.max(m.cut,m.hold,m.hike)}%`;
+  let mark,text;
+  if(m.top==='HOLD'){
+    if(Math.abs(net)<=1){mark='✓ aligned';text='market holds and rope is near balance';}
+    else{mark='⚠ divergence';text=`market holds but rope leans ${direction.toLowerCase()}`;}
+  }else{
+    const mdir=m.top==='CUT'?'Dovish':'Hawkish';
+    if(mdir===direction){mark='✓ aligned';text=`both lean ${direction.toLowerCase()}`;}
+    else{mark='⚠ divergence';text=`market prices ${m.top} but rope leans ${direction.toLowerCase()}`;}
+  }
+  return ` · Cross-check ${mLabel} → <b>${mark}</b> (${text})`;
+}
+
+function renderDrivers(bank,bankDrivers,asOf,pricing){
   const view=document.getElementById(`view-${bank}`);
   if(!view||!bankDrivers) return;
-  const dovish=[...(bankDrivers.dovish||[])].sort((a,b)=>(b.weight||0)-(a.weight||0));
-  const hawkish=[...(bankDrivers.hawkish||[])].sort((a,b)=>(b.weight||0)-(a.weight||0));
+  const eff=item=>effectiveWeight(item,asOf).eff;
+  const dovish=[...(bankDrivers.dovish||[])].sort((a,b)=>eff(b)-eff(a));
+  const hawkish=[...(bankDrivers.hawkish||[])].sort((a,b)=>eff(b)-eff(a));
   [['left',dovish,'dovish'],['right',hawkish,'hawkish']].forEach(([sideName,drivers,direction])=>{
     const side=view.querySelector(`.side.${sideName}`);
     if(!side) return;
@@ -1157,36 +1213,35 @@ function renderDrivers(bank,bankDrivers,asOf){
     }
     const count=side.querySelector('h3 span');
     if(count) count.textContent=`${drivers.length} driver${drivers.length===1?'':'s'} · Sorted by Weight`;
-    const mean=drivers.length?drivers.reduce((sum,item)=>sum+(Number(item.weight)||0),0)/drivers.length:0;
+    const mean=drivers.length?drivers.reduce((sum,item)=>sum+eff(item),0)/drivers.length:0;
     const sub=side.querySelector('.sub');
-    if(sub) sub.textContent=`${direction==='dovish'?'Miss / retreat':'Beat / strength'} = ${direction} fuel. Mean weight ${mean.toFixed(1)}; no forced side symmetry.`;
+    if(sub) sub.textContent=`${direction==='dovish'?'Miss / retreat':'Beat / strength'} = ${direction} fuel. Mean effective weight ${mean.toFixed(1)} (base x age decay); no forced side symmetry.`;
   });
 
-  const doveTotal=dovish.reduce((sum,item)=>sum+(Number(item.weight)||0),0);
-  const hawkTotal=hawkish.reduce((sum,item)=>sum+(Number(item.weight)||0),0);
+  const doveTotal=dovish.reduce((sum,item)=>sum+eff(item),0);
+  const hawkTotal=hawkish.reduce((sum,item)=>sum+eff(item),0);
   const total=doveTotal+hawkTotal;
-  const net=hawkTotal-doveTotal;
-  const clamped=Math.max(-3,Math.min(3,net));
-  const position=(3-clamped)/6*100;
-  const direction=net>0?'Hawkish':net<0?'Dovish':'Balanced';
+  const net=total>0 ? 3*(hawkTotal-doveTotal)/total : 0;
+  const position=(3-net)/6*100;
+  const direction=net>0.25?'Hawkish':net<-0.25?'Dovish':'Balanced';
   const share=total ? Math.round((net>=0?hawkTotal:doveTotal)/total*100) : 50;
   const knot=view.querySelector('.rope-knot');
   const bubble=view.querySelector('.rope-knot + div');
   if(knot){
     knot.style.setProperty('--pos',`${position}%`);
-    knot.title=`Net ${signed(net)} ${direction} — Hawkish ${hawkTotal.toFixed(1)} vs Dovish ${doveTotal.toFixed(1)}`;
-    knot.style.boxShadow=net>0?'0 0 0 6px rgba(245,158,11,.18), 0 4px 12px rgba(0,0,0,.4)':net<0?'0 0 0 6px rgba(145,132,217,.2), 0 4px 12px rgba(0,0,0,.4)':'0 0 0 6px rgba(100,116,139,.18), 0 4px 12px rgba(0,0,0,.4)';
+    knot.title=`Net ${signed(net)} ${direction} — Hawkish ${hawkTotal.toFixed(1)} vs Dovish ${doveTotal.toFixed(1)} (effective, age-decayed)`;
+    knot.style.boxShadow=net>0.25?'0 0 0 6px rgba(245,158,11,.18), 0 4px 12px rgba(0,0,0,.4)':net<-0.25?'0 0 0 6px rgba(145,132,217,.2), 0 4px 12px rgba(0,0,0,.4)':'0 0 0 6px rgba(100,116,139,.18), 0 4px 12px rgba(0,0,0,.4)';
   }
   if(bubble){
     bubble.style.top=`${position}%`;
-    bubble.style.background=net>0?'#f59e0b':net<0?'var(--color-accent)':'#3f424d';
+    bubble.style.background=net>0.25?'#f59e0b':net<-0.25?'var(--color-accent)':'#3f424d';
     bubble.textContent=`Net ${signed(net)} ${direction}`;
   }
   const summary=document.querySelector(`[data-summary="${bank}"]`);
   if(summary){
-    const mean=[...dovish,...hawkish].reduce((sum,item)=>sum+(Number(item.weight)||0),0)/(dovish.length+hawkish.length||1);
+    const mean=[...dovish,...hawkish].reduce((sum,item)=>sum+eff(item),0)/(dovish.length+hawkish.length||1);
     const bankName=bank==='fed'?'Fed':'BOC';
-    summary.innerHTML=`<b style="color:var(--color-text)">${bankName} Summary · Rope ${share}% ${direction} · Net ${signed(net)}</b> — Dovish ${dovish.length} / Weight ${doveTotal.toFixed(1)} vs Hawkish ${hawkish.length} / Weight ${hawkTotal.toFixed(1)} · Mean ${mean.toFixed(1)} · Drivers sorted by weight · Scale capped at ±3.`;
+    summary.innerHTML=`<b style="color:var(--color-text)">${bankName} Summary · Rope ${share}% ${direction} · Net ${signed(net)}</b> — Dovish ${dovish.length} / Weight ${doveTotal.toFixed(1)} vs Hawkish ${hawkish.length} / Weight ${hawkTotal.toFixed(1)} · Mean ${mean.toFixed(1)} · Sorted by effective weight · Scale ±3 (net = 3×diff/total)${ropeMarketCheck(net,direction,pricing)}.`;
   }
 }
 
@@ -1246,8 +1301,8 @@ function renderDashboard(payload,isHistorical=false){
   dashboardReferenceTime=isHistorical?new Date(payload.archived_at||payload.as_of):null;
   renderOdds('fed',payload.meetings.fed,{historical:isHistorical});
   renderOdds('boc',payload.meetings.boc,{historical:isHistorical});
-  renderDrivers('fed',payload.drivers.fed,payload.as_of);
-  renderDrivers('boc',payload.drivers.boc,payload.as_of);
+  renderDrivers('fed',payload.drivers.fed,payload.as_of,payload.meetings.fed?.pricing);
+  renderDrivers('boc',payload.drivers.boc,payload.as_of,payload.meetings.boc?.pricing);
   renderMarket(payload.market);
   renderCalendar(payload.calendar);
   const asOf=document.getElementById('as-of');
