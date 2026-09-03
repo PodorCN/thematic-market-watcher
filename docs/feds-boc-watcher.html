@@ -1020,9 +1020,9 @@ async function fetchPolymarketOdds(slug){
 function polySnapshot(pricing){
   const snap=pricing.polymarket;
   if(!snap) return null;
-  const cut=Math.round(Number(snap.cut_25bp??snap.cut||0)*100);
+  const cut=Math.round(Number((snap.cut_25bp??snap.cut)||0)*100);
   const hold=Math.round(Number(snap.hold||0)*100);
-  const hike=Math.round(Number(snap.hike_25bp??snap.hike||0)*100);
+  const hike=Math.round(Number((snap.hike_25bp??snap.hike)||0)*100);
   if(!Number.isFinite(cut+hold+hike)||(cut+hold+hike)<=0) return null;
   return {cut,hold,hike,
     url:safeURL(snap.event_url||snap.url)||(snap.event_slug?`https://polymarket.com/event/${snap.event_slug}`:''),
