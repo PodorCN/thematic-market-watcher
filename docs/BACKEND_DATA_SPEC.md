@@ -120,6 +120,27 @@ docs/data/
 
 ---
 
+### 4.1 `pricing.polymarket`（可选，Polymarket 快照）
+
+前端概率卡片显示两个来源：📊 Market-implied（`pricing.cut_25bp/hold/hike_25bp`）+ 🎲 Polymarket。
+Polymarket 取数优先级：`pricing.polymarket` 快照（如有）> 最新视图实时拉 Gamma API > 历史快照视图不展示（live-only）。
+
+```json
+"pricing": {
+  "cut_25bp": 0.0, "hold": 0.3, "hike_25bp": 0.7,
+  "polymarket_event_slug": "fed-decision-in-september-762",
+  "polymarket": {
+    "cut_25bp": 0.01, "hold": 0.58, "hike_25bp": 0.41,
+    "as_of": "2026-09-03T02:04:00-04:00",
+    "event_slug": "fed-decision-in-september-762",
+    "event_url": "https://polymarket.com/event/fed-decision-in-september-762"
+  }
+}
+```
+
+- 每次会议周期更新 `polymarket_event_slug`（slug 按会议变化，前端内置 map 只是 stopgap）。
+- 不填 `polymarket` 时前端实时请求 `https://gamma-api.polymarket.com/events?slug=...`，按 groupItemTitle 关键词 decrease / no change / increase 把 Yes 价格加总为 Cut/Hold/Hike。
+
 ## 5. `drivers` — 驱动卡片（核心）
 
 > **前端逻辑：** 按 `weight` 降序渲染，左=鸽 右=鹰；中轴净差 = Σ鹰 - Σ鸽，映射到 -3~+3 刻度；`weight` 0–3、0.5一档、1.5为中枢正态，大部分 1.0–2.0，2.5≈必加息（当前无）、3=单事件决胜。

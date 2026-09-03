@@ -79,6 +79,36 @@ h3{margin:0;font-size:16px;font-weight:600}
 .dot{width:8px;height:8px;border-radius:50%;display:inline-block}
 .last-meeting{margin-top:12px;font-size:12px;color:var(--color-neutral-400);background:#1a1c2b;border:1px dashed var(--color-neutral-800);border-radius:8px;padding:10px 12px;line-height:1.6}
 .last-meeting b{color:var(--color-text)}
+/* probability sources: market-implied vs polymarket */
+.src-block{background:#1a1c2b;border:1px solid var(--color-neutral-800);border-radius:10px;padding:12px 14px;margin-top:12px}
+.src-head{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap;font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-neutral-400);margin-bottom:10px}
+.src-head b{color:var(--color-text);font-size:12px}
+.src-head .asof{font-size:10px;color:var(--color-neutral-500);letter-spacing:.04em;text-transform:none;white-space:nowrap}
+.src-head a{color:var(--color-accent-300);white-space:nowrap}
+.src-nums{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px}
+.src-num{background:var(--color-card);border:1px solid var(--color-neutral-800);border-radius:8px;padding:8px 6px;text-align:center}
+.src-num .k{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-neutral-500)}
+.src-num .v{font-family:var(--font-mono);font-size:22px;font-weight:700;line-height:1.2;margin-top:2px;font-variant-numeric:tabular-nums}
+.src-num.cut .v{color:var(--color-accent-300)}
+.src-num.hold .v{color:var(--color-text)}
+.src-num.hike .v{color:#fca5a5}
+.src-rate{font-family:var(--font-mono);font-size:11px;color:var(--color-neutral-400);margin-top:8px;line-height:1.6}
+.src-rate a{color:var(--color-accent-300)}
+.src-note{font-size:12px;color:var(--color-neutral-500);padding:6px 2px}
+.verdict{margin-top:12px;font-size:13px;line-height:1.55;background:#1e2030;border:1px solid var(--color-neutral-800);border-left:3px solid var(--color-neutral-600);border-radius:0 8px 8px 0;padding:10px 12px;color:var(--color-neutral-300)}
+.verdict b{color:var(--color-text)}
+.verdict.agree{border-left-color:#34d399}
+.verdict.split{border-left-color:#f59e0b}
+/* driver headline readability: big title, date pill, freshness */
+.driver .title{font-weight:700;font-size:16px;line-height:1.4;padding-right:64px;letter-spacing:-.005em}
+.driver .title small{font-weight:400;color:var(--color-neutral-400);font-family:var(--font-mono);font-size:11px;margin-left:8px;white-space:normal}
+.date-line{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:2px 0 8px;padding-right:64px}
+.date-pill{font-family:var(--font-mono);font-size:12px;font-weight:600;color:var(--color-accent-300);background:rgba(145,132,217,.12);border:1px solid rgba(145,132,217,.3);border-radius:999px;padding:3px 10px;white-space:nowrap}
+.fresh{font-family:var(--font-mono);font-size:11px;font-weight:700;border-radius:999px;padding:3px 10px;border:1px solid;white-space:nowrap}
+.fresh.ok{color:#6ee7b7;background:rgba(52,211,153,.1);border-color:rgba(52,211,153,.35)}
+.fresh.warn{color:#fcd34d;background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.35)}
+.fresh.stale{color:#fca5a5;background:rgba(248,113,113,.1);border-color:rgba(248,113,113,.35)}
+.fresh.upcoming{color:#93c5fd;background:rgba(96,165,250,.1);border-color:rgba(96,165,250,.35)}
 /* weight formula */
 .formula{display:flex;gap:12px;flex-wrap:wrap;align-items:center;background:var(--color-card);border-radius:var(--radius-lg);padding:14px 16px;box-shadow:var(--shadow-sm)}
 .formula b{font-size:13px}
@@ -192,7 +222,10 @@ footer.site-footer{padding:56px;display:flex;justify-content:space-between;align
   .formula .legend{margin-left:0}
   .side{padding:14px 10px}
   .driver{padding:12px 10px;gap:8px}
-  .driver .title{padding-right:58px;overflow-wrap:anywhere}
+  .driver .title{padding-right:58px;overflow-wrap:anywhere;font-size:15px}
+  .date-line{padding-right:58px}
+  .date-pill{font-size:11px}
+  .src-num .v{font-size:18px}
   .data-grid{gap:4px;padding:8px 4px}
   .data-cell .val{font-size:12px;overflow-wrap:anywhere}
   .data-cell .delta{font-size:8px;padding:2px 4px}
@@ -231,24 +264,54 @@ footer.site-footer{padding:56px;display:flex;justify-content:space-between;align
 
   <div class="odds-grid">
     <div class="card odds-card fed">
-      <h3>🇺🇸 Fed · 9/16–17 FOMC <span style="margin-left:auto;font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#60a5fa;background:rgba(96,165,250,.12);border:1px solid rgba(96,165,250,.25);padding:3px 7px;border-radius:999px">FEDWATCH</span></h3>
-      <div class="meeting">Market pricing <b>Cut 25bp ~64%</b> · Hold 34% · Hike 2% <span class="muted">· 44% → Services beat → 52% → tariffs → 64%</span></div>
-      <div style="margin-top:12px">
-        <div class="bar-label"><span>Cut</span><span><b>64%</b> vs 36% Hold/Hike</span></div>
-        <div class="prob-bar"><i style="width:64%;background:var(--color-accent)"></i><i style="width:34%;background:#3f424d"></i><i style="width:2%;background:rgba(248,113,113,.25)"></i></div>
-        <div class="prob-legend"><span><i class="dot" style="background:var(--color-accent)"></i> Cut</span><span><i class="dot" style="background:#3f424d"></i> Hold</span><span><i class="dot" style="background:#fca5a5"></i> Hike</span><span style="margin-left:auto">OIS 4.33% → Implied 4.08% (-25bp)</span></div>
+      <h3>🇺🇸 Fed · Sep 15-16 FOMC <span style="margin-left:auto;font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#60a5fa;background:rgba(96,165,250,.12);border:1px solid rgba(96,165,250,.25);padding:3px 7px;border-radius:999px">Futures → HIKE 70%</span></h3>
+      <div class="src-block">
+        <div class="src-head"><span><b>📊 Market-implied</b></span><span class="asof">as of 09-03 02:04</span></div>
+        <div class="src-nums">
+          <div class="src-num cut"><div class="k">Cut 25bp</div><div class="v">0%</div></div>
+          <div class="src-num hold"><div class="k">Hold</div><div class="v">30%</div></div>
+          <div class="src-num hike"><div class="k">Hike 25bp</div><div class="v">70%</div></div>
+        </div>
+        <div class="prob-bar"><i style="width:0%;background:var(--color-accent)"></i><i style="width:30%;background:#3f424d"></i><i style="width:70%;background:#f87171"></i></div>
+        <div class="src-rate">3.62% → 3.79% (+17bp) · <a href="https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html" target="_blank" rel="noopener">CME Fed Funds futures proxy ↗</a></div>
       </div>
-      <div class="last-meeting"><b>7/30 Minutes:</b> 3 hawkish dissents against holding; 'services stickiness vs mfg/jobs cracks'. Post-meeting split: <b>services 56.8 (strong) vs mfg 48.7 (weak)</b>, 30Y 5.27%→5.33% pricing 'higher for longer'.</div>
+      <div class="src-block">
+        <div class="src-head"><span><b>🎲 Polymarket</b></span><span class="asof">indicative · Sep 3 <a href="https://polymarket.com/event/fed-decision-in-september-762" target="_blank" rel="noopener">open ↗</a></span></div>
+        <div class="src-nums">
+          <div class="src-num cut"><div class="k">Cut 25bp</div><div class="v">1%</div></div>
+          <div class="src-num hold"><div class="k">Hold</div><div class="v">58%</div></div>
+          <div class="src-num hike"><div class="k">Hike 25bp</div><div class="v">41%</div></div>
+        </div>
+        <div class="prob-bar"><i style="width:1%;background:var(--color-accent)"></i><i style="width:58%;background:#3f424d"></i><i style="width:41%;background:#f87171"></i></div>
+        <div class="src-rate">Live odds load automatically · ≈ Sep 3 values.</div>
+      </div>
+      <div class="verdict split"><b>⚖ Split:</b> futures lean <b>HIKE 70%</b> · Polymarket leans <b>HOLD 58%</b>.</div>
+      <div class="last-meeting"><b>2026-07-29:</b> Held at 3.50-3.75%. 9-3 dissent: Hammack, Kashkari, Logan preferred +25bp hike. Warsh's Aug 28 Jackson Hole speech validated the hawks: 'predominant focus right now should be on prices'.</div>
     </div>
     <div class="card odds-card boc">
-      <h3>🇨🇦 BOC · 9/17 Decision <span style="margin-left:auto;font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#fca5a5;background:rgba(248,113,113,.12);border:1px solid rgba(248,113,113,.25);padding:3px 7px;border-radius:999px">OIS</span></h3>
-      <div class="meeting">Market pricing <b>Cut 25bp ~41%</b> · Hold 54% · Hike 5% <span class="muted">· Retail beat 52%→41%, tariffs price Hold hawkish</span></div>
-      <div style="margin-top:12px">
-        <div class="bar-label"><span>Cut</span><span><b>41%</b> vs 59% Hold/Hike</span></div>
-        <div class="prob-bar"><i style="width:41%;background:var(--color-accent)"></i><i style="width:54%;background:#3f424d"></i><i style="width:5%;background:#fca5a5"></i></div>
-        <div class="prob-legend"><span><i class="dot" style="background:var(--color-accent)"></i> Cut</span><span><i class="dot" style="background:#3f424d"></i> Hold</span><span><i class="dot" style="background:#f87171"></i> Hike</span><span style="margin-left:auto">Overnight 2.75% → Implied 2.61% (-14bp)</span></div>
+      <h3>🇨🇦 BOC · Oct 28 Decision + MPR <span style="margin-left:auto;font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#fca5a5;background:rgba(248,113,113,.12);border:1px solid rgba(248,113,113,.25);padding:3px 7px;border-radius:999px">Futures → HIKE 60%</span></h3>
+      <div class="src-block">
+        <div class="src-head"><span><b>📊 Market-implied</b></span><span class="asof">as of 09-03 02:04</span></div>
+        <div class="src-nums">
+          <div class="src-num cut"><div class="k">Cut 25bp</div><div class="v">0%</div></div>
+          <div class="src-num hold"><div class="k">Hold</div><div class="v">40%</div></div>
+          <div class="src-num hike"><div class="k">Hike 25bp</div><div class="v">60%</div></div>
+        </div>
+        <div class="prob-bar"><i style="width:0%;background:var(--color-accent)"></i><i style="width:40%;background:#3f424d"></i><i style="width:60%;background:#f87171"></i></div>
+        <div class="src-rate">2.25% → 2.40% (+15bp) · <a href="https://www.m-x.ca/en/trading/data/quotes?symbol=CRA%2A" target="_blank" rel="noopener">CORRA futures (limited confidence) ↗</a></div>
       </div>
-      <div class="last-meeting"><b>7/30 Statement:</b> 'Trade uncertainty offsets domestic resilience'. Post: <b>retail +0.6% (3× beat)</b> vs <b>Sep 8 reciprocal tariffs</b> = 'hard data, soft outlook' tug, GDP 8/28 is decider.</div>
+      <div class="src-block">
+        <div class="src-head"><span><b>🎲 Polymarket</b></span><span class="asof">indicative · Sep 3 <a href="https://polymarket.com/event/bank-of-canada-decision-in-october-20260715203359314" target="_blank" rel="noopener">open ↗</a></span></div>
+        <div class="src-nums">
+          <div class="src-num cut"><div class="k">Cut 25bp</div><div class="v">5%</div></div>
+          <div class="src-num hold"><div class="k">Hold</div><div class="v">89%</div></div>
+          <div class="src-num hike"><div class="k">Hike 25bp</div><div class="v">5%</div></div>
+        </div>
+        <div class="prob-bar"><i style="width:5%;background:var(--color-accent)"></i><i style="width:89%;background:#3f424d"></i><i style="width:5%;background:#f87171"></i></div>
+        <div class="src-rate">Live odds load automatically · ≈ Sep 3 values.</div>
+      </div>
+      <div class="verdict split"><b>⚖ Split:</b> futures lean <b>HIKE 60%</b> · Polymarket leans <b>HOLD 89%</b>.</div>
+      <div class="last-meeting"><b>2026-09-02:</b> Held at 2.25%. Overnight held at 2.25% (Bank Rate 2.50%, deposit 2.20%); statement cited high energy prices, tariffs, tightened financial conditions, CPI near 3%.</div>
     </div>
   </div>
 
@@ -889,35 +952,161 @@ function signed(value){
   return `${number>0?'+':''}${number.toFixed(1)}`;
 }
 
-function renderOdds(bank,meeting){
+const POLY_API='https://gamma-api.polymarket.com/events?slug=';
+/* Fallback Polymarket event slugs per bank. The refresh bot should set
+   pricing.polymarket_event_slug each meeting cycle — this map is the stopgap. */
+const POLY_SLUGS_FALLBACK={fed:'fed-decision-in-september-762',boc:'bank-of-canada-decision-in-october-20260715203359314'};
+
+function shortSource(source){
+  return String(source||'Market').split('(')[0].trim().slice(0,44)||'Market';
+}
+
+function leanOf(prob){
+  const top=Math.max(prob.cut,prob.hold,prob.hike);
+  if(prob.cut===top) return 'CUT';
+  if(prob.hike===top) return 'HIKE';
+  return 'HOLD';
+}
+
+function srcBlockHTML(opts){
+  const total=(opts.cut+opts.hold+opts.hike)||1;
+  const width=value=>Math.max(0,Math.round(value/total*100));
+  return `<div class="src-block">
+    <div class="src-head"><span><b>${opts.icon} ${escapeHTML(opts.name)}</b></span><span class="asof">${opts.metaHTML}</span></div>
+    <div class="src-nums">
+      <div class="src-num cut"><div class="k">Cut 25bp</div><div class="v">${opts.cut}%</div></div>
+      <div class="src-num hold"><div class="k">Hold</div><div class="v">${opts.hold}%</div></div>
+      <div class="src-num hike"><div class="k">Hike 25bp</div><div class="v">${opts.hike}%</div></div>
+    </div>
+    <div class="prob-bar"><i style="width:${width(opts.cut)}%;background:var(--color-accent)"></i><i style="width:${width(opts.hold)}%;background:#3f424d"></i><i style="width:${width(opts.hike)}%;background:#f87171"></i></div>
+    ${opts.footHTML?`<div class="src-rate">${opts.footHTML}</div>`:''}
+  </div>`;
+}
+
+function verdictHTML(mi,poly,polyState){
+  if(!poly){
+    const note=polyState==='snapshot-na'
+      ? 'Polymarket is live-only — switch to Latest for it'
+      : polyState==='loading' ? 'Polymarket loading…' : 'Polymarket unreachable — futures above still current';
+    return `<div class="verdict"><b>Market-implied → ${leanOf(mi)}</b> · ${escapeHTML(note)}.</div>`;
+  }
+  const a=leanOf(mi),b=leanOf(poly);
+  const agree=a===b;
+  return `<div class="verdict ${agree?'agree':'split'}"><b>${agree?'✓ Agree':'⚖ Split'}:</b> futures lean <b>${a} ${Math.max(mi.cut,mi.hold,mi.hike)}%</b> · Polymarket leans <b>${b} ${Math.max(poly.cut,poly.hold,poly.hike)}%</b>.</div>`;
+}
+
+async function fetchPolymarketOdds(slug){
+  const response=await fetch(POLY_API+encodeURIComponent(slug),{cache:'no-store'});
+  if(!response.ok) throw new Error(`Polymarket HTTP ${response.status}`);
+  const payload=await response.json();
+  const event=Array.isArray(payload)?payload[0]:payload;
+  if(!event||!Array.isArray(event.markets)||!event.markets.length) throw new Error('Polymarket event has no markets');
+  const agg={cut:0,hold:0,hike:0};
+  event.markets.forEach(market=>{
+    let prices=[];
+    try{prices=JSON.parse(market.outcomePrices||'[]');}catch(ignore){}
+    const yes=Number(prices[0]);
+    if(!Number.isFinite(yes)||yes<0) return;
+    const text=`${market.groupItemTitle||''} ${market.question||''}`;
+    if(/decrease/i.test(text)) agg.cut+=yes;
+    else if(/no[\s-]?change/i.test(text)) agg.hold+=yes;
+    else if(/increase/i.test(text)) agg.hike+=yes;
+  });
+  const resolved=event.closed===true||event.markets.every(market=>market.closed===true);
+  return {cut:Math.round(agg.cut*100),hold:Math.round(agg.hold*100),hike:Math.round(agg.hike*100),
+    url:`https://polymarket.com/event/${event.slug}`,updatedAt:event.updatedAt||null,resolved};
+}
+
+function polySnapshot(pricing){
+  const snap=pricing.polymarket;
+  if(!snap) return null;
+  const cut=Math.round(Number(snap.cut_25bp??snap.cut||0)*100);
+  const hold=Math.round(Number(snap.hold||0)*100);
+  const hike=Math.round(Number(snap.hike_25bp??snap.hike||0)*100);
+  if(!Number.isFinite(cut+hold+hike)||(cut+hold+hike)<=0) return null;
+  return {cut,hold,hike,
+    url:safeURL(snap.event_url||snap.url)||(snap.event_slug?`https://polymarket.com/event/${snap.event_slug}`:''),
+    asOf:snap.as_of||snap.asof||''};
+}
+
+function polyBlockHTML(poly,isSnapshot){
+  const link=poly.url?` <a href="${escapeHTML(poly.url)}" target="_blank" rel="noopener">open ↗</a>`:'';
+  const meta=isSnapshot
+    ? `snapshot ${escapeHTML(String(poly.asOf||'').slice(0,10))}${link}`
+    : `live${poly.updatedAt?` · ${escapeHTML(formatToronto(poly.updatedAt,true))}`:''}${poly.resolved?' · resolved':''}${link}`;
+  const foot=isSnapshot
+    ? 'Locked at refresh — archives stay comparable.'
+    : 'Yes-share prices summed by bracket (50bp+ folded into the 25bp side).';
+  return srcBlockHTML({icon:'🎲',name:'Polymarket',metaHTML:meta,cut:poly.cut,hold:poly.hold,hike:poly.hike,footHTML:escapeHTML(foot)});
+}
+
+async function renderOdds(bank,meeting,opts={}){
   const card=document.querySelector(`.odds-card.${bank}`);
   if(!card||!meeting?.pricing) return;
   const pricing=meeting.pricing;
-  const cut=Math.round((pricing.cut_25bp||0)*100);
-  const hold=Math.round((pricing.hold||0)*100);
-  const hike=Math.max(0,100-cut-hold);
+  const mi={cut:Math.round((pricing.cut_25bp||0)*100),hold:Math.round((pricing.hold||0)*100)};
+  mi.hike=Math.max(0,100-mi.cut-mi.hold);
   const before=pricing.implied_rate_before ?? pricing.implied_before;
   const after=pricing.implied_rate_after ?? pricing.implied_after;
   const move=Number.isFinite(before)&&Number.isFinite(after) ? Math.round((after-before)*100) : null;
   const flag=bank==='fed'?'🇺🇸':'🇨🇦';
-  const sourceColor=bank==='fed'?'#60a5fa':'#fca5a5';
-  const sourceBg=bank==='fed'?'rgba(96,165,250,.12)':'rgba(248,113,113,.12)';
-  const sourceBorder=bank==='fed'?'rgba(96,165,250,.25)':'rgba(248,113,113,.25)';
+  const accent=bank==='fed'?'#60a5fa':'#fca5a5';
+  const accentBg=bank==='fed'?'rgba(96,165,250,.12)':'rgba(248,113,113,.12)';
+  const accentBorder=bank==='fed'?'rgba(96,165,250,.25)':'rgba(248,113,113,.25)';
   const rateText=Number.isFinite(before)&&Number.isFinite(after)
     ? `${before.toFixed(2)}% → ${after.toFixed(2)}% (${move>0?'+':''}${move}bp)`
     : 'Implied rate pending';
+  const proxyURL=safeURL(pricing.proxy_source_url||pricing.source_url);
+  const miFoot=`${escapeHTML(rateText)} · ${proxyURL?`<a href="${proxyURL}" target="_blank" rel="noopener">${escapeHTML(shortSource(pricing.source))} ↗</a>`:escapeHTML(shortSource(pricing.source))}`;
+  const snapshot=polySnapshot(pricing);
   card.innerHTML=`
-    <h3>${flag} ${escapeHTML(meeting.label)} <span style="margin-left:auto;font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:${sourceColor};background:${sourceBg};border:1px solid ${sourceBorder};padding:3px 7px;border-radius:999px">${escapeHTML(pricing.source||'Market')}</span></h3>
-    <div class="meeting">Market pricing <b>Cut 25bp ~${cut}%</b> · Hold ${hold}% · Hike ${hike}%</div>
-    <div style="margin-top:12px">
-      <div class="bar-label"><span>Cut</span><span><b>${cut}%</b> vs ${hold+hike}% Hold/Hike</span></div>
-      <div class="prob-bar"><i style="width:${cut}%;background:var(--color-accent)"></i><i style="width:${hold}%;background:#3f424d"></i><i style="width:${hike}%;background:#fca5a5"></i></div>
-      <div class="prob-legend"><span><i class="dot" style="background:var(--color-accent)"></i> Cut</span><span><i class="dot" style="background:#3f424d"></i> Hold</span><span><i class="dot" style="background:#f87171"></i> Hike</span><span style="margin-left:auto">${escapeHTML(rateText)}</span></div>
-    </div>
+    <h3>${flag} ${escapeHTML(meeting.label)} <span style="margin-left:auto;font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:${accent};background:${accentBg};border:1px solid ${accentBorder};padding:3px 7px;border-radius:999px">Futures → ${leanOf(mi)} ${Math.max(mi.cut,mi.hold,mi.hike)}%</span></h3>
+    ${srcBlockHTML({icon:'📊',name:'Market-implied',metaHTML:`as of ${escapeHTML(formatToronto(pricing.as_of_pricing,true))}`,cut:mi.cut,hold:mi.hold,hike:mi.hike,footHTML:miFoot})}
+    <div data-poly-block>${snapshot?polyBlockHTML(snapshot,true):`<div class="src-block"><div class="src-head"><span><b>🎲 Polymarket</b></span><span class="asof">loading…</span></div><div class="src-note">Fetching live odds…</div></div>`}</div>
+    <div data-verdict-block>${verdictHTML(mi,snapshot,snapshot?'snapshot':'loading')}</div>
     <div class="last-meeting"><b>${escapeHTML(meeting.last_meeting?.date||'Last meeting')}:</b> ${escapeHTML(meeting.last_meeting?.decision||'Decision pending')}. ${escapeHTML(meeting.last_meeting?.note||'')}</div>`;
+  if(snapshot) return;
+  if(opts.historical){
+    const polyBlock=card.querySelector('[data-poly-block]');
+    if(polyBlock) polyBlock.innerHTML=`<div class="src-block"><div class="src-head"><span><b>🎲 Polymarket</b></span><span class="asof">n/a for snapshots</span></div><div class="src-note">Archived snapshots keep futures only — switch to Latest for live Polymarket odds.</div></div>`;
+    const verdictBlock=card.querySelector('[data-verdict-block]');
+    if(verdictBlock) verdictBlock.innerHTML=verdictHTML(mi,null,'snapshot-na');
+    return;
+  }
+  try{
+    const poly=await fetchPolymarketOdds(pricing.polymarket_event_slug||POLY_SLUGS_FALLBACK[bank]);
+    const polyBlock=card.querySelector('[data-poly-block]');
+    if(polyBlock) polyBlock.innerHTML=polyBlockHTML(poly,false);
+    const verdictBlock=card.querySelector('[data-verdict-block]');
+    if(verdictBlock) verdictBlock.innerHTML=verdictHTML(mi,poly,'live');
+  }catch(error){
+    console.warn('Polymarket odds unavailable.',error);
+    const polyBlock=card.querySelector('[data-poly-block]');
+    if(polyBlock) polyBlock.innerHTML=`<div class="src-block"><div class="src-head"><span><b>🎲 Polymarket</b></span><span class="asof">unavailable</span></div><div class="src-note">Live odds unreachable (network/API) — futures above still current.</div></div>`;
+    const verdictBlock=card.querySelector('[data-verdict-block]');
+    if(verdictBlock) verdictBlock.innerHTML=verdictHTML(mi,null,'unavailable');
+  }
 }
 
-function renderDriver(driver,direction){
+function freshnessBadge(publishedAt,asOf){
+  const published=publishedAt?new Date(publishedAt):null;
+  const reference=asOf?new Date(asOf):new Date();
+  if(!published||Number.isNaN(published.getTime())||Number.isNaN(reference.getTime())) return '';
+  const diffMs=reference-published;
+  const absMs=Math.abs(diffMs);
+  const days=Math.floor(absMs/86400000);
+  const hours=Math.floor(absMs/3600000);
+  if(diffMs<-3600000){
+    const label=days>0?`${days}d`:hours>0?`${hours}h`:'soon';
+    return `<span class="fresh upcoming" title="Scheduled/preview item — dated after this snapshot">📅 upcoming · in ${escapeHTML(label)}</span>`;
+  }
+  const label=days>0?`${days}d ago`:hours>0?`${hours}h ago`:'just now';
+  const tier=days<=2?'ok':days<=7?'warn':'stale';
+  const word=tier==='ok'?'Fresh':tier==='warn'?'Aging':'Stale';
+  return `<span class="fresh ${tier}" title="Headline age vs snapshot ${escapeHTML(asOf||'now')}: ${escapeHTML(label)}">● ${escapeHTML(label)} · ${word}</span>`;
+}
+
+function renderDriver(driver,direction,asOf){
   const data=driver.data||{};
   const deltaType=['beat','miss','neutral'].includes(data.delta_type)?data.delta_type:'neutral';
   const sourceURL=safeURL(driver.source_url);
@@ -925,10 +1114,15 @@ function renderDriver(driver,direction){
     ? `<a class="badge" href="${sourceURL}" target="_blank" rel="noopener">${escapeHTML(driver.source||'Source')} ↗</a>`
     : `<span class="badge">${escapeHTML(driver.source||driver.importance||'Source')}</span>`;
   const validations=(driver.market_validation||[]).map(item=>`<span class="badge market">${escapeHTML(item.label||item.ticker)}</span>`).join('');
+  const datePill=driver.published_at_toronto
+    ? `<span class="date-pill">📅 ${escapeHTML(formatToronto(driver.published_at_toronto))}</span>` : '';
+  const fresh=freshnessBadge(driver.published_at_toronto,asOf);
+  const dateLine=(datePill||fresh)?`<div class="date-line">${datePill}${fresh}</div>`:'';
   return `<div class="driver"${sourceURL?` data-link="${sourceURL}"`:''}>
     <div class="icon" style="font-size:${String(driver.icon||'').length>2?'9px':'15px'}">${escapeHTML(driver.icon||'DATA')}</div>
     <div class="body">
-      <div class="title">${escapeHTML(driver.title)} <small>· ${escapeHTML(formatToronto(driver.published_at_toronto))}</small></div>
+      ${dateLine}
+      <div class="title">${escapeHTML(driver.title)}</div>
       ${driver.summary?`<div class="summary">${escapeHTML(driver.summary)}</div>`:''}
       <div class="data-grid">
         <div class="data-cell"><div class="label">Actual</div><div class="val ${deltaType}">${escapeHTML(data.actual??'Pending')}</div><div class="delta ${deltaType}">${escapeHTML(data.delta_label||'')}</div></div>
@@ -942,7 +1136,7 @@ function renderDriver(driver,direction){
   </div>`;
 }
 
-function renderDrivers(bank,bankDrivers){
+function renderDrivers(bank,bankDrivers,asOf){
   const view=document.getElementById(`view-${bank}`);
   if(!view||!bankDrivers) return;
   const dovish=[...(bankDrivers.dovish||[])].sort((a,b)=>(b.weight||0)-(a.weight||0));
@@ -952,7 +1146,7 @@ function renderDrivers(bank,bankDrivers){
     if(!side) return;
     side.querySelectorAll('.driver').forEach(driver=>driver.remove());
     if(drivers.length){
-      side.insertAdjacentHTML('beforeend',drivers.map(driver=>renderDriver(driver,direction)).join(''));
+      side.insertAdjacentHTML('beforeend',drivers.map(driver=>renderDriver(driver,direction,asOf)).join(''));
     }else{
       side.insertAdjacentHTML('beforeend','<div class="driver"><div class="body"><div class="title">No material drivers</div><div class="reason">Events below weight 1.0 are filtered out.</div></div></div>');
     }
@@ -1045,10 +1239,10 @@ function renderCalendar(calendar){
 function renderDashboard(payload,isHistorical=false){
   if(!payload||!payload.meetings||!payload.drivers) throw new Error('Dashboard JSON is missing required fields');
   dashboardReferenceTime=isHistorical?new Date(payload.archived_at||payload.as_of):null;
-  renderOdds('fed',payload.meetings.fed);
-  renderOdds('boc',payload.meetings.boc);
-  renderDrivers('fed',payload.drivers.fed);
-  renderDrivers('boc',payload.drivers.boc);
+  renderOdds('fed',payload.meetings.fed,{historical:isHistorical});
+  renderOdds('boc',payload.meetings.boc,{historical:isHistorical});
+  renderDrivers('fed',payload.drivers.fed,payload.as_of);
+  renderDrivers('boc',payload.drivers.boc,payload.as_of);
   renderMarket(payload.market);
   renderCalendar(payload.calendar);
   const asOf=document.getElementById('as-of');
