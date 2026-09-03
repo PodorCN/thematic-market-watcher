@@ -133,13 +133,16 @@ Polymarket 取数优先级：`pricing.polymarket` 快照（如有）> 最新视�
     "cut_25bp": 0.01, "hold": 0.58, "hike_25bp": 0.41,
     "as_of": "2026-09-03T02:04:00-04:00",
     "event_slug": "fed-decision-in-september-762",
-    "event_url": "https://polymarket.com/event/fed-decision-in-september-762"
+    "event_url": "https://polymarket.com/event/fed-decision-in-september-762",
+    "volume_usd": 84900000,
+    "liquidity_usd": 4400000
   }
 }
 ```
 
 - 每次会议周期更新 `polymarket_event_slug`（slug 按会议变化，前端内置 map 只是 stopgap）。
 - 不填 `polymarket` 时前端实时请求 `https://gamma-api.polymarket.com/events?slug=...`，按 groupItemTitle 关键词 decrease / no change / increase 把 Yes 价格加总为 Cut/Hold/Hike。
+- 前端同时展示 pool：`volume_usd`（总成交）与 `liquidity_usd`（流动性）；不填则只显示实时拉到的值。
 
 ### 4.2 Scoring v2（前端计算，JSON 只给 base weight）
 

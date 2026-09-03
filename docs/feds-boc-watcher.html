@@ -136,7 +136,7 @@ h3{margin:0;font-size:16px;font-weight:600}
 .driver .body{flex:1;min-width:0}
 .driver .title{font-weight:600;font-size:13px;line-height:1.3;padding-right:64px}
 .driver .title small{font-weight:400;color:var(--color-neutral-500);font-family:var(--font-mono);font-size:10px;margin-left:6px}
-.driver .summary{font-size:14px;font-weight:700;line-height:1.45;margin-top:6px;color:var(--color-text)}
+.driver .summary{font-size:15px;font-weight:700;line-height:1.5;margin:8px 0 2px;color:var(--color-text)}
 .side.left .driver .summary{color:var(--color-accent-300)}
 .side.right .driver .summary{color:#fca5a5}
 .data-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0 8px;background:var(--color-card);border:1px solid var(--color-neutral-800);border-radius:8px;padding:10px 8px}
@@ -155,6 +155,8 @@ h3{margin:0;font-size:16px;font-weight:600}
 .side.right .reason{border-left-color:#f87171}
 .reason b{color:var(--color-text)}
 .source{font-size:11px;color:var(--color-neutral-500);margin-top:6px;display:flex;gap:6px;flex-wrap:wrap;align-items:center;font-family:var(--font-mono)}
+.score-line{font-family:var(--font-mono);font-size:11px;line-height:1.7;color:var(--color-neutral-400);border-top:1px dashed var(--color-neutral-800);margin-top:10px;padding-top:8px}
+.score-line b{color:var(--color-text)}
 .weight{position:absolute;top:12px;right:10px;font-family:var(--font-mono);font-size:10px;padding:3px 7px;border-radius:999px;font-weight:700;letter-spacing:.04em}
 .side.left .weight{background:var(--color-accent);color:#0f101c}
 .side.right .weight{background:#f87171;color:#0f101c}
@@ -231,6 +233,7 @@ footer.site-footer{padding:56px;display:flex;justify-content:space-between;align
   .src-head{flex-direction:column;align-items:flex-start;gap:4px}
   .src-head .asof{white-space:normal}
   .src-rate{overflow-wrap:anywhere}
+  .score-line{font-size:10px}
   .data-grid{gap:4px;padding:8px 4px}
   .data-cell .val{font-size:12px;overflow-wrap:anywhere}
   .data-cell .delta{font-size:8px;padding:2px 4px}
@@ -258,7 +261,7 @@ footer.site-footer{padding:56px;display:flex;justify-content:space-between;align
     <span class="kicker">03 / Rates · Feds/BOC Watcher</span>
     <h2>Feds/BOC Watcher <span>Cut vs Hold/Hike — How Data Pulls the Next Decision</span></h2>
     <div class="rule-fade"></div>
-    <p style="margin:0;color:var(--color-neutral-400);max-width:900px;font-size:14px;line-height:1.6">Midline is the divide: <b style="color:var(--color-accent-300)">Left = Dovish (Cut)</b> · <b style="color:#fca5a5">Right = Hawkish (Hold/Hike)</b>. Each card <b style="color:var(--color-text)">bold on top = key data</b>, below <b>Actual vs Forecast vs Prior</b> highlights beat/miss, with transmission → why it pulls the rope. Higher cards = stronger pull. <span class="mono" style="font-size:12px;color:var(--color-neutral-500)">· Toronto time</span></p>
+    <p style="margin:0;color:var(--color-neutral-400);max-width:900px;font-size:14px;line-height:1.6">Midline is the divide: <b style="color:var(--color-accent-300)">Left = Dovish (Cut)</b> · <b style="color:#fca5a5">Right = Hawkish (Hold/Hike)</b>. Each card <b style="color:var(--color-text)">takeaway on top</b>, then transmission, <b>Actual vs Forecast vs Prior</b> numbers, and score math at the bottom — why it counts as a driver. Higher cards = stronger pull. <span class="mono" style="font-size:12px;color:var(--color-neutral-500)">· Toronto time</span></p>
     <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:6px">
       <span class="badge">As of <b id="as-of" style="color:var(--color-text)">2026-08-24 08:00 Toronto</b></span>
       <span class="badge" id="data-status">Static fallback</span>
@@ -288,7 +291,7 @@ footer.site-footer{padding:56px;display:flex;justify-content:space-between;align
           <div class="src-num hike"><div class="k">Hike 25bp</div><div class="v">41%</div></div>
         </div>
         <div class="prob-bar"><i style="width:1%;background:var(--color-accent)"></i><i style="width:58%;background:#3f424d"></i><i style="width:41%;background:#f87171"></i></div>
-        <div class="src-rate">Live odds load automatically · ≈ Sep 3 values.</div>
+        <div class="src-rate">Pool Vol ~ <b>$84.9M</b> · Liq ~ <b>$4.4M</b> · live odds load automatically.</div>
       </div>
       <div class="verdict split"><b>⚖ Split:</b> futures lean <b>HIKE 70%</b> · Polymarket leans <b>HOLD 58%</b>.</div>
       <div class="last-meeting"><b>2026-07-29:</b> Held at 3.50-3.75%. 9-3 dissent: Hammack, Kashkari, Logan preferred +25bp hike. Warsh's Aug 28 Jackson Hole speech validated the hawks: 'predominant focus right now should be on prices'.</div>
@@ -313,7 +316,7 @@ footer.site-footer{padding:56px;display:flex;justify-content:space-between;align
           <div class="src-num hike"><div class="k">Hike 25bp</div><div class="v">5%</div></div>
         </div>
         <div class="prob-bar"><i style="width:5%;background:var(--color-accent)"></i><i style="width:89%;background:#3f424d"></i><i style="width:5%;background:#f87171"></i></div>
-        <div class="src-rate">Live odds load automatically · ≈ Sep 3 values.</div>
+        <div class="src-rate">Pool Vol ~ <b>$48k</b> · Liq ~ <b>$9k</b> · live odds load automatically.</div>
       </div>
       <div class="verdict split"><b>⚖ Split:</b> futures lean <b>HIKE 60%</b> · Polymarket leans <b>HOLD 89%</b>.</div>
       <div class="last-meeting"><b>2026-09-02:</b> Held at 2.25%. Overnight held at 2.25% (Bank Rate 2.50%, deposit 2.20%); statement cited high energy prices, tariffs, tightened financial conditions, CPI near 3%.</div>
@@ -967,6 +970,14 @@ function shortSource(source){
   return String(source||'Market').split('(')[0].trim().slice(0,44)||'Market';
 }
 
+function fmtMoney(value){
+  const n=Number(value);
+  if(!Number.isFinite(n)||n<0) return '-';
+  if(n>=1e6) return '$'+(n/1e6).toFixed(1)+'M';
+  if(n>=1e3) return '$'+(n/1e3).toFixed(0)+'k';
+  return '$'+Math.round(n);
+}
+
 function leanOf(prob){
   const top=Math.max(prob.cut,prob.hold,prob.hike);
   if(prob.cut===top) return 'CUT';
@@ -980,9 +991,9 @@ function srcBlockHTML(opts){
   return `<div class="src-block">
     <div class="src-head"><span><b>${opts.icon} ${escapeHTML(opts.name)}</b></span><span class="asof">${opts.metaHTML}</span></div>
     <div class="src-nums">
-      <div class="src-num cut"><div class="k">Cut 25bp</div><div class="v">${opts.cut}%</div></div>
-      <div class="src-num hold"><div class="k">Hold</div><div class="v">${opts.hold}%</div></div>
-      <div class="src-num hike"><div class="k">Hike 25bp</div><div class="v">${opts.hike}%</div></div>
+      <div class="src-num cut"${opts.numTitles?` title="${escapeHTML(opts.numTitles[0])}"`:''}><div class="k">Cut 25bp</div><div class="v">${opts.cut}%</div></div>
+      <div class="src-num hold"${opts.numTitles?` title="${escapeHTML(opts.numTitles[1])}"`:''}><div class="k">Hold</div><div class="v">${opts.hold}%</div></div>
+      <div class="src-num hike"${opts.numTitles?` title="${escapeHTML(opts.numTitles[2])}"`:''}><div class="k">Hike 25bp</div><div class="v">${opts.hike}%</div></div>
     </div>
     <div class="prob-bar"><i style="width:${width(opts.cut)}%;background:var(--color-accent)"></i><i style="width:${width(opts.hold)}%;background:#3f424d"></i><i style="width:${width(opts.hike)}%;background:#f87171"></i></div>
     ${opts.footHTML?`<div class="src-rate">${opts.footHTML}</div>`:''}
@@ -1008,19 +1019,22 @@ async function fetchPolymarketOdds(slug){
   const event=Array.isArray(payload)?payload[0]:payload;
   if(!event||!Array.isArray(event.markets)||!event.markets.length) throw new Error('Polymarket event has no markets');
   const agg={cut:0,hold:0,hike:0};
+  const vols={cut:0,hold:0,hike:0};
   event.markets.forEach(market=>{
     let prices=[];
     try{prices=JSON.parse(market.outcomePrices||'[]');}catch(ignore){}
     const yes=Number(prices[0]);
     if(!Number.isFinite(yes)||yes<0) return;
+    const vol=Number(market.volume||0);
     const text=`${market.groupItemTitle||''} ${market.question||''}`;
-    if(/decrease/i.test(text)) agg.cut+=yes;
-    else if(/no[\s-]?change/i.test(text)) agg.hold+=yes;
-    else if(/increase/i.test(text)) agg.hike+=yes;
+    if(/decrease/i.test(text)){agg.cut+=yes;vols.cut+=vol;}
+    else if(/no[\s-]?change/i.test(text)){agg.hold+=yes;vols.hold+=vol;}
+    else if(/increase/i.test(text)){agg.hike+=yes;vols.hike+=vol;}
   });
   const resolved=event.closed===true||event.markets.every(market=>market.closed===true);
   return {cut:Math.round(agg.cut*100),hold:Math.round(agg.hold*100),hike:Math.round(agg.hike*100),
-    url:`https://polymarket.com/event/${event.slug}`,updatedAt:event.updatedAt||null,resolved};
+    url:`https://polymarket.com/event/${event.slug}`,updatedAt:event.updatedAt||null,resolved,
+    volume:Number(event.volume||0),liquidity:Number((event.liquidity??event.liquidityClob)||0),vols};
 }
 
 function polySnapshot(pricing){
@@ -1032,7 +1046,8 @@ function polySnapshot(pricing){
   if(!Number.isFinite(cut+hold+hike)||(cut+hold+hike)<=0) return null;
   return {cut,hold,hike,
     url:safeURL(snap.event_url||snap.url)||(snap.event_slug?`https://polymarket.com/event/${snap.event_slug}`:''),
-    asOf:snap.as_of||snap.asof||''};
+    asOf:snap.as_of||snap.asof||'',
+    volume:Number((snap.volume_usd??snap.volume)||0),liquidity:Number((snap.liquidity_usd??snap.liquidity)||0),vols:null};
 }
 
 function polyBlockHTML(poly,isSnapshot){
@@ -1040,10 +1055,15 @@ function polyBlockHTML(poly,isSnapshot){
   const meta=isSnapshot
     ? `snapshot ${escapeHTML(String(poly.asOf||'').slice(0,10))}${link}`
     : `live${poly.updatedAt?` · ${escapeHTML(formatToronto(poly.updatedAt,true))}`:''}${poly.resolved?' · resolved':''}${link}`;
+  const pool=(poly.volume>0||poly.liquidity>0)
+    ? `Pool Vol <b>${fmtMoney(poly.volume)}</b> · Liq <b>${fmtMoney(poly.liquidity)}</b> · ` : '';
   const foot=isSnapshot
-    ? 'Locked at refresh — archives stay comparable.'
-    : 'Yes-share prices summed by bracket (50bp+ folded into the 25bp side).';
-  return srcBlockHTML({icon:'🎲',name:'Polymarket',metaHTML:meta,cut:poly.cut,hold:poly.hold,hike:poly.hike,footHTML:escapeHTML(foot)});
+    ? `${pool}Locked at refresh — archives stay comparable.`
+    : `${pool}Yes-share prices summed by bracket (50bp+ folded into the 25bp side).`;
+  const titles=poly.vols
+    ? [`Bracket volume ${fmtMoney(poly.vols.cut)}`,`Bracket volume ${fmtMoney(poly.vols.hold)}`,`Bracket volume ${fmtMoney(poly.vols.hike)}`]
+    : null;
+  return srcBlockHTML({icon:'🎲',name:'Polymarket',metaHTML:meta,cut:poly.cut,hold:poly.hold,hike:poly.hike,footHTML:foot,numTitles:titles});
 }
 
 async function renderOdds(bank,meeting,opts={}){
@@ -1157,12 +1177,13 @@ function renderDriver(driver,direction,asOf){
       ${dateLine}
       <div class="title">${escapeHTML(driver.title)}</div>
       ${driver.summary?`<div class="summary">${escapeHTML(driver.summary)}</div>`:''}
+      <div class="reason"><b>Why ${direction==='dovish'?'dovish':'hawkish'}?</b> ${escapeHTML(driver.reason||'Impact analysis pending.')}</div>
       <div class="data-grid">
         <div class="data-cell"><div class="label">Actual</div><div class="val ${deltaType}">${escapeHTML(data.actual??'Pending')}</div><div class="delta ${deltaType}">${escapeHTML(data.delta_label||'')}</div></div>
         <div class="data-cell"><div class="label">Forecast</div><div class="val">${escapeHTML(data.forecast??'—')}</div></div>
         <div class="data-cell"><div class="label">Prior</div><div class="val">${escapeHTML(data.previous??'—')}</div></div>
       </div>
-      <div class="reason"><b>Why ${direction==='dovish'?'dovish':'hawkish'}?</b> ${escapeHTML(driver.reason||'Impact analysis pending.')}</div>
+      <div class="score-line" title="Base weight x age decay = effective weight, used for sorting, side means, rope totals and net">⚖ Scored <b>${effW.eff.toFixed(1)}</b> = base ${effW.base.toFixed(1)} (${escapeHTML(driver.importance||'n/a')}) × ${effW.decay} (${Math.floor(effW.days)}d old) · counts toward the ${direction} side</div>
       <div class="source"><span class="badge ${direction==='dovish'?'dove':'hawk'}">${direction}</span>${source}${validations}</div>
     </div>
     <span class="weight" title="base ${effW.base.toFixed(1)} × ${effW.decay} (${Math.floor(effW.days)}d old) = ${effW.eff.toFixed(1)}">Weight ${effW.eff.toFixed(1)}</span>
