@@ -1,7 +1,7 @@
 {
   "as_of": "2026-09-04T02:35:00-04:00",
   "version": "2026-09-04-001",
-  "verification_note": "Fri 2026-09-04 02:35 ET cron (run 1/4, 00:00 ET slot). FULL OVERNIGHT INCREMENTAL REFRESH. Fed calendar and Jul 29 statement were re-fetched from federalreserve.gov: next FOMC Sep 15-16; target held 3.50-3.75% with a 9-3 vote. CME FedWatch was attempted once and remained IP-blocked (HTTP 403). Live yfinance ZQU26.CBT 96.3125 and ZQV26.CBT 96.2400, anchored to NY Fed EFFR 3.63% effective Sep 2, imply cut 0.00 / hold 0.51 / hike 0.49; unchanged from Sep 3 afternoon. BoC Sep 2 statement and rate table were re-fetched: held 2.25%, next decision Oct 28 with MPR. TMX CRAU26 Sep 3 close bid/ask 97.650/97.655 and BoC Valet CORRA 2.27/2.29/2.30 on Aug 31/Sep 1/Sep 2 were live. Because CRAU26 spans Oct 28 and Dec 9, Oct pricing remains the explicit scenario estimate cut 0.00 / hold 0.40 / hike 0.60, not a direct single-meeting OIS panel. Fresh FXStreet calendar has 22 events (6 HIGH / 16 MEDIUM). No new macro actual was released after the Sep 3 14:26 snapshot; Sep 4 US and Canada employment reports remain upcoming at 08:30 ET. Market strip uses Sep 3 official cash closes reconstructed from 1-minute bars because yfinance daily rows were transiently NaN overnight; futures observations are kept out of cash-close labels. stale=false.",
+  "verification_note": "Fri 2026-09-04 02:35 ET cron (run 1/4, 00:00 ET slot). FULL OVERNIGHT INCREMENTAL REFRESH. Fed calendar and Jul 29 statement were re-fetched from federalreserve.gov: next FOMC Sep 15-16; target held 3.50-3.75% with a 9-3 vote. CME FedWatch was attempted once and remained IP-blocked (HTTP 403). Live yfinance ZQU26.CBT 96.3125 and ZQV26.CBT 96.2400, anchored to NY Fed EFFR 3.63% effective Sep 2, imply cut 0.00 / hold 0.51 / hike 0.49; unchanged from Sep 3 afternoon. BoC Sep 2 statement and rate table were re-fetched: held 2.25%, next decision Oct 28 with MPR. TMX CRAU26 Sep 3 close bid/ask 97.650/97.655 and BoC Valet CORRA 2.27/2.29/2.30 on Aug 31/Sep 1/Sep 2 were live. Because CRAU26 spans Oct 28 and Dec 9, Oct pricing remains the explicit scenario estimate cut 0.00 / hold 0.40 / hike 0.60, not a direct single-meeting OIS panel. Fresh FXStreet calendar has 61 events (16 HIGH / 45 MEDIUM). No new macro actual was released after the Sep 3 14:26 snapshot; Sep 4 US and Canada employment reports remain upcoming at 08:30 ET. Market strip uses Sep 3 official cash closes reconstructed from 1-minute bars because yfinance daily rows were transiently NaN overnight; futures observations are kept out of cash-close labels. stale=false.",
   "timezone": "America/Toronto",
   "meetings": {
     "fed": {
@@ -1032,6 +1032,6 @@
   ],
   "history": [],
   "snapshot_date": "2026-09-04",
-  "archived_at": "2026-09-04T06:37:50.678332Z",
+  "archived_at": "2026-09-04T06:40:42.605596Z",
   "stale": false
 }
