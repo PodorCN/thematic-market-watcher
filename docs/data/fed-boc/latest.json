@@ -1,7 +1,7 @@
 {
-  "as_of": "2026-09-04T02:35:00-04:00",
-  "version": "2026-09-04-001",
-  "verification_note": "Fri 2026-09-04 02:35 ET cron (run 1/4, 00:00 ET slot). FULL OVERNIGHT INCREMENTAL REFRESH. Fed calendar and Jul 29 statement were re-fetched from federalreserve.gov: next FOMC Sep 15-16; target held 3.50-3.75% with a 9-3 vote. CME FedWatch was attempted once and remained IP-blocked (HTTP 403). Live yfinance ZQU26.CBT 96.3125 and ZQV26.CBT 96.2400, anchored to NY Fed EFFR 3.63% effective Sep 2, imply cut 0.00 / hold 0.51 / hike 0.49; unchanged from Sep 3 afternoon. BoC Sep 2 statement and rate table were re-fetched: held 2.25%, next decision Oct 28 with MPR. TMX CRAU26 Sep 3 close bid/ask 97.650/97.655 and BoC Valet CORRA 2.27/2.29/2.30 on Aug 31/Sep 1/Sep 2 were live. Because CRAU26 spans Oct 28 and Dec 9, Oct pricing remains the explicit scenario estimate cut 0.00 / hold 0.40 / hike 0.60, not a direct single-meeting OIS panel. Fresh FXStreet calendar has 61 events (16 HIGH / 45 MEDIUM). No new macro actual was released after the Sep 3 14:26 snapshot; Sep 4 US and Canada employment reports remain upcoming at 08:30 ET. Market strip uses Sep 3 official cash closes reconstructed from 1-minute bars because yfinance daily rows were transiently NaN overnight; futures observations are kept out of cash-close labels. stale=false.",
+  "as_of": "2026-09-04T14:50:00-04:00",
+  "version": "2026-09-04-002",
+  "verification_note": "Fri 2026-09-04 14:50 ET cron (run 3/4, 12:00 ET slot). FULL INTRADAY INCREMENTAL REFRESH. Canonical FXStreet fetch returned 63 events (16 HIGH / 47 MEDIUM) with Sep 4 actuals. BLS official Employment Situation reported August payrolls +162k and unemployment 4.1%; the fresh calendar consensus was +56k and prior -23k. Statistics Canada official Labour Force Survey reported employment -41.7k (rounded -42k), unemployment 6.4%, and wage growth 2.0%; calendar consensus was +15.0k. Ivey s.a. PMI printed 64.3 vs 56.2 forecast and 55.1 prior. Fed calendar and Jul 29 statement were re-fetched: Sep 15-16 FOMC; target 3.50-3.75%, 9-3 vote. Waller's Sep 3 speech explicitly preferred hold if disinflation continues but would consider a hike on hot inflation. CME FedWatch remained inaccessible to curl (600-byte access-block response); current ZQU26.CBT 96.305 and ZQV26.CBT 96.220, anchored to last verified NY Fed EFFR 3.63% (live NY Fed endpoint HTTP 400 this pass), imply cut 0.00 / hold 0.44 / hike 0.56. BoC Sep 2 statement/rate table/upcoming-events pages re-confirmed hold 2.25% and Oct 28 next decision. TMX CRAU26 97.655/97.660 and BoC CORRA 2.30 through Sep 3 were live; because CRAU26 spans Oct and Dec, displayed BoC cut 0.00 / hold 0.40 / hike 0.60 remains an explicit scenario point, not direct single-meeting OIS. Market strip is intraday at 14:47 ET (non-equity feeds may lag to 14:37/14:32). stale=false.",
   "timezone": "America/Toronto",
   "meetings": {
     "fed": {
@@ -16,15 +16,15 @@
       },
       "pricing": {
         "cut_25bp": 0.0,
-        "hold": 0.51,
-        "hike_25bp": 0.49,
-        "source": "CME Fed Funds futures proxy via yfinance (CME FedWatch HTTP 403)",
+        "hold": 0.44,
+        "hike_25bp": 0.56,
+        "source": "CME Fed Funds futures proxy via yfinance (CME FedWatch access-block response)",
         "source_url": "https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html",
-        "as_of_pricing": "2026-09-04T02:35:00-04:00",
-        "proxy_check": "ZQU26.CBT 96.3125 (quote 2026-09-04 05:55:44 UTC) and ZQV26.CBT 96.2400 (06:16:36 UTC); NY Fed EFFR 3.63% effective Sep 2. Exact Sep day-count solve gives post-meeting EFFR 3.753%, or cut 0.00 / hold 0.51 / hike 0.49.",
+        "as_of_pricing": "2026-09-04T14:50:00-04:00",
+        "proxy_check": "ZQU26.CBT 96.305 (14:31 ET) and ZQV26.CBT 96.220 (14:35 ET); last verified NY Fed EFFR 3.63% effective Sep 2 (live endpoint HTTP 400 this pass). Exact Sep day-count solve gives post-meeting EFFR 3.769%, or cut 0.00 / hold 0.44 / hike 0.56.",
         "proxy_source_url": "https://finance.yahoo.com/quote/ZQU26.CBT",
         "implied_rate_before": 3.63,
-        "implied_rate_after": 3.753
+        "implied_rate_after": 3.769
       }
     },
     "boc": {
@@ -42,8 +42,8 @@
         "hike_25bp": 0.6,
         "source": "TMX/MX 3-month CORRA futures + BoC Valet; Oct scenario estimate (quarterly contract spans Oct and Dec decisions)",
         "source_url": "https://www.m-x.ca/en/trading/data/quotes?symbol=CRA%2A",
-        "as_of_pricing": "2026-09-04T02:35:00-04:00",
-        "proxy_check": "CRAU26 Sep 3 close bid/ask 97.650/97.655 (mid 97.6525), observed Sep 4 02:31 ET; V39079 target 2.25 and AVG.INTWO 2.27/2.29/2.30 for Aug 31/Sep 1/Sep 2. Depending on the CORRA spread baseline, the Oct hike scenario is roughly 0.45-0.65; the displayed 0.60 is a scenario point, not a direct single-meeting panel.",
+        "as_of_pricing": "2026-09-04T14:50:00-04:00",
+        "proxy_check": "CRAU26 bid/ask 97.655/97.660 (mid 97.6575), observed Sep 4 14:47 ET; V39079 target 2.25 and AVG.INTWO 2.27/2.29/2.30/2.30 for Aug 31-Sep 3. Depending on the CORRA spread baseline, the Oct hike scenario remains roughly 0.45-0.65; displayed 0.60 is a scenario point, not a direct single-meeting panel.",
         "proxy_source_url": "https://www.bankofcanada.ca/valet/observations/AVG.INTWO/json?start_date=2026-08-25",
         "implied_rate_before": 2.25,
         "implied_rate_after": 2.4,
@@ -63,7 +63,7 @@
           "source": "BLS",
           "source_url": "https://www.bls.gov/news.release/empsit.toc.htm",
           "importance": "HIGH",
-          "weight": 1.5,
+          "weight": 0.5,
           "data": {
             "actual": "-23k",
             "forecast": "+80k",
@@ -71,11 +71,11 @@
             "delta_label": "miss -103k",
             "delta_type": "miss"
           },
-          "reason": "Payrolls turned negative and prior months were revised lower, signalling a labour-demand inflection. UPDATE 8/28: NFP benchmark revision resolved benign at -79k total nonfarm (-0.1%, private -178k) — far smaller than the -620k tail risk carried earlier, though below ~+163k analyst consensus. Warsh directly contradicted the cracking narrative at Jackson Hole: labour 'consistent with full employment', jobless 4.1%, 4-week avg claims near multi-decade lows (8/27 claims 203k vs 208k fcst). Weight trimmed 2.0 -> 1.5.",
+          "reason": "The July payroll contraction remains historical evidence, but the Aug report released Sep 4 reversed the signal: +162k vs +56k consensus, unemployment steady at 4.1%, and wages 3.1% YoY vs 3.0% forecast. Stable id retained on its original side at 0.5; today's live labour impulse is hawkish.",
           "market_validation": [
             {
               "ticker": "IWM",
-              "label": "+0.39% Thu / -1.55% w",
+              "label": "+0.15% Fri i/d / -0.04% w",
               "type": "up"
             }
           ]
@@ -101,7 +101,7 @@
           "market_validation": [
             {
               "ticker": "XLI",
-              "label": "+1.02% Thu / -2.38% w",
+              "label": "+0.34% Fri i/d / -1.12% w",
               "type": "up"
             }
           ]
@@ -127,7 +127,7 @@
           "market_validation": [
             {
               "ticker": "QQQ",
-              "label": "+1.18% Thu / -0.49% w",
+              "label": "+0.03% Fri i/d / +0.21% w",
               "type": "up"
             }
           ]
@@ -153,7 +153,7 @@
           "market_validation": [
             {
               "ticker": "IWM",
-              "label": "+0.39% Thu / -1.55% w",
+              "label": "+0.15% Fri i/d / -0.04% w",
               "type": "up"
             }
           ]
@@ -179,7 +179,7 @@
           "market_validation": [
             {
               "ticker": "XLE",
-              "label": "-0.68% Thu / +3.77% w",
+              "label": "-0.88% Fri i/d / +2.19% w",
               "type": "down"
             }
           ]
@@ -249,7 +249,7 @@
           "market_validation": [
             {
               "ticker": "IWM",
-              "label": "+0.39% Thu / -1.55% w",
+              "label": "+0.15% Fri i/d / -0.04% w",
               "type": "up"
             }
           ],
@@ -279,7 +279,7 @@
           "market_validation": [
             {
               "ticker": "IWM",
-              "label": "+0.39% Thu / -1.55% w",
+              "label": "+0.15% Fri i/d / -0.04% w",
               "type": "up"
             }
           ],
@@ -311,8 +311,8 @@
           "market_validation": [
             {
               "ticker": "XLF",
-              "label": "+1.55% Thu / +1.14% w",
-              "type": "up"
+              "label": "-0.57% Fri i/d / +0.22% w",
+              "type": "down"
             }
           ]
         },
@@ -337,8 +337,8 @@
           "market_validation": [
             {
               "ticker": "GLD",
-              "label": "+1.86% Thu / -2.92% w",
-              "type": "up"
+              "label": "-1.10% Fri i/d / -0.78% w",
+              "type": "down"
             }
           ]
         },
@@ -383,8 +383,8 @@
           "market_validation": [
             {
               "ticker": "GLD",
-              "label": "+1.86% Thu / -2.92% w",
-              "type": "up"
+              "label": "-1.10% Fri i/d / -0.78% w",
+              "type": "down"
             }
           ]
         },
@@ -434,17 +434,17 @@
           "importance": "MEDIUM",
           "weight": 1.0,
           "data": {
-            "actual": "10Y 4.762 / 30Y 5.243 (Thu close)",
+            "actual": "10Y 4.778 / 30Y 5.240 (Fri i/d)",
             "forecast": "10Y <4.75",
-            "previous": "10Y 4.796 / 30Y 5.267",
-            "delta_label": "10Y -3.4bp / 30Y -2.4bp Thu",
+            "previous": "10Y 4.762 / 30Y 5.243 (Thu)",
+            "delta_label": "10Y +1.6bp / 30Y -0.3bp Fri i/d",
             "delta_type": "beat"
           },
-          "reason": "Sep 3 closes eased 10Y by 3.4bp and 30Y by 2.4bp, but the 10Y held just above the 4.75% flip line. Stable hawkish id remains at 1.0, with the signal fading rather than reversing.",
+          "reason": "After the strong payroll report, 10Y rose 1.6bp to 4.778% while 30Y held near 5.24%. The 10Y remains above the 4.75% flip line, so the stable hawkish driver stays active at 1.0.",
           "market_validation": [
             {
               "ticker": "TLT",
-              "label": "+0.15% Thu / -0.90% w",
+              "label": "+0.20% Fri i/d / -0.40% w",
               "type": "up"
             }
           ],
@@ -474,7 +474,7 @@
           "market_validation": [
             {
               "ticker": "TLT",
-              "label": "+0.15% Thu / -0.90% w",
+              "label": "+0.20% Fri i/d / -0.40% w",
               "type": "up"
             }
           ],
@@ -504,7 +504,7 @@
           "market_validation": [
             {
               "ticker": "XLI",
-              "label": "+1.02% Thu / -2.38% w",
+              "label": "+0.34% Fri i/d / -1.12% w",
               "type": "up"
             }
           ],
@@ -534,18 +534,53 @@
           "market_validation": [
             {
               "ticker": "XLF",
-              "label": "+1.55% Thu / +1.14% w",
-              "type": "up"
+              "label": "-0.57% Fri i/d / +0.22% w",
+              "type": "down"
             },
             {
               "ticker": "TLT",
-              "label": "+0.15% Thu / -0.90% w",
+              "label": "+0.20% Fri i/d / -0.40% w",
               "type": "up"
             }
           ],
           "tags": [
             "HIGH",
             "ISM services"
+          ]
+        },
+        {
+          "id": "fed_hawk_nfp_20260904",
+          "icon": "NFP",
+          "title": "Payrolls Rebound Far Above Forecast",
+          "summary": "August payrolls jumped 162k versus 56k expected while unemployment held at 4.1%.",
+          "published_at_toronto": "2026-09-04T08:30:00-04:00",
+          "source": "U.S. Bureau of Labor Statistics · Employment Situation",
+          "source_url": "https://www.bls.gov/news.release/empsit.nr0.htm",
+          "importance": "HIGH",
+          "weight": 2.0,
+          "data": {
+            "actual": "+162k; UR 4.1%; AHE +0.3% MoM / +3.1% YoY",
+            "forecast": "+56k; UR 4.1%; AHE +0.3% / +3.0%",
+            "previous": "-23k; UR 4.1%; AHE +0.1% / +3.2%",
+            "delta_label": "payroll beat +106k; wages +0.1pp YoY",
+            "delta_type": "beat"
+          },
+          "reason": "The last payroll report before Sep FOMC decisively reversed July weakness. A 106k consensus beat, steady 4.1% unemployment and a small wage beat raise the hurdle for a cut; ZQU26 fell 1.0bp from Sep 3 and the desk hike proxy rose from 49% to 56%. Weight capped at 2.0 because the inflation releases still decide hold versus hike.",
+          "market_validation": [
+            {
+              "ticker": "ZQU26.CBT",
+              "label": "96.305 Fri 14:31 ET (-1.0bp price d/d)",
+              "type": "down"
+            },
+            {
+              "ticker": "^TNX",
+              "label": "4.778% (+1.6bp Fri i/d)",
+              "type": "up"
+            }
+          ],
+          "tags": [
+            "HIGH",
+            "payrolls"
           ]
         }
       ]
@@ -573,7 +608,7 @@
           "market_validation": [
             {
               "ticker": "XLI",
-              "label": "+1.02% Thu / -2.38% w",
+              "label": "+0.34% Fri i/d / -1.12% w",
               "type": "up"
             }
           ]
@@ -621,22 +656,28 @@
         {
           "id": "boc_dove_labour_20260730",
           "icon": "JOB",
-          "title": "Labour Market Marginal Easing",
-          "summary": "Unemployment is creeping up — labour slack is building.",
-          "published_at_toronto": "2026-07-30T10:00:00-04:00",
-          "source": "Statistics Canada",
-          "source_url": "https://www150.statcan.gc.ca/n1/daily-quotidien/260730/dq260730a-eng.htm",
-          "importance": "LOW",
-          "weight": 0.5,
+          "title": "Canada Employment Contracts as Wage Growth Slows",
+          "summary": "Canada lost 41.7k jobs versus a 15k gain expected; wage growth slowed to 2.0%.",
+          "published_at_toronto": "2026-09-04T08:30:00-04:00",
+          "source": "Statistics Canada · Labour Force Survey, August 2026",
+          "source_url": "https://www150.statcan.gc.ca/n1/daily-quotidien/260904/dq260904a-eng.htm",
+          "importance": "HIGH",
+          "weight": 2.0,
           "data": {
-            "actual": "Jobless 6.9%",
-            "forecast": "6.7%",
-            "previous": "6.8%",
-            "delta_label": "slack rising",
+            "actual": "-41.7k jobs; UR 6.4%; wages +2.0% YoY",
+            "forecast": "+15.0k jobs; UR 6.4%",
+            "previous": "+75.1k jobs; UR 6.4%; wages +3.0%",
+            "delta_label": "jobs miss -56.7k; wages -1.0pp",
             "delta_type": "miss"
           },
-          "reason": "Higher unemployment and slower wage growth indicate more labour-market slack. Stale (Jul 30); weight 1.0 -> 0.5 pending the Sep LFS.",
-          "market_validation": []
+          "reason": "Employment fell 41.7k against a 15k gain expected and wage growth slowed one percentage point, a material demand-and-inflation cooling signal after the Sep 2 hold. Unemployment did not rise, limiting weight to 2.0 rather than 2.5.",
+          "market_validation": [
+            {
+              "ticker": "ZEB.TO",
+              "label": "-0.28% Fri i/d / +1.72% w",
+              "type": "down"
+            }
+          ]
         },
         {
           "id": "boc_dove_cad_20260827",
@@ -679,7 +720,7 @@
           "market_validation": [
             {
               "ticker": "XLE",
-              "label": "-0.68% Thu / +3.77% w",
+              "label": "-0.88% Fri i/d / +2.19% w",
               "type": "down"
             }
           ]
@@ -727,7 +768,7 @@
           "market_validation": [
             {
               "ticker": "XLE",
-              "label": "-0.68% Thu / +3.77% w",
+              "label": "-0.88% Fri i/d / +2.19% w",
               "type": "down"
             }
           ]
@@ -753,8 +794,8 @@
           "market_validation": [
             {
               "ticker": "ZEB.TO",
-              "label": "+1.59% Thu / +2.17% w",
-              "type": "up"
+              "label": "-0.28% Fri i/d / +1.72% w",
+              "type": "down"
             }
           ]
         },
@@ -799,8 +840,8 @@
           "market_validation": [
             {
               "ticker": "ZEB.TO",
-              "label": "+1.59% Thu / +2.17% w",
-              "type": "up"
+              "label": "-0.28% Fri i/d / +1.72% w",
+              "type": "down"
             }
           ],
           "tags": [
@@ -834,13 +875,43 @@
             },
             {
               "ticker": "ZEB.TO",
-              "label": "+1.59% Thu / +2.17% w",
-              "type": "up"
+              "label": "-0.28% Fri i/d / +1.72% w",
+              "type": "down"
             }
           ],
           "tags": [
             "HIGH",
             "BoC"
+          ]
+        },
+        {
+          "id": "boc_hawk_ivey_20260904",
+          "icon": "IVEY",
+          "title": "Ivey PMI Surges After BoC Hold",
+          "summary": "Canada Ivey PMI jumped to 64.3 versus 56.2 expected, offsetting part of the jobs shock.",
+          "published_at_toronto": "2026-09-04T10:00:00-04:00",
+          "source": "Ivey PMI via TradingEconomics calendar",
+          "source_url": "https://tradingeconomics.com/calendar",
+          "importance": "MEDIUM",
+          "weight": 1.5,
+          "data": {
+            "actual": "64.3 s.a.",
+            "forecast": "56.2",
+            "previous": "55.1",
+            "delta_label": "beat +8.1; +9.2 m/m",
+            "delta_type": "beat"
+          },
+          "reason": "The broad activity gauge accelerated sharply two days after the BoC hold, arguing against an immediate growth-collapse response. It is a meaningful counterweight to weak employment, but a survey cannot outweigh the official labour report, so weight is 1.5.",
+          "market_validation": [
+            {
+              "ticker": "USDCAD=X",
+              "label": "1.3836 (-0.06% Fri i/d)",
+              "type": "down"
+            }
+          ],
+          "tags": [
+            "MEDIUM",
+            "Ivey PMI"
           ]
         }
       ]
@@ -848,170 +919,132 @@
   },
   "market": {
     "since": "2026-07-30",
-    "as_of_close": "2026-09-03T16:00:00-04:00",
+    "as_of_close": "2026-09-04T14:47:00-04:00",
     "tickers": [
       {
         "symbol": "SPY",
-        "price": 773.11,
-        "chg_1d": 0.0104,
-        "chg_1w": 0.0026,
-        "label_1d": "+1.04% Thu",
-        "label_1w": "+0.26% w",
-        "type_1d": "up",
+        "price": 770.22,
+        "chg_1d": -0.0038,
+        "chg_1w": 0.0011,
+        "label_1d": "-0.38% Fri i/d",
+        "label_1w": "+0.11% w",
+        "type_1d": "down",
         "type_1w": "up"
       },
       {
         "symbol": "QQQ",
-        "price": 717.61,
-        "chg_1d": 0.0118,
-        "chg_1w": -0.0049,
-        "label_1d": "+1.18% Thu",
-        "label_1w": "-0.49% w",
+        "price": 717.92,
+        "chg_1d": 0.0003,
+        "chg_1w": 0.0021,
+        "label_1d": "+0.03% Fri i/d",
+        "label_1w": "+0.21% w",
         "type_1d": "up",
-        "type_1w": "down"
+        "type_1w": "up"
       },
       {
         "symbol": "IWM",
-        "price": 295.16,
-        "chg_1d": 0.0039,
-        "chg_1w": -0.0155,
-        "label_1d": "+0.39% Thu",
-        "label_1w": "-1.55% w",
+        "price": 295.64,
+        "chg_1d": 0.0015,
+        "chg_1w": -0.0004,
+        "label_1d": "+0.15% Fri i/d",
+        "label_1w": "-0.04% w",
         "type_1d": "up",
         "type_1w": "down"
       },
       {
         "symbol": "XLI",
-        "price": 174.54,
-        "chg_1d": 0.0102,
-        "chg_1w": -0.0238,
-        "label_1d": "+1.02% Thu",
-        "label_1w": "-2.38% w",
+        "price": 175.155,
+        "chg_1d": 0.0034,
+        "chg_1w": -0.0112,
+        "label_1d": "+0.34% Fri i/d",
+        "label_1w": "-1.12% w",
         "type_1d": "up",
         "type_1w": "down"
       },
       {
         "symbol": "XLU",
-        "price": 43.01,
-        "chg_1d": 0.0082,
-        "chg_1w": -0.0039,
-        "label_1d": "+0.82% Thu",
-        "label_1w": "-0.39% w",
-        "type_1d": "up",
-        "type_1w": "down"
+        "price": 43.0,
+        "chg_1d": -0.0007,
+        "chg_1w": 0.0063,
+        "label_1d": "-0.07% Fri i/d",
+        "label_1w": "+0.63% w",
+        "type_1d": "down",
+        "type_1w": "up"
       },
       {
         "symbol": "XLF",
-        "price": 58.542,
-        "chg_1d": 0.0155,
-        "chg_1w": 0.0114,
-        "label_1d": "+1.55% Thu",
-        "label_1w": "+1.14% w",
-        "type_1d": "up",
+        "price": 58.225,
+        "chg_1d": -0.0057,
+        "chg_1w": 0.0022,
+        "label_1d": "-0.57% Fri i/d",
+        "label_1w": "+0.22% w",
+        "type_1d": "down",
         "type_1w": "up"
       },
       {
         "symbol": "XLE",
-        "price": 64.64,
-        "chg_1d": -0.0068,
-        "chg_1w": 0.0377,
-        "label_1d": "-0.68% Thu",
-        "label_1w": "+3.77% w",
+        "price": 64.05,
+        "chg_1d": -0.0088,
+        "chg_1w": 0.0219,
+        "label_1d": "-0.88% Fri i/d",
+        "label_1w": "+2.19% w",
         "type_1d": "down",
         "type_1w": "up"
       },
       {
         "symbol": "TLT",
-        "price": 82.07,
-        "chg_1d": 0.0015,
-        "chg_1w": -0.009,
-        "label_1d": "+0.15% Thu",
-        "label_1w": "-0.90% w",
+        "price": 82.235,
+        "chg_1d": 0.002,
+        "chg_1w": -0.004,
+        "label_1d": "+0.20% Fri i/d",
+        "label_1w": "-0.40% w",
         "type_1d": "up",
         "type_1w": "down"
       },
       {
         "symbol": "GLD",
-        "price": 410.27,
-        "chg_1d": 0.0186,
-        "chg_1w": -0.0292,
-        "label_1d": "+1.86% Thu",
-        "label_1w": "-2.92% w",
-        "type_1d": "up",
+        "price": 405.7063,
+        "chg_1d": -0.011,
+        "chg_1w": -0.0078,
+        "label_1d": "-1.10% Fri i/d",
+        "label_1w": "-0.78% w",
+        "type_1d": "down",
         "type_1w": "down"
       },
       {
         "symbol": "ZEB.TO",
-        "price": 75.86,
-        "chg_1d": 0.0159,
-        "chg_1w": 0.0217,
-        "label_1d": "+1.59% Thu",
-        "label_1w": "+2.17% w",
-        "type_1d": "up",
+        "price": 75.65,
+        "chg_1d": -0.0028,
+        "chg_1w": 0.0172,
+        "label_1d": "-0.28% Fri i/d",
+        "label_1w": "+1.72% w",
+        "type_1d": "down",
         "type_1w": "up"
       }
     ]
   },
   "calendar": [
     {
-      "id": "ca_jobs_20260904",
-      "datetime_toronto": "2026-09-04T08:30:00-04:00",
-      "datetime_utc": "2026-09-04T12:30:00Z",
-      "currency": "CAD",
-      "country": "CA",
-      "event": "Canada Employment Report (Net Change + Unemployment)",
-      "impact": "HIGH",
-      "forecast": {
-        "NetChange": "+15.0k",
-        "UR": "6.4%"
-      },
-      "previous": {
-        "NetChange": "+75.1k",
-        "UR": "6.4%"
-      },
-      "logic": "Fresh Sep 4 FXStreet archive: net employment forecast +15.0k vs +75.1k previous; unemployment 6.4% forecast and previous. First major Canadian release after the Sep 2 hold.",
-      "hawk_if": "Strong to Hawk",
-      "dove_if": "Weak to Dove"
-    },
-    {
-      "id": "nfp_20260904",
-      "datetime_toronto": "2026-09-04T08:30:00-04:00",
-      "datetime_utc": "2026-09-04T12:30:00Z",
+      "id": "us_ppi_20260910",
+      "datetime_toronto": "2026-09-10T08:30:00-04:00",
+      "datetime_utc": "2026-09-10T12:30:00Z",
       "currency": "USD",
       "country": "US",
-      "event": "US Payrolls · Last Before Sep FOMC",
+      "event": "US PPI (headline and core)",
       "impact": "HIGH",
       "forecast": {
-        "Payrolls": "+56k",
-        "UR": "4.1%",
-        "AHE_MoM": "0.3%",
-        "AHE_YoY": "3.0%"
+        "headline_MoM": "0.3%",
+        "core_MoM": "0.3%",
+        "headline_YoY": null,
+        "core_YoY": null
       },
       "previous": {
-        "Payrolls": "-23k",
-        "UR": "4.1%",
-        "AHE_MoM": "0.1%",
-        "AHE_YoY": "3.2%"
+        "headline_MoM": "0.0%",
+        "core_MoM": "0.2%",
+        "headline_YoY": "4.7%",
+        "core_YoY": "4.2%"
       },
-      "logic": "Fresh Sep 4 FXStreet archive. A sub-50k payroll print or higher unemployment would re-arm the labour-crack narrative; firm wages or a strong payroll rebound would support hold/hike pricing.",
-      "hawk_if": "Strong jobs/wages to Hawk",
-      "dove_if": "Weak jobs to Dove"
-    },
-    {
-      "id": "ivey_20260904",
-      "datetime_toronto": "2026-09-04T10:00:00-04:00",
-      "datetime_utc": "2026-09-04T14:00:00Z",
-      "currency": "CAD",
-      "country": "CA",
-      "event": "Ivey PMI (s.a.)",
-      "impact": "MEDIUM",
-      "forecast": {
-        "PMI": "56.2"
-      },
-      "previous": {
-        "PMI": "55.1"
-      },
-      "logic": "Fresh Sep 4 FXStreet archive: post-BoC confirmation check on Canadian activity.",
+      "logic": "Fresh Sep 4 FXStreet archive. A hot producer-price print after strong payrolls would reinforce hike pricing; a broad miss would support Waller’s conditional hold case. Missing YoY forecasts remain null.",
       "hawk_if": "High to Hawk",
       "dove_if": "Low to Dove"
     },
@@ -1025,13 +1058,13 @@
       "impact": "HIGH",
       "forecast": {},
       "previous": {},
-      "logic": "Live overnight futures proxy: cut 0% / hold 51% / hike 49% (ZQU26/ZQV26; CME FedWatch HTTP 403). SEP and press conference settle the labour-versus-inflation debate.",
+      "logic": "Live futures proxy: cut 0% / hold 44% / hike 56% (ZQU26/ZQV26; CME direct distribution unavailable). SEP and press conference settle the labour-versus-inflation debate.",
       "hawk_if": "Showdown",
       "dove_if": "Showdown"
     }
   ],
   "history": [],
   "snapshot_date": "2026-09-04",
-  "archived_at": "2026-09-04T16:49:58.214758Z",
+  "archived_at": "2026-09-04T18:52:19.367400Z",
   "stale": false
 }
