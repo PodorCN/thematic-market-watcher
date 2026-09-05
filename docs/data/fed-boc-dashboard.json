@@ -1,7 +1,7 @@
 {
   "as_of": "2026-09-04T14:50:00-04:00",
-  "version": "2026-09-04-002",
-  "verification_note": "Fri 2026-09-04 14:50 ET cron (run 3/4, 12:00 ET slot). FULL INTRADAY INCREMENTAL REFRESH. Canonical FXStreet fetch returned 63 events (16 HIGH / 47 MEDIUM) with Sep 4 actuals. BLS official Employment Situation reported August payrolls +162k and unemployment 4.1%; the fresh calendar consensus was +56k and prior -23k. Statistics Canada official Labour Force Survey reported employment -41.7k (rounded -42k), unemployment 6.4%, and wage growth 2.0%; calendar consensus was +15.0k. Ivey s.a. PMI printed 64.3 vs 56.2 forecast and 55.1 prior. Fed calendar and Jul 29 statement were re-fetched: Sep 15-16 FOMC; target 3.50-3.75%, 9-3 vote. Waller's Sep 3 speech explicitly preferred hold if disinflation continues but would consider a hike on hot inflation. CME FedWatch remained inaccessible to curl (600-byte access-block response); current ZQU26.CBT 96.305 and ZQV26.CBT 96.220, anchored to last verified NY Fed EFFR 3.63% (live NY Fed endpoint HTTP 400 this pass), imply cut 0.00 / hold 0.44 / hike 0.56. BoC Sep 2 statement/rate table/upcoming-events pages re-confirmed hold 2.25% and Oct 28 next decision. TMX CRAU26 97.655/97.660 and BoC CORRA 2.30 through Sep 3 were live; because CRAU26 spans Oct and Dec, displayed BoC cut 0.00 / hold 0.40 / hike 0.60 remains an explicit scenario point, not direct single-meeting OIS. Market strip is intraday at 14:47 ET (non-equity feeds may lag to 14:37/14:32). stale=false.",
+  "version": "2026-09-05-001",
+  "verification_note": "Sat 2026-09-05 02:55 ET cron (run 1/4, 00:00 ET slot). WEEKEND INCREMENTAL REFRESH. Canonical FXStreet fetch returned 53 events (18 HIGH / 35 MEDIUM); strict JSON, count, UTC-ISO parsing and 15-series chronology passed. Fed 2026 calendar and Jul 29 statement were re-fetched: Sep 15-16 FOMC, target 3.50-3.75%, 9-3 vote. Fed press/speech feeds showed no policy release after Waller Sep 3. CME FedWatch returned a 600-byte access-block body, not a probability distribution; NY Fed EFFR endpoint returned an empty body. Using last verified EFFR 3.63% (effective Sep 2) with Sep 4 yfinance closes ZQU26.CBT 96.3025 and ZQV26.CBT 96.2150 gives cut 0.00 / hold 0.42 / hike 0.58. BoC Sep 2 statement and rate table re-confirmed hold 2.25% and Oct 28 next decision. TMX CRAU26 remained 97.655/97.660 and BoC CORRA remained 2.30 through Sep 3; cut 0.00 / hold 0.40 / hike 0.60 is still a limited-confidence multi-decision scenario, not direct single-meeting OIS. BLS was access-blocked this pass; prior Sep 4 official payroll values were retained. Statistics Canada Sep 4 LFS remained reachable. BEA schedule shows August PCE on Oct 6, outside the fresh 7-day calendar. Market strip updated to official Sep 4 closes. Because direct CME probabilities and a direct single-meeting BoC OIS quote were not independently retrieved, global as_of remains 2026-09-04T14:50:00-04:00 and the Sep 5 archive is stale=true.",
   "timezone": "America/Toronto",
   "meetings": {
     "fed": {
@@ -16,15 +16,15 @@
       },
       "pricing": {
         "cut_25bp": 0.0,
-        "hold": 0.44,
-        "hike_25bp": 0.56,
+        "hold": 0.42,
+        "hike_25bp": 0.58,
         "source": "CME Fed Funds futures proxy via yfinance (CME FedWatch access-block response)",
         "source_url": "https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html",
-        "as_of_pricing": "2026-09-04T14:50:00-04:00",
-        "proxy_check": "ZQU26.CBT 96.305 (14:31 ET) and ZQV26.CBT 96.220 (14:35 ET); last verified NY Fed EFFR 3.63% effective Sep 2 (live endpoint HTTP 400 this pass). Exact Sep day-count solve gives post-meeting EFFR 3.769%, or cut 0.00 / hold 0.44 / hike 0.56.",
+        "as_of_pricing": "2026-09-05T02:55:00-04:00",
+        "proxy_check": "Sep 4 official closes ZQU26.CBT 96.3025 and ZQV26.CBT 96.2150; last verified NY Fed EFFR 3.63% effective Sep 2 (live endpoint empty this pass). Exact Sep day-count solve gives post-meeting EFFR 3.775%, or cut 0.00 / hold 0.42 / hike 0.58.",
         "proxy_source_url": "https://finance.yahoo.com/quote/ZQU26.CBT",
         "implied_rate_before": 3.63,
-        "implied_rate_after": 3.769
+        "implied_rate_after": 3.775
       }
     },
     "boc": {
@@ -42,8 +42,8 @@
         "hike_25bp": 0.6,
         "source": "TMX/MX 3-month CORRA futures + BoC Valet; Oct scenario estimate (quarterly contract spans Oct and Dec decisions)",
         "source_url": "https://www.m-x.ca/en/trading/data/quotes?symbol=CRA%2A",
-        "as_of_pricing": "2026-09-04T14:50:00-04:00",
-        "proxy_check": "CRAU26 bid/ask 97.655/97.660 (mid 97.6575), observed Sep 4 14:47 ET; V39079 target 2.25 and AVG.INTWO 2.27/2.29/2.30/2.30 for Aug 31-Sep 3. Depending on the CORRA spread baseline, the Oct hike scenario remains roughly 0.45-0.65; displayed 0.60 is a scenario point, not a direct single-meeting panel.",
+        "as_of_pricing": "2026-09-05T02:55:00-04:00",
+        "proxy_check": "CRAU26 bid/ask 97.655/97.660 (mid 97.6575), observed Sep 5 02:55 ET; V39079 target 2.25 and AVG.INTWO 2.27/2.29/2.30/2.30 for Aug 31-Sep 3. Quarterly CRAU26 spans Oct and Dec; displayed Oct cut 0.00 / hold 0.40 / hike 0.60 remains a scenario point, not direct single-meeting OIS.",
         "proxy_source_url": "https://www.bankofcanada.ca/valet/observations/AVG.INTWO/json?start_date=2026-08-25",
         "implied_rate_before": 2.25,
         "implied_rate_after": 2.4,
@@ -75,7 +75,7 @@
           "market_validation": [
             {
               "ticker": "IWM",
-              "label": "+0.15% Fri i/d / -0.04% w",
+              "label": "+0.28% Fri close / +0.09% w",
               "type": "up"
             }
           ]
@@ -101,7 +101,7 @@
           "market_validation": [
             {
               "ticker": "XLI",
-              "label": "+0.34% Fri i/d / -1.12% w",
+              "label": "+0.41% Fri close / -1.06% w",
               "type": "up"
             }
           ]
@@ -127,7 +127,7 @@
           "market_validation": [
             {
               "ticker": "QQQ",
-              "label": "+0.03% Fri i/d / +0.21% w",
+              "label": "+0.18% Fri close / +0.35% w",
               "type": "up"
             }
           ]
@@ -153,7 +153,7 @@
           "market_validation": [
             {
               "ticker": "IWM",
-              "label": "+0.15% Fri i/d / -0.04% w",
+              "label": "+0.28% Fri close / +0.09% w",
               "type": "up"
             }
           ]
@@ -169,17 +169,17 @@
           "importance": "HIGH",
           "weight": 0.5,
           "data": {
-            "actual": "WTI 91.01 Sep 2 settle",
+            "actual": "WTI 91.48 Sep 4 settle",
             "forecast": "<85",
-            "previous": "90.22 Sep 1 settle",
-            "delta_label": "+0.88% Wed / +10.68% w",
+            "previous": "91.30 Sep 3 settle",
+            "delta_label": "+0.20% Fri / +10.75% w",
             "delta_type": "beat"
           },
-          "reason": "WTI held above $90 at the Sep 2 settle, so the old demand-scare interpretation remains invalid. Stable id is retained on its original side at the minimum 0.5; the live oil signal is hawkish/inflationary.",
+          "reason": "WTI settled at $91.48 Friday and remained above $90, so the old demand-scare interpretation stays invalid. Stable id is retained on its original side at the minimum 0.5; the live oil signal is hawkish/inflationary.",
           "market_validation": [
             {
               "ticker": "XLE",
-              "label": "-0.88% Fri i/d / +2.19% w",
+              "label": "-0.87% Fri close / +2.20% w",
               "type": "down"
             }
           ]
@@ -193,15 +193,15 @@
           "source": "yfinance ^VIX",
           "source_url": "https://finance.yahoo.com/quote/%5EVIX",
           "importance": "MEDIUM",
-          "weight": 1.0,
+          "weight": 0.5,
           "data": {
-            "actual": "VIX 14.31 (Thu close)",
+            "actual": "VIX 14.53 (Fri close)",
             "forecast": ">17",
-            "previous": "15.20",
-            "delta_label": "-5.86% Thu",
+            "previous": "14.32",
+            "delta_label": "+1.47% Fri",
             "delta_type": "miss"
           },
-          "reason": "VIX fell 5.9% to 14.31 at the Sep 3 close, below a stress regime; retained as only a 1.0 financial-conditions signal.",
+          "reason": "VIX closed Friday at 14.53, still below a stress regime; retained as only a 0.5 financial-conditions residual.",
           "market_validation": []
         },
         {
@@ -249,7 +249,7 @@
           "market_validation": [
             {
               "ticker": "IWM",
-              "label": "+0.15% Fri i/d / -0.04% w",
+              "label": "+0.28% Fri close / +0.09% w",
               "type": "up"
             }
           ],
@@ -279,7 +279,7 @@
           "market_validation": [
             {
               "ticker": "IWM",
-              "label": "+0.15% Fri i/d / -0.04% w",
+              "label": "+0.28% Fri close / +0.09% w",
               "type": "up"
             }
           ],
@@ -311,7 +311,7 @@
           "market_validation": [
             {
               "ticker": "XLF",
-              "label": "-0.57% Fri i/d / +0.22% w",
+              "label": "-0.79% Fri close / +0.00% w",
               "type": "down"
             }
           ]
@@ -337,7 +337,7 @@
           "market_validation": [
             {
               "ticker": "GLD",
-              "label": "-1.10% Fri i/d / -0.78% w",
+              "label": "-0.84% Fri close / -0.52% w",
               "type": "down"
             }
           ]
@@ -383,7 +383,7 @@
           "market_validation": [
             {
               "ticker": "GLD",
-              "label": "-1.10% Fri i/d / -0.78% w",
+              "label": "-0.84% Fri close / -0.52% w",
               "type": "down"
             }
           ]
@@ -427,24 +427,24 @@
           "id": "fed_hawk_long_end_20260831",
           "icon": "30Y",
           "title": "Long-End Flips Hawkish — 10Y Re-takes 4.75%",
-          "summary": "10Y 4.796% / 30Y 5.268% at Sep 1 close: the long-end hawkish move extended.",
+          "summary": "10Y 4.784% / 30Y 5.246% at Sep 4 close: the long-end hawkish threshold held.",
           "published_at_toronto": "2026-08-31T13:00:00-04:00",
           "source": "US Treasury market via yfinance ^TNX/^TYX",
           "source_url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2026",
           "importance": "MEDIUM",
           "weight": 1.0,
           "data": {
-            "actual": "10Y 4.778 / 30Y 5.240 (Fri i/d)",
+            "actual": "10Y 4.784% / 30Y 5.246% (Fri close)",
             "forecast": "10Y <4.75",
-            "previous": "10Y 4.762 / 30Y 5.243 (Thu)",
-            "delta_label": "10Y +1.6bp / 30Y -0.3bp Fri i/d",
+            "previous": "10Y 4.762% / 30Y 5.243%",
+            "delta_label": "10Y +2.2bp / 30Y +0.3bp Fri",
             "delta_type": "beat"
           },
-          "reason": "After the strong payroll report, 10Y rose 1.6bp to 4.778% while 30Y held near 5.24%. The 10Y remains above the 4.75% flip line, so the stable hawkish driver stays active at 1.0.",
+          "reason": "After the strong payroll report, 10Y closed at 4.784%, 2.2bp higher, while 30Y rose 0.3bp to 5.246%. The 10Y remains above the 4.75% flip line, so the stable hawkish driver stays active at 1.0.",
           "market_validation": [
             {
               "ticker": "TLT",
-              "label": "+0.20% Fri i/d / -0.40% w",
+              "label": "+0.17% Fri close / -0.81% w",
               "type": "up"
             }
           ],
@@ -474,7 +474,7 @@
           "market_validation": [
             {
               "ticker": "TLT",
-              "label": "+0.20% Fri i/d / -0.40% w",
+              "label": "+0.17% Fri close / -0.81% w",
               "type": "up"
             }
           ],
@@ -504,7 +504,7 @@
           "market_validation": [
             {
               "ticker": "XLI",
-              "label": "+0.34% Fri i/d / -1.12% w",
+              "label": "+0.41% Fri close / -1.06% w",
               "type": "up"
             }
           ],
@@ -534,12 +534,12 @@
           "market_validation": [
             {
               "ticker": "XLF",
-              "label": "-0.57% Fri i/d / +0.22% w",
+              "label": "-0.79% Fri close / +0.00% w",
               "type": "down"
             },
             {
               "ticker": "TLT",
-              "label": "+0.20% Fri i/d / -0.40% w",
+              "label": "+0.17% Fri close / -0.81% w",
               "type": "up"
             }
           ],
@@ -608,7 +608,7 @@
           "market_validation": [
             {
               "ticker": "XLI",
-              "label": "+0.34% Fri i/d / -1.12% w",
+              "label": "+0.41% Fri close / -1.06% w",
               "type": "up"
             }
           ]
@@ -674,7 +674,7 @@
           "market_validation": [
             {
               "ticker": "ZEB.TO",
-              "label": "-0.28% Fri i/d / +1.72% w",
+              "label": "-0.51% Fri close / +1.48% w",
               "type": "down"
             }
           ]
@@ -710,17 +710,17 @@
           "importance": "HIGH",
           "weight": 0.5,
           "data": {
-            "actual": "WTI 90.22 Sep 1 settle",
+            "actual": "WTI 91.48 Sep 4 settle",
             "forecast": "<85",
-            "previous": "85.76 Aug 31 settle",
-            "delta_label": "+5.20% Tue / +8.95% w",
+            "previous": "91.30 Sep 3 settle",
+            "delta_label": "+0.20% Fri / +10.75% w",
             "delta_type": "beat"
           },
-          "reason": "The oil rebound has become a full reversal above $90. Stable id stays on its historical side at 0.5, but the current terms-of-trade signal now supports the BoC hawks.",
+          "reason": "WTI settled at $91.48 Friday and remained above $90, so the old demand-scare interpretation stays invalid. Stable id is retained on its original side at the minimum 0.5; the live oil signal is hawkish/inflationary.",
           "market_validation": [
             {
               "ticker": "XLE",
-              "label": "-0.88% Fri i/d / +2.19% w",
+              "label": "-0.87% Fri close / +2.20% w",
               "type": "down"
             }
           ]
@@ -758,17 +758,17 @@
           "importance": "MEDIUM",
           "weight": 1.5,
           "data": {
-            "actual": "WTI 91.14 Sep 2 i/d",
+            "actual": "WTI 91.48 Sep 4 settle",
             "forecast": "85.0",
-            "previous": "90.22 Sep 1 settle",
-            "delta_label": "+1.02% Wed i/d / +10.84% w",
+            "previous": "91.30 Sep 3 settle",
+            "delta_label": "+0.20% Fri / +10.75% w",
             "delta_type": "beat"
           },
-          "reason": "WTI held above $90 and extended higher after a larger-than-expected US crude draw. The BoC explicitly cited high energy prices in its Sep 2 hold, making this a live Canadian inflation driver.",
+          "reason": "WTI settled at $91.48 and remained above $90 after a large US inventory draw. The BoC explicitly cited high energy prices in its Sep 2 hold, keeping this a live Canadian inflation driver.",
           "market_validation": [
             {
               "ticker": "XLE",
-              "label": "-0.88% Fri i/d / +2.19% w",
+              "label": "-0.87% Fri close / +2.20% w",
               "type": "down"
             }
           ]
@@ -794,7 +794,7 @@
           "market_validation": [
             {
               "ticker": "ZEB.TO",
-              "label": "-0.28% Fri i/d / +1.72% w",
+              "label": "-0.51% Fri close / +1.48% w",
               "type": "down"
             }
           ]
@@ -803,20 +803,20 @@
           "id": "boc_hawk_us_spillover_20260827",
           "icon": "US",
           "title": "US Stickiness Spillover — Fed Path Constrains BoC",
-          "summary": "Fed Sep hike tail proxy remains 0.75; Aug 31 10Y close 4.758% keeps the cross-border constraint tight.",
+          "summary": "Fed Sep hike proxy is 0.58 and 10Y closed 4.784%, keeping the cross-border constraint tight.",
           "published_at_toronto": "2026-08-27T16:00:00-04:00",
           "source": "US data / rates",
           "source_url": "https://www.pmi.spglobal.com/",
           "importance": "MEDIUM",
           "weight": 1.5,
           "data": {
-            "actual": "Fed hike tail 0.75 / 10Y 4.758% / USDCAD 1.3899 Aug 31 row",
+            "actual": "Fed hike proxy 0.58 / 10Y 4.784% / USDCAD 1.3837 Fri close",
             "forecast": "balanced Fed / 30Y 4.90% / USDCAD <1.36",
-            "previous": "Warsh hawkish JH / 30Y 5.21% / USDCAD 1.3901 Sun reopen",
-            "delta_label": "Fed hawkish drift extending",
+            "previous": "hold 0.44 / hike 0.56 at 14:50 ET",
+            "delta_label": "hawkish pricing held into close",
             "delta_type": "beat"
           },
-          "reason": "ZQU26 Aug 31 settle 96.295 leaves this desk proxy at 0.05 cut / 0.20 hold / 0.75 hike; 10Y closed above 4.75%. Stable ID and 1.5 weight retained.",
+          "reason": "Sep 4 ZQU26/ZQV26 official closes imply cut 0.00 / hold 0.42 / hike 0.58 using last verified EFFR 3.63%; 10Y closed above 4.75%. Stable ID and 1.5 weight retained.",
           "market_validation": []
         },
         {
@@ -840,7 +840,7 @@
           "market_validation": [
             {
               "ticker": "ZEB.TO",
-              "label": "-0.28% Fri i/d / +1.72% w",
+              "label": "-0.51% Fri close / +1.48% w",
               "type": "down"
             }
           ],
@@ -875,7 +875,7 @@
             },
             {
               "ticker": "ZEB.TO",
-              "label": "-0.28% Fri i/d / +1.72% w",
+              "label": "-0.51% Fri close / +1.48% w",
               "type": "down"
             }
           ],
@@ -919,105 +919,105 @@
   },
   "market": {
     "since": "2026-07-30",
-    "as_of_close": "2026-09-04T14:47:00-04:00",
+    "as_of_close": "2026-09-04T16:00:00-04:00",
     "tickers": [
       {
         "symbol": "SPY",
-        "price": 770.22,
-        "chg_1d": -0.0038,
-        "chg_1w": 0.0011,
-        "label_1d": "-0.38% Fri i/d",
+        "price": 770.19,
+        "chg_1d": -0.003854,
+        "chg_1w": 0.001092,
+        "label_1d": "-0.39% Fri close",
         "label_1w": "+0.11% w",
         "type_1d": "down",
         "type_1w": "up"
       },
       {
         "symbol": "QQQ",
-        "price": 717.92,
-        "chg_1d": 0.0003,
-        "chg_1w": 0.0021,
-        "label_1d": "+0.03% Fri i/d",
-        "label_1w": "+0.21% w",
+        "price": 718.96,
+        "chg_1d": 0.001798,
+        "chg_1w": 0.003531,
+        "label_1d": "+0.18% Fri close",
+        "label_1w": "+0.35% w",
         "type_1d": "up",
         "type_1w": "up"
       },
       {
         "symbol": "IWM",
-        "price": 295.64,
-        "chg_1d": 0.0015,
-        "chg_1w": -0.0004,
-        "label_1d": "+0.15% Fri i/d",
-        "label_1w": "-0.04% w",
+        "price": 296.01,
+        "chg_1d": 0.002778,
+        "chg_1w": 0.000879,
+        "label_1d": "+0.28% Fri close",
+        "label_1w": "+0.09% w",
         "type_1d": "up",
-        "type_1w": "down"
+        "type_1w": "up"
       },
       {
         "symbol": "XLI",
-        "price": 175.155,
-        "chg_1d": 0.0034,
-        "chg_1w": -0.0112,
-        "label_1d": "+0.34% Fri i/d",
-        "label_1w": "-1.12% w",
+        "price": 175.27,
+        "chg_1d": 0.004067,
+        "chg_1w": -0.010557,
+        "label_1d": "+0.41% Fri close",
+        "label_1w": "-1.06% w",
         "type_1d": "up",
         "type_1w": "down"
       },
       {
         "symbol": "XLU",
-        "price": 43.0,
-        "chg_1d": -0.0007,
-        "chg_1w": 0.0063,
-        "label_1d": "-0.07% Fri i/d",
-        "label_1w": "+0.63% w",
-        "type_1d": "down",
+        "price": 43.08,
+        "chg_1d": 0.001162,
+        "chg_1w": 0.008191,
+        "label_1d": "+0.12% Fri close",
+        "label_1w": "+0.82% w",
+        "type_1d": "up",
         "type_1w": "up"
       },
       {
         "symbol": "XLF",
-        "price": 58.225,
-        "chg_1d": -0.0057,
-        "chg_1w": 0.0022,
-        "label_1d": "-0.57% Fri i/d",
-        "label_1w": "+0.22% w",
+        "price": 58.1,
+        "chg_1d": -0.007855,
+        "chg_1w": 0.0,
+        "label_1d": "-0.79% Fri close",
+        "label_1w": "+0.00% w",
         "type_1d": "down",
         "type_1w": "up"
       },
       {
         "symbol": "XLE",
-        "price": 64.05,
-        "chg_1d": -0.0088,
-        "chg_1w": 0.0219,
-        "label_1d": "-0.88% Fri i/d",
-        "label_1w": "+2.19% w",
+        "price": 64.06,
+        "chg_1d": -0.008666,
+        "chg_1w": 0.022017,
+        "label_1d": "-0.87% Fri close",
+        "label_1w": "+2.20% w",
         "type_1d": "down",
         "type_1w": "up"
       },
       {
         "symbol": "TLT",
-        "price": 82.235,
-        "chg_1d": 0.002,
-        "chg_1w": -0.004,
-        "label_1d": "+0.20% Fri i/d",
-        "label_1w": "-0.40% w",
+        "price": 82.21,
+        "chg_1d": 0.001706,
+        "chg_1w": -0.008084,
+        "label_1d": "+0.17% Fri close",
+        "label_1w": "-0.81% w",
         "type_1d": "up",
         "type_1w": "down"
       },
       {
         "symbol": "GLD",
-        "price": 405.7063,
-        "chg_1d": -0.011,
-        "chg_1w": -0.0078,
-        "label_1d": "-1.10% Fri i/d",
-        "label_1w": "-0.78% w",
+        "price": 406.77,
+        "chg_1d": -0.00841,
+        "chg_1w": -0.005185,
+        "label_1d": "-0.84% Fri close",
+        "label_1w": "-0.52% w",
         "type_1d": "down",
         "type_1w": "down"
       },
       {
         "symbol": "ZEB.TO",
-        "price": 75.65,
-        "chg_1d": -0.0028,
-        "chg_1w": 0.0172,
-        "label_1d": "-0.28% Fri i/d",
-        "label_1w": "+1.72% w",
+        "price": 75.47,
+        "chg_1d": -0.005141,
+        "chg_1w": 0.014791,
+        "label_1d": "-0.51% Fri close",
+        "label_1w": "+1.48% w",
         "type_1d": "down",
         "type_1w": "up"
       }
@@ -1044,9 +1044,55 @@
         "headline_YoY": "4.7%",
         "core_YoY": "4.2%"
       },
-      "logic": "Fresh Sep 4 FXStreet archive. A hot producer-price print after strong payrolls would reinforce hike pricing; a broad miss would support Waller’s conditional hold case. Missing YoY forecasts remain null.",
+      "logic": "Fresh Sep 5 FXStreet archive. A broad upside surprise would reinforce post-payroll hike pricing; a miss would support the conditional hold case. Missing YoY forecasts remain null.",
       "hawk_if": "High to Hawk",
       "dove_if": "Low to Dove"
+    },
+    {
+      "id": "us_cpi_20260911",
+      "datetime_toronto": "2026-09-11T08:30:00-04:00",
+      "datetime_utc": "2026-09-11T12:30:00Z",
+      "currency": "USD",
+      "country": "US",
+      "event": "US CPI (headline and core)",
+      "impact": "HIGH",
+      "forecast": {
+        "headline_MoM": "0.4%",
+        "core_MoM": "0.2%",
+        "headline_YoY": null,
+        "core_YoY": null
+      },
+      "previous": {
+        "headline_MoM": "0.1%",
+        "core_MoM": "0.2%",
+        "headline_YoY": "3.4%",
+        "core_YoY": "2.5%"
+      },
+      "logic": "Fresh Sep 5 FXStreet archive. CPI is the main inflation arbiter before Sep FOMC; missing YoY forecasts remain null.",
+      "hawk_if": "High to Hawk",
+      "dove_if": "Low to Dove"
+    },
+    {
+      "id": "us_uom_20260911",
+      "datetime_toronto": "2026-09-11T10:00:00-04:00",
+      "datetime_utc": "2026-09-11T14:00:00Z",
+      "currency": "USD",
+      "country": "US",
+      "event": "Michigan Consumer Sentiment and Inflation Expectations",
+      "impact": "HIGH",
+      "forecast": {
+        "sentiment": null,
+        "one_year_inflation": null,
+        "five_year_inflation": null
+      },
+      "previous": {
+        "sentiment": "51.7",
+        "one_year_inflation": "4.0%",
+        "five_year_inflation": "3.3%"
+      },
+      "logic": "Fresh Sep 5 FXStreet archive. Re-acceleration in inflation expectations would reinforce tariff-price concerns; further easing would support hold.",
+      "hawk_if": "Inflation expectations high",
+      "dove_if": "Inflation expectations low"
     },
     {
       "id": "fomc_20260916",
@@ -1058,7 +1104,7 @@
       "impact": "HIGH",
       "forecast": {},
       "previous": {},
-      "logic": "Live futures proxy: cut 0% / hold 44% / hike 56% (ZQU26/ZQV26; CME direct distribution unavailable). SEP and press conference settle the labour-versus-inflation debate.",
+      "logic": "Sep 4 futures-close proxy: cut 0% / hold 42% / hike 58%; CME direct distribution unavailable. SEP and press conference settle the labour-versus-inflation debate.",
       "hawk_if": "Showdown",
       "dove_if": "Showdown"
     }
