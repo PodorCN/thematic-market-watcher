@@ -1,7 +1,7 @@
 {
   "as_of": "2026-09-04T14:50:00-04:00",
-  "version": "2026-09-07-001",
-  "verification_note": "Mon 2026-09-07 04:00 ET cron (run 1/4, 00:00 ET slot). MONDAY DAILY REFRESH. Canonical FXStreet fetch returned 36 events (11 HIGH / 25 MEDIUM); strict JSON, count, explicit UTC-ISO parsing and 15-series chronology passed after normalizing all 36 source-naive datetime_utc values with Z before republication. Fed calendar and Jul 29 statement were re-fetched: Sep 15-16 FOMC, target 3.50-3.75%, 9-3 vote; Waller Sep 3 remains the latest policy communication and no new communication appeared overnight. CME FedWatch page and known JSON endpoints returned HTTP 403 again, so no direct probability distribution was obtained. Sep 4 closes remain ZQU26.CBT 96.3025 and ZQV26.CBT 96.2150; the last verified futures proxy remains cut 0.00 / hold 0.42 / hike 0.58. BoC Sep 2 statement re-confirmed a 2.25% hold and Oct 28 next decision with MPR. BoC Valet target and CORRA remained 2.25% and 2.30% through Sep 3; the Sep 4 observation is not published until Sep 8 because Sep 7 is Labour Day. TMX CRAU26 Sep 4 settlement remains 97.660; cut 0.00 / hold 0.40 / hike 0.60 remains a limited-confidence quarterly-futures scenario spanning Oct and Dec, not direct single-meeting OIS. BLS schedules returned HTTP 403; BEA schedule returned HTTP 200 with no Sep 7-13 release, and Statistics Canada schedule endpoints returned HTTP 500/404. yfinance re-confirmed Sep 4 closes for the validation ETF panel. No release or market-driver-level event occurred since the Sep 6 run, so all stable driver IDs and weights were preserved with zero additions, updates or removals. Because direct CME probabilities and a direct single-meeting BoC OIS quote were not independently retrieved, global as_of remains 2026-09-04T14:50:00-04:00 and the Sep 7 archive is stale=true.",
+  "version": "2026-09-07-003",
+  "verification_note": "Mon 2026-09-07 16:15 ET cron (run 3/4, 12:00 ET slot). INCREMENTAL HOLIDAY REFRESH. Canonical FXStreet fetch returned 41 events (15 HIGH / 26 MEDIUM); strict JSON, count, explicit UTC-ISO parsing and 15-series chronology passed after normalizing all 41 source-naive datetime_utc values with Z before republication. Fed calendar and Jul 29 statement were re-fetched: Sep 15-16 FOMC, target 3.50-3.75%, 9-3 vote; official Fed feeds showed no new policy communication since the 04:00 ET run. CME FedWatch page and known JSON endpoints returned HTTP 403 again, so no direct probability distribution was obtained. Sep 4 closes remain ZQU26.CBT 96.3025 and ZQV26.CBT 96.2150; the last verified futures proxy remains cut 0.00 / hold 0.42 / hike 0.58. BoC official pages re-confirmed the Sep 2 hold at 2.25% and Oct 28 next decision with MPR; no new policy communication appeared. BoC Valet target is 2.25% through Sep 4 and CORRA is 2.30% through Sep 3; the Sep 4 CORRA observation is due Sep 8 after Labour Day. TMX's CRA quotes page now returns a JavaScript shell and no server-rendered CRAU26 quote; Sep 4 settlement 97.660 remains the latest possible holiday print. Cut 0.00 / hold 0.40 / hike 0.60 remains a limited-confidence quarterly-futures scenario spanning Oct and Dec, not direct single-meeting OIS. BLS direct schedule remained HTTP 403 (calendar verified through a text proxy); BEA schedule returned HTTP 200 with no Sep 7-13 release, and the Statistics Canada release-calendar endpoint returned HTTP 500. No official release or market-driver-level event occurred since 04:00 ET; US/Canadian cash markets were closed and unchanged holiday-labelled futures rows were not treated as fresh closes. yfinance re-confirmed Sep 4 closes for the validation ETF panel. All stable driver IDs and weights were preserved with zero additions, updates or removals. Because direct CME probabilities and a direct single-meeting BoC OIS quote were not independently retrieved, global as_of remains 2026-09-04T14:50:00-04:00 and the Sep 7 archive is stale=true.",
   "timezone": "America/Toronto",
   "meetings": {
     "fed": {
@@ -20,8 +20,8 @@
         "hike_25bp": 0.58,
         "source": "CME Fed Funds futures proxy via yfinance (CME FedWatch access-block response)",
         "source_url": "https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html",
-        "as_of_pricing": "2026-09-07T04:00:00-04:00",
-        "proxy_check": "Sep 4 official closes ZQU26.CBT 96.3025 and ZQV26.CBT 96.2150; yfinance re-check at 2026-09-07 04:00 ET showed no newer settlement. Last verified NY Fed EFFR is 3.63% effective Sep 2. Exact Sep day-count solve gives post-meeting EFFR 3.775%, or cut 0.00 / hold 0.42 / hike 0.58. CME FedWatch and known JSON endpoints returned HTTP 403 at 2026-09-07 04:00 ET, so no direct distribution was obtained.",
+        "as_of_pricing": "2026-09-07T16:15:00-04:00",
+        "proxy_check": "Sep 4 official closes ZQU26.CBT 96.3025 and ZQV26.CBT 96.2150; yfinance re-check at 2026-09-07 16:15 ET showed only unchanged holiday-labelled rows. Latest verified NY Fed EFFR is 3.63% effective Sep 3. Exact Sep day-count solve gives post-meeting EFFR 3.775%, or cut 0.00 / hold 0.42 / hike 0.58. CME FedWatch and known JSON endpoints returned HTTP 403 at 2026-09-07 16:15 ET, so no direct distribution was obtained.",
         "proxy_source_url": "https://finance.yahoo.com/quote/ZQU26.CBT",
         "implied_rate_before": 3.63,
         "implied_rate_after": 3.775
@@ -42,8 +42,8 @@
         "hike_25bp": 0.6,
         "source": "TMX/MX 3-month CORRA futures + BoC Valet; Oct scenario estimate (quarterly contract spans Oct and Dec decisions)",
         "source_url": "https://www.m-x.ca/en/trading/data/quotes?symbol=CRA%2A",
-        "as_of_pricing": "2026-09-07T04:00:00-04:00",
-        "proxy_check": "CRAU26 Sep 4 settlement 97.660 (implied quarterly-average CORRA 2.340) remains the latest possible print because Sep 7 is Labour Day and MX is closed. BoC Valet V39079 target remained 2.25 and AVG.INTWO CORRA was 2.27/2.29/2.30/2.30 for Aug 31-Sep 3; Sep 4 CORRA is due Sep 8. Quarterly CRAU26 spans the Oct 28 and Dec 9 decisions; displayed Oct cut 0.00 / hold 0.40 / hike 0.60 remains a scenario point, not direct single-meeting OIS.",
+        "as_of_pricing": "2026-09-07T16:15:00-04:00",
+        "proxy_check": "CRAU26 Sep 4 settlement 97.660 (implied quarterly-average CORRA 2.340) remains the latest possible print because Sep 7 is Labour Day and MX is closed. The TMX quote page now exposes only a JavaScript shell, so the settlement could not be re-read from its HTML. BoC Valet V39079 target is 2.25 through Sep 4 and AVG.INTWO CORRA was 2.27/2.29/2.30/2.30 for Aug 31-Sep 3; Sep 4 CORRA is due Sep 8. Quarterly CRAU26 spans the Oct 28 and Dec 9 decisions; displayed Oct cut 0.00 / hold 0.40 / hike 0.60 remains a scenario point, not direct single-meeting OIS.",
         "proxy_source_url": "https://www.bankofcanada.ca/valet/observations/AVG.INTWO/json?start_date=2026-08-25",
         "implied_rate_before": 2.25,
         "implied_rate_after": 2.4,
@@ -1111,6 +1111,6 @@
   ],
   "history": [],
   "snapshot_date": "2026-09-07",
-  "archived_at": "2026-09-07T18:13:54.243090Z",
+  "archived_at": "2026-09-07T20:22:06.319309Z",
   "stale": true
 }
