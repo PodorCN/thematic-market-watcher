@@ -1,7 +1,7 @@
 {
   "as_of": "2026-09-04T14:50:00-04:00",
-  "version": "2026-09-08-002",
-  "verification_note": "Tue 2026-09-08 16:59 ET cron (run 3/4, 12:00 ET slot delayed). INCREMENTAL REFRESH. FXStreet fetch returned 46 events (18 HIGH / 28 MEDIUM); strict count, UTC normalization and history-order validation passed. Federal Reserve official calendar and Jul 29 statement were re-fetched: Sep 15-16 FOMC, target 3.50-3.75%, 9-3 vote; official Board feeds showed no new policy release since 04:48 ET. CME FedWatch returned HTTP 403 at 16:58 ET, so no direct distribution was obtained. NY Fed EFFR advanced to the Sep 4 fixing at 3.63%. ZQU26 traded with Sep 8 volume 26,409 at 96.3025, leaving the transparent 25bp-grid futures proxy at cut 0.00 / hold 0.42 / hike 0.58. Bank of Canada official pages re-confirmed the Sep 2 hold at 2.25% and Oct 28 next decision with MPR. BoC Valet CORRA advanced to Sep 4 at 2.29%. TMX CRAU26 Sep 8 settlement was 97.650 (implied quarterly-average CORRA 2.350%); the limited-confidence Oct scenario remains cut 0.00 / hold 0.40 / hike 0.60 because the quarterly contract spans Oct and Dec and is not direct single-meeting OIS. Statistics Canada published Sep 8 retail commodity data ($78.4bn, +7.2% y/y, nominal/not seasonally adjusted), but it is lagged June detail and not a new standalone policy driver. BLS schedule access returned HTTP 403; BEA showed no Sep 8 release. Sep 8 closes updated the market strip: SPY -0.55%, QQQ -0.08%, IWM -0.45%, XLF -1.38%, XLE +1.11%, TLT -0.01%, GLD -1.73%; WTI settled 94.21 (+2.98% d, +9.85% w), reinforcing the existing oil-inflation drivers. No drivers were added or removed; five stable market/oil/rates cards were updated. Because direct CME probabilities and a direct single-meeting BoC OIS quote remain unavailable, top-level as_of stays 2026-09-04T14:50:00-04:00 and the archive remains stale=true.",
+  "version": "2026-09-09-003",
+  "verification_note": "Wed 2026-09-09 12:38 ET cron (run 3/4, 12:00 ET slot). INCREMENTAL REFRESH. FXStreet fetched 52 events (21 HIGH / 31 MEDIUM); strict count, UTC parsing and non-null history-order validation passed. Federal Reserve official calendar and Jul 29 statement were re-fetched at 12:40 ET: Sep 15-16 FOMC, target 3.50-3.75%, 9-3 vote; official feeds showed no new policy release after Sep 8 16:59 ET. CME FedWatch returned HTTP 403 at 12:40 ET, so no direct distribution was obtained. NY Fed EFFR advanced to the Sep 8 fixing at 3.63%. ZQU26 traded at 96.2975 at 12:28 ET with volume 37,605, moving the transparent adjacent 25bp-grid futures proxy to cut 0.00 / hold 0.3786 / hike 0.6214. Bank of Canada official pages retain the Sep 2 hold at 2.25% and Oct 28 next decision with MPR. BoC Valet CORRA advanced to Sep 8 at 2.29%. TMX CRAU26 was 97.650 at 12:40 ET with volume 23,255; because the quarterly contract spans Oct and Dec and no direct single-meeting OIS quote was available, the displayed limited-confidence Oct scenario remains cut 0.00 / hold 0.40 / hike 0.60 rather than inventing a new probability. Statistics Canada published Q2 asking-rent data at 08:30 ET: all-CMA two-bedroom asking rent C$2,130, -3.6% y/y versus the prior quarterly release C$2,150, -0.9% y/y; added as a secondary 1.0-weight BoC dovish driver, not CPI. BLS remained HTTP 403 and BEA had no Sep 9 scheduled release. Sep 9 intraday market validation at 12:37 ET: SPY -0.51%, QQQ -0.37%, IWM -1.25%, XLI -1.16%, XLF -0.26%, TLT -0.71%, GLD +0.93%, ZEB.TO -0.94%; WTI +3.46%, 10Y +4.3bp and 30Y +3.6bp reinforced existing oil and long-end drivers. Because direct CME probabilities and a direct single-meeting BoC OIS quote remain unavailable, top-level as_of stays 2026-09-04T14:50:00-04:00 and the archive remains stale=true.",
   "timezone": "America/Toronto",
   "meetings": {
     "fed": {
@@ -16,15 +16,15 @@
       },
       "pricing": {
         "cut_25bp": 0.0,
-        "hold": 0.42,
-        "hike_25bp": 0.58,
+        "hold": 0.378571,
+        "hike_25bp": 0.621429,
         "source": "CME Fed Funds futures proxy via yfinance (CME FedWatch access-block response)",
         "source_url": "https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html",
-        "as_of_pricing": "2026-09-08T16:58:00-04:00",
-        "proxy_check": "Sep 8 ZQU26 96.3025 with volume 26,409 and intraday range 96.3000-96.3075; NY Fed EFFR effective Sep 4 is 3.63%. Exact September day-count solve gives post-meeting EFFR 3.775%, or cut 0.00 / hold 0.42 / hike 0.58 on a 25bp grid. CME FedWatch returned HTTP 403 at 2026-09-08 16:58 ET, so this is a futures proxy, not the direct CME distribution.",
+        "as_of_pricing": "2026-09-09T12:40:00-04:00",
+        "proxy_check": "Sep 9 ZQU26 96.2975 at 12:28 ET with volume 37,605 and intraday range 96.2975-96.3025; NY Fed EFFR effective Sep 8 is 3.63%. Exact September day-count solve gives post-meeting EFFR 3.785357%, or cut 0.00 / hold 0.378571 / hike 0.621429 on an adjacent 25bp grid. CME FedWatch returned HTTP 403 at 12:40 ET, so this is a futures proxy, not the direct CME distribution.",
         "proxy_source_url": "https://finance.yahoo.com/quote/ZQU26.CBT",
         "implied_rate_before": 3.63,
-        "implied_rate_after": 3.775
+        "implied_rate_after": 3.785357
       }
     },
     "boc": {
@@ -42,8 +42,8 @@
         "hike_25bp": 0.6,
         "source": "TMX/MX 3-month CORRA futures + BoC Valet; Oct scenario estimate (quarterly contract spans Oct and Dec decisions)",
         "source_url": "https://www.m-x.ca/en/trading/data/quotes?symbol=CRA%2A",
-        "as_of_pricing": "2026-09-08T16:59:00-04:00",
-        "proxy_check": "TMX CRAU26 Sep 8 settlement 97.650 (bid 97.650 / ask 97.655 at 16:58 ET; volume 38,438), implying quarterly-average CORRA 2.350%. BoC Valet target is 2.25% through Sep 7 and CORRA is 2.29% for Sep 4. Because CRAU26 spans Oct 28 and Dec 9 decisions, displayed cut 0.00 / hold 0.40 / hike 0.60 remains a rounded limited-confidence Oct scenario, not direct single-meeting OIS.",
+        "as_of_pricing": "2026-09-09T12:40:00-04:00",
+        "proxy_check": "TMX CRAU26 Sep 9 last/settlement 97.650 (bid 97.650 / ask 97.655 at 12:40 ET; volume 23,255), implying quarterly-average CORRA 2.350%. BoC Valet target is 2.25% and CORRA is 2.29% for Sep 8. Because CRAU26 spans Oct 28 and Dec 9 decisions, displayed cut 0.00 / hold 0.40 / hike 0.60 remains the prior rounded limited-confidence Oct scenario, not direct single-meeting OIS.",
         "proxy_source_url": "https://www.bankofcanada.ca/valet/observations/AVG.INTWO/json?start_date=2026-08-25",
         "implied_rate_before": 2.25,
         "implied_rate_after": 2.4,
@@ -136,24 +136,24 @@
           "id": "fed_dove_equities_20260827",
           "icon": "EQ",
           "title": "Equity Rally Confirms Risk-On Into Jackson Hole",
-          "summary": "Sep 8 risk-off close: SPY -0.55%, QQQ -0.08%, IWM -0.45%.",
+          "summary": "Risk-off breadth worsened intraday: IWM -1.25% and XLI -1.16% versus SPY -0.51%.",
           "published_at_toronto": "2026-08-27T16:00:00-04:00",
           "source": "yfinance close",
           "source_url": "https://finance.yahoo.com/quote/SPY",
           "importance": "MEDIUM",
           "weight": 1.0,
           "data": {
-            "actual": "SPY 765.96 / QQQ 718.36 / IWM 294.67 (Tue close)",
+            "actual": "SPY 762.02 / QQQ 715.71 / IWM 290.99 (Wed 12:37 ET)",
             "forecast": "SPY <760 / QQQ <700",
-            "previous": "SPY 770.19 / QQQ 718.96 / IWM 296.01",
-            "delta_label": "-0.55% / -0.08% / -0.45% Tue",
+            "previous": "SPY 765.96 / QQQ 718.36 / IWM 294.67",
+            "delta_label": "-0.51% / -0.37% / -1.25% intraday",
             "delta_type": "miss"
           },
-          "reason": "Sep 8 closes were broadly softer, led by financials, while tech was nearly flat. Stable id remains dovish at weight 1.0 as modestly tighter financial conditions validate the growth-risk side.",
+          "reason": "Sep 9 breadth weakened materially, with small caps and industrials lagging large caps while VIX rose to 16.52. Stable id remains dovish at 1.0 as tighter financial conditions validate the growth-risk side.",
           "market_validation": [
             {
               "ticker": "IWM",
-              "label": "-0.45% Tue close / +0.25% w",
+              "label": "IWM -1.25% Wed 12:37 ET",
               "type": "down"
             }
           ]
@@ -162,24 +162,24 @@
           "id": "fed_dove_oil_crash_20260825",
           "icon": "OIL",
           "title": "Oil Demand-Scare — Cumulative Hit Intact",
-          "summary": "WTI settled $94.21, decisively invalidating the old demand-scare signal.",
+          "summary": "WTI reached $96.25 intraday, further invalidating the old demand-scare signal.",
           "published_at_toronto": "2026-08-27T16:00:00-04:00",
           "source": "yfinance CL=F / EIA WTI",
           "source_url": "https://finance.yahoo.com/quote/CL=F",
           "importance": "HIGH",
           "weight": 0.5,
           "data": {
-            "actual": "WTI 94.21 Sep 8 settle",
+            "actual": "WTI 96.25 Sep 9 12:31 ET",
             "forecast": "<85",
-            "previous": "91.48 Sep 4 settle",
-            "delta_label": "+2.98% d / +9.85% w",
+            "previous": "93.03 Sep 8 close",
+            "delta_label": "+3.46% intraday",
             "delta_type": "beat"
           },
-          "reason": "WTI settled at $94.21 after the Labour Day reopen, 2.98% above Friday and 9.85% over five sessions. Stable id remains on its original dovish side at minimum 0.5 for continuity; the live oil impulse is strongly hawkish/inflationary.",
+          "reason": "WTI rose 3.46% from the Sep 8 daily close by 12:31 ET. Stable id remains on its original dovish side at minimum 0.5 for continuity; the live oil impulse is hawkish/inflationary.",
           "market_validation": [
             {
               "ticker": "CL=F",
-              "label": "+3.17% overnight / +10.05% since Aug 31",
+              "label": "+3.46% Wed 12:31 ET",
               "type": "up"
             }
           ]
@@ -249,7 +249,7 @@
           "market_validation": [
             {
               "ticker": "IWM",
-              "label": "-0.45% Tue close / +0.25% w",
+              "label": "IWM -1.25% Wed 12:37 ET",
               "type": "down"
             }
           ],
@@ -279,7 +279,7 @@
           "market_validation": [
             {
               "ticker": "IWM",
-              "label": "-0.45% Tue close / +0.25% w",
+              "label": "IWM -1.25% Wed 12:37 ET",
               "type": "down"
             }
           ],
@@ -427,24 +427,24 @@
           "id": "fed_hawk_long_end_20260831",
           "icon": "30Y",
           "title": "Long-End Flips Hawkish — 10Y Re-takes 4.75%",
-          "summary": "10Y 4.806% / 30Y 5.264% at Sep 8 close: the long-end hawkish threshold strengthened.",
+          "summary": "10Y rose to 4.849% and 30Y to 5.300% intraday, extending the hawkish long-end signal.",
           "published_at_toronto": "2026-08-31T13:00:00-04:00",
           "source": "US Treasury market via yfinance ^TNX/^TYX",
           "source_url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2026",
           "importance": "MEDIUM",
           "weight": 1.0,
           "data": {
-            "actual": "10Y 4.806% / 30Y 5.264% (Tue close)",
+            "actual": "10Y 4.849% / 30Y 5.300% (Wed 12:26 ET)",
             "forecast": "10Y <4.75",
-            "previous": "10Y 4.784% / 30Y 5.246%",
-            "delta_label": "10Y +2.2bp / 30Y +1.8bp Tue",
+            "previous": "10Y 4.806% / 30Y 5.264%",
+            "delta_label": "10Y +4.3bp / 30Y +3.6bp intraday",
             "delta_type": "beat"
           },
-          "reason": "Sep 8 yields rose across the long end. The 10Y remains above the 4.75% flip line, so the stable hawkish driver stays active at 1.0.",
+          "reason": "Sep 9 long yields extended higher despite weaker equities. The 10Y remains above the 4.75% flip line, so the stable hawkish driver stays active at 1.0; price action alone does not prove a Fed-pricing cause.",
           "market_validation": [
             {
               "ticker": "TLT",
-              "label": "-0.01% Tue close / -0.01% w",
+              "label": "TLT -0.71% Wed 12:37 ET",
               "type": "down"
             }
           ],
@@ -674,7 +674,7 @@
           "market_validation": [
             {
               "ticker": "ZEB.TO",
-              "label": "-1.09% Tue close / +1.26% w",
+              "label": "ZEB.TO -0.94% Wed 12:37 ET",
               "type": "down"
             }
           ]
@@ -703,26 +703,56 @@
           "id": "boc_dove_oil_crash_20260827",
           "icon": "OIL",
           "title": "Oil Demand-Scare — CAD Terms of Trade Eroded",
-          "summary": "WTI reached $94.38 overnight, decisively invalidating the old demand-scare signal.",
+          "summary": "WTI reached $96.25 intraday, further invalidating the old demand-scare signal.",
           "published_at_toronto": "2026-08-27T16:00:00-04:00",
           "source": "yfinance CL=F / EIA",
           "source_url": "https://finance.yahoo.com/quote/CL=F",
           "importance": "HIGH",
           "weight": 0.5,
           "data": {
-            "actual": "WTI 94.38 Sep 8 overnight",
+            "actual": "WTI 96.25 Sep 9 12:31 ET",
             "forecast": "<85",
-            "previous": "91.48 Sep 4 settle",
-            "delta_label": "+3.17% overnight / +10.05% since Aug 31",
+            "previous": "93.03 Sep 8 close",
+            "delta_label": "+3.46% intraday",
             "delta_type": "beat"
           },
-          "reason": "WTI rose to $94.38 after the Labour Day reopen, 3.17% above Friday and 10.05% above Aug 31. Stable id remains on its original dovish side at the minimum 0.5 for continuity; the live oil impulse is strongly hawkish/inflationary.",
+          "reason": "WTI rose 3.46% from the Sep 8 daily close by 12:31 ET. Stable id remains on its original dovish side at minimum 0.5 for continuity; the live oil impulse is hawkish/inflationary.",
           "market_validation": [
             {
               "ticker": "CL=F",
-              "label": "+3.17% overnight / +10.05% since Aug 31",
+              "label": "+3.46% Wed 12:31 ET",
               "type": "up"
             }
+          ]
+        },
+        {
+          "id": "boc_dove_asking_rents_20260909",
+          "icon": "RENT",
+          "title": "Asking-Rent Inflation Turns Negative",
+          "summary": "Two-bedroom asking rents across Canadian CMAs fell 3.6% y/y, a secondary shelter-disinflation signal.",
+          "published_at_toronto": "2026-09-09T08:30:00-04:00",
+          "source": "Statistics Canada · Quarterly rent statistics, Q2 2026",
+          "source_url": "https://www150.statcan.gc.ca/n1/daily-quotidien/260909/dq260909c-eng.htm",
+          "importance": "MEDIUM",
+          "weight": 1.0,
+          "data": {
+            "actual": "C$2,130/month; -3.6% YoY",
+            "forecast": null,
+            "previous": "C$2,150/month; -0.9% YoY (Q1 release)",
+            "delta_label": "YoY cooled 2.7pp",
+            "delta_type": "miss"
+          },
+          "reason": "The experimental all-CMA two-bedroom asking-rent measure fell 3.6% year over year, versus -0.9% in the prior quarterly release. This is a secondary BoC dovish shelter signal, not a quality-adjusted CPI rent measure and not evidence of immediate policy repricing.",
+          "market_validation": [
+            {
+              "ticker": "ZEB.TO",
+              "label": "-0.94% Wed 12:37 ET",
+              "type": "down"
+            }
+          ],
+          "tags": [
+            "MEDIUM",
+            "housing"
           ]
         }
       ],
@@ -751,24 +781,24 @@
           "id": "boc_hawk_oil_20260821",
           "icon": "WTI",
           "title": "Energy Tailwind Reopens Above $90 WTI",
-          "summary": "WTI settled $94.21, extending the weekly surge and keeping Canada energy inflation hawkish.",
+          "summary": "WTI rose to $96.25 intraday, extending Canada energy and gasoline inflation pressure.",
           "published_at_toronto": "2026-08-27T16:00:00-04:00",
           "source": "WTI close",
           "source_url": "https://www.eia.gov/dnav/pet/hist/RWTCa.htm",
           "importance": "MEDIUM",
           "weight": 2.0,
           "data": {
-            "actual": "WTI 94.21 Sep 8 settle",
+            "actual": "WTI 96.25 Sep 9 12:31 ET",
             "forecast": "<85",
-            "previous": "91.48 Sep 4 settle",
-            "delta_label": "+2.98% d / +9.85% w",
+            "previous": "93.03 Sep 8 close",
+            "delta_label": "+3.46% intraday",
             "delta_type": "beat"
           },
-          "reason": "WTI gained 2.98% on Sep 8 and 9.85% over five sessions. The energy terms-of-trade and gasoline-inflation impulse remains a high-conviction 2.0 BoC hawkish driver, but not 2.5+ without a direct CPI confirmation.",
+          "reason": "WTI gained 3.46% from Sep 8 daily close by 12:31 ET. The energy terms-of-trade and gasoline-inflation impulse remains a high-conviction 2.0 BoC hawkish driver, but not 2.5+ without direct CPI confirmation.",
           "market_validation": [
             {
               "ticker": "CL=F",
-              "label": "+3.17% overnight / +10.05% since Aug 31",
+              "label": "CL=F +3.46% Wed 12:31 ET",
               "type": "up"
             },
             {
@@ -924,104 +954,104 @@
   },
   "market": {
     "since": "2026-07-30",
-    "as_of_close": "2026-09-08T16:00:00-04:00",
+    "as_of_close": "2026-09-09T12:37:00-04:00",
     "tickers": [
       {
         "symbol": "SPY",
-        "price": 765.96,
-        "chg_1d": -0.005492,
+        "price": 762.02,
+        "chg_1d": -0.005144,
         "chg_1w": -0.001421,
-        "label_1d": "-0.55% Tue close",
+        "label_1d": "-0.51% Wed 12:37 ET",
         "label_1w": "-0.14% w",
         "type_1d": "down",
         "type_1w": "down"
       },
       {
         "symbol": "QQQ",
-        "price": 718.36,
-        "chg_1d": -0.000835,
+        "price": 715.71,
+        "chg_1d": -0.003689,
         "chg_1w": 0.002232,
-        "label_1d": "-0.08% Tue close",
+        "label_1d": "-0.37% Wed 12:37 ET",
         "label_1w": "+0.22% w",
         "type_1d": "down",
         "type_1w": "up"
       },
       {
         "symbol": "IWM",
-        "price": 294.67,
-        "chg_1d": -0.004527,
+        "price": 290.99,
+        "chg_1d": -0.012489,
         "chg_1w": 0.002518,
-        "label_1d": "-0.45% Tue close",
+        "label_1d": "-1.25% Wed 12:37 ET",
         "label_1w": "+0.25% w",
         "type_1d": "down",
         "type_1w": "up"
       },
       {
         "symbol": "XLI",
-        "price": 174.42,
-        "chg_1d": -0.00485,
+        "price": 172.4,
+        "chg_1d": -0.011581,
         "chg_1w": -0.004054,
-        "label_1d": "-0.48% Tue close",
+        "label_1d": "-1.16% Wed 12:37 ET",
         "label_1w": "-0.41% w",
         "type_1d": "down",
         "type_1w": "down"
       },
       {
         "symbol": "XLU",
-        "price": 43.45,
-        "chg_1d": 0.008589,
+        "price": 42.865,
+        "chg_1d": -0.013464,
         "chg_1w": 0.028889,
-        "label_1d": "+0.86% Tue close",
+        "label_1d": "-1.35% Wed 12:37 ET",
         "label_1w": "+2.89% w",
-        "type_1d": "up",
+        "type_1d": "down",
         "type_1w": "up"
       },
       {
         "symbol": "XLF",
-        "price": 57.3,
-        "chg_1d": -0.013769,
+        "price": 57.1503,
+        "chg_1d": -0.002613,
         "chg_1w": -0.007104,
-        "label_1d": "-1.38% Tue close",
+        "label_1d": "-0.26% Wed 12:37 ET",
         "label_1w": "-0.71% w",
         "type_1d": "down",
         "type_1w": "down"
       },
       {
         "symbol": "XLE",
-        "price": 64.77,
-        "chg_1d": 0.011083,
+        "price": 65.205,
+        "chg_1d": 0.006716,
         "chg_1w": 0.012664,
-        "label_1d": "+1.11% Tue close",
+        "label_1d": "+0.67% Wed 12:37 ET",
         "label_1w": "+1.27% w",
         "type_1d": "up",
         "type_1w": "up"
       },
       {
         "symbol": "TLT",
-        "price": 82.2,
-        "chg_1d": -0.000122,
+        "price": 81.6177,
+        "chg_1d": -0.007084,
         "chg_1w": -6.1e-05,
-        "label_1d": "-0.01% Tue close",
+        "label_1d": "-0.71% Wed 12:37 ET",
         "label_1w": "-0.01% w",
         "type_1d": "down",
         "type_1w": "down"
       },
       {
         "symbol": "GLD",
-        "price": 399.72,
-        "chg_1d": -0.017332,
+        "price": 403.44,
+        "chg_1d": 0.009307,
         "chg_1w": -0.021302,
-        "label_1d": "-1.73% Tue close",
+        "label_1d": "+0.93% Wed 12:37 ET",
         "label_1w": "-2.13% w",
-        "type_1d": "down",
+        "type_1d": "up",
         "type_1w": "down"
       },
       {
         "symbol": "ZEB.TO",
-        "price": 74.65,
-        "chg_1d": -0.010865,
+        "price": 73.95,
+        "chg_1d": -0.009377,
         "chg_1w": 0.012615,
-        "label_1d": "-1.09% Tue close",
+        "label_1d": "-0.94% Wed 12:37 ET",
         "label_1w": "+1.26% w",
         "type_1d": "down",
         "type_1w": "up"
@@ -1049,7 +1079,7 @@
         "headline_YoY": "4.7%",
         "core_YoY": "4.2%"
       },
-      "logic": "Fresh Sep 8 FXStreet archive. A broad upside surprise would reinforce post-payroll hike pricing; a miss would support the conditional hold case.",
+      "logic": "Fresh Sep 9 FXStreet archive. A broad upside surprise would reinforce post-payroll hike pricing; a miss would support the conditional hold case.",
       "hawk_if": "High to Hawk",
       "dove_if": "Low to Dove"
     },
@@ -1073,7 +1103,7 @@
         "headline_YoY": "3.4%",
         "core_YoY": "2.5%"
       },
-      "logic": "Fresh Sep 8 FXStreet archive. CPI is the main inflation arbiter before Sep FOMC.",
+      "logic": "Fresh Sep 9 FXStreet archive. CPI is the main inflation arbiter before Sep FOMC.",
       "hawk_if": "High to Hawk",
       "dove_if": "Low to Dove"
     },
@@ -1095,7 +1125,7 @@
         "one_year_inflation": "4.0%",
         "five_year_inflation": "3.3%"
       },
-      "logic": "Fresh Sep 8 FXStreet archive. Re-acceleration in inflation expectations would reinforce tariff-price concerns; further easing would support hold.",
+      "logic": "Fresh Sep 9 FXStreet archive. Re-acceleration in inflation expectations would reinforce tariff-price concerns; further easing would support hold.",
       "hawk_if": "Inflation expectations high",
       "dove_if": "Inflation expectations low"
     },
@@ -1119,7 +1149,7 @@
         "boc_core_MoM": "0.2%",
         "boc_core_YoY": "2.3%"
       },
-      "logic": "Fresh Sep 8 FXStreet archive. Headline and core inflation determine whether weak employment can outweigh the BoC's energy and tariff concerns; missing forecasts remain null.",
+      "logic": "Fresh Sep 9 FXStreet archive. Headline and core inflation determine whether weak employment can outweigh the BoC's energy and tariff concerns; missing forecasts remain null.",
       "hawk_if": "High to Hawk",
       "dove_if": "Low to Dove"
     },
@@ -1133,7 +1163,7 @@
       "impact": "HIGH",
       "forecast": {},
       "previous": {},
-      "logic": "Sep 8 traded futures proxy: cut 0% / hold 42% / hike 58%; CME direct distribution returned HTTP 403. SEP and press conference settle the labour-versus-inflation debate.",
+      "logic": "Sep 9 traded futures proxy: cut 0% / hold 37.86% / hike 62.14%; CME direct distribution returned HTTP 403. SEP and press conference settle the labour-versus-inflation debate.",
       "hawk_if": "Showdown",
       "dove_if": "Showdown"
     }
