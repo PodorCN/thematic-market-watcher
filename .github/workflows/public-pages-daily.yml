@@ -44,7 +44,11 @@ jobs:
       - name: Archive latest Fed/BOC payload
         run: python econ/archive_fed_boc.py --date "${{ steps.vars.outputs.date }}"
 
+      # Runs even when the archive step rejected an incoherent payload, so one bad
+      # driver record cannot also throw away that run's calendar work. The job still
+      # fails, which is the signal that the Fed/BOC payload needs fixing.
       - name: Commit snapshots
+        if: always()
         run: |
           git config user.name "public-pages-bot"
           git config user.email "bot@users.noreply.github.com"

@@ -1085,6 +1085,12 @@ function freshnessBadge(publishedAt,asOf){
    age <=7d x1.0 · 8-14d x0.75 · 15-30d x0.5 · >30d x0.25.
    Net score is normalized: net = 3 x (hawk_eff - dove_eff) / total_eff,
    so +3 = 100% hike-side weight, -3 = 100% cut-side, 0 = balanced. */
+/* When the reading in `data` was taken. Falls back to the record's creation time
+   for drivers that carry no separate observation stamp. */
+function driverObservedAt(driver){
+  return driver.observed_at_toronto||driver.published_at_toronto;
+}
+
 function driverAgeDays(publishedAt,asOf){
   const published=publishedAt?new Date(publishedAt):null;
   const reference=asOf?new Date(asOf):new Date();
@@ -1101,7 +1107,7 @@ function decayFactor(ageDays){
 
 function effectiveWeight(driver,asOf){
   const base=Number(driver.weight||0);
-  const days=driverAgeDays(driver.published_at_toronto,asOf);
+  const days=driverAgeDays(driverObservedAt(driver),asOf);
   const decay=decayFactor(days);
   return {base,eff:base*decay,decay,days};
 }
@@ -1115,9 +1121,12 @@ function renderDriver(driver,direction,asOf){
     ? `<a class="badge" href="${sourceURL}" target="_blank" rel="noopener">${escapeHTML(driver.source||'Source')} ↗</a>`
     : `<span class="badge">${escapeHTML(driver.source||driver.importance||'Source')}</span>`;
   const validations=(driver.market_validation||[]).map(item=>`<span class="badge market">${escapeHTML(item.label||item.ticker)}</span>`).join('');
-  const datePill=driver.published_at_toronto
-    ? `<span class="date-pill">📅 ${escapeHTML(formatToronto(driver.published_at_toronto))}</span>` : '';
-  const fresh=freshnessBadge(driver.published_at_toronto,asOf);
+  const observedAt=driverObservedAt(driver);
+  const carried=driver.observed_at_toronto&&driver.observed_at_toronto!==driver.published_at_toronto
+    ? `<span class="date-pill" style="color:var(--color-neutral-400);background:#1a1c2b;border-color:var(--color-neutral-800)">first flagged ${escapeHTML(formatToronto(driver.published_at_toronto,true))}</span>` : '';
+  const datePill=observedAt
+    ? `<span class="date-pill">📅 reading ${escapeHTML(formatToronto(observedAt))}</span>` : '';
+  const fresh=freshnessBadge(observedAt,asOf)+carried;
   const dateLine=(datePill||fresh)?`<div class="date-line">${datePill}${fresh}</div>`:'';
   /* Collapsed row = the takeaway sentence plus the one number behind it.
      Everything that justifies the score waits until the row is opened. */

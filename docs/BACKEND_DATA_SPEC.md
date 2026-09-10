@@ -146,7 +146,7 @@ Polymarket 取数优先级：`pricing.polymarket` 快照（如有）> 最新视�
 
 ### 4.2 Scoring v2（前端计算，JSON 只给 base weight）
 
-- `weight` 仍是 0–3、0.5 步长的 **base** 值；前端按 `published_at_toronto` vs 快照 `as_of` 算年龄并衰减：
+- `weight` 仍是 0–3、0.5 步长的 **base** 值；前端按 `observed_at_toronto`（缺省回落 `published_at_toronto`）vs 快照 `as_of` 算年龄并衰减：
   `≤7d ×1.0` · `8–14d ×0.75` · `15–30d ×0.5` · `>30d ×0.25`，effective = base × decay。
 - 排序、均值、两侧求和一律用 effective；卡片 Weight 显示 effective，hover 显示 base × decay 分解。
 - Net 归一化：`net = 3 × (hawk_eff − dove_eff) / total_eff`，恒落在 ±3 内；
@@ -203,7 +203,8 @@ Polymarket 取数优先级：`pricing.polymarket` 快照（如有）> 最新视�
 | `icon` | string | 是 | emoji，前端直接渲染 |
 | `title` | string | 是 | 卡片标题 |
 | `summary` | string | 是 | **一句话英文结论**（如 "Job market is cracking: payrolls went negative."），卡片标题下方大号加粗展示；必须直白说明该数据意味着什么，数据细节交给 `data` 与 `reason` |
-| `published_at_toronto` | ISO8601 -04:00 | **是** | **发布时间（多伦多）**，前端标题右侧 `· YYYY-MM-DD HH:MM 多伦多` 直接展示 |
+| `published_at_toronto` | ISO8601 -04:00 | **是** | **该 driver 首次进入面板的时间（多伦多）**。记录建立后不再改动 |
+| `observed_at_toronto` | ISO8601 -04:00 | 否 | **`data` 里那个读数的观测时间（多伦多）**。缺省时回落到 `published_at_toronto`。前端的 📅 标签、新鲜度徽章、以及**年龄衰减**都以此字段为准 |
 | `source` / `source_url` | string | 否 | 点击卡片跳转 |
 | `importance` | `HIGH`/`MEDIUM`/`LOW` | 是 | 影响徽标颜色 |
 | `weight` | number 0–3 step 0.5 | **是** | 前端排序与绳结计算唯一依据；**大部分 1.0–2.0，均值 1.5 正态；2.5≈必加息，3=单事件决胜，当前不应出现 2.5+** |
@@ -299,6 +300,22 @@ Polymarket 取数优先级：`pricing.polymarket` 快照（如有）> 最新视�
 ---
 
 ## 9. 前端渲染约定
+
+### Driver 刷新规则（硬性）
+
+复用同一个 `id` 把旧 driver 刷新成新读数是允许的，但**必须整体刷新**：
+
+1. **改了 `data` / `summary` / `reason` 中任意一项，就必须写入 `observed_at_toronto`**，取值为新读数的实际观测时间。不写等于声称这条证据和记录创建时一样老，年龄衰减会据此打折——**新数据会被当成陈旧数据降权**。
+2. **`title` 必须与刷新后的 `summary` 同向。** 出现过 title 写 "Equity Rally Confirms Risk-On"、summary 写 "Risk-off breadth worsened" 的情况，两行在页面上相邻显示，直接自相矛盾。
+3. **读数反向时，改的是 `weight` 和所属 side，不是只改正文。** 不允许"为了 id 连续性保留在原 side"——那会让同一个读数以相反符号同时出现在两侧。
+4. 归档时 `econ/driver_quality.py` 会校验时间戳自洽性（`observed_at_toronto` 不得早于 `published_at_toronto`、不得晚于 `as_of`、必须带时区偏移）。不通过则**拒绝归档**，`latest.json` 保留上一份可信快照。
+
+### Driver 准入规则
+
+- **价格行情**只有在具备可陈述的传导链时才可进入 rope：油价 → CPI、长端收益率 → 金融条件、汇率 → 进口物价。
+- **不接受单日指数涨跌、单日宽度、VIX 单日读数**作为 driver。单日行情对一次利率决议没有信息量，且 rope 的设计前提是"独立于市场定价的基本面判断"——把市场价格放进 rope 会让页面上"rope vs 期货定价"的交叉验证变成自我验证。
+- 保留的行情类 driver 应以**数周窗口**而非单日收盘来陈述。
+
 
 - **时间：** 一律展示 `published_at_toronto` / `datetime_toronto` 的 `YYYY-MM-DD HH:MM 多伦多`，不再展示 UTC
 - **权重：** 前端按 `weight` 降序；绳结位置 = `净差 = Σ鹰 - Σ鸽` 映射到 `-3~+3` 刻度：`pos = (3 - net)/6*100%`（+3=顶0%, +1.5=25%, 0=50%, -1.5=75%, -3=底100%）

@@ -133,32 +133,6 @@
           ]
         },
         {
-          "id": "fed_dove_equities_20260827",
-          "icon": "EQ",
-          "title": "Equity Rally Confirms Risk-On Into Jackson Hole",
-          "summary": "Risk-off breadth worsened intraday: IWM -1.25% and XLI -1.16% versus SPY -0.51%.",
-          "published_at_toronto": "2026-08-27T16:00:00-04:00",
-          "source": "yfinance close",
-          "source_url": "https://finance.yahoo.com/quote/SPY",
-          "importance": "MEDIUM",
-          "weight": 1.0,
-          "data": {
-            "actual": "SPY 762.02 / QQQ 715.71 / IWM 290.99 (Wed 12:37 ET)",
-            "forecast": "SPY <760 / QQQ <700",
-            "previous": "SPY 765.96 / QQQ 718.36 / IWM 294.67",
-            "delta_label": "-0.51% / -0.37% / -1.25% intraday",
-            "delta_type": "miss"
-          },
-          "reason": "Sep 9 breadth weakened materially, with small caps and industrials lagging large caps while VIX rose to 16.52. Stable id remains dovish at 1.0 as tighter financial conditions validate the growth-risk side.",
-          "market_validation": [
-            {
-              "ticker": "IWM",
-              "label": "IWM -1.25% Wed 12:37 ET",
-              "type": "down"
-            }
-          ]
-        },
-        {
           "id": "fed_dove_oil_crash_20260825",
           "icon": "OIL",
           "title": "Oil Demand-Scare — Cumulative Hit Intact",
@@ -182,27 +156,8 @@
               "label": "+3.46% Wed 12:31 ET",
               "type": "up"
             }
-          ]
-        },
-        {
-          "id": "fed_dove_vix_20260827",
-          "icon": "VIX",
-          "title": "VIX at Multi-Week Low — Calmest Tape Pre-Jackson Hole",
-          "summary": "VIX jumped to 16.34 on Sep 1 as equities sold off.",
-          "published_at_toronto": "2026-08-27T16:00:00-04:00",
-          "source": "yfinance ^VIX",
-          "source_url": "https://finance.yahoo.com/quote/%5EVIX",
-          "importance": "MEDIUM",
-          "weight": 0.5,
-          "data": {
-            "actual": "VIX 14.53 (Fri close)",
-            "forecast": ">17",
-            "previous": "14.32",
-            "delta_label": "+1.47% Fri",
-            "delta_type": "miss"
-          },
-          "reason": "VIX closed Friday at 14.53, still below a stress regime; retained as only a 0.5 financial-conditions residual.",
-          "market_validation": []
+          ],
+          "observed_at_toronto": "2026-09-09T12:31:00-04:00"
         },
         {
           "id": "fed_dove_uom_20260828",
@@ -386,7 +341,8 @@
               "label": "-1.73% Tue close / -2.13% w",
               "type": "down"
             }
-          ]
+          ],
+          "observed_at_toronto": "2026-09-08T16:00:00-04:00"
         },
         {
           "id": "fed_hawk_warsh_20260828",
@@ -451,7 +407,8 @@
           "tags": [
             "MEDIUM",
             "rates"
-          ]
+          ],
+          "observed_at_toronto": "2026-09-09T12:26:00-04:00"
         },
         {
           "id": "fed_hawk_ism_20260901",
@@ -723,7 +680,8 @@
               "label": "+3.46% Wed 12:31 ET",
               "type": "up"
             }
-          ]
+          ],
+          "observed_at_toronto": "2026-09-09T12:31:00-04:00"
         },
         {
           "id": "boc_dove_asking_rents_20260909",
@@ -806,7 +764,8 @@
               "label": "+1.11% Tue close / +1.27% w",
               "type": "up"
             }
-          ]
+          ],
+          "observed_at_toronto": "2026-09-09T12:31:00-04:00"
         },
         {
           "id": "boc_hawk_gdp_20260828",
@@ -1170,6 +1129,6 @@
   ],
   "history": [],
   "snapshot_date": "2026-09-09",
-  "archived_at": "2026-09-10T00:33:36.243548Z",
+  "archived_at": "2026-09-10T05:11:20.042155Z",
   "stale": false
 }

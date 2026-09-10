@@ -15,6 +15,11 @@ from datetime import datetime, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
+try:  # imported as econ.archive_fed_boc
+    from econ.driver_quality import check_payload
+except ModuleNotFoundError:  # run directly: python econ/archive_fed_boc.py
+    from driver_quality import check_payload
+
 REPO_ROOT = Path(__file__).resolve().parent.parent
 TORONTO = ZoneInfo("America/Toronto")
 
@@ -60,6 +65,14 @@ def archive_dashboard(
     _validate_finite(payload)
     if not payload.get("meetings") or not payload.get("drivers"):
         raise ValueError("dashboard payload is missing meetings or drivers")
+    problems = check_payload(payload)
+    if problems:
+        # Refuse rather than publish: latest.json keeps the last coherent snapshot
+        # and the page's own `stale` flag tells readers the data has not advanced.
+        raise ValueError(
+            "driver timestamps are incoherent; refusing to archive:\n  "
+            + "\n  ".join(problems)
+        )
 
     data_date = _snapshot_date(payload)
     date = snapshot_date or datetime.now(TORONTO).date().isoformat()
