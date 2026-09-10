@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "reviewer_role": "independent_portfolio_manager",
+  "reviewed_at": "2026-09-10T14:11:40-04:00",
+  "candidate_sha256": "770be4a3549a362f2f259d335d21bf696acca4e20334af341366efaa573209c3",
+  "verdict": "approved",
+  "executive_summary": "Approved unconditionally for publication. The exact candidate bytes hash to 770be4a3549a362f2f259d335d21bf696acca4e20334af341366efaa573209c3, matching candidate.sha256 and the handoff. Iteration-06 feedback is fully remediated: all ten market rows and WTI are explicitly intraday at 14:05 Toronto, candidate.as_of is not earlier than any nested observation, and the recalculated one-day and five-session returns, labels, and directions reconcile to the underlying Sep 9 and Sep 2 rows. Official Federal Reserve and Bank of Canada sources confirm the meeting dates, prior decisions, rates, dissent, and next BoC decision. TradingEconomics confirms every stated PPI Actual/consensus/Previous value, while BLS API index levels independently confirm the headline 0.4% m/m and 5.4% y/y readings. ZQU26/EFFR proxy arithmetic, sensitivity, and non-direct-pricing caveat are correct. CRAU26/CORRA values support the unavailable/null BoC representation and correctly avoid a single-meeting probability allocation.",
+  "checks": {
+    "official_policy": "pass",
+    "pricing": "pass",
+    "drivers": "pass",
+    "market_validation": "pass",
+    "freshness": "pass",
+    "decision_usefulness": "pass"
+  },
+  "findings": [],
+  "pnl_risks": [
+    "The Sep 10 market strip and WTI reading are explicitly intraday and remain mutable until their respective sessions settle, so they are context rather than final closing confirmation.",
+    "The Fed hold/hike weights are a desk interpolation rather than a directly observed probability distribution; a one-basis-point ZQU26 price move changes the inferred hike weight by about 8.6 percentage points.",
+    "CRAU26 spans both the October 28 and December 9 BoC decisions, so its quarterly-average rate cannot identify a clean October outcome distribution.",
+    "August PPI is mixed between hot headline inflation and a softer core monthly print, and the next CPI release can materially reverse the current policy signal."
+  ],
+  "operator_instructions": []
+}

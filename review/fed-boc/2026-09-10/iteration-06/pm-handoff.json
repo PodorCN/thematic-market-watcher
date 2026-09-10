@@ -1,0 +1,43 @@
+{
+  "candidate_sha256": "054e710a5e52d53602eff1fce7df3db2fe214ee4ed23c1e32322d23c6e6b25f6",
+  "open_feedback": "review/fed-boc/feedback/latest.json",
+  "prior_pm_review": "review/fed-boc/2026-09-10/iteration-05/pm-review.json",
+  "remediation_evidence_mapping": [
+    {
+      "field": "candidate.json",
+      "feedback": "Re-freeze under a new iteration with exact-byte binding",
+      "remediation": "Whole refreshed candidate copied to immutable iteration-06",
+      "evidence": "iteration-06/candidate.json"
+    },
+    {
+      "field": "candidate.sha256 and pm-handoff.json",
+      "feedback": "Generate both from the exact frozen bytes",
+      "remediation": "SHA-256 computed after candidate write and inserted unchanged in handoff",
+      "evidence": "054e710a5e52d53602eff1fce7df3db2fe214ee4ed23c1e32322d23c6e6b25f6"
+    },
+    {
+      "field": "meetings.boc.pricing",
+      "feedback": "Preserve null/unavailable pricing and quarterly limitation",
+      "remediation": "Null probabilities retained; CRAU26 refreshed solely as quarterly observable spanning Oct 28 and Dec 9",
+      "evidence": "TMX bid 97.61, ask 97.615, volume 63302; CORRA 2.2900% effective Sep 9"
+    },
+    {
+      "field": "meetings.fed.pricing",
+      "feedback": "Current clearly labelled proxy",
+      "remediation": "Recomputed from Sep 10 ZQU26 and Sep 9 EFFR; direct CME block disclosed",
+      "evidence": "Sep 10 ZQU26 observable daily price 96.2900 => monthly average 3.7100%. With EFFR 3.63% for 16 pre-decision days and 14 post-decision days: post=(30*3.7100-16*3.63)/14=3.8014%. Mapping only to adjacent hold 3.63% / hike 3.88% legs gives rounded desk scenario weights hold 0.31 / hike 0.69 / cut 0.00. A +/-1bp contract-price sensitivity moves hike weight by about -/+8.6pp. This is not a directly observed probability distribution."
+    },
+    {
+      "field": "drivers.fed.hawkish",
+      "feedback": "Rebuild whole current candidate after recollection",
+      "remediation": "Added mixed-hawkish Sep 10 PPI card with Actual/Forecast/Previous and 1.5 weight",
+      "evidence": "TradingEconomics calendar observed Sep 10; BLS inaccessible"
+    },
+    {
+      "field": "market and oil driver",
+      "feedback": "Current structured market observations",
+      "remediation": "Refreshed Sep 10 daily rows and oil context",
+      "evidence": "Yahoo/yfinance structured daily data"
+    }
+  ]
+}

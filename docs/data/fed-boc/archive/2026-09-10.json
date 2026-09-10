@@ -1,7 +1,7 @@
 {
-  "as_of": "2026-09-10T06:56:00-04:00",
-  "version": "2026-09-10-002",
-  "verification_note": "Thu 2026-09-10 06:56 ET feedback-remediation candidate. Open PM feedback 76693c436018 was treated as the collection contract. Canonical FXStreet collection/render was rerun: 73 events (33 HIGH/40 MEDIUM; USD 30, EUR 19, GBP 19, CAD 5). TMX CRA and BoC Valet CORRA were re-collected at 06:56 ET: CRAU26 bid 97.650 / ask 97.655, expiry 2026-12-16, volume 1,340; CORRA 2.2900% effective Sep 8. The data contract, archive gate, and renderer now support unavailable single-meeting probabilities. The fabricated BoC 0/40/60 distribution and 2.40% post-meeting rate are removed; only the observable 2.350% quarterly-average CRA proxy is shown with its Oct 28 + Dec 9 limitation. Candidate only pending fresh independent PM approval.",
+  "as_of": "2026-09-10T14:05:00-04:00",
+  "version": "2026-09-10-004",
+  "verification_note": "Thu 2026-09-10 afternoon feedback-remediation refresh. PM iteration-06 feedback 6862a5dbd5fc was executed as the controlling collection contract. The entire 10-instrument cash-market strip and WTI were recollected during the open session and are now explicitly labelled intraday at the candidate observation time, never as completed 16:00 closes. All prices, one-day/one-week returns, labels, directions, and the oil summary/reason were rebuilt from one coherent Yahoo/yfinance daily-bar observation regime. candidate.as_of is stamped after collection and is not earlier than any nested observation. Other iteration-06 evidence remains current: official policy sources re-probed; Sep 10 PPI Actual/Forecast/Previous from TradingEconomics with BLS access caveat; EFFR 3.63 effective Sep 9; CME 602-byte block; Fed ZQU26 desk proxy; refreshed CRAU26/CORRA with BoC probabilities unavailable/null. Candidate only pending fresh independent PM approval.",
   "timezone": "America/Toronto",
   "meetings": {
     "fed": {
@@ -16,15 +16,15 @@
       },
       "pricing": {
         "cut_25bp": 0.0,
-        "hold": 0.4,
-        "hike_25bp": 0.6,
+        "hold": 0.31,
+        "hike_25bp": 0.69,
         "source": "Desk-implied scenario weights from CME ZQU26 settlement + NY Fed EFFR (not CME FedWatch probabilities)",
         "source_url": "https://finance.yahoo.com/quote/ZQU26.CBT",
-        "as_of_pricing": "2026-09-10T00:11:00-04:00",
-        "proxy_check": "Sep 9 ZQU26 settlement 96.3000 => monthly average 3.7000%. With EFFR 3.63% for 16 pre-decision days and 14 post-decision days: post=(30*3.7000-16*3.63)/14=3.7800%. Mapping only to adjacent hold 3.63% / hike 3.88% legs gives rounded scenario weights hold 0.40 / hike 0.60 / cut 0.00. A +/-1bp contract-price sensitivity moves hike weight by about -/+8.6pp. This is a desk model, not a directly observed probability distribution.",
+        "as_of_pricing": "2026-09-10T13:41:00-04:00",
+        "proxy_check": "Sep 10 ZQU26 observable daily price 96.2900 => monthly average 3.7100%. With EFFR 3.63% for 16 pre-decision days and 14 post-decision days: post=(30*3.7100-16*3.63)/14=3.8014%. Mapping only to adjacent hold 3.63% / hike 3.88% legs gives rounded desk scenario weights hold 0.31 / hike 0.69 / cut 0.00. A +/-1bp contract-price sensitivity moves hike weight by about -/+8.6pp. This is not a directly observed probability distribution.",
         "proxy_source_url": "https://finance.yahoo.com/quote/ZQU26.CBT",
         "implied_rate_before": 3.63,
-        "implied_rate_after": 3.779993,
+        "implied_rate_after": 3.801427,
         "effr_source_url": "https://markets.newyorkfed.org/api/rates/unsecured/effr/last/5.json",
         "cme_access_note": "Direct CME FedWatch returned HTTP 403; no direct CME distribution was used."
       }
@@ -44,8 +44,8 @@
         "hike_25bp": null,
         "source": "TMX/MX CRA quarterly CORRA futures observable proxy; no clean Oct 28 distribution",
         "source_url": "https://www.m-x.ca/en/trading/data/quotes?symbol=CRA%2A",
-        "as_of_pricing": "2026-09-10T06:56:00-04:00",
-        "proxy_check": "TMX CRAU26 bid 97.650 / ask 97.655, volume 1,340, expiry 2026-12-16, observed 2026-09-10 06:56 ET. Mid 97.6525 implies a 2.3475% quarterly-average CORRA rate; settlement 97.650 implies 2.3500%. BoC CORRA was 2.2900% effective Sep 8. The contract spans Oct 28 and Dec 9, so no October outcome allocation is identified.",
+        "as_of_pricing": "2026-09-10T13:41:00-04:00",
+        "proxy_check": "TMX CRAU26 bid 97.610 / ask 97.615, volume 63,302, expiry 2026-12-16, observed 2026-09-10T13:41:00-04:00. Mid 97.6125 implies a 2.3875% quarterly-average CORRA rate; settlement 97.650 implies 2.3500%. BoC CORRA was 2.2900% effective Sep 9. The contract spans Oct 28 and Dec 9, so no October outcome allocation is identified.",
         "proxy_source_url": "https://www.bankofcanada.ca/valet/observations/AVG.INTWO/json?start_date=2026-08-25",
         "implied_rate_before": 2.25,
         "implied_rate_after": null,
@@ -53,13 +53,13 @@
         "probability_status": "unavailable",
         "observable_proxy": {
           "instrument": "CRAU26",
-          "observed_price": 97.65,
-          "bid": 97.65,
-          "ask": 97.655,
-          "volume": 1340,
+          "observed_price": 97.615,
+          "bid": 97.61,
+          "ask": 97.615,
+          "volume": 63302,
           "expiry_date": "2026-12-16",
-          "implied_quarterly_average_rate": 2.35,
-          "observed_at_toronto": "2026-09-10T06:56:00-04:00",
+          "implied_quarterly_average_rate": 2.3875,
+          "observed_at_toronto": "2026-09-10T13:41:00-04:00",
           "source_url": "https://www.m-x.ca/en/trading/data/quotes?symbol=CRA%2A",
           "note": "Quarterly contract includes both Oct 28 and Dec 9 BoC decisions; it does not identify a single-meeting distribution."
         }
@@ -234,6 +234,31 @@
             "HIGH",
             "payrolls"
           ]
+        },
+        {
+          "id": "fed_hawk_ppi_20260910",
+          "icon": "PPI",
+          "title": "Producer Inflation Remains Hot",
+          "summary": "August headline PPI met a hot 0.4% monthly forecast and accelerated to 5.4% y/y; core monthly PPI undershot.",
+          "published_at_toronto": "2026-09-10T08:30:00-04:00",
+          "observed_at_toronto": "2026-09-10T08:30:00-04:00",
+          "source": "TradingEconomics calendar (BLS static page inaccessible this run)",
+          "source_url": "https://tradingeconomics.com/calendar",
+          "importance": "HIGH",
+          "weight": 1.5,
+          "data": {
+            "actual": "headline +0.4% MoM / +5.4% YoY; core +0.2% MoM / +4.6% YoY",
+            "forecast": "headline +0.4% / +5.3%; core +0.3% / +4.6%",
+            "previous": "headline +0.1% revised / +4.8% revised; core +0.3% revised / +4.3% revised",
+            "delta_label": "headline YoY beat +0.1pp; core MoM miss -0.1pp",
+            "delta_type": "beat"
+          },
+          "reason": "Headline producer inflation stayed elevated and the yearly rate exceeded consensus, supporting the hawkish side before CPI. The softer core monthly print makes the release mixed, so weight is capped at 1.5. Actual, consensus and revised previous values were observed in the Sep 10 TradingEconomics calendar; BLS was inaccessible from this host.",
+          "market_validation": [],
+          "tags": [
+            "HIGH",
+            "PPI"
+          ]
         }
       ]
     },
@@ -288,22 +313,23 @@
         {
           "id": "boc_hawk_oil_20260821",
           "icon": "WTI",
-          "title": "WTI Energy Tailwind into Sep 9 Close",
-          "summary": "WTI rose to $96.25 intraday, extending Canada energy and gasoline inflation pressure.",
+          "title": "WTI Energy Pressure Extends Intraday Sep 10",
+          "summary": "WTI traded at 101.95 intraday, extending Canada energy and gasoline inflation pressure.",
           "published_at_toronto": "2026-09-09T16:00:00-04:00",
           "source": "Yahoo Finance CL=F daily structured price",
           "source_url": "https://finance.yahoo.com/quote/CL=F",
           "importance": "MEDIUM",
           "weight": 2.0,
           "data": {
-            "actual": "WTI 96.20 Sep 9 close",
+            "actual": "WTI 101.95 Sep 10 intraday @ 14:05 ET",
             "forecast": null,
-            "previous": "93.03 Sep 8 close",
-            "delta_label": "+3.41% daily",
+            "previous": "96.05 Sep 9 daily settlement row",
+            "delta_label": "+6.14% intraday vs prior row",
             "delta_type": "beat"
           },
-          "reason": "WTI closed Sep 9 at 96.20 versus 93.03 on Sep 8. This is a current energy/terms-of-trade and gasoline-inflation context signal, not an attributed reaction to one BoC event.",
-          "market_validation": []
+          "reason": "WTI extended its multi-session rise in the Sep 10 open session. This mutable intraday quote is current energy/terms-of-trade and gasoline-inflation context, not a final settlement and not an attributed reaction to one BoC event.",
+          "market_validation": [],
+          "observed_at_toronto": "2026-09-10T14:05:00-04:00"
         },
         {
           "id": "boc_hawk_gdp_20260828",
@@ -378,135 +404,111 @@
   },
   "market": {
     "since": "2026-07-30",
-    "as_of_close": "2026-09-09T16:00:00-04:00",
+    "as_of_close": "2026-09-10T14:05:00-04:00",
     "tickers": [
       {
         "symbol": "SPY",
-        "price": 762.4,
-        "chg_1d": -0.004648,
-        "chg_1w": -0.01393,
-        "label_1d": "-0.46% 2026-09-09 close",
-        "label_1w": "-1.39% w",
+        "price": 757.79,
+        "chg_1d": -0.006047,
+        "chg_1w": -0.009632,
+        "label_1d": "-0.60% Sep 10 i/d @ 14:05 ET",
+        "label_1w": "-0.96% w i/d",
         "type_1d": "down",
         "type_1w": "down"
       },
       {
         "symbol": "QQQ",
-        "price": 716.31,
-        "chg_1d": -0.002854,
-        "chg_1w": -0.001895,
-        "label_1d": "-0.29% 2026-09-09 close",
-        "label_1w": "-0.19% w",
+        "price": 709.3,
+        "chg_1d": -0.009786,
+        "chg_1w": 8.5e-05,
+        "label_1d": "-0.98% Sep 10 i/d @ 14:05 ET",
+        "label_1w": "+0.01% w i/d",
         "type_1d": "down",
-        "type_1w": "down"
+        "type_1w": "up"
       },
       {
         "symbol": "IWM",
-        "price": 290.64,
-        "chg_1d": -0.013676,
-        "chg_1w": -0.015414,
-        "label_1d": "-1.37% 2026-09-09 close",
-        "label_1w": "-1.54% w",
+        "price": 287.47,
+        "chg_1d": -0.010907,
+        "chg_1w": -0.022244,
+        "label_1d": "-1.09% Sep 10 i/d @ 14:05 ET",
+        "label_1w": "-2.22% w i/d",
         "type_1d": "down",
         "type_1w": "down"
       },
       {
         "symbol": "XLI",
-        "price": 171.79,
-        "chg_1d": -0.015079,
-        "chg_1w": -0.015868,
-        "label_1d": "-1.51% 2026-09-09 close",
-        "label_1w": "-1.59% w",
+        "price": 170.27,
+        "chg_1d": -0.008848,
+        "chg_1w": -0.014527,
+        "label_1d": "-0.88% Sep 10 i/d @ 14:05 ET",
+        "label_1w": "-1.45% w i/d",
         "type_1d": "down",
         "type_1w": "down"
       },
       {
         "symbol": "XLU",
-        "price": 42.94,
-        "chg_1d": -0.011738,
-        "chg_1w": -0.002092,
-        "label_1d": "-1.17% 2026-09-09 close",
-        "label_1w": "-0.21% w",
+        "price": 42.67,
+        "chg_1d": -0.006171,
+        "chg_1w": 0.000117,
+        "label_1d": "-0.62% Sep 10 i/d @ 14:05 ET",
+        "label_1w": "+0.01% w i/d",
         "type_1d": "down",
-        "type_1w": "down"
+        "type_1w": "up"
       },
       {
         "symbol": "XLF",
-        "price": 57.06,
-        "chg_1d": -0.004188,
-        "chg_1w": -0.025615,
-        "label_1d": "-0.42% 2026-09-09 close",
-        "label_1w": "-2.56% w",
+        "price": 56.78,
+        "chg_1d": -0.004995,
+        "chg_1w": -0.015349,
+        "label_1d": "-0.50% Sep 10 i/d @ 14:05 ET",
+        "label_1w": "-1.53% w i/d",
         "type_1d": "down",
         "type_1w": "down"
       },
       {
         "symbol": "XLE",
-        "price": 65.31,
-        "chg_1d": 0.008337,
-        "chg_1w": 0.010678,
-        "label_1d": "+0.83% 2026-09-09 close",
-        "label_1w": "+1.07% w",
-        "type_1d": "up",
+        "price": 65.11,
+        "chg_1d": -0.003139,
+        "chg_1w": 7.7e-05,
+        "label_1d": "-0.31% Sep 10 i/d @ 14:05 ET",
+        "label_1w": "+0.01% w i/d",
+        "type_1d": "down",
         "type_1w": "up"
       },
       {
         "symbol": "TLT",
-        "price": 81.73,
-        "chg_1d": -0.005718,
-        "chg_1w": -0.004143,
-        "label_1d": "-0.57% 2026-09-09 close",
-        "label_1w": "-0.41% w",
+        "price": 80.88,
+        "chg_1d": -0.010461,
+        "chg_1w": -0.013118,
+        "label_1d": "-1.05% Sep 10 i/d @ 14:05 ET",
+        "label_1w": "-1.31% w i/d",
         "type_1d": "down",
         "type_1w": "down"
       },
       {
         "symbol": "GLD",
-        "price": 403.35,
-        "chg_1d": 0.009081,
-        "chg_1w": -0.016747,
-        "label_1d": "+0.91% 2026-09-09 close",
-        "label_1w": "-1.67% w",
-        "type_1d": "up",
+        "price": 398.58,
+        "chg_1d": -0.011826,
+        "chg_1w": -0.010428,
+        "label_1d": "-1.18% Sep 10 i/d @ 14:05 ET",
+        "label_1w": "-1.04% w i/d",
+        "type_1d": "down",
         "type_1w": "down"
       },
       {
         "symbol": "ZEB.TO",
-        "price": 73.86,
-        "chg_1d": -0.010583,
-        "chg_1w": -0.026364,
-        "label_1d": "-1.06% 2026-09-09 close",
-        "label_1w": "-2.64% w",
+        "price": 73.78,
+        "chg_1d": -0.001083,
+        "chg_1w": -0.011919,
+        "label_1d": "-0.11% Sep 10 i/d @ 14:05 ET",
+        "label_1w": "-1.19% w i/d",
         "type_1d": "down",
         "type_1w": "down"
       }
     ]
   },
   "calendar": [
-    {
-      "id": "us_ppi_20260910",
-      "datetime_toronto": "2026-09-10T08:30:00-04:00",
-      "datetime_utc": "2026-09-10T12:30:00Z",
-      "currency": "USD",
-      "country": "US",
-      "event": "US PPI (headline and core)",
-      "impact": "HIGH",
-      "forecast": {
-        "headline_MoM": "0.4%",
-        "core_MoM": "0.3%",
-        "headline_YoY": "5.3%",
-        "core_YoY": "4.6%"
-      },
-      "previous": {
-        "headline_MoM": "0.0%",
-        "core_MoM": "0.2%",
-        "headline_YoY": "4.7%",
-        "core_YoY": "4.2%"
-      },
-      "logic": "Fresh Sep 10 FXStreet archive. A broad upside surprise would reinforce post-payroll hike pricing; a miss would support the conditional hold case.",
-      "hawk_if": "High to Hawk",
-      "dove_if": "Low to Dove"
-    },
     {
       "id": "us_cpi_20260911",
       "datetime_toronto": "2026-09-11T08:30:00-04:00",
@@ -587,7 +589,7 @@
       "impact": "HIGH",
       "forecast": {},
       "previous": {},
-      "logic": "Sep 9 ZQU26/EFFR desk model: cut 0% / hold 40% / hike 60%, rounded; +/-1bp contract sensitivity changes hike weight by about 8.6pp. Direct CME distribution unavailable.",
+      "logic": "Sep 10 ZQU26/EFFR desk model: cut 0% / hold 31% / hike 69%, rounded; +/-1bp contract sensitivity changes hike weight by about 8.6pp. Direct CME distribution unavailable.",
       "hawk_if": "Showdown",
       "dove_if": "Showdown"
     },
@@ -630,6 +632,6 @@
   ],
   "history": [],
   "snapshot_date": "2026-09-10",
-  "archived_at": "2026-09-10T11:23:29.669925Z",
+  "archived_at": "2026-09-10T18:14:26.286200Z",
   "stale": false
 }

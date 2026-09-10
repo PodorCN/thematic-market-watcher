@@ -1,0 +1,37 @@
+{
+  "candidate_sha256": "770be4a3549a362f2f259d335d21bf696acca4e20334af341366efaa573209c3",
+  "open_feedback": "review/fed-boc/feedback/latest.json",
+  "prior_pm_review": "review/fed-boc/2026-09-10/iteration-06/pm-review.json",
+  "remediation_evidence_mapping": [
+    {
+      "field": "market.as_of_close and market.tickers[*]",
+      "feedback": "Do not label provisional bars as 16:00 closes; recollect complete strip coherently",
+      "remediation": "All 10 rows recollected after feedback; labels changed to Sep 10 intraday with one observation timestamp; prices and returns recomputed",
+      "evidence": "Yahoo/yfinance daily structured rows observed before 2026-09-10T14:05:00-04:00"
+    },
+    {
+      "field": "drivers.boc.hawkish[id=boc_hawk_oil_20260821]",
+      "feedback": "Recollect WTI and remove future/close claim",
+      "remediation": "WTI recollected after feedback; timestamp set to candidate as_of; summary/data/reason identify mutable intraday quote",
+      "evidence": "CL=F 101.95 vs prior 96.05, observed before 2026-09-10T14:05:00-04:00"
+    },
+    {
+      "field": "candidate.as_of chronology",
+      "feedback": "as_of at or after every nested observation",
+      "remediation": "as_of stamped after all market and WTI retrieval completed; market and WTI observation fields use that same timestamp",
+      "evidence": "2026-09-10T14:05:00-04:00"
+    },
+    {
+      "field": "candidate/checksum/handoff",
+      "feedback": "New immutable iteration and exact-byte binding",
+      "remediation": "Whole candidate frozen in iteration-07; checksum computed from persisted exact bytes and copied to handoff",
+      "evidence": "770be4a3549a362f2f259d335d21bf696acca4e20334af341366efaa573209c3"
+    },
+    {
+      "field": "meetings.boc.pricing",
+      "feedback": "Preserve unavailable/null representation",
+      "remediation": "Null outcome probabilities and two-meeting CRAU26 limitation preserved unchanged",
+      "evidence": "iteration-07 candidate meetings.boc.pricing"
+    }
+  ]
+}

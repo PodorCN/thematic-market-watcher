@@ -1,17 +1,18 @@
 {
   "schema_version": "1.0",
-  "status": "open",
+  "reviewer_role": "independent_portfolio_manager",
   "reviewed_at": "2026-09-10T13:47:35-04:00",
   "candidate_sha256": "054e710a5e52d53602eff1fce7df3db2fe214ee4ed23c1e32322d23c6e6b25f6",
-  "review_sha256": "6862a5dbd5fc50da34c073e25d9927fbeebcfd7ca932718029107487b041d1da",
-  "source_review": "review/fed-boc/2026-09-10/iteration-06/pm-review.json",
+  "verdict": "revise",
   "executive_summary": "Revise. The exact candidate bytes, candidate.sha256, and handoff all bind correctly to 054e710a5e52d53602eff1fce7df3db2fe214ee4ed23c1e32322d23c6e6b25f6. Official Fed and BoC policy facts pass independent checks. The Sep 10 PPI Actual/Previous figures match the BLS release and the stated consensus figures match the freshly captured TradingEconomics calendar. ZQU26/EFFR arithmetic is correct and explicitly labelled as a sensitive desk proxy; live NY Fed EFFR is 3.63% effective Sep 9. CRAU26 and CORRA observations support the unavailable/null BoC representation and do not identify an October meeting distribution. Publication is nevertheless blocked because the 13:41 Toronto candidate labels still-open Sep 10 Yahoo daily bars as 16:00 closes, sets market.as_of_close 2 hours 19 minutes after as_of, and future-dates the oil driver's observation to 16:00. Those provisional bars continued changing during this review, so the market and oil claims are not frozen closing observations and violate the payload's timestamp chronology.",
-  "failed_checks": [
-    "decision_usefulness",
-    "drivers",
-    "freshness",
-    "market_validation"
-  ],
+  "checks": {
+    "official_policy": "pass",
+    "pricing": "pass",
+    "drivers": "fail",
+    "market_validation": "fail",
+    "freshness": "fail",
+    "decision_usefulness": "fail"
+  },
   "findings": [
     {
       "severity": "major",
@@ -30,20 +31,15 @@
       "instruction": "Recollect WTI at a real, source-identifiable observation time, set observed_at_toronto no later than the new candidate.as_of, and describe it as intraday unless an actual settlement or completed close is used. Then recompute the change, summary, reason, and weight from that same observation and rebuild the full candidate."
     }
   ],
-  "required_recollection": [
-    "Recollect the complete market strip after each relevant exchange has closed and stamp the actual observation time, or retain intraday observations with an as-of timestamp no later than candidate.as_of and remove every close label. Recompute all prices, one-day and one-week returns, labels, and direction fields from the same frozen observations before submitting a new iteration.",
-    "Recollect WTI at a real, source-identifiable observation time, set observed_at_toronto no later than the new candidate.as_of, and describe it as intraday unless an actual settlement or completed close is used. Then recompute the change, summary, reason, and weight from that same observation and rebuild the full candidate."
+  "pnl_risks": [
+    "The Fed hold/hike weights are a desk interpolation, not a direct probability distribution, and a one-basis-point ZQU26 move changes the inferred hike weight by about 8.6 percentage points.",
+    "CRAU26 is a quarterly-average contract spanning the October 28 and December 9 BoC decisions, so it cannot identify a clean October outcome distribution.",
+    "Sep 10 PPI is mixed between hot headline and softer ex-food-and-energy monthly inflation; CPI and the FOMC can rapidly invalidate the current rate view.",
+    "Intraday market and energy prices can reverse before settlement, making false close labels directly hazardous for confirmation-based positioning."
   ],
   "operator_instructions": [
     "Do not publish iteration 06 or edit its frozen artifacts; create a new immutable iteration after correcting the market and oil observation chronology.",
     "Recollect all Sep 10 market rows and WTI from one coherent observation regime, using completed closes or accurately timestamped intraday values, and rebuild every dependent return, label, direction, summary, reason, and weight.",
     "Set candidate.as_of at or after every nested observation timestamp, regenerate the exact-byte SHA-256 and handoff, and submit the new package to a fresh independent PM review."
-  ],
-  "next_run_contract": [
-    "Read this feedback before collecting or editing the next candidate.",
-    "Re-trigger collection for every affected source and claim.",
-    "Rebuild the whole internally consistent candidate; do not patch prose only.",
-    "Submit the rebuilt candidate to a fresh independent PM review.",
-    "Do not publish until an exact-byte-bound approved review passes the gate."
   ]
 }
