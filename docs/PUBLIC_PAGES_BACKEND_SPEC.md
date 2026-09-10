@@ -48,22 +48,27 @@ Dates are Toronto calendar dates in descending order.
 
 ## 2. Daily Publication Sequence
 
-Run after the backend has collected and validated both payloads:
+Run after the backend has collected and validated both payloads. Fed/BOC also
+requires an independent PM review artifact bound by SHA-256 to the exact
+candidate; see `../readme/fed-boc-pm-review.md`. A missing, rejected, malformed,
+or mismatched review fails closed and must not update `latest.json`.
 
 1. Resolve the publication date in `America/Toronto`.
 2. Write a temporary JSON file and validate its schema and numeric values.
-3. Atomically rename it to `archive/YYYY-MM-DD.json`.
-4. Atomically update `latest.json` from the newest archive.
-5. Rebuild `dates.json` from successful archive files.
-6. For Economic Calendar, render and archive `economic-calendar/archive/YYYY-MM-DD.html`.
-7. Commit or upload all new archive files together.
+3. For Fed/BOC, validate the independent PM verdict with
+   `econ/validate_pm_review.py --require-approved`.
+4. Atomically rename it to `archive/YYYY-MM-DD.json`.
+5. Atomically update `latest.json` from the newest archive.
+6. Rebuild `dates.json` from successful archive files.
+7. For Economic Calendar, render and archive `economic-calendar/archive/YYYY-MM-DD.html`.
+8. Commit or upload all new archive files and the approved review evidence together.
 
 Repository commands:
 
 ```bash
 python econ/fetch_calendar.py --date YYYY-MM-DD --days 7 --countries US,CA,EMU,DE,FR,IT,ES,UK,CH --impacts HIGH,MEDIUM --with-history --history-events 15 --history-limit 12
 python econ/render_calendar.py --date YYYY-MM-DD
-python econ/archive_fed_boc.py --input docs/data/fed-boc-dashboard.json
+python econ/archive_fed_boc.py --input docs/data/fed-boc-dashboard.json --candidate review/fed-boc/YYYY-MM-DD/iteration-NN/candidate.json --pm-review review/fed-boc/YYYY-MM-DD/iteration-NN/pm-review.json
 ```
 
 The calendar renderer publishes its JSON, HTML snapshot, `latest` files, and date manifest. `econ/archive_fed_boc.py` uses `as_of` to determine the Toronto snapshot date.

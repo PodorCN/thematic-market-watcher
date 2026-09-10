@@ -15,6 +15,11 @@ from datetime import datetime, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
+try:
+    from econ.validate_pm_review import validate_review
+except ModuleNotFoundError:  # Direct execution: python econ/archive_fed_boc.py
+    from validate_pm_review import validate_review
+
 REPO_ROOT = Path(__file__).resolve().parent.parent
 TORONTO = ZoneInfo("America/Toronto")
 
@@ -53,9 +58,14 @@ def _snapshot_date(payload: dict) -> str:
 def archive_dashboard(
     input_path: Path,
     docs_root: Path,
+    candidate_path: Path,
+    review_path: Path,
     snapshot_date: str | None = None,
     archived_at: str | None = None,
 ) -> tuple[Path, Path]:
+    if input_path.read_bytes() != candidate_path.read_bytes():
+        raise ValueError("publication input does not match the PM-reviewed candidate bytes")
+    validate_review(candidate_path, review_path, require_approved=True)
     payload = json.loads(input_path.read_text(encoding="utf-8"))
     _validate_finite(payload)
     if not payload.get("meetings") or not payload.get("drivers"):
@@ -106,12 +116,30 @@ def main() -> None:
         help="GitHub Pages document root",
     )
     parser.add_argument(
+        "--candidate",
+        type=Path,
+        required=True,
+        help="frozen candidate JSON reviewed by the independent PM",
+    )
+    parser.add_argument(
+        "--pm-review",
+        type=Path,
+        required=True,
+        help="approved PM review JSON bound to the candidate digest",
+    )
+    parser.add_argument(
         "--date",
         default=None,
         help="Toronto snapshot date YYYY-MM-DD (defaults to today in Toronto)",
     )
     args = parser.parse_args()
-    snapshot, dates = archive_dashboard(args.input, args.docs_root, args.date)
+    snapshot, dates = archive_dashboard(
+        args.input,
+        args.docs_root,
+        args.candidate,
+        args.pm_review,
+        args.date,
+    )
     print(f"wrote {snapshot}")
     print(f"wrote {dates}")
 
