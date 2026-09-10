@@ -1,0 +1,11 @@
+{
+  "candidate_sha256": "f6302f2f5b0a43f22e8090a7169426d1b488cbce9d46fddc8ab1d5ef6acf2a41",
+  "open_feedback": "review/fed-boc/feedback/latest.json",
+  "prior_pm_review": "review/fed-boc/2026-09-10/iteration-04/pm-review.json",
+  "remediation_evidence_mapping": [
+    {"field": "candidate.json", "feedback": "Re-freeze under a new iteration", "remediation": "Exact candidate bytes copied to immutable iteration-05", "evidence": "iteration-05/candidate.json"},
+    {"field": "candidate.sha256", "feedback": "Generate digest from exact frozen bytes", "remediation": "sha256sum computed after file creation", "evidence": "f6302f2f5b0a43f22e8090a7169426d1b488cbce9d46fddc8ab1d5ef6acf2a41"},
+    {"field": "pm-handoff.json.candidate_sha256", "feedback": "Use same digest in handoff", "remediation": "Handoff generated from persisted candidate.sha256", "evidence": "f6302f2f5b0a43f22e8090a7169426d1b488cbce9d46fddc8ab1d5ef6acf2a41"},
+    {"field": "meetings.boc.pricing", "feedback": "Preserve null/unavailable pricing fix", "remediation": "Iteration-05 is byte-identical to remediated iteration-04 candidate", "evidence": "null probabilities; observable CRAU26 quarterly proxy only"}
+  ]
+}

@@ -154,7 +154,11 @@ Minimum shape:
 
 Constraints:
 
-- Meeting probabilities must be numbers from `0` to `1` and total approximately `1`.
+- When `pricing.probability_status` is `available`, meeting probabilities must
+  be numbers from `0` to `1` and total approximately `1`. When it is
+  `unavailable`, all three probabilities and the meeting-specific implied rate
+  must be `null`; the payload must instead include a traceable
+  `observable_proxy` and the frontend must render no synthetic distribution.
 - Driver `weight` must be from `0` to `3`; `published_at_toronto` requires an explicit offset.
 - Each driver requires stable `id`, `title`, `importance`, `weight`, `data`, and `reason` fields.
 - Calendar items require `datetime_toronto`, `datetime_utc`, `currency`, `event`, and `impact`.

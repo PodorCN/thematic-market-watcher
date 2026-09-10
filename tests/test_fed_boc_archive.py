@@ -137,3 +137,34 @@ def test_archive_refuses_an_incoherent_payload(tmp_path):
     with pytest.raises(ValueError, match="refusing to archive"):
         archive_dashboard(source, docs, source, review, snapshot_date="2026-09-09")
     assert not (docs / "data" / "fed-boc" / "latest.json").exists()
+
+
+def test_unavailable_pricing_requires_nulls_and_observable_proxy():
+    from econ.archive_fed_boc import _validate_pricing
+
+    payload = {"meetings": {
+        "fed": {"pricing": {"cut_25bp": 0.0, "hold": 0.4, "hike_25bp": 0.6}},
+        "boc": {"pricing": {
+            "probability_status": "unavailable",
+            "cut_25bp": None, "hold": None, "hike_25bp": None,
+            "implied_rate_after": None,
+            "observable_proxy": {"instrument": "CRAU26", "observed_price": 97.65},
+        }},
+    }}
+    _validate_pricing(payload)
+
+
+def test_unavailable_pricing_rejects_numeric_placeholder():
+    import pytest
+    from econ.archive_fed_boc import _validate_pricing
+
+    payload = {"meetings": {
+        "fed": {"pricing": {"cut_25bp": 0.0, "hold": 0.4, "hike_25bp": 0.6}},
+        "boc": {"pricing": {
+            "probability_status": "unavailable",
+            "cut_25bp": 0.0, "hold": 0.4, "hike_25bp": 0.6,
+            "observable_proxy": {"instrument": "CRAU26"},
+        }},
+    }}
+    with pytest.raises(ValueError, match="must be null"):
+        _validate_pricing(payload)

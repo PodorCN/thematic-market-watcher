@@ -1002,6 +1002,24 @@ async function renderOdds(bank,meeting,opts={}){
   const card=document.querySelector(`.odds-card.${bank}`);
   if(!card||!meeting?.pricing) return;
   const pricing=meeting.pricing;
+  if(pricing.probability_status==='unavailable'){
+    const flag=bank==='fed'?'🇺🇸':'🇨🇦';
+    const proxy=pricing.observable_proxy||{};
+    const proxyURL=safeURL(proxy.source_url||pricing.source_url);
+    const level=Number.isFinite(proxy.implied_quarterly_average_rate)
+      ? `${proxy.implied_quarterly_average_rate.toFixed(3)}% quarterly-average rate`
+      : 'observable proxy level available';
+    const note=[proxy.note,pricing.note].filter(Boolean).map(escapeHTML).join('<br><br>');
+    briefState[bank]={...briefState[bank],meeting,mi:null,source:pricing.source,
+      rateText:'Single-meeting probabilities unavailable',note:'No clean single-meeting distribution is available.',poly:null,polyState:'unavailable'};
+    paintBrief(bank);
+    paintHeadline();
+    card.innerHTML=`<h3>${flag} ${escapeHTML(meeting.label)} <span style="margin-left:auto">Pricing unavailable</span></h3>
+      <div class="src-block"><div class="src-head"><span><b>📊 Observable proxy only</b></span><span class="asof">as of ${escapeHTML(formatToronto(pricing.as_of_pricing,true))}</span></div>
+      <div class="src-note"><b>${escapeHTML(level)}</b> · ${proxyURL?`<a href="${proxyURL}" target="_blank" rel="noopener">source ↗</a>`:''}<br>${note}</div></div>
+      <div class="last-meeting"><b>${escapeHTML(meeting.last_meeting?.date||'Last meeting')}:</b> ${escapeHTML(meeting.last_meeting?.decision||'Decision pending')}. ${escapeHTML(meeting.last_meeting?.note||'')}</div>`;
+    return;
+  }
   const mi={cut:Math.round((pricing.cut_25bp||0)*100),hold:Math.round((pricing.hold||0)*100)};
   mi.hike=Math.max(0,100-mi.cut-mi.hold);
   const before=pricing.implied_rate_before ?? pricing.implied_before;
@@ -1163,7 +1181,7 @@ function renderDriver(driver,direction,asOf){
 }
 
 function marketTopOutcome(pricing){
-  if(!pricing) return null;
+  if(!pricing||pricing.probability_status==='unavailable') return null;
   const cut=Math.round((pricing.cut_25bp||0)*100);
   const hold=Math.round((pricing.hold||0)*100);
   const hike=Math.max(0,100-cut-hold);

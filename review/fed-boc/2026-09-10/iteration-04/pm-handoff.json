@@ -1,0 +1,37 @@
+{
+  "candidate_sha256": "66dc0ed36cc9e5e30b5677b98a03b0fbfa85686ca46095a9b2bb9d9482616681",
+  "open_feedback": "review/fed-boc/feedback/latest.json",
+  "prior_pm_review": "review/fed-boc/2026-09-10/iteration-03/pm-review.json",
+  "remediation_evidence_mapping": [
+    {
+      "field": "meetings.boc.pricing.cut_25bp/hold/hike_25bp",
+      "feedback": "Remove fabricated 0/40/60 distribution",
+      "remediation": "All three set to null with probability_status=unavailable",
+      "evidence": "candidate.json meetings.boc.pricing"
+    },
+    {
+      "field": "meetings.boc.pricing.implied_rate_after",
+      "feedback": "Remove unsupported 2.40% October post-meeting rate",
+      "remediation": "Set to null",
+      "evidence": "candidate.json meetings.boc.pricing"
+    },
+    {
+      "field": "meetings.boc.pricing.observable_proxy",
+      "feedback": "Preserve observable quarterly average separately",
+      "remediation": "Added CRAU26 97.650, 2.350% quarterly average, expiry and two-meeting limitation",
+      "evidence": "TMX live recollection at 2026-09-10T06:56-04:00; .scratch/tmx-cra.html"
+    },
+    {
+      "field": "contract and renderer",
+      "feedback": "Support unavailable/null representation",
+      "remediation": "Archive validator rejects numeric unavailable placeholders; frontend renders no bars or rope-market pricing cross-check when unavailable",
+      "evidence": "econ/archive_fed_boc.py; docs/feds-boc-watcher.html; tests/test_fed_boc_archive.py"
+    },
+    {
+      "field": "BoC CORRA anchor",
+      "feedback": "Re-trigger affected collection",
+      "remediation": "Recollected 2.2900% effective 2026-09-08",
+      "evidence": ".scratch/boc-corra.json; BoC Valet URL"
+    }
+  ]
+}

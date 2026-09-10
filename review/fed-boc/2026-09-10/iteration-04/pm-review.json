@@ -1,14 +1,18 @@
 {
   "schema_version": "1.0",
-  "status": "open",
+  "reviewer_role": "independent_portfolio_manager",
   "reviewed_at": "2026-09-10T07:04:09-04:00",
   "candidate_sha256": "f6302f2f5b0a43f22e8090a7169426d1b488cbce9d46fddc8ab1d5ef6acf2a41",
-  "review_sha256": "f62b940789fc90b07f6feeaf1f12e479333f166bbef1ac4185744d33ba9ef54e",
-  "source_review": "review/fed-boc/2026-09-10/iteration-04/pm-review.json",
+  "verdict": "revise",
   "executive_summary": "Revise. The current candidate's official policy facts, Fed desk proxy, BoC unavailable/null representation, live CRAU26 and CORRA evidence, drivers, market strip, calendar, freshness, renderer behavior, and archive pricing checks are materially supportable. Publication is nevertheless blocked because the candidate bytes hash to f6302f2f5b0a43f22e8090a7169426d1b488cbce9d46fddc8ab1d5ef6acf2a41, while candidate.sha256 and pm-handoff.json both declare 66dc0ed36cc9e5e30b5677b98a03b0fbfa85686ca46095a9b2bb9d9482616681. The review package is not a valid frozen, digest-consistent handoff, so its provenance cannot be approved.",
-  "failed_checks": [
-    "decision_usefulness"
-  ],
+  "checks": {
+    "official_policy": "pass",
+    "pricing": "pass",
+    "drivers": "pass",
+    "market_validation": "pass",
+    "freshness": "pass",
+    "decision_usefulness": "fail"
+  },
   "findings": [
     {
       "severity": "critical",
@@ -19,19 +23,16 @@
       "instruction": "Do not publish iteration 04. Rebuild or re-freeze the candidate in a new iteration, generate candidate.sha256 from those exact immutable bytes, regenerate the handoff with the same digest, and submit that digest-consistent package to a fresh independent PM review."
     }
   ],
-  "required_recollection": [
-    "Do not publish iteration 04. Rebuild or re-freeze the candidate in a new iteration, generate candidate.sha256 from those exact immutable bytes, regenerate the handoff with the same digest, and submit that digest-consistent package to a fresh independent PM review."
+  "pnl_risks": [
+    "Digest-inconsistent review provenance can allow materially different candidate bytes to bypass the intended independent approval control.",
+    "The Fed 60% hike weight is a sensitive desk interpolation rather than a directly observed distribution; a one-basis-point futures move changes the inferred hike weight by roughly 8.6 percentage points.",
+    "CRAU26 is a quarterly-average contract spanning the October 28 and December 9 BoC decisions and must never be interpreted as a clean October outcome distribution.",
+    "Upcoming PPI, CPI, Canadian CPI, retail sales, and the FOMC decision can invalidate the snapshot rapidly and create substantial event-gap risk.",
+    "The market strip consists of broad cash closes and is contextual confirmation, not evidence that any individual macro release caused the observed moves."
   ],
   "operator_instructions": [
     "Do not publish iteration 04 or repair its checksum in place; create a new immutable iteration whose candidate, checksum, and handoff all carry the same exact-byte SHA-256 digest.",
     "Preserve the implemented BoC unavailable/null pricing representation, the quarterly-contract limitation, and the renderer behavior that suppresses probability bars and rope-versus-market checks when pricing is unavailable.",
     "Submit the new digest-consistent package to a fresh independent PM review before invoking the archive or publication gate."
-  ],
-  "next_run_contract": [
-    "Read this feedback before collecting or editing the next candidate.",
-    "Re-trigger collection for every affected source and claim.",
-    "Rebuild the whole internally consistent candidate; do not patch prose only.",
-    "Submit the rebuilt candidate to a fresh independent PM review.",
-    "Do not publish until an exact-byte-bound approved review passes the gate."
   ]
 }

@@ -37,6 +37,30 @@ def _validate_finite(value: object, path: str = "root") -> None:
             _validate_finite(child, f"{path}[{index}]")
 
 
+def _validate_pricing(payload: dict) -> None:
+    """Allow an explicit unavailable state without fabricating probabilities."""
+    for bank in ("fed", "boc"):
+        pricing = payload.get("meetings", {}).get(bank, {}).get("pricing")
+        if pricing is None:  # minimal legacy/test payloads have no pricing object
+            continue
+        status = pricing.get("probability_status", "available")
+        values = [pricing.get(key) for key in ("cut_25bp", "hold", "hike_25bp")]
+        if status == "unavailable":
+            if any(value is not None for value in values):
+                raise ValueError(f"{bank} unavailable pricing probabilities must be null")
+            if pricing.get("implied_rate_after") is not None or pricing.get("implied_after") is not None:
+                raise ValueError(f"{bank} unavailable pricing cannot claim a meeting-specific implied rate")
+            if not isinstance(pricing.get("observable_proxy"), dict):
+                raise ValueError(f"{bank} unavailable pricing requires observable_proxy evidence")
+            continue
+        if status != "available":
+            raise ValueError(f"{bank} probability_status must be available or unavailable")
+        if any(not isinstance(value, (int, float)) or isinstance(value, bool) for value in values):
+            raise ValueError(f"{bank} available pricing requires numeric probabilities")
+        if any(value < 0 or value > 1 for value in values) or abs(sum(values) - 1.0) > 0.02:
+            raise ValueError(f"{bank} pricing probabilities must be bounded and sum to 1")
+
+
 def _atomic_json(path: Path, data: dict) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     temporary = path.with_suffix(path.suffix + ".tmp")
@@ -72,6 +96,7 @@ def archive_dashboard(
     _validate_finite(payload)
     if not payload.get("meetings") or not payload.get("drivers"):
         raise ValueError("dashboard payload is missing meetings or drivers")
+    _validate_pricing(payload)
     problems = check_payload(payload)
     if problems:
         # Refuse rather than publish: latest.json keeps the last coherent snapshot

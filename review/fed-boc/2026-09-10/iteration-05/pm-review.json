@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "reviewer_role": "independent_portfolio_manager",
+  "reviewed_at": "2026-09-10T07:20:29-04:00",
+  "candidate_sha256": "f6302f2f5b0a43f22e8090a7169426d1b488cbce9d46fddc8ab1d5ef6acf2a41",
+  "verdict": "approved",
+  "executive_summary": "Approved. The exact iteration-05 candidate bytes hash to f6302f2f5b0a43f22e8090a7169426d1b488cbce9d46fddc8ab1d5ef6acf2a41, matching both candidate.sha256 and pm-handoff.json. The candidate is byte-identical to the substantively reviewed iteration-04 payload, whose only rejection was the stale declared checksum. It preserves null BoC cut/hold/hike probabilities, a null meeting-specific implied rate, and an explicitly unavailable probability status while presenting CRAU26 solely as an observable 2.350% quarterly-average proxy spanning the October 28 and December 9 decisions. The archive validator rejects synthetic values in this state, and the frontend suppresses probability bars, Polymarket comparison, and rope-versus-market checks. No unresolved critical or major issue remains.",
+  "checks": {
+    "official_policy": "pass",
+    "pricing": "pass",
+    "drivers": "pass",
+    "market_validation": "pass",
+    "freshness": "pass",
+    "decision_usefulness": "pass"
+  },
+  "findings": [],
+  "pnl_risks": [
+    "The Fed 60% hike weight remains a sensitive desk interpolation rather than a directly observed probability distribution; a one-basis-point futures move changes the inferred hike weight by roughly 8.6 percentage points.",
+    "CRAU26 is a quarterly-average contract spanning the October 28 and December 9 BoC decisions and cannot identify a clean October outcome distribution.",
+    "Upcoming PPI, CPI, Canadian CPI, retail sales, and the FOMC decision can invalidate the snapshot rapidly and create substantial event-gap risk.",
+    "The market strip consists of broad cash closes and provides contextual confirmation rather than proof that any individual macro release caused the observed moves."
+  ],
+  "operator_instructions": []
+}

@@ -118,6 +118,14 @@ docs/data/
 | `pricing.cut_25bp` 等 | number 0–1 | 是 | 概率，前端直接 `*100%` 画条 |
 | `decision_time_toronto` | ISO8601 with offset | 是 | 前端倒计时与日历共用，**必须带 -04:00** |
 
+When a clean single-meeting distribution is unavailable, set
+`pricing.probability_status` to `"unavailable"`, set `cut_25bp`, `hold`,
+`hike_25bp`, and the meeting-specific `implied_rate_after` to `null`, and include
+an `observable_proxy` object with `instrument`, `observed_price`,
+`implied_quarterly_average_rate`, `source_url`, and a note explaining the
+contract horizon. Never allocate a multi-meeting quarterly contract to one
+meeting merely to satisfy the three-outcome display.
+
 ---
 
 ### 4.1 `pricing.polymarket`（可选，Polymarket 快照）
