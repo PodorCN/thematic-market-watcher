@@ -24,11 +24,38 @@ The detailed schemas are
 - There is currently no Fed/BOC collector. An operator or web-enabled LLM
   must research and update `docs/data/fed-boc-dashboard.json` before it is
   archived.
-- `.github/workflows/public-pages-daily.yml` runs daily at `13:10 UTC`. It
-  fetches fresh calendar data, but only republishes the Fed/BOC staging file
-  already present in the repository. It does not invoke an LLM.
+- `.github/workflows/public-pages-daily.yml` runs daily at `13:10 UTC` and
+  publishes only the deterministic economic calendar. It deliberately cannot
+  publish Fed/BOC because that output requires the independent PM review gate.
 - The public-site repository syncs these artifacts approximately 30 minutes
   later through its `sync-macro-pages.yml` workflow.
+
+## Independent PM Review Gate
+
+After updating `docs/data/fed-boc-dashboard.json`, but before running
+`econ/archive_fed_boc.py`, follow
+[`fed-boc-pm-review.md`](./fed-boc-pm-review.md):
+
+1. Freeze the proposed payload under
+   `review/fed-boc/<TODAY>/iteration-<NN>/candidate.json` and record its
+   SHA-256 in `candidate.sha256`.
+2. Launch a **separate agent session** as the independent portfolio manager.
+   The collecting/operator agent may not review or approve its own candidate.
+3. The PM writes `pm-review.json` matching
+   `review/fed-boc/pm-review.schema.json` and bound to the candidate digest.
+4. Run `econ/validate_pm_review.py` against the candidate and review with
+   `--require-approved`.
+5. A `revise` verdict, failed check, material finding, missing review, or hash
+   mismatch forbids archive, commit, sync, and push. Follow every PM
+   instruction, recollect affected sources, rebuild the whole candidate, freeze
+   a new iteration, and request a fresh independent review.
+6. Allow at most three iterations per run. If none is approved, fail closed
+   and leave the previous public `latest.json` untouched.
+7. Only the exact candidate with a passing `approved` review may proceed to
+   archive/publication. Commit its approved review folder as audit evidence.
+
+The PM review is a hard publication gate, not editorial commentary. Never turn
+“approved if fixed” into approval, and never edit the PM's review artifact.
 
 ## Manual Daily Run
 
@@ -45,10 +72,11 @@ With no explicit `--from`, the fetcher includes the Toronto calendar day
 before `$date` and keeps the full seven-day window beginning on `$date`.
 
 Then research and update `docs/data/fed-boc-dashboard.json`. Do not use the
-example payload as current data. After the payload is verified:
+example payload as current data. Freeze it, obtain a separate approved PM
+review as described above, and provide both paths to the hard-gated archiver:
 
 ```powershell
-.\.venv\Scripts\python.exe econ/archive_fed_boc.py --date $date
+.\.venv\Scripts\python.exe econ/archive_fed_boc.py --date $date --candidate review/fed-boc/$date/iteration-01/candidate.json --pm-review review/fed-boc/$date/iteration-01/pm-review.json
 .\.venv\Scripts\python.exe -m pytest tests/test_econ_render.py tests/test_fed_boc_archive.py -q
 ```
 
@@ -61,6 +89,7 @@ docs/economic-calendar/archive/<date>.html
 docs/data/economic-calendar/
 docs/data/fed-boc-dashboard.json
 docs/data/fed-boc/
+review/fed-boc/<date>/iteration-<NN>/
 ```
 
 ## Publish to PodorCN.github.io

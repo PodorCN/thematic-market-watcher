@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Fed/BOC PM Review",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "reviewer_role",
+    "reviewed_at",
+    "candidate_sha256",
+    "verdict",
+    "executive_summary",
+    "checks",
+    "findings",
+    "pnl_risks",
+    "operator_instructions"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "reviewer_role": {"const": "independent_portfolio_manager"},
+    "reviewed_at": {"type": "string", "format": "date-time"},
+    "candidate_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "verdict": {"enum": ["approved", "revise"]},
+    "executive_summary": {"type": "string", "minLength": 20},
+    "checks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["official_policy", "pricing", "drivers", "market_validation", "freshness", "decision_usefulness"],
+      "properties": {
+        "official_policy": {"enum": ["pass", "fail"]},
+        "pricing": {"enum": ["pass", "fail"]},
+        "drivers": {"enum": ["pass", "fail"]},
+        "market_validation": {"enum": ["pass", "fail"]},
+        "freshness": {"enum": ["pass", "fail"]},
+        "decision_usefulness": {"enum": ["pass", "fail"]}
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["severity", "field", "issue", "evidence", "pnl_impact", "instruction"],
+        "properties": {
+          "severity": {"enum": ["critical", "major", "minor"]},
+          "field": {"type": "string", "minLength": 1},
+          "issue": {"type": "string", "minLength": 10},
+          "evidence": {"type": "string", "minLength": 10},
+          "pnl_impact": {"type": "string", "minLength": 10},
+          "instruction": {"type": "string", "minLength": 10}
+        }
+      }
+    },
+    "pnl_risks": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 10}},
+    "operator_instructions": {"type": "array", "items": {"type": "string", "minLength": 10}}
+  }
+}

@@ -1,8 +1,30 @@
 from __future__ import annotations
 
+import hashlib
 import json
 
 from econ.archive_fed_boc import archive_dashboard
+
+
+def _approved_review(candidate, tmp_path):
+    review = tmp_path / "pm-review.json"
+    review.write_text(json.dumps({
+        "schema_version": "1.0",
+        "reviewer_role": "independent_portfolio_manager",
+        "reviewed_at": "2026-08-24T12:00:00-04:00",
+        "candidate_sha256": hashlib.sha256(candidate.read_bytes()).hexdigest(),
+        "verdict": "approved",
+        "executive_summary": "All material policy, pricing, driver, and freshness checks passed.",
+        "checks": {
+            "official_policy": "pass", "pricing": "pass", "drivers": "pass",
+            "market_validation": "pass", "freshness": "pass",
+            "decision_usefulness": "pass",
+        },
+        "findings": [],
+        "pnl_risks": ["Unexpected inflation can rapidly reprice the front end of the curve."],
+        "operator_instructions": [],
+    }), encoding="utf-8")
+    return review
 
 
 def test_archive_dashboard_writes_snapshot_and_sorted_manifest(tmp_path):
@@ -15,10 +37,13 @@ def test_archive_dashboard_writes_snapshot_and_sorted_manifest(tmp_path):
         "drivers": {"fed": {}, "boc": {}},
     }
     source.write_text(json.dumps(payload), encoding="utf-8")
+    review = _approved_review(source, tmp_path)
 
     snapshot, dates_path = archive_dashboard(
         source,
         docs,
+        source,
+        review,
         snapshot_date="2026-08-24",
         archived_at="2026-08-24T13:10:00Z",
     )
@@ -37,6 +62,8 @@ def test_archive_dashboard_writes_snapshot_and_sorted_manifest(tmp_path):
     stale_snapshot, dates_path = archive_dashboard(
         source,
         docs,
+        source,
+        review,
         snapshot_date="2026-08-25",
         archived_at="2026-08-25T13:10:00Z",
     )
@@ -105,6 +132,8 @@ def test_archive_refuses_an_incoherent_payload(tmp_path):
         "observed_at_toronto": "2026-08-27T16:00:00-04:00",
     })), encoding="utf-8")
 
+    review = _approved_review(source, tmp_path)
+
     with pytest.raises(ValueError, match="refusing to archive"):
-        archive_dashboard(source, docs, snapshot_date="2026-09-09")
+        archive_dashboard(source, docs, source, review, snapshot_date="2026-09-09")
     assert not (docs / "data" / "fed-boc" / "latest.json").exists()

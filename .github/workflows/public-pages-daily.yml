@@ -41,17 +41,12 @@ jobs:
           python econ/fetch_calendar.py --date "${{ steps.vars.outputs.date }}" --days 7 --countries US,CA,EMU,DE,FR,IT,ES,UK,CH --impacts HIGH,MEDIUM --with-history --history-events 15 --history-limit 12
           python econ/render_calendar.py --date "${{ steps.vars.outputs.date }}"
 
-      - name: Archive latest Fed/BOC payload
-        run: python econ/archive_fed_boc.py --date "${{ steps.vars.outputs.date }}"
-
-      # Runs even when the archive step rejected an incoherent payload, so one bad
-      # driver record cannot also throw away that run's calendar work. The job still
-      # fails, which is the signal that the Fed/BOC payload needs fixing.
-      - name: Commit snapshots
-        if: always()
+      # Fed/BOC is intentionally not archived here. It requires the independent
+      # PM review gate in readme/fed-boc-pm-review.md.
+      - name: Commit calendar snapshots
         run: |
           git config user.name "public-pages-bot"
           git config user.email "bot@users.noreply.github.com"
-          git add archive/ docs/data/ docs/economic-calendar/ docs/economic_calendar.html
+          git add "archive/${{ steps.vars.outputs.date }}/economic_calendar.json" docs/data/economic-calendar/ docs/economic-calendar/ docs/economic_calendar.html
           git commit -m "Public page snapshots ${{ steps.vars.outputs.date }}" || echo "nothing to commit"
           git push
