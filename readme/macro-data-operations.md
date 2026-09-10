@@ -98,8 +98,12 @@ LLM assigned an immediate publication should not wait for the schedule.
    upcoming releases when possible instead of transcribing the same events
    from search results.
 5. Change `as_of` only after the payload has actually been refreshed and
-   verified. If collection is incomplete, retain the prior timestamp so the
-   archiver publishes the new daily snapshot with `stale: true`.
+   verified. A refresh can be current when official policy records/rates plus
+   clearly labelled exchange-traded futures proxies and market validation are
+   current, even if direct CME FedWatch or single-meeting OIS access is
+   unavailable; disclose those probability limitations locally instead of
+   marking the entire snapshot stale. Retain the prior timestamp and publish
+   `stale: true` only when the snapshot's core observations could not be refreshed.
 6. Meeting probabilities must be in `[0, 1]` and total approximately `1` for
    each bank. Driver weights must be in `0.5` increments from `0` to `3`, with
    most values in the `1.0` to `2.0` range. Do not use `2.5+` without unusually
