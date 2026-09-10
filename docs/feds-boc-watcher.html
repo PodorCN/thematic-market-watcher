@@ -77,7 +77,7 @@ h3{margin:0;font-size:16px;font-weight:600}
 .prob-bar i{display:block;height:100%}
 .prob-legend{display:flex;gap:14px;margin-top:8px;font-family:var(--font-mono);font-size:11px;color:var(--color-neutral-500);flex-wrap:wrap}
 .dot{width:8px;height:8px;border-radius:50%;display:inline-block}
-.last-meeting{margin-top:12px;font-size:12px;color:var(--color-neutral-400);background:#1a1c2b;border:1px dashed var(--color-neutral-800);border-radius:8px;padding:10px 12px;line-height:1.6}
+.last-meeting{overflow-wrap:anywhere;margin-top:12px;font-size:12px;color:var(--color-neutral-400);background:#1a1c2b;border:1px dashed var(--color-neutral-800);border-radius:8px;padding:10px 12px;line-height:1.6}
 .last-meeting b{color:var(--color-text)}
 /* probability sources: market-implied vs polymarket */
 .src-block{background:#1a1c2b;border:1px solid var(--color-neutral-800);border-radius:10px;padding:12px 14px;margin-top:12px}
@@ -130,41 +130,85 @@ h3{margin:0;font-size:16px;font-weight:600}
 .side.left h3{color:var(--color-accent-300)}
 .side.right h3{color:#fca5a5}
 .side .sub{font-size:11px;color:var(--color-neutral-500);margin-bottom:14px;font-family:var(--font-mono);letter-spacing:.02em}
-.driver{display:flex;gap:10px;background:#1a1c2b;border:1px solid var(--color-neutral-800);border-radius:10px;padding:14px 12px 12px;margin-bottom:12px;position:relative;transition:transform .12s, border-color .18s}
-.driver:hover{transform:translateY(-1px);border-color:var(--color-neutral-600)}
-.driver .icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;border:1px solid var(--color-neutral-800);background:var(--color-card)}
-.driver .body{flex:1;min-width:0}
-.driver .title{font-weight:600;font-size:13px;line-height:1.3;padding-right:64px}
-.driver .title small{font-weight:400;color:var(--color-neutral-500);font-family:var(--font-mono);font-size:10px;margin-left:6px}
-.driver .summary{font-size:15px;font-weight:700;line-height:1.5;margin:8px 0 2px;color:var(--color-text)}
-.side.left .driver .summary{color:var(--color-accent-300)}
-.side.right .driver .summary{color:#fca5a5}
+.driver{display:block;background:#1a1c2b;border:1px solid var(--color-neutral-800);border-radius:10px;margin-bottom:7px;transition:border-color .18s}
+.driver:hover{border-color:var(--color-neutral-600)}
+.driver[open]{background:var(--color-card-2);border-color:var(--color-neutral-600)}
+.driver>summary{display:flex;gap:10px;align-items:center;padding:9px 11px;cursor:pointer;list-style:none}
+.driver>summary::-webkit-details-marker{display:none}
+.driver>summary::marker{content:''}
+.drv-w{flex:none;min-width:32px;text-align:center;font-family:var(--font-mono);font-size:12px;font-weight:700;padding:4px 5px;border-radius:6px;color:#0f101c;font-variant-numeric:tabular-nums}
+.side.left .drv-w{background:var(--color-accent)}
+.side.right .drv-w{background:#f87171}
+.driver.minor .drv-w{opacity:.5}
+.drv-ico{flex:none;width:30px;text-align:center;font-family:var(--font-mono);font-size:9px;letter-spacing:.02em;color:var(--color-neutral-600)}
+.drv-main{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.drv-sum{font-size:13.5px;font-weight:600;line-height:1.35}
+.side.left .drv-sum{color:var(--color-accent-300)}
+.side.right .drv-sum{color:#fca5a5}
+.drv-meta{font-family:var(--font-mono);font-size:10.5px;color:var(--color-neutral-500);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.drv-meta b{color:var(--color-neutral-300);font-weight:700}
+.drv-meta .delta{font-style:normal;font-size:9.5px;padding:1px 5px}
+.drv-chev{flex:none;color:var(--color-neutral-600);font-size:10px;transition:transform .2s}
+.driver[open] .drv-chev{transform:rotate(180deg)}
+.drv-body{padding:10px 12px 12px;border-top:1px dashed var(--color-neutral-800)}
+.drv-body .drv-title{font-size:13px;font-weight:700;line-height:1.4;color:var(--color-text);margin-bottom:6px}
+/* low-weight drivers stay out of the way until asked for */
+.minor-pack>summary{cursor:pointer;list-style:none;font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--color-neutral-500);padding:9px 4px;border-top:1px dashed var(--color-neutral-800)}
+.minor-pack>summary::-webkit-details-marker{display:none}
+.minor-pack>summary::marker{content:''}
+.minor-pack>summary:hover{color:var(--color-accent-300)}
+.minor-pack[open]>summary{margin-bottom:7px;color:var(--color-neutral-400)}
+.formula-fold{background:var(--color-card);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm)}
+.formula-fold>summary{cursor:pointer;list-style:none;padding:12px 16px;font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-neutral-400)}
+.formula-fold>summary::-webkit-details-marker{display:none}
+.formula-fold>summary::marker{content:''}
+.formula-fold>summary:hover{color:var(--color-accent-300)}
+.formula-fold .formula{box-shadow:none;padding-top:0}
+.analog>summary{cursor:pointer;list-style:none}
+.analog>summary::-webkit-details-marker{display:none}
+.analog>summary::marker{content:''}
+.analog>summary::after{content:'\25BC';margin-left:8px;font-size:9px;color:var(--color-neutral-600);transition:transform .2s;display:inline-block}
+.analog[open]>summary::after{transform:rotate(180deg)}
+.analog:not([open])>summary{border-bottom:none}
+.analog-era{font-family:var(--font-mono);font-size:11px;color:var(--color-neutral-500);padding:10px 14px 0}
+.ghost-btn{padding:8px 14px;border-radius:999px;border:1px solid var(--color-neutral-800);background:#1a1c2b;color:var(--color-neutral-400);font-family:var(--font-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;cursor:pointer;transition:all .18s}
+.ghost-btn:hover{border-color:var(--color-accent);color:var(--color-accent-300)}
+.ghost-btn.active{background:var(--color-accent);color:#0f101c;border-color:var(--color-accent)}
+.bias-cell{display:flex;flex-direction:column;gap:4px;align-items:flex-start}
+.bias-cell .badge{white-space:nowrap}
+.derive{background:#1a1c2b;border:1px solid var(--color-neutral-800);border-radius:10px;margin-top:12px}
+.derive>summary{cursor:pointer;list-style:none;padding:9px 12px;font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-neutral-500)}
+.derive>summary::-webkit-details-marker{display:none}
+.derive>summary::marker{content:''}
+.derive>summary:hover{color:var(--color-accent-300)}
+.derive-body{overflow-wrap:anywhere;padding:0 12px 12px;font-size:12px;line-height:1.65;color:var(--color-neutral-400)}
+.side-empty{font-size:12px;color:var(--color-neutral-500);background:#1a1c2b;border:1px dashed var(--color-neutral-800);border-radius:10px;padding:12px}
 .data-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0 8px;background:var(--color-card);border:1px solid var(--color-neutral-800);border-radius:8px;padding:10px 8px}
 .data-cell{text-align:center;position:relative}
 .data-cell + .data-cell{border-left:1px dashed var(--color-neutral-800)}
 .data-cell .label{font-family:var(--font-mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-neutral-500);font-weight:600}
-.data-cell .val{font-family:var(--font-mono);font-size:16px;font-weight:700;line-height:1.1;margin-top:4px}
+.data-cell .val{font-family:var(--font-mono);font-size:14px;font-weight:700;line-height:1.2;margin-top:4px;word-break:break-word}
 .data-cell .val.beat{color:var(--color-accent-300)}
 .data-cell .val.miss{color:#fca5a5}
 .data-cell .delta{font-family:var(--font-mono);font-size:10px;font-weight:700;margin-top:3px;display:inline-block;padding:2px 6px;border-radius:999px}
 .delta.beat{background:rgba(145,132,217,.15);color:var(--color-accent-300);border:1px solid rgba(145,132,217,.3)}
 .delta.miss{background:rgba(248,113,113,.12);color:#fca5a5;border:1px solid rgba(248,113,113,.25)}
 .delta.neutral{background:#1a1c2b;color:var(--color-neutral-500);border:1px solid var(--color-neutral-800)}
-.reason{font-size:12px;line-height:1.6;background:#1e2030;border-left:2px solid var(--color-neutral-800);padding:8px 10px;border-radius:0 8px 8px 0;margin:6px 0;color:var(--color-neutral-300)}
+.reason{overflow-wrap:anywhere;font-size:12px;line-height:1.6;background:#1e2030;border-left:2px solid var(--color-neutral-800);padding:8px 10px;border-radius:0 8px 8px 0;margin:6px 0;color:var(--color-neutral-300)}
 .side.left .reason{border-left-color:var(--color-accent)}
 .side.right .reason{border-left-color:#f87171}
 .reason b{color:var(--color-text)}
 .source{font-size:11px;color:var(--color-neutral-500);margin-top:6px;display:flex;gap:6px;flex-wrap:wrap;align-items:center;font-family:var(--font-mono)}
 .score-line{font-family:var(--font-mono);font-size:11px;line-height:1.7;color:var(--color-neutral-400);border-top:1px dashed var(--color-neutral-800);margin-top:10px;padding-top:8px}
 .score-line b{color:var(--color-text)}
-.weight{position:absolute;top:12px;right:10px;font-family:var(--font-mono);font-size:10px;padding:3px 7px;border-radius:999px;font-weight:700;letter-spacing:.04em}
-.side.left .weight{background:var(--color-accent);color:#0f101c}
-.side.right .weight{background:#f87171;color:#0f101c}
-.weight.small{opacity:.9}
 /* center spine - Nocturne dark */
-.center-spine{background:#0f101c;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:14px 0;position:relative;border-left:1px solid var(--color-neutral-800);border-right:1px solid var(--color-neutral-800)}
+.center-spine{background:#0f101c;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:18px 0;position:relative;border-left:1px solid var(--color-neutral-800);border-right:1px solid var(--color-neutral-800)}
 .spine-line{width:10px;flex:1;background:linear-gradient(180deg, #f87171 0%, #3f424d 50%, var(--color-accent) 100%);border-radius:999px;position:relative;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
 .rope-knot{width:28px;height:28px;border-radius:50%;background:#e9e9ed;border:3px solid #f59e0b;position:absolute;left:50%;top:var(--pos,50%);transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;font-size:12px;box-shadow:0 0 0 6px rgba(245,158,11,.18), 0 4px 12px rgba(0,0,0,.4)}
+.spine-tick{position:absolute;left:50%;transform:translate(-50%,-50%);font-family:var(--font-mono);font-size:10px;font-weight:700;letter-spacing:.06em;padding:2px 7px;border-radius:999px;white-space:nowrap;border:1px solid}
+.spine-tick.hike{background:rgba(248,113,113,.18);color:#fca5a5;border-color:rgba(248,113,113,.4)}
+.spine-tick.mid{background:#0f101c;color:var(--color-neutral-400);border-color:var(--color-neutral-800)}
+.spine-tick.cut{background:rgba(145,132,217,.18);color:var(--color-accent-300);border-color:rgba(145,132,217,.4)}
 .spine-label{font-family:var(--font-mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--color-neutral-500);text-align:center;line-height:1.2}
 .center-top,.center-bottom{font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--color-neutral-400);text-align:center;line-height:1.2}
 .center-top b,.center-bottom b{display:block;color:var(--color-text);font-size:11px;letter-spacing:.08em}
@@ -394,7 +438,7 @@ body:not(.detail-open) .detail-only{display:none!important}
     <span class="kicker">03 / Rates · Feds/BOC Watcher</span>
     <h2>Feds/BOC Watcher <span>Cut vs Hold/Hike — How Data Pulls the Next Decision</span></h2>
     <div class="rule-fade"></div>
-    <p style="margin:0;color:var(--color-neutral-400);max-width:900px;font-size:14px;line-height:1.6">Midline is the divide: <b style="color:var(--color-accent-300)">Left = Dovish (Cut)</b> · <b style="color:#fca5a5">Right = Hawkish (Hold/Hike)</b>. Each card <b style="color:var(--color-text)">takeaway on top</b>, then transmission, <b>Actual vs Forecast vs Prior</b> numbers, and score math at the bottom — why it counts as a driver. Higher cards = stronger pull. <span class="mono" style="font-size:12px;color:var(--color-neutral-500)">· Toronto time</span></p>
+    <p style="margin:0;color:var(--color-neutral-400);max-width:900px;font-size:14px;line-height:1.6"><b style="color:var(--color-accent-300)">Left pulls toward a cut</b>, <b style="color:#fca5a5">right toward a hike</b>, and the knot between them is the net. Each row is one driver: its weight, the takeaway, and the print behind it — <b style="color:var(--color-text)">click a row</b> for the full reasoning. <span class="mono" style="font-size:12px;color:var(--color-neutral-500)">· Toronto time</span></p>
   </div>
 
   <div class="odds-grid">
@@ -450,7 +494,9 @@ body:not(.detail-open) .detail-only{display:none!important}
     </div>
   </div>
 
-  <div class="formula">
+  <details class="formula-fold">
+    <summary>How a driver is scored · weight 0–3, decayed by age</summary>
+    <div class="formula">
     <div><b>Weight Formula</b> <span style="color:var(--color-neutral-500);font-size:12px">0–3 base, 0.5 steps · effective = base × age decay · net = 3×diff/total (±3 scale)</span></div>
     <span class="pill"><b>Deviation</b> actual vs forecast gap</span>
     <span class="pill"><b>Importance</b> CPI/GDP=High · PMI/Retail=Med-High</span>
@@ -463,12 +509,13 @@ body:not(.detail-open) .detail-only{display:none!important}
       <span><i class="dot" style="background:#d97706"></i> 2.5 Strong</span>
       <span><i class="dot" style="background:#dc2626"></i> 3 Decisive</span>
     </div>
-  </div>
+    </div>
+  </details>
 
   <div class="tabs">
     <button class="tab active" data-target="fed">🇺🇸 Fed Tug <small>Stickiness vs Cracks</small></button>
     <button class="tab" data-target="boc">🇨🇦 BOC Tug <small>Trade Shock vs Resilience</small></button>
-    <span class="caption" style="margin-left:auto">Switch central bank · Weight 0–3 = Deviation×Importance×Surprise</span>
+    <button class="ghost-btn" id="expand-all" data-open="false" style="margin-left:auto">Expand all rows</button>
   </div>
 </section>
 
@@ -477,167 +524,39 @@ body:not(.detail-open) .detail-only{display:none!important}
   <div class="tug-grid">
     <div class="side left">
       <h3>🟢 Dovish Side <span style="font-weight:400;color:var(--color-neutral-500);font-size:10px;letter-spacing:0;text-transform:none">4 drivers · Sorted by Weight</span></h3>
+      <div class="side-empty" data-fallback>Driver detail loads from the live snapshot — if this stays put, the data feed is unreachable.</div>
       <div class="sub">Miss / retreat = dovish fuel. Sorted descending (top = strongest pull near center). Mean 1.5 normal, no 2.5+.</div>
 
-      <div class="driver">
-        <div class="icon">👷</div>
-        <div class="body">
-          <div class="title">Labor Market Softening <small>· 2026-08-08 08:30 Toronto · Claims Thu 08:30 Toronto</small></div>
-          <div class="data-grid">
-            <div class="data-cell"><div class="label">Jul Payrolls Actual</div><div class="val miss">-2.3k</div><div class="delta miss">Huge miss</div></div>
-            <div class="data-cell"><div class="label">Forecast</div><div class="val">+8.0k</div><div class="delta miss">miss -10.3k</div></div>
-            <div class="data-cell"><div class="label">Prior (revised)</div><div class="val">+14.7k→+9.3k</div><div class="delta miss">Rev -5.4k</div></div>
-          </div>
-          <div class="reason"><b>Why dovish?</b> Payrolls flipped from resilient to negative, prior two months revised down—labor demand inflection. Walmart -9% and <b>Aug 27 claims (forecast 230k, prior 228k)</b> above 240k would form 'labor deterioration → recession pricing → forced cuts'.</div>
-          <div class="source"><span class="badge dove">DOVISH</span><span class="badge">HIGH</span><span class="badge market">Check Aug 27 Claims</span></div>
-        </div>
-        <span class="weight" title="Deviation -10.3k / Importance High / Surprise High">Weight 2.0</span>
-      </div>
 
-      <div class="driver" data-link="https://www.investing.com/news/economic-indicators/manufacturing-pmi-falls-short-of-expectations-signals-slower-growth-93CH-4871790">
-        <div class="icon">🏭</div>
-        <div class="body">
-          <div class="title">ISM Manufacturing PMI Falls Back to Contraction <small>· 2026-08-21 10:00 Toronto (EDT) · ISM/S&P Global</small></div>
-          <div class="data-grid">
-            <div class="data-cell"><div class="label">Actual</div><div class="val miss">48.7</div><div class="delta miss">Contraction</div></div>
-            <div class="data-cell"><div class="label">Forecast</div><div class="val">49.5</div><div class="delta miss">miss -0.8</div></div>
-            <div class="data-cell"><div class="label">Prior</div><div class="val">49.1</div><div class="delta miss">Pullback -0.4</div></div>
-          </div>
-          <div class="reason"><b>Why dovish?</b> PMI &lt;50 with <b>new orders 47.2 / employment 48.1</b> both contracting—demand &amp; hiring freeze; <b>prices paid 52.1 (prior 55.8)</b> eases inflation. Manufacturing is the jobs leg—bigger crack, stronger insurance-cut case.</div>
-          <div class="source"><span class="badge dove">DOVISH</span><span class="badge">HIGH · ISM</span><span class="badge market">XLI -3.4% w</span></div>
-        </div>
-        <span class="weight" title="Deviation -0.8 / Importance High / Surprise Med">Weight 1.5</span>
-      </div>
 
-      <div class="driver">
-        <div class="icon">🛒</div>
-        <div class="body">
-          <div class="title">Consumer & Industrial Chain Under Pressure <small>· 2026-08-21 07:00 Toronto Earnings</small></div>
-          <div class="data-grid">
-            <div class="data-cell"><div class="label">Walmart Q2 Comp</div><div class="val miss">3.8%</div><div class="delta miss">Guidance cut</div></div>
-            <div class="data-cell"><div class="label">Stock move</div><div class="val miss">-9.1%</div><div class="delta miss">1-day</div></div>
-            <div class="data-cell"><div class="label">XLI Weekly</div><div class="val miss">-3.4%</div><div class="delta miss">Lead laggard</div></div>
-          </div>
-          <div class="reason"><b>Why dovish?</b> Largest US retailer cut H2 guidance, tariff costs pass to consumers squeezing purchasing power; industrials also cut orders, starting <b>earnings → jobs → consumption</b> negative feedback, supporting 'slowdown needs easing'.</div>
-          <div class="source"><span class="badge dove">DOVISH</span><span class="badge">MEDIUM</span></div>
-        </div>
-        <span class="weight" title="Deviation -9% / Importance Med / Surprise Med">Weight 1.5</span>
-      </div>
 
-      <div class="driver">
-        <div class="icon">📉</div>
-        <div class="body">
-          <div class="title">Long-End Squeeze → Passive Tightening <small>· 2026-08-14 13:00 Toronto · Close 2026-08-21 16:00 Toronto</small></div>
-          <div class="data-grid">
-            <div class="data-cell"><div class="label">30Y Close</div><div class="val miss">5.27%</div><div class="delta miss">Elevated</div></div>
-            <div class="data-cell"><div class="label">Auction high</div><div class="val">5.216%</div><div class="delta miss">2001 high</div></div>
-            <div class="data-cell"><div class="label">Prior 7/30</div><div class="val">4.82%</div><div class="delta miss">+45bp</div></div>
-          </div>
-          <div class="reason"><b>Why dovish? (inverse)</b> Long-end blowout is hawkish per se, but <b>XLU -7.6% MoM / TLT -0.35% Fri</b> shows duration squeeze already tightened conditions. Fed would be forced to cut to offset this passive tightening.</div>
-          <div class="source"><span class="badge dove">DOVISH · Inverse</span><span class="badge">MEDIUM</span></div>
-        </div>
-        <span class="weight small" title="Deviation +45bp / Importance Med / Surprise Med · Inverse">Weight 1.0</span>
-      </div>
     </div>
 
     <div class="center-spine">
-      <div class="center-top"><b>Hawkish</b></div>
       <div class="spine-line" style="position:relative;width:10px;background:linear-gradient(180deg, #f87171 0%, #3f424d 50%, var(--color-accent) 100%);border-radius:999px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)">
         <div style="position:absolute;left:-10px;right:-10px;top:0;height:3px;background:#fff;border-radius:999px;box-shadow:0 0 0 2px rgba(220,38,38,.25)"></div>
         <div style="position:absolute;left:-7px;right:-7px;top:25%;height:2px;background:rgba(255,255,255,.85);border-radius:999px"></div>
         <div style="position:absolute;left:-10px;right:-10px;top:50%;height:3px;background:#fff;border-radius:999px;box-shadow:0 0 0 3px rgba(255,255,255,.2)"></div>
         <div style="position:absolute;left:-7px;right:-7px;top:75%;height:2px;background:rgba(255,255,255,.85);border-radius:999px"></div>
         <div style="position:absolute;left:-10px;right:-10px;bottom:0;height:3px;background:#fff;border-radius:999px;box-shadow:0 0 0 2px rgba(145,132,217,.25)"></div>
-        <div style="position:absolute;left:18px;top:0;transform:translateY(-50%);background:#fef2f2;color:#991b1b;font-size:11px;font-weight:800;padding:3px 7px;border-radius:999px;border:1px solid #fecaca;white-space:nowrap;box-shadow:0 2px 6px rgba(0,0,0,.2)">+3 Certain Hike</div>
-        <div style="position:absolute;left:18px;top:25%;transform:translateY(-50%);background:#fff7ed;color:#9a3412;font-size:11px;font-weight:700;padding:2px 6px;border-radius:999px;border:1px solid #fed7aa;white-space:nowrap">+1.5 Hawkish</div>
-        <div style="position:absolute;left:18px;top:50%;transform:translateY(-50%);background:#0f101c;color:#fff;font-size:11px;font-weight:800;padding:3px 7px;border-radius:999px;border:1px solid #3f424d;white-space:nowrap">0 Balanced</div>
-        <div style="position:absolute;left:18px;top:75%;transform:translateY(-50%);background:#1a1c2b;color:var(--color-accent-300);font-size:11px;font-weight:700;padding:2px 6px;border-radius:999px;border:1px solid rgba(145,132,217,.3);white-space:nowrap">-1.5 Dovish</div>
-        <div style="position:absolute;left:18px;bottom:0;transform:translateY(50%);background:#1a1c2b;color:var(--color-accent-300);font-size:11px;font-weight:800;padding:3px 7px;border-radius:999px;border:1px solid rgba(145,132,217,.3);white-space:nowrap">-3 Certain Cut</div>
+        <div class="spine-tick hike" style="top:0">+3 Hike</div>
+        <div class="spine-tick mid" style="top:50%">0</div>
+        <div class="spine-tick cut" style="bottom:0;transform:translate(-50%,50%)">−3 Cut</div>
         <div class="rope-knot" style="--pos:25%;width:28px;height:28px;border-width:3px" title="Net +1.5 Hawkish — Right 7.5 vs Left 6.0">⚖️</div>
         <div style="position:absolute;left:50%;top:25%;transform:translate(-50%,-36px);background:#f59e0b;color:#fff;font-size:12px;font-weight:800;padding:4px 9px;border-radius:999px;white-space:nowrap;box-shadow:0 3px 10px rgba(0,0,0,.25);border:2px solid #fff">Net +1.5 Hawk</div>
       </div>
-      <div class="center-bottom"><b>Dovish</b></div>
       <div class="spine-label" style="color:var(--color-neutral-500);font-size:10px;line-height:1.2;text-align:center">Scale<br>= Net Diff<br><span style="font-size:9px;color:var(--color-neutral-600)">Hiking → +2 to +3</span></div>
     </div>
 
     <div class="side right">
       <h3>🔴 Hawkish Side <span style="font-weight:400;color:var(--color-neutral-500);font-size:10px;letter-spacing:0;text-transform:none">5 drivers · Sorted by Weight</span></h3>
+      <div class="side-empty" data-fallback>Driver detail loads from the live snapshot — if this stays put, the data feed is unreachable.</div>
       <div class="sub">Beat / up = hawkish fuel. Sorted descending, 2.0 is current peak (no 2.5+). Right 5 vs Left 4.</div>
 
-      <div class="driver">
-        <div class="icon">🔥</div>
-        <div class="body">
-          <div class="title">Services PMI Big Beat <small>· 2026-08-21 09:45 Toronto · S&P Global</small></div>
-          <div class="data-grid">
-            <div class="data-cell"><div class="label">Actual</div><div class="val beat">56.8</div><div class="delta beat">Accelerating</div></div>
-            <div class="data-cell"><div class="label">Forecast</div><div class="val">54.0</div><div class="delta beat">beat +2.8</div></div>
-            <div class="data-cell"><div class="label">Prior</div><div class="val">54.3</div><div class="delta beat">↑ +2.5</div></div>
-          </div>
-          <div class="reason"><b>Why hawkish?</b> Services = 73% of GDP, <b>new orders 58.2 / employment 54.1</b> both strong—demand &amp; wage stickiness remains; <b>prices paid 59.6</b> points to core services inflation.</div>
-          <div class="source"><span class="badge hawk">HAWKISH</span><span class="badge">HIGH · S&P Global</span></div>
-        </div>
-        <span class="weight" title="Deviation +2.8 / Importance High / Surprise High">Weight 2.0</span>
-      </div>
 
-      <div class="driver">
-        <div class="icon">⛓️</div>
-        <div class="body">
-          <div class="title">Tariff Inflation Shock <small>· 2026-08-22 02:39 Toronto · CNBC/Carney</small></div>
-          <div class="data-grid">
-            <div class="data-cell"><div class="label">US on CA Tariff</div><div class="val miss">35%</div><div class="delta miss">Dollar-for-dollar</div></div>
-            <div class="data-cell"><div class="label">Effective</div><div class="val">9/08</div><div class="delta miss">24 days</div></div>
-            <div class="data-cell"><div class="label">1Y Inflation Exp</div><div class="val beat">4.5%</div><div class="delta beat">Elevated</div></div>
-          </div>
-          <div class="reason"><b>Why hawkish?</b> Tariffs = direct imported inflation. Carney's dollar-for-dollar hits <b>~2.5% of GDP exposure</b>. Michigan 1Y at 4.5% means CPI overshoot risk keeps Fed from cutting in Sep.</div>
-          <div class="source"><span class="badge hawk">HAWKISH</span><span class="badge">HIGH</span></div>
-        </div>
-        <span class="weight" title="Deviation 35% / Importance High / Surprise High">Weight 2.0</span>
-      </div>
 
-      <div class="driver">
-        <div class="icon">🏦</div>
-        <div class="body">
-          <div class="title">Term Premium Blowout <small>· 2026-08-14 13:00 Toronto 30Y Auction</small></div>
-          <div class="data-grid">
-            <div class="data-cell"><div class="label">30Y Auction</div><div class="val beat">5.216%</div><div class="delta miss">2001 high</div></div>
-            <div class="data-cell"><div class="label">Intraday High</div><div class="val beat">5.33%</div><div class="delta beat">+11.4bp</div></div>
-            <div class="data-cell"><div class="label">GLD Monthly</div><div class="val beat">+13.8%</div><div class="delta beat">Fiscal hedge</div></div>
-          </div>
-          <div class="reason"><b>Why hawkish?</b> Long-end rise is fiscal term premium + credit worry, not growth. Gold +13.8% MoM votes 'UST no longer risk-free'.</div>
-          <div class="source"><span class="badge hawk">HAWKISH</span><span class="badge">MEDIUM</span></div>
-        </div>
-        <span class="weight" title="Deviation +11bp / Importance Med-High / Surprise Med">Weight 1.5</span>
-      </div>
 
-      <div class="driver">
-        <div class="icon">🛢️</div>
-        <div class="body">
-          <div class="title">Energy / Geopolitical Premium <small>· 2026-08-21 14:30 Toronto WTI Close</small></div>
-          <div class="data-grid">
-            <div class="data-cell"><div class="label">WTI</div><div class="val beat">87.1</div><div class="delta beat">WoW +4.1%</div></div>
-            <div class="data-cell"><div class="label">Brent</div><div class="val beat">93.8</div><div class="delta beat">Near 94</div></div>
-            <div class="data-cell"><div class="label">XLE Weekly</div><div class="val beat">+2.8%</div><div class="delta beat">Counter rally</div></div>
-          </div>
-          <div class="reason"><b>Why hawkish?</b> Oil feeds directly into headline CPI, WTI 87 → +0.3% MoM CPI pressure.</div>
-          <div class="source"><span class="badge hawk">HAWKISH</span><span class="badge">MEDIUM</span></div>
-        </div>
-        <span class="weight small" title="Deviation WoW +4% / Importance Med / Surprise Low">Weight 1.0</span>
-      </div>
 
-      <div class="driver">
-        <div class="icon">💭</div>
-        <div class="body">
-          <div class="title">Inflation Expectations De-Anchoring <small>· 2026-08-15 10:00 Toronto Michigan</small></div>
-          <div class="data-grid">
-            <div class="data-cell"><div class="label">1Y Exp Actual</div><div class="val beat">4.5%</div><div class="delta beat">Elevated</div></div>
-            <div class="data-cell"><div class="label">Prior / Forecast</div><div class="val">4.4% / 4.4%</div><div class="delta beat">beat +0.1</div></div>
-            <div class="data-cell"><div class="label">5Y Exp</div><div class="val beat">3.1%</div><div class="delta beat">Prior 3.0%</div></div>
-          </div>
-          <div class="reason"><b>Why hawkish?</b> Near-term expectations at 4.5%, 5Y above 3% shows 'transitory' fails. Fed fears de-anchoring.</div>
-          <div class="source"><span class="badge hawk">HAWKISH</span><span class="badge">MEDIUM · Michigan</span></div>
-        </div>
-        <span class="weight small" title="Deviation +0.1 / Importance Med / Surprise Med">Weight 1.0</span>
-      </div>
     </div>
   </div>
   <div class="summary-row" style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;margin:14px 56px 0">
@@ -655,152 +574,38 @@ body:not(.detail-open) .detail-only{display:none!important}
   <div class="tug-grid">
     <div class="side left">
       <h3>🟢 Dovish Side <span style="font-weight:400;color:var(--color-neutral-500);font-size:10px;letter-spacing:0;text-transform:none">4 drivers · Sorted by Weight</span></h3>
+      <div class="side-empty" data-fallback>Driver detail loads from the live snapshot — if this stays put, the data feed is unreachable.</div>
       <div class="sub">Canada exports 19% of GDP to US, external miss pulls to cut. Sorted descending, mean 1.4 normal.</div>
 
-      <div class="driver">
-        <div class="icon">🌉</div>
-        <div class="body">
-          <div class="title">Sep 8 US-CA Reciprocal Tariffs Hit <small>· 2026-08-22 02:39 Toronto · CNBC/Carney</small></div>
-          <div class="data-grid">
-            <div class="data-cell"><div class="label">CA Exports to US</div><div class="val miss">19% GDP</div><div class="delta miss">High exposure</div></div>
-            <div class="data-cell"><div class="label">Tariff Scale</div><div class="val miss">Dollar-for-dollar</div><div class="delta miss">Full coverage</div></div>
-            <div class="data-cell"><div class="label">BOC 7/30 Stance</div><div class="val">Trade uncertainty</div><div class="delta neutral">Key risk</div></div>
-          </div>
-          <div class="reason"><b>Why dovish?</b> Canada is the G7 most reliant on US demand—tariffs directly cut orders → industry &amp; export jobs pressured. XLI -3.4% w already priced supply-chain break.</div>
-          <div class="source"><span class="badge dove">DOVISH</span><span class="badge">HIGH</span></div>
-        </div>
-        <span class="weight" title="Deviation 19% / Importance High / Surprise High">Weight 2.0</span>
-      </div>
 
-      <div class="driver">
-        <div class="icon">🏘️</div>
-        <div class="body">
-          <div class="title">Household Leverage & Mortgage Sensitivity <small>· 2026-07-30 BOC MPR · Debt StatsCan 07-18 (Toronto)</small></div>
-          <div class="data-grid">
-            <div class="data-cell"><div class="label">Household Debt/GDP</div><div class="val miss">102%</div><div class="delta miss">G7 highest</div></div>
-            <div class="data-cell"><div class="label">5Y Mortgage Share</div><div class="val">~58%</div><div class="delta neutral">25-26 rollover</div></div>
-            <div class="data-cell"><div class="label">XLU Proxy</div><div class="val miss">-7.6% MoM</div><div class="delta miss">Rate pain</div></div>
-          </div>
-          <div class="reason"><b>Why dovish?</b> High leverage + short-duration mortgages (5-yr renewal) make Canadian households hypersensitive; US 30Y 5.3% spillover lifts Canadian mortgage rates.</div>
-          <div class="source"><span class="badge dove">DOVISH</span><span class="badge">MEDIUM</span></div>
-        </div>
-        <span class="weight" title="Deviation 102% / Importance Med / Surprise Med">Weight 1.5</span>
-      </div>
 
-      <div class="driver">
-        <div class="icon">📦</div>
-        <div class="body">
-          <div class="title">Global Manufacturing Pullback <small>· 2026-08-21 10:00 Toronto · US ISM 48.7</small></div>
-          <div class="data-grid">
-            <div class="data-cell"><div class="label">US ISM Mfg</div><div class="val miss">48.7</div><div class="delta miss">miss -0.8</div></div>
-            <div class="data-cell"><div class="label">CA PMI Forecast</div><div class="val">48.5</div><div class="delta miss">Contraction</div></div>
-            <div class="data-cell"><div class="label">EU/KR Sync</div><div class="val miss">5 falls</div><div class="delta miss">Synchronized</div></div>
-          </div>
-          <div class="reason"><b>Why dovish?</b> Canada exports industrial &amp; resource goods, global PMI leads exports by 1–2 months. Mfg miss signals export &amp; industrial jobs softening ahead.</div>
-          <div class="source"><span class="badge dove">DOVISH</span><span class="badge">MEDIUM</span></div>
-        </div>
-        <span class="weight small">Weight 1.0</span>
-      </div>
 
-      <div class="driver">
-        <div class="icon">💼</div>
-        <div class="body">
-          <div class="title">Labor Market Marginal Easing <small>· 2026-07-30 BOC MPR · LFS 08-08 08:30 Toronto</small></div>
-          <div class="data-grid">
-            <div class="data-cell"><div class="label">Unemployment</div><div class="val miss">6.9%</div><div class="delta miss">Above pre-COVID 6.0%</div></div>
-            <div class="data-cell"><div class="label">Wage Growth</div><div class="val">3.2%</div><div class="delta neutral">Prior 5.2% → easing</div></div>
-            <div class="data-cell"><div class="label">Job Vacancies</div><div class="val miss">-8.2% YoY</div><div class="delta miss">Falling</div></div>
-          </div>
-          <div class="reason"><b>Why dovish?</b> BOC MPR already admits wages 5%+ → 3% range, slack emerging, wage-price spiral risk down—opens dovish door.</div>
-          <div class="source"><span class="badge dove">DOVISH</span><span class="badge">LOW</span></div>
-        </div>
-        <span class="weight small">Weight 1.0</span>
-      </div>
     </div>
 
     <div class="center-spine">
-      <div class="center-top"><b>Hawkish</b></div>
       <div class="spine-line" style="position:relative;width:10px;background:linear-gradient(180deg, #f87171 0%, #3f424d 50%, var(--color-accent) 100%);border-radius:999px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)">
         <div style="position:absolute;left:-10px;right:-10px;top:0;height:3px;background:#fff;border-radius:999px;box-shadow:0 0 0 2px rgba(220,38,38,.25)"></div>
         <div style="position:absolute;left:-7px;right:-7px;top:25%;height:2px;background:rgba(255,255,255,.85);border-radius:999px"></div>
         <div style="position:absolute;left:-10px;right:-10px;top:50%;height:3px;background:#fff;border-radius:999px;box-shadow:0 0 0 3px rgba(255,255,255,.2)"></div>
         <div style="position:absolute;left:-7px;right:-7px;top:75%;height:2px;background:rgba(255,255,255,.85);border-radius:999px"></div>
         <div style="position:absolute;left:-10px;right:-10px;bottom:0;height:3px;background:#fff;border-radius:999px;box-shadow:0 0 0 2px rgba(145,132,217,.25)"></div>
-        <div style="position:absolute;left:18px;top:0;transform:translateY(-50%);background:#fef2f2;color:#991b1b;font-size:11px;font-weight:800;padding:3px 7px;border-radius:999px;border:1px solid #fecaca;white-space:nowrap;box-shadow:0 2px 6px rgba(0,0,0,.2)">+3 Certain Hike</div>
-        <div style="position:absolute;left:18px;top:25%;transform:translateY(-50%);background:#fff7ed;color:#9a3412;font-size:11px;font-weight:700;padding:2px 6px;border-radius:999px;border:1px solid #fed7aa;white-space:nowrap">+1.5 Hawkish</div>
-        <div style="position:absolute;left:18px;top:50%;transform:translateY(-50%);background:#0f101c;color:#fff;font-size:11px;font-weight:800;padding:3px 7px;border-radius:999px;border:1px solid #3f424d;white-space:nowrap">0 Balanced</div>
-        <div style="position:absolute;left:18px;top:75%;transform:translateY(-50%);background:#1a1c2b;color:var(--color-accent-300);font-size:11px;font-weight:700;padding:2px 6px;border-radius:999px;border:1px solid rgba(145,132,217,.3);white-space:nowrap">-1.5 Dovish</div>
-        <div style="position:absolute;left:18px;bottom:0;transform:translateY(50%);background:#1a1c2b;color:var(--color-accent-300);font-size:11px;font-weight:800;padding:3px 7px;border-radius:999px;border:1px solid rgba(145,132,217,.3);white-space:nowrap">-3 Certain Cut</div>
+        <div class="spine-tick hike" style="top:0">+3 Hike</div>
+        <div class="spine-tick mid" style="top:50%">0</div>
+        <div class="spine-tick cut" style="bottom:0;transform:translate(-50%,50%)">−3 Cut</div>
         <div class="rope-knot" style="--pos:50%;width:28px;height:28px;border-width:3px;box-shadow:0 0 0 6px rgba(100,116,139,.18), 0 4px 12px rgba(0,0,0,.4)" title="Net 0.0 Balanced — Right 5.5 vs Left 5.5">⚖️</div>
         <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-36px);background:#3f424d;color:#fff;font-size:12px;font-weight:800;padding:4px 9px;border-radius:999px;white-space:nowrap;box-shadow:0 3px 10px rgba(0,0,0,.25);border:2px solid #fff">Net 0.0 Balanced</div>
       </div>
-      <div class="center-bottom"><b>Dovish</b></div>
       <div class="spine-label" style="color:var(--color-neutral-500);font-size:10px;line-height:1.2;text-align:center">Scale<br>= Net Diff<br><span style="font-size:9px;color:var(--color-neutral-600)">Hiking → +2 to +3</span></div>
     </div>
 
     <div class="side right">
       <h3>🔴 Hawkish Side <span style="font-weight:400;color:var(--color-neutral-500);font-size:10px;letter-spacing:0;text-transform:none">4 drivers · Sorted by Weight</span></h3>
+      <div class="side-empty" data-fallback>Driver detail loads from the live snapshot — if this stays put, the data feed is unreachable.</div>
       <div class="sub">Beat / high = BOC can wait. Sorted descending, mean 1.4 normal.</div>
 
-      <div class="driver">
-        <div class="icon">🛒</div>
-        <div class="body">
-          <div class="title">Retail Big Beat <small>· 2026-08-21 08:30 Toronto · StatsCan</small></div>
-          <div class="data-grid">
-            <div class="data-cell"><div class="label">Actual MoM</div><div class="val beat">+0.6%</div><div class="delta beat">beat +0.4</div></div>
-            <div class="data-cell"><div class="label">Forecast</div><div class="val">+0.2%</div><div class="delta beat">3× beat</div></div>
-            <div class="data-cell"><div class="label">Prior</div><div class="val">+0.1%</div><div class="delta beat">Accelerating</div></div>
-          </div>
-          <div class="reason"><b>Why hold?</b> 7 of 9 components up, services leading—consumption not collapsing at high rates. Retail is timeliest GDP proxy.</div>
-          <div class="source"><span class="badge hawk">HAWKISH</span><span class="badge">HIGH · StatsCan</span></div>
-        </div>
-        <span class="weight" title="Deviation +0.4 / Importance High / Surprise Med">Weight 1.5</span>
-      </div>
 
-      <div class="driver">
-        <div class="icon">🛢️</div>
-        <div class="body">
-          <div class="title">Energy Tailwind: WTI 87 Lifts Terms of Trade <small>· 2026-08-21 14:30 Toronto · WTI Close</small></div>
-          <div class="data-grid">
-            <div class="data-cell"><div class="label">WTI</div><div class="val beat">87.1</div><div class="delta beat">WoW +4.1%</div></div>
-            <div class="data-cell"><div class="label">XLE Weekly</div><div class="val beat">+2.8%</div><div class="delta beat">Counter rally</div></div>
-            <div class="data-cell"><div class="label">Terms of Trade</div><div class="val beat">Improving</div><div class="delta beat">Offsets disinflation</div></div>
-          </div>
-          <div class="reason"><b>Why hold?</b> Higher oil improves Canada's terms of trade &amp; fiscal revenue, supports CAD, offsets imported disinflation.</div>
-          <div class="source"><span class="badge hawk">HAWKISH</span><span class="badge">MEDIUM</span></div>
-        </div>
-        <span class="weight" title="Deviation WoW +4% / Importance Med / Surprise Med">Weight 1.5</span>
-      </div>
 
-      <div class="driver">
-        <div class="icon">📊</div>
-        <div class="body">
-          <div class="title">GDP Resilience To Be Tested <small>· 2026-08-28 08:30 Toronto · StatsCan</small></div>
-          <div class="data-grid">
-            <div class="data-cell"><div class="label">Forecast MoM</div><div class="val">+0.1%</div><div class="delta neutral">Flat</div></div>
-            <div class="data-cell"><div class="label">Prior MoM</div><div class="val">+0.1%</div><div class="delta neutral">—</div></div>
-            <div class="data-cell"><div class="label">Annualized Forecast</div><div class="val">1.2%</div><div class="delta neutral">Prior 1.1%</div></div>
-          </div>
-          <div class="reason"><b>Why driver?</b> Hardest domestic print before 9/17: MoM ≥0.2% &amp; annualized ≥1.5% confirms 'resilient consumption' → hold weight +1.5; if ≤0.0%, dovish rope jumps 5–7 pts left.</div>
-          <div class="source"><span class="badge hawk">HAWKISH/ Two-way</span><span class="badge">HIGH · 8/28</span></div>
-        </div>
-        <span class="weight small" title="Awaiting print / Importance High / Surprise Med">Weight 1.5</span>
-      </div>
 
-      <div class="driver">
-        <div class="icon">🇺🇸</div>
-        <div class="body">
-          <div class="title">US Stickiness Spillover <small>· 2026-08-21 09:45 Toronto Services 56.8 · 30Y 5.27% sync</small></div>
-          <div class="data-grid">
-            <div class="data-cell"><div class="label">US Services PMI</div><div class="val beat">56.8</div><div class="delta beat">beat +2.8</div></div>
-            <div class="data-cell"><div class="label">30Y UST</div><div class="val beat">5.27%</div><div class="delta beat">Elevated</div></div>
-            <div class="data-cell"><div class="label">US-CA Spread</div><div class="val">158bp</div><div class="delta neutral">Widening</div></div>
-          </div>
-          <div class="reason"><b>Why hold?</b> If BOC cuts alone while Fed holds, CAD weakens → imported inflation rebounds.</div>
-          <div class="source"><span class="badge hawk">HAWKISH</span><span class="badge">MEDIUM</span></div>
-        </div>
-        <span class="weight" title="Deviation 158bp / Importance Med / Surprise Small">Weight 1.0</span>
-      </div>
     </div>
   </div>
   <div class="summary-row" style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;margin:14px 56px 0">
@@ -835,10 +640,10 @@ body:not(.detail-open) .detail-only{display:none!important}
     <p style="margin:0;color:var(--color-neutral-400);max-width:900px;font-size:14px">Backtest with <b style="color:var(--color-text)">same mix (services strong vs mfg weak + tariffs/oil + long-end surge)</b>. Each row compares then vs now, hawk vs dove, and lesson for today.</p>
   </div>
   <div class="history-grid">
-    <div class="analog fed">
-      <div class="analog-head"><span style="font-size:16px">🇺🇸</span><b>Fed 2019 Mid-Cycle · 3 Insurance Cuts</b><span class="badge" style="margin-left:auto;background:rgba(145,132,217,.15);color:var(--color-accent-300);border-color:rgba(145,132,217,.3)">Similarity 86%</span></div>
+    <details class="analog fed">
+      <summary class="analog-head"><span style="font-size:16px">🇺🇸</span><b>Fed 2019 Mid-Cycle · 3 Insurance Cuts</b><span class="badge" style="margin-left:auto;background:rgba(145,132,217,.15);color:var(--color-accent-300);border-color:rgba(145,132,217,.3)">Similarity 86%</span></summary>
+      <div class="analog-era">2018Q4–2019Q3 · Trade War 1.0 + Two-Speed Repeats</div>
       <div class="analog-body">
-        <div style="font-family:var(--font-mono);font-size:11px;color:var(--color-neutral-500)">2018Q4–2019Q3 · Trade War 1.0 + Two-Speed Repeats</div>
         <table class="mini-table">
           <tr><th>Metric</th><th>Then</th><th>Now 2026-08</th><th>Takeaway</th></tr>
           <tr><td>ISM Mfg</td><td>47.8 Contraction</td><td class="now">48.7 Contraction</td><td>Both miss</td></tr>
@@ -851,11 +656,11 @@ body:not(.detail-open) .detail-only{display:none!important}
         <div class="verdict dove"><b>What they did: Fed hiked 4× to 2.50% in 2018 → then cut 3× 75bp in Jul/Sep/Oct 2019</b>, 'global headwinds + mild inflation + insurance'.</div>
         <div style="font-size:12px;color:var(--color-neutral-400);margin-top:8px;border-left:2px solid var(--color-neutral-800);padding-left:8px"><b>Lesson:</b> If Core PCE ≤2.8% and claims >240k, Fed likely replicates 2019 → one hold then insurance cuts; but inflation 120bp higher now needs services <54 to trigger.</div>
       </div>
-    </div>
-    <div class="analog fed">
-      <div class="analog-head"><span style="font-size:16px">🇺🇸</span><b>Fed 2022–23 · Higher for Longer</b><span class="badge hawk" style="margin-left:auto">Similarity 72% · Cautionary</span></div>
+    </details>
+    <details class="analog fed">
+      <summary class="analog-head"><span style="font-size:16px">🇺🇸</span><b>Fed 2022–23 · Higher for Longer</b><span class="badge hawk" style="margin-left:auto">Similarity 72% · Cautionary</span></summary>
+      <div class="analog-era">2022Q2–2023Q3 · Stickiness Overwhelms</div>
       <div class="analog-body">
-        <div style="font-family:var(--font-mono);font-size:11px;color:var(--color-neutral-500)">2022Q2–2023Q3 · Stickiness Overwhelms</div>
         <table class="mini-table">
           <tr><th>Metric</th><th>Then</th><th>Now</th><th>Diff</th></tr>
           <tr><td>Services PMI</td><td>55.3 Expansion</td><td class="now">56.8 Stronger</td><td>Stickier now</td></tr>
@@ -867,11 +672,11 @@ body:not(.detail-open) .detail-only{display:none!important}
         <div class="verdict eagle"><b>What they did: Ignored mfg 46, hiked to 5.25–5.50% and held 14 months</b> until services jobs &amp; core PCE fell together.</div>
         <div style="font-size:12px;color:var(--color-neutral-400);margin-top:8px;border-left:2px solid var(--color-neutral-800);padding-left:8px"><b>Lesson:</b> Hard hawk script. As long as <b>Core PCE ≥3.0% and services jobs &gt;54</b>, Fed tolerates mfg recession, Sep cut odds 64%→&lt;35%. Watch Aug 26 Core PCE &amp; Sep 4 payrolls wages.</div>
       </div>
-    </div>
-    <div class="analog boc">
-      <div class="analog-head"><span style="font-size:16px">🇨🇦</span><b>BOC 2018 Steel/Al · On Hold</b><span class="badge" style="margin-left:auto;background:rgba(145,132,217,.15);color:var(--color-accent-300);border-color:rgba(145,132,217,.3)">Similarity 91%</span></div>
+    </details>
+    <details class="analog boc">
+      <summary class="analog-head"><span style="font-size:16px">🇨🇦</span><b>BOC 2018 Steel/Al · On Hold</b><span class="badge" style="margin-left:auto;background:rgba(145,132,217,.15);color:var(--color-accent-300);border-color:rgba(145,132,217,.3)">Similarity 91%</span></summary>
+      <div class="analog-era">2018-06 – 2019-12 · US Steel 25% / Al 10% + CA retaliation</div>
       <div class="analog-body">
-        <div style="font-family:var(--font-mono);font-size:11px;color:var(--color-neutral-500)">2018-06 – 2019-12 · US Steel 25% / Al 10% + CA retaliation</div>
         <table class="mini-table">
           <tr><th>Metric</th><th>Then</th><th>Now</th><th>Diff</th></tr>
           <tr><td>Retail MoM</td><td>+0.45% beat +0.2%</td><td class="now">+0.60% beat +0.2%</td><td>Stronger now</td></tr>
@@ -883,11 +688,11 @@ body:not(.detail-open) .detail-only{display:none!important}
         <div class="verdict" style="background:#1e2030;border:1px solid var(--color-neutral-800);color:var(--color-neutral-300)"><b>What they did: Last hike Oct 2018 to 1.75% then on hold all 2019</b>, 'trade uncertainty + debt sensitivity → wait'.</div>
         <div style="font-size:12px;color:var(--color-neutral-400);margin-top:8px;border-left:2px solid var(--color-neutral-800);padding-left:8px"><b>Lesson:</b> Most similar now. BOC likely replicates 'hold for one' — retail beat lets it wait until Sep 8 tariff impact shows. Needs <b>GDP ≤0.0% MoM or jobless ≥7.0%</b> to cut.</div>
       </div>
-    </div>
-    <div class="analog boc">
-      <div class="analog-head"><span style="font-size:16px">🇨🇦</span><b>BOC 2024 Front-Run · 200bp Cuts</b><span class="badge" style="margin-left:auto;background:rgba(16,185,129,.12);color:#6ee7b7;border-color:rgba(16,185,129,.3)">Similarity 68% · Dovish</span></div>
+    </details>
+    <details class="analog boc">
+      <summary class="analog-head"><span style="font-size:16px">🇨🇦</span><b>BOC 2024 Front-Run · 200bp Cuts</b><span class="badge" style="margin-left:auto;background:rgba(16,185,129,.12);color:#6ee7b7;border-color:rgba(16,185,129,.3)">Similarity 68% · Dovish</span></summary>
+      <div class="analog-era">2024-06 – 2025-03 · 200bp to 2.75%, 5 months ahead of Fed</div>
       <div class="analog-body">
-        <div style="font-family:var(--font-mono);font-size:11px;color:var(--color-neutral-500)">2024-06 – 2025-03 · 200bp to 2.75%, 5 months ahead of Fed</div>
         <table class="mini-table">
           <tr><th>Metric</th><th>Then</th><th>Now</th><th>Diff</th></tr>
           <tr><td>GDP Ann.</td><td>0.9% near recession</td><td class="now">1.20% expected resilient</td><td>More hawk now</td></tr>
@@ -899,7 +704,7 @@ body:not(.detail-open) .detail-only{display:none!important}
         <div class="verdict dove"><b>What they did: Cut 5× starting Jun 2024, 5 months ahead of Fed</b>, domestic debt + disinflation + jobs beat Fed sync.</div>
         <div style="font-size:12px;color:var(--color-neutral-400);margin-top:8px;border-left:2px solid var(--color-neutral-800);padding-left:8px"><b>Lesson:</b> Fastest dovish script. Needs <b>GDP consecutive misses + 2 straight job losses + core ≤2.3%</b>, currently 1/3 met, ~25% odds.</div>
       </div>
-    </div>
+    </details>
   </div>
   <div style="margin-top:16px;background:var(--color-card);border:1px solid var(--color-neutral-800);border-radius:10px;padding:12px 14px;font-size:13px;line-height:1.6;color:var(--color-neutral-300)"><b style="color:var(--color-text)">Blended odds:</b> Fed more like <b style="color:var(--color-accent-300)">2019 (insurance) 60%</b> vs <b style="color:#fbbf24">2022 (higher longer) 40%</b> mix; BOC more like <b style="color:var(--color-accent-300)">2018 on-hold 65%</b> vs <b style="color:#6ee7b7">2024 front-run 25%</b> vs <b style="color:#fca5a5">hike 10%</b>. Rope left needs 'jobs/GDP consecutive misses', right needs 'Core PCE/CPI consecutive beats'.</div>
 </section>
@@ -1212,6 +1017,7 @@ async function renderOdds(bank,meeting,opts={}){
   const proxyURL=safeURL(pricing.proxy_source_url||pricing.source_url);
   const miFoot=`${escapeHTML(rateText)} · ${proxyURL?`<a href="${proxyURL}" target="_blank" rel="noopener">${escapeHTML(shortSource(pricing.source))} ↗</a>`:escapeHTML(shortSource(pricing.source))}`;
   const snapshot=polySnapshot(pricing);
+  const derivation=[pricing.proxy_check,pricing.note].filter(Boolean).map(escapeHTML).join('<br><br>');
   briefState[bank]={...briefState[bank],meeting,mi,source:pricing.source,rateText,
     note:/limited confidence/i.test(pricing.note||'')
       ? 'Limited confidence — the quarterly futures contract spans two decisions, so this is a scenario estimate, not a single-meeting probability.'
@@ -1222,8 +1028,7 @@ async function renderOdds(bank,meeting,opts={}){
   card.innerHTML=`
     <h3>${flag} ${escapeHTML(meeting.label)} <span style="margin-left:auto;font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:${accent};background:${accentBg};border:1px solid ${accentBorder};padding:3px 7px;border-radius:999px">Futures → ${leanOf(mi)} ${Math.max(mi.cut,mi.hold,mi.hike)}%</span></h3>
     ${srcBlockHTML({icon:'📊',name:'Market-implied',metaHTML:`as of ${escapeHTML(formatToronto(pricing.as_of_pricing,true))}`,cut:mi.cut,hold:mi.hold,hike:mi.hike,footHTML:miFoot})}
-    <div data-poly-block>${snapshot?polyBlockHTML(snapshot,true):`<div class="src-block"><div class="src-head"><span><b>🎲 Polymarket</b></span><span class="asof">loading…</span></div><div class="src-note">Fetching live odds…</div></div>`}</div>
-    <div data-verdict-block>${verdictHTML(mi,snapshot,snapshot?'snapshot':'loading')}</div>
+    ${derivation?`<details class="derive"><summary>How this number was derived ▼</summary><div class="derive-body">${derivation}</div></details>`:''}
     <div class="last-meeting"><b>${escapeHTML(meeting.last_meeting?.date||'Last meeting')}:</b> ${escapeHTML(meeting.last_meeting?.decision||'Decision pending')}. ${escapeHTML(meeting.last_meeting?.note||'')}</div>`;
   if(snapshot) return;
   if(opts.historical){
@@ -1314,12 +1119,28 @@ function renderDriver(driver,direction,asOf){
     ? `<span class="date-pill">📅 ${escapeHTML(formatToronto(driver.published_at_toronto))}</span>` : '';
   const fresh=freshnessBadge(driver.published_at_toronto,asOf);
   const dateLine=(datePill||fresh)?`<div class="date-line">${datePill}${fresh}</div>`:'';
-  return `<div class="driver"${sourceURL?` data-link="${sourceURL}"`:''}>
-    <div class="icon" style="font-size:${String(driver.icon||'').length>2?'9px':'15px'}">${escapeHTML(driver.icon||'DATA')}</div>
-    <div class="body">
+  /* Collapsed row = the takeaway sentence plus the one number behind it.
+     Everything that justifies the score waits until the row is opened. */
+  const headline=driver.summary||driver.title;
+  const subtitle=driver.summary?`${escapeHTML(driver.title)} · `:'';
+  const reading=[data.actual?`<b>${escapeHTML(data.actual)}</b>`:'',data.forecast?`vs ${escapeHTML(data.forecast)}`:'']
+    .filter(Boolean).join(' ');
+  const delta=data.delta_label?` <i class="delta ${deltaType}">${escapeHTML(data.delta_label)}</i>`:'';
+  const days=Math.floor(effW.days);
+  const age=Number.isFinite(days)?` · ${days<1?'today':`${days}d ago`}`:'';
+  return `<details class="driver${effW.eff<1?' minor':''}">
+    <summary>
+      <span class="drv-w" title="base ${effW.base.toFixed(1)} × ${effW.decay} age decay = effective ${effW.eff.toFixed(1)}">${effW.eff.toFixed(1)}</span>
+      <span class="drv-ico">${escapeHTML(driver.icon||'DATA')}</span>
+      <span class="drv-main">
+        <span class="drv-sum">${escapeHTML(headline)}</span>
+        <span class="drv-meta">${subtitle}${reading}${delta}${age}</span>
+      </span>
+      <span class="drv-chev">▼</span>
+    </summary>
+    <div class="drv-body">
+      ${driver.summary?`<div class="drv-title">${escapeHTML(driver.title)}</div>`:''}
       ${dateLine}
-      <div class="title">${escapeHTML(driver.title)}</div>
-      ${driver.summary?`<div class="summary">${escapeHTML(driver.summary)}</div>`:''}
       <div class="reason"><b>Why ${direction==='dovish'?'dovish':'hawkish'}?</b> ${escapeHTML(driver.reason||'Impact analysis pending.')}</div>
       <div class="data-grid">
         <div class="data-cell"><div class="label">Actual</div><div class="val ${deltaType}">${escapeHTML(data.actual??'Pending')}</div><div class="delta ${deltaType}">${escapeHTML(data.delta_label||'')}</div></div>
@@ -1329,8 +1150,7 @@ function renderDriver(driver,direction,asOf){
       <div class="score-line" title="Base weight x age decay = effective weight, used for sorting, side means, rope totals and net">⚖ Scored <b>${effW.eff.toFixed(1)}</b> = base ${effW.base.toFixed(1)} (${escapeHTML(driver.importance||'n/a')}) × ${effW.decay} (${Math.floor(effW.days)}d old) · counts toward the ${direction} side</div>
       <div class="source"><span class="badge ${direction==='dovish'?'dove':'hawk'}">${direction}</span>${source}${validations}</div>
     </div>
-    <span class="weight" title="base ${effW.base.toFixed(1)} × ${effW.decay} (${Math.floor(effW.days)}d old) = ${effW.eff.toFixed(1)}">Weight ${effW.eff.toFixed(1)}</span>
-  </div>`;
+  </details>`;
 }
 
 function marketTopOutcome(pricing){
@@ -1369,17 +1189,28 @@ function renderDrivers(bank,bankDrivers,asOf,pricing){
   [['left',dovish,'dovish'],['right',hawkish,'hawkish']].forEach(([sideName,drivers,direction])=>{
     const side=view.querySelector(`.side.${sideName}`);
     if(!side) return;
-    side.querySelectorAll('.driver').forEach(driver=>driver.remove());
-    if(drivers.length){
-      side.insertAdjacentHTML('beforeend',drivers.map(driver=>renderDriver(driver,direction,asOf)).join(''));
+    side.querySelectorAll('.driver,.minor-pack,.side-empty').forEach(node=>node.remove());
+    /* Anything the age decay has worn below 1.0 is noise at a glance — it still
+       counts in the totals, but it is packed away until asked for. */
+    const keep=new Set(drivers.slice(0,3));
+    drivers.forEach(item=>{if(eff(item)>=1) keep.add(item);});
+    const totalWeight=drivers.reduce((sum,item)=>sum+eff(item),0);
+    const major=drivers.filter(item=>keep.has(item));
+    const minor=drivers.filter(item=>!keep.has(item));
+    if(major.length){
+      side.insertAdjacentHTML('beforeend',major.map(driver=>renderDriver(driver,direction,asOf)).join(''));
     }else{
-      side.insertAdjacentHTML('beforeend','<div class="driver"><div class="body"><div class="title">No material drivers</div><div class="reason">Events below weight 1.0 are filtered out.</div></div></div>');
+      side.insertAdjacentHTML('beforeend','<div class="side-empty">No drivers on this side right now.</div>');
+    }
+    if(minor.length){
+      const minorWeight=minor.reduce((sum,item)=>sum+eff(item),0);
+      side.insertAdjacentHTML('beforeend',`<details class="minor-pack"><summary>+ ${minor.length} faded driver${minor.length===1?'':'s'} · ${minorWeight.toFixed(1)} weight ▼</summary>${minor.map(driver=>renderDriver(driver,direction,asOf)).join('')}</details>`);
     }
     const count=side.querySelector('h3 span');
-    if(count) count.textContent=`${drivers.length} driver${drivers.length===1?'':'s'} · Sorted by Weight`;
+    if(count) count.textContent=`${drivers.length} driver${drivers.length===1?'':'s'} · ${totalWeight.toFixed(1)} weight · sorted`;
     const mean=drivers.length?drivers.reduce((sum,item)=>sum+eff(item),0)/drivers.length:0;
     const sub=side.querySelector('.sub');
-    if(sub) sub.textContent=`${direction==='dovish'?'Miss / retreat':'Beat / strength'} = ${direction} fuel. Mean effective weight ${mean.toFixed(1)} (base x age decay); no forced side symmetry.`;
+    if(sub) sub.textContent=`${direction==='dovish'?'Miss / retreat':'Beat / strength'} = ${direction} fuel. Mean effective weight ${mean.toFixed(1)} (base x age decay). Click any row for the numbers behind it.`;
   });
 
   const doveTotal=dovish.reduce((sum,item)=>sum+eff(item),0);
@@ -1444,7 +1275,7 @@ function renderCalendar(calendar){
     const country=item.currency==='CAD'?'🇨🇦':'🇺🇸';
     const forecast=renderDataPair('Forecast',item.forecast);
     const previous=renderDataPair('Prior',item.previous);
-    const bias=[item.hawk_if?`<span class="badge hawk">${escapeHTML(item.hawk_if)}</span>`:'',item.dove_if?`<span class="badge dove">${escapeHTML(item.dove_if)}</span>`:''].join(' ');
+    const bias=`<span class="bias-cell">${[item.hawk_if?`<span class="badge hawk">${escapeHTML(item.hawk_if)}</span>`:'',item.dove_if?`<span class="badge dove">${escapeHTML(item.dove_if)}</span>`:''].join('')}</span>`;
     const logicClass=item.hawk_if&&!item.dove_if?'hawk':item.dove_if&&!item.hawk_if?'dove':'';
     const date=(item.datetime_toronto||'').slice(0,10);
     return `<tr class="${impact.toLowerCase()}" data-currency="${escapeHTML(item.currency)}" data-impact="${impact}" data-date="${date}" data-search="${escapeHTML(item.event)}">
@@ -1790,6 +1621,21 @@ function applyFilter(){
 
 const allButton=document.getElementById('btn-all');
 if(allButton) allButton.click();
+const expandAll=document.getElementById('expand-all');
+if(expandAll){
+  expandAll.addEventListener('click',()=>{
+    const open=expandAll.dataset.open!=='true';
+    const view=['view-fed','view-boc']
+      .map(id=>document.getElementById(id))
+      .find(node=>node&&node.style.display!=='none')||document;
+    view.querySelectorAll('details.driver').forEach(row=>{row.open=open;});
+    view.querySelectorAll('details.minor-pack').forEach(pack=>{pack.open=open;});
+    expandAll.dataset.open=String(open);
+    expandAll.classList.toggle('active',open);
+    expandAll.textContent=open?'Collapse all rows':'Expand all rows';
+  });
+}
+
 const foldButton=document.getElementById('fold-btn');
 if(foldButton){
   const foldLabel=foldButton.querySelector('[data-role="fold-text"]');
