@@ -1,0 +1,95 @@
+{
+  "schema_version": "1.0",
+  "reviewer_role": "independent_portfolio_manager",
+  "reviewed_at": "2026-09-10T00:15:46-04:00",
+  "candidate_sha256": "6756211d26ecd04ac03b567f44dfa6170d3b43ad975cf7d6b163c280cd09c1ec",
+  "verdict": "revise",
+  "executive_summary": "Do not publish. Official meeting and policy-rate facts are supportable, but the decision layer is unsafe: BoC probabilities are not identified by the cited quarterly contract; Fed probabilities conflict across fields; reversed drivers remain on the wrong side; validation moves are stale or unrelated; and a high-impact same-day retail-sales release is omitted. Current observations are mixed with legacy titles, values and narratives, preventing a PM from distinguishing live signal from historical residue.",
+  "checks": {
+    "official_policy": "pass",
+    "pricing": "fail",
+    "drivers": "fail",
+    "market_validation": "fail",
+    "freshness": "fail",
+    "decision_usefulness": "fail"
+  },
+  "findings": [
+    {
+      "severity": "critical",
+      "field": "meetings.boc.pricing",
+      "issue": "The cut/hold/hike probabilities are an unsupported single-meeting distribution from a contract spanning two decisions.",
+      "evidence": "The candidate shows 0/40/60 for October 28 while proxy_check and note admit CRAU26 expires December 16 and spans October 28 and December 9. Independent fetches returned HTTP 200 for TMX CRAU26 settlement 97.650 and BoC Valet CORRA 2.29% on September 8, but neither source identifies separate October probabilities.",
+      "pnl_impact": "An asserted 60% October hike can cause an unjustified short-Canada-duration or long-CAD trade if the implied tightening belongs to December or to average-rate and basis effects.",
+      "instruction": "Remove the October probability distribution. Recollect true single-meeting OIS or options pricing; otherwise show only the 2.350% quarterly-average CORRA proxy plus explicit multi-meeting scenario bounds, with no allocated October probabilities."
+    },
+    {
+      "severity": "major",
+      "field": "meetings.fed.pricing and calendar[id=fomc_20260916].logic",
+      "issue": "Two different Fed distributions describe the same snapshot and the desk solve is presented with false precision.",
+      "evidence": "meetings.fed.pricing reports hold 0.400026 and hike 0.599974, while calendar logic reports hold 37.86% and hike 62.14%. Both cite September 9 futures, while direct CME is unavailable with HTTP 403. Six-decimal values are a day-count solve from ZQU26 96.3000 and EFFR 3.63%, not observed probabilities.",
+      "pnl_impact": "The discrepancy and omitted model sensitivity can change binary-event sizing and conceal dependence on post-decision EFFR-spread and calendar-day assumptions.",
+      "instruction": "Recompute once from frozen settlement data, use one rounded result everywhere, publish the equation and assumptions, add a sensitivity range, and label it desk-implied scenario weight rather than CME probability."
+    },
+    {
+      "severity": "major",
+      "field": "drivers.fed.dovish and drivers.boc.dovish",
+      "issue": "Superseded or reversed drivers remain actively weighted on the dovish side for ID continuity.",
+      "evidence": "fed_dove_payrolls says August reversed the signal and is hawkish; fed_dove_oil_crash and boc_dove_oil_crash say WTI invalidated the demand scare and is hawkish; fed_dove_ism says its contraction thesis is no longer valid. All retain positive dovish weights.",
+      "pnl_impact": "The dashboard double-counts payroll, oil and activity evidence on both sides, diluting or cancelling the actual live impulse and invalidating directional sizing.",
+      "instruction": "Set reversed drivers to zero and move them to history, or create a current event on the correct side. Preserve stable IDs in history rather than retaining wrong-side active weights, then recalculate side totals."
+    },
+    {
+      "severity": "major",
+      "field": "drivers.*[*].title, summary, data, reason and market_validation",
+      "issue": "Several cards splice different dates and regimes, so Actual, Previous and validation do not describe one event.",
+      "evidence": "fed_dove_equities has a Jackson Hole rally title but a September 9 risk-off summary; its intraday SPY 762.02 and IWM 290.99 differ from candidate closes 762.40 and 290.64. fed_dove_vix summarizes September 1 at 16.34, stores Friday 14.53, while evidence shows September 9 at 16.46. boc_dove_cad remains a Monday 1.3857 narrative while evidence shows September 9 at 1.37775.",
+      "pnl_impact": "A PM can mistake stale intraday values for current closes and anchor entries, stops and financial-conditions conclusions to the wrong market regime.",
+      "instruction": "Rebuild each active card around one event and one observation window. Align title, summary, published_at, data, reason and validation; use verified September 9 closes where close validation is claimed, otherwise timestamp the historical observation explicitly."
+    },
+    {
+      "severity": "major",
+      "field": "calendar",
+      "issue": "The catalyst list omits high-impact US releases before the FOMC and omits the BoC deliberations release.",
+      "evidence": "archive/2026-09-10/economic_calendar.json lists US Retail Sales, Control Group and ex-autos at September 16 08:30 ET, before the 14:00 FOMC decision; none appears in candidate.calendar. It also lists BoC Summary of Deliberations at September 16 13:30 ET, which is absent.",
+      "pnl_impact": "Retail sales can materially reprice front-end rates and equity beta hours before the FOMC, leaving the portfolio unprepared for the day's first major catalyst; omitted deliberations remove relevant CAD and Canada-rates information.",
+      "instruction": "Add a consolidated September 16 08:30 ET retail-sales event with headline, control and ex-autos fields and pre-FOMC logic. Add the September 16 13:30 ET BoC deliberations event, verifying times against official schedules or explicitly naming the secondary calendar source."
+    },
+    {
+      "severity": "major",
+      "field": "drivers.*[*].market_validation",
+      "issue": "Repeated broad-market moves are attached to unrelated releases and cross-bank narratives without event-window evidence.",
+      "evidence": "The same IWM September 9 move validates JOLTS, ADP and older payroll narratives; the same ZEB.TO move validates Canada PMI, GDP, labour, rents and the BoC hold; US XLI validates a Canadian tariff driver. Several moves occur on dates different from the releases, with no benchmark adjustment or attribution test.",
+      "pnl_impact": "Spurious confirmation creates false conviction, encourages oversized trades and contaminates BoC conclusions with US beta instead of isolating Canada rates or CAD transmission.",
+      "instruction": "Delete non-event-window validations. For retained items, show timestamped pre/post moves in directly relevant instruments, add benchmark adjustment where appropriate, and call them contemporaneous reactions rather than causal validation."
+    },
+    {
+      "severity": "major",
+      "field": "drivers[fed_dove_consumer_20260821, fed_hawk_tariffs_20260822, boc_dove_tariffs_20260822].source_url and data",
+      "issue": "Material policy, retailer and exposure claims lack claim-specific sources, and desk thresholds are mislabeled as forecasts.",
+      "evidence": "The consumer card links to a generic SEC search without issuer or filing ID. Tariff cards link to a generic USTR page but assert 35% reciprocal and 19% GDP exposure without a specific announcement or dataset. Other cards put SPY <760, WTI <85 and 10Y <4.75 desk triggers in forecast fields.",
+      "pnl_impact": "Unverifiable policy magnitudes and mislabeled forecasts can corrupt inflation pass-through, Canadian growth sensitivity and trading-trigger logic.",
+      "instruction": "Replace generic URLs with exact official announcements, filings or statistical tables supporting each number; otherwise remove the number and driver. Move desk thresholds to explicitly labeled trigger fields and reserve forecast for sourced consensus with provider and timestamp."
+    },
+    {
+      "severity": "major",
+      "field": "verification_note, as_of and active driver set",
+      "issue": "Fresh URL probes are conflated with a substantively fresh decision set despite numerous stale residual cards.",
+      "evidence": "as_of is September 10 00:11 ET, yet active cards retain July/August regime labels, Monday/Tuesday/Friday values, minimum weights for continuity, and text saying signals are aging, weak, reversed or invalidated. Independent fetches returned HTTP 200 for the official Fed calendar, July statement, Warsh speech, BoC statement, BoC rate page and cited StatCan pages, supporting policy facts but not the mixed-age synthesis.",
+      "pnl_impact": "A fresh top-level timestamp gives false confidence that the whole page reflects the current information set, raising the chance of trading old narratives into PPI, CPI and FOMC risk.",
+      "instruction": "Separate source-observed-at from claim-as-of, rebuild the active list for the current decision horizon, move legacy records to history, and state exactly which claims were substantively refreshed rather than implying every successful probe refreshed every driver."
+    }
+  ],
+  "pnl_risks": [
+    "Positioning for a 60% October BoC hike on a quarterly contract that cannot isolate the October meeting.",
+    "Mis-sizing Fed event exposure because two proxy distributions coexist and omit assumption sensitivity.",
+    "Wrong-side and duplicated residual drivers mechanically distort the live macro balance.",
+    "Stale and non-event-window moves create false confirmation for rates, equity and CAD trades.",
+    "Omission of September 16 retail sales hides a major same-day catalyst before the FOMC."
+  ],
+  "operator_instructions": [
+    "Fail publication for iteration 01 and freeze a new candidate only after every critical and major finding is resolved.",
+    "Recollect pricing inputs and replace non-identifiable probabilities with transparent proxy levels, assumptions and scenario bounds.",
+    "Rebuild active drivers without wrong-side continuity weights, stale mixed-date cards, generic citations or duplicated validation moves.",
+    "Reconcile every probability, timestamp, price and catalyst across fields, then run schema, digest and PM-review validation on the new iteration."
+  ]
+}

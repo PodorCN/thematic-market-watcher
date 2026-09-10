@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.0",
+  "reviewer_role": "independent_portfolio_manager",
+  "reviewed_at": "2026-09-10T00:26:10-04:00",
+  "candidate_sha256": "e6aa352000baf18502dba6ecb14ae3ffdc672b52fb66c4ca7be0490813f66ae4",
+  "verdict": "revise",
+  "executive_summary": "Publication must remain blocked. Official Fed and BoC policy facts and the Fed September futures arithmetic are broadly reproducible, but the BoC section publishes invented 0/40/60 meeting probabilities that the candidate itself calls an unavailable placeholder. The calendar also substitutes unsupported US retail-sales forecasts and prior values for the values in the frozen calendar input, while several driver narratives retain stale or unsupported market-reaction claims. I would not risk capital on this snapshot until those contradictions are removed and the affected evidence is rebuilt.",
+  "checks": {
+    "official_policy": "pass",
+    "pricing": "fail",
+    "drivers": "fail",
+    "market_validation": "fail",
+    "freshness": "pass",
+    "decision_usefulness": "fail"
+  },
+  "findings": [
+    {
+      "severity": "critical",
+      "field": "meetings.boc.pricing",
+      "issue": "The payload exposes cut 0%, hold 40%, and hike 60% as numerical probabilities even though no October 28 single-meeting probability is identifiable and probability_status is unavailable.",
+      "evidence": "Independent checks reproduce CORRA at 2.29% for September 8 and the cited CRAU26 quarterly contract, while candidate.proxy_check and scenario_bounds explicitly state that CRAU26 spans the October 28 and December 9 decisions. The same object calls the figures a NON-PUBLISHABLE placeholder but still supplies 0.0/0.4/0.6 and implied_rate_after 2.4.",
+      "pnl_impact": "A displayed 60% hike probability can drive an unjustified short-duration or CAD position even though the underlying quarterly average cannot allocate pricing to the October meeting.",
+      "instruction": "Remove all synthetic BoC meeting probabilities and implied post-meeting rate from the publishable contract, or change the dashboard schema and renderer to represent probability_status unavailable with null values and only the clearly labelled quarterly-average CRA observation; then rebuild the candidate."
+    },
+    {
+      "severity": "major",
+      "field": "calendar[us_retail_sales_20260916].forecast and previous",
+      "issue": "The candidate inserts retail-sales forecasts and prior values that are not supported by the frozen economic-calendar input and directly contradict its prior values.",
+      "evidence": "archive/2026-09-10/economic_calendar.json has null forecasts for headline, control-group, and ex-autos retail sales and previous values of -0.6%, -0.4%, and -0.3%. The candidate instead reports forecasts of +0.4%, +0.3%, and +0.3% and previous values of +0.2%, +0.3%, and +0.3%, while claiming FXStreet Sep 10 as its source.",
+      "pnl_impact": "False consensus and base values invert the surprise benchmark for a release occurring hours before the FOMC decision and can produce the wrong rates and equity hedge response.",
+      "instruction": "Repopulate the September 16 retail-sales card strictly from a newly collected traceable source; preserve null forecasts where unavailable and use the input's actual prior values unless an independently cited revision is documented."
+    },
+    {
+      "severity": "major",
+      "field": "drivers.fed.hawkish[fed_hawk_warsh_20260828].reason",
+      "issue": "The active driver embeds an obsolete 75% hike, 20% hold, and 5% cut scenario that conflicts with the candidate's current 60% hike, 40% hold, and 0% cut pricing.",
+      "evidence": "The Warsh reason still says ZQU26 96.2925 and a three-way solve of hike 0.75, hold 0.20, cut 0.05 as of August 31. meetings.fed.pricing and the FOMC calendar card instead state cut 0.00, hold 0.40, hike 0.60 from the September 9 settlement. Independent Yahoo ZQU26 and NY Fed EFFR checks reproduce approximately the latter desk proxy, not the stale embedded distribution.",
+      "pnl_impact": "Two incompatible probability sets on one page make position sizing arbitrary and overstate the persistence of the original Jackson Hole repricing.",
+      "instruction": "Strip stale market levels and scenario weights from the Warsh driver, retain only verified speech content, and keep one timestamped current pricing calculation in the dedicated Fed pricing object."
+    },
+    {
+      "severity": "major",
+      "field": "drivers.boc.dovish[boc_dove_labour_20260730].data.previous",
+      "issue": "The prior wage-growth comparison is wrong and the driver identifier is misdated, weakening a high-weight BoC labour signal.",
+      "evidence": "The official Statistics Canada August Labour Force Survey says average hourly wages rose 2.0% year over year after 2.8% in July and employment fell by a rounded 42,000. The candidate reports prior wage growth of 3.0%, labels the change as -1.0 percentage point, and uses an id ending 20260730 despite a September 4 release.",
+      "pnl_impact": "Overstating wage deceleration exaggerates the dovish inflation impulse and can bias the portfolio toward premature BoC easing exposure.",
+      "instruction": "Correct the prior wage value to 2.8%, recompute the change to -0.8 percentage point, align the driver id with the September 4 release, and recheck every derived sentence."
+    },
+    {
+      "severity": "major",
+      "field": "drivers.boc.hawkish market-reaction assertions",
+      "issue": "The BoC hold and oil drivers make market-validation claims without event-window evidence, while every market_validation array is empty and the cited sources do not substantiate those reactions.",
+      "evidence": "The hold reason says CAD firmed and Canadian banks rallied after the release, but market_validation is empty and the candidate's Sep 9 ZEB.TO strip cannot establish a Sep 2 event reaction. The oil reason cites a Sep 9 12:31 ET intraday move while the card is timestamped Aug 27 and links an EIA historical series rather than the asserted intraday quote.",
+      "pnl_impact": "Unsupported reaction language converts correlation or an unrecorded observation into apparent confirmation, increasing confidence in a hawkish BoC stance without auditable transmission evidence.",
+      "instruction": "Either add timestamped event-window prices from traceable sources for CAD, Canadian banks, and WTI with explicit baselines, or remove the validation language; align each driver's publication timestamp and source with the observation actually discussed."
+    },
+    {
+      "severity": "minor",
+      "field": "meetings.fed.pricing.source_url",
+      "issue": "The primary source URL points to CME FedWatch even though CME returned 403 and the displayed distribution is a desk proxy rather than CME probabilities.",
+      "evidence": "The evidence file records CME content_valid false with HTTP 403, while the reproducible inputs are Yahoo's ZQU26.CBT chart and the NY Fed EFFR API. The candidate labels the method correctly in text but still places the CME tool in source_url.",
+      "pnl_impact": "A misleading primary link makes independent verification slower and can cause readers to mistake modeled weights for an observed FedWatch distribution.",
+      "instruction": "Use the Yahoo futures and NY Fed EFFR endpoints as the pricing sources and retain CME only in a note explaining that direct FedWatch probabilities were unavailable."
+    }
+  ],
+  "pnl_risks": [
+    "The unsupported BoC 60% hike number can create false precision in CAD and Canadian front-end rate positioning.",
+    "Incorrect retail-sales baselines can reverse the interpreted surprise immediately before the FOMC decision.",
+    "Conflicting Fed scenario weights can produce materially different duration and curve hedge sizes from the same dashboard.",
+    "Unsupported event-reaction language can lead the desk to treat unproven cross-asset moves as confirmation of a policy thesis.",
+    "Upcoming PPI, CPI, Canadian CPI, retail sales, and the FOMC decision can rapidly invalidate current proxy-derived pricing."
+  ],
+  "operator_instructions": [
+    "Fail publication closed and rebuild a new frozen iteration after resolving every critical and major finding.",
+    "Represent unavailable BoC single-meeting pricing without numeric probability placeholders or implied post-meeting rates.",
+    "Recollect and reconcile the September 16 retail-sales forecast and previous values against a traceable source.",
+    "Remove stale Fed pricing from driver prose and correct the Statistics Canada wage comparison and driver date.",
+    "Add auditable event-window evidence for claimed market reactions or delete the reaction and validation language.",
+    "Run schema validation, digest binding, and the PM review gate against the newly frozen candidate before requesting another independent review."
+  ]
+}

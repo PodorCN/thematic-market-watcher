@@ -1,0 +1,1172 @@
+{
+  "as_of": "2026-09-10T00:11:00-04:00",
+  "version": "2026-09-10-001",
+  "verification_note": "Thu 2026-09-10 00:11 ET cron candidate refresh. FXStreet fetched 73 events (33 HIGH / 40 MEDIUM; USD 30, EUR 19, GBP 19, CAD 5). Official Fed calendar/Jul 29 statement, Fed feeds, BoC Sep 2 statement/rate pages, NY Fed EFFR, BoC CORRA, TMX CRA, current exchange-traded prices and the market strip were re-probed at 00:11 ET. Direct CME content was not accepted as a probability distribution (HTTP None, content_valid=False); Fed probabilities use the explicit ZQU26/EFFR day-count proxy. BoC 0/40/60 remains explicitly limited-confidence because CRAU26 spans Oct and Dec decisions and is not a clean single-meeting OIS contract. Market validation uses Sep 9 cash closes; overnight futures are not mislabeled as cash closes. Candidate only pending independent PM approval.",
+  "timezone": "America/Toronto",
+  "meetings": {
+    "fed": {
+      "label": "Fed · Sep 15-16 FOMC",
+      "decision_time_toronto": "2026-09-16T14:00:00-04:00",
+      "date_start": "2026-09-15",
+      "date_end": "2026-09-16",
+      "last_meeting": {
+        "date": "2026-07-29",
+        "decision": "Held at 3.50-3.75%",
+        "note": "9-3 dissent: Hammack, Kashkari, Logan preferred +25bp hike. Re-verified 2026-08-31 via federalreserve.gov/newsevents/pressreleases/monetary20260729a.htm (\"target range ... at 3-1/2 to 3-3/4 percent\"; \"Voting against ... Hammack ... Kashkari ... Logan, who preferred to raise the target range ... by 1/4 percentage point\"). Warsh's Aug 28 Jackson Hole speech validated the hawks: 'predominant focus right now should be on prices'."
+      },
+      "pricing": {
+        "cut_25bp": 0.0,
+        "hold": 0.400026,
+        "hike_25bp": 0.599974,
+        "source": "CME Fed Funds futures proxy via yfinance (CME FedWatch access-block response)",
+        "source_url": "https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html",
+        "as_of_pricing": "2026-09-10T00:11:00-04:00",
+        "proxy_check": "ZQU26 96.3000 dated 2026-09-09 (volume 26418); NY Fed EFFR 3.63% effective 2026-09-08. Exact Sep day-count proxy: cut 0.00 / hold 0.4000 / hike 0.6000. Direct CME response did not yield a validated probability payload; this is an exchange-traded futures proxy.",
+        "proxy_source_url": "https://finance.yahoo.com/quote/ZQU26.CBT",
+        "implied_rate_before": 3.63,
+        "implied_rate_after": 3.779993
+      }
+    },
+    "boc": {
+      "label": "BOC · Oct 28 Decision + MPR",
+      "decision_time_toronto": "2026-10-28T09:45:00-04:00",
+      "date": "2026-10-28",
+      "last_meeting": {
+        "date": "2026-09-02",
+        "decision": "Held at 2.25%",
+        "note": "BoC held the overnight target at 2.25% on Sep 2 (Bank Rate 2.50%, deposit rate 2.20%). Statement cited high energy prices, tariffs, tightened financial conditions, CPI near 3%, and limited spillover beyond gasoline; next decision Oct 28 includes the MPR. Verified 2026-09-02 at bankofcanada.ca/2026/09/fad-press-release-2026-09-02/."
+      },
+      "pricing": {
+        "cut_25bp": 0.0,
+        "hold": 0.4,
+        "hike_25bp": 0.6,
+        "source": "TMX/MX 3-month CORRA futures + BoC Valet; Oct scenario estimate (quarterly contract spans Oct and Dec decisions)",
+        "source_url": "https://www.m-x.ca/en/trading/data/quotes?symbol=CRA%2A",
+        "as_of_pricing": "2026-09-10T00:11:00-04:00",
+        "proxy_check": "TMX CRAU26 Sep 9 last/settlement 97.650 (bid 97.650 / ask 97.655 at 12:40 ET; volume 23,255), implying quarterly-average CORRA 2.350%. BoC Valet target is 2.25% and CORRA is 2.29% for Sep 8.. Re-observed official BoC/Valet and TMX sources Sep 10 00:11 ET. Because CRAU26 spans Oct 28 and Dec 9 decisions, displayed cut 0.00 / hold 0.40 / hike 0.60 remains a rounded limited-confidence scenario, not direct single-meeting OIS.",
+        "proxy_source_url": "https://www.bankofcanada.ca/valet/observations/AVG.INTWO/json?start_date=2026-08-25",
+        "implied_rate_before": 2.25,
+        "implied_rate_after": 2.4,
+        "note": "LIMITED CONFIDENCE: quarterly CORRA contract embeds both Oct 28 and Dec 9 decisions; no direct single-meeting public OIS probability panel was available."
+      }
+    }
+  },
+  "drivers": {
+    "fed": {
+      "dovish": [
+        {
+          "id": "fed_dove_payrolls_20260808",
+          "icon": "LAB",
+          "title": "Labour Market Softening",
+          "summary": "Job market is cracking: payrolls went negative, far below forecast.",
+          "published_at_toronto": "2026-08-08T08:30:00-04:00",
+          "source": "BLS",
+          "source_url": "https://www.bls.gov/news.release/empsit.toc.htm",
+          "importance": "HIGH",
+          "weight": 0.5,
+          "data": {
+            "actual": "-23k",
+            "forecast": "+80k",
+            "previous": "+147k to +93k",
+            "delta_label": "miss -103k",
+            "delta_type": "miss"
+          },
+          "reason": "The July payroll contraction remains historical evidence, but the Aug report released Sep 4 reversed the signal: +162k vs +56k consensus, unemployment steady at 4.1%, and wages 3.1% YoY vs 3.0% forecast. Stable id retained on its original side at 0.5; today's live labour impulse is hawkish.",
+          "market_validation": [
+            {
+              "ticker": "IWM",
+              "label": "-0.45% Tue close / +0.25% w",
+              "type": "down"
+            }
+          ]
+        },
+        {
+          "id": "fed_dove_ism_20260821",
+          "icon": "PMI",
+          "title": "Manufacturing Expansion Cools Slightly",
+          "summary": "ISM stayed in expansion at 54.6, but missed forecast and slowed from July.",
+          "published_at_toronto": "2026-09-01T10:00:00-04:00",
+          "source": "ISM via FXStreet / TradingEconomics calendar",
+          "source_url": "https://tradingeconomics.com/united-states/business-confidence",
+          "importance": "HIGH",
+          "weight": 0.5,
+          "data": {
+            "actual": "54.6",
+            "forecast": "55.2",
+            "previous": "55.6",
+            "delta_label": "miss -0.6; still expansion",
+            "delta_type": "neutral"
+          },
+          "reason": "Sep 1 ISM manufacturing eased to 54.6 from 55.6 and missed the 55.2 forecast, but remained clearly above 50. The prior contraction thesis is no longer valid; stable id retained on its original side at 0.5 only.",
+          "market_validation": [
+            {
+              "ticker": "XLI",
+              "label": "-0.48% Tue close / -0.41% w",
+              "type": "down"
+            }
+          ]
+        },
+        {
+          "id": "fed_dove_consumer_20260821",
+          "icon": "CONS",
+          "title": "Consumer and Industrial Chain Under Pressure",
+          "summary": "Consumer engine sputtering: biggest US retailer cut guidance.",
+          "published_at_toronto": "2026-08-21T07:00:00-04:00",
+          "source": "Company earnings",
+          "source_url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&type=8-K&dateb=&owner=include&count=40",
+          "importance": "MEDIUM",
+          "weight": 1.0,
+          "data": {
+            "actual": "Comp 3.8%",
+            "forecast": "4.2%",
+            "previous": "4.5%",
+            "delta_label": "guidance cut",
+            "delta_type": "miss"
+          },
+          "reason": "Softer retail guidance and industrial orders can transmit through earnings, hiring and consumption. UPDATE 8/28: UoM final sentiment 51.7 beat 51.0 fcst — sentiment leg stabilizing; story aging, weight trimmed 1.5 -> 1.0.",
+          "market_validation": [
+            {
+              "ticker": "QQQ",
+              "label": "-0.08% Tue close / +0.22% w",
+              "type": "down"
+            }
+          ]
+        },
+        {
+          "id": "fed_dove_equities_20260827",
+          "icon": "EQ",
+          "title": "Equity Rally Confirms Risk-On Into Jackson Hole",
+          "summary": "Risk-off breadth worsened intraday: IWM -1.25% and XLI -1.16% versus SPY -0.51%.",
+          "published_at_toronto": "2026-08-27T16:00:00-04:00",
+          "source": "yfinance close",
+          "source_url": "https://finance.yahoo.com/quote/SPY",
+          "importance": "MEDIUM",
+          "weight": 1.0,
+          "data": {
+            "actual": "SPY 762.02 / QQQ 715.71 / IWM 290.99 (Wed 12:37 ET)",
+            "forecast": "SPY <760 / QQQ <700",
+            "previous": "SPY 765.96 / QQQ 718.36 / IWM 294.67",
+            "delta_label": "-0.51% / -0.37% / -1.25% intraday",
+            "delta_type": "miss"
+          },
+          "reason": "Sep 9 breadth weakened materially, with small caps and industrials lagging large caps while VIX rose to 16.52. Stable id remains dovish at 1.0 as tighter financial conditions validate the growth-risk side.",
+          "market_validation": [
+            {
+              "ticker": "IWM",
+              "label": "IWM -1.25% Wed 12:37 ET",
+              "type": "down"
+            }
+          ]
+        },
+        {
+          "id": "fed_dove_oil_crash_20260825",
+          "icon": "OIL",
+          "title": "Oil Demand-Scare — Cumulative Hit Intact",
+          "summary": "WTI reached $96.25 intraday, further invalidating the old demand-scare signal.",
+          "published_at_toronto": "2026-08-27T16:00:00-04:00",
+          "source": "yfinance CL=F / EIA WTI",
+          "source_url": "https://finance.yahoo.com/quote/CL=F",
+          "importance": "HIGH",
+          "weight": 0.5,
+          "data": {
+            "actual": "WTI 96.25 Sep 9 12:31 ET",
+            "forecast": "<85",
+            "previous": "93.03 Sep 8 close",
+            "delta_label": "+3.46% intraday",
+            "delta_type": "beat"
+          },
+          "reason": "WTI rose 3.46% from the Sep 8 daily close by 12:31 ET. Stable id remains on its original dovish side at minimum 0.5 for continuity; the live oil impulse is hawkish/inflationary.",
+          "market_validation": [
+            {
+              "ticker": "CL=F",
+              "label": "+3.46% Wed 12:31 ET",
+              "type": "up"
+            }
+          ]
+        },
+        {
+          "id": "fed_dove_vix_20260827",
+          "icon": "VIX",
+          "title": "VIX at Multi-Week Low — Calmest Tape Pre-Jackson Hole",
+          "summary": "VIX jumped to 16.34 on Sep 1 as equities sold off.",
+          "published_at_toronto": "2026-08-27T16:00:00-04:00",
+          "source": "yfinance ^VIX",
+          "source_url": "https://finance.yahoo.com/quote/%5EVIX",
+          "importance": "MEDIUM",
+          "weight": 0.5,
+          "data": {
+            "actual": "VIX 14.53 (Fri close)",
+            "forecast": ">17",
+            "previous": "14.32",
+            "delta_label": "+1.47% Fri",
+            "delta_type": "miss"
+          },
+          "reason": "VIX closed Friday at 14.53, still below a stress regime; retained as only a 0.5 financial-conditions residual.",
+          "market_validation": []
+        },
+        {
+          "id": "fed_dove_uom_20260828",
+          "icon": "EXP",
+          "title": "UoM 1Y Inflation Expectations Drop to 4.0%",
+          "summary": "Inflation expectations fell back toward the anchor — the de-anchoring scare eased.",
+          "published_at_toronto": "2026-08-28T10:00:00-04:00",
+          "source": "University of Michigan final Aug (via FXStreet calendar)",
+          "source_url": "https://data.sca.isr.umich.edu/",
+          "importance": "MEDIUM",
+          "weight": 1.0,
+          "data": {
+            "actual": "1Y 4.0% / 5Y 3.3% / Sentiment 51.7",
+            "forecast": "1Y 4.3% / 5Y 3.3% / 51.0",
+            "previous": "1Y 4.3% / 5Y 3.3% / 51.0",
+            "delta_label": "1Y -0.3 vs fcst (dovish surprise)",
+            "delta_type": "miss"
+          },
+          "reason": "Final August 1Y expectations 4.0% vs 4.3% forecast and 4.5% 8/15 prelim — the mid-month de-anchoring spike reversed. Directly defuses the prior hawkish expectations driver (retired) and hands doves a fresh data point ahead of Sep FOMC.",
+          "market_validation": [],
+          "tags": [
+            "MEDIUM",
+            "UoM"
+          ]
+        },
+        {
+          "id": "fed_dove_jolts_20260901",
+          "icon": "JOLTS",
+          "title": "Job Openings Edge Lower",
+          "summary": "JOLTS openings fell to 7.271M, slightly below forecast and the prior month.",
+          "published_at_toronto": "2026-09-01T10:00:00-04:00",
+          "source": "BLS JOLTS via FXStreet / TradingEconomics calendar",
+          "source_url": "https://tradingeconomics.com/united-states/job-offers",
+          "importance": "MEDIUM",
+          "weight": 1.0,
+          "data": {
+            "actual": "7.271M",
+            "forecast": "7.300M",
+            "previous": "7.359M",
+            "delta_label": "miss -0.029M; -0.088M m/m",
+            "delta_type": "miss"
+          },
+          "reason": "Openings declined 88k from the prior month and undershot consensus by 29k. The miss is modest, so it adds a 1.0 dovish labour-demand signal rather than displacing Friday payrolls as the main catalyst.",
+          "market_validation": [
+            {
+              "ticker": "IWM",
+              "label": "IWM -1.25% Wed 12:37 ET",
+              "type": "down"
+            }
+          ],
+          "tags": [
+            "MEDIUM",
+            "JOLTS"
+          ]
+        },
+        {
+          "id": "fed_dove_adp_20260902",
+          "icon": "ADP",
+          "title": "ADP Employment Misses Before Payrolls",
+          "summary": "Private payroll growth slowed to 38k, below the 47k forecast.",
+          "published_at_toronto": "2026-09-02T08:15:00-04:00",
+          "source": "ADP via FXStreet economic calendar",
+          "source_url": "https://tradingeconomics.com/united-states/adp-employment-change",
+          "importance": "HIGH",
+          "weight": 1.0,
+          "data": {
+            "actual": "+38k",
+            "forecast": "+47k",
+            "previous": "+44k",
+            "delta_label": "miss -9k",
+            "delta_type": "miss"
+          },
+          "reason": "The modest private-payroll miss reinforces JOLTS cooling ahead of Friday NFP, but it is too small to overwhelm sticky prices or the hawkish Fed-futures strip.",
+          "market_validation": [
+            {
+              "ticker": "IWM",
+              "label": "IWM -1.25% Wed 12:37 ET",
+              "type": "down"
+            }
+          ],
+          "tags": [
+            "HIGH",
+            "labour"
+          ]
+        }
+      ],
+      "hawkish": [
+        {
+          "id": "fed_hawk_services_20260821",
+          "icon": "SERV",
+          "title": "Services PMI Big Beat",
+          "summary": "Services economy is running hot, not slowing.",
+          "published_at_toronto": "2026-08-21T09:45:00-04:00",
+          "source": "S&P Global",
+          "source_url": "https://www.pmi.spglobal.com/",
+          "importance": "HIGH",
+          "weight": 2.0,
+          "data": {
+            "actual": "56.8",
+            "forecast": "54.0",
+            "previous": "54.3",
+            "delta_label": "beat +2.8",
+            "delta_type": "beat"
+          },
+          "reason": "Strong services demand, employment and prices paid point to persistent core-services inflation and raise the hurdle for a cut. Warsh cited exactly this stickiness at Jackson Hole (54% of PCE basket >3% 12m). Sep 3 ISM Services (fcst 54.3, prev 54.1 per fresh FXStreet fetch) is the next test.",
+          "market_validation": [
+            {
+              "ticker": "XLF",
+              "label": "-1.38% Tue close / -0.71% w",
+              "type": "down"
+            }
+          ]
+        },
+        {
+          "id": "fed_hawk_tariffs_20260822",
+          "icon": "TRF",
+          "title": "Tariff Inflation Shock",
+          "summary": "Broad reciprocal tariffs add direct imported inflation while expectations are already elevated.",
+          "published_at_toronto": "2026-08-22T02:39:00-04:00",
+          "source": "Trade policy announcements",
+          "source_url": "https://ustr.gov/issue-areas/enforcement/section-301-investigations",
+          "importance": "HIGH",
+          "weight": 2.0,
+          "data": {
+            "actual": "35% reciprocal",
+            "forecast": "phased",
+            "previous": "negotiating",
+            "delta_label": "broader than expected",
+            "delta_type": "beat"
+          },
+          "reason": "Broad reciprocal tariffs add direct imported inflation while expectations are already elevated. First post-tariff Core PCE now expected in the Sep 5 window (not in FXStreet 7-day calendar); UoM 1Y final fell to 4.0% — softening the expectations leg, but the tariff impulse itself is untouched.",
+          "market_validation": [
+            {
+              "ticker": "GLD",
+              "label": "-1.73% Tue close / -2.13% w",
+              "type": "down"
+            }
+          ]
+        },
+        {
+          "id": "fed_hawk_dissent_20260729",
+          "icon": "DSS",
+          "title": "Hawkish 3-Vote Dissent at July FOMC",
+          "summary": "Three regional Fed presidents wanted a hike at the last meeting — the Committee is split.",
+          "published_at_toronto": "2026-07-29T14:00:00-04:00",
+          "source": "Federal Reserve press release monetary20260729a.htm",
+          "source_url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260729a.htm",
+          "importance": "HIGH",
+          "weight": 1.5,
+          "data": {
+            "actual": "9-3 dissent (Hammack, Kashkari, Logan wanted +25bp)",
+            "forecast": "unanimous hold",
+            "previous": "unanimous hold (June 17)",
+            "delta_label": "first 3-vote dissent in 2026",
+            "delta_type": "beat"
+          },
+          "reason": "Re-verified 2026-08-28 via federalreserve.gov/newsevents/pressreleases/monetary20260729a.htm: 9-3 hold with Hammack, Kashkari, Logan preferring +25bp. Warsh's Aug 28 speech ('predominant focus on prices', 'otherwise we have work to do') moved the Chair rhetorically toward the dissenters — the hawkish cluster is no longer isolated.",
+          "market_validation": []
+        },
+        {
+          "id": "fed_hawk_gold_20260827",
+          "icon": "Au",
+          "title": "Gold's Record Run — Inflation-Hedge Bid Persists",
+          "summary": "Gold sold off 1.73% on Sep 8; the old record-run signal remains weak.",
+          "published_at_toronto": "2026-08-27T16:00:00-04:00",
+          "source": "yfinance close (GC=F)",
+          "source_url": "https://finance.yahoo.com/quote/GC=F",
+          "importance": "MEDIUM",
+          "weight": 0.5,
+          "data": {
+            "actual": "GC=F 4395.4 / GLD 399.72 (Tue close)",
+            "forecast": "GC=F <4500",
+            "previous": "GC=F 4429.8 / GLD 406.77",
+            "delta_label": "GC -0.78% / GLD -1.73% Tue",
+            "delta_type": "miss"
+          },
+          "reason": "Gold and GLD fell on Sep 8 and remained below the prior inflation-hedge threshold. Stable id remains 0.5 for history; it is not a strong current hawkish signal.",
+          "market_validation": [
+            {
+              "ticker": "GLD",
+              "label": "-1.73% Tue close / -2.13% w",
+              "type": "down"
+            }
+          ]
+        },
+        {
+          "id": "fed_hawk_warsh_20260828",
+          "icon": "JAC",
+          "title": "Warsh Jackson Hole: 'Predominant Focus on Prices'",
+          "summary": "Fed Chair Warsh: inflation is the predominant focus — no cut pre-commitment, 'otherwise we have work to do'.",
+          "published_at_toronto": "2026-08-28T10:00:00-04:00",
+          "source": "Federal Reserve — Chair Warsh, 'In Our Time', Jackson Hole",
+          "source_url": "https://www.federalreserve.gov/newsevents/speech/warsh20260828a.htm",
+          "importance": "HIGH",
+          "weight": 2.5,
+          "data": {
+            "actual": "PCE 3.7% 12m / 4.1% 6m ann.; 54% of PCE basket >3%",
+            "forecast": "balanced-to-dovish nod toward Sep cut",
+            "previous": "July stmt: solid growth, elevated uncertainty",
+            "delta_label": "hawkish vs balanced expectation",
+            "delta_type": "beat"
+          },
+          "reason": "Warsh: 'the Fed's predominant focus right now should be on prices'; labour 'consistent with full employment' (4.1% jobless, claims near multi-decade lows); financial conditions 'hard pressed to describe as restrictive'; 'committed to a discipline, not to a decision'. Markets keep selling the front end: ZQU26.CBT 96.2925 Mon intraday (Fri settle 96.305) — Sep post-FOMC implied now 3.802%, hike tail 0.75, hold 0.20, cut 0.05 on this desk's 3-way solve. 10Y 4.760% / 30Y 5.258% Mon — long end flipped hawkish too. GC=F 4484 (-1.0% d Mon) extends Friday's -1.73% settle dump. [2026-08-31 13:00 ET re-verify: hawkish repricing still extending; weight held 2.5 — next arbiter is Fri 9/4 NFP (fcst +58k).]",
+          "market_validation": [
+            {
+              "ticker": "GC=F",
+              "label": "GC=F -1.01% d Mon i/d",
+              "type": "down"
+            },
+            {
+              "ticker": "ZQU26.CBT",
+              "label": "ZQU26 96.2925 Mon i/d (implied 3.708% avg)",
+              "type": "down"
+            }
+          ],
+          "tags": [
+            "HIGH",
+            "Jackson Hole"
+          ]
+        },
+        {
+          "id": "fed_hawk_long_end_20260831",
+          "icon": "30Y",
+          "title": "Long-End Flips Hawkish — 10Y Re-takes 4.75%",
+          "summary": "10Y rose to 4.849% and 30Y to 5.300% intraday, extending the hawkish long-end signal.",
+          "published_at_toronto": "2026-08-31T13:00:00-04:00",
+          "source": "US Treasury market via yfinance ^TNX/^TYX",
+          "source_url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2026",
+          "importance": "MEDIUM",
+          "weight": 1.0,
+          "data": {
+            "actual": "10Y 4.849% / 30Y 5.300% (Wed 12:26 ET)",
+            "forecast": "10Y <4.75",
+            "previous": "10Y 4.806% / 30Y 5.264%",
+            "delta_label": "10Y +4.3bp / 30Y +3.6bp intraday",
+            "delta_type": "beat"
+          },
+          "reason": "Sep 9 long yields extended higher despite weaker equities. The 10Y remains above the 4.75% flip line, so the stable hawkish driver stays active at 1.0; price action alone does not prove a Fed-pricing cause.",
+          "market_validation": [
+            {
+              "ticker": "TLT",
+              "label": "TLT -0.71% Wed 12:37 ET",
+              "type": "down"
+            }
+          ],
+          "tags": [
+            "MEDIUM",
+            "rates"
+          ]
+        },
+        {
+          "id": "fed_hawk_ism_20260901",
+          "icon": "ISM",
+          "title": "Manufacturing Expansion and Prices Stay Hot",
+          "summary": "ISM held at 54.6 and prices paid stayed at 71.1 — growth cooled, but inflation pressure did not.",
+          "published_at_toronto": "2026-09-01T10:00:00-04:00",
+          "source": "ISM via FXStreet / TradingEconomics calendar",
+          "source_url": "https://tradingeconomics.com/united-states/business-confidence",
+          "importance": "HIGH",
+          "weight": 1.5,
+          "data": {
+            "actual": "PMI 54.6 / prices 71.1",
+            "forecast": "55.2 / 72.0",
+            "previous": "55.6 / 71.1",
+            "delta_label": "growth miss; prices still elevated",
+            "delta_type": "neutral"
+          },
+          "reason": "Headline activity stayed well above 50 while prices paid remained 71.1. The mixed print does not justify a 2.0+ weight, but the combination supports the Fed's wait-or-hike bias ahead of payrolls.",
+          "market_validation": [
+            {
+              "ticker": "TLT",
+              "label": "-0.01% Tue close / -0.01% w",
+              "type": "down"
+            }
+          ],
+          "tags": [
+            "HIGH",
+            "ISM"
+          ]
+        },
+        {
+          "id": "fed_hawk_factory_orders_20260902",
+          "icon": "ORD",
+          "title": "Factory Orders Beat Expectations",
+          "summary": "Factory orders rose 0.9%, beating the 0.6% forecast and offsetting part of the ADP miss.",
+          "published_at_toronto": "2026-09-02T10:00:00-04:00",
+          "source": "US Census via FXStreet economic calendar",
+          "source_url": "https://tradingeconomics.com/united-states/factory-orders",
+          "importance": "MEDIUM",
+          "weight": 1.0,
+          "data": {
+            "actual": "+0.9%",
+            "forecast": "+0.6%",
+            "previous": "-0.3%",
+            "delta_label": "beat +0.3pp",
+            "delta_type": "beat"
+          },
+          "reason": "The rebound in orders shows goods demand remains firm, counterbalancing labour softness without being strong enough to displace inflation as the dominant Fed driver.",
+          "market_validation": [
+            {
+              "ticker": "XLI",
+              "label": "-0.48% Tue close / -0.41% w",
+              "type": "down"
+            }
+          ],
+          "tags": [
+            "MEDIUM",
+            "growth"
+          ]
+        },
+        {
+          "id": "fed_hawk_ism_services_20260903",
+          "icon": "SERV",
+          "title": "ISM Services and Prices Reaccelerate",
+          "summary": "Services activity beat expectations and prices paid accelerated, strengthening the Fed hawks.",
+          "published_at_toronto": "2026-09-03T10:00:00-04:00",
+          "source": "ISM via FXStreet economic calendar",
+          "source_url": "https://tradingeconomics.com/united-states/non-manufacturing-pmi",
+          "importance": "HIGH",
+          "weight": 2.0,
+          "data": {
+            "actual": "PMI 55.4 / prices 72.6 / new orders 60.9 / employment 47.8",
+            "forecast": "PMI 54.3",
+            "previous": "PMI 54.1 / prices 70.3 / new orders 57.2 / employment 47.4",
+            "delta_label": "PMI beat +1.1; prices +2.3",
+            "delta_type": "beat"
+          },
+          "reason": "The headline beat and acceleration in prices paid and new orders validate sticky services inflation ahead of the Sep FOMC. Employment remained below 50, so the signal is strong but capped at 2.0 rather than 2.5.",
+          "market_validation": [
+            {
+              "ticker": "XLF",
+              "label": "-1.38% Tue close / -0.71% w",
+              "type": "down"
+            },
+            {
+              "ticker": "TLT",
+              "label": "-0.01% Tue close / -0.01% w",
+              "type": "down"
+            }
+          ],
+          "tags": [
+            "HIGH",
+            "ISM services"
+          ]
+        },
+        {
+          "id": "fed_hawk_nfp_20260904",
+          "icon": "NFP",
+          "title": "Payrolls Rebound Far Above Forecast",
+          "summary": "August payrolls jumped 162k versus 56k expected while unemployment held at 4.1%.",
+          "published_at_toronto": "2026-09-04T08:30:00-04:00",
+          "source": "U.S. Bureau of Labor Statistics · Employment Situation",
+          "source_url": "https://www.bls.gov/news.release/empsit.nr0.htm",
+          "importance": "HIGH",
+          "weight": 2.0,
+          "data": {
+            "actual": "+162k; UR 4.1%; AHE +0.3% MoM / +3.1% YoY",
+            "forecast": "+56k; UR 4.1%; AHE +0.3% / +3.0%",
+            "previous": "-23k; UR 4.1%; AHE +0.1% / +3.2%",
+            "delta_label": "payroll beat +106k; wages +0.1pp YoY",
+            "delta_type": "beat"
+          },
+          "reason": "The last payroll report before Sep FOMC decisively reversed July weakness. A 106k consensus beat, steady 4.1% unemployment and a small wage beat raise the hurdle for a cut; ZQU26 fell 1.0bp from Sep 3 and the desk hike proxy rose from 49% to 56%. Weight capped at 2.0 because the inflation releases still decide hold versus hike.",
+          "market_validation": [
+            {
+              "ticker": "ZQU26.CBT",
+              "label": "96.305 Fri 14:31 ET (-1.0bp price d/d)",
+              "type": "down"
+            },
+            {
+              "ticker": "^TNX",
+              "label": "4.778% (+1.6bp Fri i/d)",
+              "type": "up"
+            }
+          ],
+          "tags": [
+            "HIGH",
+            "payrolls"
+          ]
+        }
+      ]
+    },
+    "boc": {
+      "dovish": [
+        {
+          "id": "boc_dove_tariffs_20260822",
+          "icon": "TRD",
+          "title": "US-Canada Reciprocal Tariffs",
+          "summary": "US tariffs hit Canada's export engine first and hardest.",
+          "published_at_toronto": "2026-08-22T02:39:00-04:00",
+          "source": "Trade policy announcements",
+          "source_url": "https://ustr.gov/issue-areas/enforcement/section-301-investigations",
+          "importance": "HIGH",
+          "weight": 1.5,
+          "data": {
+            "actual": "19% GDP exposure",
+            "forecast": "phased",
+            "previous": "negotiating",
+            "delta_label": "broad coverage",
+            "delta_type": "miss"
+          },
+          "reason": "Canada's US-demand exposure means tariffs can cut export orders and output. UPDATE 8/28: Q2 GDP +0.8% QoQ LED BY EXPORTS — economy weathering tariffs far better than feared; drag narrative weakened, weight 2.0 -> 1.5. Structural exposure remains.",
+          "market_validation": [
+            {
+              "ticker": "XLI",
+              "label": "-0.48% Tue close / -0.41% w",
+              "type": "down"
+            }
+          ]
+        },
+        {
+          "id": "boc_dove_households_20260730",
+          "icon": "MTG",
+          "title": "Household Leverage and Mortgage Sensitivity",
+          "summary": "Highly indebted households cannot absorb today's rates.",
+          "published_at_toronto": "2026-07-30T10:00:00-04:00",
+          "source": "BOC MPR / Statistics Canada",
+          "source_url": "https://www150.statcan.gc.ca/n1/daily-quotidien/260730/dq260730a-eng.htm",
+          "importance": "MEDIUM",
+          "weight": 1.0,
+          "data": {
+            "actual": "Debt/GDP 102%",
+            "forecast": "100%",
+            "previous": "101%",
+            "delta_label": "G7 high",
+            "delta_type": "miss"
+          },
+          "reason": "High leverage and mortgage renewals make Canadian demand unusually sensitive to elevated rates. Q2 GDP showed household spending contributing and saving rate 3.7% — structural driver, aging; weight 1.5 -> 1.0.",
+          "market_validation": []
+        },
+        {
+          "id": "boc_dove_global_pmi_20260821",
+          "icon": "PMI",
+          "title": "Canada Manufacturing Growth Moderates",
+          "summary": "Canada PMI eased to 53.0 from 53.5 but remained in expansion and beat the 52.7 alternative forecast.",
+          "published_at_toronto": "2026-09-01T09:30:00-04:00",
+          "source": "S&P Global Canada PMI via FXStreet / TradingEconomics",
+          "source_url": "https://tradingeconomics.com/canada/manufacturing-pmi",
+          "importance": "MEDIUM",
+          "weight": 0.5,
+          "data": {
+            "actual": "53.0",
+            "forecast": "52.7 (TradingEconomics)",
+            "previous": "53.5",
+            "delta_label": "-0.5 m/m; +0.3 vs forecast",
+            "delta_type": "neutral"
+          },
+          "reason": "The PMI slowed half a point but stayed expansionary and beat the available 52.7 forecast. The old global-pullback thesis is now only a 0.5 dovish residual ahead of the BoC decision.",
+          "market_validation": []
+        },
+        {
+          "id": "boc_dove_labour_20260730",
+          "icon": "JOB",
+          "title": "Canada Employment Contracts as Wage Growth Slows",
+          "summary": "Canada lost 41.7k jobs versus a 15k gain expected; wage growth slowed to 2.0%.",
+          "published_at_toronto": "2026-09-04T08:30:00-04:00",
+          "source": "Statistics Canada · Labour Force Survey, August 2026",
+          "source_url": "https://www150.statcan.gc.ca/n1/daily-quotidien/260904/dq260904a-eng.htm",
+          "importance": "HIGH",
+          "weight": 2.0,
+          "data": {
+            "actual": "-41.7k jobs; UR 6.4%; wages +2.0% YoY",
+            "forecast": "+15.0k jobs; UR 6.4%",
+            "previous": "+75.1k jobs; UR 6.4%; wages +3.0%",
+            "delta_label": "jobs miss -56.7k; wages -1.0pp",
+            "delta_type": "miss"
+          },
+          "reason": "Employment fell 41.7k against a 15k gain expected and wage growth slowed one percentage point, a material demand-and-inflation cooling signal after the Sep 2 hold. Unemployment did not rise, limiting weight to 2.0 rather than 2.5.",
+          "market_validation": [
+            {
+              "ticker": "ZEB.TO",
+              "label": "ZEB.TO -0.94% Wed 12:37 ET",
+              "type": "down"
+            }
+          ]
+        },
+        {
+          "id": "boc_dove_cad_20260827",
+          "icon": "FX",
+          "title": "CAD Firms Slightly — Sep 2 BoC Dovish Wedge Narrows",
+          "summary": "USDCAD 1.3857 Mon intraday — flat vs Friday's 1.3851 close; the post-Warsh USD bid has stalled.",
+          "published_at_toronto": "2026-08-27T16:00:00-04:00",
+          "source": "yfinance close (USDCAD=X)",
+          "source_url": "https://finance.yahoo.com/quote/USDCAD=X",
+          "importance": "LOW",
+          "weight": 1.0,
+          "data": {
+            "actual": "USDCAD 1.3857 (Mon i/d)",
+            "forecast": "<1.36",
+            "previous": "1.3851 (Fri close)",
+            "delta_label": "+0.04% d Mon i/d / +0.51% w",
+            "delta_type": "neutral"
+          },
+          "reason": "Sunday's reopen slippage to 1.3901 did not follow through — USDCAD is back at 1.3857 Monday intraday, essentially Friday's close. Rate-spread trade still dominates but is not widening further today; Sep 2 decision is the next catalyst.",
+          "market_validation": []
+        },
+        {
+          "id": "boc_dove_oil_crash_20260827",
+          "icon": "OIL",
+          "title": "Oil Demand-Scare — CAD Terms of Trade Eroded",
+          "summary": "WTI reached $96.25 intraday, further invalidating the old demand-scare signal.",
+          "published_at_toronto": "2026-08-27T16:00:00-04:00",
+          "source": "yfinance CL=F / EIA",
+          "source_url": "https://finance.yahoo.com/quote/CL=F",
+          "importance": "HIGH",
+          "weight": 0.5,
+          "data": {
+            "actual": "WTI 96.25 Sep 9 12:31 ET",
+            "forecast": "<85",
+            "previous": "93.03 Sep 8 close",
+            "delta_label": "+3.46% intraday",
+            "delta_type": "beat"
+          },
+          "reason": "WTI rose 3.46% from the Sep 8 daily close by 12:31 ET. Stable id remains on its original dovish side at minimum 0.5 for continuity; the live oil impulse is hawkish/inflationary.",
+          "market_validation": [
+            {
+              "ticker": "CL=F",
+              "label": "+3.46% Wed 12:31 ET",
+              "type": "up"
+            }
+          ]
+        },
+        {
+          "id": "boc_dove_asking_rents_20260909",
+          "icon": "RENT",
+          "title": "Asking-Rent Inflation Turns Negative",
+          "summary": "Two-bedroom asking rents across Canadian CMAs fell 3.6% y/y, a secondary shelter-disinflation signal.",
+          "published_at_toronto": "2026-09-09T08:30:00-04:00",
+          "source": "Statistics Canada · Quarterly rent statistics, Q2 2026",
+          "source_url": "https://www150.statcan.gc.ca/n1/daily-quotidien/260909/dq260909c-eng.htm",
+          "importance": "MEDIUM",
+          "weight": 1.0,
+          "data": {
+            "actual": "C$2,130/month; -3.6% YoY",
+            "forecast": null,
+            "previous": "C$2,150/month; -0.9% YoY (Q1 release)",
+            "delta_label": "YoY cooled 2.7pp",
+            "delta_type": "miss"
+          },
+          "reason": "The experimental all-CMA two-bedroom asking-rent measure fell 3.6% year over year, versus -0.9% in the prior quarterly release. This is a secondary BoC dovish shelter signal, not a quality-adjusted CPI rent measure and not evidence of immediate policy repricing.",
+          "market_validation": [
+            {
+              "ticker": "ZEB.TO",
+              "label": "-0.94% Wed 12:37 ET",
+              "type": "down"
+            }
+          ],
+          "tags": [
+            "MEDIUM",
+            "housing"
+          ]
+        }
+      ],
+      "hawkish": [
+        {
+          "id": "boc_hawk_retail_20260821",
+          "icon": "RTL",
+          "title": "Retail Sales Big Beat",
+          "summary": "Consumers are still spending — no collapse in sight.",
+          "published_at_toronto": "2026-08-21T08:30:00-04:00",
+          "source": "Statistics Canada",
+          "source_url": "https://www150.statcan.gc.ca/n1/daily-quotidien/260821/t001a-eng.htm",
+          "importance": "HIGH",
+          "weight": 1.5,
+          "data": {
+            "actual": "+0.6%",
+            "forecast": "+0.2%",
+            "previous": "+0.1%",
+            "delta_label": "beat +0.4",
+            "delta_type": "beat"
+          },
+          "reason": "Broad retail growth (+0.6% vs +0.2% fcst) showed consumption resilience — and Q2 GDP confirmed household spending strength. Gives the BoC room to hold on Sep 2.",
+          "market_validation": []
+        },
+        {
+          "id": "boc_hawk_oil_20260821",
+          "icon": "WTI",
+          "title": "Energy Tailwind Reopens Above $90 WTI",
+          "summary": "WTI rose to $96.25 intraday, extending Canada energy and gasoline inflation pressure.",
+          "published_at_toronto": "2026-08-27T16:00:00-04:00",
+          "source": "WTI close",
+          "source_url": "https://www.eia.gov/dnav/pet/hist/RWTCa.htm",
+          "importance": "MEDIUM",
+          "weight": 2.0,
+          "data": {
+            "actual": "WTI 96.25 Sep 9 12:31 ET",
+            "forecast": "<85",
+            "previous": "93.03 Sep 8 close",
+            "delta_label": "+3.46% intraday",
+            "delta_type": "beat"
+          },
+          "reason": "WTI gained 3.46% from Sep 8 daily close by 12:31 ET. The energy terms-of-trade and gasoline-inflation impulse remains a high-conviction 2.0 BoC hawkish driver, but not 2.5+ without direct CPI confirmation.",
+          "market_validation": [
+            {
+              "ticker": "CL=F",
+              "label": "CL=F +3.46% Wed 12:31 ET",
+              "type": "up"
+            },
+            {
+              "ticker": "XLE",
+              "label": "+1.11% Tue close / +1.27% w",
+              "type": "up"
+            }
+          ]
+        },
+        {
+          "id": "boc_hawk_gdp_20260828",
+          "icon": "GDP",
+          "title": "CAD GDP Beat — Sep 2 Hold Now Base Case",
+          "summary": "Q2 GDP +0.8% QoQ led by exports; June +0.3% MoM beat — the make-or-break print broke hawkish.",
+          "published_at_toronto": "2026-08-28T08:30:00-04:00",
+          "source": "Statistics Canada (The Daily, dq260828a, verified)",
+          "source_url": "https://www150.statcan.gc.ca/n1/daily-quotidien/260828/dq260828a-eng.htm",
+          "importance": "HIGH",
+          "weight": 2.0,
+          "data": {
+            "actual": "+0.3% MoM / +0.8% QoQ / +3.3% ann.",
+            "forecast": "+0.2% MoM / +3.4% ann.",
+            "previous": "+0.3% MoM / +0.1% QoQ (rev up from 0.0) / -0.1% ann.",
+            "delta_label": "MoM beat +0.1; ann. -0.1 vs fcst but rebound from -0.1",
+            "delta_type": "beat"
+          },
+          "reason": "StatCan verified 2026-08-28: Q2 real GDP +0.8% QoQ (~3.3% annualized), Q1 revised 0.0 -> +0.1%, led by exports, household spending and business investment. The pre-decision make-or-break printed strong — The GDP rebound was validated by the Sep 2 hold at 2.25%. Weight raised 1.5 -> 2.0 as the decisive domestic data point.",
+          "market_validation": [
+            {
+              "ticker": "ZEB.TO",
+              "label": "-1.09% Tue close / +1.26% w",
+              "type": "down"
+            }
+          ]
+        },
+        {
+          "id": "boc_hawk_us_spillover_20260827",
+          "icon": "US",
+          "title": "US Stickiness Spillover — Fed Path Constrains BoC",
+          "summary": "Fed Sep hike proxy is 0.58 and 10Y closed 4.784%, keeping the cross-border constraint tight.",
+          "published_at_toronto": "2026-08-27T16:00:00-04:00",
+          "source": "US data / rates",
+          "source_url": "https://www.pmi.spglobal.com/",
+          "importance": "MEDIUM",
+          "weight": 1.5,
+          "data": {
+            "actual": "Fed hike proxy 0.58 / 10Y 4.784% / USDCAD 1.3837 Fri close",
+            "forecast": "balanced Fed / 30Y 4.90% / USDCAD <1.36",
+            "previous": "hold 0.44 / hike 0.56 at 14:50 ET",
+            "delta_label": "hawkish pricing held into close",
+            "delta_type": "beat"
+          },
+          "reason": "Sep 4 ZQU26/ZQV26 official closes imply cut 0.00 / hold 0.42 / hike 0.58 using last verified EFFR 3.63%; 10Y closed above 4.75%. Stable ID and 1.5 weight retained.",
+          "market_validation": []
+        },
+        {
+          "id": "boc_hawk_pmi_20260901",
+          "icon": "PMI",
+          "title": "Canada Factory PMI Holds Expansion",
+          "summary": "A 53.0 factory PMI gives the BoC another reason to hold at 2.25%.",
+          "published_at_toronto": "2026-09-01T09:30:00-04:00",
+          "source": "S&P Global Canada PMI via FXStreet / TradingEconomics",
+          "source_url": "https://tradingeconomics.com/canada/manufacturing-pmi",
+          "importance": "MEDIUM",
+          "weight": 1.0,
+          "data": {
+            "actual": "53.0",
+            "forecast": "52.7 (TradingEconomics)",
+            "previous": "53.5",
+            "delta_label": "beat +0.3; expansion intact",
+            "delta_type": "beat"
+          },
+          "reason": "Manufacturing remained above 50 and exceeded the available forecast. It reinforces the GDP/retail resilience case for a hold, but the small surprise limits the weight to 1.0.",
+          "market_validation": [
+            {
+              "ticker": "ZEB.TO",
+              "label": "-1.09% Tue close / +1.26% w",
+              "type": "down"
+            }
+          ],
+          "tags": [
+            "MEDIUM",
+            "PMI"
+          ]
+        },
+        {
+          "id": "boc_hawk_hold_20260902",
+          "icon": "BOC",
+          "title": "BoC Holds 2.25% and Flags Energy/Tariff Inflation",
+          "summary": "The BoC held at 2.25% as high oil and tariffs kept inflation risks alive.",
+          "published_at_toronto": "2026-09-02T09:45:00-04:00",
+          "source": "Bank of Canada rate statement",
+          "source_url": "https://www.bankofcanada.ca/2026/09/fad-press-release-2026-09-02/",
+          "importance": "HIGH",
+          "weight": 2.0,
+          "data": {
+            "actual": "Hold 2.25%",
+            "forecast": "Hold 2.25%",
+            "previous": "Hold 2.25%",
+            "delta_label": "hawkish hold",
+            "delta_type": "beat"
+          },
+          "reason": "The decision matched consensus, but the Bank emphasized persistently high energy prices, tariffs, tighter financial conditions and CPI near 3%. CAD firmed and Canadian banks rallied after the release, validating a hawkish hold rather than an easing signal.",
+          "market_validation": [
+            {
+              "ticker": "USDCAD=X",
+              "label": "1.3843 (-0.06% Wed i/d)",
+              "type": "down"
+            },
+            {
+              "ticker": "ZEB.TO",
+              "label": "-1.09% Tue close / +1.26% w",
+              "type": "down"
+            }
+          ],
+          "tags": [
+            "HIGH",
+            "BoC"
+          ]
+        },
+        {
+          "id": "boc_hawk_ivey_20260904",
+          "icon": "IVEY",
+          "title": "Ivey PMI Surges After BoC Hold",
+          "summary": "Canada Ivey PMI jumped to 64.3 versus 56.2 expected, offsetting part of the jobs shock.",
+          "published_at_toronto": "2026-09-04T10:00:00-04:00",
+          "source": "Ivey PMI via TradingEconomics calendar",
+          "source_url": "https://tradingeconomics.com/calendar",
+          "importance": "MEDIUM",
+          "weight": 1.5,
+          "data": {
+            "actual": "64.3 s.a.",
+            "forecast": "56.2",
+            "previous": "55.1",
+            "delta_label": "beat +8.1; +9.2 m/m",
+            "delta_type": "beat"
+          },
+          "reason": "The broad activity gauge accelerated sharply two days after the BoC hold, arguing against an immediate growth-collapse response. It is a meaningful counterweight to weak employment, but a survey cannot outweigh the official labour report, so weight is 1.5.",
+          "market_validation": [
+            {
+              "ticker": "USDCAD=X",
+              "label": "1.3836 (-0.06% Fri i/d)",
+              "type": "down"
+            }
+          ],
+          "tags": [
+            "MEDIUM",
+            "Ivey PMI"
+          ]
+        }
+      ]
+    }
+  },
+  "market": {
+    "since": "2026-07-30",
+    "as_of_close": "2026-09-09T16:00:00-04:00",
+    "tickers": [
+      {
+        "symbol": "SPY",
+        "price": 762.4,
+        "chg_1d": -0.004648,
+        "chg_1w": -0.01393,
+        "label_1d": "-0.46% 2026-09-09 close",
+        "label_1w": "-1.39% w",
+        "type_1d": "down",
+        "type_1w": "down"
+      },
+      {
+        "symbol": "QQQ",
+        "price": 716.31,
+        "chg_1d": -0.002854,
+        "chg_1w": -0.001895,
+        "label_1d": "-0.29% 2026-09-09 close",
+        "label_1w": "-0.19% w",
+        "type_1d": "down",
+        "type_1w": "down"
+      },
+      {
+        "symbol": "IWM",
+        "price": 290.64,
+        "chg_1d": -0.013676,
+        "chg_1w": -0.015414,
+        "label_1d": "-1.37% 2026-09-09 close",
+        "label_1w": "-1.54% w",
+        "type_1d": "down",
+        "type_1w": "down"
+      },
+      {
+        "symbol": "XLI",
+        "price": 171.79,
+        "chg_1d": -0.015079,
+        "chg_1w": -0.015868,
+        "label_1d": "-1.51% 2026-09-09 close",
+        "label_1w": "-1.59% w",
+        "type_1d": "down",
+        "type_1w": "down"
+      },
+      {
+        "symbol": "XLU",
+        "price": 42.94,
+        "chg_1d": -0.011738,
+        "chg_1w": -0.002092,
+        "label_1d": "-1.17% 2026-09-09 close",
+        "label_1w": "-0.21% w",
+        "type_1d": "down",
+        "type_1w": "down"
+      },
+      {
+        "symbol": "XLF",
+        "price": 57.06,
+        "chg_1d": -0.004188,
+        "chg_1w": -0.025615,
+        "label_1d": "-0.42% 2026-09-09 close",
+        "label_1w": "-2.56% w",
+        "type_1d": "down",
+        "type_1w": "down"
+      },
+      {
+        "symbol": "XLE",
+        "price": 65.31,
+        "chg_1d": 0.008337,
+        "chg_1w": 0.010678,
+        "label_1d": "+0.83% 2026-09-09 close",
+        "label_1w": "+1.07% w",
+        "type_1d": "up",
+        "type_1w": "up"
+      },
+      {
+        "symbol": "TLT",
+        "price": 81.73,
+        "chg_1d": -0.005718,
+        "chg_1w": -0.004143,
+        "label_1d": "-0.57% 2026-09-09 close",
+        "label_1w": "-0.41% w",
+        "type_1d": "down",
+        "type_1w": "down"
+      },
+      {
+        "symbol": "GLD",
+        "price": 403.35,
+        "chg_1d": 0.009081,
+        "chg_1w": -0.016747,
+        "label_1d": "+0.91% 2026-09-09 close",
+        "label_1w": "-1.67% w",
+        "type_1d": "up",
+        "type_1w": "down"
+      },
+      {
+        "symbol": "ZEB.TO",
+        "price": 73.86,
+        "chg_1d": -0.010583,
+        "chg_1w": -0.026364,
+        "label_1d": "-1.06% 2026-09-09 close",
+        "label_1w": "-2.64% w",
+        "type_1d": "down",
+        "type_1w": "down"
+      }
+    ]
+  },
+  "calendar": [
+    {
+      "id": "us_ppi_20260910",
+      "datetime_toronto": "2026-09-10T08:30:00-04:00",
+      "datetime_utc": "2026-09-10T12:30:00Z",
+      "currency": "USD",
+      "country": "US",
+      "event": "US PPI (headline and core)",
+      "impact": "HIGH",
+      "forecast": {
+        "headline_MoM": "0.4%",
+        "core_MoM": "0.3%",
+        "headline_YoY": "5.3%",
+        "core_YoY": "4.6%"
+      },
+      "previous": {
+        "headline_MoM": "0.0%",
+        "core_MoM": "0.2%",
+        "headline_YoY": "4.7%",
+        "core_YoY": "4.2%"
+      },
+      "logic": "Fresh Sep 10 FXStreet archive. A broad upside surprise would reinforce post-payroll hike pricing; a miss would support the conditional hold case.",
+      "hawk_if": "High to Hawk",
+      "dove_if": "Low to Dove"
+    },
+    {
+      "id": "us_cpi_20260911",
+      "datetime_toronto": "2026-09-11T08:30:00-04:00",
+      "datetime_utc": "2026-09-11T12:30:00Z",
+      "currency": "USD",
+      "country": "US",
+      "event": "US CPI (headline and core)",
+      "impact": "HIGH",
+      "forecast": {
+        "headline_MoM": "0.4%",
+        "core_MoM": "0.2%",
+        "headline_YoY": "3.4%",
+        "core_YoY": "2.4%"
+      },
+      "previous": {
+        "headline_MoM": "0.1%",
+        "core_MoM": "0.2%",
+        "headline_YoY": "3.4%",
+        "core_YoY": "2.5%"
+      },
+      "logic": "Fresh Sep 10 FXStreet archive. CPI is the main inflation arbiter before Sep FOMC.",
+      "hawk_if": "High to Hawk",
+      "dove_if": "Low to Dove"
+    },
+    {
+      "id": "us_uom_20260911",
+      "datetime_toronto": "2026-09-11T10:00:00-04:00",
+      "datetime_utc": "2026-09-11T14:00:00Z",
+      "currency": "USD",
+      "country": "US",
+      "event": "Michigan Consumer Sentiment and Inflation Expectations",
+      "impact": "HIGH",
+      "forecast": {
+        "sentiment": "51.0",
+        "one_year_inflation": null,
+        "five_year_inflation": null
+      },
+      "previous": {
+        "sentiment": "51.7",
+        "one_year_inflation": "4.0%",
+        "five_year_inflation": "3.3%"
+      },
+      "logic": "Fresh Sep 10 FXStreet archive. Re-acceleration in inflation expectations would reinforce tariff-price concerns; further easing would support hold.",
+      "hawk_if": "Inflation expectations high",
+      "dove_if": "Inflation expectations low"
+    },
+    {
+      "id": "ca_cpi_20260914",
+      "datetime_toronto": "2026-09-14T08:30:00-04:00",
+      "datetime_utc": "2026-09-14T12:30:00Z",
+      "currency": "CAD",
+      "country": "CA",
+      "event": "Canada CPI (headline and BoC core)",
+      "impact": "HIGH",
+      "forecast": {
+        "headline_MoM": null,
+        "headline_YoY": null,
+        "boc_core_MoM": null,
+        "boc_core_YoY": null
+      },
+      "previous": {
+        "headline_MoM": "0.5%",
+        "headline_YoY": "3.0%",
+        "boc_core_MoM": "0.2%",
+        "boc_core_YoY": "2.3%"
+      },
+      "logic": "Fresh Sep 10 FXStreet archive. Headline and core inflation determine whether weak employment can outweigh the BoC's energy and tariff concerns; missing forecasts remain null.",
+      "hawk_if": "High to Hawk",
+      "dove_if": "Low to Dove"
+    },
+    {
+      "id": "fomc_20260916",
+      "datetime_toronto": "2026-09-16T14:00:00-04:00",
+      "datetime_utc": "2026-09-16T18:00:00Z",
+      "currency": "USD",
+      "country": "US",
+      "event": "FOMC Decision, SEP and Press Conference (Sep 15-16)",
+      "impact": "HIGH",
+      "forecast": {},
+      "previous": {},
+      "logic": "Fresh Sep 10 FXStreet archive. Sep 9 traded futures proxy: cut 0% / hold 37.86% / hike 62.14%; CME direct distribution returned HTTP 403. SEP and press conference settle the labour-versus-inflation debate.",
+      "hawk_if": "Showdown",
+      "dove_if": "Showdown"
+    }
+  ],
+  "history": []
+}

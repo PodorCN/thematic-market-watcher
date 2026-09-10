@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "reviewer_role": "independent_portfolio_manager",
+  "reviewed_at": "2026-09-10T00:33:16-04:00",
+  "candidate_sha256": "cd7042dabc8c8c53d6a56efdcda3529623f9dfd7ba12b8d38d66433614c08bac",
+  "verdict": "revise",
+  "executive_summary": "Revise. The frozen candidate is correctly digest-bound and its official Fed and BoC policy facts, Fed desk proxy, calendar, drivers, cash-close market strip, and freshness are broadly supportable. It is nevertheless unsafe to publish because the BoC panel displays a 40% hold / 60% hike distribution and a 2.40% post-meeting rate that the candidate itself identifies as an arbitrary schema placeholder. The cited CRAU26 contract settles across both the October 28 and December 9 decisions and cannot identify an October outcome. This is a direct decision-support failure, not a caveat that can coexist with approval.",
+  "checks": {
+    "official_policy": "pass",
+    "pricing": "fail",
+    "drivers": "pass",
+    "market_validation": "pass",
+    "freshness": "pass",
+    "decision_usefulness": "fail"
+  },
+  "findings": [
+    {
+      "severity": "critical",
+      "field": "meetings.boc.pricing",
+      "issue": "The candidate presents invented October 28 BoC probabilities and an unsupported post-decision rate despite declaring that single-meeting pricing is unavailable.",
+      "evidence": "The live TMX page independently returned CRAU26 at 97.650 and identifies a 2026-12-16 expiry; the live BoC CORRA series independently returned 2.2900% for September 8. A 97.650 quarterly contract implies a 2.350% quarterly-average rate spanning the October 28 and December 9 BoC decisions, exactly as candidate.proxy_check and candidate.scenario_bounds acknowledge. It cannot identify 0.00/0.40/0.60 for the October cut/hold/hike outcomes or meetings.boc.pricing.implied_rate_after=2.40. The candidate explicitly labels those numbers a NON-PUBLISHABLE placeholder and sets probability_status to unavailable.",
+      "pnl_impact": "A PM or downstream renderer can read the displayed 60% hike weight as tradable October pricing, creating false CAD, front-end rates, bank-equity, and duration positioning from an unidentified decomposition of a multi-meeting contract.",
+      "instruction": "Do not publish numeric BoC outcome probabilities or an October post-meeting implied rate from CRAU26. Change the dashboard data contract and renderer to support unavailable/null probabilities and show only the observable 2.350% quarterly-average contract rate with its two-meeting limitation, or obtain a traceable single-meeting OIS/options distribution and rebuild every dependent BoC field from that source. Freeze a new candidate and submit it to a fresh review; do not reinterpret this review as conditional approval."
+    }
+  ],
+  "pnl_risks": [
+    "The displayed 60% BoC hike probability is not observed or inferable from the cited quarterly contract and could induce wrong-way October front-end and CAD trades.",
+    "The Fed 60% hike figure is a sensitive desk interpolation rather than a direct probability distribution; a one-basis-point futures move changes the inferred hike weight by roughly 8.6 percentage points.",
+    "Upcoming PPI, CPI, Canadian CPI, retail sales, and the FOMC decision can invalidate the snapshot rapidly, so positions based on the current driver balance carry substantial event-gap risk.",
+    "The market strip consists of broad cash closes and should remain context rather than evidence that any individual macro release caused the observed moves."
+  ],
+  "operator_instructions": [
+    "Remove the fabricated BoC 0.00/0.40/0.60 distribution and 2.40% post-meeting rate by adding a schema-valid unavailable/null representation, or replace them with a traceable clean October single-meeting source.",
+    "Preserve the explicit distinction between the observable CRAU26 quarterly-average rate and any meeting-specific inference in the data contract, renderer, and explanatory text.",
+    "Rebuild the complete candidate after the contract or source fix, freeze it under a new iteration, compute its exact SHA-256 digest, and require a fresh independent PM review before publication."
+  ]
+}

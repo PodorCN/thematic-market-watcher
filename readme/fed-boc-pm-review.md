@@ -80,14 +80,24 @@ Approval must not be conditional. “Approved if fixed” is `revise`.
 
 1. Operator freezes iteration 01 and launches a separate PM reviewer.
 2. Run `econ/validate_pm_review.py --candidate ... --review ...`.
-3. If verdict is `revise`, publication is forbidden. The operator follows every
-   instruction, recollects affected evidence, rebuilds the whole internally
+3. If verdict is `revise`, publication is forbidden. Immediately run
+   `econ/record_pm_feedback.py --candidate ... --review ...`; this atomically
+   updates `review/fed-boc/feedback/latest.json` and appends an immutable
+   history record. The operator then follows every instruction, re-triggers
+   collection for every affected source/claim, rebuilds the whole internally
    consistent candidate, and freezes iteration 02.
 4. A fresh PM reviewer reviews iteration 02 from scratch. The operator may not
    edit or reinterpret the prior verdict into approval.
-5. Repeat until approval, with a maximum of 3 iterations per scheduled run.
-   Exhaustion fails closed and leaves the prior public snapshot untouched.
-6. On approval, run the validator with `--require-approved`, then archive,
+5. At the beginning of every later cron run, read
+   `review/fed-boc/feedback/latest.json` before any collection. If its status is
+   `open`, every required recollection and operator instruction is mandatory;
+   a normal incremental refresh is not sufficient. Include the feedback and a
+   remediation/evidence mapping in the next PM handoff so the reviewer can
+   detect repeat failures.
+6. Repeat until approval, with a maximum of 3 iterations per scheduled run.
+   Exhaustion fails closed and leaves the prior public/latest output untouched;
+   the open feedback remains mandatory on the next run.
+7. On approval, run the validator with `--require-approved`, then archive,
    test, commit, sync, push, and verify the live artifact.
 
 A failed or missing reviewer, malformed artifact, digest mismatch, or stale

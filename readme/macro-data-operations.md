@@ -36,23 +36,30 @@ After updating `docs/data/fed-boc-dashboard.json`, but before running
 `econ/archive_fed_boc.py`, follow
 [`fed-boc-pm-review.md`](./fed-boc-pm-review.md):
 
-1. Freeze the proposed payload under
+1. Before collecting anything, read `review/fed-boc/feedback/latest.json` if
+   it exists. An `open` feedback record is a mandatory collection plan, not an
+   optional note: re-trigger every affected source and address every finding.
+2. Freeze the proposed payload under
    `review/fed-boc/<TODAY>/iteration-<NN>/candidate.json` and record its
    SHA-256 in `candidate.sha256`.
-2. Launch a **separate agent session** as the independent portfolio manager.
+3. Launch a **separate agent session** as the independent portfolio manager.
    The collecting/operator agent may not review or approve its own candidate.
-3. The PM writes `pm-review.json` matching
+4. The PM writes `pm-review.json` matching
    `review/fed-boc/pm-review.schema.json` and bound to the candidate digest.
-4. Run `econ/validate_pm_review.py` against the candidate and review with
+5. Run `econ/validate_pm_review.py` against the candidate and review with
    `--require-approved`.
-5. A `revise` verdict, failed check, material finding, missing review, or hash
-   mismatch forbids archive, commit, sync, and push. Follow every PM
-   instruction, recollect affected sources, rebuild the whole candidate, freeze
-   a new iteration, and request a fresh independent review.
-6. Allow at most three iterations per run. If none is approved, fail closed
-   and leave the previous public `latest.json` untouched.
-7. Only the exact candidate with a passing `approved` review may proceed to
-   archive/publication. Commit its approved review folder as audit evidence.
+6. A `revise` verdict, failed check, material finding, missing review, or hash
+   mismatch forbids archive, commit, sync, and push. First run
+   `econ/record_pm_feedback.py` to persist the rejection as latest + immutable
+   history. Then re-trigger affected collection, follow every PM instruction,
+   rebuild the whole candidate, freeze a new iteration, and request a fresh
+   independent review.
+7. Allow at most three iterations per run. If none is approved, fail closed,
+   leave the previous public `latest.json` untouched, and carry the open
+   feedback into the next cron run.
+8. Only the exact candidate with a passing `approved` review may proceed to
+   archive/publication. Commit its approved review folder and feedback history
+   as audit evidence.
 
 The PM review is a hard publication gate, not editorial commentary. Never turn
 “approved if fixed” into approval, and never edit the PM's review artifact.
