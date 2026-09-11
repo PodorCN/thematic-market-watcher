@@ -1,0 +1,25 @@
+{
+  "candidate_sha256": "398d10d20e61fd73902728a5e54c093dcad042c17201d495c44449d4de8fc89f",
+  "open_feedback": "review/fed-boc/feedback/latest.json",
+  "prior_pm_review": "review/fed-boc/2026-09-11/iteration-04/pm-review.json",
+  "remediation_evidence_mapping": [
+    {
+      "field": "market.as_of_close and market.tickers[*]",
+      "feedback": "Iteration-04 critical finding: Sep 10 bars were falsely labelled Sep 11 intraday",
+      "remediation": "Re-triggered all 10 Yahoo 5-day/1-minute collections after US and Toronto opens; selected actual Sep 11 bars, preserved exact source timestamps, recomputed 1d from Sep 10 and 1w from Sep 4, and rebuilt every label/direction",
+      "evidence": "C:/Users/zixia/tmp_verify/macro-2026-09-11/post-cpi/facts.json; all ten observed_at_toronto=2026-09-11T09:30:00-04:00"
+    },
+    {
+      "field": "drivers.fed.hawkish[id=fed_hawk_waller_20260903].reason",
+      "feedback": "Do not mix Sep 11 CPI into Sep 3 Waller card without refreshing timestamp",
+      "remediation": "Restored reason to speech-only September 3 reaction-function evidence; separate CPI driver exclusively carries September 11 result",
+      "evidence": "Candidate Waller reason and fed_hawk_cpi_20260911"
+    },
+    {
+      "field": "post-CPI source contract",
+      "feedback": "Preserve verified CPI, official policy, revisions, proxy caveats and null BoC distribution",
+      "remediation": "Preserved all verified fields; updated as_of after recollection and froze exact replacement bytes",
+      "evidence": "candidate digest 398d10d20e61fd73902728a5e54c093dcad042c17201d495c44449d4de8fc89f; BLS cpi.nr0.htm; fresh economic calendar; facts.json"
+    }
+  ]
+}

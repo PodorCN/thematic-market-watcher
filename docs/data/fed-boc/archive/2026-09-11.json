@@ -1,7 +1,7 @@
 {
-  "as_of": "2026-09-11T02:55:56-04:00",
-  "version": "2026-09-11-003",
-  "verification_note": "Sep 11 pre-market iteration-03 exhaustive full-artifact rebuild after PM review 87d9a22c0739. Every residual field was recollected/audited: GDP comparison now uses one revised vintage; all remaining settlement language was removed; completed Yahoo session dates are distinguished from Sep 11 collection time; oil inception versus refreshed observation chronology is explicit; Waller uses the official 08:30 ET feed timestamp; PPI provenance now records successful BLS actuals plus TradingEconomics consensus; Canadian legacy-core naming is consistent. Previously verified revised labour facts, complete cash strip, long-end closes, Fed desk-proxy caveats, Waller conditional framing, and null BoC distribution are preserved. Candidate only pending the third and final independent PM review.",
+  "as_of": "2026-09-11T09:47:28-04:00",
+  "version": "2026-09-11-006",
+  "verification_note": "Sep 11 post-CPI full candidate rebuild. Official BLS CPI and fresh FXStreet actual/consensus were recollected after the 08:30 ET release; Fed desk proxy and all ten market instruments were recollected from timestamped Yahoo intraday bars. Prior iteration-03 approved official policy, revision-sensitive labour, communications, and BoC evidence is preserved. Candidate only pending a fresh exact-byte independent PM review.",
   "timezone": "America/Toronto",
   "meetings": {
     "fed": {
@@ -16,19 +16,19 @@
       },
       "pricing": {
         "cut_25bp": 0.0,
-        "hold": 0.29,
-        "hike_25bp": 0.71,
-        "source": "Desk-implied scenario weights from Yahoo ZQU26 completed daily close + NY Fed EFFR (not CME FedWatch probabilities)",
+        "hold": 0.16,
+        "hike_25bp": 0.84,
+        "source": "Desk-implied scenario weights from timestamped Yahoo ZQU26 intraday bar + NY Fed EFFR (not CME FedWatch probabilities)",
         "source_url": "https://finance.yahoo.com/quote/ZQU26.CBT",
-        "as_of_pricing": "2026-09-11T02:33:30-04:00",
-        "proxy_check": "Sep 10 ZQU26 completed Yahoo daily close row 96.2875 => monthly average 3.7125%. With EFFR 3.63% effective 2026-09-09 for 16 pre-decision days and 14 post-decision days: post=(30*3.7125-16*3.63)/14=3.8068%. Mapping only to adjacent hold 3.63% / hike 3.88% legs gives rounded desk scenario weights hold 0.29 / hike 0.71 / cut 0.00. A +/-1bp contract-price sensitivity moves hike weight by about -/+8.6pp. This is not a directly observed probability distribution.",
+        "as_of_pricing": "2026-09-11T09:35:00-04:00",
+        "proxy_check": "ZQU26 Yahoo intraday bar 96.272499 => monthly average 3.727501%. EFFR 3.63%; 16 pre/14 post solve gives 3.838931%. Adjacent hold/hike desk interpolation gives hold 0.164, hike 0.836; not CME FedWatch probabilities.",
         "proxy_source_url": "https://finance.yahoo.com/quote/ZQU26.CBT",
         "implied_rate_before": 3.63,
-        "implied_rate_after": 3.806789,
+        "implied_rate_after": 3.838931,
         "effr_source_url": "https://markets.newyorkfed.org/api/rates/unsecured/effr/last/5.json",
         "cme_access_note": "Direct CME FedWatch returned a 602-byte blocked body; no direct CME distribution was used.",
-        "price_session_date": "2026-09-10",
-        "collection_note": "Yahoo completed daily close field for Sep 10, collected 2026-09-11T02:33:30-04:00; not certified exchange settlement evidence."
+        "price_session_date": "2026-09-11 intraday",
+        "collection_note": "Yahoo intraday ZQU26 bar 96.272499 observed 2026-09-11T09:35:00-04:00, collected 2026-09-11T09:47:28-04:00; mutable intraday proxy, not an official settlement or direct probability distribution."
       }
     },
     "boc": {
@@ -283,11 +283,36 @@
             "delta_label": "CPI-dependent hold/hike framework",
             "delta_type": "neutral"
           },
-          "reason": "Waller explicitly framed continued August disinflation as support for holding and hotter inflation as potential justification for a hike. This two-sided reaction function is included at only 1.0 to avoid double counting Warsh and the July dissent; it is not a commitment. No other newer decision-specific Fed communication was found in the refreshed official feeds.",
+          "reason": "Waller explicitly framed continued August disinflation as support for holding and hotter inflation as potential justification for a hike. This two-sided September 3 reaction function remains at only 1.0 to avoid double counting Warsh and the July dissent; the separate September 11 CPI driver records the later inflation evidence.",
           "market_validation": [],
           "tags": [
             "HIGH",
             "Fed communication"
+          ]
+        },
+        {
+          "id": "fed_hawk_cpi_20260911",
+          "icon": "CPI",
+          "title": "Core CPI Reaccelerates Above Consensus",
+          "summary": "August core CPI rose 0.3% m/m versus 0.2% expected, while headline CPI matched at 0.4%.",
+          "published_at_toronto": "2026-09-11T08:30:00-04:00",
+          "observed_at_toronto": "2026-09-11T08:30:00-04:00",
+          "source": "U.S. Bureau of Labor Statistics CPI release (actuals) + FXStreet calendar (consensus)",
+          "source_url": "https://www.bls.gov/news.release/cpi.nr0.htm",
+          "importance": "HIGH",
+          "weight": 1.5,
+          "data": {
+            "actual": "headline +0.4% MoM / +3.4% YoY; core +0.3% MoM / +2.4% YoY",
+            "forecast": "headline +0.4% / +3.4%; core +0.2% / +2.4%",
+            "previous": "headline +0.1% / +3.4%; core +0.2% / +2.5%",
+            "delta_label": "core MoM beat +0.1pp; other measures matched",
+            "delta_type": "beat"
+          },
+          "reason": "The core monthly acceleration is hawkish for the September FOMC and directly tests Waller’s hold-versus-hike reaction function, but unchanged core y/y and in-line headline readings make the release mixed and cap weight at 1.5.",
+          "market_validation": [],
+          "tags": [
+            "HIGH",
+            "CPI"
           ]
         }
       ]
@@ -435,135 +460,161 @@
   },
   "market": {
     "since": "2026-07-30",
-    "as_of_close": "2026-09-10T16:00:00-04:00",
+    "as_of_close": "2026-09-11T09:46:00-04:00",
     "tickers": [
       {
         "symbol": "SPY",
-        "price": 757.83,
-        "chg_1d": -0.005994,
-        "chg_1w": -0.01984,
-        "label_1d": "-0.60% Sep 10 close",
-        "label_1w": "-1.98% w (Sep 3-10)",
-        "type_1d": "down",
-        "type_1w": "down"
+        "price": 765.38,
+        "raw_price": 765.3800048828125,
+        "return_base_1d": 757.8300170898438,
+        "return_base_1w": 770.1900024414062,
+        "chg_1d": 0.009963,
+        "chg_1w": -0.006245,
+        "label_1d": "+1.00% Sep 11 i/d",
+        "label_1w": "-0.62% w (Sep 4-11 i/d)",
+        "type_1d": "up",
+        "type_1w": "down",
+        "observed_at_toronto": "2026-09-11T09:46:00-04:00",
+        "source_url": "https://finance.yahoo.com/quote/SPY"
       },
       {
         "symbol": "QQQ",
-        "price": 708.69,
-        "chg_1d": -0.010638,
-        "chg_1w": -0.012513,
-        "label_1d": "-1.06% Sep 10 close",
-        "label_1w": "-1.25% w (Sep 3-10)",
-        "type_1d": "down",
-        "type_1w": "down"
+        "price": 716.21,
+        "raw_price": 716.2100219726562,
+        "return_base_1d": 708.6900024414062,
+        "return_base_1w": 718.9600219726562,
+        "chg_1d": 0.010611,
+        "chg_1w": -0.003825,
+        "label_1d": "+1.06% Sep 11 i/d",
+        "label_1w": "-0.38% w (Sep 4-11 i/d)",
+        "type_1d": "up",
+        "type_1w": "down",
+        "observed_at_toronto": "2026-09-11T09:46:00-04:00",
+        "source_url": "https://finance.yahoo.com/quote/QQQ"
       },
       {
         "symbol": "IWM",
-        "price": 287.7,
-        "chg_1d": -0.010116,
-        "chg_1w": -0.025373,
-        "label_1d": "-1.01% Sep 10 close",
-        "label_1w": "-2.54% w (Sep 3-10)",
-        "type_1d": "down",
-        "type_1w": "down"
+        "price": 290.21,
+        "raw_price": 290.2149963378906,
+        "return_base_1d": 287.70001220703125,
+        "return_base_1w": 296.010009765625,
+        "chg_1d": 0.008742,
+        "chg_1w": -0.019577,
+        "label_1d": "+0.87% Sep 11 i/d",
+        "label_1w": "-1.96% w (Sep 4-11 i/d)",
+        "type_1d": "up",
+        "type_1w": "down",
+        "observed_at_toronto": "2026-09-11T09:46:00-04:00",
+        "source_url": "https://finance.yahoo.com/quote/IWM"
       },
       {
         "symbol": "XLI",
-        "price": 170.55,
-        "chg_1d": -0.007218,
-        "chg_1w": -0.022972,
-        "label_1d": "-0.72% Sep 10 close",
-        "label_1w": "-2.30% w (Sep 3-10)",
-        "type_1d": "down",
-        "type_1w": "down"
+        "price": 172.63,
+        "raw_price": 172.6300048828125,
+        "return_base_1d": 170.5500030517578,
+        "return_base_1w": 175.27000427246094,
+        "chg_1d": 0.012196,
+        "chg_1w": -0.015062,
+        "label_1d": "+1.22% Sep 11 i/d",
+        "label_1w": "-1.51% w (Sep 4-11 i/d)",
+        "type_1d": "up",
+        "type_1w": "down",
+        "observed_at_toronto": "2026-09-11T09:46:00-04:00",
+        "source_url": "https://finance.yahoo.com/quote/XLI"
       },
       {
         "symbol": "XLU",
-        "price": 42.52,
-        "chg_1d": -0.009781,
-        "chg_1w": -0.011852,
-        "label_1d": "-0.98% Sep 10 close",
-        "label_1w": "-1.19% w (Sep 3-10)",
-        "type_1d": "down",
-        "type_1w": "down"
+        "price": 42.78,
+        "raw_price": 42.779998779296875,
+        "return_base_1d": 42.52000045776367,
+        "return_base_1w": 43.08000183105469,
+        "chg_1d": 0.006115,
+        "chg_1w": -0.006964,
+        "label_1d": "+0.61% Sep 11 i/d",
+        "label_1w": "-0.70% w (Sep 4-11 i/d)",
+        "type_1d": "up",
+        "type_1w": "down",
+        "observed_at_toronto": "2026-09-11T09:46:00-04:00",
+        "source_url": "https://finance.yahoo.com/quote/XLU"
       },
       {
         "symbol": "XLF",
-        "price": 56.87,
-        "chg_1d": -0.00333,
-        "chg_1w": -0.028859,
-        "label_1d": "-0.33% Sep 10 close",
-        "label_1w": "-2.89% w (Sep 3-10)",
-        "type_1d": "down",
-        "type_1w": "down"
+        "price": 57.15,
+        "raw_price": 57.150001525878906,
+        "return_base_1d": 56.869998931884766,
+        "return_base_1w": 58.099998474121094,
+        "chg_1d": 0.004924,
+        "chg_1w": -0.016351,
+        "label_1d": "+0.49% Sep 11 i/d",
+        "label_1w": "-1.64% w (Sep 4-11 i/d)",
+        "type_1d": "up",
+        "type_1w": "down",
+        "observed_at_toronto": "2026-09-11T09:46:00-04:00",
+        "source_url": "https://finance.yahoo.com/quote/XLF"
       },
       {
         "symbol": "XLE",
-        "price": 64.93,
-        "chg_1d": -0.005818,
-        "chg_1w": 0.004797,
-        "label_1d": "-0.58% Sep 10 close",
-        "label_1w": "+0.48% w (Sep 3-10)",
-        "type_1d": "down",
-        "type_1w": "up"
+        "price": 65.16,
+        "raw_price": 65.16000366210938,
+        "return_base_1d": 64.93000030517578,
+        "return_base_1w": 64.05999755859375,
+        "chg_1d": 0.003542,
+        "chg_1w": 0.017171,
+        "label_1d": "+0.35% Sep 11 i/d",
+        "label_1w": "+1.72% w (Sep 4-11 i/d)",
+        "type_1d": "up",
+        "type_1w": "up",
+        "observed_at_toronto": "2026-09-11T09:46:00-04:00",
+        "source_url": "https://finance.yahoo.com/quote/XLE"
       },
       {
         "symbol": "TLT",
-        "price": 80.78,
-        "chg_1d": -0.011624,
-        "chg_1w": -0.015718,
-        "label_1d": "-1.16% Sep 10 close",
-        "label_1w": "-1.57% w (Sep 3-10)",
-        "type_1d": "down",
-        "type_1w": "down"
+        "price": 81.39,
+        "raw_price": 81.38999938964844,
+        "return_base_1d": 80.77999877929688,
+        "return_base_1w": 82.20999908447266,
+        "chg_1d": 0.007551,
+        "chg_1w": -0.009974,
+        "label_1d": "+0.76% Sep 11 i/d",
+        "label_1w": "-1.00% w (Sep 4-11 i/d)",
+        "type_1d": "up",
+        "type_1w": "down",
+        "observed_at_toronto": "2026-09-11T09:46:00-04:00",
+        "source_url": "https://finance.yahoo.com/quote/TLT"
       },
       {
         "symbol": "GLD",
-        "price": 396.36,
-        "chg_1d": -0.01733,
-        "chg_1w": -0.033787,
-        "label_1d": "-1.73% Sep 10 close",
-        "label_1w": "-3.38% w (Sep 3-10)",
-        "type_1d": "down",
-        "type_1w": "down"
+        "price": 403.23,
+        "raw_price": 403.2250061035156,
+        "return_base_1d": 396.3599853515625,
+        "return_base_1w": 406.7699890136719,
+        "chg_1d": 0.01732,
+        "chg_1w": -0.008715,
+        "label_1d": "+1.73% Sep 11 i/d",
+        "label_1w": "-0.87% w (Sep 4-11 i/d)",
+        "type_1d": "up",
+        "type_1w": "down",
+        "observed_at_toronto": "2026-09-11T09:46:00-04:00",
+        "source_url": "https://finance.yahoo.com/quote/GLD"
       },
       {
         "symbol": "ZEB.TO",
-        "price": 74.1,
-        "chg_1d": 0.003249,
-        "chg_1w": -0.023201,
-        "label_1d": "+0.32% Sep 10 close",
-        "label_1w": "-2.32% w (Sep 3-10)",
+        "price": 74.53,
+        "raw_price": 74.52999877929688,
+        "return_base_1d": 74.0999984741211,
+        "return_base_1w": 75.47000122070312,
+        "chg_1d": 0.005803,
+        "chg_1w": -0.012455,
+        "label_1d": "+0.58% Sep 11 i/d",
+        "label_1w": "-1.25% w (Sep 4-11 i/d)",
         "type_1d": "up",
-        "type_1w": "down"
+        "type_1w": "down",
+        "observed_at_toronto": "2026-09-11T09:46:00-04:00",
+        "source_url": "https://finance.yahoo.com/quote/ZEB.TO"
       }
     ]
   },
   "calendar": [
-    {
-      "id": "us_cpi_20260911",
-      "datetime_toronto": "2026-09-11T08:30:00-04:00",
-      "datetime_utc": "2026-09-11T12:30:00Z",
-      "currency": "USD",
-      "country": "US",
-      "event": "US CPI (headline and core)",
-      "impact": "HIGH",
-      "forecast": {
-        "headline_MoM": "0.4%",
-        "core_MoM": "0.2%",
-        "headline_YoY": "3.4%",
-        "core_YoY": "2.4%"
-      },
-      "previous": {
-        "headline_MoM": "0.1%",
-        "core_MoM": "0.2%",
-        "headline_YoY": "3.4%",
-        "core_YoY": "2.5%"
-      },
-      "logic": "Fresh Sep 10 FXStreet archive. CPI is the main inflation arbiter before Sep FOMC.",
-      "hawk_if": "High to Hawk",
-      "dove_if": "Low to Dove"
-    },
     {
       "id": "us_uom_20260911",
       "datetime_toronto": "2026-09-11T10:00:00-04:00",
@@ -624,7 +675,7 @@
       "impact": "HIGH",
       "forecast": {},
       "previous": {},
-      "logic": "Sep 10 ZQU26 Yahoo daily close/EFFR desk model: cut 0% / hold 29% / hike 71%, rounded; +/-1bp contract sensitivity changes hike weight by about 8.6pp. Direct CME distribution unavailable.",
+      "logic": "Sep 11 09:35 ET Yahoo ZQU26 intraday/EFFR desk model: cut 0% / hold 16% / hike 84%, rounded. Direct CME distribution unavailable; intraday proxy is mutable.",
       "hawk_if": "Showdown",
       "dove_if": "Showdown"
     },
@@ -681,6 +732,6 @@
   ],
   "history": [],
   "snapshot_date": "2026-09-11",
-  "archived_at": "2026-09-11T07:06:59.479589Z",
+  "archived_at": "2026-09-11T13:55:48.832213Z",
   "stale": false
 }

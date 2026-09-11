@@ -1,0 +1,31 @@
+{
+  "candidate_sha256": "e67074adad21b42b12a947485ffd754b117c271f0a1488f20177bc325c2366d8",
+  "open_feedback": "review/fed-boc/feedback/latest.json",
+  "prior_pm_review": "review/fed-boc/2026-09-11/iteration-05/pm-review.json",
+  "remediation_evidence_mapping": [
+    {
+      "field": "iteration-05 market finding",
+      "feedback": "Recollect only finalized bars; persist unrounded observations/bases; verify by second retrieval",
+      "remediation": "Re-triggered complete 10-symbol collection at 09:46 ET, selected the second-last available one-minute bar so each was finalized, stored raw_price and full-precision 1d/1w bases, recomputed all fields, and re-fetched each exact timestamp/value with 1e-10 assertion before freeze",
+      "evidence": "C:/Users/zixia/tmp_verify/macro-2026-09-11/post-cpi/facts.json; candidate market.tickers raw fields; helper executed exit 0"
+    },
+    {
+      "field": "market labels and chronology",
+      "feedback": "Every label date must equal source observation date and observations precede as_of",
+      "remediation": "All ten actual Sep 11 bars have explicit source timestamps; labels say Sep 11 i/d and Sep 4-11 i/d; as_of was stamped only after all collection/assertions",
+      "evidence": "candidate as_of 2026-09-11T09:47:28-04:00 and per-symbol observed_at timestamps"
+    },
+    {
+      "field": "Waller/CPI separation",
+      "feedback": "Do not refresh Waller prose with CPI under old timestamp",
+      "remediation": "Restored Waller to speech-only Sep 3 evidence and kept Sep 11 CPI solely in distinct CPI driver",
+      "evidence": "candidate driver IDs fed_hawk_waller_20260903 and fed_hawk_cpi_20260911"
+    },
+    {
+      "field": "all prior approved/remediated evidence",
+      "feedback": "Preserve official policy, revisions, proxy caveats and null BoC distribution",
+      "remediation": "Whole candidate rebuilt from approved iteration-03 base with post-CPI additions and both later PM remediations",
+      "evidence": "iteration-06 candidate"
+    }
+  ]
+}

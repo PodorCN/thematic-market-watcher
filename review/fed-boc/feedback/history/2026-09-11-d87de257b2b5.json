@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0",
+  "status": "open",
+  "reviewed_at": "2026-09-11T09:25:20-04:00",
+  "candidate_sha256": "beb38bf97d24be1585b5276f00dea622a89fe466827f58caf5ea94bac2ea43d6",
+  "review_sha256": "d87de257b2b52e4c57ef02a3b2038ae0c07cc1fae7c64f8c881d4226249dbcee",
+  "source_review": "review/fed-boc/2026-09-11/iteration-04/pm-review.json",
+  "executive_summary": "Revise. I independently reviewed the complete 34,450-byte post-CPI iteration-04 candidate, reproduced its SHA-256, and matched both candidate.sha256 and the handoff digest. The prior iteration-03 approval was not reused. Fresh official retrieval confirms the policy records, meeting schedule, CPI actuals, active macro releases, communications, EFFR, CRA/CORRA evidence, and preserved revision-sensitive facts. The post-CPI Fed desk interpolation is arithmetically correct and explicitly non-direct; the BoC single-meeting distribution correctly remains unavailable and null. Publication is nevertheless blocked because the entire market strip is not September 11 intraday data: every instrument is timestamped September 10 15:59 while every label claims September 11 intraday, and fresh Yahoo minute history shows materially different post-CPI September 11 observations for the liquid U.S. instruments. The strip therefore manufactures near-zero same-day returns by comparing a prior-session minute against the same session's close and omits the actual post-CPI transmission. In addition, the Waller reason was refreshed with the September 11 CPI result while its observation timestamp remains September 3, violating the explicit driver-refresh contract. These exact bytes are not safe for trading-facing publication.",
+  "failed_checks": [
+    "decision_usefulness",
+    "drivers",
+    "freshness",
+    "market_validation"
+  ],
+  "findings": [
+    {
+      "severity": "critical",
+      "field": "market.as_of_close; market.tickers[*].price, chg_1d, chg_1w, label_1d, label_1w, observed_at_toronto; verification_note",
+      "issue": "The candidate presents prior-session minute observations as September 11 post-CPI intraday market data, so all ten displayed same-day and weekly market-validation records have false date semantics and the liquid U.S. prices omit the actual post-release move.",
+      "evidence": "Every market record declares observed_at_toronto=2026-09-10T15:59:00-04:00 and market.as_of_close is also September 10 15:59, yet all labels say 'Sep 11 i/d' or 'Sep 4-11 i/d' and the verification note claims timestamped post-CPI Yahoo intraday recollection. Executable Yahoo minute-history retrieval for the candidate freeze window produced genuine September 11 bars: at 09:18 Toronto SPY was 765.0646 versus candidate 757.88, QQQ 716.2396 versus 708.66, IWM 290.6395 versus 287.74, TLT 81.36 versus 80.79, and GLD 402.0404 versus 396.45. XLI and XLF also had September 11 premarket observations before the freeze. ZEB.TO had no September 11 bar before the Toronto open and therefore cannot truthfully be labelled September 11 intraday. Independent daily-history arithmetic shows the candidate's near-zero chg_1d values are calculated from its September 10 15:59-like values against the September 10 daily close, not from a post-CPI observation; its weekly values use those same stale values against September 4. The supplied facts.json itself preserves September 10 15:59 timestamps for all ten records, contradicting its intraday labels.",
+      "pnl_impact": "The strip hides a material post-CPI risk-on and duration/gold response and can cause a PM to conclude that CPI produced essentially no cross-asset move. That directly corrupts hedge timing, rates/equity transmission assessment, and confidence in the 84% desk hike scenario.",
+      "instruction": "Recollect each instrument from an actual timestamped September 11 observation no later than the next candidate freeze. For every U.S. instrument, persist the exact source timestamp and unrounded price, recompute 1d from the September 10 completed close and 1w from a clearly defined September 4 base, then regenerate all prices, returns, labels and directions together. For ZEB.TO, either wait for a genuine September 11 Toronto-session observation or retain September 10 with explicit stale/previous-close labels; do not call it intraday. Set market.as_of_close to the common real observation convention or explicitly record per-instrument asynchronous times, and independently assert label dates against timestamps before freezing a new candidate."
+    },
+    {
+      "severity": "minor",
+      "field": "drivers.fed.hawkish[id=fed_hawk_waller_20260903].reason and observed_at_toronto",
+      "issue": "The Waller driver incorporates the newly released September 11 CPI result in its reason but retains a September 3 observation timestamp, contrary to the mandatory whole-driver refresh rule.",
+      "evidence": "Iteration-03's approved Waller reason described only the September 3 conditional reaction function. Iteration-04 adds 'The Sep 11 CPI test was mixed-hawkish: core MoM beat by 0.1pp while headline and yearly rates matched' but leaves observed_at_toronto at 2026-09-03T08:30:00-04:00. BACKEND_DATA_SPEC.md section 9 states that changing data, summary, or reason requires observed_at_toronto to be the new reading's actual observation time. The separate CPI driver correctly records 2026-09-11T08:30:00-04:00.",
+      "pnl_impact": "The frontend age-decays a card using observed_at_toronto, so the mixed old-speech/new-CPI record is mis-aged and obscures how much CPI evidence is already counted in the rope. This weakens score auditability and can either underweight the refresh or encourage double counting with the separate CPI driver.",
+      "instruction": "Either restore the Waller reason to speech-only evidence and leave its September 3 timestamp, or treat the card as refreshed at the September 11 08:30 CPI observation, update observed_at_toronto, and explicitly reassess its side and weight against the separate CPI card to prevent double counting. Run the whole-driver refresh audit before freezing the replacement candidate."
+    }
+  ],
+  "required_recollection": [
+    "Recollect each instrument from an actual timestamped September 11 observation no later than the next candidate freeze. For every U.S. instrument, persist the exact source timestamp and unrounded price, recompute 1d from the September 10 completed close and 1w from a clearly defined September 4 base, then regenerate all prices, returns, labels and directions together. For ZEB.TO, either wait for a genuine September 11 Toronto-session observation or retain September 10 with explicit stale/previous-close labels; do not call it intraday. Set market.as_of_close to the common real observation convention or explicitly record per-instrument asynchronous times, and independently assert label dates against timestamps before freezing a new candidate."
+  ],
+  "operator_instructions": [
+    "Do not publish or edit this frozen candidate. Build a new immutable iteration after recollecting and recomputing the complete post-CPI market strip and resolving the Waller whole-driver timestamp contract.",
+    "Preserve the verified CPI actuals/consensus, official policy facts, revised macro releases, Fed proxy arithmetic and caveats, and null BoC distribution; do not carry forward any September 11 intraday market value or label from this rejected strip without source-timestamp verification.",
+    "Before freezing the replacement, execute assertions that each market label date equals its source observation date, every return reproduces from unrounded source prices and stated bases, no closed-market instrument is called intraday, every refreshed driver reason has a matching observation timestamp, and all observations precede as_of.",
+    "Compute the new candidate digest from persisted bytes and obtain a fresh independent unconditional PM review. This verdict is revise and supplies no contingent publication authority."
+  ],
+  "next_run_contract": [
+    "Read this feedback before collecting or editing the next candidate.",
+    "Re-trigger collection for every affected source and claim.",
+    "Rebuild the whole internally consistent candidate; do not patch prose only.",
+    "Submit the rebuilt candidate to a fresh independent PM review.",
+    "Do not publish until an exact-byte-bound approved review passes the gate."
+  ]
+}

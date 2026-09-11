@@ -1,16 +1,18 @@
 {
   "schema_version": "1.0",
-  "status": "open",
+  "reviewer_role": "independent_portfolio_manager",
   "reviewed_at": "2026-09-11T09:42:31-04:00",
   "candidate_sha256": "398d10d20e61fd73902728a5e54c093dcad042c17201d495c44449d4de8fc89f",
-  "review_sha256": "fc45a78e55605beeb3d22441bad38161b8cdd85b35e80d9b92b47cfbff9f0efd",
-  "source_review": "review/fed-boc/2026-09-11/iteration-05/pm-review.json",
+  "verdict": "revise",
   "executive_summary": "Revise. I independently read the complete runbook, backend contracts, review schema, controlling feedback, and every iteration-01 through iteration-05 candidate/checksum/handoff/review artifact, then rehashed the exact 34,457-byte iteration-05 candidate. Its SHA-256 matches candidate.sha256 and pm-handoff.json. Fresh official retrieval and preserved evidence support the Fed and BoC policy records, CPI actuals and consensus, communications, EFFR, the sensitive non-direct Fed interpolation, and the null BoC single-meeting distribution. Iteration-05 also correctly restores Waller to speech-only September 3 evidence while keeping September 11 CPI in a separate driver. Publication remains blocked because the market evidence was collected at 09:30:58, before the 09:30 one-minute bars had finalized, but all ten records are stamped 09:30:00. Fresh Yahoo retrieval after bar finalization produces different 09:30 closes for SPY, QQQ, IWM and XLU, changing prices and several returns/labels. The supplied facts.json preserves only rounded transient prices, so the claimed exact timestamp and unrounded arithmetic cannot be independently reproduced. The iteration-04 date defect is fixed, but its executable finalized-bar and unrounded-evidence contract is not fully satisfied.",
-  "failed_checks": [
-    "decision_usefulness",
-    "freshness",
-    "market_validation"
-  ],
+  "checks": {
+    "official_policy": "pass",
+    "pricing": "pass",
+    "drivers": "pass",
+    "market_validation": "fail",
+    "freshness": "fail",
+    "decision_usefulness": "fail"
+  },
   "findings": [
     {
       "severity": "major",
@@ -21,20 +23,20 @@
       "instruction": "Recollect the complete ten-instrument strip only after the selected one-minute bar has closed, or label and timestamp a true point-in-time quote at its actual sub-minute collection time rather than the bar start. Persist full-precision raw observation prices and full-precision Sep 10/Sep 4 bases in durable evidence, recompute every 1d/1w return from those unrounded values, regenerate prices, labels and directions together, and assert the frozen values against a second retrieval of the finalized bar before creating a new immutable candidate."
     }
   ],
-  "required_recollection": [
-    "Recollect the complete ten-instrument strip only after the selected one-minute bar has closed, or label and timestamp a true point-in-time quote at its actual sub-minute collection time rather than the bar start. Persist full-precision raw observation prices and full-precision Sep 10/Sep 4 bases in durable evidence, recompute every 1d/1w return from those unrounded values, regenerate prices, labels and directions together, and assert the frozen values against a second retrieval of the finalized bar before creating a new immutable candidate."
+  "pnl_risks": [
+    "Exact-byte binding passes: independently computed SHA-256 398d10d20e61fd73902728a5e54c093dcad042c17201d495c44449d4de8fc89f matches candidate.json, candidate.sha256 and pm-handoff.json; all five iteration candidate/checksum/handoff bindings also rehash correctly.",
+    "Official policy passes fresh direct-source checks: the Fed July 29 statement supports the 3.50-3.75% hold and Hammack, Kashkari and Logan preference for a 25bp hike; the official calendar supports the September 15-16 SEP meeting. The BoC September 2 statement and upcoming-events page support the 2.25% target, administered rates and October 28 09:45 decision/MPR.",
+    "CPI passes independent evidence inspection: the official BLS release supports headline +0.4% m/m and +3.4% y/y and core +0.3% m/m and +2.4% y/y; the refreshed FXStreet archive supports consensus +0.4%, +3.4%, +0.2% and +2.4% and prior +0.1%, +3.4%, +0.2% and +2.5%. The mixed-hawkish 1.5 weight is defensible.",
+    "Waller/CPI separation passes: the Waller card contains only his September 3 conditional reaction function and through-July inflation discussion, retains the official 08:30 Toronto speech timestamp, and explicitly points to the distinct September 11 CPI card for the later release. Fresh speech text supports holding on continued progress, considering a hike on hot inflation, policy only slightly restrictive, and three-month core inflation easing from 4.76% to 3.05%.",
+    "Fed pricing arithmetic passes: Yahoo ZQU26 96.27249908447266 and EFFR 3.63% imply a 3.7275009155% monthly average, 3.8389305333% post-decision rate, 83.5722133% adjacent-leg hike weight and 16.4277867% hold weight, matching 3.838931 and rounded 84/16. This remains a highly sensitive desk interpolation, not a direct probability distribution; zero cut is a model restriction.",
+    "BoC pricing passes the unavailable-state contract: cut, hold, hike and implied_rate_after are null, probability_status is unavailable, and the CRA quarterly observable is not allocated to October. The candidate's 97.6125 midpoint implies 2.3875%; fresh TMX data later moved, reinforcing that this is a dated observable rather than a meeting probability.",
+    "Driver finite-number, pricing-contract and timestamp-quality validators pass, and the focused PM gate/feedback/archive tests returned 13 passed. These mechanical passes do not validate the transient market observations.",
+    "The post-CPI direction is still broadly credible: equities, TLT and GLD were above September 10 closes at the finalized 09:30 bar. Approval is withheld because the exact prices and returns are not reproducible under the claimed observation convention, not because the broad transmission sign is reversed."
   ],
   "operator_instructions": [
     "Do not publish or edit this frozen candidate. Create a new immutable iteration after recollecting and recomputing the entire market strip under one reproducible finalized-bar or true point-in-time quote convention.",
     "Preserve the verified official policy facts, CPI card, speech-only Waller card, revised labour and GDP evidence, Fed proxy caveats and arithmetic, and null BoC distribution; do not alter them merely to repair the market evidence.",
     "Include full-precision raw prices, full-precision return bases, source epochs converted to Toronto time, collection time after bar close, and executable per-symbol arithmetic in the next evidence package and handoff.",
     "Rehash the persisted replacement bytes and obtain a fresh independent unconditional PM review. This verdict is revise and grants no contingent publication authority."
-  ],
-  "next_run_contract": [
-    "Read this feedback before collecting or editing the next candidate.",
-    "Re-trigger collection for every affected source and claim.",
-    "Rebuild the whole internally consistent candidate; do not patch prose only.",
-    "Submit the rebuilt candidate to a fresh independent PM review.",
-    "Do not publish until an exact-byte-bound approved review passes the gate."
   ]
 }

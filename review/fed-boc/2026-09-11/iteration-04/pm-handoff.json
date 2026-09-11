@@ -1,0 +1,37 @@
+{
+  "candidate_sha256": "beb38bf97d24be1585b5276f00dea622a89fe466827f58caf5ea94bac2ea43d6",
+  "open_feedback": "review/fed-boc/feedback/latest.json",
+  "prior_pm_review": "review/fed-boc/2026-09-11/iteration-03/pm-review.json",
+  "remediation_evidence_mapping": [
+    {
+      "field": "post-CPI catalyst",
+      "feedback": "Iteration-03 approval explicitly expires after CPI and requires a new freeze",
+      "remediation": "Recollected official BLS CPI actuals and fresh FXStreet Actual/Forecast/Previous; removed released CPI calendar row and added a distinct stable CPI driver",
+      "evidence": "BLS cpi.nr0.htm; archive/2026-09-11/economic_calendar.json fetched 2026-09-11T13:15:43Z"
+    },
+    {
+      "field": "meetings.fed.pricing",
+      "feedback": "Do not carry pre-CPI scenario weights after catalyst",
+      "remediation": "Recollected timestamped Yahoo ZQU26 intraday bar and NY Fed EFFR; rebuilt interpolation and labelled it mutable/non-direct",
+      "evidence": "C:/Users/zixia/tmp_verify/macro-2026-09-11/post-cpi/facts.json"
+    },
+    {
+      "field": "market.tickers[*]",
+      "feedback": "Current structured market validation after catalyst",
+      "remediation": "Recollected all 10 instruments from actual Yahoo 1m bars; recomputed 1d versus Sep 10 and 1w versus Sep 4",
+      "evidence": "facts.json market array with per-ticker timestamps and source URLs"
+    },
+    {
+      "field": "drivers.fed.hawkish[id=fed_hawk_cpi_20260911]",
+      "feedback": "Rebuild decision-useful policy context after CPI",
+      "remediation": "Added mixed-hawkish driver: core MoM +0.3% vs +0.2%, headline +0.4% inline, weight capped 1.5; updated Waller context without double counting",
+      "evidence": "BLS actuals plus freshly rendered FXStreet consensus"
+    },
+    {
+      "field": "all iteration-02 feedback",
+      "feedback": "Preserve revised GDP/labour/provenance/timestamp/core-label fixes",
+      "remediation": "Rebuilt from exact iteration-03 approved candidate and changed only post-CPI dependent fields; prior remediations preserved",
+      "evidence": "iteration-03 review 71faf144... approved; iteration-04 exact diff"
+    }
+  ]
+}
