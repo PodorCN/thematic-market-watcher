@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0",
+  "status": "open",
+  "reviewed_at": "2026-09-11T16:12:05-04:00",
+  "candidate_sha256": "c4be0389470edc66c8f4394af3abcc6d3eb9aebf779114e8282df8edac684792",
+  "review_sha256": "f46c56d7f450f0bb3f2c723e350c53a339f411406cdf12daf20758b8d5197ee8",
+  "source_review": "review/fed-boc/2026-09-11/iteration-07/pm-review.json",
+  "executive_summary": "Revise. The substantive close rebuild is materially improved: fresh independent Yahoo retrieval reproduced all ten finalized regular-session one-minute observations, every full-precision September 10 and September 4 base, all twenty returns, labels, directions and timestamps; official sources also support the Fed and BoC policy records, Michigan actual/forecast/previous values, the sensitive non-direct Fed interpolation, and the unavailable/null BoC single-meeting distribution. Publication is nevertheless forbidden. The persisted 36,574-byte candidate hashes to c4be0389470edc66c8f4394af3abcc6d3eb9aebf779114e8282df8edac684792, while candidate.sha256 and pm-handoff.json claim 64c26aed6b218f6cdd5abf84a49f3ecdb52e17909c7aefe0e37181a490138cb4. The claimed digest is the LF-normalized text hash, not the exact CRLF candidate-byte hash, so the mandatory exact-byte binding fails. The candidate also retains a stale FOMC calendar narrative stating 09:35 pricing and 16% hold/84% hike, contradicting the refreshed meeting block's 15:52 pricing and 14% hold/86% hike. These unresolved critical and major findings preclude unconditional approval.",
+  "failed_checks": [
+    "decision_usefulness",
+    "freshness",
+    "pricing"
+  ],
+  "findings": [
+    {
+      "severity": "critical",
+      "field": "review/fed-boc/2026-09-11/iteration-07/candidate.sha256; pm-handoff.json.candidate_sha256; exact candidate.json bytes",
+      "issue": "The checksum and handoff are not bound to the exact persisted candidate bytes; they hash a newline-normalized representation instead.",
+      "evidence": "Independent byte-level hashing of the persisted 36,574-byte CRLF candidate.json returns c4be0389470edc66c8f4394af3abcc6d3eb9aebf779114e8282df8edac684792. candidate.sha256 and pm-handoff.json both contain 64c26aed6b218f6cdd5abf84a49f3ecdb52e17909c7aefe0e37181a490138cb4. Replacing CRLF with LF produces 35,837 bytes and exactly the claimed 64c26aed digest. The review gate requires SHA-256 over exact immutable candidate bytes; text-mode newline normalization is not an exact-byte binding.",
+      "pnl_impact": "A review digest that does not identify the persisted bytes defeats the mutation guard: publisher and reviewer can authenticate different byte streams, undermining the audit trail and allowing a non-reviewed artifact to pass as reviewed.",
+      "instruction": "Do not edit this frozen iteration. Create a new immutable iteration by writing candidate.json once in its final byte representation, close the writer, compute SHA-256 from a binary read of those persisted bytes, write that exact digest to candidate.sha256 and pm-handoff.json, and assert in binary mode that candidate bytes remain unchanged before and after review."
+    },
+    {
+      "severity": "major",
+      "field": "calendar[id=fomc_20260916].logic versus meetings.fed.pricing",
+      "issue": "The FOMC calendar carries stale pricing timestamp and scenario weights that contradict the refreshed Fed pricing block in the same candidate.",
+      "evidence": "meetings.fed.pricing states as_of_pricing 2026-09-11T15:52:00-04:00, ZQU26 96.26999664, hold 0.14 and hike 0.86. The FOMC calendar logic instead says 'Sep 11 09:35 ET' and 'hold 16% / hike 84%'. Fresh Yahoo retrieval reproduced the 15:52 bar at 96.2699966430664; NY Fed EFFR is 3.63%. Independent arithmetic gives monthly average 3.7300033569%, post-meeting 3.8442929077%, hold 0.1428283691 and hike 0.8571716309, supporting 14/86 rather than the stale 16/84 narrative.",
+      "pnl_impact": "Two conflicting scenario distributions and observation times on one page make the priced policy state ambiguous immediately before FOMC, potentially changing hedge sizing and destroying confidence in which snapshot is current.",
+      "instruction": "Rebuild every duplicate Fed-pricing reference from one canonical pricing object in the replacement candidate. Update the FOMC calendar logic to the same source, timestamp, rounded 14/86 weights and proxy caveats, then add an executable cross-field assertion that all displayed pricing narratives match meetings.fed.pricing."
+    },
+    {
+      "severity": "minor",
+      "field": "drivers.fed.hawkish[id=fed_hawk_uom_inflation_20260911].source and source_url",
+      "issue": "The Michigan driver names FXStreet as the structured source but links to a TradingEconomics page, weakening direct traceability.",
+      "evidence": "Fresh FXStreet API data independently confirms sentiment actual 47.8, consensus 51.0 and previous 51.7, with one-year inflation 4.6 versus 4.0 and no consensus; the official University of Michigan release confirms sentiment 47.8, one-year 4.6 and long-run 3.4 versus 3.3. The candidate source_url is https://tradingeconomics.com/united-states/consumer-confidence, which returned 403 during independent retrieval and is not the named FXStreet source.",
+      "pnl_impact": "The values, mixed direction and 1.0 weight are defensible, but a mismatched source label and URL slows audit during a live inflation-expectations shock and reduces confidence in the provenance chain.",
+      "instruction": "In the replacement candidate, cite the exact FXStreet structured endpoint for actual/consensus/previous and add or prefer the official University of Michigan release URL for the published actuals; keep unavailable inflation consensus explicitly null and preserve the mixed 1.0 weighting unless new evidence changes it."
+    }
+  ],
+  "required_recollection": [
+    "Do not edit this frozen iteration. Create a new immutable iteration by writing candidate.json once in its final byte representation, close the writer, compute SHA-256 from a binary read of those persisted bytes, write that exact digest to candidate.sha256 and pm-handoff.json, and assert in binary mode that candidate bytes remain unchanged before and after review.",
+    "Rebuild every duplicate Fed-pricing reference from one canonical pricing object in the replacement candidate. Update the FOMC calendar logic to the same source, timestamp, rounded 14/86 weights and proxy caveats, then add an executable cross-field assertion that all displayed pricing narratives match meetings.fed.pricing."
+  ],
+  "operator_instructions": [
+    "Do not publish, archive, edit or reinterpret this frozen iteration-07 candidate. This verdict is revise and grants no contingent authority.",
+    "Create a new immutable iteration that preserves the verified finalized-bar strip, official policy facts, CPI and Waller separation, revised labour and GDP evidence, transparent Fed proxy caveats, and null BoC distribution while correcting the stale FOMC pricing narrative and Michigan provenance.",
+    "Generate the candidate digest only from a binary read of the final persisted file; update checksum and handoff with that exact value, then verify all three bindings and unchanged bytes immediately before requesting review.",
+    "Run executable cross-field pricing assertions and full market arithmetic reproduction, then obtain a fresh independent unconditional PM review bound to the replacement candidate's exact bytes."
+  ],
+  "next_run_contract": [
+    "Read this feedback before collecting or editing the next candidate.",
+    "Re-trigger collection for every affected source and claim.",
+    "Rebuild the whole internally consistent candidate; do not patch prose only.",
+    "Submit the rebuilt candidate to a fresh independent PM review.",
+    "Do not publish until an exact-byte-bound approved review passes the gate."
+  ]
+}

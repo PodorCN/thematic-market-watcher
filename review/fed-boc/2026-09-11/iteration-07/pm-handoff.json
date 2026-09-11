@@ -1,0 +1,31 @@
+{
+  "candidate_sha256": "64c26aed6b218f6cdd5abf84a49f3ecdb52e17909c7aefe0e37181a490138cb4",
+  "open_feedback": "review/fed-boc/feedback/latest.json",
+  "prior_pm_review": "review/fed-boc/2026-09-11/iteration-06/pm-review.json",
+  "remediation_evidence_mapping": [
+    {
+      "field": "market full strip",
+      "feedback": "Use finalized bars, full precision, same-epoch second retrieval",
+      "remediation": "Recollected all ten symbols after the close; used final regular-session bars, preserved raw prices and full-precision Sep 10/Sep 4 bases, recomputed every price/return/label/direction, and asserted same timestamp/value on a second Yahoo retrieval.",
+      "evidence": "C:/Users/zixia/tmp_verify/macro-2026-09-11/close/facts.json and candidate market.tickers[*] raw fields"
+    },
+    {
+      "field": "Fed pricing",
+      "feedback": "Preserve transparent non-direct proxy caveats",
+      "remediation": "Recollected finalized ZQU26 bar, verified exact epoch twice, and recomputed EFFR-anchored 16/14 split and adjacent-leg interpolation.",
+      "evidence": "close/facts.json ZQU26.CBT and meetings.fed.pricing arithmetic"
+    },
+    {
+      "field": "calendar/new catalyst",
+      "feedback": "Whole internally consistent rebuild after recollection",
+      "remediation": "Canonical nine-country calendar refreshed at 16:03 ET; completed Michigan watcher row removed and mixed actuals added as a separate low-weight driver without overwriting prior evidence.",
+      "evidence": "archive/2026-09-11/economic_calendar.json and fed_hawk_uom_inflation_20260911"
+    },
+    {
+      "field": "prior approved facts",
+      "feedback": "Preserve verified policy, CPI, Waller separation, revisions, BoC null distribution",
+      "remediation": "Retained iteration-06 approved policy and macro facts unchanged except the explicitly recollected market and Fed proxy blocks plus new Michigan evidence.",
+      "evidence": "iteration-06 approval and iteration-07 candidate diff"
+    }
+  ]
+}

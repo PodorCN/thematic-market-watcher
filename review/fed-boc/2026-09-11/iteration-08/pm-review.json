@@ -1,16 +1,18 @@
 {
   "schema_version": "1.0",
-  "status": "open",
+  "reviewer_role": "independent_portfolio_manager",
   "reviewed_at": "2026-09-11T16:19:57-04:00",
   "candidate_sha256": "ae62f55feb94e418633a63bae4f132ace08e0784b2dfeca700c8e4efa68869ae",
-  "review_sha256": "ec7e94c663dfc8f1afc3e3e23808d67502726c1592864f67395c1bee923173f1",
-  "source_review": "review/fed-boc/2026-09-11/iteration-08/pm-review.json",
+  "verdict": "revise",
   "executive_summary": "Revise. I independently reviewed the operator and PM contracts, schema, controlling feedback, prior iteration-07 review, iteration-08 handoff, exact frozen candidate and close evidence, current canonical calendar, and earlier September 11 review chain. Exact-byte remediation passes: the persisted 35,976-byte candidate hashes to ae62f55feb94e418633a63bae4f132ace08e0784b2dfeca700c8e4efa68869ae, matching candidate.sha256, pm-handoff.json and the proposed dashboard bytes. The Fed 0/14/86 proxy arithmetic and cross-field narrative are now canonical; Michigan actuals, sentiment consensus and mixed 1.0 weighting independently verify; official policy facts verify; and the BoC single-meeting distribution correctly remains unavailable/null. Publication is nevertheless forbidden. The candidate says its calendar was fully refreshed after Michigan, but it omits consensus values already present in the canonical 16:03 ET calendar before the 16:05 candidate freeze, including Canada headline/core monthly CPI, US headline/ex-autos retail sales, and the Fed decision forecast/previous. Its prose explicitly and falsely calls some of those forecasts unavailable. In addition, fresh independent Yahoo retrieval during review no longer reproduces five of the ten claimed finalized 15:59 bars, including a one-cent rounded-price change in XLF. These unresolved calendar and market-validation defects prevent unconditional approval.",
-  "failed_checks": [
-    "decision_usefulness",
-    "freshness",
-    "market_validation"
-  ],
+  "checks": {
+    "official_policy": "pass",
+    "pricing": "pass",
+    "drivers": "pass",
+    "market_validation": "fail",
+    "freshness": "fail",
+    "decision_usefulness": "fail"
+  },
   "findings": [
     {
       "severity": "major",
@@ -45,21 +47,19 @@
       "instruction": "Retain the official Michigan URL for actuals and the mixed 1.0 treatment, keep inflation consensus explicitly unavailable, and add the exact dated FXStreet eventDates endpoint in a supported provenance field or collection note for sentiment consensus and previous values."
     }
   ],
-  "required_recollection": [
-    "Create a new immutable candidate from the canonical post-Michigan calendar. Populate Canada headline MoM 0.0% and legacy-core MoM 0.2%; populate US retail headline 0.9% and ex-autos 0.5% while retaining null control-group consensus; populate the Fed decision forecast 4.0% and previous 3.75%; preserve every genuinely null field. Regenerate each affected logic sentence from those same rows, reconcile or explicitly label any desk impact override, and execute an assertion comparing every watcher forecast/previous value to its mapped canonical event before freezing.",
-    "Recollect all ten instruments under one stable completed-session convention after Yahoo's post-close corrections have settled, recompute every price, 1d/1w return, label and direction from the refreshed full-precision values, and verify the exact epochs twice with a meaningful delay. Persist and hash the raw provider responses or equivalent immutable source rows so a reviewer can reproduce the selected fields even if Yahoo later revises minute history; bind that evidence hash in the handoff before freezing the replacement candidate."
+  "pnl_risks": [
+    "Exact-byte binding is repaired: independent binary SHA-256 of the 35,976-byte candidate is ae62f55feb94e418633a63bae4f132ace08e0784b2dfeca700c8e4efa68869ae, matching candidate.sha256, pm-handoff.json and docs/data/fed-boc-dashboard.json. This review is bound only to those exact bytes.",
+    "Fed pricing arithmetic passes. ZQU26 96.2699966430664 implies a 3.7300033569% September monthly rate; with EFFR 3.63% and a 16-pre/14-post split, the post-decision rate is 3.8442929077%. Adjacent hold/25bp-hike interpolation gives 14.2828369% hold and 85.7171631% hike, matching rounded 0/14/86 in both meetings.fed.pricing and FOMC calendar logic. This is a highly sensitive desk model, not CME FedWatch, and zero cut is a model restriction rather than an observed probability.",
+    "Official policy facts pass fresh retrieval: the Federal Reserve July 29 statement supports the 3.50-3.75% hold and Hammack, Kashkari and Logan preference for a 25bp hike; the Bank of Canada September 2 statement supports the 2.25% overnight target, 2.50% Bank Rate, 2.20% deposit rate and October 28 MPR decision.",
+    "Michigan is genuinely mixed and should not be read as a clean inflation-consensus beat: sentiment was 47.8 versus 51.0 consensus and 51.7 previous, while one-year expectations rose to 4.6% from 4.0% and long-run expectations rose to 3.4% from 3.3%; inflation consensus was null.",
+    "BoC single-meeting pricing remains unavailable by construction. CRAU26 spans October 28 and December 9, so cut/hold/hike and implied_rate_after must remain null. The retained 02:34 bid/ask and September 9 CORRA were historically dated; later exchange quotes and the September 10 CORRA fixing changed and must not be presented as if they were the frozen observation.",
+    "The frozen market arithmetic itself is internally consistent: all ten displayed prices round from raw_price, all twenty 1d/1w returns reproduce to six decimals from the stated full-precision bases, and labels/directions follow those frozen calculations. The failed check is independent source reproducibility after post-close revisions, not an arithmetic error in the candidate.",
+    "The dominant decision risk is the stale calendar mapping. Canada CPI and US retail sales are the last major macro catalysts before the meetings; omitting available consensus values removes the baseline needed to classify their surprises and undermines the page's stated event-driven purpose."
   ],
   "operator_instructions": [
     "Do not publish, archive, edit or reinterpret this frozen iteration-08 candidate. This is an unconditional revise verdict and grants no contingent publication authority.",
     "Create a new immutable iteration that rebuilds the complete watcher calendar from the 16:03 ET canonical archive, refreshes the ten-symbol strip under reproducible post-close evidence, preserves the verified Fed arithmetic, policy facts, Michigan mixed weighting and BoC null distribution, and corrects the remaining provenance and compounded-CORRA terminology.",
     "Run executable calendar cross-field assertions, full-precision market arithmetic and exact-epoch source checks; persist hashes for raw market evidence; then write the replacement candidate once and compute candidate.sha256 and handoff digest from a binary read of the final persisted bytes.",
     "Request a fresh independent PM review of the replacement bytes. Do not carry forward this review or any earlier approval to a changed candidate."
-  ],
-  "next_run_contract": [
-    "Read this feedback before collecting or editing the next candidate.",
-    "Re-trigger collection for every affected source and claim.",
-    "Rebuild the whole internally consistent candidate; do not patch prose only.",
-    "Submit the rebuilt candidate to a fresh independent PM review.",
-    "Do not publish until an exact-byte-bound approved review passes the gate."
   ]
 }

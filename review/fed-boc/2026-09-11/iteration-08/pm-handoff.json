@@ -1,0 +1,31 @@
+{
+  "candidate_sha256": "ae62f55feb94e418633a63bae4f132ace08e0784b2dfeca700c8e4efa68869ae",
+  "open_feedback": "review/fed-boc/feedback/latest.json",
+  "prior_pm_review": "review/fed-boc/2026-09-11/iteration-07/pm-review.json",
+  "remediation_evidence_mapping": [
+    {
+      "field": "exact candidate bytes",
+      "feedback": "Hash binary persisted bytes, not normalized text",
+      "remediation": "Wrote final candidate once with write_bytes, closed it, computed SHA-256 from read_bytes, and asserted candidate/checksum/handoff binding.",
+      "evidence": "candidate.json exact SHA-256 ae62f55feb94e418633a63bae4f132ace08e0784b2dfeca700c8e4efa68869ae"
+    },
+    {
+      "field": "calendar[id=fomc_20260916].logic",
+      "feedback": "Match canonical Fed pricing object",
+      "remediation": "Regenerated timestamp and rounded 0/14/86 narrative from meetings.fed.pricing and added executable assertion.",
+      "evidence": "iteration-08 candidate cross-field assertion"
+    },
+    {
+      "field": "Michigan provenance",
+      "feedback": "Match source label and URL; keep unavailable consensus explicit",
+      "remediation": "Cites official University of Michigan actuals URL and names FXStreet calendar only for consensus/previous; inflation consensus remains unavailable in text.",
+      "evidence": "fed_hawk_uom_inflation_20260911"
+    },
+    {
+      "field": "finalized market strip and prior facts",
+      "feedback": "Preserve verified full-precision strip and official/proxy caveats",
+      "remediation": "Copied the complete internally consistent iteration-07 payload and changed only the three PM-directed defects.",
+      "evidence": "iteration-08 candidate and close/facts.json"
+    }
+  ]
+}

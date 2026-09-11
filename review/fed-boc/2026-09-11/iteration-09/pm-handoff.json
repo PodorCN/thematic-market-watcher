@@ -1,0 +1,36 @@
+{
+  "candidate_sha256": "a7ae7beba54be04d7e161dbf463fd20a45c5c702d9ae2e79cb9e0a78e2d3a5f9",
+  "open_feedback": "review/fed-boc/feedback/latest.json",
+  "prior_pm_review": "review/fed-boc/2026-09-11/iteration-08/pm-review.json",
+  "evidence_sha256": {
+    "close/facts.json": "eab551694fecd0538969b22d777b697d60fe1cd8483be655e798463f79c32458",
+    "close2/cra.html": "aa7ed9386054378c608b309b416c8b5a747246f03c258ba1a53d677dbc7a6e68",
+    "close2/corra.json": "8d23b7686475cabd37a75a9dbb487522a4e1ab9a63f1bfbc7afeb60ec74f8e32"
+  },
+  "remediation_evidence_mapping": [
+    {
+      "field": "canonical watcher calendar",
+      "feedback": "Restore available consensus/previous and reconcile impact",
+      "remediation": "Mapped 0.0/0.2 Canada CPI, 0.9/0.5 retail, 4.0/3.75 FOMC; preserved genuine nulls; BoC deliberations set MEDIUM; executable assertions passed.",
+      "evidence": "archive/2026-09-11/economic_calendar.json fetched 16:03 ET"
+    },
+    {
+      "field": "market finalized rows",
+      "feedback": "Recollect after post-close corrections; hash raw evidence",
+      "remediation": "Recollected all ten at 16:23 ET, used corrected 15:59 bars, full precision, same-epoch second retrieval; recomputed all dependent fields and hashed evidence.",
+      "evidence": "close/facts.json sha256 eab551694fecd0538969b22d777b697d60fe1cd8483be655e798463f79c32458"
+    },
+    {
+      "field": "BoC terminology/current proxy",
+      "feedback": "Use compounded-daily-CORRA terminology and recollect",
+      "remediation": "Recollected TMX 97.600/97.605 and BoC Sep10 CORRA 2.3000%; retained null single-meeting outcomes and corrected terminology.",
+      "evidence": "hashed close2 CRA/CORRA responses"
+    },
+    {
+      "field": "Michigan endpoint",
+      "feedback": "Add exact FXStreet endpoint",
+      "remediation": "Added canonical dated eventDates endpoint collection_note while retaining official Michigan URL and null inflation consensus.",
+      "evidence": "fed_hawk_uom_inflation_20260911.collection_note"
+    }
+  ]
+}

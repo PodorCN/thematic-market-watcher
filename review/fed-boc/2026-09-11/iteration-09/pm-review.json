@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "reviewer_role": "independent_portfolio_manager",
+  "reviewed_at": "2026-09-11T16:30:18-04:00",
+  "candidate_sha256": "a7ae7beba54be04d7e161dbf463fd20a45c5c702d9ae2e79cb9e0a78e2d3a5f9",
+  "verdict": "approved",
+  "executive_summary": "Approved unconditionally. I independently reviewed the PM and publication contracts, review schema, canonical open feedback, iteration-08 rejection, iteration-09 handoff, exact frozen candidate, canonical 16:03 ET calendar, hashed close evidence, and current official/direct sources. The persisted 36,167-byte candidate hashes to a7ae7beba54be04d7e161dbf463fd20a45c5c702d9ae2e79cb9e0a78e2d3a5f9, matching candidate.sha256, pm-handoff.json, and the proposed dashboard byte for byte; all three handoff evidence hashes independently reproduce. Every iteration-08 remediation is complete: Canada CPI, US retail-sales, Fed-decision, and BoC-deliberations mappings agree with the canonical calendar while preserving genuine nulls; all ten finalized 15:59 market rows and the 16:12 ZQU26 row match both the bound evidence and fresh exact-epoch Yahoo retrieval; full-precision return arithmetic, labels, signs, and timestamps reconcile; the Fed 0/14/86 desk proxy recomputes and is consistently distinguished from CME FedWatch; Michigan actuals and mixed weighting verify with explicit official and dated FXStreet provenance; and current CRA/CORRA evidence supports the corrected compounded-daily-CORRA wording and an unavailable/null BoC single-meeting distribution. Official Fed and BoC policy facts and meeting dates verify. The snapshot is coherent, decision-useful, and has no unresolved critical or major finding.",
+  "checks": {
+    "official_policy": "pass",
+    "pricing": "pass",
+    "drivers": "pass",
+    "market_validation": "pass",
+    "freshness": "pass",
+    "decision_usefulness": "pass"
+  },
+  "findings": [],
+  "pnl_risks": [
+    "Fed pricing is a desk interpolation, not CME FedWatch: ZQU26 96.2699966430664 implies a 3.7300033569% September monthly average; with 3.63% EFFR and the stated 16-pre/14-post convention, the post-decision rate is 3.8442929077%, yielding 14.2828369% hold and 85.7171631% hike. The displayed zero cut is therefore a model restriction within the adjacent hold/hike interpolation, not a directly observed exchange probability.",
+    "The market strip is source-reproducible at review time and all ten exact 15:59 epochs match the hashed full-precision rows, but Yahoo minute history remains a revisable vendor representation rather than certified exchange settlement data. The bound evidence and explicit close convention are adequate for this snapshot; users should not infer event causation from these cross-asset closes.",
+    "BoC single-meeting pricing is deliberately unavailable. The CRA September 2026 contract quote of 97.600 bid and 97.605 ask, with 31,621 volume, implies a 2.3975% rate from the midpoint under compounded daily CORRA over the reference quarter; because that horizon spans both October 28 and December 9 decisions, no October cut/hold/hike allocation or meeting-specific implied rate can be inferred.",
+    "The Fed rope is hawkish and includes a 2.5 base weight for Warsh's inflation-first guidance, but the page's age decay and the candidate's explicit separation of speeches, official releases, and market context prevent that score from being mistaken for a probability. CPI, payrolls, services prices, and the September 16 decision/SEP remain the principal falsifiers.",
+    "Calendar consensus is a timestamped 16:03 ET FXStreet snapshot and can change before release. The candidate now exposes the available Canada CPI, US retail-sales, and Fed-decision baselines, preserves truly unavailable fields as null, and gives explicit hawkish/dovish interpretation rules; subsequent publication cycles should naturally recollect rather than treat these forecasts as immutable market consensus."
+  ],
+  "operator_instructions": []
+}

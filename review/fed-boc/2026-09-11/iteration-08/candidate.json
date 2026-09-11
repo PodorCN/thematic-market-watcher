@@ -1,7 +1,7 @@
 {
-  "as_of": "2026-09-11T16:25:02-04:00",
-  "version": "2026-09-11-008",
-  "verification_note": "Sep 11 post-close full rebuild after PM recollection: canonical calendar consensus/previous mappings restored; all ten market rows recollected after Yahoo post-close corrections, exact epochs verified twice and full-precision evidence hashed; Fed proxy refreshed; current TMX CRA and BoC CORRA recollected while October probabilities remain unavailable. Candidate only pending exact-byte independent PM approval.",
+  "as_of": "2026-09-11T16:05:17-04:00",
+  "version": "2026-09-11-007",
+  "verification_note": "Sep 11 close full candidate rebuild under open PM feedback: all ten market instruments recollected from finalized regular-session one-minute bars, re-fetched at identical epochs, and preserved with full-precision prices and Sep 10/Sep 4 bases. Calendar was fully refreshed after Michigan; official policy and previously PM-verified macro evidence retained. Fed futures proxy refreshed at finalized Yahoo bars; BoC quarterly proxy remains explicitly unavailable as a single-meeting distribution. Candidate only pending fresh exact-byte independent PM review.",
   "timezone": "America/Toronto",
   "meetings": {
     "fed": {
@@ -20,7 +20,7 @@
         "hike_25bp": 0.86,
         "source": "Desk-implied scenario weights from timestamped Yahoo ZQU26 intraday bar + NY Fed EFFR (not CME FedWatch probabilities)",
         "source_url": "https://finance.yahoo.com/quote/ZQU26.CBT",
-        "as_of_pricing": "2026-09-11T16:12:00-04:00",
+        "as_of_pricing": "2026-09-11T15:52:00-04:00",
         "proxy_check": "ZQU26 finalized Yahoo bar 96.26999664 => monthly average 3.73000336%. EFFR 3.63%; 16 pre/14 post solve gives 3.84429291%. Adjacent hold/hike desk interpolation gives hold 0.142828, hike 0.857172; not CME FedWatch probabilities.",
         "proxy_source_url": "https://finance.yahoo.com/quote/ZQU26.CBT",
         "implied_rate_before": 3.63,
@@ -28,7 +28,7 @@
         "effr_source_url": "https://markets.newyorkfed.org/api/rates/unsecured/effr/last/5.json",
         "cme_access_note": "Direct CME FedWatch returned a 602-byte blocked body; no direct CME distribution was used.",
         "price_session_date": "2026-09-11 close",
-        "collection_note": "Finalized ZQU26 bar at 2026-09-11T16:12:00-04:00, verified twice; collected through 2026-09-11T16:23:35.138719-04:00."
+        "collection_note": "Finalized Yahoo ZQU26 one-minute bar 96.26999664 observed 2026-09-11T15:52:00-04:00, re-fetched at the identical epoch and collected through 2026-09-11T16:04:31.103293-04:00; proxy, not official settlement or direct probability distribution."
       }
     },
     "boc": {
@@ -46,24 +46,24 @@
         "hike_25bp": null,
         "source": "TMX/MX CRA quarterly CORRA futures observable proxy; no clean Oct 28 distribution",
         "source_url": "https://www.m-x.ca/en/trading/data/quotes?symbol=CRA%2A",
-        "as_of_pricing": "2026-09-11T16:25:02-04:00",
-        "proxy_check": "TMX CRAU26 bid 97.600 / ask 97.605, volume 31621, expiry 2026-12-16; midpoint 97.6025 implies an annualized 2.3975% rate from compounded daily CORRA over the reference quarter. BoC CORRA was 2.3000% effective Sep 10. Contract spans Oct 28 and Dec 9; no October allocation identified.",
-        "proxy_source_url": "https://www.bankofcanada.ca/valet/observations/AVG.INTWO/json?start_date=2026-09-01",
+        "as_of_pricing": "2026-09-11T02:34:51-04:00",
+        "proxy_check": "TMX CRAU26 bid 97.610 / ask 97.615, volume 446, expiry 2026-12-16, observed during this Sep 11 pre-market run. Mid 97.6125 implies a 2.3875% quarterly-average CORRA rate; settlement 97.610 implies 2.3900%. BoC CORRA was 2.2900% effective Sep 9. The contract spans Oct 28 and Dec 9, so no October outcome allocation is identified.",
+        "proxy_source_url": "https://www.bankofcanada.ca/valet/observations/AVG.INTWO/json?start_date=2026-08-25",
         "implied_rate_before": 2.25,
         "implied_rate_after": null,
         "note": "Single-meeting probabilities unavailable. CRAU26 is shown only as a quarterly-average observable and must not be interpreted as October cut/hold/hike pricing.",
         "probability_status": "unavailable",
         "observable_proxy": {
           "instrument": "CRAU26",
-          "observed_price": 97.605,
-          "bid": 97.6,
-          "ask": 97.605,
-          "volume": 31621,
+          "observed_price": 97.61,
+          "bid": 97.61,
+          "ask": 97.615,
+          "volume": 446,
           "expiry_date": "2026-12-16",
-          "implied_quarterly_average_rate": 2.3975,
-          "observed_at_toronto": "2026-09-11T16:25:02-04:00",
+          "implied_quarterly_average_rate": 2.3875,
+          "observed_at_toronto": "2026-09-11T02:34:51-04:00",
           "source_url": "https://www.m-x.ca/en/trading/data/quotes?symbol=CRA%2A",
-          "note": "100 minus price is the annualized rate implied by compounded daily CORRA over the official reference quarter, which includes Oct 28 and Dec 9 decisions; not a simple arithmetic average and not a single-meeting distribution."
+          "note": "Quarterly contract includes both Oct 28 and Dec 9 BoC decisions; it does not identify a single-meeting distribution."
         }
       }
     }
@@ -338,8 +338,7 @@
           "tags": [
             "HIGH",
             "Michigan"
-          ],
-          "collection_note": "FXStreet dated structured endpoint used by canonical collector: https://calendar-api.fxstreet.com/en/api/v1/eventDates/2026-09-10T00:00:00Z/2026-09-17T23:59:59Z (event detail rows supply consensus/previous); official actuals: https://www.sca.isr.umich.edu/. Inflation consensus was null."
+          ]
         }
       ]
     },
@@ -490,12 +489,12 @@
     "tickers": [
       {
         "symbol": "SPY",
-        "price": 764.18,
-        "raw_price": 764.1799926757812,
+        "price": 764.2,
+        "raw_price": 764.1950073242188,
         "return_base_1d": 757.8300170898438,
         "return_base_1w": 770.1900024414062,
-        "chg_1d": 0.008379,
-        "chg_1w": -0.007803,
+        "chg_1d": 0.008399,
+        "chg_1w": -0.007784,
         "label_1d": "+0.84% Sep 11 close",
         "label_1w": "-0.78% w (Sep 4-11)",
         "type_1d": "up",
@@ -521,11 +520,11 @@
       {
         "symbol": "IWM",
         "price": 288.89,
-        "raw_price": 288.885009765625,
+        "raw_price": 288.8900146484375,
         "return_base_1d": 287.70001220703125,
         "return_base_1w": 296.010009765625,
-        "chg_1d": 0.004119,
-        "chg_1w": -0.02407,
+        "chg_1d": 0.004136,
+        "chg_1w": -0.024053,
         "label_1d": "+0.41% Sep 11 close",
         "label_1w": "-2.41% w (Sep 4-11)",
         "type_1d": "up",
@@ -535,12 +534,12 @@
       },
       {
         "symbol": "XLI",
-        "price": 172.37,
-        "raw_price": 172.3699951171875,
+        "price": 172.38,
+        "raw_price": 172.3800048828125,
         "return_base_1d": 170.5500030517578,
         "return_base_1w": 175.27000427246094,
-        "chg_1d": 0.010671,
-        "chg_1w": -0.016546,
+        "chg_1d": 0.01073,
+        "chg_1w": -0.016489,
         "label_1d": "+1.07% Sep 11 close",
         "label_1w": "-1.65% w (Sep 4-11)",
         "type_1d": "up",
@@ -565,14 +564,14 @@
       },
       {
         "symbol": "XLF",
-        "price": 57.23,
-        "raw_price": 57.22999954223633,
+        "price": 57.22,
+        "raw_price": 57.220001220703125,
         "return_base_1d": 56.869998931884766,
         "return_base_1w": 58.099998474121094,
-        "chg_1d": 0.00633,
-        "chg_1w": -0.014974,
-        "label_1d": "+0.63% Sep 11 close",
-        "label_1w": "-1.50% w (Sep 4-11)",
+        "chg_1d": 0.006154,
+        "chg_1w": -0.015146,
+        "label_1d": "+0.62% Sep 11 close",
+        "label_1w": "-1.51% w (Sep 4-11)",
         "type_1d": "up",
         "type_1w": "down",
         "observed_at_toronto": "2026-09-11T15:59:00-04:00",
@@ -581,13 +580,13 @@
       {
         "symbol": "XLE",
         "price": 65.12,
-        "raw_price": 65.12000274658203,
+        "raw_price": 65.125,
         "return_base_1d": 64.93000030517578,
         "return_base_1w": 64.05999755859375,
-        "chg_1d": 0.002926,
-        "chg_1w": 0.016547,
-        "label_1d": "+0.29% Sep 11 close",
-        "label_1w": "+1.65% w (Sep 4-11)",
+        "chg_1d": 0.003003,
+        "chg_1w": 0.016625,
+        "label_1d": "+0.30% Sep 11 close",
+        "label_1w": "+1.66% w (Sep 4-11)",
         "type_1d": "up",
         "type_1w": "up",
         "observed_at_toronto": "2026-09-11T15:59:00-04:00",
@@ -625,17 +624,17 @@
       },
       {
         "symbol": "ZEB.TO",
-        "price": 74.58,
-        "raw_price": 74.58000183105469,
+        "price": 74.59,
+        "raw_price": 74.58999633789062,
         "return_base_1d": 74.0999984741211,
         "return_base_1w": 75.47000122070312,
-        "chg_1d": 0.006478,
-        "chg_1w": -0.011793,
-        "label_1d": "+0.65% Sep 11 close",
-        "label_1w": "-1.18% w (Sep 4-11)",
+        "chg_1d": 0.006613,
+        "chg_1w": -0.01166,
+        "label_1d": "+0.66% Sep 11 close",
+        "label_1w": "-1.17% w (Sep 4-11)",
         "type_1d": "up",
         "type_1w": "down",
-        "observed_at_toronto": "2026-09-11T15:59:00-04:00",
+        "observed_at_toronto": "2026-09-11T15:58:00-04:00",
         "source_url": "https://finance.yahoo.com/quote/ZEB.TO"
       }
     ]
@@ -650,12 +649,12 @@
       "event": "Canada CPI (headline, legacy core, median and trim)",
       "impact": "HIGH",
       "forecast": {
-        "headline_MoM": "0.0%",
+        "headline_MoM": null,
         "headline_YoY": null,
         "legacy_core_YoY": null,
         "median_YoY": null,
         "trim_YoY": null,
-        "legacy_core_MoM": "0.2%"
+        "legacy_core_MoM": null
       },
       "previous": {
         "headline_MoM": "0.5%",
@@ -665,7 +664,7 @@
         "trim_YoY": "1.9%",
         "legacy_core_MoM": "0.2%"
       },
-      "logic": "Canonical Sep 11 16:03 ET FXStreet rows: headline MoM consensus 0.0% and legacy-core MoM 0.2%; yearly, median and trim consensus fields remain null.",
+      "logic": "Fresh Sep 11 calendar. Legacy core, CPI-median and CPI-trim are named separately; empty consensus fields remain null. Inflation breadth determines whether weak employment can outweigh energy/tariff concerns.",
       "hawk_if": "High to Hawk",
       "dove_if": "Low to Dove"
     },
@@ -677,13 +676,9 @@
       "country": "US",
       "event": "FOMC Decision and SEP (Sep 15-16)",
       "impact": "HIGH",
-      "forecast": {
-        "upper_bound": "4.0%"
-      },
-      "previous": {
-        "upper_bound": "3.75%"
-      },
-      "logic": "Canonical calendar consensus: 4.0% upper bound versus 3.75% previous. Sep 11 16:12 ET Yahoo ZQU26/EFFR desk proxy: cut 0% / hold 14% / hike 86%; not direct CME probabilities.",
+      "forecast": {},
+      "previous": {},
+      "logic": "Sep 11 15:52 ET finalized Yahoo ZQU26/EFFR desk model: cut 0% / hold 14% / hike 86%, rounded. Direct CME distribution unavailable; proxy is model-sensitive.",
       "hawk_if": "Showdown",
       "dove_if": "Showdown"
     },
@@ -710,16 +705,16 @@
       "event": "US Retail Sales (headline, control group, ex-autos)",
       "impact": "HIGH",
       "forecast": {
-        "headline_MoM": "0.9%",
+        "headline_MoM": null,
         "control_group_MoM": null,
-        "ex_autos_MoM": "0.5%"
+        "ex_autos_MoM": null
       },
       "previous": {
         "headline_MoM": "-0.6%",
         "control_group_MoM": "-0.4%",
         "ex_autos_MoM": "-0.3%"
       },
-      "logic": "Canonical Sep 11 16:03 ET FXStreet rows: headline MoM consensus 0.9%, ex-autos 0.5%, control-group consensus unavailable; priors -0.6%/-0.3%/-0.4% respectively.",
+      "logic": "FXStreet Sep 10 archive: forecasts unavailable (null); prior values -0.6%/-0.4%/-0.3%. Major same-day growth catalyst before the 14:00 ET FOMC decision.",
       "hawk_if": "Upside growth surprise",
       "dove_if": "Broad miss"
     },
@@ -730,10 +725,10 @@
       "currency": "CAD",
       "country": "CA",
       "event": "Bank of Canada Summary of Deliberations",
-      "impact": "MEDIUM",
+      "impact": "HIGH",
       "forecast": {},
       "previous": {},
-      "logic": "Canonical Sep 11 FXStreet calendar classifies this qualitative Sep 2 deliberations release MEDIUM; it is not a rate decision.",
+      "logic": "FXStreet Sep 10 calendar secondary schedule source; qualitative detail on the Sep 2 hold, not a rate decision.",
       "hawk_if": "Inflation risks dominate",
       "dove_if": "Labour/downside risks dominate"
     }
