@@ -1,0 +1,49 @@
+{
+  "candidate_sha256": "71faf144596d0f24e3c0c0af1d749a593f616def42ff3db1f12585c25119f0f5",
+  "open_feedback": "review/fed-boc/feedback/latest.json",
+  "prior_pm_review": "review/fed-boc/2026-09-11/iteration-02/pm-review.json",
+  "remediation_evidence_mapping": [
+    {
+      "field": "iteration-02 PM review",
+      "feedback": "Exhaustively audit residual GDP, provenance, timestamps, Waller, PPI and Canada CPI fields",
+      "remediation": "Recollected sources and rebuilt every named dependent field across the whole candidate",
+      "evidence": "review 87d9a22c0739 plus iteration-02 evidence cache"
+    },
+    {
+      "field": "GDP delta",
+      "feedback": "Remove superseded negative annualized prior",
+      "remediation": "Delta now compares Q2 approximation with revised positive Q1 approximation and preserves separate June monthly concept",
+      "evidence": "StatCan dq260828a/b"
+    },
+    {
+      "field": "ZQU26/WTI provenance and chronology",
+      "feedback": "Remove settlement language; distinguish session, collection and inception/update times",
+      "remediation": "All values say Yahoo daily close; price_session_date and collection notes added; oil reason explicitly distinguishes stable inception from refreshed observation",
+      "evidence": "Sep 10 Yahoo close fields collected 2026-09-11T02:33:30-04:00"
+    },
+    {
+      "field": "Waller timestamps",
+      "feedback": "Use official 12:30 GMT/08:30 ET feed time",
+      "remediation": "Both published and observed times corrected to 08:30 ET; substantive conditional treatment unchanged",
+      "evidence": "Federal Reserve speeches feed and waller20260903a.htm"
+    },
+    {
+      "field": "PPI source status",
+      "feedback": "Record successful official recollection and distinguish consensus source",
+      "remediation": "BLS actuals/revisions and TE consensus explicitly separated in source/reason",
+      "evidence": "iteration-02/bls-ppi.html and te-calendar.html"
+    },
+    {
+      "field": "Canada CPI core keys",
+      "feedback": "Name monthly legacy core consistently",
+      "remediation": "Both monthly and yearly keys now use legacy_core; median/trim remain separate",
+      "evidence": "fresh calendar measures"
+    },
+    {
+      "field": "all prior feedback",
+      "feedback": "Preserve verified market/labour/long-end/Waller/pricing/null-BoC remediations",
+      "remediation": "Whole candidate rebuilt from iteration-02 with all approved factual corrections intact",
+      "evidence": "iteration-03 candidate"
+    }
+  ]
+}

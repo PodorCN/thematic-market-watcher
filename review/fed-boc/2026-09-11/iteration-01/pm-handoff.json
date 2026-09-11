@@ -1,0 +1,44 @@
+{
+  "candidate_sha256": "92607b9d0a1cdc82b132677485823131c15e5328f54c67bd22f5f650001a2bbf",
+  "open_feedback": "review/fed-boc/feedback/latest.json",
+  "prior_pm_review": "review/fed-boc/2026-09-10/iteration-06/pm-review.json",
+  "latest_prior_approval": "review/fed-boc/2026-09-10/iteration-07/pm-review.json",
+  "remediation_evidence_mapping": [
+    {
+      "field": "market.as_of_close and market.tickers[*]",
+      "feedback": "Recollect complete strip coherently; do not mislabel provisional bars as closes",
+      "remediation": "Recollected all 10 instruments; rebuilt prices, 1d/1w returns, labels and directions from Sep 10 completed daily rows",
+      "evidence": "Yahoo/yfinance daily structured rows for Sep 10; candidate market.as_of_close=2026-09-10T16:00:00-04:00"
+    },
+    {
+      "field": "drivers.boc.hawkish[id=boc_hawk_oil_20260821]",
+      "feedback": "Recollect WTI with valid chronology and rebuild dependent interpretation",
+      "remediation": "Recollected CL=F from completed Sep 10 daily settlement row; rebuilt title/summary/data/reason and observation timestamp",
+      "evidence": "CL=F 102.48 vs 96.05, observed_at 2026-09-10T16:00:00-04:00"
+    },
+    {
+      "field": "candidate.as_of chronology",
+      "feedback": "as_of must be at or after every nested observation",
+      "remediation": "Sep 11 candidate as_of stamped after all source retrievals; latest nested current-source observations use the same run timestamp",
+      "evidence": "2026-09-11T02:34:51-04:00"
+    },
+    {
+      "field": "candidate/checksum/handoff",
+      "feedback": "New immutable iteration and exact-byte binding",
+      "remediation": "Whole candidate frozen under 2026-09-11 iteration-01; digest computed from persisted bytes",
+      "evidence": "92607b9d0a1cdc82b132677485823131c15e5328f54c67bd22f5f650001a2bbf"
+    },
+    {
+      "field": "meetings.boc.pricing",
+      "feedback": "Preserve unavailable/null single-meeting representation",
+      "remediation": "All outcome probabilities and implied_rate_after remain null; refreshed quarterly observable only",
+      "evidence": "CRAU26 bid/ask 97.610/97.615 and CORRA 2.2900 effective Sep 9"
+    },
+    {
+      "field": "official/release source refresh",
+      "feedback": "Re-trigger affected collection and rebuild whole candidate",
+      "remediation": "Re-probed Fed/BoC official records, feeds, EFFR, CME, CRA/CORRA, BLS, BEA, StatCan, TE and calendar; no unsupported new release claim added",
+      "evidence": "C:/Users/zixia/tmp_verify/macro-2026-09-11/ raw evidence and facts.json"
+    }
+  ]
+}

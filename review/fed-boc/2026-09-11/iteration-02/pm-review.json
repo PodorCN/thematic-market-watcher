@@ -1,17 +1,18 @@
 {
   "schema_version": "1.0",
-  "status": "open",
+  "reviewer_role": "independent_portfolio_manager",
   "reviewed_at": "2026-09-11T02:50:03-04:00",
   "candidate_sha256": "f74254157fd88dbafcb49f6ba3872794e7330348f56ea935c9629b64e0499de3",
-  "review_sha256": "87d9a22c0739c4753e1ef21d7fa302412cdd4f18ea03c2a65ef22a2c471fe5d6",
-  "source_review": "review/fed-boc/2026-09-11/iteration-02/pm-review.json",
+  "verdict": "revise",
   "executive_summary": "Revise. Independently hashed the immutable candidate and reconciled candidate.sha256 and handoff; independently hashed the prior review and reconciled controlling feedback. Substantial remediation is real: revised JOLTS, payrolls and ADP are correct; current Yahoo long-end levels and all ten cash closes and twenty returns independently reproduce; Waller's two-sided reaction function is now useful; Fed interpolation is numerically correct and BoC probabilities appropriately remain null. Nevertheless, the exact candidate does not complete every prior finding: GDP still advertises the superseded negative annualized prior in its delta label, the FOMC calendar still calls the Yahoo input a settlement, and the disputed futures 16:00 timestamps and oil publication chronology remain unchanged without a separate collection-time record. The new Waller driver also uses 09:00 despite the official feed's 12:30 GMT publication. These are bounded but actual whole-candidate remediation failures, not grounds to recycle approval from different bytes. Correct the remaining dependent fields and obtain a new exact-byte review.",
-  "failed_checks": [
-    "decision_usefulness",
-    "drivers",
-    "freshness",
-    "pricing"
-  ],
+  "checks": {
+    "official_policy": "pass",
+    "pricing": "fail",
+    "drivers": "fail",
+    "market_validation": "pass",
+    "freshness": "fail",
+    "decision_usefulness": "fail"
+  },
   "findings": [
     {
       "severity": "minor",
@@ -46,18 +47,23 @@
       "instruction": "Update PPI provenance to distinguish the successful official actuals recollection from secondary consensus evidence. Explicitly identify the monthly Canadian core series as legacy core as well as the annual series, using compatible keys or a precise measure note."
     }
   ],
-  "required_recollection": [],
+  "pnl_risks": [
+    "Byte binding passes: candidate digest f74254157fd88dbafcb49f6ba3872794e7330348f56ea935c9629b64e0499de3 matches both checksum and handoff. Prior-review digest a90488a5f6a1f7d51f126c967474c516dfb401ec83f7e2890fdf096a6b4a646f matches open feedback. Reviewed every iteration-01 finding and all handoff mappings, including the older cash/oil chronology and null-BoC contract. The latter are preserved numerically; a mapping assertion is not proof of complete remediation.",
+    "Official policy passes independent HTTP retrieval: July Fed 3.50-3.75% hold by 9-3, Hammack/Kashkari/Logan preferring +25bp; June release explicitly says 12-0; official schedule confirms September 15-16 SEP meeting. BoC September 2 statement confirms target 2.25%, Bank Rate 2.50%, deposit 2.20%, and October 28 decision/MPR. Warsh's official speech supports the predominant focus on prices, 3.7% twelve-month and 4.1% six-month inflation, 54% breadth and no decision commitment. The October 28 09:45 convention was not independently re-established from a working schedule page in this review; guessed schedule URLs returned 404, not contrary evidence.",
+    "JOLTS remediation passes: official table June 7.182M and July 7.271M yields +89k; 7.300M consensus gives -29k miss. The neutral delta and reduced 0.5 dovish weight appropriately distinguish level change from surprise. Payroll remediation passes against the official release: August +162k, July +21k revised from -23k, June +31k revised from +20k, combined +55k revisions; unsupported historical futures attribution is removed. TradingEconomics currently has an inconsistent July narrative, so the official BLS revision takes precedence. ADP 38k versus 47k with revised 46k prior is supported and no longer presented as an upcoming payroll catalyst.",
+    "All active drivers were assessed: Fed hawkish weights 1.5 dissent, 2.5 Warsh, 1.0 long end, 2.0 ISM, 2.0 payrolls, 1.5 mixed PPI, 1.0 Waller total 11.5, against dovish 0.5 JOLTS and 1.0 ADP total 1.5. BoC hawkish oil/GDP/hold/Ivey 2.0/2.0/2.0/1.5 total 7.5, versus labour/rents 2.0/1.0 total 3.0. These are subjective evidence scores, not independent statistical observations or probabilities. Waller's modest weight and explicit continued-disinflation hold case are useful; the official feed shows no newer speech above Waller. Higher long-end yields are contextual inflation/financial-conditions evidence, not proof of a Fed hike, and tighter conditions can eventually reduce tightening needs.",
+    "Independent ISM retrieval supports 55.4 versus 54.3, prior 54.1, prices 72.6/70.3, new orders 60.9/57.2 and contracting employment 47.8/47.4. Official StatCan jobs plus dated secondary row support -41.7k versus +15k, prior +75.1k, unemployment 6.4% and wage growth 2.0% versus 2.8%. Official asking rents support C$2,130 and -3.6% y/y; the prior-quarter comparison is explicitly prior-release and not CPI rent. Official Ivey site independently confirms 64.3 seasonally adjusted versus prior 55.1; the candidate's 56.2 consensus was not separately reproduced in this review's retrieved pages. The survey is appropriately below the official jobs signal in weight. PPI mixed-surprise weight is defensible, with core monthly miss acknowledged and TE consensus distinguished from model forecasts.",
+    "Independent Yahoo chart retrieval reproduced SPY, QQQ, IWM, XLI, XLU, XLF, XLE, TLT, GLD and ZEB.TO September 10 completed closes, September 9 daily bases and September 3 calendar-week bases. All prices round correctly to two decimals; all twenty returns match to six decimals, with consistent percentage labels and up/down directions. The September 3-10 week convention correctly spans the holiday. ^TNX September 9/10 4.836999893/4.943999767 and ^TYX 5.285999775/5.361000061 support +10.7/+7.5bp and correct Yahoo series identity. WTI 102.480003357 versus 96.050003052 gives +6.694430089%, correctly displayed +6.69%; earlier rows support a multi-session rise. No single-event causal market reaction is asserted.",
+    "Fed numerical pricing passes: independently retrieved ZQU26 close and NY Fed EFFR 3.63% effective September 9 give post=(30*(100-96.2874984741211)-16*3.63)/14=3.806788984%, hike interpolation 70.71559361%, rounded hold/hike 29/71, with 8.57142857pp sensitivity per contract bp. Sixteen pre-change and fourteen post-change days assume a September 17 effective change. Zero cut weight is an assumed two-leg model restriction, not evidence that cuts have zero real-world probability. Pricing check fails provenance completeness, not this arithmetic.",
+    "BoC null distribution is correct and contract-compatible. Independent TMX retrieval confirms CRA September bid 97.6100, ask 97.6150, settlement 97.6100, volume 446; midpoint implies 2.3875% and settlement 2.3900%. Preserved BoC CORRA source reports 2.2900% effective September 9. The quarterly contract spans more than one meeting and cannot identify October outcome weights. facts.json cra_row=null is a parser false negative, not absence of the observable. The candidate does not fabricate a single-meeting distribution.",
+    "Calendar evidence supports CPI September 11 08:30 Toronto and Michigan 10:00, Canada CPI September 14 08:30, September 16 retail sales 08:30, BoC deliberations 13:30, FOMC decision/SEP 14:00 and separately added press conference 14:30. Independently inspected calendar rows reconcile CPI forecasts/previous, Michigan sentiment 51.0/51.7 and previous expectations 4.0%/3.3%, Canada legacy core 2.3%, median 2.0%, trim 1.9%, and retail previous -0.6%/-0.4%/-0.3%. Empty consensus cells correctly remain null even where TE model forecasts exist. Communication forecast fields now say desk assumption. Residual monthly core naming and settlement language remain findings.",
+    "Recursive inspection found every observation/pricing timestamp no later than the September 11 02:46:30 Toronto freeze; future calendar dates are intentionally scheduled events, not observations. Current repository review-gate, feedback and economic-render tests returned 12 passed. The legacy nullable-BoC TypeError was not treated as a candidate defect. Default python resolved to an unusable Windows alias; the repository virtualenv worked. HTML encoding required byte-aware parsing; these tooling issues did not prevent the substantive checks.",
+    "Decision usefulness has improved materially: completed cash weakness, higher long-end yields, energy pressure, corrected labour revisions and Waller's CPI-conditioned hold/hike framework are actionable pre-release context. The remaining false prior and provenance inconsistencies must still be removed before publication. This review is pre-CPI; any subsequent catalyst requires recollection and a new freeze rather than continued use of the same 71% desk interpolation."
+  ],
   "operator_instructions": [
     "Do not publish or edit these frozen candidate bytes. Build a new immutable iteration correcting every residual finding, including nested calendar and delta labels, then compute its digest from persisted bytes.",
     "Use an exhaustive field-level remediation check, not only a prose handoff claim: search the new complete artifact for obsolete GDP priors, settlement claims, inaccurate access-status notes, ambiguous core names and unsupported precise timestamps.",
     "Preserve the independently verified cash-strip arithmetic, current Yahoo long-end series, corrected revisions, conditional Waller treatment, desk-proxy caveats and null BoC distribution. Record source session dates, actual collection times and publication conventions distinctly.",
     "Obtain a fresh independent unconditional review bound to the new exact candidate digest before publication. This review unconditionally requests revision; it does not authorize publication contingent on later edits."
-  ],
-  "next_run_contract": [
-    "Read this feedback before collecting or editing the next candidate.",
-    "Re-trigger collection for every affected source and claim.",
-    "Rebuild the whole internally consistent candidate; do not patch prose only.",
-    "Submit the rebuilt candidate to a fresh independent PM review.",
-    "Do not publish until an exact-byte-bound approved review passes the gate."
   ]
 }

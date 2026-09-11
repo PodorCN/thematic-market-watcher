@@ -1,0 +1,92 @@
+{
+  "schema_version": "1.0",
+  "status": "open",
+  "reviewed_at": "2026-09-11T02:39:30-04:00",
+  "candidate_sha256": "92607b9d0a1cdc82b132677485823131c15e5328f54c67bd22f5f650001a2bbf",
+  "review_sha256": "a90488a5f6a1f7d51f126c967474c516dfb401ec83f7e2890fdf096a6b4a646f",
+  "source_review": "review/fed-boc/2026-09-11/iteration-01/pm-review.json",
+  "executive_summary": "Revise. Exact candidate bytes, candidate.sha256 and handoff bind correctly to the reviewed digest. Independent current official sources confirm the Fed 3.50-3.75% July hold and 9-3 hike dissent, June unanimity, September 15-16 SEP meeting, Warsh's quoted inflation message, and BoC 2.25% September hold, administered rates and October 28 09:45 decision/MPR. All ten cash prices, twenty returns, labels and directions reconcile to independently retrieved completed September 10 Yahoo closes, September 9 daily bases and September 3 calendar-week bases. The prior future-close defect is remediated; nested observation chronology now precedes the freeze. WTI 102.48 versus 96.05 and +6.69% also reconcile, although Yahoo close versus exchange settlement provenance needs correction. Fed proxy arithmetic gives 3.806788984% and 70.7156% hike weight with 8.5714pp sensitivity per contract basis point; the explicit proxy caveat and BoC null distribution are appropriate. Independent TMX and CORRA retrieval confirms the quarterly observable, notwithstanding facts.json's failed CRA parser. Publication is blocked by active JOLTS direction reversal from omitted revisions, unrevised payroll comparison, inaccurate and stale long-end closes, and omission of Waller's directly decision-relevant September 3 conditional hold/hike guidance. These are material defects in the full candidate despite the narrower prior feedback remediation and prior iteration-07 approval. Independent browser-impersonated HTTP retrieval succeeded for BLS and TradingEconomics after ordinary requests returned 403; the operator's access failures do not justify retaining demonstrably incorrect prior values.",
+  "failed_checks": [
+    "decision_usefulness",
+    "drivers",
+    "freshness"
+  ],
+  "findings": [
+    {
+      "severity": "major",
+      "field": "drivers.fed.dovish[id=fed_dove_jolts_20260901]",
+      "issue": "The driver reverses the actual month-on-month direction by comparing July openings with an unrevised June vintage. Its title, summary, previous value, delta and reason assert a decline that the released data do not show.",
+      "evidence": "Independent BLS https://www.bls.gov/news.release/jolts.t01.htm lists June 7,182 thousand, July 7,271 thousand and change +89 thousand. https://www.bls.gov/news.release/jolts.nr0.htm explicitly reports June revised down 177,000. The candidate uses June 7.359M and says -88k m/m. Independently retrieved https://tradingeconomics.com/united-states/job-offers confirms 7.182M revised previous and 7.300M consensus. The 29k consensus miss remains valid, but the claimed monthly fall does not.",
+      "pnl_impact": "A false decline strengthens the dovish labor-demand narrative before CPI/FOMC and can bias short-rate hedges or the apparent counterweight to hawkish inflation evidence.",
+      "instruction": "Recollect the BLS July JOLTS release and table 1 plus the dated consensus row. Set revised previous to 7.182M and monthly change to +89k, explicitly distinguish the 29k consensus miss from the upward monthly movement, and rebuild title, summary, delta, reason, placement and weight. Remove obsolete forward references to September 4 payrolls as still upcoming."
+    },
+    {
+      "severity": "major",
+      "field": "drivers.fed.hawkish[id=fed_hawk_nfp_20260904]",
+      "issue": "The active payroll driver retains July's superseded negative print and omits material upward back revisions when describing the labor backdrop. Its historical futures attribution also does not reconcile exactly with the collected daily rows.",
+      "evidence": "Independent https://www.bls.gov/news.release/empsit.nr0.htm confirms August +162k, unemployment 4.1%, earnings +0.3% m/m and +3.1% y/y, but states July revised from -23k to +21k and June from +20k to +31k, a combined +55k revision. The candidate's previous remains -23k without an unrevised label. Yahoo ZQU26 daily rows are 96.31500244 on September 3 and 96.30249786 on September 4, rather than an exact 1.0bp fall; the candidate nevertheless gives a 49%-to-56% historical proxy claim without identifying a consistent historical quote regime.",
+      "pnl_impact": "Using a negative instead of positive revised July print misstates the degree of rebound and the level of labor resilience; unsupported historical repricing adds false confidence to a causal trading interpretation.",
+      "instruction": "Recollect the full BLS release including revisions and earnings tables plus dated consensus. Use +21k revised July, disclose the combined +55k back revision and separate any unrevised vintage explicitly. Recalculate the September 3-4 futures comparison and proxy from identified observations, or remove that historical attribution. Reassess the reason and weight from the corrected evidence."
+    },
+    {
+      "severity": "major",
+      "field": "drivers.fed.hawkish[id=fed_hawk_long_end_20260831]",
+      "issue": "The supposedly current long-end driver is one completed session stale and its September 9 close values do not match the cited Yahoo index series.",
+      "evidence": "Independent Yahoo chart retrieval gives ^TNX September 8/9/10 closes of 4.80600023/4.83699989/4.94399977 and ^TYX 5.26399994/5.28599977/5.36100006. The candidate calls September 9 4.856%/5.306% completed closes and reports +5.0/+4.2bp. September 10 completed closes were available before the September 11 freeze; their moves from September 9 are approximately +10.7bp/+7.5bp. The source description says Yahoo but the source_url points to Treasury, which is a different yield observation convention.",
+      "pnl_impact": "This understates and misdates the current duration selloff relative to the correctly refreshed TLT strip, impairing assessment of financial conditions and hedge urgency even though the 4.75% trigger remains breached.",
+      "instruction": "Recollect ^TNX/^TYX September 9-10 completed observations, or use actual Treasury daily par yields consistently. Preserve the selected series identity and observation convention; rebuild actual, previous, bp changes, summary, reason and observation timestamp to September 10. Never combine Yahoo index levels with a Treasury-source label or carry provisional prices forward as closes."
+    },
+    {
+      "severity": "major",
+      "field": "drivers.fed and verification_note official communications refresh",
+      "issue": "The active policy evidence omits a newer, directly meeting-specific reaction function from Governor Waller while continuing to rely on generic interpretations of the July dissent and August 28 speech.",
+      "evidence": "The independently retrieved official speeches feed lists September 3 Waller, https://www.federalreserve.gov/newsevents/speech/waller20260903a.htm. He says continued August disinflation would support holding, but hot inflation could justify a hike; he judges policy only slightly restrictive and says it may not take much inflation acceleration to support tightening. He also describes three-month core inflation falling from 4.76% in February to 3.05% through July. The candidate claims the feed was re-probed but contains no Waller driver or exclusion rationale, immediately before the CPI release that tests his stated reaction function.",
+      "pnl_impact": "A PM is deprived of a concrete conditional hold-versus-hike framework and may overread the 71% proxy or Warsh rhetoric as an unconditional committee trajectory.",
+      "instruction": "Recollect and assess the complete September 3 Waller speech. Incorporate its two-sided conditional reaction function as a dated driver or explicit policy-context update, without portraying conditional language as a commitment or double counting it with existing hawkish communication. Tie CPI scenario interpretation to the corrected evidence and document why other recent communications are included or excluded."
+    },
+    {
+      "severity": "minor",
+      "field": "drivers.fed.dovish[id=fed_dove_adp_20260902] and drivers.boc.hawkish[id=boc_hawk_gdp_20260828]",
+      "issue": "Additional active drivers mix unrevised and revised prior vintages and retain expired pre-meeting framing.",
+      "evidence": "Independent TradingEconomics ADP page gives August 38k, consensus 47k, and revised July 46k; candidate previous is 44k. Official StatCan dq260828a confirms Q1 GDP revised from 0.0% to +0.1% q/q, while candidate combines that revised positive quarterly figure with -0.1% annualized without labeling different vintages. Its title still says September 2 hold 'Now Base Case' on September 11, and the ADP reason still speaks of being ahead of Friday NFP. Monthly June GDP +0.3% is independently confirmed by dq260828b, not the expenditure release alone.",
+      "pnl_impact": "Mixed-vintage comparisons and expired catalyst language reduce confidence in the scoring and can lead users to mistake historical context for an actionable pending event.",
+      "instruction": "Recollect ADP and both StatCan GDP releases with revision history. Use July ADP 46k revised, reconcile the quarterly and annualized GDP prior to a common vintage or explicitly label separate vintages, cite both GDP concepts, and rewrite all expired pre-September-4/pre-September-2 framing as historical context for the next meetings. Reassess retained weights rather than silently preserving them."
+    },
+    {
+      "severity": "minor",
+      "field": "meetings.fed.pricing source/as_of_pricing and drivers.boc.hawkish[id=boc_hawk_oil_20260821] settlement labels",
+      "issue": "The refreshed values are independently reproducible Yahoo historical close fields, but the package upgrades them to exchange settlements and assigns 16:00 observation times without source evidence for those conventions.",
+      "evidence": "Independent Yahoo chart close fields match September 10 ZQU26 96.28749847 and CL=F 102.48000336, with CL September 9 96.05000305. The source supplies daily bar timestamps rather than evidence that an official CME settlement was observed at 16:00 Toronto. Candidate source says 'CME ZQU26 settlement'; oil title, summary, actual and previous repeatedly say settlement. The oil published_at remains September 9 16:00 while its updated observation describes September 10. The prior future timestamp defect is fixed, but close/settlement/collection-time semantics remain conflated.",
+      "pnl_impact": "A sensitive fed-funds proxy or energy signal should not inherit unwarranted exchange-finality and precise timestamp authority from a secondary vendor's generic close field.",
+      "instruction": "Either obtain dated official exchange settlement evidence and the relevant publication convention, or consistently relabel both inputs as completed September 10 Yahoo daily close observations, not certified CME settlements. Record actual collection time separately from session date and make the oil publication/update chronology unambiguous. Preserve the independently verified arithmetic and explicit proxy caveats."
+    },
+    {
+      "severity": "minor",
+      "field": "calendar[id=fomc_20260916], calendar[id=ca_cpi_20260914], and communication-driver forecast fields",
+      "issue": "Several labels blur distinct event times, inflation measures and analyst expectations even where the core numeric calendar is correct.",
+      "evidence": "Current TradingEconomics calendar separates September 16 decision/SEP at 18:00 UTC from the press conference at 18:30 UTC; candidate combines all three in the 14:00 Toronto event title. Canada 2.3% core y/y corresponds to the legacy core series, while current calendar separately lists median 2.0% and trimmed mean 1.9%; candidate calls its sole core entry 'BoC core'. Dissent and Warsh forecast fields assert 'unanimous hold' and 'balanced-to-dovish nod toward Sep cut' without dated consensus evidence or a desk-expectation label. Other scheduled CPI, Michigan, Canada CPI, retail sales and BoC deliberations dates, times, previous values and stated available consensus values reconcile to independently retrieved calendar rows; null forecasts are genuine empty consensus cells, not missing TE model forecasts.",
+      "pnl_impact": "Ambiguous event timing and inflation-measure identity can misdirect the hedge window or the inflation surprise being monitored; unsourced consensus framing exaggerates a rhetorical surprise.",
+      "instruction": "Separate the 14:30 Toronto FOMC press conference from the 14:00 decision/SEP, explicitly name the Canadian core measure and add the policy-relevant median/trim series or explain their exclusion, and source dated consensus claims or relabel them as desk assumptions. Preserve null consensus fields when only a model forecast is available."
+    }
+  ],
+  "required_recollection": [
+    "Recollect the BLS July JOLTS release and table 1 plus the dated consensus row. Set revised previous to 7.182M and monthly change to +89k, explicitly distinguish the 29k consensus miss from the upward monthly movement, and rebuild title, summary, delta, reason, placement and weight. Remove obsolete forward references to September 4 payrolls as still upcoming.",
+    "Recollect the full BLS release including revisions and earnings tables plus dated consensus. Use +21k revised July, disclose the combined +55k back revision and separate any unrevised vintage explicitly. Recalculate the September 3-4 futures comparison and proxy from identified observations, or remove that historical attribution. Reassess the reason and weight from the corrected evidence.",
+    "Recollect ^TNX/^TYX September 9-10 completed observations, or use actual Treasury daily par yields consistently. Preserve the selected series identity and observation convention; rebuild actual, previous, bp changes, summary, reason and observation timestamp to September 10. Never combine Yahoo index levels with a Treasury-source label or carry provisional prices forward as closes.",
+    "Recollect and assess the complete September 3 Waller speech. Incorporate its two-sided conditional reaction function as a dated driver or explicit policy-context update, without portraying conditional language as a commitment or double counting it with existing hawkish communication. Tie CPI scenario interpretation to the corrected evidence and document why other recent communications are included or excluded."
+  ],
+  "operator_instructions": [
+    "Do not publish this candidate or edit its frozen artifacts. Create a new immutable iteration after resolving every material finding and rebuilding dependent data, comparisons, narratives and weights.",
+    "Use a working HTTP client such as curl_cffi with browser impersonation to recollect BLS JOLTS/payrolls/PPI, dated consensus, ADP, current rates, Waller, GDP and the calendar. Ordinary requests returned 403 during this review, but the alternative returned substantive official and secondary source pages; retain evidence rather than treating denial bodies as refreshed facts.",
+    "Preserve the verified completed-close cash regime, independently recompute all dependent numbers again at the new freeze, and explicitly distinguish Yahoo daily close from official exchange settlement. Correct the separate long-end driver and revision-sensitive labor drivers, not just the feedback prose.",
+    "Document a finding-by-finding remediation map that includes this review and the still-open feedback. Include source observation dates, collection timestamps, revision vintages, source identities and inclusion/exclusion rationale for communications; investigate parser false negatives such as facts.json cra_row=null without overriding successful source evidence.",
+    "Regenerate candidate SHA-256 and handoff from persisted bytes, ensure every observation timestamp is no later than candidate.as_of, and obtain a fresh independent unconditional approval bound to the new exact-byte digest before publication."
+  ],
+  "next_run_contract": [
+    "Read this feedback before collecting or editing the next candidate.",
+    "Re-trigger collection for every affected source and claim.",
+    "Rebuild the whole internally consistent candidate; do not patch prose only.",
+    "Submit the rebuilt candidate to a fresh independent PM review.",
+    "Do not publish until an exact-byte-bound approved review passes the gate."
+  ]
+}

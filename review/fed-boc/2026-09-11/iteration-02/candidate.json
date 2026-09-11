@@ -1,7 +1,7 @@
 {
-  "as_of": "2026-09-11T02:55:56-04:00",
-  "version": "2026-09-11-003",
-  "verification_note": "Sep 11 pre-market iteration-03 exhaustive full-artifact rebuild after PM review 87d9a22c0739. Every residual field was recollected/audited: GDP comparison now uses one revised vintage; all remaining settlement language was removed; completed Yahoo session dates are distinguished from Sep 11 collection time; oil inception versus refreshed observation chronology is explicit; Waller uses the official 08:30 ET feed timestamp; PPI provenance now records successful BLS actuals plus TradingEconomics consensus; Canadian legacy-core naming is consistent. Previously verified revised labour facts, complete cash strip, long-end closes, Fed desk-proxy caveats, Waller conditional framing, and null BoC distribution are preserved. Candidate only pending the third and final independent PM review.",
+  "as_of": "2026-09-11T02:46:30-04:00",
+  "version": "2026-09-11-002",
+  "verification_note": "Sep 11 pre-market iteration-02 full rebuild after PM review a90488a5f6a. Open feedback and every new finding were treated as mandatory recollection contracts. Browser-impersonated official BLS pages supplied revised JOLTS and payroll vintages; Waller's complete Sep 3 official speech was recollected; ADP/dated consensus, Yahoo long-end closes, both StatCan GDP concepts and the calendar were refreshed. The complete 10-instrument market strip and WTI remain coherently rebuilt from completed Sep 10 Yahoo daily close fields. Yahoo fields are labelled daily closes, not certified exchange settlements. Fed ZQU26 remains a sensitive desk proxy; BoC remains unavailable/null with a refreshed quarterly observable. Candidate only pending fresh independent PM approval.",
   "timezone": "America/Toronto",
   "meetings": {
     "fed": {
@@ -20,15 +20,13 @@
         "hike_25bp": 0.71,
         "source": "Desk-implied scenario weights from Yahoo ZQU26 completed daily close + NY Fed EFFR (not CME FedWatch probabilities)",
         "source_url": "https://finance.yahoo.com/quote/ZQU26.CBT",
-        "as_of_pricing": "2026-09-11T02:33:30-04:00",
+        "as_of_pricing": "2026-09-10T16:00:00-04:00",
         "proxy_check": "Sep 10 ZQU26 completed Yahoo daily close row 96.2875 => monthly average 3.7125%. With EFFR 3.63% effective 2026-09-09 for 16 pre-decision days and 14 post-decision days: post=(30*3.7125-16*3.63)/14=3.8068%. Mapping only to adjacent hold 3.63% / hike 3.88% legs gives rounded desk scenario weights hold 0.29 / hike 0.71 / cut 0.00. A +/-1bp contract-price sensitivity moves hike weight by about -/+8.6pp. This is not a directly observed probability distribution.",
         "proxy_source_url": "https://finance.yahoo.com/quote/ZQU26.CBT",
         "implied_rate_before": 3.63,
         "implied_rate_after": 3.806789,
         "effr_source_url": "https://markets.newyorkfed.org/api/rates/unsecured/effr/last/5.json",
-        "cme_access_note": "Direct CME FedWatch returned a 602-byte blocked body; no direct CME distribution was used.",
-        "price_session_date": "2026-09-10",
-        "collection_note": "Yahoo completed daily close field for Sep 10, collected 2026-09-11T02:33:30-04:00; not certified exchange settlement evidence."
+        "cme_access_note": "Direct CME FedWatch returned a 602-byte blocked body; no direct CME distribution was used."
       }
     },
     "boc": {
@@ -247,8 +245,8 @@
           "summary": "August headline PPI met a hot 0.4% monthly forecast and accelerated to 5.4% y/y; core monthly PPI undershot.",
           "published_at_toronto": "2026-09-10T08:30:00-04:00",
           "observed_at_toronto": "2026-09-10T08:30:00-04:00",
-          "source": "U.S. BLS PPI release (actuals/revisions) + TradingEconomics calendar (consensus)",
-          "source_url": "https://www.bls.gov/news.release/ppi.nr0.htm",
+          "source": "TradingEconomics calendar (BLS static page inaccessible this run)",
+          "source_url": "https://tradingeconomics.com/calendar",
           "importance": "HIGH",
           "weight": 1.5,
           "data": {
@@ -258,7 +256,7 @@
             "delta_label": "headline YoY beat +0.1pp; core MoM miss -0.1pp",
             "delta_type": "beat"
           },
-          "reason": "Headline producer inflation stayed elevated and the yearly rate exceeded TradingEconomics consensus, while the softer core monthly print made the release mixed and caps weight at 1.5. BLS official release actuals/revisions were successfully recollected via browser impersonation; consensus fields come from the dated TradingEconomics calendar.",
+          "reason": "Headline producer inflation stayed elevated and the yearly rate exceeded consensus, supporting the hawkish side before CPI. The softer core monthly print makes the release mixed, so weight is capped at 1.5. Actual, consensus and revised previous values were observed in the Sep 10 TradingEconomics calendar; BLS was inaccessible from this host.",
           "market_validation": [],
           "tags": [
             "HIGH",
@@ -270,8 +268,8 @@
           "icon": "FED",
           "title": "Waller Sets Conditional Hold-or-Hike CPI Test",
           "summary": "Waller said continued disinflation supports a hold, while hotter inflation could justify a hike.",
-          "published_at_toronto": "2026-09-03T08:30:00-04:00",
-          "observed_at_toronto": "2026-09-03T08:30:00-04:00",
+          "published_at_toronto": "2026-09-03T09:00:00-04:00",
+          "observed_at_toronto": "2026-09-03T09:00:00-04:00",
           "source": "Federal Reserve · Governor Waller speech",
           "source_url": "https://www.federalreserve.gov/newsevents/speech/waller20260903a.htm",
           "importance": "HIGH",
@@ -357,10 +355,9 @@
             "delta_label": "+6.69% d/d",
             "delta_type": "beat"
           },
-          "reason": "WTI extended its multi-session rise in the completed Sep 10 Yahoo daily close field. This is not certified CME settlement evidence; it is energy/terms-of-trade and gasoline-inflation context, not an attributed reaction to one BoC event. published_at_toronto is the stable driver inception timestamp; observed_at_toronto identifies the refreshed Sep 10 session value.",
+          "reason": "WTI extended its multi-session rise in the completed Sep 10 Yahoo daily close field. This is not certified CME settlement evidence; it is energy/terms-of-trade and gasoline-inflation context, not an attributed reaction to one BoC event.",
           "market_validation": [],
-          "observed_at_toronto": "2026-09-10T16:00:00-04:00",
-          "collection_note": "Completed Sep 10 Yahoo daily close field collected 2026-09-11T02:33:30-04:00. The 16:00 timestamp is the conventional cash-session display boundary, not a certified futures settlement timestamp."
+          "observed_at_toronto": "2026-09-10T16:00:00-04:00"
         },
         {
           "id": "boc_hawk_gdp_20260828",
@@ -376,10 +373,10 @@
             "actual": "+0.3% MoM / +0.8% QoQ / +3.3% ann.",
             "forecast": "+0.2% MoM / +3.4% ann.",
             "previous": "Q1 +0.1% q/q revised from 0.0% (about +0.4% annualized); May monthly GDP +0.3%",
-            "delta_label": "June MoM beat +0.1pp; Q2 about +2.9pp annualized vs revised Q1 approximation",
+            "delta_label": "MoM beat +0.1; ann. -0.1 vs fcst but rebound from -0.1",
             "delta_type": "beat"
           },
-          "reason": "StatCan releases dq260828a and dq260828b show Q2 expenditure GDP +0.8% q/q (about 3.3% annualized from unrounded official levels), Q1 revised to +0.1% q/q, and June industry GDP +0.3% m/m. This is historical resilience context for Oct 28, not a still-pending Sep 2 decision catalyst.",
+          "reason": "StatCan releases dq260828a and dq260828b show Q2 expenditure GDP +0.8% q/q (~3.3% annualized), Q1 revised to +0.1% q/q, and June industry GDP +0.3% m/m. This is historical resilience context for Oct 28, not a still-pending Sep 2 decision catalyst.",
           "market_validation": []
         },
         {
@@ -597,18 +594,18 @@
       "forecast": {
         "headline_MoM": null,
         "headline_YoY": null,
+        "boc_core_MoM": null,
         "legacy_core_YoY": null,
         "median_YoY": null,
-        "trim_YoY": null,
-        "legacy_core_MoM": null
+        "trim_YoY": null
       },
       "previous": {
         "headline_MoM": "0.5%",
         "headline_YoY": "3.0%",
+        "boc_core_MoM": "0.2%",
         "legacy_core_YoY": "2.3%",
         "median_YoY": "2.0%",
-        "trim_YoY": "1.9%",
-        "legacy_core_MoM": "0.2%"
+        "trim_YoY": "1.9%"
       },
       "logic": "Fresh Sep 11 calendar. Legacy core, CPI-median and CPI-trim are named separately; empty consensus fields remain null. Inflation breadth determines whether weak employment can outweigh energy/tariff concerns.",
       "hawk_if": "High to Hawk",
@@ -624,7 +621,7 @@
       "impact": "HIGH",
       "forecast": {},
       "previous": {},
-      "logic": "Sep 10 ZQU26 Yahoo daily close/EFFR desk model: cut 0% / hold 29% / hike 71%, rounded; +/-1bp contract sensitivity changes hike weight by about 8.6pp. Direct CME distribution unavailable.",
+      "logic": "Sep 10 ZQU26 settlement/EFFR desk model: cut 0% / hold 29% / hike 71%, rounded; +/-1bp contract sensitivity changes hike weight by about 8.6pp. Direct CME distribution unavailable.",
       "hawk_if": "Showdown",
       "dove_if": "Showdown"
     },

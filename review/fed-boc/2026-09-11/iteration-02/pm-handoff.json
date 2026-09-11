@@ -1,0 +1,61 @@
+{
+  "candidate_sha256": "f74254157fd88dbafcb49f6ba3872794e7330348f56ea935c9629b64e0499de3",
+  "open_feedback": "review/fed-boc/feedback/latest.json",
+  "prior_pm_review": "review/fed-boc/2026-09-11/iteration-01/pm-review.json",
+  "remediation_evidence_mapping": [
+    {
+      "field": "iteration-01 PM review",
+      "feedback": "All findings and recollections in review a90488a5f6a",
+      "remediation": "Recollected official/secondary pages with browser impersonation and rebuilt every affected field",
+      "evidence": "C:/Users/zixia/tmp_verify/macro-2026-09-11/iteration-02/"
+    },
+    {
+      "field": "JOLTS",
+      "feedback": "Use revised June and distinguish consensus miss from monthly rise",
+      "remediation": "7.182M revised prior, +89k m/m, -29k consensus miss; title/summary/reason/weight rebuilt",
+      "evidence": "BLS jolts.nr0/t01 and TE job-offers pages"
+    },
+    {
+      "field": "NFP",
+      "feedback": "Use revisions; remove unsupported historical futures attribution",
+      "remediation": "July +21k, June +31k, +55k combined revisions; pricing attribution removed",
+      "evidence": "BLS empsit.nr0"
+    },
+    {
+      "field": "long end",
+      "feedback": "Recollect Sep 9-10 and preserve series identity",
+      "remediation": "Yahoo ^TNX/^TYX Sep 10 4.944/5.361, +10.7/+7.5bp; source/timestamps rebuilt",
+      "evidence": "Yahoo structured daily index rows"
+    },
+    {
+      "field": "Fed communications",
+      "feedback": "Assess Waller Sep 3 conditional reaction function",
+      "remediation": "Added modest 1.0 conditional hold/hike driver, explicit no commitment and no newer decision-specific communication",
+      "evidence": "Federal Reserve waller20260903a.htm and refreshed feeds"
+    },
+    {
+      "field": "ADP/GDP stale framing",
+      "feedback": "Correct revisions and expired framing",
+      "remediation": "ADP prior 46k revised; GDP separates q/q expenditure from monthly industry concepts; all stale framing removed",
+      "evidence": "TE ADP and StatCan dq260828a/b"
+    },
+    {
+      "field": "Yahoo close provenance",
+      "feedback": "Do not call Yahoo bars official settlements",
+      "remediation": "ZQU26 and CL=F consistently labelled Yahoo completed daily closes; collection time separated from session date",
+      "evidence": "Yahoo structured rows"
+    },
+    {
+      "field": "calendar/assumptions",
+      "feedback": "Separate FOMC times, identify Canada CPI measures, label desk assumptions",
+      "remediation": "Added 14:30 press conference row; legacy core/median/trim named; communication forecasts relabelled desk assumptions",
+      "evidence": "Fresh FXStreet/TE calendar and driver fields"
+    },
+    {
+      "field": "open iteration-06 feedback",
+      "feedback": "Complete strip/WTI chronology and null BoC pricing",
+      "remediation": "All prior remediation preserved and recomputed; BoC remains null/unavailable",
+      "evidence": "candidate market, oil and meetings.boc.pricing"
+    }
+  ]
+}
