@@ -1,0 +1,80 @@
+{
+  "candidate_sha256": "a679dd15fce15e952bd1f7f0f6b95c3b83ed099a7b4a1399b5cf5768dc4d8351",
+  "open_feedback": "review/fed-boc/feedback/latest.json",
+  "prior_pm_review": "review/fed-boc/2026-09-11/iteration-09/pm-review.json",
+  "evidence_sha256": {
+    "evidence/bls-cpi.html": "bdfc351cdc83c3c2251e758e29ea39a9ab97b5ae4f7de37fc8f3f5455518a8f4",
+    "evidence/bls-jobs.html": "35ccd1d69efee60dec28f5b07cf29fb20d563eaa1e2f9b36a83d35676a90236e",
+    "evidence/bls-jolts.html": "aafffb26d62cd2353a394cd08171c2901be8f50e030c1c33f1cc0c80b0e4e9ac",
+    "evidence/bls-ppi.html": "f065f1794fcdbba7f367d7569d6b5c5ad690a18a78f85eda5a4e0a6d6e820db2",
+    "evidence/boc-last-statement.html": "6ccfce4b068e8f4f2c592f90405c3579a3e08a11a8973b7bdcf1a013d11278e1",
+    "evidence/boc-press.html": "5e3a6201a8b6a4897a4481cce52c9d39bf4e991136d1dec86b00c6485b6b91b4",
+    "evidence/boc-rate.html": "213c1eaa96d3eb1fea72e4f713bde7969fe2082c964ff6077f095483c2d339ac",
+    "evidence/cme.html": "eecde3fafbde4090c30e610a7ed4b8d877f8351c0490e4189574890e8a5a4f7e",
+    "evidence/corra.json": "8d23b7686475cabd37a75a9dbb487522a4e1ab9a63f1bfbc7afeb60ec74f8e32",
+    "evidence/cra.html": "354c1f85037b0855ca009289d971d84ffd5c639c3862089ef9bb144adf859ccb",
+    "evidence/effr.json": "5c1c15cf6c9a04e84f10188d626bf2845e86256b3a37f0e37d0602ed72ea97e0",
+    "evidence/fed-last-statement.html": "d8bf016167e7e0a705e4ee5542111d7f714d65e531c353fb02e718397df26c41",
+    "evidence/fed-press.xml": "b95d76bc188bdbbc49ccc436cee436d7a3b69eaf98e8257af441372b396f6fa3",
+    "evidence/fed-speeches.xml": "370595f49a80d3814951ccf74dbe74423f5c5844acd077727997a7664b199ed8",
+    "evidence/fomc-calendar.html": "f7c2ff0b06c420f9f57d49c40edb35a27a148a7db74d59bdee8dc8cf95fd8079",
+    "evidence/michigan.html": "9a43b2a702695463eb0c711aff57d0510dfd185fcf172632798c1d03e67bf722",
+    "evidence/statcan-lfs.html": "c392f09c91d29b4596dc826c1324e2d2099624a019f63e79eb7b9bf84c6035f8",
+    "evidence/statcan-rents.html": "1a4dd343a491e614d766c1483a949bbb08d6a3388a187ff52dedd687f53a111b",
+    "evidence/market/%5ETNX.1d.json": "e09ae12bbc70eefaac972f24b147e5032fb5204c0c9c68766072f31b4b0be8bf",
+    "evidence/market/%5ETYX.1d.json": "97eb58244bdc9965ea8ee101fa5af3a5df608151bdd6660b46fea42d34f7942d",
+    "evidence/market/CL%3DF.1d.json": "983acd9722b172b4f02c897c44e618f43abbf30e985f09a74e703094e49dd862",
+    "evidence/market/context-facts.json": "7f05ee9c2eee846bcf0fc3959fb7e0892d72851e39e8bde5c5f48fb0f356fade",
+    "evidence/market/context-verify.json": "088f305289022dccfbf042cd6cde92347a41770713a1af4c7fd8208e10b3d830",
+    "evidence/market/facts.json": "070923d8445003b818bc01577ae35319a0ef3e1fdc961decca38db3ebce4863b",
+    "evidence/market/GLD.1d.json": "65b4c2cbf0e432982ea04dfcb9a9611c2dadc094b207ef056bb137d7cd9203a7",
+    "evidence/market/GLD.1m.json": "8b5439d42495f89aa7c90b344915f9dc2e7186ece6b5a7c2e0007fab3ba0c43c",
+    "evidence/market/IWM.1d.json": "de44ff8743d39ff8579cd76e09a5d1ca9c0be67b95cd288606c54e27d89bdee6",
+    "evidence/market/IWM.1m.json": "8a1a4a1693483a89737c66d9e392a6eac91e146ba3a7a9c52a5310cd73c3458e",
+    "evidence/market/QQQ.1d.json": "adbff9281c2b34c4de2136b737c3decfd0f6ffc30ab5599be30c07e5abb51fa4",
+    "evidence/market/QQQ.1m.json": "6bd048d3d6bd0fc7d0adf02c63eab0bd7aa76d799bafe1e1c310c2d2f90d7bca",
+    "evidence/market/SPY.1d.json": "1a448a7fa90a870cc77a952371db655096ca92ad862e66d854f91997cf40dee8",
+    "evidence/market/SPY.1m.json": "e05e7da7c0d49723bdb8619e510a65c0d67c905ecb590a0ff74dfa1bad70dc1b",
+    "evidence/market/TLT.1d.json": "19b2d595ce4e59aa04571d0083eb029018f666f79ca06057eedccfb293ac9d02",
+    "evidence/market/TLT.1m.json": "f3a9bcf172150e506afe477a8b0399aaa2dccd01feafc10e92b214d64f9f5007",
+    "evidence/market/verify-second.json": "2a5d5c13196a370fb156e94cb27980ba6952f74750303e1793db33cb5af043ad",
+    "evidence/market/XLE.1d.json": "7e5f30e7957a1991145e6337e8b35061028424c004295d66e24372d8a234e620",
+    "evidence/market/XLE.1m.json": "e4d726342ceb2e4b530dc810d1fed7c97cfbf522b38410b830309a77d642ee0e",
+    "evidence/market/XLF.1d.json": "9dbdacec4313d1c6125f195f6849125950c6b92a415f0aa414a4e0db6960b8af",
+    "evidence/market/XLF.1m.json": "bd45997afe0691e435c1b44f369a1f8a2738704e2589cb33a20a1e01aa7a8bd5",
+    "evidence/market/XLI.1d.json": "888581b2b3fa657d22dfcf8bfb6805fca6077e2fbb637668224445fea5c60933",
+    "evidence/market/XLI.1m.json": "17543e00103a945ca449497023de03fd6bcab8ad20d184e6815b1d73149990b3",
+    "evidence/market/XLU.1d.json": "5e1eb282f11f4a164fdc5e4960128cabc1375a19a285e0273695396ea4751999",
+    "evidence/market/XLU.1m.json": "650e557457d901a7d337e1c1c1cb047658f0944ec82d698da936d212cd488414",
+    "evidence/market/ZEB.TO.1d.json": "8da5a54482ab21e8d4ee6844ac0a2da2855ff73d5d6a4bde2fa7b584f3438335",
+    "evidence/market/ZEB.TO.1m.json": "eb82b77518d74cbba73b2c1f86bcda5d885aca00c95d8aadf957c6c803d5e7e7",
+    "evidence/market/ZQU26.CBT.1d.json": "6afec6def1db330770d050cb46969acc79bb8ef87c84237f552d4c03fdafa338",
+    "evidence/market/ZQU26.CBT.1m.json": "a6d3d0b45e0bc43009b594bff36c52e27d3ea9196cde9471c53ca9b7ecfa4d72"
+  },
+  "remediation_evidence_mapping": [
+    {
+      "field": "canonical watcher calendar",
+      "feedback": "Recollect and map available consensus/previous",
+      "remediation": "Sep 12 canonical calendar recollected; executable Canada CPI, US retail and Fed-decision mappings passed; genuine nulls preserved.",
+      "evidence": "archive/2026-09-12/economic_calendar.json"
+    },
+    {
+      "field": "market finalized rows",
+      "feedback": "Recollect ten instruments, recompute, verify twice, hash raw",
+      "remediation": "All ten Sep 11 completed rows rebuilt full precision; 1d/1w recomputed; selected rows matched after 20 seconds; raw 1m/1d payloads hashed.",
+      "evidence": "evidence/market/facts.json and verify-second.json"
+    },
+    {
+      "field": "BoC proxy",
+      "feedback": "Recollect and use compounded-daily-CORRA terminology",
+      "remediation": "TMX CRA and BoC CORRA re-probed; null October distribution and compounded-daily-CORRA wording retained.",
+      "evidence": "evidence/cra.html and corra.json"
+    },
+    {
+      "field": "Michigan provenance",
+      "feedback": "Add exact dated FXStreet endpoint",
+      "remediation": "Exact eventDates endpoint remains in driver collection_note; official Michigan source re-probed.",
+      "evidence": "candidate driver collection_note and evidence/michigan.html"
+    }
+  ]
+}

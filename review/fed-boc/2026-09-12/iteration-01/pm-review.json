@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "reviewer_role": "independent_portfolio_manager",
+  "reviewed_at": "2026-09-12T04:53:52-04:00",
+  "candidate_sha256": "a679dd15fce15e952bd1f7f0f6b95c3b83ed099a7b4a1399b5cf5768dc4d8351",
+  "verdict": "approved",
+  "executive_summary": "Approved unconditionally. I independently read the governing operations and PM-review contracts, backend specifications, schema, open feedback, prior review, handoff, exact candidate bytes, complete canonical calendar, and every evidence file. The persisted 35,955-byte candidate hashes exactly to a679dd15fce15e952bd1f7f0f6b95c3b83ed099a7b4a1399b5cf5768dc4d8351, matching candidate.sha256 and pm-handoff.json. Official/direct source checks support the Fed July 29 hold and 9-3 dissent, the BoC September 2 2.25% hold, the meeting dates and decision times, the cited BLS releases, Michigan observations, Statistics Canada releases, EFFR, and CORRA. The canonical calendar mappings for Canada CPI, US retail sales, FOMC, FOMC press conference, and BoC deliberations match event timestamps and available forecast/previous fields exactly, including genuine nulls. Fed pricing is clearly labelled as a ZQU26/EFFR desk interpolation rather than CME FedWatch, recomputes to 0/14/86 and sums to one; BoC pricing correctly fails closed with null single-meeting probabilities because CRAU26 spans multiple decisions. All driver directions, data fields, signs, weights, timestamps, and narrative claims are internally coherent. Market rows and both one-day and one-week return calculations recompute from the persisted full-precision bases, and the second verification reproduces every selected close at the stated epochs. Feedback remediation is evidenced and complete. No unresolved critical or major issue remains.",
+  "checks": {
+    "official_policy": "pass",
+    "pricing": "pass",
+    "drivers": "pass",
+    "market_validation": "pass",
+    "freshness": "pass",
+    "decision_usefulness": "pass"
+  },
+  "findings": [],
+  "pnl_risks": [
+    "Fed 0/14/86 is a desk-implied adjacent hold/hike interpolation from ZQU26 and EFFR, not an exchange-traded single-meeting probability distribution. The page labels that limitation; users must not treat the displayed percentages as CME FedWatch odds.",
+    "BoC single-meeting pricing is intentionally unavailable. CRAU26 is a compounded-daily-CORRA quarterly instrument expiring December 16 and spanning the October 28 and December 9 decisions, so allocating its implied rate to October would create false precision.",
+    "Yahoo Finance is a revisable vendor representation rather than certified exchange settlement data. The candidate binds hashed raw payloads, a defined completed-session convention, exact epochs, and a second selected-row check, but close values can still be revised later and should not be read as causal event returns.",
+    "The Fed rope is materially hawkish, including a 2.5 base weight for Warsh's inflation guidance, but the rope is a weighted evidence score with age decay rather than a probability. The September CPI, retail sales, labour data, decision, SEP, and press conference remain the principal falsifiers.",
+    "Calendar consensus is a timestamped FXStreet snapshot and can change before release. The candidate exposes available consensus and prior values while preserving unavailable fields as null; event hedges should use the latest pre-release observation rather than assume these values are immutable."
+  ],
+  "operator_instructions": []
+}
