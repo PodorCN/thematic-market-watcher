@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "status": "open",
+  "reviewed_at": "2026-09-12T11:05:19-04:00",
+  "candidate_sha256": "fac9250b77455523102ffd0cf67a2085c1cc9dd55d2864270a5f6e32f17bff68",
+  "review_sha256": "b261a2ec4dd24528ad4e2838551ef00403a5c1caf88b0a42025768ef37f7091c",
+  "source_review": "review/fed-boc/2026-09-12/iteration-02/pm-review.json",
+  "executive_summary": "Revise unconditionally. The candidate content incorporates the prior calendar and market remediation: its canonical 92-event mappings match the supplied calendar, Fed probabilities sum to 1 and are labelled as a desk proxy, BoC single-meeting probabilities correctly remain unavailable, market arithmetic recomputes from the persisted bases, and all 49 iteration-02 evidence files were read with JSON evidence parsing successfully. Publication is nevertheless blocked because the exact candidate bytes hash to fac9250b77455523102ffd0cf67a2085c1cc9dd55d2864270a5f6e32f17bff68, while candidate.sha256 and pm-handoff.json bind a different digest. In addition, the four frozen BLS evidence files are Access Denied pages rather than official release data, so the material BLS driver claims cannot be independently audited from the submitted evidence. These are unresolved gate and source-audit failures; no conditional approval is permitted.",
+  "failed_checks": [
+    "decision_usefulness",
+    "drivers"
+  ],
+  "findings": [
+    {
+      "severity": "critical",
+      "field": "candidate.sha256, pm-handoff.json, and candidate_sha256 binding",
+      "issue": "The frozen candidate digest does not match either the checksum file or the handoff digest, so the review cannot bind to the operator's declared candidate bytes.",
+      "evidence": "A binary SHA-256 read of review/fed-boc/2026-09-12/iteration-02/candidate.json produced fac9250b77455523102ffd0cf67a2085c1cc9dd55d2864270a5f6e32f17bff68. candidate.sha256 contains 0a3bae1123fb55043f568cb8dfb2348727516e6156689fa59c53a09bbb9ffc7f, and pm-handoff.json repeats that same different digest. The handoff evidence-file hashes themselves matched their persisted files, but the candidate binding did not.",
+      "pnl_impact": "A PM or publisher could approve or publish bytes different from the reviewed and handed-off snapshot. That breaks the fail-closed audit control and makes every policy, probability, driver, and price conclusion non-binding for the actual publication artifact.",
+      "instruction": "Do not publish or reinterpret this iteration. Re-read the final candidate bytes in binary mode, regenerate candidate.sha256 and pm-handoff.json candidate_sha256 from those exact bytes, verify both equal fac9250b77455523102ffd0cf67a2085c1cc9dd55d2864270a5f6e32f17bff68 only if the candidate remains byte-identical, and submit the resulting immutable candidate package for a fresh PM review. If any candidate byte changes, recompute every digest again and do not reuse this review."
+    },
+    {
+      "severity": "major",
+      "field": "drivers.fed.hawkish[id=fed_hawk_nfp_20260904], drivers.fed.hawkish[id=fed_hawk_cpi_20260911], drivers.fed.hawkish[id=fed_hawk_ppi_20260910], drivers.fed.dovish[id=fed_dove_jolts_20260901], and BLS evidence files",
+      "issue": "The frozen BLS evidence artifacts do not contain the cited official data; each is an Access Denied page, leaving payrolls, CPI, PPI, and JOLTS claims unsupported by the submitted official-source evidence.",
+      "evidence": "Full reads of evidence/bls-cpi.html, evidence/bls-jobs.html, evidence/bls-ppi.html, and evidence/bls-jolts.html show the title and body 'Access Denied' and the BLS bot-activity denial text, with no release tables or observations. Direct independent retrieval of the cited BLS release pages in this review also returned HTTP 403, and the attempted BLS public API retrieval was unavailable in the environment. The candidate nevertheless states that BLS actuals were successfully recollected and uses them in high-weight Fed drivers.",
+      "pnl_impact": "The Fed rope is materially driven by the unsupported 162k payrolls, 0.3% core CPI, 5.4% PPI, and 7.271M JOLTS observations. Without auditable official observations, a PM cannot distinguish a genuine inflation/labour signal from a stale, revised, or mis-transcribed value, which can reverse the hike/hold risk assessment and event hedge sizing.",
+      "instruction": "Recollect each cited BLS release through an accessible authoritative BLS endpoint or persist a complete official response that contains the relevant release tables and retrieval metadata; do not substitute the current denial pages. Recompute and re-audit every affected Actual/Previous field, delta label, side, weight, summary, reason, and any pricing narrative from the recovered official values, bind the replacement evidence hashes in the handoff, and obtain a fresh independent review."
+    }
+  ],
+  "required_recollection": [
+    "Do not publish or reinterpret this iteration. Re-read the final candidate bytes in binary mode, regenerate candidate.sha256 and pm-handoff.json candidate_sha256 from those exact bytes, verify both equal fac9250b77455523102ffd0cf67a2085c1cc9dd55d2864270a5f6e32f17bff68 only if the candidate remains byte-identical, and submit the resulting immutable candidate package for a fresh PM review. If any candidate byte changes, recompute every digest again and do not reuse this review.",
+    "Recollect each cited BLS release through an accessible authoritative BLS endpoint or persist a complete official response that contains the relevant release tables and retrieval metadata; do not substitute the current denial pages. Recompute and re-audit every affected Actual/Previous field, delta label, side, weight, summary, reason, and any pricing narrative from the recovered official values, bind the replacement evidence hashes in the handoff, and obtain a fresh independent review."
+  ],
+  "operator_instructions": [
+    "Keep publication fail-closed and do not archive, publish, or carry forward this revise verdict as approval.",
+    "Repair the exact-byte candidate checksum and handoff binding from a binary read, then freeze a replacement package and request a fresh independent PM review.",
+    "Replace the four denied BLS evidence artifacts with auditable official release responses, rerun all affected driver and cross-field checks, and bind the replacement evidence hashes before review.",
+    "Do not alter the candidate, checksum, handoff, feedback, calendar, dashboard, or any other repository file as part of this review artifact; the collecting operator must perform the remediation in a new immutable iteration."
+  ],
+  "next_run_contract": [
+    "Read this feedback before collecting or editing the next candidate.",
+    "Re-trigger collection for every affected source and claim.",
+    "Rebuild the whole internally consistent candidate; do not patch prose only.",
+    "Submit the rebuilt candidate to a fresh independent PM review.",
+    "Do not publish until an exact-byte-bound approved review passes the gate."
+  ]
+}

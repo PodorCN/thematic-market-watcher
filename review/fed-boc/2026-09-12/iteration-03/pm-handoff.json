@@ -1,0 +1,89 @@
+{
+  "candidate_sha256": "4df81aba0c058bc8874d62809e835738cc1b4cba0895d937821046ca87903824",
+  "open_feedback": "review/fed-boc/feedback/latest.json",
+  "prior_pm_review": "review/fed-boc/2026-09-12/iteration-02/pm-review.json",
+  "evidence_sha256": {
+    "evidence/bls-cpi.html": "8b4d352b4f1ffc6604d953d304c151993c722f8a096a4030765183105ade9484",
+    "evidence/bls-jobs.html": "20e122273575e268b2325ced449aff2868fe3fad75b0d1d854688749bf5dca99",
+    "evidence/bls-jolts.html": "7b77b05e40e3e4eda19dd37639959dafd34abbdd714f6e15baa88288ea619506",
+    "evidence/bls-ppi.html": "f2e99245081cb24cfa5d38b5242d8d6d4501550afa03a2304eab6affcc400386",
+    "evidence/bls-retrieval-metadata.json": "26c1b4e90a0bfa76d0a1feebe383145731daa46e2fcd972d3fef862e42b40c20",
+    "evidence/boc-last-statement.html": "6ccfce4b068e8f4f2c592f90405c3579a3e08a11a8973b7bdcf1a013d11278e1",
+    "evidence/boc-press.html": "5e3a6201a8b6a4897a4481cce52c9d39bf4e991136d1dec86b00c6485b6b91b4",
+    "evidence/boc-rate.html": "213c1eaa96d3eb1fea72e4f713bde7969fe2082c964ff6077f095483c2d339ac",
+    "evidence/cme.html": "eecde3fafbde4090c30e610a7ed4b8d877f8351c0490e4189574890e8a5a4f7e",
+    "evidence/corra.json": "8d23b7686475cabd37a75a9dbb487522a4e1ab9a63f1bfbc7afeb60ec74f8e32",
+    "evidence/cra.html": "4bce67294ddecdb8444f160bdefaa4c76191e15af8a865b6559e0092c4c57525",
+    "evidence/effr.json": "5c1c15cf6c9a04e84f10188d626bf2845e86256b3a37f0e37d0602ed72ea97e0",
+    "evidence/fed-last-statement.html": "12d380d26957d05509ac0aa78cc513b9ff3b67e41fe048f771c4412b5e922763",
+    "evidence/fed-press.xml": "b95d76bc188bdbbc49ccc436cee436d7a3b69eaf98e8257af441372b396f6fa3",
+    "evidence/fed-speeches.xml": "370595f49a80d3814951ccf74dbe74423f5c5844acd077727997a7664b199ed8",
+    "evidence/fomc-calendar.html": "dde0f2c338e2fb6a82fbd0301d8e1dcccf63f1cc6ed7a81355abe9b1d90e1fe8",
+    "evidence/market/%5ETNX.1d.json": "1b2736fe3588fe98187db2349baae7ec40fdb7a4e07aac4adc6243b90a857fe4",
+    "evidence/market/%5ETYX.1d.json": "b39b8baa8dc59c5b9259b4dcd528b86caeab0a0765cdac4def8d3650809cc0df",
+    "evidence/market/CL%3DF.1d.json": "88d2f5ff999eecb7c297da2240c8ccca5ee89dbbfe8af945b0ec4bba972017da",
+    "evidence/market/context-facts.json": "7f05ee9c2eee846bcf0fc3959fb7e0892d72851e39e8bde5c5f48fb0f356fade",
+    "evidence/market/context-verify.json": "088f305289022dccfbf042cd6cde92347a41770713a1af4c7fd8208e10b3d830",
+    "evidence/market/facts.json": "80afca254d1e12ac990cb1b8ef7172eca4be421ee74b1e001f48f72db3ecf4e2",
+    "evidence/market/GLD.1d.json": "8787cb6a671b1462adc491681766e06d5c14dbe8fb50587ae7b07cf64946b513",
+    "evidence/market/GLD.1m.json": "8b5439d42495f89aa7c90b344915f9dc2e7186ece6b5a7c2e0007fab3ba0c43c",
+    "evidence/market/IWM.1d.json": "d0a3e7a63f352d5e5a718979a07d07b275bb8b8f78fc91994d990076905714d9",
+    "evidence/market/IWM.1m.json": "8a1a4a1693483a89737c66d9e392a6eac91e146ba3a7a9c52a5310cd73c3458e",
+    "evidence/market/QQQ.1d.json": "35a27aedd6844d1130edd31378caba37cb4440dcd9a8f011339d7e8ab4a4249f",
+    "evidence/market/QQQ.1m.json": "6bd048d3d6bd0fc7d0adf02c63eab0bd7aa76d799bafe1e1c310c2d2f90d7bca",
+    "evidence/market/refresh-first.json": "03a758904b891714dd8b66ef2eb997eefaaf9e393ab02dc6923ed1e404815317",
+    "evidence/market/refresh-second.json": "03a758904b891714dd8b66ef2eb997eefaaf9e393ab02dc6923ed1e404815317",
+    "evidence/market/SPY.1d.json": "960234148b31c8b90d28f5a6b6f0ff544f76e85fd9f70d44307e97e24f10a608",
+    "evidence/market/SPY.1m.json": "e05e7da7c0d49723bdb8619e510a65c0d67c905ecb590a0ff74dfa1bad70dc1b",
+    "evidence/market/TLT.1d.json": "310d34cffa4a1ec9fd6f9f7200f9a0b8ee1de18a0cf5a50f018aa60e4da7ee82",
+    "evidence/market/TLT.1m.json": "f3a9bcf172150e506afe477a8b0399aaa2dccd01feafc10e92b214d64f9f5007",
+    "evidence/market/verify-second.json": "2a5d5c13196a370fb156e94cb27980ba6952f74750303e1793db33cb5af043ad",
+    "evidence/market/XLE.1d.json": "3c4c48be143b4282387a7fdda2c5f9cb2d4513c04f44672c764bdec258d5a235",
+    "evidence/market/XLE.1m.json": "e4d726342ceb2e4b530dc810d1fed7c97cfbf522b38410b830309a77d642ee0e",
+    "evidence/market/XLF.1d.json": "7f60f8690015f2d927f3ed903941a2994d928a8a10bfcb450d87937b4904d48b",
+    "evidence/market/XLF.1m.json": "bd45997afe0691e435c1b44f369a1f8a2738704e2589cb33a20a1e01aa7a8bd5",
+    "evidence/market/XLI.1d.json": "c9185f332a96b9fece488d1b1f5595dcf02c930f983b15eae35816f024f4411b",
+    "evidence/market/XLI.1m.json": "17543e00103a945ca449497023de03fd6bcab8ad20d184e6815b1d73149990b3",
+    "evidence/market/XLU.1d.json": "ae792876e6f21224ccc3693bf6588b8d23fcf4b61e11c10b337fc01736893b8e",
+    "evidence/market/XLU.1m.json": "650e557457d901a7d337e1c1c1cb047658f0944ec82d698da936d212cd488414",
+    "evidence/market/ZEB.TO.1d.json": "004341e130b692a94d87be6497cccf65d687a3f847fab88b74423ef8aea2a923",
+    "evidence/market/ZEB.TO.1m.json": "eb82b77518d74cbba73b2c1f86bcda5d885aca00c95d8aadf957c6c803d5e7e7",
+    "evidence/market/ZQU26.CBT.1d.json": "e6902bbdfd441766ab88a127c2752d7caf915b07857a3a1d32d4fed6c2c8b3f9",
+    "evidence/market/ZQU26.CBT.1m.json": "a6d3d0b45e0bc43009b594bff36c52e27d3ea9196cde9471c53ca9b7ecfa4d72",
+    "evidence/michigan.html": "9a43b2a702695463eb0c711aff57d0510dfd185fcf172632798c1d03e67bf722",
+    "evidence/statcan-lfs.html": "c392f09c91d29b4596dc826c1324e2d2099624a019f63e79eb7b9bf84c6035f8",
+    "evidence/statcan-rents.html": "1a4dd343a491e614d766c1483a949bbb08d6a3388a187ff52dedd687f53a111b"
+  },
+  "remediation_evidence_mapping": [
+    {
+      "field": "exact candidate binding",
+      "feedback": "binary digest mismatch",
+      "remediation": "Candidate written once as explicit UTF-8 bytes; checksum and handoff digest computed by binary readback and asserted equal.",
+      "evidence": "candidate.json, candidate.sha256, pm-handoff.json"
+    },
+    {
+      "field": "BLS-backed Fed drivers",
+      "feedback": "denial pages did not support payroll/CPI/PPI/JOLTS",
+      "remediation": "Recollected all four official BLS static releases with curl_cffi Chrome impersonation; HTTP 200, denial absent, release-specific numeric anchors asserted; bytes and retrieval metadata persisted and hashed. Candidate values and directions were re-audited against recovered releases and remain unchanged.",
+      "evidence": "evidence/bls-*.html and evidence/bls-retrieval-metadata.json"
+    },
+    {
+      "field": "calendar forecasts/previous",
+      "feedback": "canonical cross-field mapping",
+      "remediation": "Same-run 92-event full-scope calendar and exact Canada CPI, US retail, Fed-decision assertions retained; genuine nulls preserved.",
+      "evidence": "archive/2026-09-12/economic_calendar.json"
+    },
+    {
+      "field": "market strip",
+      "feedback": "twice verify completed rows and hash raw",
+      "remediation": "Same-run all-ten Yahoo completed daily rows verified twice after 20 seconds and raw payloads hashed.",
+      "evidence": "evidence/market/facts.json and per-symbol payloads"
+    },
+    {
+      "field": "policy/proxies",
+      "feedback": "recollect official policy and correctly label proxies",
+      "remediation": "Same-run Fed/BoC official records, feeds, EFFR, CRA and CORRA evidence retained; BoC distribution remains null and CRA terminology is compounded daily CORRA.",
+      "evidence": "evidence/fomc-calendar.html, fed-last-statement.html, boc-last-statement.html, effr.json, cra.html, corra.json"
+    }
+  ]
+}

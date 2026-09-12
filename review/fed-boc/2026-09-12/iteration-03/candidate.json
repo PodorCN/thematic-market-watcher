@@ -1,0 +1,742 @@
+{
+  "as_of": "2026-09-12T11:09:14-04:00",
+  "version": "2026-09-12-003",
+  "verification_note": "Sep 12 afternoon full rebuild after iteration-02 PM feedback: exact-byte binding repaired from persisted binary bytes; four official BLS release pages recollected successfully with Chrome impersonation and validated content anchors; canonical 92-event calendar, official Fed/BoC facts, EFFR, CRA/CORRA and twice-verified completed Yahoo rows retained from this same run. Fed percentages remain a labelled ZQU26/EFFR desk interpolation; BoC single-meeting probabilities remain unavailable.",
+  "timezone": "America/Toronto",
+  "meetings": {
+    "fed": {
+      "label": "Fed · Sep 15-16 FOMC",
+      "decision_time_toronto": "2026-09-16T14:00:00-04:00",
+      "date_start": "2026-09-15",
+      "date_end": "2026-09-16",
+      "last_meeting": {
+        "date": "2026-07-29",
+        "decision": "Held at 3.50-3.75%",
+        "note": "9-3 dissent: Hammack, Kashkari, Logan preferred +25bp hike. Re-verified 2026-08-31 via federalreserve.gov/newsevents/pressreleases/monetary20260729a.htm (\"target range ... at 3-1/2 to 3-3/4 percent\"; \"Voting against ... Hammack ... Kashkari ... Logan, who preferred to raise the target range ... by 1/4 percentage point\"). Warsh's Aug 28 Jackson Hole speech validated the hawks: 'predominant focus right now should be on prices'."
+      },
+      "pricing": {
+        "cut_25bp": 0.0,
+        "hold": 0.14,
+        "hike_25bp": 0.86,
+        "source": "Desk-implied scenario weights from timestamped Yahoo ZQU26 intraday bar + NY Fed EFFR (not CME FedWatch probabilities)",
+        "source_url": "https://finance.yahoo.com/quote/ZQU26.CBT",
+        "as_of_pricing": "2026-09-11T16:59:00-04:00",
+        "proxy_check": "ZQU26 finalized Yahoo row 96.26999664 => monthly average 3.73000336%. EFFR 3.63%; 16 pre/14 post solve gives 3.84429291%. Adjacent hold/hike desk interpolation gives hold 0.142828, hike 0.857172; not CME FedWatch probabilities.",
+        "proxy_source_url": "https://finance.yahoo.com/quote/ZQU26.CBT",
+        "implied_rate_before": 3.63,
+        "implied_rate_after": 3.844293,
+        "effr_source_url": "https://markets.newyorkfed.org/api/rates/unsecured/effr/last/5.json",
+        "cme_access_note": "Direct CME FedWatch returned a 602-byte blocked body; no direct CME distribution was used.",
+        "price_session_date": "2026-09-11 completed session",
+        "collection_note": "Completed Sep 11 Yahoo ZQU26 row re-fetched twice during the Sep 12 afternoon weekend run with a 20-second delay; selected daily row was stable. Raw payloads and hashes are bound in the PM handoff."
+      }
+    },
+    "boc": {
+      "label": "BOC · Oct 28 Decision + MPR",
+      "decision_time_toronto": "2026-10-28T09:45:00-04:00",
+      "date": "2026-10-28",
+      "last_meeting": {
+        "date": "2026-09-02",
+        "decision": "Held at 2.25%",
+        "note": "BoC held the overnight target at 2.25% on Sep 2 (Bank Rate 2.50%, deposit rate 2.20%). Statement cited high energy prices, tariffs, tightened financial conditions, CPI near 3%, and limited spillover beyond gasoline; next decision Oct 28 includes the MPR. Verified 2026-09-02 at bankofcanada.ca/2026/09/fad-press-release-2026-09-02/."
+      },
+      "pricing": {
+        "cut_25bp": null,
+        "hold": null,
+        "hike_25bp": null,
+        "source": "TMX/MX CRA quarterly CORRA futures observable proxy; no clean Oct 28 distribution",
+        "source_url": "https://www.m-x.ca/en/trading/data/quotes?symbol=CRA%2A",
+        "as_of_pricing": "2026-09-11T16:25:02-04:00",
+        "proxy_check": "TMX CRAU26 bid 97.600 / ask 97.605, volume 31621, expiry 2026-12-16; midpoint 97.6025 implies an annualized 2.3975% rate from compounded daily CORRA over the reference quarter. BoC CORRA was 2.3000% effective Sep 10. Contract spans Oct 28 and Dec 9; no October allocation identified.",
+        "proxy_source_url": "https://www.bankofcanada.ca/valet/observations/AVG.INTWO/json?start_date=2026-09-01",
+        "implied_rate_before": 2.25,
+        "implied_rate_after": null,
+        "note": "Single-meeting probabilities unavailable. CRAU26 is shown only as a quarterly-average observable and must not be interpreted as October cut/hold/hike pricing.",
+        "probability_status": "unavailable",
+        "observable_proxy": {
+          "instrument": "CRAU26",
+          "observed_price": 97.605,
+          "bid": 97.6,
+          "ask": 97.605,
+          "volume": 31621,
+          "expiry_date": "2026-12-16",
+          "implied_quarterly_average_rate": 2.3975,
+          "observed_at_toronto": "2026-09-11T16:25:02-04:00",
+          "source_url": "https://www.m-x.ca/en/trading/data/quotes?symbol=CRA%2A",
+          "note": "100 minus price is the annualized rate implied by compounded daily CORRA over the official reference quarter, which includes Oct 28 and Dec 9 decisions; not a simple arithmetic average and not a single-meeting distribution."
+        }
+      }
+    }
+  },
+  "drivers": {
+    "fed": {
+      "dovish": [
+        {
+          "id": "fed_dove_jolts_20260901",
+          "icon": "JOLTS",
+          "title": "JOLTS Misses Consensus but Rises on Revised Base",
+          "summary": "July openings were 7.271M, 29k below consensus but 89k above revised June.",
+          "published_at_toronto": "2026-09-01T10:00:00-04:00",
+          "source": "BLS JOLTS via FXStreet / TradingEconomics calendar",
+          "source_url": "https://tradingeconomics.com/united-states/job-offers",
+          "importance": "MEDIUM",
+          "weight": 0.5,
+          "data": {
+            "actual": "7.271M",
+            "forecast": "7.300M",
+            "previous": "7.182M revised",
+            "delta_label": "miss -0.029M vs consensus; +0.089M m/m",
+            "delta_type": "neutral"
+          },
+          "reason": "The 29k consensus miss is mildly dovish, but BLS table 1 shows openings rose 89k from revised June 7.182M. The mixed signal merits only 0.5 weight and is retained as historical labour-demand context, not as a claim that openings fell.",
+          "market_validation": [],
+          "tags": [
+            "MEDIUM",
+            "JOLTS"
+          ],
+          "observed_at_toronto": "2026-09-01T10:00:00-04:00"
+        },
+        {
+          "id": "fed_dove_adp_20260902",
+          "icon": "ADP",
+          "title": "ADP Employment Missed Before August Payrolls",
+          "summary": "August private payroll growth was 38k, below the 47k consensus.",
+          "published_at_toronto": "2026-09-02T08:15:00-04:00",
+          "source": "ADP via FXStreet economic calendar",
+          "source_url": "https://tradingeconomics.com/united-states/adp-employment-change",
+          "importance": "HIGH",
+          "weight": 1.0,
+          "data": {
+            "actual": "+38k",
+            "forecast": "+47k",
+            "previous": "+46k revised",
+            "delta_label": "miss -9k",
+            "delta_type": "miss"
+          },
+          "reason": "The modest 9k private-payroll miss was a weak preliminary signal, later superseded by the official August payroll rebound. It remains at 1.0 as limited historical context rather than a pending-payroll catalyst.",
+          "market_validation": [],
+          "tags": [
+            "HIGH",
+            "labour"
+          ],
+          "observed_at_toronto": "2026-09-02T08:15:00-04:00"
+        }
+      ],
+      "hawkish": [
+        {
+          "id": "fed_hawk_dissent_20260729",
+          "icon": "DSS",
+          "title": "Hawkish 3-Vote Dissent at July FOMC",
+          "summary": "Three regional Fed presidents wanted a hike at the last meeting — the Committee is split.",
+          "published_at_toronto": "2026-07-29T14:00:00-04:00",
+          "source": "Federal Reserve press release monetary20260729a.htm",
+          "source_url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260729a.htm",
+          "importance": "HIGH",
+          "weight": 1.5,
+          "data": {
+            "actual": "9-3 dissent (Hammack, Kashkari, Logan wanted +25bp)",
+            "forecast": "desk assumption: unanimous hold",
+            "previous": "unanimous hold (June 17)",
+            "delta_label": "first 3-vote dissent in 2026",
+            "delta_type": "beat"
+          },
+          "reason": "Re-verified 2026-08-28 via federalreserve.gov/newsevents/pressreleases/monetary20260729a.htm: 9-3 hold with Hammack, Kashkari, Logan preferring +25bp. Warsh's Aug 28 speech ('predominant focus on prices', 'otherwise we have work to do') moved the Chair rhetorically toward the dissenters — the hawkish cluster is no longer isolated.",
+          "market_validation": []
+        },
+        {
+          "id": "fed_hawk_warsh_20260828",
+          "icon": "JAC",
+          "title": "Warsh Jackson Hole: 'Predominant Focus on Prices'",
+          "summary": "Fed Chair Warsh: inflation is the predominant focus — no cut pre-commitment, 'otherwise we have work to do'.",
+          "published_at_toronto": "2026-08-28T10:00:00-04:00",
+          "source": "Federal Reserve — Chair Warsh, 'In Our Time', Jackson Hole",
+          "source_url": "https://www.federalreserve.gov/newsevents/speech/warsh20260828a.htm",
+          "importance": "HIGH",
+          "weight": 2.5,
+          "data": {
+            "actual": "PCE 3.7% 12m / 4.1% 6m ann.; 54% of PCE basket >3%",
+            "forecast": "desk assumption: balanced guidance, no cut pre-commitment",
+            "previous": "July stmt: solid growth, elevated uncertainty",
+            "delta_label": "hawkish vs balanced expectation",
+            "delta_type": "beat"
+          },
+          "reason": "Warsh said the Fed's predominant focus should be on prices, described labour as consistent with full employment and financial conditions as hard to call restrictive, and said he was committed to a discipline rather than a decision. Current pricing is shown only in meetings.fed.pricing.",
+          "market_validation": [],
+          "tags": [
+            "HIGH",
+            "Jackson Hole"
+          ]
+        },
+        {
+          "id": "fed_hawk_long_end_20260831",
+          "icon": "30Y",
+          "title": "Long-End Yields Remain Above 4.75% Trigger",
+          "summary": "Yahoo 10Y and 30Y index closes remained elevated on Sep 11; this is market context, not Fed causation.",
+          "published_at_toronto": "2026-08-31T13:00:00-04:00",
+          "source": "Yahoo Finance ^TNX/^TYX daily index closes",
+          "source_url": "https://finance.yahoo.com/quote/%5ETNX",
+          "importance": "MEDIUM",
+          "weight": 1.0,
+          "data": {
+            "actual": "10Y 4.975% / 30Y 5.354% (Sep 11 Yahoo close)",
+            "forecast": null,
+            "previous": "10Y 4.944% / 30Y 5.361% (Sep 10 Yahoo close)",
+            "delta_label": "10Y +3.1bp / 30Y -0.7bp",
+            "delta_type": "beat"
+          },
+          "reason": "Completed Sep 11 Yahoo index closes keep the desk long-end threshold breached. This is contemporaneous financial-conditions context only; no causal attribution to one release.",
+          "market_validation": [],
+          "tags": [
+            "MEDIUM",
+            "rates"
+          ],
+          "observed_at_toronto": "2026-09-11T16:00:00-04:00"
+        },
+        {
+          "id": "fed_hawk_ism_services_20260903",
+          "icon": "SERV",
+          "title": "ISM Services and Prices Reaccelerate",
+          "summary": "Services activity beat expectations and prices paid accelerated, strengthening the Fed hawks.",
+          "published_at_toronto": "2026-09-03T10:00:00-04:00",
+          "source": "ISM via FXStreet economic calendar",
+          "source_url": "https://tradingeconomics.com/united-states/non-manufacturing-pmi",
+          "importance": "HIGH",
+          "weight": 2.0,
+          "data": {
+            "actual": "PMI 55.4 / prices 72.6 / new orders 60.9 / employment 47.8",
+            "forecast": "PMI 54.3",
+            "previous": "PMI 54.1 / prices 70.3 / new orders 57.2 / employment 47.4",
+            "delta_label": "PMI beat +1.1; prices +2.3",
+            "delta_type": "beat"
+          },
+          "reason": "The headline beat and acceleration in prices paid and new orders validate sticky services inflation ahead of the Sep FOMC. Employment remained below 50, so the signal is strong but capped at 2.0 rather than 2.5.",
+          "market_validation": [],
+          "tags": [
+            "HIGH",
+            "ISM services"
+          ]
+        },
+        {
+          "id": "fed_hawk_nfp_20260904",
+          "icon": "NFP",
+          "title": "Payrolls Rebound Far Above Forecast",
+          "summary": "August payrolls jumped 162k versus 56k expected while unemployment held at 4.1%.",
+          "published_at_toronto": "2026-09-04T08:30:00-04:00",
+          "source": "U.S. Bureau of Labor Statistics · Employment Situation",
+          "source_url": "https://www.bls.gov/news.release/empsit.nr0.htm",
+          "importance": "HIGH",
+          "weight": 2.0,
+          "data": {
+            "actual": "+162k; UR 4.1%; AHE +0.3% MoM / +3.1% YoY",
+            "forecast": "+56k; UR 4.1%; AHE +0.3% / +3.0%",
+            "previous": "+21k July revised (from -23k); June +31k revised (from +20k)",
+            "delta_label": "payroll beat +106k; combined back revisions +55k; wages +0.1pp YoY",
+            "delta_type": "beat"
+          },
+          "reason": "August payrolls beat consensus by 106k, unemployment held at 4.1%, and BLS revised July from -23k to +21k and June from +20k to +31k (+55k combined). The historical futures-reaction attribution was removed because a consistent frozen quote regime was not documented. Weight remains 2.0 for the official labour resilience signal.",
+          "market_validation": [],
+          "tags": [
+            "HIGH",
+            "payrolls"
+          ]
+        },
+        {
+          "id": "fed_hawk_ppi_20260910",
+          "icon": "PPI",
+          "title": "Producer Inflation Remains Hot",
+          "summary": "August headline PPI met a hot 0.4% monthly forecast and accelerated to 5.4% y/y; core monthly PPI undershot.",
+          "published_at_toronto": "2026-09-10T08:30:00-04:00",
+          "observed_at_toronto": "2026-09-10T08:30:00-04:00",
+          "source": "U.S. BLS PPI release (actuals/revisions) + TradingEconomics calendar (consensus)",
+          "source_url": "https://www.bls.gov/news.release/ppi.nr0.htm",
+          "importance": "HIGH",
+          "weight": 1.5,
+          "data": {
+            "actual": "headline +0.4% MoM / +5.4% YoY; core +0.2% MoM / +4.6% YoY",
+            "forecast": "headline +0.4% / +5.3%; core +0.3% / +4.6%",
+            "previous": "headline +0.1% revised / +4.8% revised; core +0.3% revised / +4.3% revised",
+            "delta_label": "headline YoY beat +0.1pp; core MoM miss -0.1pp",
+            "delta_type": "beat"
+          },
+          "reason": "Headline producer inflation stayed elevated and the yearly rate exceeded TradingEconomics consensus, while the softer core monthly print made the release mixed and caps weight at 1.5. BLS official release actuals/revisions were successfully recollected via browser impersonation; consensus fields come from the dated TradingEconomics calendar.",
+          "market_validation": [],
+          "tags": [
+            "HIGH",
+            "PPI"
+          ]
+        },
+        {
+          "id": "fed_hawk_waller_20260903",
+          "icon": "FED",
+          "title": "Waller Sets Conditional Hold-or-Hike CPI Test",
+          "summary": "Waller said continued disinflation supports a hold, while hotter inflation could justify a hike.",
+          "published_at_toronto": "2026-09-03T08:30:00-04:00",
+          "observed_at_toronto": "2026-09-03T08:30:00-04:00",
+          "source": "Federal Reserve · Governor Waller speech",
+          "source_url": "https://www.federalreserve.gov/newsevents/speech/waller20260903a.htm",
+          "importance": "HIGH",
+          "weight": 1.0,
+          "data": {
+            "actual": "Policy only slightly restrictive; hot inflation could support tightening",
+            "forecast": "No commitment; conditional reaction function",
+            "previous": "Three-month core inflation eased from 4.76% in February to 3.05% through July",
+            "delta_label": "CPI-dependent hold/hike framework",
+            "delta_type": "neutral"
+          },
+          "reason": "Waller explicitly framed continued August disinflation as support for holding and hotter inflation as potential justification for a hike. This two-sided September 3 reaction function remains at only 1.0 to avoid double counting Warsh and the July dissent; the separate September 11 CPI driver records the later inflation evidence.",
+          "market_validation": [],
+          "tags": [
+            "HIGH",
+            "Fed communication"
+          ]
+        },
+        {
+          "id": "fed_hawk_cpi_20260911",
+          "icon": "CPI",
+          "title": "Core CPI Reaccelerates Above Consensus",
+          "summary": "August core CPI rose 0.3% m/m versus 0.2% expected, while headline CPI matched at 0.4%.",
+          "published_at_toronto": "2026-09-11T08:30:00-04:00",
+          "observed_at_toronto": "2026-09-11T08:30:00-04:00",
+          "source": "U.S. Bureau of Labor Statistics CPI release (actuals) + FXStreet calendar (consensus)",
+          "source_url": "https://www.bls.gov/news.release/cpi.nr0.htm",
+          "importance": "HIGH",
+          "weight": 1.5,
+          "data": {
+            "actual": "headline +0.4% MoM / +3.4% YoY; core +0.3% MoM / +2.4% YoY",
+            "forecast": "headline +0.4% / +3.4%; core +0.2% / +2.4%",
+            "previous": "headline +0.1% / +3.4%; core +0.2% / +2.5%",
+            "delta_label": "core MoM beat +0.1pp; other measures matched",
+            "delta_type": "beat"
+          },
+          "reason": "The core monthly acceleration is hawkish for the September FOMC and directly tests Waller’s hold-versus-hike reaction function, but unchanged core y/y and in-line headline readings make the release mixed and cap weight at 1.5.",
+          "market_validation": [],
+          "tags": [
+            "HIGH",
+            "CPI"
+          ]
+        },
+        {
+          "id": "fed_hawk_uom_inflation_20260911",
+          "icon": "UOM",
+          "title": "Michigan Inflation Expectations Rise as Sentiment Slumps",
+          "summary": "One-year inflation expectations rose to 4.6% from 4.0%, while sentiment missed at 47.8 versus 51.0.",
+          "published_at_toronto": "2026-09-11T10:00:00-04:00",
+          "observed_at_toronto": "2026-09-11T10:00:00-04:00",
+          "source": "University of Michigan Surveys of Consumers (actuals) + FXStreet structured economic calendar (consensus/previous)",
+          "source_url": "https://www.sca.isr.umich.edu/",
+          "importance": "HIGH",
+          "weight": 1.0,
+          "data": {
+            "actual": "sentiment 47.8; 1Y inflation 4.6%; 5Y inflation 3.4%",
+            "forecast": "sentiment 51.0; inflation consensus unavailable",
+            "previous": "sentiment 51.7; 1Y 4.0%; 5Y 3.3%",
+            "delta_label": "sentiment miss -3.2; 1Y inflation +0.6pp",
+            "delta_type": "neutral"
+          },
+          "reason": "Official University of Michigan headline actuals show sentiment 47.8, one-year inflation 4.6%, and long-run inflation 3.4%; the refreshed FXStreet structured calendar supplies sentiment consensus 51.0 and previous values, while inflation consensus remains explicitly unavailable. Higher inflation expectations are hawkish, but the sharp sentiment miss is dovish, so this mixed release is capped at 1.0.",
+          "market_validation": [],
+          "tags": [
+            "HIGH",
+            "Michigan"
+          ],
+          "collection_note": "FXStreet dated structured endpoint used by canonical collector: https://calendar-api.fxstreet.com/en/api/v1/eventDates/2026-09-10T00:00:00Z/2026-09-17T23:59:59Z (event detail rows supply consensus/previous); official actuals: https://www.sca.isr.umich.edu/. Inflation consensus was null."
+        }
+      ]
+    },
+    "boc": {
+      "dovish": [
+        {
+          "id": "boc_dove_labour_20260904",
+          "icon": "JOB",
+          "title": "Canada Employment Contracts as Wage Growth Slows",
+          "summary": "Canada lost 41.7k jobs versus a 15k gain expected; wage growth slowed to 2.0%.",
+          "published_at_toronto": "2026-09-04T08:30:00-04:00",
+          "source": "Statistics Canada · Labour Force Survey, August 2026",
+          "source_url": "https://www150.statcan.gc.ca/n1/daily-quotidien/260904/dq260904a-eng.htm",
+          "importance": "HIGH",
+          "weight": 2.0,
+          "data": {
+            "actual": "-41.7k jobs; UR 6.4%; wages +2.0% YoY",
+            "forecast": "+15.0k jobs; UR 6.4%",
+            "previous": "+75.1k jobs; UR 6.4%; wages +2.8%",
+            "delta_label": "jobs miss -56.7k; wages -0.8pp",
+            "delta_type": "miss"
+          },
+          "reason": "Employment fell 41.7k against a 15k gain expected and wage growth slowed to 2.0% from 2.8%, a material demand-and-inflation cooling signal after the Sep 2 hold. Unemployment did not rise, limiting weight to 2.0.",
+          "market_validation": []
+        },
+        {
+          "id": "boc_dove_asking_rents_20260909",
+          "icon": "RENT",
+          "title": "Asking-Rent Inflation Turns Negative",
+          "summary": "Two-bedroom asking rents across Canadian CMAs fell 3.6% y/y, a secondary shelter-disinflation signal.",
+          "published_at_toronto": "2026-09-09T08:30:00-04:00",
+          "source": "Statistics Canada · Quarterly rent statistics, Q2 2026",
+          "source_url": "https://www150.statcan.gc.ca/n1/daily-quotidien/260909/dq260909c-eng.htm",
+          "importance": "MEDIUM",
+          "weight": 1.0,
+          "data": {
+            "actual": "C$2,130/month; -3.6% YoY",
+            "forecast": null,
+            "previous": "C$2,150/month; -0.9% YoY (Q1 release)",
+            "delta_label": "YoY cooled 2.7pp",
+            "delta_type": "miss"
+          },
+          "reason": "The experimental all-CMA two-bedroom asking-rent measure fell 3.6% year over year, versus -0.9% in the prior quarterly release. This is a secondary BoC dovish shelter signal, not a quality-adjusted CPI rent measure and not evidence of immediate policy repricing.",
+          "market_validation": [],
+          "tags": [
+            "MEDIUM",
+            "housing"
+          ]
+        }
+      ],
+      "hawkish": [
+        {
+          "id": "boc_hawk_oil_20260821",
+          "icon": "WTI",
+          "title": "WTI Energy Pressure Persists Into Sep 11 Yahoo Close",
+          "summary": "WTI Yahoo daily close was 100.05 on Sep 11, sustaining Canada energy and gasoline inflation pressure.",
+          "published_at_toronto": "2026-09-09T16:00:00-04:00",
+          "source": "Yahoo Finance CL=F daily structured price",
+          "source_url": "https://finance.yahoo.com/quote/CL=F",
+          "importance": "MEDIUM",
+          "weight": 2.0,
+          "data": {
+            "actual": "WTI 100.05 Sep 11 Yahoo daily close",
+            "forecast": null,
+            "previous": "102.48 Sep 10 Yahoo daily close",
+            "delta_label": "-2.37% d/d",
+            "delta_type": "miss"
+          },
+          "reason": "WTI remains elevated in the completed Sep 11 Yahoo daily close field. This is not certified CME settlement evidence; it is energy/terms-of-trade and gasoline-inflation context, not an attributed reaction to one BoC event.",
+          "market_validation": [],
+          "observed_at_toronto": "2026-09-11T16:00:00-04:00",
+          "collection_note": "Completed Sep 11 Yahoo daily row recollected 2026-09-12T04:45:43.272824-04:00; raw payload hashed."
+        },
+        {
+          "id": "boc_hawk_gdp_20260828",
+          "icon": "GDP",
+          "title": "Q2 and June GDP Rebound Supports BoC Resilience",
+          "summary": "Q2 expenditure GDP rose 0.8% q/q (about 3.3% annualized) while June monthly industry GDP rose 0.3%.",
+          "published_at_toronto": "2026-08-28T08:30:00-04:00",
+          "source": "Statistics Canada · Q2 expenditure GDP and June industry GDP",
+          "source_url": "https://www150.statcan.gc.ca/n1/daily-quotidien/260828/dq260828a-eng.htm",
+          "importance": "HIGH",
+          "weight": 2.0,
+          "data": {
+            "actual": "+0.3% MoM / +0.8% QoQ / +3.3% ann.",
+            "forecast": "+0.2% MoM / +3.4% ann.",
+            "previous": "Q1 +0.1% q/q revised from 0.0% (about +0.4% annualized); May monthly GDP +0.3%",
+            "delta_label": "June MoM beat +0.1pp; Q2 about +2.9pp annualized vs revised Q1 approximation",
+            "delta_type": "beat"
+          },
+          "reason": "StatCan releases dq260828a and dq260828b show Q2 expenditure GDP +0.8% q/q (about 3.3% annualized from unrounded official levels), Q1 revised to +0.1% q/q, and June industry GDP +0.3% m/m. This is historical resilience context for Oct 28, not a still-pending Sep 2 decision catalyst.",
+          "market_validation": []
+        },
+        {
+          "id": "boc_hawk_hold_20260902",
+          "icon": "BOC",
+          "title": "BoC Holds 2.25% and Flags Energy/Tariff Inflation",
+          "summary": "The BoC held at 2.25% as high oil and tariffs kept inflation risks alive.",
+          "published_at_toronto": "2026-09-02T09:45:00-04:00",
+          "source": "Bank of Canada rate statement",
+          "source_url": "https://www.bankofcanada.ca/2026/09/fad-press-release-2026-09-02/",
+          "importance": "HIGH",
+          "weight": 2.0,
+          "data": {
+            "actual": "Hold 2.25%",
+            "forecast": "Hold 2.25%",
+            "previous": "Hold 2.25%",
+            "delta_label": "hawkish hold",
+            "delta_type": "beat"
+          },
+          "reason": "The decision matched consensus, but the official statement emphasized high energy prices, tariffs, tighter financial conditions and CPI near 3%. No market-reaction attribution is made without a frozen event-window price set.",
+          "market_validation": [],
+          "tags": [
+            "HIGH",
+            "BoC"
+          ]
+        },
+        {
+          "id": "boc_hawk_ivey_20260904",
+          "icon": "IVEY",
+          "title": "Ivey PMI Surges After BoC Hold",
+          "summary": "Canada Ivey PMI jumped to 64.3 versus 56.2 expected, offsetting part of the jobs shock.",
+          "published_at_toronto": "2026-09-04T10:00:00-04:00",
+          "source": "Ivey PMI via TradingEconomics calendar",
+          "source_url": "https://tradingeconomics.com/calendar",
+          "importance": "MEDIUM",
+          "weight": 1.5,
+          "data": {
+            "actual": "64.3 s.a.",
+            "forecast": "56.2",
+            "previous": "55.1",
+            "delta_label": "beat +8.1; +9.2 m/m",
+            "delta_type": "beat"
+          },
+          "reason": "The broad activity gauge accelerated sharply two days after the BoC hold, arguing against an immediate growth-collapse response. It is a meaningful counterweight to weak employment, but a survey cannot outweigh the official labour report, so weight is 1.5.",
+          "market_validation": [],
+          "tags": [
+            "MEDIUM",
+            "Ivey PMI"
+          ]
+        }
+      ]
+    }
+  },
+  "market": {
+    "since": "2026-07-30",
+    "as_of_close": "2026-09-11T16:00:00-04:00",
+    "tickers": [
+      {
+        "symbol": "SPY",
+        "price": 764.29,
+        "raw_price": 764.2899780273438,
+        "return_base_1d": 757.8300170898438,
+        "return_base_1w": 770.1900024414062,
+        "chg_1d": 0.008524,
+        "chg_1w": -0.00766,
+        "label_1d": "+0.85% Sep 11 close",
+        "label_1w": "-0.77% w (Sep 4-11)",
+        "type_1d": "up",
+        "type_1w": "down",
+        "observed_at_toronto": "2026-09-11T16:00:00-04:00",
+        "source_url": "https://finance.yahoo.com/quote/SPY"
+      },
+      {
+        "symbol": "QQQ",
+        "price": 714.88,
+        "raw_price": 714.8800048828125,
+        "return_base_1d": 708.6900024414062,
+        "return_base_1w": 718.9600219726562,
+        "chg_1d": 0.008734,
+        "chg_1w": -0.005675,
+        "label_1d": "+0.87% Sep 11 close",
+        "label_1w": "-0.57% w (Sep 4-11)",
+        "type_1d": "up",
+        "type_1w": "down",
+        "observed_at_toronto": "2026-09-11T16:00:00-04:00",
+        "source_url": "https://finance.yahoo.com/quote/QQQ"
+      },
+      {
+        "symbol": "IWM",
+        "price": 288.89,
+        "raw_price": 288.8900146484375,
+        "return_base_1d": 287.70001220703125,
+        "return_base_1w": 296.010009765625,
+        "chg_1d": 0.004136,
+        "chg_1w": -0.024053,
+        "label_1d": "+0.41% Sep 11 close",
+        "label_1w": "-2.41% w (Sep 4-11)",
+        "type_1d": "up",
+        "type_1w": "down",
+        "observed_at_toronto": "2026-09-11T16:00:00-04:00",
+        "source_url": "https://finance.yahoo.com/quote/IWM"
+      },
+      {
+        "symbol": "XLI",
+        "price": 172.37,
+        "raw_price": 172.3699951171875,
+        "return_base_1d": 170.5500030517578,
+        "return_base_1w": 175.27000427246094,
+        "chg_1d": 0.010671,
+        "chg_1w": -0.016546,
+        "label_1d": "+1.07% Sep 11 close",
+        "label_1w": "-1.65% w (Sep 4-11)",
+        "type_1d": "up",
+        "type_1w": "down",
+        "observed_at_toronto": "2026-09-11T16:00:00-04:00",
+        "source_url": "https://finance.yahoo.com/quote/XLI"
+      },
+      {
+        "symbol": "XLU",
+        "price": 42.39,
+        "raw_price": 42.38999938964844,
+        "return_base_1d": 42.52000045776367,
+        "return_base_1w": 43.08000183105469,
+        "chg_1d": -0.003057,
+        "chg_1w": -0.016017,
+        "label_1d": "-0.31% Sep 11 close",
+        "label_1w": "-1.60% w (Sep 4-11)",
+        "type_1d": "down",
+        "type_1w": "down",
+        "observed_at_toronto": "2026-09-11T16:00:00-04:00",
+        "source_url": "https://finance.yahoo.com/quote/XLU"
+      },
+      {
+        "symbol": "XLF",
+        "price": 57.25,
+        "raw_price": 57.25,
+        "return_base_1d": 56.869998931884766,
+        "return_base_1w": 58.099998474121094,
+        "chg_1d": 0.006682,
+        "chg_1w": -0.01463,
+        "label_1d": "+0.67% Sep 11 close",
+        "label_1w": "-1.46% w (Sep 4-11)",
+        "type_1d": "up",
+        "type_1w": "down",
+        "observed_at_toronto": "2026-09-11T16:00:00-04:00",
+        "source_url": "https://finance.yahoo.com/quote/XLF"
+      },
+      {
+        "symbol": "XLE",
+        "price": 65.14,
+        "raw_price": 65.13999938964844,
+        "return_base_1d": 64.93000030517578,
+        "return_base_1w": 64.05999755859375,
+        "chg_1d": 0.003234,
+        "chg_1w": 0.016859,
+        "label_1d": "+0.32% Sep 11 close",
+        "label_1w": "+1.69% w (Sep 4-11)",
+        "type_1d": "up",
+        "type_1w": "up",
+        "observed_at_toronto": "2026-09-11T16:00:00-04:00",
+        "source_url": "https://finance.yahoo.com/quote/XLE"
+      },
+      {
+        "symbol": "TLT",
+        "price": 80.87,
+        "raw_price": 80.87000274658203,
+        "return_base_1d": 80.77999877929688,
+        "return_base_1w": 82.20999908447266,
+        "chg_1d": 0.001114,
+        "chg_1w": -0.0163,
+        "label_1d": "+0.11% Sep 11 close",
+        "label_1w": "-1.63% w (Sep 4-11)",
+        "type_1d": "up",
+        "type_1w": "down",
+        "observed_at_toronto": "2026-09-11T16:00:00-04:00",
+        "source_url": "https://finance.yahoo.com/quote/TLT"
+      },
+      {
+        "symbol": "GLD",
+        "price": 398.77,
+        "raw_price": 398.7699890136719,
+        "return_base_1d": 396.3599853515625,
+        "return_base_1w": 406.7699890136719,
+        "chg_1d": 0.00608,
+        "chg_1w": -0.019667,
+        "label_1d": "+0.61% Sep 11 close",
+        "label_1w": "-1.97% w (Sep 4-11)",
+        "type_1d": "up",
+        "type_1w": "down",
+        "observed_at_toronto": "2026-09-11T16:00:00-04:00",
+        "source_url": "https://finance.yahoo.com/quote/GLD"
+      },
+      {
+        "symbol": "ZEB.TO",
+        "price": 74.58,
+        "raw_price": 74.58000183105469,
+        "return_base_1d": 74.0999984741211,
+        "return_base_1w": 75.47000122070312,
+        "chg_1d": 0.006478,
+        "chg_1w": -0.011793,
+        "label_1d": "+0.65% Sep 11 close",
+        "label_1w": "-1.18% w (Sep 4-11)",
+        "type_1d": "up",
+        "type_1w": "down",
+        "observed_at_toronto": "2026-09-11T15:59:00-04:00",
+        "source_url": "https://finance.yahoo.com/quote/ZEB.TO"
+      }
+    ]
+  },
+  "calendar": [
+    {
+      "id": "ca_cpi_20260914",
+      "datetime_toronto": "2026-09-14T08:30:00-04:00",
+      "datetime_utc": "2026-09-14T12:30:00Z",
+      "currency": "CAD",
+      "country": "CA",
+      "event": "Canada CPI (headline, legacy core, median and trim)",
+      "impact": "HIGH",
+      "forecast": {
+        "headline_MoM": "0.0%",
+        "headline_YoY": null,
+        "legacy_core_YoY": null,
+        "median_YoY": null,
+        "trim_YoY": null,
+        "legacy_core_MoM": "0.2%"
+      },
+      "previous": {
+        "headline_MoM": "0.5%",
+        "headline_YoY": "3.0%",
+        "legacy_core_YoY": "2.3%",
+        "median_YoY": "2.0%",
+        "trim_YoY": "1.9%",
+        "legacy_core_MoM": "0.2%"
+      },
+      "logic": "Canonical Sep 11 16:03 ET FXStreet rows: headline MoM consensus 0.0% and legacy-core MoM 0.2%; yearly, median and trim consensus fields remain null.",
+      "hawk_if": "High to Hawk",
+      "dove_if": "Low to Dove"
+    },
+    {
+      "id": "fomc_20260916",
+      "datetime_toronto": "2026-09-16T14:00:00-04:00",
+      "datetime_utc": "2026-09-16T18:00:00Z",
+      "currency": "USD",
+      "country": "US",
+      "event": "FOMC Decision and SEP (Sep 15-16)",
+      "impact": "HIGH",
+      "forecast": {
+        "upper_bound": "4.0%"
+      },
+      "previous": {
+        "upper_bound": "3.75%"
+      },
+      "logic": "Canonical calendar consensus: 4.0% upper bound versus 3.75% previous. Sep 11 16:12 ET Yahoo ZQU26/EFFR desk proxy: cut 0% / hold 14% / hike 86%; not direct CME probabilities.",
+      "hawk_if": "Showdown",
+      "dove_if": "Showdown"
+    },
+    {
+      "id": "fomc_press_conference_20260916",
+      "datetime_toronto": "2026-09-16T14:30:00-04:00",
+      "datetime_utc": "2026-09-16T18:30:00Z",
+      "currency": "USD",
+      "country": "US",
+      "event": "FOMC Press Conference",
+      "impact": "HIGH",
+      "forecast": {},
+      "previous": {},
+      "logic": "Fresh FXStreet/TradingEconomics calendar: press conference begins 30 minutes after the decision and SEP release.",
+      "hawk_if": "Hawkish guidance",
+      "dove_if": "Dovish guidance"
+    },
+    {
+      "id": "us_retail_sales_20260916",
+      "datetime_toronto": "2026-09-16T08:30:00-04:00",
+      "datetime_utc": "2026-09-16T12:30:00Z",
+      "currency": "USD",
+      "country": "US",
+      "event": "US Retail Sales (headline, control group, ex-autos)",
+      "impact": "HIGH",
+      "forecast": {
+        "headline_MoM": "0.9%",
+        "control_group_MoM": null,
+        "ex_autos_MoM": "0.5%"
+      },
+      "previous": {
+        "headline_MoM": "-0.6%",
+        "control_group_MoM": "-0.4%",
+        "ex_autos_MoM": "-0.3%"
+      },
+      "logic": "Canonical Sep 11 16:03 ET FXStreet rows: headline MoM consensus 0.9%, ex-autos 0.5%, control-group consensus unavailable; priors -0.6%/-0.3%/-0.4% respectively.",
+      "hawk_if": "Upside growth surprise",
+      "dove_if": "Broad miss"
+    },
+    {
+      "id": "boc_deliberations_20260916",
+      "datetime_toronto": "2026-09-16T13:30:00-04:00",
+      "datetime_utc": "2026-09-16T17:30:00Z",
+      "currency": "CAD",
+      "country": "CA",
+      "event": "Bank of Canada Summary of Deliberations",
+      "impact": "MEDIUM",
+      "forecast": {},
+      "previous": {},
+      "logic": "Canonical Sep 11 FXStreet calendar classifies this qualitative Sep 2 deliberations release MEDIUM; it is not a rate decision.",
+      "hawk_if": "Inflation risks dominate",
+      "dove_if": "Labour/downside risks dominate"
+    }
+  ],
+  "history": []
+}

@@ -1,15 +1,18 @@
 {
   "schema_version": "1.0",
-  "status": "open",
+  "reviewer_role": "independent_portfolio_manager",
   "reviewed_at": "2026-09-12T11:12:37-04:00",
   "candidate_sha256": "4df81aba0c058bc8874d62809e835738cc1b4cba0895d937821046ca87903824",
-  "review_sha256": "767943e33713b9f6021f8052472594acb076d7b62fe82cef4a32970ab43ed925",
-  "source_review": "review/fed-boc/2026-09-12/iteration-03/pm-review.json",
+  "verdict": "revise",
   "executive_summary": "Revise unconditionally. The exact candidate bytes now match both candidate.sha256 and pm-handoff.json, all 50 handoff evidence hashes match persisted files, the official policy records and market arithmetic are internally coherent, and the four new BLS files are genuine HTTP-200 release pages. The candidate nevertheless makes an exact July JOLTS claim that is not present in the persisted BLS release page, and it assigns the explicitly disallowed current 2.5 weight to the Warsh speech. These unresolved source-audit and policy-weight issues can materially distort the Fed hike/hold risk and prevent approval on the final allowed iteration.",
-  "failed_checks": [
-    "decision_usefulness",
-    "drivers"
-  ],
+  "checks": {
+    "official_policy": "pass",
+    "pricing": "pass",
+    "drivers": "fail",
+    "market_validation": "pass",
+    "freshness": "pass",
+    "decision_usefulness": "fail"
+  },
   "findings": [
     {
       "severity": "major",
@@ -28,21 +31,17 @@
       "instruction": "Rebuild the Fed driver weighting with no 2.5+ value in this current snapshot unless the operator documents exceptional evidence that satisfies the specification's override standard and recalibrates the whole driver set. Recompute side totals, rope direction, any alignment/divergence statement, and decision-usefulness narrative after the weight change, then submit a fresh review package."
     }
   ],
-  "required_recollection": [
-    "Persist the official JOLTS Table 1 or another complete authoritative response containing the exact July openings and revised June values, with retrieval URL, status, timestamp, and hash bound in a replacement handoff. Recompute the actual, previous, miss and month-over-month arithmetic, reason, side, weight, and any Fed pricing narrative from those exact values; if the exact values cannot be audited, remove the exact claim and rebuild the candidate rather than retaining it.",
-    "Rebuild the Fed driver weighting with no 2.5+ value in this current snapshot unless the operator documents exceptional evidence that satisfies the specification's override standard and recalibrates the whole driver set. Recompute side totals, rope direction, any alignment/divergence statement, and decision-usefulness narrative after the weight change, then submit a fresh review package."
+  "pnl_risks": [
+    "The exact JOLTS miss and revised-base arithmetic is not auditable from the persisted official release artifact, so a labour-side signal may be mis-sized or misdirected.",
+    "The 2.5 Warsh weight can overstate hike conviction and distort front-end rates, equity-duration, and event-hedge decisions.",
+    "Fed 0/14/86 is a desk-implied ZQU26/EFFR interpolation rather than CME FedWatch single-meeting probabilities; it is labelled, but it is not a direct tradable distribution.",
+    "BoC single-meeting probabilities are correctly unavailable because CRAU26 spans multiple decisions; allocating its quarterly observable to October would create false precision.",
+    "Yahoo Finance rows and derived returns recompute internally but remain revisable vendor data, not certified settlement or causal event attribution."
   ],
   "operator_instructions": [
     "Keep publication fail-closed; do not archive, publish, or reinterpret this revise verdict as approval.",
     "Recollect and persist the exact authoritative JOLTS table values used by the candidate, bind the complete response and metadata hash in a new handoff, and re-audit every affected field.",
     "Remove or exceptionally justify the 2.5 current Warsh weight under the governing specification, then rebuild all driver totals and decision-usefulness text rather than patching one number.",
     "This is the final allowed iteration for the run; if remediation cannot be completed and freshly reviewed, leave the prior public snapshot untouched and carry the open feedback forward."
-  ],
-  "next_run_contract": [
-    "Read this feedback before collecting or editing the next candidate.",
-    "Re-trigger collection for every affected source and claim.",
-    "Rebuild the whole internally consistent candidate; do not patch prose only.",
-    "Submit the rebuilt candidate to a fresh independent PM review.",
-    "Do not publish until an exact-byte-bound approved review passes the gate."
   ]
 }
