@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "reviewer_role": "independent_portfolio_manager",
+  "reviewed_at": "2026-09-12T17:21:24-04:00",
+  "candidate_sha256": "45b5dac38e169b7089977c7bb9e03ff918e3e43625c9a37f49426cb2510400a9",
+  "verdict": "revise",
+  "executive_summary": "Revise. Candidate and handoff byte bindings pass, all 51 persisted evidence hashes pass, and the feedback remediation correctly sets JOLTS to zero rope weight and caps Warsh at 2.0. However, the candidate still contains the unauditable exact JOLTS values in its explanatory reason text, contrary to the remediation requirement that the candidate contain no such exact claims. This remains a material audit and P&L-control failure.",
+  "checks": {
+    "official_policy": "pass",
+    "pricing": "pass",
+    "drivers": "fail",
+    "market_validation": "pass",
+    "freshness": "pass",
+    "decision_usefulness": "fail"
+  },
+  "findings": [
+    {
+      "severity": "major",
+      "field": "drivers.fed.dovish[id=fed_dove_jolts_20260901].reason and candidate-wide JOLTS text",
+      "issue": "The remediation removes the exact JOLTS values from the data fields, but the candidate still contains the exact unauditable values 7.271 and 7.182 in the JOLTS reason text. The explicit feedback requirement was that the candidate contain no unauditable exact 7.271/7.182 claims or derived deltas, not merely that those values be excluded from the displayed data object.",
+      "evidence": "The persisted BLS JOLTS release is HTTP 200 and states July openings were little changed at rounded 7.3 million; the persisted recollection metadata records contains_7_271=false and contains_7_182=false. Independent byte inspection confirms the candidate contains both strings in the JOLTS reason, while the candidate SHA-256 matches candidate.sha256 and pm-handoff.json.",
+      "pnl_impact": "A downstream consumer or reviewer can still read the exact unsupported values and infer the removed miss/month-over-month arithmetic. That preserves false precision in the labour-demand signal and can distort Fed hike-versus-hold risk assessment, event hedge sizing, and front-end rates or equity-duration positioning.",
+      "instruction": "Remove every occurrence of the unauditable exact JOLTS values and their derived numerical claims from candidate.json, including historical remediation prose in reason, verification_note, calendar logic, and any other field. Retain only the auditable rounded 7.3M statement and explicit unavailable-precision qualification, recompute and rebind the candidate bytes and handoff hash, then submit a fresh PM review."
+    }
+  ],
+  "pnl_risks": [
+    "The remaining exact JOLTS strings allow unsupported precision to influence labour-market interpretation and Fed event positioning despite the zero-weight display remediation.",
+    "The zero-weight JOLTS driver contributes no rope impact, and the 2.0 Warsh cap is respected; the resulting Fed base totals are 1.0 dovish versus 13.5 hawkish, with normalized net approximately +2.59, so the weighting remains decision-useful but strongly hawkish.",
+    "Fed 0/14/86 is a desk-implied ZQU26/EFFR interpolation rather than a direct CME single-meeting probability distribution.",
+    "BoC single-meeting probabilities remain unavailable because the CRAU26 observable spans multiple decisions and is correctly presented only as a quarterly proxy."
+  ],
+  "operator_instructions": [
+    "Keep publication fail-closed; do not archive or publish this candidate under an approved interpretation.",
+    "Remove the exact unsupported JOLTS values and derived-delta references everywhere in candidate.json, not only from the data fields, while preserving the rounded official statement and zero rope weight.",
+    "Re-serialize candidate.json, recompute candidate.sha256, update the replacement handoff binding and evidence mapping, and submit the resulting frozen bytes to a fresh independent PM review."
+  ]
+}

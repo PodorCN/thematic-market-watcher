@@ -1,0 +1,10 @@
+{
+  "url": "https://www.bls.gov/news.release/jolts.nr0.htm",
+  "status": 200,
+  "retrieved_at": "2026-09-12T17:29:10.988627-04:00",
+  "sha256": "7b77b05e40e3e4eda19dd37639959dafd34abbdd714f6e15baa88288ea619506",
+  "bytes": 54341,
+  "supported_claim": "July openings were little changed at 7.3 million",
+  "consensus_available": false,
+  "exact_precision_available": false
+}

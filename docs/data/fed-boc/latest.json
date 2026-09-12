@@ -1,7 +1,7 @@
 {
-  "as_of": "2026-09-12T04:49:26-04:00",
-  "version": "2026-09-12-001",
-  "verification_note": "Sep 12 weekend full rebuild under controlling open feedback: canonical calendar recollected; all ten completed Sep 11 market rows recollected from hashed Yahoo payloads and verified twice after a 20-second delay; official Fed/BoC facts and current EFFR, CRA/CORRA, releases and communications re-probed. Fed probabilities remain an explicitly labelled ZQU26/EFFR desk interpolation; BoC single-meeting probabilities remain unavailable.",
+  "as_of": "2026-09-12T17:29:38-04:00",
+  "version": "2026-09-12-004",
+  "verification_note": "Sep 12 feedback-controlled rebuild: canonical calendar and official JOLTS release were recollected again. The JOLTS driver contains only the official rounded statement that July openings were little changed at 7.3M; exact actual, prior, consensus, surprise and monthly-change precision are unavailable and omitted, and the stable driver has zero rope weight. Warsh remains capped at 2.0. Other policy, proxy, release and completed Sep 11 market evidence remains the same audited same-day evidence set.",
   "timezone": "America/Toronto",
   "meetings": {
     "fed": {
@@ -74,21 +74,21 @@
         {
           "id": "fed_dove_jolts_20260901",
           "icon": "JOLTS",
-          "title": "JOLTS Misses Consensus but Rises on Revised Base",
-          "summary": "July openings were 7.271M, 29k below consensus but 89k above revised June.",
+          "title": "Official JOLTS Summary Is Directionally Inconclusive",
+          "summary": "The official July release says openings were little changed at a rounded 7.3M; finer precision is unavailable.",
           "published_at_toronto": "2026-09-01T10:00:00-04:00",
-          "source": "BLS JOLTS via FXStreet / TradingEconomics calendar",
-          "source_url": "https://tradingeconomics.com/united-states/job-offers",
+          "source": "U.S. Bureau of Labor Statistics · JOLTS summary",
+          "source_url": "https://www.bls.gov/news.release/jolts.nr0.htm",
           "importance": "MEDIUM",
-          "weight": 0.5,
+          "weight": 0.0,
           "data": {
-            "actual": "7.271M",
-            "forecast": "7.300M",
-            "previous": "7.182M revised",
-            "delta_label": "miss -0.029M vs consensus; +0.089M m/m",
+            "actual": "7.3M (official rounded release)",
+            "forecast": null,
+            "previous": null,
+            "delta_label": "exact comparison unavailable",
             "delta_type": "neutral"
           },
-          "reason": "The 29k consensus miss is mildly dovish, but BLS table 1 shows openings rose 89k from revised June 7.182M. The mixed signal merits only 0.5 weight and is retained as historical labour-demand context, not as a claim that openings fell.",
+          "reason": "The recollected HTTP-200 BLS release states only that July openings were little changed at 7.3 million. The persisted artifact does not support an exact actual, revised previous, consensus comparison, surprise, or monthly change, so none is asserted. The stable ID is retained at zero weight for historical continuity and contributes nothing to the current rope.",
           "market_validation": [],
           "tags": [
             "MEDIUM",
@@ -152,7 +152,7 @@
           "source": "Federal Reserve — Chair Warsh, 'In Our Time', Jackson Hole",
           "source_url": "https://www.federalreserve.gov/newsevents/speech/warsh20260828a.htm",
           "importance": "HIGH",
-          "weight": 2.5,
+          "weight": 2.0,
           "data": {
             "actual": "PCE 3.7% 12m / 4.1% 6m ann.; 54% of PCE basket >3%",
             "forecast": "desk assumption: balanced guidance, no cut pre-commitment",
@@ -160,7 +160,7 @@
             "delta_label": "hawkish vs balanced expectation",
             "delta_type": "beat"
           },
-          "reason": "Warsh said the Fed's predominant focus should be on prices, described labour as consistent with full employment and financial conditions as hard to call restrictive, and said he was committed to a discipline rather than a decision. Current pricing is shown only in meetings.fed.pricing.",
+          "reason": "Warsh said the Fed's predominant focus should be on prices, described labour as consistent with full employment and financial conditions as hard to call restrictive, and said he was committed to a discipline rather than a decision. Weight is capped at 2.0 under the current-snapshot guard; it is a strong communication signal, not an almost-certain-hike signal. Current pricing is shown only in meetings.fed.pricing.",
           "market_validation": [],
           "tags": [
             "HIGH",
@@ -740,6 +740,6 @@
   ],
   "history": [],
   "snapshot_date": "2026-09-12",
-  "archived_at": "2026-09-12T08:55:44.783296Z",
+  "archived_at": "2026-09-12T21:36:47.564694Z",
   "stale": false
 }

@@ -1,0 +1,10 @@
+{
+  "url": "https://www.bls.gov/news.release/jolts.nr0.htm",
+  "status": 200,
+  "retrieved_at": "2026-09-12T17:18:42.191491-04:00",
+  "sha256": "7b77b05e40e3e4eda19dd37639959dafd34abbdd714f6e15baa88288ea619506",
+  "bytes": 54341,
+  "contains_rounded_7_3_million": true,
+  "contains_7_271": false,
+  "contains_7_182": false
+}

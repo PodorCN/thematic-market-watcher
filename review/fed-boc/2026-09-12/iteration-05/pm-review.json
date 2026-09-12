@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "reviewer_role": "independent_portfolio_manager",
+  "reviewed_at": "2026-09-12T17:26:33-04:00",
+  "candidate_sha256": "7b9e1ace351765cded2e1fb8bda17f5e8d7a2f99ef7d68667163a6cb5ae2725c",
+  "verdict": "revise",
+  "executive_summary": "Revise. The candidate is exactly bound to the handoff digest, all 51 named evidence hashes pass, official policy and market inputs are internally consistent, the JOLTS driver has zero rope weight, Warsh is capped at 2.0, and the Fed totals recompute. However, the candidate does not satisfy the required auditable-rounded-7.3M-only JOLTS treatment: it asserts an unsupported 7.3M consensus and a derived rounded-actual-matches-rounded-consensus claim, while the persisted official release supports only the rounded July openings statement. This remains a material audit and P&L-control failure.",
+  "checks": {
+    "official_policy": "pass",
+    "pricing": "pass",
+    "drivers": "fail",
+    "market_validation": "pass",
+    "freshness": "pass",
+    "decision_usefulness": "fail"
+  },
+  "findings": [
+    {
+      "severity": "major",
+      "field": "drivers.fed.dovish[id=fed_dove_jolts_20260901].data.forecast and data.delta_label",
+      "issue": "The candidate-wide exact JOLTS precision problem is fixed, but the candidate still goes beyond the auditable rounded 7.3M release: it states forecast \"7.3M consensus\" and derives \"rounded actual matches rounded consensus\". The persisted BLS release says only that July openings were little changed at 7.3 million; the persisted recollection metadata explicitly records that exact precision is unavailable and provides no auditable consensus source for this candidate claim.",
+      "evidence": "candidate.json contains data.forecast=\"7.3M consensus\" and data.delta_label=\"rounded actual matches rounded consensus; precise delta removed\". evidence/bls-jolts.html lines 552-566 support the rounded July 7.3 million statement only. evidence/jolts-recollection-metadata.json records contains_rounded_7_3_million=true and exact_precision_available=false. The candidate SHA-256 matches candidate.sha256 and pm-handoff.json, and all 51 handoff evidence hashes pass; the failure is the unsupported rounded consensus/derived claim itself.",
+      "pnl_impact": "A downstream reader can treat the unsupported rounded consensus comparison as an audited labour-market surprise, even though the official persisted source cannot establish the consensus or a rounded miss. That can manufacture a dovish JOLTS signal, contaminate the Fed rope interpretation despite the zero weight, and distort front-end rates, duration, and event-hedge sizing decisions.",
+      "instruction": "Rebuild candidate.json so the JOLTS driver contains only the auditable rounded official statement that July openings were 7.3M/little changed plus an explicit unavailable-precision qualification. Remove the unsupported 7.3M consensus assertion and the derived rounded-match claim from every candidate field, retain zero rope weight, reserialize and recompute candidate.sha256, update pm-handoff.json and its bindings, then submit a fresh independent PM review."
+    }
+  ],
+  "pnl_risks": [
+    "The unsupported JOLTS consensus and derived rounded-match language can still be read as an audited labour-demand surprise and bias Fed hike-versus-hold positioning despite the zero-weight driver.",
+    "The JOLTS driver contributes zero rope impact; Warsh is capped at 2.0; raw Fed totals recompute to 1.0 dovish versus 13.5 hawkish, and the specification's age-decayed net remains strongly hawkish at approximately +2.58.",
+    "Fed 0/14/86 is a desk-implied ZQU26/EFFR interpolation rather than a direct CME single-meeting probability distribution; the candidate labels that limitation correctly.",
+    "BoC single-meeting probabilities remain unavailable because CRAU26 spans multiple decisions; the candidate correctly presents it only as a quarterly proxy."
+  ],
+  "operator_instructions": [
+    "Keep publication fail-closed; do not archive or publish this candidate under an approved interpretation.",
+    "Remove the unsupported JOLTS consensus and derived rounded-comparison language everywhere in candidate.json while preserving the auditable rounded 7.3M statement, unavailable-precision qualification, and zero rope weight.",
+    "Rebuild and reserialize the candidate, recompute candidate.sha256, update the replacement handoff binding and evidence mapping, and submit the resulting frozen bytes to a fresh independent PM review."
+  ]
+}

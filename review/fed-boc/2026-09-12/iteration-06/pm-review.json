@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "reviewer_role": "independent_portfolio_manager",
+  "reviewed_at": "2026-09-12T17:32:36-04:00",
+  "candidate_sha256": "9c93f341d4b571451ba2ecb4a5a1e6622c8a3010a5b6eb645c56ab375ca17780",
+  "verdict": "approved",
+  "executive_summary": "Approved. The frozen candidate is exactly bound to its checksum and handoff digest. Official policy dates, rate levels, dissent text, JOLTS wording, pricing labels, market-close math, freshness, driver direction, weights, and Fed totals are coherent. The JOLTS entry is limited to the official rounded 7.3M/little-changed statement, has null forecast and previous, makes no consensus, surprise, or monthly-change assertion, and carries zero rope weight. Warsh is capped at 2.0; BoC quarterly proxy probabilities remain unavailable rather than fabricated.",
+  "checks": {
+    "official_policy": "pass",
+    "pricing": "pass",
+    "drivers": "pass",
+    "market_validation": "pass",
+    "freshness": "pass",
+    "decision_usefulness": "pass"
+  },
+  "findings": [],
+  "pnl_risks": [
+    "Fed pricing is a desk-implied ZQU26/EFFR proxy rather than direct CME FedWatch probabilities, so event sizing remains exposed to proxy-model and day-count assumptions.",
+    "BoC CRAU26 spans the October 28 and December 9 decisions; its quarterly-average observable must not be converted into a single-meeting probability distribution.",
+    "The strongly hawkish raw Fed driver balance can overstate actionable conviction because several drivers are aged or communication-based; the page should be read with the stated age decay and proxy caveats.",
+    "JOLTS provides no auditable precision, consensus, surprise, or monthly-change comparison; treating the rounded 7.3M observation as a surprise would create false labour-signal risk despite its zero weight."
+  ],
+  "operator_instructions": []
+}
