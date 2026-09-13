@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "reviewer_role": "independent_portfolio_manager",
+  "reviewed_at": "2026-09-13T06:12:25-04:00",
+  "candidate_sha256": "9cef28f97772ca21ae2ad3f30b5914f426fc8c421fc040e5553a2b9e783bc06a",
+  "verdict": "approved",
+  "executive_summary": "Approved. The candidate is bound to the exact frozen bytes, the 51 hash-bound evidence files reconcile, and the prior chronology defect is remediated. Official Fed and BoC policy facts, proxy limitations, driver direction and weights, market arithmetic, calendar timing, and freshness are internally consistent and decision-useful for a qualified snapshot.",
+  "checks": {
+    "official_policy": "pass",
+    "pricing": "pass",
+    "drivers": "pass",
+    "market_validation": "pass",
+    "freshness": "pass",
+    "decision_usefulness": "pass"
+  },
+  "findings": [],
+  "pnl_risks": [
+    "Fed pricing is a desk-implied ZQU26/EFFR interpolation rather than direct CME FedWatch probabilities, so basis and model risk remain in event sizing.",
+    "CRAU26 is a quarterly-average CORRA proxy spanning the October 28 and December 9 decisions and cannot be converted into a clean October cut, hold, or hike distribution.",
+    "The Fed and BoC drivers mix official releases with survey, calendar, and market-context inputs; the snapshot appropriately limits weights and avoids causal claims where event-window evidence is absent.",
+    "The upcoming CPI, retail-sales, FOMC, and BoC-deliberations events can reprice CAD, front-end rates, duration, and risk assets before the next policy decisions."
+  ],
+  "operator_instructions": []
+}

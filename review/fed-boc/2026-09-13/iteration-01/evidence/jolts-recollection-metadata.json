@@ -1,0 +1,9 @@
+{
+  "observed_at_toronto": "2026-09-12T23:43:53-04:00",
+  "source_url": "https://www.bls.gov/news.release/jolts.nr0.htm",
+  "http_status": 200,
+  "http_body_bytes": 54341,
+  "contains_rounded_7_3_million": true,
+  "exact_precision_available": false,
+  "supported_claim": "July job openings were little changed at 7.3 million; no exact actual, prior, consensus, surprise, or monthly-change precision is asserted."
+}
