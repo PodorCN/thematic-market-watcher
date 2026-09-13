@@ -1,0 +1,30 @@
+{
+  "bls-jobs.html": {
+    "url": "https://www.bls.gov/news.release/empsit.nr0.htm",
+    "status": 200,
+    "bytes": 62353,
+    "sha256": "20e122273575e268b2325ced449aff2868fe3fad75b0d1d854688749bf5dca99",
+    "retrieved_at_toronto": "2026-09-12T11:09:13.848464-04:00"
+  },
+  "bls-cpi.html": {
+    "url": "https://www.bls.gov/news.release/cpi.nr0.htm",
+    "status": 200,
+    "bytes": 90388,
+    "sha256": "8b4d352b4f1ffc6604d953d304c151993c722f8a096a4030765183105ade9484",
+    "retrieved_at_toronto": "2026-09-12T11:09:13.950804-04:00"
+  },
+  "bls-ppi.html": {
+    "url": "https://www.bls.gov/news.release/ppi.nr0.htm",
+    "status": 200,
+    "bytes": 132182,
+    "sha256": "f2e99245081cb24cfa5d38b5242d8d6d4501550afa03a2304eab6affcc400386",
+    "retrieved_at_toronto": "2026-09-12T11:09:14.045824-04:00"
+  },
+  "bls-jolts.html": {
+    "url": "https://www.bls.gov/news.release/jolts.nr0.htm",
+    "status": 200,
+    "bytes": 54341,
+    "sha256": "7b77b05e40e3e4eda19dd37639959dafd34abbdd714f6e15baa88288ea619506",
+    "retrieved_at_toronto": "2026-09-12T11:09:14.104377-04:00"
+  }
+}

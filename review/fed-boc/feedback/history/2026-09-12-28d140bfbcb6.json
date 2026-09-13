@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0",
+  "status": "open",
+  "reviewed_at": "2026-09-12T23:46:33-04:00",
+  "candidate_sha256": "381f58706ecd425841c37cff46d5c8be2ad4bf50df0cb73c297d987a175d2f94",
+  "review_sha256": "28d140bfbcb63fca77545aa90296b2ec6cabf2ad7ad78712f8ca20a6d491b401",
+  "source_review": "review/fed-boc/2026-09-12/iteration-07/pm-review.json",
+  "executive_summary": "Revise. The candidate contains a coherent official-policy snapshot and the evidence files themselves match all 51 handoff evidence hashes, but the recorded candidate checksum and handoff digest do not match the exact candidate bytes on disk. In addition, the BoC hold driver labels a consensus match as a beat. I would not risk capital on this package until the byte binding and driver semantics are rebuilt and re-reviewed.",
+  "failed_checks": [
+    "decision_usefulness",
+    "drivers",
+    "pricing"
+  ],
+  "findings": [
+    {
+      "severity": "critical",
+      "field": "candidate.sha256, pm-handoff.json.candidate_sha256, and candidate.json exact bytes",
+      "issue": "The frozen candidate is not bound to its recorded digest. The SHA-256 of the exact candidate.json bytes is 381f58706ecd425841c37cff46d5c8be2ad4bf50df0cb73c297d987a175d2f94, while candidate.sha256 and pm-handoff.json record 34dbb434cb4d8414298378c7561cf49ca74e0b7758b5c297638d8fe604f350d1.",
+      "evidence": "Direct SHA-256 over the repository byte stream produced 381f58706ecd425841c37cff46d5c8be2ad4bf50df0cb73c297d987a175d2f94 for review/fed-boc/2026-09-12/iteration-07/candidate.json. The supplied candidate.sha256 and pm-handoff.json both contain 34dbb434cb4d8414298378c7561cf49ca74e0b7758b5c297638d8fe604f350d1; the difference is consistent with line-ending normalization and is still a hard exact-byte mismatch.",
+      "pnl_impact": "A reviewer or publisher could approve bytes different from the bytes later archived, defeating the fail-closed audit gate and making every policy, pricing, and market claim non-binding for trading decisions.",
+      "instruction": "Re-freeze the intended candidate bytes without line-ending conversion, recompute candidate.sha256 from those exact bytes, update pm-handoff.json and every binding, then obtain a fresh independent PM review; do not archive or publish before the validator passes against the exact byte stream."
+    },
+    {
+      "severity": "major",
+      "field": "meetings.boc.drivers.hawkish[id=boc_hawk_hold_20260902].data.delta_type",
+      "issue": "The BoC hold driver records actual, forecast, and previous as the same 2.25% hold, yet marks delta_type as beat. Its reason explicitly says the decision matched consensus, so the machine-readable surprise direction contradicts the displayed data.",
+      "evidence": "candidate.json shows actual \"Hold 2.25%\", forecast \"Hold 2.25%\", previous \"Hold 2.25%\", delta_label \"hawkish hold\", and delta_type \"beat\". The persisted official BoC statement says the Bank held at 2.25%; no numerical decision surprise is established by the cited official source.",
+      "pnl_impact": "Consumers or downstream scoring can interpret the beat enum as a hawkish policy surprise and add conviction to the BoC hawkish rope, biasing CAD, front-end rates, duration, and event-hedge sizing despite a consensus decision.",
+      "instruction": "Rebuild this driver so the delta classification is neutral for the matched decision, while explaining the separately sourced hawkish communication or inflation-risk rationale without calling it a policy surprise; recompute any affected weights and re-review the rebuilt candidate."
+    }
+  ],
+  "required_recollection": [
+    "Re-freeze the intended candidate bytes without line-ending conversion, recompute candidate.sha256 from those exact bytes, update pm-handoff.json and every binding, then obtain a fresh independent PM review; do not archive or publish before the validator passes against the exact byte stream.",
+    "Rebuild this driver so the delta classification is neutral for the matched decision, while explaining the separately sourced hawkish communication or inflation-risk rationale without calling it a policy surprise; recompute any affected weights and re-review the rebuilt candidate."
+  ],
+  "operator_instructions": [
+    "Keep publication fail-closed and do not archive, commit, sync, or publish this iteration under an approved interpretation.",
+    "Rebuild the exact-byte package and rebind candidate.sha256, pm-handoff.json, and the replacement review to the same byte stream.",
+    "Correct the BoC hold driver's machine-readable delta classification and reassess its weight and wording for consistency with the matched decision.",
+    "Submit the rebuilt exact candidate to a fresh independent PM review and run the approved validator before any publication action."
+  ],
+  "next_run_contract": [
+    "Read this feedback before collecting or editing the next candidate.",
+    "Re-trigger collection for every affected source and claim.",
+    "Rebuild the whole internally consistent candidate; do not patch prose only.",
+    "Submit the rebuilt candidate to a fresh independent PM review.",
+    "Do not publish until an exact-byte-bound approved review passes the gate."
+  ]
+}

@@ -1,15 +1,18 @@
 {
   "schema_version": "1.0",
-  "status": "open",
+  "reviewer_role": "independent_portfolio_manager",
   "reviewed_at": "2026-09-12T23:57:47-04:00",
   "candidate_sha256": "aca559747c7ada86459fa329449117a105e9b16764538bb498fbdc6c00df13bf",
-  "review_sha256": "c5b386c6dae7f7204da0572f328c27b0dba40d9d54454dbbb1597a6a94f05d35",
-  "source_review": "review/fed-boc/2026-09-12/iteration-09/pm-review.json",
+  "verdict": "revise",
   "executive_summary": "Revise. The frozen candidate is correctly bound to its exact bytes, and the evidence package is hash-consistent. The controlling remediations also pass: JOLTS is rounded-only at zero weight, the matched BoC hold is neutral, CRAU26 reconciles to volume 33,077 with its multi-meeting limitation, no-forecast long-end and WTI context are neutral, pricing is labelled as proxy/unavailable where required, and market arithmetic reproduces. However, the candidate's top-level as_of precedes a nested BoC CRAU26 recollection timestamp, so the snapshot's freshness boundary and decision-useful audit chronology are internally inconsistent.",
-  "failed_checks": [
-    "decision_usefulness",
-    "freshness"
-  ],
+  "checks": {
+    "official_policy": "pass",
+    "pricing": "pass",
+    "drivers": "pass",
+    "market_validation": "pass",
+    "freshness": "fail",
+    "decision_usefulness": "fail"
+  },
   "findings": [
     {
       "severity": "major",
@@ -20,20 +23,16 @@
       "instruction": "Rebuild the candidate with a top-level as_of at or after every nested recollection and observation timestamp, or remove/reconcile the later collection claim if it is not part of the frozen payload. Recompute the exact candidate SHA-256 and candidate.sha256, regenerate the handoff and evidence mapping as needed, then submit a fresh independent review. Do not edit this frozen iteration or publish it."
     }
   ],
-  "required_recollection": [
-    "Rebuild the candidate with a top-level as_of at or after every nested recollection and observation timestamp, or remove/reconcile the later collection claim if it is not part of the frozen payload. Recompute the exact candidate SHA-256 and candidate.sha256, regenerate the handoff and evidence mapping as needed, then submit a fresh independent review. Do not edit this frozen iteration or publish it."
+  "pnl_risks": [
+    "The CRAU26 contract spans the October 28 and December 9 decisions, so it remains unsuitable for a clean October cut/hold/hike distribution despite its reconciled 33,077 volume.",
+    "Fed pricing is a ZQU26/EFFR desk-implied interpolation rather than direct CME FedWatch probabilities, leaving proxy, basis, and model-risk exposure in event sizing.",
+    "The long-end and WTI observations are contextual market validation with no forecasts and no causal event attribution; their neutral semantics should not be converted into surprise signals.",
+    "The snapshot chronology is not decision-safe until as_of bounds the latest nested observation; otherwise information-set timing can be misread around the upcoming meetings."
   ],
   "operator_instructions": [
     "Keep publication fail-closed; do not archive, commit, sync, or publish this iteration.",
     "Correct the as_of versus CRAU26 recollection chronology in a new immutable iteration, then recompute the exact-byte digest and regenerate the handoff binding.",
     "Preserve the verified rounded-only zero-weight JOLTS treatment, neutral matched BoC hold, CRAU26 volume 33,077, multi-meeting limitation, and neutral no-forecast context semantics.",
     "Submit the rebuilt exact candidate to a fresh independent PM review and run the approved validator before any publication action."
-  ],
-  "next_run_contract": [
-    "Read this feedback before collecting or editing the next candidate.",
-    "Re-trigger collection for every affected source and claim.",
-    "Rebuild the whole internally consistent candidate; do not patch prose only.",
-    "Submit the rebuilt candidate to a fresh independent PM review.",
-    "Do not publish until an exact-byte-bound approved review passes the gate."
   ]
 }

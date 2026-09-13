@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0",
+  "reviewer_role": "independent_portfolio_manager",
+  "reviewed_at": "2026-09-12T23:52:28-04:00",
+  "candidate_sha256": "b6705112b9f6179ed3fe750f842bd358f374932f5ef5d5f52cac92bee3d4c869",
+  "verdict": "revise",
+  "executive_summary": "Revise. The exact candidate-byte binding is correct, the controlling JOLTS restriction is respected, the BoC matched-decision driver is now neutral, official policy facts are supported, and the market return arithmetic reconciles. However, the frozen candidate contains a material mismatch between its BoC CRAU26 volume claim and the exact official TMX evidence, and it uses beat/miss driver enums for price/context observations without forecasts; those machine-readable semantics can create false P&L signals.",
+  "checks": {
+    "official_policy": "pass",
+    "pricing": "fail",
+    "drivers": "fail",
+    "market_validation": "pass",
+    "freshness": "pass",
+    "decision_usefulness": "fail"
+  },
+  "findings": [
+    {
+      "severity": "major",
+      "field": "meetings.boc.pricing.proxy_check and meetings.boc.pricing.observable_proxy.volume",
+      "issue": "The candidate states that CRAU26 volume was 31,621, but the exact TMX CRAU26 evidence artifact records volume 33,077 for the same bid 97.600, ask 97.605, expiry 2026-12-16 observation. The handoff binds that artifact, so the candidate's pricing description is not internally traceable to its cited evidence.",
+      "evidence": "review/fed-boc/2026-09-12/iteration-08/evidence/cra.html line 1748 has id=CRAU26 and volume=33077; lines 1750-1755 repeat bid 97.6000, ask 97.6050, settlement 97.6000, and volume 33,077. candidate.json meetings.boc.pricing.proxy_check and observable_proxy.volume both say 31621.",
+      "pnl_impact": "A PM could misread the liquidity and reliability of the BoC pricing proxy, while the stale or mismatched volume undermines the audit trail for the only observable rate-market input used for the October decision context.",
+      "instruction": "Reconcile the CRAU26 observation against the exact TMX evidence and recollect if necessary; rebuild every dependent proxy field and timestamp consistently, preserve the multi-decision/no-single-meeting limitation, rebind the candidate bytes, and obtain a fresh review."
+    },
+    {
+      "severity": "major",
+      "field": "drivers.fed.hawkish[id=fed_hawk_long_end_20260831].data.delta_type and drivers.boc.hawkish[id=boc_hawk_oil_20260821].data.delta_type",
+      "issue": "The long-end-yield driver is marked beat although forecast is null and the data only compares Sep 11 with Sep 10; moreover, 10Y rose while 30Y fell. The WTI context driver is marked miss although forecast is null and the move is only a day-over-day comparison. These are not forecast-surprise classifications.",
+      "evidence": "candidate.json shows fed_hawk_long_end data.forecast=null, delta_type=beat, delta_label='10Y +3.1bp / 30Y -0.7bp'; it shows boc_hawk_oil data.forecast=null, delta_type=miss, delta_label='-2.37% d/d'. The exact market evidence confirms those contemporaneous closes but supplies no forecast against which beat/miss could be measured.",
+      "pnl_impact": "Downstream rope scoring can treat ordinary mixed price context as hawkish beats or dovish misses, overstating directional conviction in Fed/BoC rates, duration, CAD, and hedges despite no surprise estimate and no clean common move.",
+      "instruction": "Reclassify no-forecast price/context observations as neutral or otherwise use a schema-supported non-surprise treatment, make the side and title match the actual transmission evidence, and do not use a single-day move as a fundamental surprise; recompute affected weights and re-review."
+    }
+  ],
+  "pnl_risks": [
+    "The CRAU26 contract spans the October 28 and December 9 decisions, so it cannot support a clean October cut/hold/hike distribution; any later allocation would create meeting-attribution risk.",
+    "Fed pricing is a ZQU26/EFFR desk-implied proxy rather than direct CME FedWatch probabilities, leaving model interpolation and contract-basis risk in event sizing.",
+    "The long-end and WTI driver enums can mechanically turn non-forecast price changes into surprise signals, distorting rope direction and downstream rates, duration, and CAD positioning.",
+    "The candidate's market return arithmetic reconciles to its stated bases, but the market strip is validation context rather than causal proof of any individual macro driver."
+  ],
+  "operator_instructions": [
+    "Keep publication fail-closed; do not archive, commit, sync, or publish this iteration.",
+    "Reconcile the BoC CRAU26 volume and all dependent proxy fields to the exact official evidence, then rebuild and rebind the exact candidate byte stream and handoff.",
+    "Correct the no-forecast price/context delta semantics and reassess the affected driver sides, wording, and weights without converting market moves into causal surprises.",
+    "Submit the rebuilt exact candidate to a fresh independent PM review and run the approved validator before any publication action."
+  ]
+}

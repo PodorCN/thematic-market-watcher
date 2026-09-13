@@ -1,0 +1,159 @@
+{
+  "verified_at_toronto": "2026-09-12T04:44:44.503940-04:00",
+  "symbols": {
+    "SPY": {
+      "sha256_second": "69acc0f57842d8ecc40a1e1a24276f571bdb22fe131ec31b89378efa969b1cdf",
+      "exact_payload_match": false,
+      "last_second": {
+        "epoch": 1789156800,
+        "toronto": "2026-09-11T16:00:00-04:00",
+        "close": 764.2899780273438
+      },
+      "last_first": {
+        "epoch": 1789156800,
+        "toronto": "2026-09-11T16:00:00-04:00",
+        "close": 764.2899780273438
+      }
+    },
+    "QQQ": {
+      "sha256_second": "ea9673298d519eac68bf278c400d79dbfb11e2f25405b8738983c9393b2a9f65",
+      "exact_payload_match": false,
+      "last_second": {
+        "epoch": 1789156800,
+        "toronto": "2026-09-11T16:00:00-04:00",
+        "close": 714.8800048828125
+      },
+      "last_first": {
+        "epoch": 1789156800,
+        "toronto": "2026-09-11T16:00:00-04:00",
+        "close": 714.8800048828125
+      }
+    },
+    "IWM": {
+      "sha256_second": "936111fbbf270ce9e6e5e34769387f5454cf887c3f65f0216b67b06600f00745",
+      "exact_payload_match": false,
+      "last_second": {
+        "epoch": 1789156800,
+        "toronto": "2026-09-11T16:00:00-04:00",
+        "close": 288.8900146484375
+      },
+      "last_first": {
+        "epoch": 1789156800,
+        "toronto": "2026-09-11T16:00:00-04:00",
+        "close": 288.8900146484375
+      }
+    },
+    "XLI": {
+      "sha256_second": "e651cd944c1eb4dfb4a30c0b5c68d6b06b4b94c092170a0be3696c95abcfcc09",
+      "exact_payload_match": false,
+      "last_second": {
+        "epoch": 1789156800,
+        "toronto": "2026-09-11T16:00:00-04:00",
+        "close": 172.3699951171875
+      },
+      "last_first": {
+        "epoch": 1789156800,
+        "toronto": "2026-09-11T16:00:00-04:00",
+        "close": 172.3699951171875
+      }
+    },
+    "XLU": {
+      "sha256_second": "82e1aafa9f204a2411090b556a896dcb0431cdb1a39f2c327cdc8b12ec65ffad",
+      "exact_payload_match": false,
+      "last_second": {
+        "epoch": 1789156800,
+        "toronto": "2026-09-11T16:00:00-04:00",
+        "close": 42.38999938964844
+      },
+      "last_first": {
+        "epoch": 1789156800,
+        "toronto": "2026-09-11T16:00:00-04:00",
+        "close": 42.38999938964844
+      }
+    },
+    "XLF": {
+      "sha256_second": "4c09c317233247314b72d25c1c81bcd22dc3173d3ebd59ebf21e523c74e3dd44",
+      "exact_payload_match": false,
+      "last_second": {
+        "epoch": 1789156800,
+        "toronto": "2026-09-11T16:00:00-04:00",
+        "close": 57.25
+      },
+      "last_first": {
+        "epoch": 1789156800,
+        "toronto": "2026-09-11T16:00:00-04:00",
+        "close": 57.25
+      }
+    },
+    "XLE": {
+      "sha256_second": "1bf8990a936201d3d47c46d2ad44fd210ba838ebc36d3bd7a2311e7d65b24b72",
+      "exact_payload_match": false,
+      "last_second": {
+        "epoch": 1789156800,
+        "toronto": "2026-09-11T16:00:00-04:00",
+        "close": 65.13999938964844
+      },
+      "last_first": {
+        "epoch": 1789156800,
+        "toronto": "2026-09-11T16:00:00-04:00",
+        "close": 65.13999938964844
+      }
+    },
+    "TLT": {
+      "sha256_second": "aa5330825d602a7f051128a8ec2c0fe33cf4d596e3efb5fe49b454a7ddc392fd",
+      "exact_payload_match": false,
+      "last_second": {
+        "epoch": 1789156800,
+        "toronto": "2026-09-11T16:00:00-04:00",
+        "close": 80.87000274658203
+      },
+      "last_first": {
+        "epoch": 1789156800,
+        "toronto": "2026-09-11T16:00:00-04:00",
+        "close": 80.87000274658203
+      }
+    },
+    "GLD": {
+      "sha256_second": "eeb21859c156e88dd98e2e715385535cef3276a4142e7fcccaba9c2d0e03550d",
+      "exact_payload_match": false,
+      "last_second": {
+        "epoch": 1789156800,
+        "toronto": "2026-09-11T16:00:00-04:00",
+        "close": 398.7699890136719
+      },
+      "last_first": {
+        "epoch": 1789156800,
+        "toronto": "2026-09-11T16:00:00-04:00",
+        "close": 398.7699890136719
+      }
+    },
+    "ZEB.TO": {
+      "sha256_second": "3d8c41d606d386f96ff9382fdd9b10d5313447dc285b76c2ea784e2b7402f63d",
+      "exact_payload_match": false,
+      "last_second": {
+        "epoch": 1789156740,
+        "toronto": "2026-09-11T15:59:00-04:00",
+        "close": 74.58000183105469
+      },
+      "last_first": {
+        "epoch": 1789156740,
+        "toronto": "2026-09-11T15:59:00-04:00",
+        "close": 74.58000183105469
+      }
+    },
+    "ZQU26.CBT": {
+      "sha256_second": "15407d4c8be5738f566ac1b7e5742234310609f37912c1a0729b73256d5ffe97",
+      "exact_payload_match": false,
+      "last_second": {
+        "epoch": 1789160340,
+        "toronto": "2026-09-11T16:59:00-04:00",
+        "close": 96.2699966430664
+      },
+      "last_first": {
+        "epoch": 1789160340,
+        "toronto": "2026-09-11T16:59:00-04:00",
+        "close": 96.2699966430664
+      }
+    }
+  }
+}
