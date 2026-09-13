@@ -1,16 +1,18 @@
 {
   "schema_version": "1.0",
-  "status": "open",
+  "reviewer_role": "independent_portfolio_manager",
   "reviewed_at": "2026-09-13T18:35:58-04:00",
   "candidate_sha256": "54b8b71e1afac0595a62fb03ad21d27a9a4b8a3b19f59d4e9d2d5db7398587e0",
-  "review_sha256": "79f0fd6be3fb2b3d04a98e43636d75d0391db6e68224391cb6c201a57053afcc",
-  "source_review": "review/fed-boc/2026-09-13/iteration-03/pm-review.json",
+  "verdict": "revise",
   "executive_summary": "Revise. The exact candidate SHA-256 matches candidate.sha256, every handoff evidence digest matches, official Fed and BoC policy facts are supported by the persisted pages, the market return arithmetic reproduces, and the controlling open-feedback chronology defect is remediated: top-level as_of 2026-09-13T18:33:59-04:00 is later than the nested recollection timestamps. However, the BoC pricing proxy is materially misidentified: the persisted TMX page places the 97.600/97.605 quote and volume 33,077 in the September 2026 row, while the candidate labels it CRAU26 with a December 16 expiry and uses it as an October/December proxy. The Fed proxy also cites a finalized 96.26999664 close that is not present in the hash-bound ZQU26 evidence, whose Sep 11 close is 96.26750183105469. These unresolved pricing identity and exact-value defects make the snapshot unsafe for event-risk decisions.",
-  "failed_checks": [
-    "decision_usefulness",
-    "market_validation",
-    "pricing"
-  ],
+  "checks": {
+    "official_policy": "pass",
+    "pricing": "fail",
+    "drivers": "pass",
+    "market_validation": "fail",
+    "freshness": "pass",
+    "decision_usefulness": "fail"
+  },
   "findings": [
     {
       "severity": "major",
@@ -29,20 +31,15 @@
       "instruction": "Reconcile the candidate to the exact completed-session quote contained in the hash-bound evidence, or recollect and hash the source that actually produced 96.26999664. Recompute implied_rate_after and all probabilities from the verified value, preserve the Sunday-indication exclusion, update the handoff mapping, and submit a fresh exact-byte PM review."
     }
   ],
-  "required_recollection": [
-    "Recollect and identify the exact TMX contract from the exchange row and contract code, including its real expiry and reference period. Use the December-row quote if the intended proxy must span the October and December decisions, or state that no usable October proxy exists. Recompute every related rate, label, limitation, handoff mapping, and candidate digest in a new immutable iteration; do not patch this frozen candidate or publish it.",
-    "Reconcile the candidate to the exact completed-session quote contained in the hash-bound evidence, or recollect and hash the source that actually produced 96.26999664. Recompute implied_rate_after and all probabilities from the verified value, preserve the Sunday-indication exclusion, update the handoff mapping, and submit a fresh exact-byte PM review."
+  "pnl_risks": [
+    "The BoC proxy's contract-month/expiry mismatch can turn a purported October decision signal into a quote from the wrong reference period, creating false CAD and front-end rate event odds.",
+    "The Fed desk-implied distribution is not direct CME FedWatch pricing and additionally has an unresolved exact-price mismatch against its frozen ZQU26 evidence; basis and model risk are therefore not merely theoretical.",
+    "Official policy facts and market return arithmetic pass, but the pricing defects contaminate the central event-risk interpretation even though the open-feedback chronology issue is fixed.",
+    "The upcoming Canada CPI, US retail-sales, FOMC, and BoC deliberations events can reprice CAD, front-end rates, duration, and risk assets before the next policy decisions."
   ],
   "operator_instructions": [
     "Keep publication fail-closed; do not archive, commit, sync, or publish iteration-03.",
     "Read and preserve the open feedback chronology requirement, but rebuild a new candidate after correcting both pricing identities and exact values.",
     "Recollect the exact TMX contract row and the completed-session ZQU26 quote, update all derived math and remediation/evidence mappings, recompute the candidate SHA-256, and submit a fresh independent review."
-  ],
-  "next_run_contract": [
-    "Read this feedback before collecting or editing the next candidate.",
-    "Re-trigger collection for every affected source and claim.",
-    "Rebuild the whole internally consistent candidate; do not patch prose only.",
-    "Submit the rebuilt candidate to a fresh independent PM review.",
-    "Do not publish until an exact-byte-bound approved review passes the gate."
   ]
 }

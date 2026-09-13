@@ -1,0 +1,57 @@
+{
+  "candidate_sha256": "47bffcf02453345334624d79dad135a0f44f9d6b7a6c6d9e38c141b3c765b59f",
+  "open_feedback": "review/fed-boc/feedback/latest.json",
+  "prior_pm_review": "review/fed-boc/2026-09-13/iteration-03/pm-review.json",
+  "evidence_sha256": {
+    "evidence/boc-last-statement.html": "6ccfce4b068e8f4f2c592f90405c3579a3e08a11a8973b7bdcf1a013d11278e1",
+    "evidence/boc-press.html": "5e3a6201a8b6a4897a4481cce52c9d39bf4e991136d1dec86b00c6485b6b91b4",
+    "evidence/boc-rate.html": "213c1eaa96d3eb1fea72e4f713bde7969fe2082c964ff6077f095483c2d339ac",
+    "evidence/cme.html": "eecde3fafbde4090c30e610a7ed4b8d877f8351c0490e4189574890e8a5a4f7e",
+    "evidence/corra.json": "8d23b7686475cabd37a75a9dbb487522a4e1ab9a63f1bfbc7afeb60ec74f8e32",
+    "evidence/cra-contract-spec.html": "d019d89d8a41bff9f3155e2168673d81ca0877a0332d02a684cf6dd6c677cd4e",
+    "evidence/cra-spec.html": "d2ef0489bd97e3cfac344cf6a08db988ed5c35a3a8415de6fd0719375c8e4a1c",
+    "evidence/cra.html": "bf0e1af951a389b310fb3f87e6c934eb8aca2ac40794f60cb23eda8f3bc11ff1",
+    "evidence/effr.json": "5c1c15cf6c9a04e84f10188d626bf2845e86256b3a37f0e37d0602ed72ea97e0",
+    "evidence/fed-last-statement.html": "f213dc79cb84d9743f7559648bbcd3bacf16d7dc6b73465bf27800249162a3cc",
+    "evidence/fed-press.xml": "b95d76bc188bdbbc49ccc436cee436d7a3b69eaf98e8257af441372b396f6fa3",
+    "evidence/fed-speeches.xml": "370595f49a80d3814951ccf74dbe74423f5c5844acd077727997a7664b199ed8",
+    "evidence/fomc-calendar.html": "33f59a641b60f649974d4bc1bed5c84de14d785acca6ee78014d37661789d645",
+    "evidence/market/%5ETNX.1d.json": "cd6eabd1cecbbbda866ff3d8cbdb24a1fc92190289f588087ac9552e12256e8b",
+    "evidence/market/%5ETYX.1d.json": "de954c1ab3818d1afb87dcfbd72c8df7db2f467d86916fc7f1f7cd08f1abfd51",
+    "evidence/market/CL%3DF.1d.json": "db34022ac1723f114f9194a7fa4419495442635670e191a2dfdc44cab4955723",
+    "evidence/market/GLD.1d.json": "74bcb6e0edbaec10f93952406cffd8ecb6d271dbff0c0db9985dfedb82aeea55",
+    "evidence/market/IWM.1d.json": "cf35b1b2b0d54aeddb4f386d16b3293bf73d06ad8ab81167aaca2d959bde1025",
+    "evidence/market/QQQ.1d.json": "4889fa3f5ad4bbb2a0ec487ceaa6af750326933c12e1404c64016ee870b7f0e5",
+    "evidence/market/SPY.1d.json": "3ae56a1c0f27b8cc70f3d6749ce66f373126bd9fd72859801a33cd738ffe3e2e",
+    "evidence/market/TLT.1d.json": "e24158ed10bcf1cdef80aebe21e85828c44b11fd71740f1f4aee468d93f885fa",
+    "evidence/market/XLE.1d.json": "d390dddfcaccda2b439691ef874c7f476f2d941b8a6ddd49865402895890c68c",
+    "evidence/market/XLF.1d.json": "dc6958c53fb35e8fa91b290220bbe4a6bf07d70ed44a9d3aacb42aea8355bb1a",
+    "evidence/market/XLI.1d.json": "2521a82eb248e49723f94fe4fe7aac1b628123ab11a0258d805a52247881a9ca",
+    "evidence/market/XLU.1d.json": "f3d12af69acbd502b4681015eb7cfcf71fba61a5bc30ac9effa0a29da97643c8",
+    "evidence/market/ZEB.TO.1d.json": "aaec824ab905040c05d0bf1799f294401ec81e848bde089480e977898c45e0ee",
+    "evidence/market/ZQU26.CBT.1d.json": "8f12f61ec2eeb1bf192543fd488450ffcc702b02b8d9f36075ee8688c85edc46"
+  },
+  "remediation_evidence_mapping": [
+    {
+      "field": "meetings.boc.pricing.observable_proxy and proxy_check",
+      "feedback": "Identify the exact TMX contract, real expiry/reference period, and recompute labels/limitations.",
+      "recollection": "TMX live CRA quote table and official MX CRA contract specification recollected before 2026-09-13T18:39:47-04:00.",
+      "remediation": "CRAU26 is bound to the row symbol; September is explicitly labelled the reference month, Dec 16 the delivery/expiry, per official specification that these months differ. Quarterly multi-meeting limitation retained.",
+      "evidence": "evidence/cra.html; evidence/cra-contract-spec.html; candidate.json"
+    },
+    {
+      "field": "meetings.fed.pricing",
+      "feedback": "Use the exact completed-session ZQU26 quote in hash-bound evidence and recompute.",
+      "recollection": "Yahoo ZQU26 daily endpoint recollected before 2026-09-13T18:39:47-04:00.",
+      "remediation": "Exact Sep 11 close 96.26750183105469 used; post rate 3.849638933454241 and displayed hold/hike 0.12/0.88; Sunday indication excluded.",
+      "evidence": "evidence/market/ZQU26.CBT.1d.json; candidate.json"
+    },
+    {
+      "field": "as_of chronology and controlled remediations",
+      "feedback": "Preserve chronology and all prior semantic remediations.",
+      "recollection": "Prior review/feedback artifacts parsed; official/proxy/market evidence retained from same evening collection.",
+      "remediation": "Whole candidate rebuilt with as_of after all collection; rounded-only zero-weight JOLTS, neutral matched hold/context, Warsh cap, and CRA limitation preserved.",
+      "evidence": "candidate.json; candidate.sha256"
+    }
+  ]
+}

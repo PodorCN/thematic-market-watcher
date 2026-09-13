@@ -1,7 +1,7 @@
 {
-  "as_of": "2026-09-13T12:21:19-04:00",
-  "version": "2026-09-13-002",
-  "verification_note": "Sep 13 midday feedback-controlled Sunday rebuild: all prior PM review/feedback artifacts were re-read; canonical 9-country calendar was refreshed; official Fed/BoC policy pages, Fed communications feeds, NY Fed EFFR, BoC CORRA, TMX CRA, CME access and the structured market strip were recollected. No new cash session exists after Sep 11. The open-feedback chronology defect remains remediated: top-level as_of is after the latest nested recollection. Rounded-only zero-weight JOLTS, neutral matched BoC hold, neutral no-forecast long-end/WTI context, Warsh cap, and multi-meeting CRA limitation are preserved.",
+  "as_of": "2026-09-13T18:39:47-04:00",
+  "version": "2026-09-13-004",
+  "verification_note": "Sep 13 evening feedback-controlled rebuild after PM iteration-03: all prior artifacts and the new open feedback were read; the exact TMX CRA quote row, official CRA contract specification, and Yahoo ZQU26 daily series were recollected. The CRAU26 quote is explicitly identified as the September contract reference month with Dec 16 delivery/expiry; MX states reference month and delivery month differ. The Fed solve now uses the exact hash-bound Sep 11 completed-session close. The canonical calendar and all other official/proxy/market evidence remain from the same evening collection. Top-level as_of follows all observations; controlled prior remediations remain preserved.",
   "timezone": "America/Toronto",
   "meetings": {
     "fed": {
@@ -16,19 +16,19 @@
       },
       "pricing": {
         "cut_25bp": 0.0,
-        "hold": 0.14,
-        "hike_25bp": 0.86,
+        "hold": 0.12,
+        "hike_25bp": 0.88,
         "source": "Desk-implied scenario weights from timestamped Yahoo ZQU26 intraday bar + NY Fed EFFR (not CME FedWatch probabilities)",
         "source_url": "https://finance.yahoo.com/quote/ZQU26.CBT",
         "as_of_pricing": "2026-09-11T16:59:00-04:00",
-        "proxy_check": "ZQU26 finalized Yahoo row 96.26999664 => monthly average 3.73000336%. EFFR 3.63%; 16 pre/14 post solve gives 3.84429291%. Adjacent hold/hike desk interpolation gives hold 0.142828, hike 0.857172; not CME FedWatch probabilities.",
+        "proxy_check": "ZQU26 hash-bound Yahoo Sep 11 completed-session close 96.26750183105469 => monthly average 3.7324981689453125%. EFFR 3.63%; 16 pre/14 post solve gives 3.849638933454241%. Adjacent hold/hike desk interpolation gives hold 0.121444, hike 0.878556; displayed 0.12/0.88. Not CME FedWatch probabilities.",
         "proxy_source_url": "https://finance.yahoo.com/quote/ZQU26.CBT",
         "implied_rate_before": 3.63,
-        "implied_rate_after": 3.844293,
+        "implied_rate_after": 3.849639,
         "effr_source_url": "https://markets.newyorkfed.org/api/rates/unsecured/effr/last/5.json",
         "cme_access_note": "Direct CME FedWatch returned a 602-byte blocked body; no direct CME distribution was used.",
         "price_session_date": "2026-09-11 completed session",
-        "collection_note": "Final Yahoo ZQU26 row 96.26999664 at 2026-09-11T16:59:00-04:00; raw payload persisted and selected row matched on a second retrieval Sep 12."
+        "collection_note": "Yahoo ZQU26 daily endpoint recollected 2026-09-13T18:39:47-04:00; exact Sep 11 completed-session close 96.26750183105469 used. Sunday indication excluded from the completed-session solve."
       }
     },
     "boc": {
@@ -47,11 +47,11 @@
         "source": "TMX/MX CRA quarterly CORRA futures observable proxy; no clean Oct 28 distribution",
         "source_url": "https://www.m-x.ca/en/trading/data/quotes?symbol=CRA%2A",
         "as_of_pricing": "2026-09-11T16:25:02-04:00",
-        "proxy_check": "TMX CRAU26 bid 97.600 / ask 97.605, volume 33,077, expiry 2026-12-16; midpoint 97.6025 implies an annualized 2.3975% rate from compounded daily CORRA over the reference quarter. BoC CORRA was 2.3000% effective Sep 10. Contract spans Oct 28 and Dec 9; no October allocation identified.",
+        "proxy_check": "TMX row id/symbol CRAU26: displayed contract reference month September 2026; data-row delivery/expiry 2026-12-16; bid 97.600, ask 97.605, volume 33,077. MX contract specification states the contract reference month begins the reference quarter and differs from the delivery month that ends it. Midpoint 97.6025 implies 2.3975% compounded-quarter CORRA over Sep 16-Dec 16, spanning Oct 28 and Dec 9; no single-meeting allocation.",
         "proxy_source_url": "https://www.bankofcanada.ca/valet/observations/AVG.INTWO/json?start_date=2026-09-01",
         "implied_rate_before": 2.25,
         "implied_rate_after": null,
-        "note": "Single-meeting probabilities unavailable. CRAU26 is shown only as a quarterly-average observable and must not be interpreted as October cut/hold/hike pricing.",
+        "note": "Single-meeting probabilities unavailable. CRAU26 is the September-reference-month contract delivered Dec 16; official MX specifications say reference and delivery months differ. It spans Oct 28 and Dec 9 and is shown only as a quarterly-average observable.",
         "probability_status": "unavailable",
         "observable_proxy": {
           "instrument": "CRAU26",
@@ -63,9 +63,9 @@
           "implied_quarterly_average_rate": 2.3975,
           "observed_at_toronto": "2026-09-11T16:25:02-04:00",
           "source_url": "https://www.m-x.ca/en/trading/data/quotes?symbol=CRA%2A",
-          "note": "100 minus price is the annualized rate implied by compounded daily CORRA over the official reference quarter, which includes Oct 28 and Dec 9 decisions; not a simple arithmetic average and not a single-meeting distribution."
+          "note": "MX row symbol CRAU26 displays September 2026 as the contract reference month and expiry/delivery 2026-12-16. Official specifications define the reference quarter from the reference-month IMM date to the delivery-month IMM date. The contract spans Oct 28 and Dec 9; not a single-meeting distribution."
         },
-        "collection_note": "TMX CRAU26 page recollected 2026-09-13T12:21:19-04:00: bid 97.600, ask 97.605, volume 33,077. Multi-decision limitation unchanged."
+        "collection_note": "TMX CRA quote row and official contract specification recollected 2026-09-13T18:39:47-04:00: CRAU26 symbol, September 2026 reference month, Dec 16 delivery/expiry, bid 97.600, ask 97.605, volume 33,077."
       }
     }
   },
@@ -741,6 +741,6 @@
   ],
   "history": [],
   "snapshot_date": "2026-09-13",
-  "archived_at": "2026-09-13T16:26:55.002704Z",
+  "archived_at": "2026-09-13T22:45:29.138613Z",
   "stale": false
 }

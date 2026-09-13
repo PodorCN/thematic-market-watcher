@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "reviewer_role": "independent_portfolio_manager",
+  "reviewed_at": "2026-09-13T18:42:14-04:00",
+  "candidate_sha256": "47bffcf02453345334624d79dad135a0f44f9d6b7a6c6d9e38c141b3c765b59f",
+  "verdict": "approved",
+  "executive_summary": "Approved unconditionally. The candidate digest matches candidate.sha256 and the PM handoff; all 27 handoff evidence digests match the persisted files. Official Fed and BoC meeting facts, dates, decisions, rates, dissent text, and upcoming decision labels are supported by the frozen official artifacts. The prior CRAU26 issue is resolved: the live MX row symbol and data-row bind the quote to CRAU26, whose September 2026 label is the contract reference month and whose December 16 date is the delivery/expiry field; the official CRA specification confirms that the reference month starts the reference quarter and differs from the delivery month. The candidate correctly treats the quote as a quarterly observable spanning the October 28 and December 9 decisions, without manufacturing a single-meeting BoC distribution. The Fed solve uses the exact hash-bound Sep 11 completed-session ZQU26 close of 96.26750183105469, derives the stated post-meeting rate and displayed hold/hike weights consistently with the desk-implied effective-rate interpolation, and excludes the later Sunday indication. Market returns reproduce from the frozen Yahoo rows, chronology is coherent, and the output is decision-useful with proxy limitations clearly stated.",
+  "checks": {
+    "official_policy": "pass",
+    "pricing": "pass",
+    "drivers": "pass",
+    "market_validation": "pass",
+    "freshness": "pass",
+    "decision_usefulness": "pass"
+  },
+  "findings": [],
+  "pnl_risks": [
+    "The BoC CRA observable is a quarterly-average proxy rather than a clean October 28 single-meeting distribution; any event probability or hedge ratio inferred beyond that limitation would be model risk.",
+    "The Fed distribution is a desk-implied interpolation from a Yahoo ZQU26 futures proxy and NY Fed EFFR, not direct CME FedWatch probabilities; basis, liquidity, and interpolation risk remain relevant to event positioning.",
+    "The snapshot is frozen at Sep 11 completed-session market closes while the review is performed on Sep 13; intervening Sunday indications are explicitly excluded and subsequent price discovery can change the risk picture before publication use.",
+    "Upcoming CPI, retail-sales, FOMC, and BoC deliberations or policy events can reprice CAD, front-end rates, duration, and risk assets before the stated decisions."
+  ],
+  "operator_instructions": []
+}

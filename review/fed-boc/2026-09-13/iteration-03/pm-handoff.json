@@ -1,0 +1,48 @@
+{
+  "candidate_sha256": "54b8b71e1afac0595a62fb03ad21d27a9a4b8a3b19f59d4e9d2d5db7398587e0",
+  "open_feedback": "review/fed-boc/feedback/latest.json",
+  "prior_pm_review": "review/fed-boc/2026-09-13/iteration-02/pm-review.json",
+  "evidence_sha256": {
+    "evidence/boc-last-statement.html": "6ccfce4b068e8f4f2c592f90405c3579a3e08a11a8973b7bdcf1a013d11278e1",
+    "evidence/boc-press.html": "5e3a6201a8b6a4897a4481cce52c9d39bf4e991136d1dec86b00c6485b6b91b4",
+    "evidence/boc-rate.html": "213c1eaa96d3eb1fea72e4f713bde7969fe2082c964ff6077f095483c2d339ac",
+    "evidence/cme.html": "eecde3fafbde4090c30e610a7ed4b8d877f8351c0490e4189574890e8a5a4f7e",
+    "evidence/corra.json": "8d23b7686475cabd37a75a9dbb487522a4e1ab9a63f1bfbc7afeb60ec74f8e32",
+    "evidence/cra.html": "3e5f0fd8c2a8fbe9757cd43449a743adf611345de7ac655d924f1f85bb92b7b2",
+    "evidence/effr.json": "5c1c15cf6c9a04e84f10188d626bf2845e86256b3a37f0e37d0602ed72ea97e0",
+    "evidence/fed-last-statement.html": "f213dc79cb84d9743f7559648bbcd3bacf16d7dc6b73465bf27800249162a3cc",
+    "evidence/fed-press.xml": "b95d76bc188bdbbc49ccc436cee436d7a3b69eaf98e8257af441372b396f6fa3",
+    "evidence/fed-speeches.xml": "370595f49a80d3814951ccf74dbe74423f5c5844acd077727997a7664b199ed8",
+    "evidence/fomc-calendar.html": "33f59a641b60f649974d4bc1bed5c84de14d785acca6ee78014d37661789d645",
+    "evidence/market/%5ETNX.1d.json": "cd6eabd1cecbbbda866ff3d8cbdb24a1fc92190289f588087ac9552e12256e8b",
+    "evidence/market/%5ETYX.1d.json": "de954c1ab3818d1afb87dcfbd72c8df7db2f467d86916fc7f1f7cd08f1abfd51",
+    "evidence/market/CL%3DF.1d.json": "db34022ac1723f114f9194a7fa4419495442635670e191a2dfdc44cab4955723",
+    "evidence/market/GLD.1d.json": "74bcb6e0edbaec10f93952406cffd8ecb6d271dbff0c0db9985dfedb82aeea55",
+    "evidence/market/IWM.1d.json": "cf35b1b2b0d54aeddb4f386d16b3293bf73d06ad8ab81167aaca2d959bde1025",
+    "evidence/market/QQQ.1d.json": "4889fa3f5ad4bbb2a0ec487ceaa6af750326933c12e1404c64016ee870b7f0e5",
+    "evidence/market/SPY.1d.json": "3ae56a1c0f27b8cc70f3d6749ce66f373126bd9fd72859801a33cd738ffe3e2e",
+    "evidence/market/TLT.1d.json": "e24158ed10bcf1cdef80aebe21e85828c44b11fd71740f1f4aee468d93f885fa",
+    "evidence/market/XLE.1d.json": "d390dddfcaccda2b439691ef874c7f476f2d941b8a6ddd49865402895890c68c",
+    "evidence/market/XLF.1d.json": "dc6958c53fb35e8fa91b290220bbe4a6bf07d70ed44a9d3aacb42aea8355bb1a",
+    "evidence/market/XLI.1d.json": "2521a82eb248e49723f94fe4fe7aac1b628123ab11a0258d805a52247881a9ca",
+    "evidence/market/XLU.1d.json": "f3d12af69acbd502b4681015eb7cfcf71fba61a5bc30ac9effa0a29da97643c8",
+    "evidence/market/ZEB.TO.1d.json": "aaec824ab905040c05d0bf1799f294401ec81e848bde089480e977898c45e0ee",
+    "evidence/market/ZQU26.CBT.1d.json": "36ec059d42d861cc278ded5227c536f60144bad5bb52fad5f49e8cb23d9b66ac"
+  },
+  "remediation_evidence_mapping": [
+    {
+      "field": "as_of and meetings.boc.pricing.collection_note",
+      "feedback": "Top-level as_of must not precede nested CRA recollection.",
+      "recollection": "TMX CRA and all listed policy/proxy/market sources were freshly recollected before the 2026-09-13T18:33:59-04:00 freeze.",
+      "remediation": "The whole candidate was rebuilt as 2026-09-13-003; top-level as_of equals the final collection boundary and the exact-byte digest was regenerated.",
+      "evidence": "evidence/cra.html; candidate.json; candidate.sha256"
+    },
+    {
+      "field": "controlled prior remediations",
+      "feedback": "Preserve rounded-only zero-weight JOLTS, neutral matched BoC hold, CRA multi-meeting limitation, neutral no-forecast context, and Warsh cap.",
+      "recollection": "Official Fed/BoC policy, EFFR/CORRA, CME access, CRA and structured market evidence were freshly recollected; all prior review artifacts were parsed and digest files checked.",
+      "remediation": "All controlling semantics were preserved in the whole rebuilt candidate; Sunday futures indications were not represented as completed cash closes.",
+      "evidence": "candidate.json and hash-bound evidence package"
+    }
+  ]
+}
