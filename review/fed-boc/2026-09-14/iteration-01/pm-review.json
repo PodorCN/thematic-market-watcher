@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "reviewer_role": "independent_portfolio_manager",
+  "reviewed_at": "2026-09-14T00:55:08-04:00",
+  "candidate_sha256": "56586e863d090252983f819193bc9335e59bbbd2983cd4e1bebeabec40348443",
+  "verdict": "approved",
+  "executive_summary": "Approved unconditionally. The candidate digest matches candidate.sha256 and the PM handoff; all 30 hash-bound evidence files match their recorded SHA-256 digests. The official Fed and BoC decision records, meeting dates, prior decisions, target rates, dissent, and upcoming-event chronology are consistent with the candidate. The prior CRAU26 contract-identity defect remains remediated: the exchange row identifies CRAU26, September 2026 is the reference month, December 16 is delivery/expiry, and the candidate correctly presents the quote as a quarterly observable spanning multiple BoC decisions rather than manufacturing a single-meeting distribution. The Fed proxy uses the exact Sep 11 completed-session ZQU26 close 96.26750183105469 and NY Fed EFFR 3.63%; recomputation gives a 3.849638933454241% post-meeting solve and the stated 0.12 hold / 0.88 hike interpolation. All market-strip prices and 1-day/1-week returns reproduce from the frozen Yahoo rows. The Sep 14 overnight timing is coherent: Canada CPI is still pending, while Sep 11 completed-session cash values are explicitly labelled; BLS access denial is disclosed and no new BLS value is asserted.",
+  "checks": {
+    "official_policy": "pass",
+    "pricing": "pass",
+    "drivers": "pass",
+    "market_validation": "pass",
+    "freshness": "pass",
+    "decision_usefulness": "pass"
+  },
+  "findings": [],
+  "pnl_risks": [
+    "The BoC CRAU26 quote is a quarterly-average CORRA proxy spanning the Oct 28 and Dec 9 decisions, not a clean single-meeting probability; event odds and hedge ratios inferred from it remain model risk.",
+    "The Fed distribution is a desk-implied interpolation from a Yahoo ZQU26 futures proxy and NY Fed EFFR, not direct CME FedWatch probabilities; basis, liquidity, and interpolation risk remain material.",
+    "The frozen market strip is the Sep 11 completed-session close because the review occurs overnight before the Sep 14 cash open; intervening price discovery can materially change event risk.",
+    "BLS pages were access-denied during this recollection. The candidate explicitly preserves previously approved, dated release facts and asserts no new BLS values, but those claims should be revalidated when BLS access is restored.",
+    "Canada CPI is scheduled for Sep 14 before the cash open and can reprice CAD, front-end rates, duration, and the BoC reaction-function assessment before the snapshot is used."
+  ],
+  "operator_instructions": []
+}

@@ -1,0 +1,65 @@
+{
+  "candidate_sha256": "56586e863d090252983f819193bc9335e59bbbd2983cd4e1bebeabec40348443",
+  "open_feedback": "review/fed-boc/feedback/latest.json",
+  "prior_pm_review": "review/fed-boc/2026-09-13/iteration-04/pm-review.json",
+  "evidence_sha256": {
+    "evidence/bls-cpi.html": "fe4be512fd11966ebd8165ce274167b3893e3e8b5426101f0ce0506734369d76",
+    "evidence/bls-jobs.html": "fe8246a8b3c1d5631729ee1df9417360df9203fcbd4b43a7381eb6eb03537223",
+    "evidence/bls-jolts.html": "538c0bbf25f8ed855150b0479511c81bfab1df354da9eb42a98633e8e417f514",
+    "evidence/bls-ppi.html": "1a241ebf4bff77809bf11901efbd60202907bf2c4fe977d3dda99daf0f5208e9",
+    "evidence/boc-last-statement.html": "6ccfce4b068e8f4f2c592f90405c3579a3e08a11a8973b7bdcf1a013d11278e1",
+    "evidence/boc-press.html": "5e3a6201a8b6a4897a4481cce52c9d39bf4e991136d1dec86b00c6485b6b91b4",
+    "evidence/boc-rate.html": "213c1eaa96d3eb1fea72e4f713bde7969fe2082c964ff6077f095483c2d339ac",
+    "evidence/cme.html": "eecde3fafbde4090c30e610a7ed4b8d877f8351c0490e4189574890e8a5a4f7e",
+    "evidence/corra.json": "8d23b7686475cabd37a75a9dbb487522a4e1ab9a63f1bfbc7afeb60ec74f8e32",
+    "evidence/cra-contract-spec.html": "76ae93f3b83a7173cebfca2aaa6d28f8279c71233243daa33dd41d822e2d7567",
+    "evidence/cra-spec.html": "6a8314f19953b6ace2567e78741c5b6dcc2416a1b91f1021576a67de8b9bf8e4",
+    "evidence/cra.html": "2fefaaa0233a522698a41b8ed63a6da5bc190f0eac8e5f89aad30ec8cb2fbf79",
+    "evidence/effr.json": "5c1c15cf6c9a04e84f10188d626bf2845e86256b3a37f0e37d0602ed72ea97e0",
+    "evidence/fed-last-statement.html": "7a6709799fe4dda24bc4362f1783c2a2938f776875a2336f44c2e544c7656d73",
+    "evidence/fed-press.xml": "b95d76bc188bdbbc49ccc436cee436d7a3b69eaf98e8257af441372b396f6fa3",
+    "evidence/fed-speeches.xml": "370595f49a80d3814951ccf74dbe74423f5c5844acd077727997a7664b199ed8",
+    "evidence/fomc-calendar.html": "662dc57ae6e68be10d136c2e31c2d916aa0969a209e1c00f419684c51f298580",
+    "evidence/market/%5ETNX.1d.json": "e3cbc3fd922472b269479331de373565def19e755c596724623da5498bca3cdf",
+    "evidence/market/%5ETYX.1d.json": "85b5b107c7e475c635e86b53eb7d29bd213034c7765bba835e49523837a84223",
+    "evidence/market/CL%3DF.1d.json": "f2815bef0acede6b9e2e8e2fe3a9bf70a7e58ea0fb017f2a36e6337a48f87286",
+    "evidence/market/GLD.1d.json": "f86a6574e7d56a0b08ffaba733369344baa4ba220fc392a7403fb1d4fad7c981",
+    "evidence/market/IWM.1d.json": "681d0f7fa1d4af2d2d337c1fdb7ca0b0575d3eeff623f51e7589606ab80242ec",
+    "evidence/market/QQQ.1d.json": "3cfd288e34bcbcddc68454f9178d37e6ebdd040dfcb6cb3b75c6a66ea1cef883",
+    "evidence/market/SPY.1d.json": "c871256497184347c4c4bbba90f64c2c9b27b986952cce807b94aa7a27f0013c",
+    "evidence/market/TLT.1d.json": "e072cf9bd7666a0d1b6392ba77e7a4459bf7b992fd114358c51f98807f286deb",
+    "evidence/market/XLE.1d.json": "ddb5c02e8f78eb463e9fa2d2b4ce19f3e18f9f432e1a1b6432375c62ed580443",
+    "evidence/market/XLF.1d.json": "043cc6688c5fa0a8f3439f96ec978d29fcb8c58967834b2771e8be4d3673cb9b",
+    "evidence/market/XLI.1d.json": "308118e94a36213420ce7761061f869faccf66d544fdde8b28a37370b1e3c602",
+    "evidence/market/XLU.1d.json": "a9e2ed57eaab4e4fbe82886893131957f37d1e175872b85312562508fc9201b3",
+    "evidence/market/ZEB.TO.1d.json": "0010b23a85bb88af0cda06022e9dd8b20c2de3f72f883058dc1241750d742211",
+    "evidence/market/ZQU26.CBT.1d.json": "8e9c64a98157d3da8ec166ebaad61d7811aae2264375f86692331ccbf793572d",
+    "evidence/michigan.html": "4c9e13f6802f52caffa4d26cd15dddeb91f7908043279bc98fbbcd813047c170",
+    "evidence/statcan-gdp.html": "e14319b0610632df7d8f0394f9ca899e3cea9898d427ccbb853a9e32397560cf",
+    "evidence/statcan-lfs.html": "c392f09c91d29b4596dc826c1324e2d2099624a019f63e79eb7b9bf84c6035f8",
+    "evidence/statcan-rents.html": "1a4dd343a491e614d766c1483a949bbb08d6a3388a187ff52dedd687f53a111b"
+  },
+  "remediation_evidence_mapping": [
+    {
+      "field": "meetings.boc.pricing.observable_proxy and proxy_check",
+      "feedback": "Identify exact TMX contract, real expiry/reference period, and recompute labels/limitations.",
+      "recollection": "TMX live CRA table and official MX CRA specifications recollected 2026-09-14T00:52:43-04:00.",
+      "remediation": "CRAU26 is bound to the exchange row symbol; September is the reference month and Dec 16 delivery/expiry. It remains only a quarterly multi-meeting observable.",
+      "evidence": "evidence/cra.html; evidence/cra-contract-spec.html; evidence/cra-spec.html; candidate.json"
+    },
+    {
+      "field": "meetings.fed.pricing",
+      "feedback": "Use exact completed-session ZQU26 quote in hash-bound evidence and recompute.",
+      "recollection": "Yahoo ZQU26 daily endpoint and NY Fed EFFR recollected 2026-09-14T00:52:43-04:00.",
+      "remediation": "Exact Sep 11 close 96.26750183105469 retained; Sep 14 null row excluded; implied post rate 3.849638933454241 and displayed 0.12/0.88 unchanged.",
+      "evidence": "evidence/market/ZQU26.CBT.1d.json; evidence/effr.json; candidate.json"
+    },
+    {
+      "field": "whole candidate freshness and chronology",
+      "feedback": "Rebuild whole internally consistent candidate and preserve chronology/prior semantic remediations.",
+      "recollection": "All official/proxy/macro/market sources and canonical calendar recollected by 2026-09-14T00:52:43-04:00.",
+      "remediation": "as_of follows collection; calendar provenance refreshed; completed-session cash strip retained; denied BLS responses disclosed without changing approved dated facts.",
+      "evidence": "candidate.json; archive/2026-09-14/economic_calendar.json; complete evidence_sha256 map"
+    }
+  ]
+}
