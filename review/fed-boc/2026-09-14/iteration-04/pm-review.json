@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "reviewer_role": "independent_portfolio_manager",
+  "reviewed_at": "2026-09-14T07:18:50-04:00",
+  "candidate_sha256": "d8a5d9ec682068089711f81dae22f738860171487fa0ed1ca8ad73a206de2169",
+  "verdict": "approved",
+  "executive_summary": "Approve unconditionally. The candidate digest matches candidate.sha256 and the PM handoff. All 30 handoff evidence digests match. Independent inspection supports the official Fed and BoC policy facts, the Sep 14 pre-open and pending Canada CPI state, the completed Sep 11 ZQU26 observation with Sep 14 excluded, the explicit 3.625%/3.875% interpolation and exact 16/14 day-count solve, the CRAU26 identity and liquidity fields, driver direction/weights/timestamps, and the reported market arithmetic. No major or critical P&L issue remains.",
+  "checks": {
+    "official_policy": "pass",
+    "pricing": "pass",
+    "drivers": "pass",
+    "market_validation": "pass",
+    "freshness": "pass",
+    "decision_usefulness": "pass"
+  },
+  "findings": [],
+  "pnl_risks": [
+    "The Fed ZQU26 and BoC CRAU26 observations are proxies rather than direct single-meeting probability distributions; execution and event risk require respecting the stated proxy limitations.",
+    "The Sep 14 Canada CPI observation is explicitly pending at the frozen pre-open timestamp, so no released CPI actual should be inferred from this snapshot.",
+    "Yahoo market observations and the WTI index close are market-data proxies and should not be treated as official settlement or executable liquidity without fresh venue-level confirmation."
+  ],
+  "operator_instructions": []
+}

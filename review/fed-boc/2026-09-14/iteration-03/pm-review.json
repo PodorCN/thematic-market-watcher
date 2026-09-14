@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0",
+  "reviewer_role": "independent_portfolio_manager",
+  "reviewed_at": "2026-09-14T07:13:30-04:00",
+  "candidate_sha256": "e97259512fbb797d067165f9b6a2a14d775655f5afb1312af50a2fc688aa286d",
+  "verdict": "revise",
+  "executive_summary": "Revise. The candidate and all 30 handoff evidence artifacts are SHA-256 bound correctly, the Sep 14 pre-open regime is consistently identified, the Sep 11 ZQU26 completed-session row is selected, the official Fed/BoC meeting facts are supported, the CRAU26 reference-month and Dec 16 delivery identity is supported, and the cash-market return arithmetic reproduces. The snapshot remains unsafe for P&L decisions because the stated exact Fed hold/hike interpolation is arithmetically inconsistent with its own corrected post-meeting rate, and four BLS drivers retain unsupported directional claims in their titles despite zeroed data and weights. The CRAU26 liquidity field also misstates the frozen quote's volume.",
+  "checks": {
+    "official_policy": "pass",
+    "pricing": "fail",
+    "drivers": "fail",
+    "market_validation": "pass",
+    "freshness": "pass",
+    "decision_usefulness": "fail"
+  },
+  "findings": [
+    {
+      "severity": "major",
+      "field": "meetings.fed.pricing.proxy_check and meetings.fed.pricing.hold_25bp/hike_25bp",
+      "issue": "The corrected Sep 11 ZQU26 close and the monthly-average solve are correct, but the stated exact interpolation is not. With monthly average 3.7324981689453125%, EFFR 3.63%, 16 pre-meeting and 14 post-meeting days, the implied post-meeting rate is 3.849638933454241%. Linear interpolation between a 3.625% hold and 3.875% hike gives hold 0.10144426618303548 and hike 0.8985557338169645, not the candidate's stated 0.121444 and displayed 0.12/0.88.",
+      "evidence": "evidence/market/ZQU26.CBT.1d.json contains the completed Sep 11 close 96.26750183105469 and the excluded Sep 14 in-progress row 96.2699966430664; evidence/effr.json contains EFFR 3.63%. Independent recomputation gives 100 - 96.26750183105469 = 3.7324981689453125 and (30*3.7324981689453125 - 16*3.63)/14 = 3.849638933454241. The candidate proxy_check itself states hold 0.121444/hike 0.878556, which does not solve that equation.",
+      "pnl_impact": "The published 12% hold versus 88% hike distribution is not reproducible from the stated observable and day-count convention. A rates or duration hedge sized from the displayed distribution would carry an unquantified basis/arithmetic error at the FOMC event.",
+      "instruction": "Recompute the hold/hike interpolation from the exact Sep 11 close, EFFR, day counts, and explicitly stated endpoint rates; update implied_rate_after, proxy_check, displayed probabilities, and every dependent calendar/handoff statement in a new immutable candidate and SHA-bind the review inputs again."
+    },
+    {
+      "severity": "major",
+      "field": "drivers.fed.dovish.fed_dove_jolts_20260901, drivers.fed.hawk_nfp_20260904, drivers.fed.hawk_ppi_20260910, and drivers.fed.hawk_cpi_20260911",
+      "issue": "The detailed BLS data fields, summaries, reasons, and weights are neutralized, but the titles still make unsupported directional factual claims: JOLTS is called directionally inconclusive, payrolls are called a rebound far above forecast, PPI is called hot, and core CPI is called a reacceleration above consensus. The four frozen BLS artifacts are Access Denied pages and contain none of those release facts.",
+      "evidence": "SHA-256 verification matched the handoff for evidence/bls-cpi.html, evidence/bls-jobs.html, evidence/bls-ppi.html, and evidence/bls-jolts.html. Independent inspection found each is a 1,325-byte HTML page titled Access Denied, with body text stating that automated retrieval was blocked; no release table, actual, revision, forecast, or consensus is present. Candidate weights are 0.0, but the titles remain directional signal visible to a reader.",
+      "pnl_impact": "A PM can still infer a hawkish payroll/inflation contribution from the titles even though the numeric rope weight is zero. That hidden directional contribution can bias Fed, rates, FX, and equity positioning toward an unsupported policy conclusion.",
+      "instruction": "Replace each affected title with a strictly neutral access-status title that contains no release direction or implied actual, and re-scan all fields, calendar logic, verification text, and handoff mapping for residual BLS actual, revision, surprise, or directional language. Keep the four weights at zero unless accessible official release evidence is persisted, then rebuild and re-hash the candidate."
+    },
+    {
+      "severity": "major",
+      "field": "meetings.boc.pricing.proxy_check and meetings.boc.pricing.observable_proxy.volume",
+      "issue": "The CRAU26 contract identity, September 2026 reference month, and 2026-12-16 expiry/delivery date are correct, and the artifact clearly shows that the proxy spans the Oct 28 and Dec 9 BoC decisions. However, the candidate reports volume 33,077, which is not the volume in the frozen TMX quote row.",
+      "evidence": "Independent parsing of evidence/cra.html's id=CRAU26 data-row gives symbol CRAU26, expiry_date 2026-12-16, bid 97.6, ask 97.605, volume 1728, open_interest 228719, and nb_trades 92. The visible September 2026 row likewise shows volume 1,728 and open interest 228,719. evidence/cra-spec.html independently identifies September 2026 (CRAU26) and lists the Oct 28 and Dec 9 announcement dates within the reference-quarter methodology.",
+      "pnl_impact": "Misstating volume by an order of magnitude distorts liquidity and confidence in the observable proxy. A PM could overestimate executable size or treat the quarterly quote as more robust than the frozen market record supports.",
+      "instruction": "Correct the CRAU26 volume to the exact quote-row field, preserve the separate open-interest and trade-count fields if displayed, and rebuild all dependent proxy notes and the candidate SHA in a new immutable iteration."
+    }
+  ],
+  "pnl_risks": [
+    "The Fed distribution is numerically inconsistent with its own exact post-meeting solve, creating event-hedge sizing risk.",
+    "Unsupported BLS directional language remains visible despite zero weights and can anchor a PM toward an unverified Fed signal.",
+    "The CRAU26 quote is a multi-meeting quarterly-average proxy rather than a single-meeting probability, and its displayed liquidity volume is overstated.",
+    "The Sep 14 Canada CPI event is still pending at the 07:11 ET pre-open as_of; no released CPI actual should be inferred from the calendar row."
+  ],
+  "operator_instructions": [
+    "Keep publication fail-closed; do not archive, commit, sync, or publish this iteration-03 candidate.",
+    "Rebuild the whole candidate rather than patching only prose: correct the Fed interpolation, fully neutralize all unsupported BLS directional language, correct CRAU26 liquidity fields, and update every dependent timestamp, calendar/pricing statement, handoff mapping, and SHA.",
+    "Submit the newly frozen candidate to a fresh independent PM review bound to its exact bytes; approval must remain unconditional."
+  ]
+}

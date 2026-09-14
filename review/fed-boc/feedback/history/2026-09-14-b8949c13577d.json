@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0",
+  "status": "open",
+  "reviewed_at": "2026-09-14T07:08:36-04:00",
+  "candidate_sha256": "1bbd396f5931e9ec6ba94b321e1fbf96f32485c1f4ebe9a96b8f5e98fd25dcf6",
+  "review_sha256": "b8949c13577dd5dd965abeee14af53dac550af5b68cecf16258c1c4012d81538",
+  "source_review": "review/fed-boc/2026-09-14/iteration-02/pm-review.json",
+  "executive_summary": "Revise. The candidate digest and all 30 handoff evidence digests match, the corrected CRAU26 identity is supported, the official Fed/BoC policy records are broadly consistent, and the market-strip return arithmetic reproduces. The snapshot is nevertheless unsafe for P&L decisions because it labels a pre-open Sep 14 ZQU26 row as a completed session and uses that value for the Fed probabilities, while the latest completed-session close in the frozen evidence is Sep 11 at 96.26750183105469. In addition, every persisted BLS artifact is an Access Denied page, yet the candidate asserts official NFP, CPI, PPI, and JOLTS actuals as recollected evidence. These are unresolved major evidence and chronology failures, not presentation issues.",
+  "failed_checks": [
+    "decision_usefulness",
+    "drivers",
+    "freshness",
+    "market_validation",
+    "pricing"
+  ],
+  "findings": [
+    {
+      "severity": "major",
+      "field": "meetings.fed.pricing.price_session_date, meetings.fed.pricing.collection_note, and meetings.fed.pricing.proxy_check",
+      "issue": "The candidate calls 2026-09-14 a completed session and uses 96.2699966430664, but as_of is 07:06 ET before the US cash session and the hash-bound Yahoo evidence contains that value in the Sep 14 in-progress/pre-open row. The latest completed-session row available at the candidate timestamp is Sep 11 at 96.26750183105469. The handoff therefore did not actually remediate the prior exact-value/chronology defect.",
+      "evidence": "evidence/market/ZQU26.CBT.1d.json has timestamps for Sep 11 and Sep 14 at 04:00 UTC, closes 96.26750183105469 and 96.2699966430664 respectively, and currentTradingPeriod regular start 2026-09-14 09:30 ET. candidate meetings.fed.pricing says price_session_date '2026-09-14 completed session' and derives implied_rate_after 3.844293 from the Sep 14 value. Independent Yahoo chart retrieval returned the same instrument and an active Sep 14 trading period.",
+      "pnl_impact": "The Fed hold/hike interpolation is tied to the wrong time slice and is not reproducible as a completed-session snapshot. A desk could size FOMC duration, front-end rates, or equity hedges against stale/pre-open futures information while treating the displayed 86% hike weight as finalized.",
+      "instruction": "Rebuild the pricing block from the latest genuinely completed ZQU26 session available at as_of, using the Sep 11 close 96.26750183105469 unless a newly recollected completed-session source exists. Set the session date and timestamps consistently, recompute monthly average, implied_rate_after, displayed probabilities, calendar logic, handoff mapping, and candidate SHA in a new immutable iteration. Preserve explicit exclusion of the Sep 14 in-progress row; do not patch or publish this frozen candidate."
+    },
+    {
+      "severity": "major",
+      "field": "drivers.fed.hawk_nfp_20260904, drivers.fed.hawk_cpi_20260911, drivers.fed.hawk_ppi_20260910, and drivers.fed.dovish.fed_dove_jolts_20260901",
+      "issue": "The candidate presents multiple BLS release actuals as official and says they were recollected, but all four persisted BLS evidence artifacts are only Bureau of Labor Statistics Access Denied pages. The evidence does not contain the asserted NFP, CPI, PPI, or JOLTS facts, revisions, or release tables.",
+      "evidence": "evidence/bls-cpi.html, evidence/bls-jobs.html, evidence/bls-ppi.html, and evidence/bls-jolts.html are each 1,325-byte HTML documents whose title and body say 'Access Denied' and explain that automated retrieval was blocked. Candidate lines for the affected drivers assert detailed official actuals and, for PPI, explicitly claim successful official recollection.",
+      "pnl_impact": "Unsupported inflation and labour inputs directly drive the Fed hawkish score and the narrative supporting the 86% hike weight. Trading on unverified payroll, CPI, PPI, or openings data can reverse the policy signal and cause materially wrong rates, FX, duration, and equity positioning.",
+      "instruction": "Recollect each affected BLS release through an accessible official endpoint and persist the actual source evidence with updated SHA-256 values, or remove/neutralize every unsupported BLS actual and revision claim. Recompute driver direction, chronology, weights, reasons, market-validation references, freshness note, handoff mapping, and the whole candidate; do not rely on the Access Denied pages as factual evidence."
+    },
+    {
+      "severity": "major",
+      "field": "as_of and meetings.fed.pricing.as_of_pricing / price_session_date",
+      "issue": "The top-level observation time is pre-open, but the pricing metadata asserts a completed Sep 14 session. This contradicts the candidate's own market.as_of_close of Sep 11 and makes the freshness labeling internally inconsistent.",
+      "evidence": "candidate as_of is 2026-09-14T07:06:12-04:00; market.as_of_close is 2026-09-11T16:00:00-04:00; meetings.fed.pricing.as_of_pricing is 2026-09-14T00:00:00-04:00 while price_session_date says '2026-09-14 completed session'. The frozen Yahoo metadata reports the regular Sep 14 trading period had not begun at the candidate as_of.",
+      "pnl_impact": "Users cannot tell which information set was available when the probabilities and market returns were formed. That creates look-ahead and stale-data risk in event hedging and invalidates comparisons across snapshots.",
+      "instruction": "Choose one coherent observation regime: either retain the Sep 14 pre-open snapshot and label all market/proxy fields with their last completed dates, or recollect after the session closes and advance as_of. Align every nested timestamp, session label, freshness statement, calendar status, and derived field before resubmission."
+    }
+  ],
+  "required_recollection": [
+    "Rebuild the pricing block from the latest genuinely completed ZQU26 session available at as_of, using the Sep 11 close 96.26750183105469 unless a newly recollected completed-session source exists. Set the session date and timestamps consistently, recompute monthly average, implied_rate_after, displayed probabilities, calendar logic, handoff mapping, and candidate SHA in a new immutable iteration. Preserve explicit exclusion of the Sep 14 in-progress row; do not patch or publish this frozen candidate.",
+    "Recollect each affected BLS release through an accessible official endpoint and persist the actual source evidence with updated SHA-256 values, or remove/neutralize every unsupported BLS actual and revision claim. Recompute driver direction, chronology, weights, reasons, market-validation references, freshness note, handoff mapping, and the whole candidate; do not rely on the Access Denied pages as factual evidence.",
+    "Choose one coherent observation regime: either retain the Sep 14 pre-open snapshot and label all market/proxy fields with their last completed dates, or recollect after the session closes and advance as_of. Align every nested timestamp, session label, freshness statement, calendar status, and derived field before resubmission."
+  ],
+  "operator_instructions": [
+    "Keep publication fail-closed and do not archive, commit, sync, or publish this iteration-02 candidate.",
+    "Read the controlling open feedback again, recollect the exact completed-session Fed proxy and accessible official BLS evidence, then rebuild the entire internally consistent candidate in a new immutable iteration.",
+    "Update the handoff evidence SHA-256 map and remediation mapping, recompute all affected arithmetic and weights, and submit the rebuilt candidate to a fresh independent PM review bound to its exact bytes."
+  ],
+  "next_run_contract": [
+    "Read this feedback before collecting or editing the next candidate.",
+    "Re-trigger collection for every affected source and claim.",
+    "Rebuild the whole internally consistent candidate; do not patch prose only.",
+    "Submit the rebuilt candidate to a fresh independent PM review.",
+    "Do not publish until an exact-byte-bound approved review passes the gate."
+  ]
+}
