@@ -1,0 +1,10 @@
+requested_at_toronto=2026-09-16T05:08:57-04:00
+requested_url=https://tradingeconomics.com/united-states/new-york-empire-state-manufacturing-index
+http_code=200
+url_effective=https://tradingeconomics.com/united-states/new-york-empire-state-manufacturing-index
+size_download=322424
+time_total=0.447415
+content_type=text/html; charset=utf-8
+curl_exit=0
+curl_error=
+completed_at_toronto=2026-09-16T05:08:57-04:00

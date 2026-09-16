@@ -1,0 +1,10 @@
+requested_at_toronto=2026-09-16T05:08:55-04:00
+requested_url=https://www.federalreserve.gov/feeds/speeches.xml
+http_code=200
+url_effective=https://www.federalreserve.gov/feeds/speeches.xml
+size_download=9738
+time_total=0.117213
+content_type=text/xml
+curl_exit=0
+curl_error=
+completed_at_toronto=2026-09-16T05:08:56-04:00

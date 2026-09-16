@@ -1,0 +1,10 @@
+requested_at_toronto=2026-09-16T05:08:56-04:00
+requested_url=https://www.bankofcanada.ca/core-functions/monetary-policy/key-interest-rate/
+http_code=200
+url_effective=https://www.bankofcanada.ca/core-functions/monetary-policy/key-interest-rate/
+size_download=149202
+time_total=0.128392
+content_type=text/html; charset=UTF-8
+curl_exit=0
+curl_error=
+completed_at_toronto=2026-09-16T05:08:56-04:00

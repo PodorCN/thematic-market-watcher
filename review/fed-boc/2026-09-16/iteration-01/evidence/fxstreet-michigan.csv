@@ -1,0 +1,34 @@
+Id,Start,Name,Impact,Currency
+37c9d128-725c-4a8d-b9d5-f7c566894f8b,09/10/2026 12:30:00,Continuing Jobless Claims,LOW,USD
+e3f79fa1-75f2-40f2-bd84-d3fa5a6791e0,09/10/2026 12:30:00,Initial Jobless Claims,MEDIUM,USD
+95ce6eff-fa6b-490e-92a8-9f34510adf2d,09/10/2026 12:30:00,Initial Jobless Claims 4-week average,LOW,USD
+15d18066-9e3e-4b42-98b4-c530e4339c11,09/10/2026 12:30:00,Producer Price Index (MoM),MEDIUM,USD
+5555d001-a015-482c-9471-becf2919fd6d,09/10/2026 12:30:00,Producer Price Index (YoY),MEDIUM,USD
+84eb660e-a6b2-4757-9c4a-35377bf17278,09/10/2026 12:30:00,Producer Price Index ex Food & Energy (MoM),MEDIUM,USD
+d4e45fb8-e4c7-45c0-95df-28353011a014,09/10/2026 12:30:00,Producer Price Index ex Food & Energy (YoY),HIGH,USD
+dd32a87a-489f-4899-8fde-5d393d1724e1,09/10/2026 14:00:00,Existing Home Sales (MoM),LOW,USD
+f4d95ede-afbc-4ccc-ab1c-f3d56e359e46,09/10/2026 14:00:00,Existing Home Sales Change (MoM),MEDIUM,USD
+feec74d7-74ee-4532-893f-ad2689f3771a,09/10/2026 14:00:00,Wholesale Inventories,LOW,USD
+769d7f99-cc39-4873-9ab1-6ea7be0d0950,09/10/2026 14:30:00,EIA Natural Gas Storage Change,LOW,USD
+2e2868fc-caa0-4218-9c52-d45d1a0c4e1e,09/10/2026 15:30:00,4-Week Bill Auction,LOW,USD
+f498e541-d6ec-444b-a236-8ddc0a79ecbe,09/10/2026 16:00:00,EIA Crude Oil Stocks Change,LOW,USD
+50c0b74b-8ac6-4b90-aa44-f9b9a1a0c3df,09/10/2026 16:00:00,EIA Distillate Stocks Change,LOW,USD
+5b89923e-1b34-40f4-9650-5476c2379138,09/10/2026 16:00:00,EIA Gasoline Stocks Change,LOW,USD
+618ae2eb-75da-4430-a896-c5e85373005f,09/10/2026 16:00:00,EIA Heating Oil Stocks Change,LOW,USD
+9175f41c-e90e-4368-b9ee-d7880bb9cee6,09/10/2026 17:00:00,30-Year Bond Auction,LOW,USD
+3e882694-dd74-4fae-a29a-d20098a1c906,09/11/2026 12:30:00,Consumer Price Index (MoM),HIGH,USD
+e39adcbf-65f3-4fd0-92e9-a02b3685d81f,09/11/2026 12:30:00,Consumer Price Index (YoY),HIGH,USD
+2f14ee84-67b4-4e53-bfbe-cc6eb0846ff0,09/11/2026 12:30:00,Consumer Price Index Core s.a,LOW,USD
+b1abcb9e-c0fe-4e44-a669-9ef42706b92d,09/11/2026 12:30:00,Consumer Price Index ex Food & Energy (MoM),HIGH,USD
+5ed3ff6f-37ab-47b3-9a06-73d714b36083,09/11/2026 12:30:00,Consumer Price Index ex Food & Energy (YoY),HIGH,USD
+dae51d7f-c53a-4478-956b-5d306a53cf3d,09/11/2026 12:30:00,Consumer Price Index n.s.a (MoM),LOW,USD
+2b5996ff-b9c0-4fb1-8a71-ed78df79b72d,09/11/2026 14:00:00,Michigan Consumer Expectations Index,MEDIUM,USD
+c7d46fc3-7c5d-46d9-95fb-8f707bbc70ea,09/11/2026 14:00:00,Michigan Consumer Sentiment Index,HIGH,USD
+cf53987b-ec2b-45cd-8fb5-2f6fbe1656cf,09/11/2026 14:00:00,UoM 1-year Consumer Inflation Expectations,MEDIUM,USD
+d3ea8612-487c-4aad-9e8f-e270cf19b06f,09/11/2026 14:00:00,UoM 5-year Consumer Inflation Expectation,MEDIUM,USD
+d6be50cf-1985-4147-abab-85681de8dc3a,09/11/2026 16:00:00,USDA WASDE Report,LOW,USD
+13ca0751-5e77-4c66-8cf1-76bd2c1b146e,09/11/2026 17:00:00,Baker Hughes US Oil Rig Count,LOW,USD
+142fa0fb-b263-4c5b-be46-4446354bf750,09/11/2026 18:00:00,Monthly Budget Statement,MEDIUM,USD
+70729f4f-6ed7-4f8e-bbf3-8f1a3edea3be,09/11/2026 19:30:00,CFTC Gold NC Net Positions,LOW,USD
+cf75be79-91fb-46a9-9eaf-6253b8788590,09/11/2026 19:30:00,CFTC Oil NC Net Positions,LOW,USD
+9f03780f-775b-4059-9e4c-090af1bf3bcc,09/11/2026 19:30:00,CFTC S&P 500 NC Net Positions,LOW,USD

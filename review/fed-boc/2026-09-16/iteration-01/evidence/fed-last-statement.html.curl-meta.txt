@@ -1,0 +1,10 @@
+requested_at_toronto=2026-09-16T05:08:55-04:00
+requested_url=https://www.federalreserve.gov/newsevents/pressreleases/monetary20260729a.htm
+http_code=200
+url_effective=https://www.federalreserve.gov/newsevents/pressreleases/monetary20260729a.htm
+size_download=81213
+time_total=0.131499
+content_type=text/html
+curl_exit=0
+curl_error=
+completed_at_toronto=2026-09-16T05:08:56-04:00

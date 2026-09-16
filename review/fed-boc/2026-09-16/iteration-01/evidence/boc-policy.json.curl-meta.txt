@@ -1,0 +1,10 @@
+requested_at_toronto=2026-09-16T05:08:56-04:00
+requested_url=https://www.bankofcanada.ca/valet/observations/V39079/json?start_date=2026-09-01
+http_code=200
+url_effective=https://www.bankofcanada.ca/valet/observations/V39079/json?start_date=2026-09-01
+size_download=1461
+time_total=0.456384
+content_type=application/json; charset=utf-8
+curl_exit=0
+curl_error=
+completed_at_toronto=2026-09-16T05:08:56-04:00

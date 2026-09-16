@@ -1,0 +1,11 @@
+Id,Start,Name,Impact,Currency
+352d37b0-8b8c-4e8a-9748-bd89ec19dcb4,09/03/2026 12:30:00,Exports,LOW,CAD
+8c0c4f86-33e5-432e-9a26-a2940c7b07be,09/03/2026 12:30:00,Imports,LOW,CAD
+beb6a696-183d-44cf-9d11-33b2ce405549,09/03/2026 12:30:00,International Merchandise Trade,LOW,CAD
+6ec28cd4-3283-4157-9eb8-06c46fa5249d,09/03/2026 12:30:00,Labor Productivity (QoQ),LOW,CAD
+839db2e9-dfcc-4dc8-a4f2-2141ead23226,09/04/2026 12:30:00,Average Hourly Wages (YoY),MEDIUM,CAD
+08019d21-b6cb-4335-b3f5-13d77d3bbd28,09/04/2026 12:30:00,Net Change in Employment,HIGH,CAD
+c43abc7a-ee05-448e-aee2-9b50299d7787,09/04/2026 12:30:00,Participation Rate,LOW,CAD
+f7950b86-acc7-4fa2-9d01-4a22f71eb425,09/04/2026 12:30:00,Unemployment Rate,HIGH,CAD
+2cb4b718-4aa3-4aa7-86e5-301aa49a5a2f,09/04/2026 14:00:00,Ivey Purchasing Managers Index,MEDIUM,CAD
+af2143e3-beb1-46cd-9792-95f9fef11e92,09/04/2026 14:00:00,Ivey Purchasing Managers Index s.a,MEDIUM,CAD

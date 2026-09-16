@@ -1,0 +1,13 @@
+{
+  "requested_at_toronto": "2026-09-16T05:09:00-04:00",
+  "requested_url": "https://calendar-api.fxstreet.com/en/api/v1/eventDates/c7d46fc3-7c5d-46d9-95fb-8f707bbc70ea",
+  "event_name": "Michigan Consumer Sentiment Index",
+  "event_occurrence_id": "c7d46fc3-7c5d-46d9-95fb-8f707bbc70ea",
+  "http_code": 200,
+  "url_effective": "https://calendar-api.fxstreet.com/en/api/v1/eventDates/c7d46fc3-7c5d-46d9-95fb-8f707bbc70ea",
+  "size_download": 2400,
+  "content_type": "application/json; charset=utf-8",
+  "completed_at_toronto": "2026-09-16T05:09:00-04:00",
+  "sha256": "c5928108cb9571fbfedacd5e5d7a364895c06ae0e4146fb0cb7e6998d9f880ff",
+  "recollection_contract": "Exact occurrence detail was fetched to bind Actual/Forecast/Previous to a frozen source response for the open PM feedback."
+}

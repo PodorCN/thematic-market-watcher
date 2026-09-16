@@ -1,0 +1,10 @@
+requested_at_toronto=2026-09-16T05:08:56-04:00
+requested_url=https://tradingeconomics.com/united-states/non-manufacturing-pmi
+http_code=200
+url_effective=https://tradingeconomics.com/united-states/non-manufacturing-pmi
+size_download=346358
+time_total=0.237257
+content_type=text/html; charset=utf-8
+curl_exit=0
+curl_error=
+completed_at_toronto=2026-09-16T05:08:57-04:00

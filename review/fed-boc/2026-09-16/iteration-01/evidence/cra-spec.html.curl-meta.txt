@@ -1,0 +1,10 @@
+requested_at_toronto=2026-09-16T05:08:56-04:00
+requested_url=https://www.m-x.ca/en/trading/tools/canadian-interest-rate-expectations
+http_code=200
+url_effective=https://www.m-x.ca/en/trading/tools/canadian-interest-rate-expectations
+size_download=81472
+time_total=0.445759
+content_type=text/html; charset=UTF-8
+curl_exit=0
+curl_error=
+completed_at_toronto=2026-09-16T05:08:56-04:00

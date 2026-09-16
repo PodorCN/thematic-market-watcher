@@ -1,0 +1,10 @@
+requested_at_toronto=2026-09-16T05:08:57-04:00
+requested_url=https://tradingeconomics.com/canada/business-confidence
+http_code=200
+url_effective=https://tradingeconomics.com/canada/business-confidence
+size_download=308877
+time_total=1.113467
+content_type=text/html; charset=utf-8
+curl_exit=0
+curl_error=
+completed_at_toronto=2026-09-16T05:08:58-04:00

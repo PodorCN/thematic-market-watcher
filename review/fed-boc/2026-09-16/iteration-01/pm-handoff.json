@@ -1,0 +1,1405 @@
+{
+  "snapshot_date": "2026-09-16",
+  "iteration": 1,
+  "candidate_path": "review/fed-boc/2026-09-16/iteration-01/candidate.json",
+  "candidate_sha256": "bdfe271a495cbddce93e715a0599340040b3a967ef7ce80f6acaf4c3eb6deabb",
+  "generated_at_toronto": "2026-09-16T05:11:00-04:00",
+  "publication_state": "UNPUBLISHED_CANDIDATE",
+  "chain_note": "The Fed/BOC page pipeline is being carried from thematic-market-watcher into thematic-tracker (migration 2026-09-15/16). This iteration is frozen in thematic-market-watcher; on PM approval the identical bytes are archived and published to thematic-tracker, which serves https://podor.org/thematic-tracker/fed-boc-watcher/.",
+  "feedback_contract": {
+    "primary_feedback_path": "review/fed-boc/feedback/latest.json",
+    "primary_feedback_sha256": "f0eb12805cb4ccfb71fa89757511d2e203288029ae5d93fb4faf62902363399d",
+    "primary_feedback_reviewed_at": "2026-09-15T17:04:22-04:00",
+    "primary_feedback_source_review": "review/fed-boc/2026-09-15/iteration-03/pm-review.json",
+    "primary_feedback": {
+      "schema_version": "1.0",
+      "status": "open",
+      "reviewed_at": "2026-09-15T17:04:22-04:00",
+      "candidate_sha256": "12d33a00f7f02136253f0aa99879b3f411a86c7300adadf14283a5f707e0d4ab",
+      "review_sha256": "c9e212088601897bf27e1926722ad620b687d9e470b2ae9ff37e1f33a9dec959",
+      "source_review": "review/fed-boc/2026-09-15/iteration-03/pm-review.json",
+      "executive_summary": "Revise. Candidate and evidence-manifest integrity, CRAU26 path/row, Fed proxy arithmetic, official policy facts, Ivey/Empire/ADP/ISM chains, session cutoffs, and forward-calendar fields pass. However, the frozen evidence does not reproduce several nonzero driver forecast/previous fields, and the displayed CL=F weekly return is numerically inconsistent with its displayed bases; the candidate is not safe for P&L use or publication until rebuilt.",
+      "failed_checks": [
+        "decision_usefulness",
+        "drivers",
+        "pricing"
+      ],
+      "findings": [
+        {
+          "severity": "minor",
+          "field": "market.context[CL=F].chg_1w",
+          "issue": "The displayed CL=F weekly return does not reproduce from the displayed bases: 105.84 / 93.03 - 1 = 0.1376975169, which rounds to 0.137698, not the candidate value 0.137697.",
+          "evidence": "candidate.json records CL=F price 105.84, weekly_base_close 93.03 and chg_1w 0.137697. Frozen evidence/market/CL%3DF.1m.json has the 2026-09-15 14:30 ET bar 105.83999633789062 and evidence/market/CL%3DF.1d.json has the 2026-09-08 close 93.02999877929688; recomputation from the displayed values gives 0.137698 (13.7698%).",
+          "pnl_impact": "The direct economic difference is only 0.0001 percentage point, but a visible return that fails its stated displayed-base calculation breaks reconciliation and can create threshold or downstream signal mismatches.",
+          "instruction": "Recompute the CL=F 1-week normalized return and any rendered percentage with one documented rounding rule, then update the candidate consistently, rerun all market assertions, rebuild the whole candidate and handoff, and recompute candidate.sha256 before resubmission."
+        },
+        {
+          "severity": "major",
+          "field": "drivers.fed.hawkish.fed_hawk_uom_inflation_20260911.data.forecast",
+          "issue": "The 51.0 Michigan sentiment consensus is named as an FXStreet value but is not present in any frozen iteration-03 evidence or field-level provenance, so the actual-versus-consensus miss and the retained 1.0 hawkish weight are not independently reproducible.",
+          "evidence": "evidence/michigan.html reproduces the official preliminary September actual 47.8, August sentiment 51.7 and inflation-expectation fields, but not a 51.0 consensus. evidence/economic-calendar.json is the FXStreet window for 2026-09-14 through 2026-09-21 and its current rows contain only the Sep-15 ADP average and Empire State release; it has no Sep-11 Michigan row. The candidate has no source_provenance or frozen evidence path for the claimed 51.0 value.",
+          "pnl_impact": "The unsupported forecast determines the displayed -3.2 sentiment surprise and supports a nonzero Fed hawkish contribution; an erroneous or unavailable consensus can change the sign, weight, and Fed net signal around the FOMC.",
+          "instruction": "Recollect and freeze the exact Sep-11 Michigan consensus record, including provider URL, response path, hash/bytes, event timestamp, unit, actual 47.8, forecast 51.0 and previous 51.7, and add explicit field-level provenance. If the record cannot be recovered, null the unsupported forecast and re-evaluate the card side/weight before rebuilding the entire candidate, hash, and handoff."
+        },
+        {
+          "severity": "major",
+          "field": "drivers.boc.dovish.boc_dove_labour_20260904.data.actual_forecast_previous",
+          "issue": "The BoC labour card's -41.7k actual, +15.0k forecast and +75.1k previous are not reproduced by the frozen evidence chain; the only cited source is the official StatCan release, which displays employment down 42,000 and does not provide those forecast/previous values.",
+          "evidence": "evidence/statcan-lfs.html is live at HTTP 200 and states employment fell by 42,000 in August, unemployment was 6.4%, wages grew 2.0% after 2.8% in July; it contains neither the exact -41.7k figure nor +15.0k/+75.1k forecast/previous records. evidence/economic-calendar.json starts on 2026-09-14 and has no Sep-4 labour row, and the candidate provides no secondary source URL, evidence path, or source_provenance for the missing fields.",
+          "pnl_impact": "The unsupported -56.7k surprise drives a high 2.0 dovish weight and materially affects the BoC net hawkish balance; both signal direction and magnitude are unreliable until the A/F/P chain and actual precision are reconciled.",
+          "instruction": "Freeze the exact Sep-4 labour consensus/previous record and a precise StatCan series artifact, explicitly label each provider and URL, and reconcile the unrounded actual against the official -42k headline. If unavailable, remove or null unsupported A/F/P fields, neutralize/reweight the driver, rebuild all dependent balance text, then rebuild the whole candidate, hash, and handoff."
+        },
+        {
+          "severity": "major",
+          "field": "drivers.boc.dovish.boc_dove_asking_rents_20260909.data.previous",
+          "issue": "The candidate uses a Q1 previous asking-rent value of C$2,150 and -0.9% YoY without freezing the prior-release evidence needed to reproduce it.",
+          "evidence": "evidence/statcan-rents.html supports only the Q2 2026 value of C$2,130 and -3.6% YoY and contains a link to the previous release; it does not contain C$2,150 or -0.9%. The linked Q1 page is not in the iteration-03 manifest, and the candidate has no secondary source URL or field-level provenance for the previous tuple.",
+          "pnl_impact": "The unsupported comparison is used in the card's dovish interpretation and 1.0 weight; an incorrect prior can distort the housing-pressure signal in the BoC rope even though the current Q2 observation is valid.",
+          "instruction": "Recollect the linked Q1 release or another explicitly identified provider into the current evidence manifest and map the C$2,150/-0.9% fields to it. If the prior cannot be verified, remove the comparison and re-evaluate the card's side/weight, then rebuild and rehash the full candidate and handoff."
+        },
+        {
+          "severity": "major",
+          "field": "drivers.boc.hawkish.boc_hawk_gdp_20260828.data.forecast",
+          "issue": "The +0.2% MoM / +3.4% annualized forecast used for the GDP surprise is not present in the frozen evidence, and the candidate names only the Q2 expenditure URL even though its reason also relies on the separate June industry release.",
+          "evidence": "evidence/statcan-gdp.html supports Q2 real GDP +0.8% and the Q1 revision to +0.1%; evidence/statcan-gdp-industry.html supports June industry GDP +0.3%. Neither frozen page contains the claimed +0.2% MoM / +3.4% annualized forecast, and candidate.json has only https://www150.statcan.gc.ca/n1/daily-quotidien/260828/dq260828a-eng.htm as source_url with no secondary source URL or forecast provenance.",
+          "pnl_impact": "The unsupported forecast is the basis for the June beat and a 2.0 hawkish weight; it can materially overstate the growth impulse and the BoC hawkish balance.",
+          "instruction": "Freeze the exact forecast provider record and map it separately from both official actual-release URLs, or null the forecast and remove the beat claim. Re-evaluate the GDP side/weight and all derived balance text, then perform a whole-candidate rebuild, hash refresh, and handoff reassertion."
+        },
+        {
+          "severity": "major",
+          "field": "drivers.boc.hawkish.boc_hawk_hold_20260902.data.forecast",
+          "issue": "The official evidence proves the Sep-2 hold at 2.25% but does not prove the candidate's forecast string 'Hold 2.25%' or its statement that the decision matched consensus.",
+          "evidence": "evidence/boc-last-statement.html and evidence/boc-rate.html reproduce the actual Sep-2 policy target and rates. The frozen evidence/economic-calendar.json covers Sep-14 through Sep-21 and contains no Sep-2 consensus row, while the candidate's hold card has no secondary source URL, source_provenance, or frozen consensus path.",
+          "pnl_impact": "The unsupported no-surprise comparison is attached to a 2.0 hawkish hold weight; without a verified consensus, the card's surprise interpretation and contribution to the BoC balance are not auditable.",
+          "instruction": "Freeze the Sep-2 consensus record with provider URL, event timestamp, unit and evidence hash, or relabel the forecast as an explicit desk assumption and remove the matched-consensus A/F/P claim. Re-evaluate the hold card's side/weight and rebuild the complete candidate, handoff, and digest hash."
+        }
+      ],
+      "required_recollection": [
+        "Recollect and freeze the exact Sep-11 Michigan consensus record, including provider URL, response path, hash/bytes, event timestamp, unit, actual 47.8, forecast 51.0 and previous 51.7, and add explicit field-level provenance. If the record cannot be recovered, null the unsupported forecast and re-evaluate the card side/weight before rebuilding the entire candidate, hash, and handoff.",
+        "Freeze the exact Sep-4 labour consensus/previous record and a precise StatCan series artifact, explicitly label each provider and URL, and reconcile the unrounded actual against the official -42k headline. If unavailable, remove or null unsupported A/F/P fields, neutralize/reweight the driver, rebuild all dependent balance text, then rebuild the whole candidate, hash, and handoff.",
+        "Recollect the linked Q1 release or another explicitly identified provider into the current evidence manifest and map the C$2,150/-0.9% fields to it. If the prior cannot be verified, remove the comparison and re-evaluate the card's side/weight, then rebuild and rehash the full candidate and handoff.",
+        "Freeze the exact forecast provider record and map it separately from both official actual-release URLs, or null the forecast and remove the beat claim. Re-evaluate the GDP side/weight and all derived balance text, then perform a whole-candidate rebuild, hash refresh, and handoff reassertion.",
+        "Freeze the Sep-2 consensus record with provider URL, event timestamp, unit and evidence hash, or relabel the forecast as an explicit desk assumption and remove the matched-consensus A/F/P claim. Re-evaluate the hold card's side/weight and rebuild the complete candidate, handoff, and digest hash."
+      ],
+      "operator_instructions": [
+        "Do not publish this candidate. Recollect the missing Michigan and BoC forecast/previous evidence into iteration-03 or a new immutable iteration, with exact provider URLs, event/source timestamps, hashes, byte counts, and field-level mappings.",
+        "Resolve the CL=F displayed-base arithmetic and re-evaluate every affected driver side, weight, delta, balance, and decision-usefulness statement; rebuild the entire candidate rather than patching prose.",
+        "Recompute candidate.sha256 and the evidence-manifest checks, update the PM handoff with each affected field-to-evidence mapping and deterministic reassertion, then submit a fresh independent PM review."
+      ],
+      "next_run_contract": [
+        "Read this feedback before collecting or editing the next candidate.",
+        "Re-trigger collection for every affected source and claim.",
+        "Rebuild the whole internally consistent candidate; do not patch prose only.",
+        "Submit the rebuilt candidate to a fresh independent PM review.",
+        "Do not publish until an exact-byte-bound approved review passes the gate."
+      ]
+    },
+    "feedback_source_candidate_path": "review/fed-boc/2026-09-15/iteration-03/candidate.json",
+    "feedback_source_candidate_sha256": "12d33a00f7f02136253f0aa99879b3f411a86c7300adadf14283a5f707e0d4ab",
+    "feedback_source_pm_review_path": "review/fed-boc/2026-09-15/iteration-03/pm-review.json",
+    "feedback_source_pm_review_sha256": "c9e212088601897bf27e1926722ad620b687d9e470b2ae9ff37e1f33a9dec959",
+    "feedback_source_pm_review": {
+      "schema_version": "1.0",
+      "reviewer_role": "independent_portfolio_manager",
+      "reviewed_at": "2026-09-15T17:04:22-04:00",
+      "candidate_sha256": "12d33a00f7f02136253f0aa99879b3f411a86c7300adadf14283a5f707e0d4ab",
+      "verdict": "revise",
+      "executive_summary": "Revise. Candidate and evidence-manifest integrity, CRAU26 path/row, Fed proxy arithmetic, official policy facts, Ivey/Empire/ADP/ISM chains, session cutoffs, and forward-calendar fields pass. However, the frozen evidence does not reproduce several nonzero driver forecast/previous fields, and the displayed CL=F weekly return is numerically inconsistent with its displayed bases; the candidate is not safe for P&L use or publication until rebuilt.",
+      "checks": {
+        "official_policy": "pass",
+        "pricing": "fail",
+        "drivers": "fail",
+        "market_validation": "pass",
+        "freshness": "pass",
+        "decision_usefulness": "fail"
+      },
+      "findings": [
+        {
+          "severity": "minor",
+          "field": "market.context[CL=F].chg_1w",
+          "issue": "The displayed CL=F weekly return does not reproduce from the displayed bases: 105.84 / 93.03 - 1 = 0.1376975169, which rounds to 0.137698, not the candidate value 0.137697.",
+          "evidence": "candidate.json records CL=F price 105.84, weekly_base_close 93.03 and chg_1w 0.137697. Frozen evidence/market/CL%3DF.1m.json has the 2026-09-15 14:30 ET bar 105.83999633789062 and evidence/market/CL%3DF.1d.json has the 2026-09-08 close 93.02999877929688; recomputation from the displayed values gives 0.137698 (13.7698%).",
+          "pnl_impact": "The direct economic difference is only 0.0001 percentage point, but a visible return that fails its stated displayed-base calculation breaks reconciliation and can create threshold or downstream signal mismatches.",
+          "instruction": "Recompute the CL=F 1-week normalized return and any rendered percentage with one documented rounding rule, then update the candidate consistently, rerun all market assertions, rebuild the whole candidate and handoff, and recompute candidate.sha256 before resubmission."
+        },
+        {
+          "severity": "major",
+          "field": "drivers.fed.hawkish.fed_hawk_uom_inflation_20260911.data.forecast",
+          "issue": "The 51.0 Michigan sentiment consensus is named as an FXStreet value but is not present in any frozen iteration-03 evidence or field-level provenance, so the actual-versus-consensus miss and the retained 1.0 hawkish weight are not independently reproducible.",
+          "evidence": "evidence/michigan.html reproduces the official preliminary September actual 47.8, August sentiment 51.7 and inflation-expectation fields, but not a 51.0 consensus. evidence/economic-calendar.json is the FXStreet window for 2026-09-14 through 2026-09-21 and its current rows contain only the Sep-15 ADP average and Empire State release; it has no Sep-11 Michigan row. The candidate has no source_provenance or frozen evidence path for the claimed 51.0 value.",
+          "pnl_impact": "The unsupported forecast determines the displayed -3.2 sentiment surprise and supports a nonzero Fed hawkish contribution; an erroneous or unavailable consensus can change the sign, weight, and Fed net signal around the FOMC.",
+          "instruction": "Recollect and freeze the exact Sep-11 Michigan consensus record, including provider URL, response path, hash/bytes, event timestamp, unit, actual 47.8, forecast 51.0 and previous 51.7, and add explicit field-level provenance. If the record cannot be recovered, null the unsupported forecast and re-evaluate the card side/weight before rebuilding the entire candidate, hash, and handoff."
+        },
+        {
+          "severity": "major",
+          "field": "drivers.boc.dovish.boc_dove_labour_20260904.data.actual_forecast_previous",
+          "issue": "The BoC labour card's -41.7k actual, +15.0k forecast and +75.1k previous are not reproduced by the frozen evidence chain; the only cited source is the official StatCan release, which displays employment down 42,000 and does not provide those forecast/previous values.",
+          "evidence": "evidence/statcan-lfs.html is live at HTTP 200 and states employment fell by 42,000 in August, unemployment was 6.4%, wages grew 2.0% after 2.8% in July; it contains neither the exact -41.7k figure nor +15.0k/+75.1k forecast/previous records. evidence/economic-calendar.json starts on 2026-09-14 and has no Sep-4 labour row, and the candidate provides no secondary source URL, evidence path, or source_provenance for the missing fields.",
+          "pnl_impact": "The unsupported -56.7k surprise drives a high 2.0 dovish weight and materially affects the BoC net hawkish balance; both signal direction and magnitude are unreliable until the A/F/P chain and actual precision are reconciled.",
+          "instruction": "Freeze the exact Sep-4 labour consensus/previous record and a precise StatCan series artifact, explicitly label each provider and URL, and reconcile the unrounded actual against the official -42k headline. If unavailable, remove or null unsupported A/F/P fields, neutralize/reweight the driver, rebuild all dependent balance text, then rebuild the whole candidate, hash, and handoff."
+        },
+        {
+          "severity": "major",
+          "field": "drivers.boc.dovish.boc_dove_asking_rents_20260909.data.previous",
+          "issue": "The candidate uses a Q1 previous asking-rent value of C$2,150 and -0.9% YoY without freezing the prior-release evidence needed to reproduce it.",
+          "evidence": "evidence/statcan-rents.html supports only the Q2 2026 value of C$2,130 and -3.6% YoY and contains a link to the previous release; it does not contain C$2,150 or -0.9%. The linked Q1 page is not in the iteration-03 manifest, and the candidate has no secondary source URL or field-level provenance for the previous tuple.",
+          "pnl_impact": "The unsupported comparison is used in the card's dovish interpretation and 1.0 weight; an incorrect prior can distort the housing-pressure signal in the BoC rope even though the current Q2 observation is valid.",
+          "instruction": "Recollect the linked Q1 release or another explicitly identified provider into the current evidence manifest and map the C$2,150/-0.9% fields to it. If the prior cannot be verified, remove the comparison and re-evaluate the card's side/weight, then rebuild and rehash the full candidate and handoff."
+        },
+        {
+          "severity": "major",
+          "field": "drivers.boc.hawkish.boc_hawk_gdp_20260828.data.forecast",
+          "issue": "The +0.2% MoM / +3.4% annualized forecast used for the GDP surprise is not present in the frozen evidence, and the candidate names only the Q2 expenditure URL even though its reason also relies on the separate June industry release.",
+          "evidence": "evidence/statcan-gdp.html supports Q2 real GDP +0.8% and the Q1 revision to +0.1%; evidence/statcan-gdp-industry.html supports June industry GDP +0.3%. Neither frozen page contains the claimed +0.2% MoM / +3.4% annualized forecast, and candidate.json has only https://www150.statcan.gc.ca/n1/daily-quotidien/260828/dq260828a-eng.htm as source_url with no secondary source URL or forecast provenance.",
+          "pnl_impact": "The unsupported forecast is the basis for the June beat and a 2.0 hawkish weight; it can materially overstate the growth impulse and the BoC hawkish balance.",
+          "instruction": "Freeze the exact forecast provider record and map it separately from both official actual-release URLs, or null the forecast and remove the beat claim. Re-evaluate the GDP side/weight and all derived balance text, then perform a whole-candidate rebuild, hash refresh, and handoff reassertion."
+        },
+        {
+          "severity": "major",
+          "field": "drivers.boc.hawkish.boc_hawk_hold_20260902.data.forecast",
+          "issue": "The official evidence proves the Sep-2 hold at 2.25% but does not prove the candidate's forecast string 'Hold 2.25%' or its statement that the decision matched consensus.",
+          "evidence": "evidence/boc-last-statement.html and evidence/boc-rate.html reproduce the actual Sep-2 policy target and rates. The frozen evidence/economic-calendar.json covers Sep-14 through Sep-21 and contains no Sep-2 consensus row, while the candidate's hold card has no secondary source URL, source_provenance, or frozen consensus path.",
+          "pnl_impact": "The unsupported no-surprise comparison is attached to a 2.0 hawkish hold weight; without a verified consensus, the card's surprise interpretation and contribution to the BoC balance are not auditable.",
+          "instruction": "Freeze the Sep-2 consensus record with provider URL, event timestamp, unit and evidence hash, or relabel the forecast as an explicit desk assumption and remove the matched-consensus A/F/P claim. Re-evaluate the hold card's side/weight and rebuild the complete candidate, handoff, and digest hash."
+        }
+      ],
+      "pnl_risks": [
+        "Unsupported Michigan and BoC A/F/P fields can change the sign and weight of the Fed/BoC rope; the displayed net balances must not be used for trading until those chains are frozen and reasserted.",
+        "The unverified BoC labour -56.7k surprise carries a 2.0 weight and can materially overstate the dovish impulse, changing positioning around the next BoC communication.",
+        "The CL=F return discrepancy is small in isolation but violates the displayed-base contract and can produce inconsistent thresholds or reconciliations in downstream market use."
+      ],
+      "operator_instructions": [
+        "Do not publish this candidate. Recollect the missing Michigan and BoC forecast/previous evidence into iteration-03 or a new immutable iteration, with exact provider URLs, event/source timestamps, hashes, byte counts, and field-level mappings.",
+        "Resolve the CL=F displayed-base arithmetic and re-evaluate every affected driver side, weight, delta, balance, and decision-usefulness statement; rebuild the entire candidate rather than patching prose.",
+        "Recompute candidate.sha256 and the evidence-manifest checks, update the PM handoff with each affected field-to-evidence mapping and deterministic reassertion, then submit a fresh independent PM review."
+      ]
+    },
+    "tracker_feedback_path": "fed-boc-watcher/review/feedback/latest.json (thematic-tracker repo; local D:/git/thematic-tracker)",
+    "tracker_feedback_sha256": "009e5976bb2d2ee5de2c05496d54a882c3847ceee4b93b9184c0f5978c8dc9c4",
+    "tracker_feedback": {
+      "schema_version": "1.0",
+      "status": "open",
+      "reviewed_at": "2026-09-14T07:13:30-04:00",
+      "candidate_sha256": "e97259512fbb797d067165f9b6a2a14d775655f5afb1312af50a2fc688aa286d",
+      "review_sha256": "d981b097d4c34e68ec9933ad46e570a0f1a75c157ca480fce451c02b506931fb",
+      "source_review": "review/fed-boc/2026-09-14/iteration-03/pm-review.json",
+      "executive_summary": "Revise. The candidate and all 30 handoff evidence artifacts are SHA-256 bound correctly, the Sep 14 pre-open regime is consistently identified, the Sep 11 ZQU26 completed-session row is selected, the official Fed/BoC meeting facts are supported, the CRAU26 reference-month and Dec 16 delivery identity is supported, and the cash-market return arithmetic reproduces. The snapshot remains unsafe for P&L decisions because the stated exact Fed hold/hike interpolation is arithmetically inconsistent with its own corrected post-meeting rate, and four BLS drivers retain unsupported directional claims in their titles despite zeroed data and weights. The CRAU26 liquidity field also misstates the frozen quote's volume.",
+      "failed_checks": [
+        "decision_usefulness",
+        "drivers",
+        "pricing"
+      ],
+      "findings": [
+        {
+          "severity": "major",
+          "field": "meetings.fed.pricing.proxy_check and meetings.fed.pricing.hold_25bp/hike_25bp",
+          "issue": "The corrected Sep 11 ZQU26 close and the monthly-average solve are correct, but the stated exact interpolation is not. With monthly average 3.7324981689453125%, EFFR 3.63%, 16 pre-meeting and 14 post-meeting days, the implied post-meeting rate is 3.849638933454241%. Linear interpolation between a 3.625% hold and 3.875% hike gives hold 0.10144426618303548 and hike 0.8985557338169645, not the candidate's stated 0.121444 and displayed 0.12/0.88.",
+          "evidence": "evidence/market/ZQU26.CBT.1d.json contains the completed Sep 11 close 96.26750183105469 and the excluded Sep 14 in-progress row 96.2699966430664; evidence/effr.json contains EFFR 3.63%. Independent recomputation gives 100 - 96.26750183105469 = 3.7324981689453125 and (30*3.7324981689453125 - 16*3.63)/14 = 3.849638933454241. The candidate proxy_check itself states hold 0.121444/hike 0.878556, which does not solve that equation.",
+          "pnl_impact": "The published 12% hold versus 88% hike distribution is not reproducible from the stated observable and day-count convention. A rates or duration hedge sized from the displayed distribution would carry an unquantified basis/arithmetic error at the FOMC event.",
+          "instruction": "Recompute the hold/hike interpolation from the exact Sep 11 close, EFFR, day counts, and explicitly stated endpoint rates; update implied_rate_after, proxy_check, displayed probabilities, and every dependent calendar/handoff statement in a new immutable candidate and SHA-bind the review inputs again."
+        },
+        {
+          "severity": "major",
+          "field": "drivers.fed.dovish.fed_dove_jolts_20260901, drivers.fed.hawk_nfp_20260904, drivers.fed.hawk_ppi_20260910, and drivers.fed.hawk_cpi_20260911",
+          "issue": "The detailed BLS data fields, summaries, reasons, and weights are neutralized, but the titles still make unsupported directional factual claims: JOLTS is called directionally inconclusive, payrolls are called a rebound far above forecast, PPI is called hot, and core CPI is called a reacceleration above consensus. The four frozen BLS artifacts are Access Denied pages and contain none of those release facts.",
+          "evidence": "SHA-256 verification matched the handoff for evidence/bls-cpi.html, evidence/bls-jobs.html, evidence/bls-ppi.html, and evidence/bls-jolts.html. Independent inspection found each is a 1,325-byte HTML page titled Access Denied, with body text stating that automated retrieval was blocked; no release table, actual, revision, forecast, or consensus is present. Candidate weights are 0.0, but the titles remain directional signal visible to a reader.",
+          "pnl_impact": "A PM can still infer a hawkish payroll/inflation contribution from the titles even though the numeric rope weight is zero. That hidden directional contribution can bias Fed, rates, FX, and equity positioning toward an unsupported policy conclusion.",
+          "instruction": "Replace each affected title with a strictly neutral access-status title that contains no release direction or implied actual, and re-scan all fields, calendar logic, verification text, and handoff mapping for residual BLS actual, revision, surprise, or directional language. Keep the four weights at zero unless accessible official release evidence is persisted, then rebuild and re-hash the candidate."
+        },
+        {
+          "severity": "major",
+          "field": "meetings.boc.pricing.proxy_check and meetings.boc.pricing.observable_proxy.volume",
+          "issue": "The CRAU26 contract identity, September 2026 reference month, and 2026-12-16 expiry/delivery date are correct, and the artifact clearly shows that the proxy spans the Oct 28 and Dec 9 BoC decisions. However, the candidate reports volume 33,077, which is not the volume in the frozen TMX quote row.",
+          "evidence": "Independent parsing of evidence/cra.html's id=CRAU26 data-row gives symbol CRAU26, expiry_date 2026-12-16, bid 97.6, ask 97.605, volume 1728, open_interest 228719, and nb_trades 92. The visible September 2026 row likewise shows volume 1,728 and open interest 228,719. evidence/cra-spec.html independently identifies September 2026 (CRAU26) and lists the Oct 28 and Dec 9 announcement dates within the reference-quarter methodology.",
+          "pnl_impact": "Misstating volume by an order of magnitude distorts liquidity and confidence in the observable proxy. A PM could overestimate executable size or treat the quarterly quote as more robust than the frozen market record supports.",
+          "instruction": "Correct the CRAU26 volume to the exact quote-row field, preserve the separate open-interest and trade-count fields if displayed, and rebuild all dependent proxy notes and the candidate SHA in a new immutable iteration."
+        }
+      ],
+      "required_recollection": [
+        "Recompute the hold/hike interpolation from the exact Sep 11 close, EFFR, day counts, and explicitly stated endpoint rates; update implied_rate_after, proxy_check, displayed probabilities, and every dependent calendar/handoff statement in a new immutable candidate and SHA-bind the review inputs again.",
+        "Replace each affected title with a strictly neutral access-status title that contains no release direction or implied actual, and re-scan all fields, calendar logic, verification text, and handoff mapping for residual BLS actual, revision, surprise, or directional language. Keep the four weights at zero unless accessible official release evidence is persisted, then rebuild and re-hash the candidate.",
+        "Correct the CRAU26 volume to the exact quote-row field, preserve the separate open-interest and trade-count fields if displayed, and rebuild all dependent proxy notes and the candidate SHA in a new immutable iteration."
+      ],
+      "operator_instructions": [
+        "Keep publication fail-closed; do not archive, commit, sync, or publish this iteration-03 candidate.",
+        "Rebuild the whole candidate rather than patching only prose: correct the Fed interpolation, fully neutralize all unsupported BLS directional language, correct CRAU26 liquidity fields, and update every dependent timestamp, calendar/pricing statement, handoff mapping, and SHA.",
+        "Submit the newly frozen candidate to a fresh independent PM review bound to its exact bytes; approval must remain unconditional."
+      ],
+      "next_run_contract": [
+        "Read this feedback before collecting or editing the next candidate.",
+        "Re-trigger collection for every affected source and claim.",
+        "Rebuild the whole internally consistent candidate; do not patch prose only.",
+        "Submit the rebuilt candidate to a fresh independent PM review.",
+        "Do not publish until an exact-byte-bound approved review passes the gate."
+      ]
+    },
+    "prior_approved_candidate_path": "review/fed-boc/2026-09-14/iteration-08/candidate.json",
+    "prior_approved_candidate_sha256": "1222c8148aec14ccc8effcc67e1fadfbf30ac9b92102da86f4eed2ba670d7c1a",
+    "prior_approved_pm_review_path": "review/fed-boc/2026-09-14/iteration-08/pm-review.json",
+    "prior_approved_pm_review_sha256": "871ec495b21bc64ae53c1feecd2a2f509bb2aa9be36a5d7870838667cfc27927",
+    "prior_approved_pm_review": {
+      "schema_version": "1.0",
+      "reviewer_role": "independent_portfolio_manager",
+      "reviewed_at": "2026-09-14T20:39:57-04:00",
+      "candidate_sha256": "1222c8148aec14ccc8effcc67e1fadfbf30ac9b92102da86f4eed2ba670d7c1a",
+      "verdict": "approved",
+      "executive_summary": "Approved unconditionally for publication and decision-support use. The candidate digest matches candidate.sha256 exactly; all 135 frozen evidence artifacts match the handoff manifest byte-for-byte. Official Fed and BoC policy facts, meeting dates, release chronology, pricing-proxy arithmetic and labels, driver provenance and weights, Canada CPI tuples, visible-price returns, calendar timestamps, and CRA post-close treatment are internally consistent and decision-useful.",
+      "checks": {
+        "official_policy": "pass",
+        "pricing": "pass",
+        "drivers": "pass",
+        "market_validation": "pass",
+        "freshness": "pass",
+        "decision_usefulness": "pass"
+      },
+      "findings": [],
+      "pnl_risks": [
+        "Fed pricing is an EFFR-anchored Yahoo ZQU26 desk-implied proxy, not a direct CME FedWatch single-meeting probability distribution; the endpoint and day-count assumptions remain model-dependent.",
+        "BoC CRAU26 is an observable quarterly-average market spanning the October 28 and December 9 decisions, so no October 28 single-meeting probability is inferred; post-close zero volume and trade fields are correctly treated as page resets.",
+        "Yahoo ETF, Treasury-yield, WTI, and futures observations are indicative proxies rather than executable venue settlements; long-end and WTI cards are explicitly zero-weighted and retained as context only.",
+        "ADP and ISM are clearly labelled third-party Trading Economics release summaries, with Actual/Forecast/Previous values tied to matching Trading Economics URLs and evidence; official ADP and ISM probes are separately recorded as non-value sources.",
+        "The dashboard is a dated snapshot and does not provide direct probabilities where the underlying market contract spans multiple meetings; event outcomes and subsequent revisions can invalidate the snapshot after its as-of time."
+      ],
+      "operator_instructions": []
+    },
+    "operator_instruction_status": "All five required recollections from the open 2026-09-15 feedback were executed and frozen into this iteration: (1) Michigan sentiment consensus 51.0 / previous 51.7; (2) Canada labour -41.7k / +15.0k / +75.1k reconciled with the official -42k headline; (3) Q1 asking-rent prior C$2,150 / -0.9%; (4) June GDP +0.2% MoM / +3.4% annualized consensus; (5) Sep 2 BoC 'Hold 2.25%' consensus. The CL=F displayed-base arithmetic was recomputed with the documented rule and asserted. The tracker feedback's three findings (Fed interpolation reproducibility, neutral blocked-BLS titles, exact CRAU26 quote-row fields) remain enforced and reasserted."
+  },
+  "field_by_field_remediation_evidence_mapping": [
+    {
+      "feedback_field": "meetings.boc.pricing.observable_proxy evidence_path repointing (carried invariant)",
+      "candidate_fields": [
+        "meetings.boc.pricing.observable_proxy.evidence_path",
+        "meetings.boc.pricing.observable_proxy.observed_price",
+        "meetings.boc.pricing.observable_proxy.bid",
+        "meetings.boc.pricing.observable_proxy.ask",
+        "meetings.boc.pricing.observable_proxy.midpoint",
+        "meetings.boc.pricing.observable_proxy.bid_size",
+        "meetings.boc.pricing.observable_proxy.ask_size",
+        "meetings.boc.pricing.observable_proxy.volume",
+        "meetings.boc.pricing.observable_proxy.open_interest",
+        "meetings.boc.pricing.observable_proxy.nb_trades",
+        "meetings.boc.pricing.observable_proxy.net_change",
+        "meetings.boc.pricing.observable_proxy.last_close_price",
+        "meetings.boc.pricing.observable_proxy.open_price",
+        "meetings.boc.pricing.observable_proxy.high_price",
+        "meetings.boc.pricing.observable_proxy.low_price",
+        "meetings.boc.pricing.observable_proxy.settlement_price",
+        "meetings.boc.pricing.observable_proxy.expiry_date",
+        "meetings.boc.pricing.observable_proxy.observed_at_toronto",
+        "meetings.boc.pricing.observable_proxy.active_session_liquidity_snapshot",
+        "meetings.boc.pricing.proxy_check",
+        "meetings.boc.pricing.collection_note"
+      ],
+      "recollection": "The TMX CRA quote page was freshly recollected into this iteration together with MX contract anatomy, BoC CORRA and policy-target sources.",
+      "remediation": "Both evidence_path fields point to review/fed-boc/2026-09-16/iteration-01/evidence/cra.html. Deterministic assertions compare last, bid/ask and sizes, midpoint inputs, volume, OI, trades, net change, prior close, open/high/low, settlement, expiry and observation timestamp against that exact frozen row. No candidate field points to any earlier iteration's CRA evidence.",
+      "evidence": [
+        "evidence/cra.html",
+        "evidence/cra.html.curl-meta.txt",
+        "evidence/cra-contract-spec.html",
+        "evidence/cra-contract-spec.html.curl-meta.txt",
+        "evidence/cra-spec.html",
+        "evidence/cra-spec.html.curl-meta.txt",
+        "evidence/corra.json",
+        "evidence/boc-policy.json",
+        "evidence/facts.json"
+      ]
+    },
+    {
+      "feedback_field": "drivers.fed.hawkish[id=fed_hawk_uom_inflation_20260911].data.forecast (Michigan sentiment consensus 51.0)",
+      "candidate_fields": [
+        "drivers.fed.hawkish[id=fed_hawk_uom_inflation_20260911].source",
+        "drivers.fed.hawkish[id=fed_hawk_uom_inflation_20260911].data.forecast",
+        "drivers.fed.hawkish[id=fed_hawk_uom_inflation_20260911].data.previous",
+        "drivers.fed.hawkish[id=fed_hawk_uom_inflation_20260911].source_provenance",
+        "drivers.fed.hawkish[id=fed_hawk_uom_inflation_20260911].reason"
+      ],
+      "recollection": "The FXStreet structured occurrence records for the Sep 11 Michigan release were freshly re-fetched with the proven query-parameter recipe (CSV window + exact occurrence detail) and frozen with hashes, byte counts and retrieval timestamps.",
+      "remediation": "data.forecast sentiment 51.0 and data.previous sentiment 51.7 are now field-mapped to the frozen sentiment occurrence record (consensus 51.0 / previous 51.7), the 1Y inflation actual/previous to the frozen UoM-1Y record, and the official actuals to the University of Michigan page. The 1.0 hawkish weight was re-evaluated and retained.",
+      "evidence": [
+        "evidence/fxstreet-michigan-sentiment-detail.json",
+        "evidence/fxstreet-michigan-sentiment-detail.json.requests-meta.json",
+        "evidence/fxstreet-uom-1y-detail.json",
+        "evidence/fxstreet-uom-1y-detail.json.requests-meta.json",
+        "evidence/fxstreet-michigan.csv",
+        "evidence/fxstreet-michigan.csv.requests-meta.json",
+        "evidence/michigan.html",
+        "evidence/michigan.html.curl-meta.txt",
+        "evidence/facts.json"
+      ]
+    },
+    {
+      "feedback_field": "drivers.boc.dovish[id=boc_dove_labour_20260904].data.actual_forecast_previous",
+      "candidate_fields": [
+        "drivers.boc.dovish[id=boc_dove_labour_20260904].source",
+        "drivers.boc.dovish[id=boc_dove_labour_20260904].data.actual",
+        "drivers.boc.dovish[id=boc_dove_labour_20260904].data.forecast",
+        "drivers.boc.dovish[id=boc_dove_labour_20260904].data.previous",
+        "drivers.boc.dovish[id=boc_dove_labour_20260904].source_provenance",
+        "drivers.boc.dovish[id=boc_dove_labour_20260904].reason"
+      ],
+      "recollection": "The FXStreet occurrence record for the Sep 4 Canada labour release was freshly re-fetched and frozen; the official StatCan release page was recollected in the same pass.",
+      "remediation": "The -41.7k / +15.0k / +75.1k chain is field-mapped to the frozen occurrence record, and the unrounded -41.7k is explicitly reconciled with the official StatCan headline 'employment fell by 42,000'; both figures are displayed. The 2.0 dovish weight was re-evaluated and retained.",
+      "evidence": [
+        "evidence/fxstreet-ca-labour-detail.json",
+        "evidence/fxstreet-ca-labour-detail.json.requests-meta.json",
+        "evidence/fxstreet-ca-labour.csv",
+        "evidence/fxstreet-ca-labour.csv.requests-meta.json",
+        "evidence/statcan-lfs.html",
+        "evidence/statcan-lfs.html.curl-meta.txt",
+        "evidence/facts.json"
+      ]
+    },
+    {
+      "feedback_field": "drivers.boc.dovish[id=boc_dove_asking_rents_20260909].data.previous (Q1 prior C$2,150 / -0.9%)",
+      "candidate_fields": [
+        "drivers.boc.dovish[id=boc_dove_asking_rents_20260909].source",
+        "drivers.boc.dovish[id=boc_dove_asking_rents_20260909].data.previous",
+        "drivers.boc.dovish[id=boc_dove_asking_rents_20260909].source_provenance",
+        "drivers.boc.dovish[id=boc_dove_asking_rents_20260909].reason"
+      ],
+      "recollection": "The linked Q1 2026 release (dq260609c) was recollected and frozen alongside the current Q2 release page.",
+      "remediation": "data.previous C$2,150 / -0.9% is field-mapped to the frozen Q1 page text 'average asking rent ... was $2,150 in the first quarter of 2026, down 0.9% from the first quarter of 2025, when the figure was $2,170'. The 1.0 dovish weight was re-evaluated and retained.",
+      "evidence": [
+        "evidence/statcan-rents.html",
+        "evidence/statcan-rents.html.curl-meta.txt",
+        "evidence/statcan-rents-q1.html",
+        "evidence/statcan-rents-q1.html.curl-meta.txt",
+        "evidence/facts.json"
+      ]
+    },
+    {
+      "feedback_field": "drivers.boc.hawkish[id=boc_hawk_gdp_20260828].data.forecast (+0.2% MoM / +3.4% annualized)",
+      "candidate_fields": [
+        "drivers.boc.hawkish[id=boc_hawk_gdp_20260828].source",
+        "drivers.boc.hawkish[id=boc_hawk_gdp_20260828].data.forecast",
+        "drivers.boc.hawkish[id=boc_hawk_gdp_20260828].source_provenance",
+        "drivers.boc.hawkish[id=boc_hawk_gdp_20260828].reason"
+      ],
+      "recollection": "The FXStreet occurrence records for the June MoM GDP and Q2 annualized GDP were freshly re-fetched and frozen; both official StatCan release pages were recollected in the same pass.",
+      "remediation": "data.forecast '+0.2% MoM' and '+3.4% ann.' are field-mapped to the frozen MoM record (consensus 0.2) and annualized record (consensus 3.4); the two official actual-release URLs are named separately from the forecast provider. The 2.0 hawkish weight was re-evaluated and retained.",
+      "evidence": [
+        "evidence/fxstreet-ca-gdp-mom-detail.json",
+        "evidence/fxstreet-ca-gdp-mom-detail.json.requests-meta.json",
+        "evidence/fxstreet-ca-gdp-annualized-detail.json",
+        "evidence/fxstreet-ca-gdp-annualized-detail.json.requests-meta.json",
+        "evidence/fxstreet-ca-gdp.csv",
+        "evidence/fxstreet-ca-gdp.csv.requests-meta.json",
+        "evidence/statcan-gdp.html",
+        "evidence/statcan-gdp-industry.html",
+        "evidence/facts.json"
+      ]
+    },
+    {
+      "feedback_field": "drivers.boc.hawkish[id=boc_hawk_hold_20260902].data.forecast (matched-consensus claim)",
+      "candidate_fields": [
+        "drivers.boc.hawkish[id=boc_hawk_hold_20260902].data.forecast",
+        "drivers.boc.hawkish[id=boc_hawk_hold_20260902].source_provenance",
+        "drivers.boc.hawkish[id=boc_hawk_hold_20260902].reason"
+      ],
+      "recollection": "The FXStreet occurrence record for the Sep 2 BoC decision was freshly re-fetched and frozen; the official statement and rate table were recollected in the same pass.",
+      "remediation": "The 'Hold 2.25%' forecast and the matched-consensus statement are field-mapped to the frozen occurrence record (actual 2.25, consensus 2.25, previous 2.25). The 2.0 hawkish hold weight was re-evaluated and retained.",
+      "evidence": [
+        "evidence/fxstreet-boc-decision-detail.json",
+        "evidence/fxstreet-boc-decision-detail.json.requests-meta.json",
+        "evidence/fxstreet-boc-decision.csv",
+        "evidence/fxstreet-boc-decision.csv.requests-meta.json",
+        "evidence/boc-last-statement.html",
+        "evidence/boc-rate.html",
+        "evidence/facts.json"
+      ]
+    },
+    {
+      "feedback_field": "market.context[CL=F] displayed-base weekly return",
+      "candidate_fields": [
+        "market.context[CL=F].chg_1d",
+        "market.context[CL=F].chg_1w",
+        "market.context[CL=F].price",
+        "market.context[CL=F].previous_close",
+        "market.context[CL=F].weekly_base_close",
+        "market.return_basis_note"
+      ],
+      "recollection": "The Yahoo CL=F daily and 1-minute payloads were recollected fresh and the settlement-window bar was re-selected before recomputation.",
+      "remediation": "chg_1d/chg_1w are computed from the displayed two-decimal price and displayed two-decimal bases with round(..., 6), identical to the dashboard-ticker rule, and deterministic asserts re-derive both values from the displayed bases. Displayed-base arithmetic: day 105.84 / 101.39 - 1 = 0.043890; week 105.84 / 93.03 - 1 = 0.137698 (i.e. +13.77% when shown as a percentage).",
+      "evidence": [
+        "evidence/market/CL%3DF.1m.json",
+        "evidence/market/CL%3DF.1m.json.curl-meta.txt",
+        "evidence/market/CL%3DF.1d.json",
+        "evidence/market/CL%3DF.1d.json.curl-meta.txt",
+        "evidence/facts.json"
+      ]
+    },
+    {
+      "feedback_field": "tracker-repo open feedback (fed-boc-watcher/review/feedback/latest.json, 2026-09-14): Fed interpolation reproducibility, neutral blocked-BLS titles, exact CRAU26 quote-row fields",
+      "candidate_fields": [
+        "meetings.fed.pricing.proxy_check",
+        "meetings.fed.pricing.hold",
+        "meetings.fed.pricing.hike_25bp",
+        "drivers.fed[* blocked-BLS cards].title/data/weight",
+        "meetings.boc.pricing.observable_proxy.volume",
+        "meetings.boc.pricing.observable_proxy.open_interest",
+        "meetings.boc.pricing.observable_proxy.nb_trades"
+      ],
+      "recollection": "The ZQU26/EFFR pricing inputs, the four BLS blocked pages, and the TMX CRAU26 quote row were all recollected into this iteration.",
+      "remediation": "The Fed hold/hike interpolation reproduces exactly from the stated ZQU26 bar, EFFR, 16/14 day split and explicit endpoints (asserted); the blocked-BLS cards keep strictly neutral access-status titles at zero weight; the CRAU26 volume/OI/trade fields are the frozen quote-row fields (342 / 234718 / 32) with pre-open state labels.",
+      "evidence": [
+        "evidence/market/ZQU26.CBT.1m.json",
+        "evidence/effr.json",
+        "evidence/bls-jobs.html",
+        "evidence/bls-jolts.html",
+        "evidence/bls-ppi.html",
+        "evidence/bls-cpi.html",
+        "evidence/cra.html",
+        "evidence/facts.json"
+      ]
+    },
+    {
+      "feedback_field": "carried Sep 15 Empire State integration + whole-candidate consistency, pricing freshness and decision usefulness",
+      "candidate_fields": [
+        "drivers.fed.dovish[id=fed_dove_empire_20260915]",
+        "as_of",
+        "version",
+        "verification_note",
+        "meetings",
+        "drivers",
+        "market",
+        "calendar"
+      ],
+      "recollection": "The NY Fed Empire survey page, Trading Economics record and the canonical FXStreet calendar were recollected in this pass, alongside every official policy/release source, all Yahoo market and ZQ bars, the CME direct probe, TMX CRA/MX anatomy and BoC Valet references.",
+      "remediation": "The whole candidate was rebuilt as version 2026-09-16-001: pre-open Sep 16 snapshot on the completed Sep 15 cash session, overnight ZQ bar, fresh CRAU26 row, the five feedback recollections, the refreshed forward calendar, and the Empire State 7.6/14.75/20.6 chain with evidence paths pointing to this iteration.",
+      "evidence": [
+        "evidence/adp-official.html",
+        "evidence/adp-official.html.curl-meta.txt",
+        "evidence/bea-schedule.html",
+        "evidence/bea-schedule.html.curl-meta.txt",
+        "evidence/bls-cpi.html",
+        "evidence/bls-cpi.html.curl-meta.txt",
+        "evidence/bls-jobs.html",
+        "evidence/bls-jobs.html.curl-meta.txt",
+        "evidence/bls-jolts.html",
+        "evidence/bls-jolts.html.curl-meta.txt",
+        "evidence/bls-ppi.html",
+        "evidence/bls-ppi.html.curl-meta.txt",
+        "evidence/boc-last-statement.html",
+        "evidence/boc-last-statement.html.curl-meta.txt",
+        "evidence/boc-policy.json",
+        "evidence/boc-policy.json.curl-meta.txt",
+        "evidence/boc-press.html",
+        "evidence/boc-press.html.curl-meta.txt",
+        "evidence/boc-rate.html",
+        "evidence/boc-rate.html.curl-meta.txt",
+        "evidence/cme.html",
+        "evidence/cme.html.curl-meta.txt",
+        "evidence/collection-summary.json",
+        "evidence/corra.json",
+        "evidence/corra.json.curl-meta.txt",
+        "evidence/cra-contract-spec.html",
+        "evidence/cra-contract-spec.html.curl-meta.txt",
+        "evidence/cra-spec.html",
+        "evidence/cra-spec.html.curl-meta.txt",
+        "evidence/cra.html",
+        "evidence/cra.html.curl-meta.txt",
+        "evidence/economic-calendar.json",
+        "evidence/economic-calendar.json.local-meta.json",
+        "evidence/effr.json",
+        "evidence/effr.json.curl-meta.txt",
+        "evidence/facts.json",
+        "evidence/fed-last-statement.html",
+        "evidence/fed-last-statement.html.curl-meta.txt",
+        "evidence/fed-press-2026.html",
+        "evidence/fed-press-2026.html.curl-meta.txt",
+        "evidence/fed-press.xml",
+        "evidence/fed-press.xml.curl-meta.txt",
+        "evidence/fed-speeches-2026.html",
+        "evidence/fed-speeches-2026.html.curl-meta.txt",
+        "evidence/fed-speeches.xml",
+        "evidence/fed-speeches.xml.curl-meta.txt",
+        "evidence/fed-testimony.xml",
+        "evidence/fed-testimony.xml.curl-meta.txt",
+        "evidence/fed-waller.html",
+        "evidence/fed-waller.html.curl-meta.txt",
+        "evidence/fed-warsh.html",
+        "evidence/fed-warsh.html.curl-meta.txt",
+        "evidence/feedback-recollection-summary.json",
+        "evidence/fomc-calendar.html",
+        "evidence/fomc-calendar.html.curl-meta.txt",
+        "evidence/fxstreet-boc-decision-detail.json",
+        "evidence/fxstreet-boc-decision-detail.json.requests-meta.json",
+        "evidence/fxstreet-boc-decision.csv",
+        "evidence/fxstreet-boc-decision.csv.requests-meta.json",
+        "evidence/fxstreet-ca-gdp-annualized-detail.json",
+        "evidence/fxstreet-ca-gdp-annualized-detail.json.requests-meta.json",
+        "evidence/fxstreet-ca-gdp-mom-detail.json",
+        "evidence/fxstreet-ca-gdp-mom-detail.json.requests-meta.json",
+        "evidence/fxstreet-ca-gdp.csv",
+        "evidence/fxstreet-ca-gdp.csv.requests-meta.json",
+        "evidence/fxstreet-ca-labour-detail.json",
+        "evidence/fxstreet-ca-labour-detail.json.requests-meta.json",
+        "evidence/fxstreet-ca-labour.csv",
+        "evidence/fxstreet-ca-labour.csv.requests-meta.json",
+        "evidence/fxstreet-michigan-sentiment-detail.json",
+        "evidence/fxstreet-michigan-sentiment-detail.json.requests-meta.json",
+        "evidence/fxstreet-michigan.csv",
+        "evidence/fxstreet-michigan.csv.requests-meta.json",
+        "evidence/fxstreet-uom-1y-detail.json",
+        "evidence/fxstreet-uom-1y-detail.json.requests-meta.json",
+        "evidence/ism-official.html",
+        "evidence/ism-official.html.curl-meta.txt",
+        "evidence/market/%5ETNX.1d.json",
+        "evidence/market/%5ETNX.1d.json.curl-meta.txt",
+        "evidence/market/%5ETNX.1m.json",
+        "evidence/market/%5ETNX.1m.json.curl-meta.txt",
+        "evidence/market/%5ETYX.1d.json",
+        "evidence/market/%5ETYX.1d.json.curl-meta.txt",
+        "evidence/market/%5ETYX.1m.json",
+        "evidence/market/%5ETYX.1m.json.curl-meta.txt",
+        "evidence/market/CL%3DF.1d.json",
+        "evidence/market/CL%3DF.1d.json.curl-meta.txt",
+        "evidence/market/CL%3DF.1m.json",
+        "evidence/market/CL%3DF.1m.json.curl-meta.txt",
+        "evidence/market/GLD.1d.json",
+        "evidence/market/GLD.1d.json.curl-meta.txt",
+        "evidence/market/GLD.1m.json",
+        "evidence/market/GLD.1m.json.curl-meta.txt",
+        "evidence/market/IWM.1d.json",
+        "evidence/market/IWM.1d.json.curl-meta.txt",
+        "evidence/market/IWM.1m.json",
+        "evidence/market/IWM.1m.json.curl-meta.txt",
+        "evidence/market/QQQ.1d.json",
+        "evidence/market/QQQ.1d.json.curl-meta.txt",
+        "evidence/market/QQQ.1m.json",
+        "evidence/market/QQQ.1m.json.curl-meta.txt",
+        "evidence/market/SPY.1d.json",
+        "evidence/market/SPY.1d.json.curl-meta.txt",
+        "evidence/market/SPY.1m.json",
+        "evidence/market/SPY.1m.json.curl-meta.txt",
+        "evidence/market/TLT.1d.json",
+        "evidence/market/TLT.1d.json.curl-meta.txt",
+        "evidence/market/TLT.1m.json",
+        "evidence/market/TLT.1m.json.curl-meta.txt",
+        "evidence/market/XLE.1d.json",
+        "evidence/market/XLE.1d.json.curl-meta.txt",
+        "evidence/market/XLE.1m.json",
+        "evidence/market/XLE.1m.json.curl-meta.txt",
+        "evidence/market/XLF.1d.json",
+        "evidence/market/XLF.1d.json.curl-meta.txt",
+        "evidence/market/XLF.1m.json",
+        "evidence/market/XLF.1m.json.curl-meta.txt",
+        "evidence/market/XLI.1d.json",
+        "evidence/market/XLI.1d.json.curl-meta.txt",
+        "evidence/market/XLI.1m.json",
+        "evidence/market/XLI.1m.json.curl-meta.txt",
+        "evidence/market/XLU.1d.json",
+        "evidence/market/XLU.1d.json.curl-meta.txt",
+        "evidence/market/XLU.1m.json",
+        "evidence/market/XLU.1m.json.curl-meta.txt",
+        "evidence/market/ZEB.TO.1d.json",
+        "evidence/market/ZEB.TO.1d.json.curl-meta.txt",
+        "evidence/market/ZEB.TO.1m.json",
+        "evidence/market/ZEB.TO.1m.json.curl-meta.txt",
+        "evidence/market/ZQU26.CBT.1d.json",
+        "evidence/market/ZQU26.CBT.1d.json.curl-meta.txt",
+        "evidence/market/ZQU26.CBT.1m.json",
+        "evidence/market/ZQU26.CBT.1m.json.curl-meta.txt",
+        "evidence/market/ZQV26.CBT.1d.json",
+        "evidence/market/ZQV26.CBT.1d.json.curl-meta.txt",
+        "evidence/market/ZQV26.CBT.1m.json",
+        "evidence/market/ZQV26.CBT.1m.json.curl-meta.txt",
+        "evidence/market/ZQX26.CBT.1d.json",
+        "evidence/market/ZQX26.CBT.1d.json.curl-meta.txt",
+        "evidence/market/ZQX26.CBT.1m.json",
+        "evidence/market/ZQX26.CBT.1m.json.curl-meta.txt",
+        "evidence/michigan.html",
+        "evidence/michigan.html.curl-meta.txt",
+        "evidence/nyfed-empire-overview.html",
+        "evidence/nyfed-empire-overview.html.curl-meta.txt",
+        "evidence/statcan-cpi.html",
+        "evidence/statcan-cpi.html.curl-meta.txt",
+        "evidence/statcan-gdp-industry.html",
+        "evidence/statcan-gdp-industry.html.curl-meta.txt",
+        "evidence/statcan-gdp.html",
+        "evidence/statcan-gdp.html.curl-meta.txt",
+        "evidence/statcan-lfs.html",
+        "evidence/statcan-lfs.html.curl-meta.txt",
+        "evidence/statcan-rents-q1.html",
+        "evidence/statcan-rents-q1.html.curl-meta.txt",
+        "evidence/statcan-rents.html",
+        "evidence/statcan-rents.html.curl-meta.txt",
+        "evidence/te-adp.html",
+        "evidence/te-adp.html.curl-meta.txt",
+        "evidence/te-empire-alt.html",
+        "evidence/te-empire-alt.html.curl-meta.txt",
+        "evidence/te-empire.html",
+        "evidence/te-empire.html.curl-meta.txt",
+        "evidence/te-ism.html",
+        "evidence/te-ism.html.curl-meta.txt",
+        "evidence/te-ivey-business-confidence.html",
+        "evidence/te-ivey-business-confidence.html.curl-meta.txt",
+        "evidence/te-ivey-news-581356.html",
+        "evidence/te-ivey-news-581356.html.curl-meta.txt",
+        "evidence/tradingeconomics-calendar.html",
+        "evidence/tradingeconomics-calendar.html.curl-meta.txt"
+      ]
+    },
+    {
+      "feedback_field": "earlier feedback invariants still required until approved publication",
+      "candidate_fields": [
+        "drivers.boc.hawkish[id=boc_hawk_cpi_20260914].data.series",
+        "drivers.fed.hawkish[id=fed_hawk_long_end_20260831]",
+        "drivers.boc.hawkish[id=boc_hawk_oil_20260821]",
+        "market.return_basis_note",
+        "market.context"
+      ],
+      "recollection": "StatCan CPI, all Yahoo market inputs, Fed/BoC policy sources and deterministic quality checks were re-triggered.",
+      "remediation": "Aligned CPI tuples, exact observation timestamps, displayed return basis, neutral BLS titles and zero rope contribution from current-price tombstones remain enforced and were asserted again.",
+      "evidence": [
+        "evidence/statcan-cpi.html",
+        "evidence/economic-calendar.json",
+        "evidence/market/%5ETNX.1m.json",
+        "evidence/market/CL%3DF.1m.json",
+        "evidence/facts.json"
+      ]
+    }
+  ],
+  "source_labels": {
+    "official_primary": [
+      "Federal Reserve",
+      "NY Fed",
+      "Bank of Canada",
+      "Statistics Canada",
+      "BEA"
+    ],
+    "third_party_release_and_consensus": {
+      "ADP": "Trading Economics ADP release summary",
+      "ISM_Services": "Trading Economics ISM Services release summary",
+      "Ivey_PMI": "Trading Economics exact Canada Ivey PMI indicator and dated release records; named origin Ivey Business School",
+      "Empire_State_consensus_previous": "Trading Economics exact indicator record; actual independently verified at the New York Fed",
+      "economic_calendar": "FXStreet canonical collector output"
+    },
+    "observable_proxies": [
+      "Yahoo market/ZQ bars",
+      "TMX/MX CRA quote/settlement"
+    ],
+    "blocked_or_nonvalue_official_probes": [
+      "CME FedWatch HTTP 403",
+      "BLS release pages HTTP 403",
+      "ISM official login redirect",
+      "ADP home app shell"
+    ]
+  },
+  "driver_balance": {
+    "fed_dovish": 2.0,
+    "fed_hawkish": 7.5,
+    "boc_dovish": 3.0,
+    "boc_hawkish": 6.5,
+    "fed_net_hawk_minus_dove": 5.5,
+    "boc_net_hawk_minus_dove": 3.5
+  },
+  "deterministic_checks": {
+    "driver_quality_check_payload_problems": [],
+    "all_ticker_display_basis_arithmetic": "PASS",
+    "clf_displayed_basis_arithmetic": "PASS",
+    "feedback_five_required_recollections": "PASS",
+    "feedback_evidence_paths_current_iteration": "PASS",
+    "adp_provider_alignment": "PASS",
+    "ism_provider_alignment": "PASS",
+    "ivey_exact_provider_alignment": "PASS",
+    "empire_official_actual_consensus_previous_alignment": "PASS",
+    "boc_proxy_source_label_alignment": "PASS",
+    "cra_active_evidence_paths_current_iteration": "PASS",
+    "cra_all_quote_row_fields_reasserted": "PASS",
+    "forward_calendar_dates_after_as_of": "PASS",
+    "aligned_cpi_series": "PASS",
+    "tracker_feedback_invariants_reasserted": "PASS",
+    "market_price_rope_weights_zero": true,
+    "fed_probability_sum": 1.0,
+    "boc_probability_status": "unavailable",
+    "candidate_sha_matches_file": true
+  },
+  "evidence_manifest": {
+    "evidence/adp-official.html": {
+      "sha256": "b35e5f825bd408958ce2e44103ee34fc3e44ce783ec56c45d3a07f689eefa680",
+      "bytes": 1341
+    },
+    "evidence/adp-official.html.curl-meta.txt": {
+      "sha256": "aea07220329634705e9dfd429378f41ea3ca9f26f0e3fa4f824a560e45b2d2fb",
+      "bytes": 298
+    },
+    "evidence/bea-schedule.html": {
+      "sha256": "e4cbc72054b7717b4bfd6729d8d71589039eb3dffab358afd7081d3291bae799",
+      "bytes": 75123
+    },
+    "evidence/bea-schedule.html.curl-meta.txt": {
+      "sha256": "a8fbfb1f96b62b5f6136d32f2a012f8a8580ce6a731df3d5d8001528b0a4c443",
+      "bytes": 316
+    },
+    "evidence/bls-cpi.html": {
+      "sha256": "e4d342665ed12072995c6e97373302fa442b39700ad185ec4301f4ddb400f8a1",
+      "bytes": 1325
+    },
+    "evidence/bls-cpi.html.curl-meta.txt": {
+      "sha256": "88aa0c7a9b761f77f827b7f7e5a1ad379e9db7c0ef0ac48e4d91a0cd56b6e0e8",
+      "bytes": 322
+    },
+    "evidence/bls-jobs.html": {
+      "sha256": "e6a98b82e75a6e44288563f969f15d94b6211d0b047b4e02a006f4274c3e5f0b",
+      "bytes": 1325
+    },
+    "evidence/bls-jobs.html.curl-meta.txt": {
+      "sha256": "31c2202afc21354e50a6a5437a0b73273a15ff3d9bc6d8f3aae1747df3fc4df9",
+      "bytes": 328
+    },
+    "evidence/bls-jolts.html": {
+      "sha256": "c6bd9866f2bf089709e6cf5759ede2d48309d572b14907321ac2594099916848",
+      "bytes": 1325
+    },
+    "evidence/bls-jolts.html.curl-meta.txt": {
+      "sha256": "c94a38a233f6fa8e2fd11618ebd7608a27adec1155a7ae7cab4d0636958369e9",
+      "bytes": 326
+    },
+    "evidence/bls-ppi.html": {
+      "sha256": "5654f84c9ee17d66cf58233e85a002c819fcae4b80148ebcebdcdfb04d8456bb",
+      "bytes": 1325
+    },
+    "evidence/bls-ppi.html.curl-meta.txt": {
+      "sha256": "54a3fba2576a4f0057d4daa5eea3ee4d751adc53730e3f57ccc5dab4196dbbe7",
+      "bytes": 322
+    },
+    "evidence/boc-last-statement.html": {
+      "sha256": "3325543eaaf9cc292fa31f3deadb9f1f4d6309ba026413573120f471496ebe80",
+      "bytes": 135010
+    },
+    "evidence/boc-last-statement.html.curl-meta.txt": {
+      "sha256": "9be6749e7f591b4ee623d4a839584a86e3e25fc0bfc2be1e402eab65a9aae69a",
+      "bytes": 381
+    },
+    "evidence/boc-policy.json": {
+      "sha256": "cee97719ff68941a98e70c402c09c68511f5286333e7fad0d5054cfc505d0f57",
+      "bytes": 1461
+    },
+    "evidence/boc-policy.json.curl-meta.txt": {
+      "sha256": "fc509ee4b7a4af404e33b8a5743bd746ec51c14a1bf2eb4dc8ac7b5a6fd2c6a2",
+      "bytes": 416
+    },
+    "evidence/boc-press.html": {
+      "sha256": "1ac6522b714c79624590e2bfbc695d0ff834e7bdb9586cafae6f23f4c52c0b6c",
+      "bytes": 158257
+    },
+    "evidence/boc-press.html.curl-meta.txt": {
+      "sha256": "321014a16d2f3cc3736807b42d2b34df77c0d9e07cc2d65a718b85d14c80c609",
+      "bytes": 319
+    },
+    "evidence/boc-rate.html": {
+      "sha256": "ef1052070360e000abe0003ccffa9398b79318bcc6a91e72d21c430064d83bc0",
+      "bytes": 149202
+    },
+    "evidence/boc-rate.html.curl-meta.txt": {
+      "sha256": "84047f081f5b19c2debeeb04e14d6eed3adcc75038f4a847e4eb7c29a28d46e3",
+      "bytes": 405
+    },
+    "evidence/cme.html": {
+      "sha256": "eecde3fafbde4090c30e610a7ed4b8d877f8351c0490e4189574890e8a5a4f7e",
+      "bytes": 602
+    },
+    "evidence/cme.html.curl-meta.txt": {
+      "sha256": "e3a56e9739e5b8b44343121f7098258454142157d94bfc06f93694a34d9a50e1",
+      "bytes": 380
+    },
+    "evidence/collection-summary.json": {
+      "sha256": "b7f81c88db261225df5cd92dd8c7696382097d3b061e0d16d2686c2e84725220",
+      "bytes": 831
+    },
+    "evidence/corra.json": {
+      "sha256": "ee45b0982a231572b5fce6e684c2629a9c48a30841f065b0a22541328fa4d075",
+      "bytes": 1525
+    },
+    "evidence/corra.json.curl-meta.txt": {
+      "sha256": "3f906eba40ef354a958b595d086efc57a9ab609cfe5362a0fcb0ecdbf15b2019",
+      "bytes": 422
+    },
+    "evidence/cra-contract-spec.html": {
+      "sha256": "e42597db3fc20ad8ec0efcc8002298074291bb7ff2e6312ff342f8a5e1dd4075",
+      "bytes": 57379
+    },
+    "evidence/cra-contract-spec.html.curl-meta.txt": {
+      "sha256": "5ac38ec7a3d1e856f17d143323d2d204278f5ca40724122d9478372b99ecf036",
+      "bytes": 368
+    },
+    "evidence/cra-spec.html": {
+      "sha256": "4b3c5dd87fa8e8195f9482f46c958a369de0f8f9a5aa054310372601495e1467",
+      "bytes": 81472
+    },
+    "evidence/cra-spec.html.curl-meta.txt": {
+      "sha256": "09657f40e9d6a0ef9dcea148876179271ca9253eb80ab603fee5fa4b8f313209",
+      "bytes": 392
+    },
+    "evidence/cra.html": {
+      "sha256": "4ecb4254331877534dd633f5fb9550264f9aef119adc9e8d2d6764562923fec6",
+      "bytes": 95383
+    },
+    "evidence/cra.html.curl-meta.txt": {
+      "sha256": "bfea753c983a270a44f368a40c7fdd00cc35abdbb84253fd0b1dad1dc97103de",
+      "bytes": 360
+    },
+    "evidence/economic-calendar.json": {
+      "sha256": "e468cb67c75348379536a660823d176bc1f1a2a580081aeda587f2d4b4ae71c3",
+      "bytes": 85625
+    },
+    "evidence/economic-calendar.json.local-meta.json": {
+      "sha256": "28c6223be7ea332e79b58695dca2cd6906d05f08f89b1ceb2b4912f9c504f2d3",
+      "bytes": 140
+    },
+    "evidence/effr.json": {
+      "sha256": "85f67e277e46a47cfe62bcf396d2d642dc2568aa8adbee6124eec83e9b94ac3e",
+      "bytes": 1432
+    },
+    "evidence/effr.json.curl-meta.txt": {
+      "sha256": "7f56e65e7ef8e2224d03b7776cc83298924712344384c654898c31056e6845fb",
+      "bytes": 389
+    },
+    "evidence/facts.json": {
+      "sha256": "626d6444810aa6be099672ab74f4e1e59bdba2f672982c83f90126b4ace57823",
+      "bytes": 78962
+    },
+    "evidence/fed-last-statement.html": {
+      "sha256": "b3977eb874e0edeb5d3d0eed5eba92622c4a9930b285702e88f97e83b750a3a1",
+      "bytes": 81213
+    },
+    "evidence/fed-last-statement.html.curl-meta.txt": {
+      "sha256": "6fdd64c0d6d5484c7d98ada4956b2ba62d504059c01557c19de774f4b0d663c2",
+      "bytes": 389
+    },
+    "evidence/fed-press-2026.html": {
+      "sha256": "1f74c9723b43d6e1aab5b3fc74f0ac149c1cecb1dee0c4f41a99db79aa86db1a",
+      "bytes": 152261
+    },
+    "evidence/fed-press-2026.html.curl-meta.txt": {
+      "sha256": "155606f9503f7fe3e6875dc32cb6b0a0ab3c86b28025abc162fde8a6fefbd5fc",
+      "bytes": 376
+    },
+    "evidence/fed-press.xml": {
+      "sha256": "b95d76bc188bdbbc49ccc436cee436d7a3b69eaf98e8257af441372b396f6fa3",
+      "bytes": 14620
+    },
+    "evidence/fed-press.xml.curl-meta.txt": {
+      "sha256": "75058c52d615551bf1da8fb3f5bd0f82e5aba511e975c05d8e8d821faa804a3a",
+      "bytes": 334
+    },
+    "evidence/fed-speeches-2026.html": {
+      "sha256": "575d57d2670e678365e9e6300b9d3b02faf6f56a4dfb3eddd7127a32fcedff46",
+      "bytes": 133862
+    },
+    "evidence/fed-speeches-2026.html.curl-meta.txt": {
+      "sha256": "c1f8cc915d3e85512d7678eb860318892b16557ebd779a8c22b9b6dc339621c3",
+      "bytes": 368
+    },
+    "evidence/fed-speeches.xml": {
+      "sha256": "370595f49a80d3814951ccf74dbe74423f5c5844acd077727997a7664b199ed8",
+      "bytes": 9738
+    },
+    "evidence/fed-speeches.xml.curl-meta.txt": {
+      "sha256": "7528e19349e9ce9675128fdbc485de4c9d7ba1d864ea7a304942d4e9b1d44add",
+      "bytes": 331
+    },
+    "evidence/fed-testimony.xml": {
+      "sha256": "77fb2cfab34560d077485280233bdde36ea9a4bc56b9fbb8db05f91368c867cf",
+      "bytes": 9491
+    },
+    "evidence/fed-testimony.xml.curl-meta.txt": {
+      "sha256": "f7c054eca0dec2927b8db9ae9d28d83de999488159b9cf9f2c4bff8735df2db2",
+      "bytes": 333
+    },
+    "evidence/fed-waller.html": {
+      "sha256": "fa1a11a771af6d395d314a55604f72c2d904176d60b032c44812b0741b969e1e",
+      "bytes": 98411
+    },
+    "evidence/fed-waller.html.curl-meta.txt": {
+      "sha256": "7f9946a39c32571d703d73eed971aa1b5a14c9a51ba991b2d64c79bee78feaf1",
+      "bytes": 371
+    },
+    "evidence/fed-warsh.html": {
+      "sha256": "d5f178a9b398405be94a107ea5489fa871f304229b7461903c1136c376e8d83a",
+      "bytes": 113630
+    },
+    "evidence/fed-warsh.html.curl-meta.txt": {
+      "sha256": "7f15fe0acae4230e03de3318f4feb6b97da118c4a306250f8b22fd231e8fc3ba",
+      "bytes": 370
+    },
+    "evidence/feedback-recollection-summary.json": {
+      "sha256": "ee200366d12ea272ef0e9f767a2a491da819682adbd2ee6f0f1b0fb1a18ac642",
+      "bytes": 1964
+    },
+    "evidence/fomc-calendar.html": {
+      "sha256": "a0af6c7d13b1ca8d91a036b7034512545a82c1366a09d40e2550ecfeab2b220c",
+      "bytes": 164831
+    },
+    "evidence/fomc-calendar.html.curl-meta.txt": {
+      "sha256": "b3e94c7831b7c691ddd03f203e106f53c787e8aab9566338195a6b255aa59200",
+      "bytes": 362
+    },
+    "evidence/fxstreet-boc-decision-detail.json": {
+      "sha256": "50ed8b40f7723358134a8d4d27021e92997aec584ad2796068e9601e9448036f",
+      "bytes": 2138
+    },
+    "evidence/fxstreet-boc-decision-detail.json.requests-meta.json": {
+      "sha256": "b027db0828033babd6d7ee57b39d2de88da7126f0197267587c671926cac6808",
+      "bytes": 796
+    },
+    "evidence/fxstreet-boc-decision.csv": {
+      "sha256": "466765ef6e23283dab21a3520824d4cbbc2229540fa78f90cf83691c962ba53a",
+      "bytes": 745
+    },
+    "evidence/fxstreet-boc-decision.csv.requests-meta.json": {
+      "sha256": "b5382b71df5f392e4e0b8c757c75b100a10b532a585a6049f33d37631e2fd429",
+      "bytes": 2075
+    },
+    "evidence/fxstreet-ca-gdp-annualized-detail.json": {
+      "sha256": "82c1ea8fa212e0dc61559132aa738a38041a7b15f290fda371cba9d0b6a02a98",
+      "bytes": 1781
+    },
+    "evidence/fxstreet-ca-gdp-annualized-detail.json.requests-meta.json": {
+      "sha256": "9ba12f49a0b9019361eba6e3fda48f3cd04dd0905b6dd2af4a0a433899acd3d7",
+      "bytes": 803
+    },
+    "evidence/fxstreet-ca-gdp-mom-detail.json": {
+      "sha256": "0bac18359e552df55aac3e135472323b3988a1b6badef460a64d6ef47cb9eee6",
+      "bytes": 1678
+    },
+    "evidence/fxstreet-ca-gdp-mom-detail.json.requests-meta.json": {
+      "sha256": "9c726d7b89ccf088da1ede00616050806d8e1ce93097cf07284041b07bf29e53",
+      "bytes": 798
+    },
+    "evidence/fxstreet-ca-gdp.csv": {
+      "sha256": "1c4886aebaafee2b08295cad933dd4fc161dff56c10abd838689acb5e2a2da94",
+      "bytes": 413
+    },
+    "evidence/fxstreet-ca-gdp.csv.requests-meta.json": {
+      "sha256": "3367c58d4790d05fb4910fbb71196c1221db6583dd7241d9386f89aec987102a",
+      "bytes": 2075
+    },
+    "evidence/fxstreet-ca-labour-detail.json": {
+      "sha256": "ff61dec92f36f519e73f1196a1cd56c37e898f0190eff2274d4fad3a2ca981e6",
+      "bytes": 2077
+    },
+    "evidence/fxstreet-ca-labour-detail.json.requests-meta.json": {
+      "sha256": "1af085ecc818858836d6bb7f8884da9d6c0ef05b8218442799326a41f95156c7",
+      "bytes": 794
+    },
+    "evidence/fxstreet-ca-labour.csv": {
+      "sha256": "f2e5f8dcc99a0cf0ce5c272e782f0e714e6477e49a5062afa41f24446227bc42",
+      "bytes": 930
+    },
+    "evidence/fxstreet-ca-labour.csv.requests-meta.json": {
+      "sha256": "59d141fd4eb9cdf15b4fe0eb3a66885a0843f230d29076e147adb4163f5aff49",
+      "bytes": 2075
+    },
+    "evidence/fxstreet-michigan-sentiment-detail.json": {
+      "sha256": "c5928108cb9571fbfedacd5e5d7a364895c06ae0e4146fb0cb7e6998d9f880ff",
+      "bytes": 2400
+    },
+    "evidence/fxstreet-michigan-sentiment-detail.json.requests-meta.json": {
+      "sha256": "8da17dc1ea870662a0aacebcca72912bc1d034df5e213d85bed21422ae1b37a4",
+      "bytes": 803
+    },
+    "evidence/fxstreet-michigan.csv": {
+      "sha256": "17bab1bd9958e91af32f684ddb07a187d9825146f4ffe78cbe8dfc6ed40352fc",
+      "bytes": 3255
+    },
+    "evidence/fxstreet-michigan.csv.requests-meta.json": {
+      "sha256": "e02027c4a250dc7f232b410b36b53e44630390875373b7789a39af4ba4a8070b",
+      "bytes": 2076
+    },
+    "evidence/fxstreet-uom-1y-detail.json": {
+      "sha256": "dd341638eb1eb69bb03e34483c22fef3c5be7851a8447a9163855f753d17af7b",
+      "bytes": 1370
+    },
+    "evidence/fxstreet-uom-1y-detail.json.requests-meta.json": {
+      "sha256": "7604c6f7545754770bdc75342cf16ae64b7bc1a4e1cbb564106a4886d611759f",
+      "bytes": 812
+    },
+    "evidence/ism-official.html": {
+      "sha256": "2b00e9ba5232405175ee282eb5bee399299c655c105edb7531500a5ffaa006dc",
+      "bytes": 922
+    },
+    "evidence/ism-official.html.curl-meta.txt": {
+      "sha256": "5ec9e56f0dd7fbaef6bcc32c0e6e2b12697bf13e24dc19f357e2928a6504ba90",
+      "bytes": 661
+    },
+    "evidence/market/%5ETNX.1d.json": {
+      "sha256": "0989d1f6e0b7cbb8b87bba34a808777bcea1305c79ca6e12bccd576836e96f56",
+      "bytes": 3362
+    },
+    "evidence/market/%5ETNX.1d.json.curl-meta.txt": {
+      "sha256": "ba46f708d937491d464c4427f00353d24360f059044a1fdc91cd1e44f92d2f0a",
+      "bytes": 483
+    },
+    "evidence/market/%5ETNX.1m.json": {
+      "sha256": "ed1b44574551ff8a99986c2da55acf05bed52e3f3ed8969587038cb29b7cb318",
+      "bytes": 167404
+    },
+    "evidence/market/%5ETNX.1m.json.curl-meta.txt": {
+      "sha256": "6188c09ba1fb18cdee4a82098913b2873f1b7e9c7a41d605783696f8b2319757",
+      "bytes": 483
+    },
+    "evidence/market/%5ETYX.1d.json": {
+      "sha256": "5ccc1e6cc39db7c0e70f28bb1b7ecfbb730637cd22e8283dbd3a8c284275d540",
+      "bytes": 3359
+    },
+    "evidence/market/%5ETYX.1d.json.curl-meta.txt": {
+      "sha256": "8df83328c743c9758f77d5a0238598ac45bf4b6a83d7541de0e1d0b5c7e9b7d8",
+      "bytes": 483
+    },
+    "evidence/market/%5ETYX.1m.json": {
+      "sha256": "b67f464f0651bc1b73c914112069c8bfb8091bb95572268164cf584568ffb4bf",
+      "bytes": 170492
+    },
+    "evidence/market/%5ETYX.1m.json.curl-meta.txt": {
+      "sha256": "083ec4685eeb2be7fd7a477a310d45fd085cc96e06864e9609fa318eec4d688a",
+      "bytes": 483
+    },
+    "evidence/market/CL%3DF.1d.json": {
+      "sha256": "50c49e8cdb00e44c5c9b5027616cfe245161f6f57fcada5d27c833e61f798550",
+      "bytes": 3435
+    },
+    "evidence/market/CL%3DF.1d.json.curl-meta.txt": {
+      "sha256": "8a012cac0ef03b8eaeaab5f68aca1f300710753c3e9d3b35a1a65308e9739365",
+      "bytes": 483
+    },
+    "evidence/market/CL%3DF.1m.json": {
+      "sha256": "28af4db40911b7048ec806ac6ba94b3dbfcc671c0827eeab0db5c2b40178ca55",
+      "bytes": 446919
+    },
+    "evidence/market/CL%3DF.1m.json.curl-meta.txt": {
+      "sha256": "fc69745a49421eab4d2c4a27640d178108bbfa8bc78bd81ab0a8ab2bb0628f26",
+      "bytes": 483
+    },
+    "evidence/market/GLD.1d.json": {
+      "sha256": "3d093ae1cc522a6d26f260f098cb5f7e1f4ffdee8888d1b75a840b4a7a6451ad",
+      "bytes": 3447
+    },
+    "evidence/market/GLD.1d.json.curl-meta.txt": {
+      "sha256": "6c2eaa50ae1309c2a71ee4c74362536ef46361839b8f7b3cd985a908d7cb5c6f",
+      "bytes": 477
+    },
+    "evidence/market/GLD.1m.json": {
+      "sha256": "995d929bc0c38668815382a4d2d8486c4ac935842030b8854d107eb3bab70fc8",
+      "bytes": 172154
+    },
+    "evidence/market/GLD.1m.json.curl-meta.txt": {
+      "sha256": "580a7ddef1a76230bb0b3332f1c0e634830e50bce2fec8fa94b85e26086fd590",
+      "bytes": 477
+    },
+    "evidence/market/IWM.1d.json": {
+      "sha256": "f9398632dd10729db3ae35a8a34a026c14a3139b33797a2393cf095182d644ad",
+      "bytes": 3542
+    },
+    "evidence/market/IWM.1d.json.curl-meta.txt": {
+      "sha256": "90e139571a5f92df9e44025a20407a74e5855ee3d426aebcda204691c83f69a7",
+      "bytes": 477
+    },
+    "evidence/market/IWM.1m.json": {
+      "sha256": "1a725ce8ac51595e36a2af0a5644929d4f4cc4ea892ed844d438bf89e18c667b",
+      "bytes": 173226
+    },
+    "evidence/market/IWM.1m.json.curl-meta.txt": {
+      "sha256": "eed467e0756b9a702520082fdac9a42d97aff82293c764f12548632f9514c7cf",
+      "bytes": 477
+    },
+    "evidence/market/QQQ.1d.json": {
+      "sha256": "bf761fe86f68f1e1538462013e841cc534a847b17d706535501f4ab8a6e3a9e5",
+      "bytes": 3483
+    },
+    "evidence/market/QQQ.1d.json.curl-meta.txt": {
+      "sha256": "7d0d470fd37f90d6f31af27a50a2b3b1fcfc5591747bf90677f17be3a856480e",
+      "bytes": 477
+    },
+    "evidence/market/QQQ.1m.json": {
+      "sha256": "74e11f9049030391553a556c6183ff8381ebc33be8133cd5efaaeb8c7e329abf",
+      "bytes": 169657
+    },
+    "evidence/market/QQQ.1m.json.curl-meta.txt": {
+      "sha256": "4b3614c81cf2b55f63ce95152ee4e814b46fab1c0ebb4db9c6455a96afeca215",
+      "bytes": 477
+    },
+    "evidence/market/SPY.1d.json": {
+      "sha256": "ab6cd9a186c2eafd8cf4a511666b9150549bc27ab8c523153497f855c9c910a4",
+      "bytes": 3452
+    },
+    "evidence/market/SPY.1d.json.curl-meta.txt": {
+      "sha256": "2696302ddf91093e1f83e2edce6c2f4e0b03795e8a8630a82270c00d3698fd5d",
+      "bytes": 477
+    },
+    "evidence/market/SPY.1m.json": {
+      "sha256": "2dd7a189ff08451a8a1f29ccdb1543fa460743d216c4ee43b4d0638a645dd816",
+      "bytes": 169685
+    },
+    "evidence/market/SPY.1m.json.curl-meta.txt": {
+      "sha256": "8153811c91bb9587d6257ffb4d059f56337383a40a87f59c605e16005eb9920a",
+      "bytes": 477
+    },
+    "evidence/market/TLT.1d.json": {
+      "sha256": "a4063bf5cf4fb9de061c3f90bd0d12fb0abe3b2ff2d886f9a90b7e53e0451c15",
+      "bytes": 3450
+    },
+    "evidence/market/TLT.1d.json.curl-meta.txt": {
+      "sha256": "4e24d6d2b96e3547639b7315598cac5cb1da014904126b2af5b491ea5a67eb65",
+      "bytes": 477
+    },
+    "evidence/market/TLT.1m.json": {
+      "sha256": "95ed3e1ce3c317a0969a0f56b4cb29a4387d8426375c1ce6c98f857fd33a8fbb",
+      "bytes": 170988
+    },
+    "evidence/market/TLT.1m.json.curl-meta.txt": {
+      "sha256": "df57a36d1be52fb27c217c15ec0265e62cb35dd8b7d275b72a620ea554b0f426",
+      "bytes": 477
+    },
+    "evidence/market/XLE.1d.json": {
+      "sha256": "cfe8df92bfde37f55b286b65be6a03942a39d8c8173e56367af7c4176c757d6d",
+      "bytes": 3494
+    },
+    "evidence/market/XLE.1d.json.curl-meta.txt": {
+      "sha256": "38f68ecac7332a5589ca46f4eb976c7cd706ab32e6cb451349682579ef1aa3cb",
+      "bytes": 477
+    },
+    "evidence/market/XLE.1m.json": {
+      "sha256": "3dca75828ad09179089288f8407660c4dd10ea1b1df4b691cf0c3904ec8a0087",
+      "bytes": 170952
+    },
+    "evidence/market/XLE.1m.json.curl-meta.txt": {
+      "sha256": "1d03e433464952391ccbe6b63c461565b130c78f97e3368815353853dbd07f42",
+      "bytes": 477
+    },
+    "evidence/market/XLF.1d.json": {
+      "sha256": "a1aa416ab68609bd3ad5802e6757fca514d4358463b3574adc2a26e0c3c9b7c4",
+      "bytes": 3519
+    },
+    "evidence/market/XLF.1d.json.curl-meta.txt": {
+      "sha256": "beed13c53f2b49531d531ac7562cb55ece7abe4fda51f47cf90acc378b734aa7",
+      "bytes": 477
+    },
+    "evidence/market/XLF.1m.json": {
+      "sha256": "b7e9188e3a249e498005dffc4502acdcf44533740a191e277cd4d3bf28501988",
+      "bytes": 174305
+    },
+    "evidence/market/XLF.1m.json.curl-meta.txt": {
+      "sha256": "792803c89e15ce088f78e3c9fd9574c03aeebcf24e8845970fe2cfb80662ed79",
+      "bytes": 477
+    },
+    "evidence/market/XLI.1d.json": {
+      "sha256": "79eb2bb63b06b8664b389c4f8176c5c159ac0e166cb393a117433664e7d2eac7",
+      "bytes": 3542
+    },
+    "evidence/market/XLI.1d.json.curl-meta.txt": {
+      "sha256": "122fcd6de1df4e5ac8c94f8aaaa9936bb6395e6a7b512c5ab54219079c2d643a",
+      "bytes": 477
+    },
+    "evidence/market/XLI.1m.json": {
+      "sha256": "4d916a45bd33a7c6d06e1857861bf05fac4134c7f6010006b69f3418ba847d1f",
+      "bytes": 175661
+    },
+    "evidence/market/XLI.1m.json.curl-meta.txt": {
+      "sha256": "be9d0a1d7ceba63afed4ca750890a1439647f5ab9f24080e2314ca0b454d2e8d",
+      "bytes": 477
+    },
+    "evidence/market/XLU.1d.json": {
+      "sha256": "b716187f7bc3ceb339d58abc7f4cee07c2aafa885919daac05c836ebb0ca408f",
+      "bytes": 3487
+    },
+    "evidence/market/XLU.1d.json.curl-meta.txt": {
+      "sha256": "7e6812c5a9a5d523d35631a2a3479ca23c84a46be29ad38519ca985853bcb392",
+      "bytes": 477
+    },
+    "evidence/market/XLU.1m.json": {
+      "sha256": "fc99f67c6f55edde58a4ea6d54d96d7859740e0c08e61e7d4ee1cef6f95e252f",
+      "bytes": 174135
+    },
+    "evidence/market/XLU.1m.json.curl-meta.txt": {
+      "sha256": "2c85b2175738c6107036bdcab75ea63e262b222f9d4ed63ed6e5f710b30693f1",
+      "bytes": 477
+    },
+    "evidence/market/ZEB.TO.1d.json": {
+      "sha256": "39dce49b00767bc1cff131479782db4f427d49b40a6bce134c26b039c8f01e34",
+      "bytes": 3297
+    },
+    "evidence/market/ZEB.TO.1d.json.curl-meta.txt": {
+      "sha256": "412f2b0597c6c0eca5b258b72c873e05951f942159ebef79073d129ea4ee147b",
+      "bytes": 483
+    },
+    "evidence/market/ZEB.TO.1m.json": {
+      "sha256": "c878ff8bcc346297eca53370adc437c875e9d15e1631070bd555fe3b5c5798c5",
+      "bytes": 146641
+    },
+    "evidence/market/ZEB.TO.1m.json.curl-meta.txt": {
+      "sha256": "e6149d60aed7ff616b1e724b64157ed5656354d0fdfe54b36df998fc613446e0",
+      "bytes": 483
+    },
+    "evidence/market/ZQU26.CBT.1d.json": {
+      "sha256": "511ed23c9d54fc33d7d1ab2b0f9c38e81f48b2ad170b8126f3c7230a8a6cdedf",
+      "bytes": 3557
+    },
+    "evidence/market/ZQU26.CBT.1d.json.curl-meta.txt": {
+      "sha256": "5ccfd34b7a60b3acd1820d9c37b75300819fb3ed32b7c3969972935b3e68bfb8",
+      "bytes": 489
+    },
+    "evidence/market/ZQU26.CBT.1m.json": {
+      "sha256": "360dad8b3ce833e632bccb2a9650e0a5add71e0fa4f17d4f4aa363740190f2cc",
+      "bytes": 264334
+    },
+    "evidence/market/ZQU26.CBT.1m.json.curl-meta.txt": {
+      "sha256": "90b715f79cfc35c6c7f37a452a8721205b74069c741b7566fdd91838f15056b4",
+      "bytes": 489
+    },
+    "evidence/market/ZQV26.CBT.1d.json": {
+      "sha256": "b3364ba26f351d7951e2726bbe0718dbdb391ab14d5d576b76b352b1c8159213",
+      "bytes": 3444
+    },
+    "evidence/market/ZQV26.CBT.1d.json.curl-meta.txt": {
+      "sha256": "65b1d6b323fe2d4209f4d145bd8089058ac2b1b67f55e9b716946181256245db",
+      "bytes": 489
+    },
+    "evidence/market/ZQV26.CBT.1m.json": {
+      "sha256": "cec5fc9b3b0f907edf970b355978fb981101bd201490f44ffde3138fb7a69361",
+      "bytes": 273237
+    },
+    "evidence/market/ZQV26.CBT.1m.json.curl-meta.txt": {
+      "sha256": "cd767e42d402b4c4197c4a7ef15d0d5c2342802207cf2aac8f53d6cb8ed5cc70",
+      "bytes": 489
+    },
+    "evidence/market/ZQX26.CBT.1d.json": {
+      "sha256": "dedf28ce6c635c0e9871644cd4ddd0f30beb596bcedc49c94575b08c6fc8bf53",
+      "bytes": 3496
+    },
+    "evidence/market/ZQX26.CBT.1d.json.curl-meta.txt": {
+      "sha256": "403bbe666c7a17ac0ea84cf51324365f4cec81c311b192b64fcc40e74c9cf7a3",
+      "bytes": 489
+    },
+    "evidence/market/ZQX26.CBT.1m.json": {
+      "sha256": "202710b4314947d025d3f70db43fee498f633bebe2ebfa96c4505faa32f6d599",
+      "bytes": 277559
+    },
+    "evidence/market/ZQX26.CBT.1m.json.curl-meta.txt": {
+      "sha256": "041797620a900f755574b66aee18a568071ecb2910bc414026a102c16c8c0825",
+      "bytes": 489
+    },
+    "evidence/michigan.html": {
+      "sha256": "7b5edef277e3631fada319d2451299d3324ce83082620aa4c437e794b3f93987",
+      "bytes": 6803
+    },
+    "evidence/michigan.html.curl-meta.txt": {
+      "sha256": "c5d81b80753561214539124906e61f03bd1b56b1ad80aa787a0924e872f80dba",
+      "bytes": 309
+    },
+    "evidence/nyfed-empire-overview.html": {
+      "sha256": "22698750bf0d1e750065e0a16cafcc81957eb7deccd93392453873262707ed8f",
+      "bytes": 131719
+    },
+    "evidence/nyfed-empire-overview.html.curl-meta.txt": {
+      "sha256": "f46f51b093fe2d387d7615e8eaa896a0406af8026405aa2d584e1f9660dbe727",
+      "bytes": 375
+    },
+    "evidence/statcan-cpi.html": {
+      "sha256": "a0bda8b8017c21932b3cc2bc7aeb737c66c65a9e7f2c5f264b73c759ca87f2d5",
+      "bytes": 34612
+    },
+    "evidence/statcan-cpi.html.curl-meta.txt": {
+      "sha256": "4dc2c45d0b6d2a8365ec4333a6511906494bb6780f596d86bdc9f16c39d72828",
+      "bytes": 394
+    },
+    "evidence/statcan-gdp-industry.html": {
+      "sha256": "0536195662c1ed9e12cac08288b502f76f072e4547c98cc8b20d1a3cfe5d6471",
+      "bytes": 42722
+    },
+    "evidence/statcan-gdp-industry.html.curl-meta.txt": {
+      "sha256": "1bba046c1055f2f14564b6259cc9985c5801bd727ce4a5381ac25170b4e1fe63",
+      "bytes": 394
+    },
+    "evidence/statcan-gdp.html": {
+      "sha256": "e14319b0610632df7d8f0394f9ca899e3cea9898d427ccbb853a9e32397560cf",
+      "bytes": 45568
+    },
+    "evidence/statcan-gdp.html.curl-meta.txt": {
+      "sha256": "d12b495bf3cc826c0662d92d95f3a2a16e9092e67d050eee9018cda6a66b35b1",
+      "bytes": 394
+    },
+    "evidence/statcan-lfs.html": {
+      "sha256": "c392f09c91d29b4596dc826c1324e2d2099624a019f63e79eb7b9bf84c6035f8",
+      "bytes": 73283
+    },
+    "evidence/statcan-lfs.html.curl-meta.txt": {
+      "sha256": "cc66cfce946b23c90ea8db29924c93be6726826ed88c1c450caf050570d90a72",
+      "bytes": 394
+    },
+    "evidence/statcan-rents-q1.html": {
+      "sha256": "4e7828e4bac796301f4fbbe204df03a02bbcb3cfa4856de56cba0f6c085a0b84",
+      "bytes": 23260
+    },
+    "evidence/statcan-rents-q1.html.curl-meta.txt": {
+      "sha256": "60e1ed540b43a862f1cdd1c4e7be9d52ab394aae40f8c6a790fb97da64dbf9e9",
+      "bytes": 394
+    },
+    "evidence/statcan-rents.html": {
+      "sha256": "1a4dd343a491e614d766c1483a949bbb08d6a3388a187ff52dedd687f53a111b",
+      "bytes": 27915
+    },
+    "evidence/statcan-rents.html.curl-meta.txt": {
+      "sha256": "87f4c73c1282096b20f4f04a916fc03048034ae3791ff80c73d062b9dd4d42ef",
+      "bytes": 394
+    },
+    "evidence/te-adp.html": {
+      "sha256": "9dd56fc2aea8fcaf87b283aa9aaf3c7af53ad57cbaf7b42ea50092e8ffd4b302",
+      "bytes": 358962
+    },
+    "evidence/te-adp.html.curl-meta.txt": {
+      "sha256": "ff80b33653358042e126ae5cb05ba183bf75ae2f4245b23f1e8a6e0f83c8674c",
+      "bytes": 379
+    },
+    "evidence/te-empire-alt.html": {
+      "sha256": "20dcbeeba04c69eeef29fbb7c95d978f84443a67979e422612f17f822f0ce935",
+      "bytes": 322424
+    },
+    "evidence/te-empire-alt.html.curl-meta.txt": {
+      "sha256": "71f3364b5eef04f61ce3f2e4f54c9dd8df8d2679ee5e792206986a74154b7280",
+      "bytes": 419
+    },
+    "evidence/te-empire.html": {
+      "sha256": "291fb069d0463b8fb4cfcafe722055deff777fb8d1600a5d4dba8d8de2975396",
+      "bytes": 356010
+    },
+    "evidence/te-empire.html.curl-meta.txt": {
+      "sha256": "2fe0d33021d932168ceecdecb9ec2ecba1a75b928902c38ed338eba376f00765",
+      "bytes": 407
+    },
+    "evidence/te-ism.html": {
+      "sha256": "718227abdc293e6af2c194912c514de18ddc6612ee2e9c223972688b6d588e42",
+      "bytes": 346358
+    },
+    "evidence/te-ism.html.curl-meta.txt": {
+      "sha256": "9f67b415098c98aa1cd6b16e6e16f7b8c5e2631237385509d71530ba59c263e4",
+      "bytes": 379
+    },
+    "evidence/te-ivey-business-confidence.html": {
+      "sha256": "b3cc83be66ef0bb333cadd5283850153709ec9338e0624d531a47ca7558d1c64",
+      "bytes": 308877
+    },
+    "evidence/te-ivey-business-confidence.html.curl-meta.txt": {
+      "sha256": "42ff426bd5f35e6aac69ea596b39b051144f4787bd71aca232374d2faaf7537a",
+      "bytes": 361
+    },
+    "evidence/te-ivey-news-581356.html": {
+      "sha256": "ce9cd15a3902d59e598a2dac408be44c878299de179d76e7b628f87d251eef52",
+      "bytes": 182979
+    },
+    "evidence/te-ivey-news-581356.html.curl-meta.txt": {
+      "sha256": "6ffdfde737e9d8062139ed4260f1b456248b4d4f00ceff0c9bd460d38c8ca27a",
+      "bytes": 385
+    },
+    "evidence/tradingeconomics-calendar.html": {
+      "sha256": "d88f1d64e995349601213182a1993a303f097e8705ec0453b91eba0b9addad86",
+      "bytes": 1556198
+    },
+    "evidence/tradingeconomics-calendar.html.curl-meta.txt": {
+      "sha256": "21a35a6c7641956b0a7ba5aeaaa03a4bb5e7eaf09603806d8486f6e66bd0ffdb",
+      "bytes": 326
+    }
+  },
+  "review_request": "Act as a fresh independent P&L-owning PM. Verify the exact candidate SHA-256 and every evidence-manifest hash and byte count first. The highest-priority contract is the open 2026-09-15 feedback: field-check all five required recollections (Michigan sentiment consensus 51.0 / previous 51.7; Canada labour -41.7k / +15.0k / +75.1k reconciled with the official -42k headline; Q1 asking-rent prior C$2,150 / -0.9%; June GDP +0.2% MoM / +3.4% annualized consensus; BoC Sep 2 'Hold 2.25%' consensus) against the frozen FXStreet occurrence records and the provenance blocks. Recheck the CL=F displayed-base arithmetic, the Fed ZQ/EFFR proxy solve and its exact interpolation, the CRAU26 quote row and pre-open liquidity labels, official Fed/BoC facts, blocked-source labels, the completed-Sep-15 cash-session market strip, the refreshed forward calendar, and the tracker-repo feedback invariants (neutral blocked-BLS titles at zero weight; exact CRA row fields). Write only schema-valid review/fed-boc/2026-09-16/iteration-01/pm-review.json; approval must be unconditional and exact-byte-bound."
+}

@@ -1,0 +1,10 @@
+requested_at_toronto=2026-09-16T05:08:56-04:00
+requested_url=https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html
+http_code=403
+url_effective=https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html
+size_download=602
+time_total=0.107399
+content_type=application/json
+curl_exit=0
+curl_error=
+completed_at_toronto=2026-09-16T05:08:56-04:00

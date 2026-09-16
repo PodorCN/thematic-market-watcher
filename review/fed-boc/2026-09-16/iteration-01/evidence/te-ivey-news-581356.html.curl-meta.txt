@@ -1,0 +1,10 @@
+requested_at_toronto=2026-09-16T05:08:57-04:00
+requested_url=https://tradingeconomics.com/canada/business-confidence/news/581356
+http_code=200
+url_effective=https://tradingeconomics.com/canada/business-confidence/news/581356
+size_download=182979
+time_total=0.340320
+content_type=text/html; charset=utf-8
+curl_exit=0
+curl_error=
+completed_at_toronto=2026-09-16T05:08:57-04:00

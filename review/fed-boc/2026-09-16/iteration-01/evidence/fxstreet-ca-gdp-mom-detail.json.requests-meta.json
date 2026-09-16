@@ -1,0 +1,13 @@
+{
+  "requested_at_toronto": "2026-09-16T05:09:00-04:00",
+  "requested_url": "https://calendar-api.fxstreet.com/en/api/v1/eventDates/516030b5-f19c-42b3-a83c-2064e83ade9e",
+  "event_name": "Gross Domestic Product (MoM)",
+  "event_occurrence_id": "516030b5-f19c-42b3-a83c-2064e83ade9e",
+  "http_code": 200,
+  "url_effective": "https://calendar-api.fxstreet.com/en/api/v1/eventDates/516030b5-f19c-42b3-a83c-2064e83ade9e",
+  "size_download": 1678,
+  "content_type": "application/json; charset=utf-8",
+  "completed_at_toronto": "2026-09-16T05:09:00-04:00",
+  "sha256": "0bac18359e552df55aac3e135472323b3988a1b6badef460a64d6ef47cb9eee6",
+  "recollection_contract": "Exact occurrence detail was fetched to bind Actual/Forecast/Previous to a frozen source response for the open PM feedback."
+}

@@ -1,0 +1,44 @@
+{
+  "started_iteration": "2026-09-16/iteration-01",
+  "completed_at_toronto": "2026-09-16T05:08:58-04:00",
+  "source_count": 73,
+  "http_200": 68,
+  "http_non_200": [
+    {
+      "rel": "bls-cpi.html",
+      "http": "403",
+      "bytes": 1325,
+      "exit": 0,
+      "error": ""
+    },
+    {
+      "rel": "bls-jobs.html",
+      "http": "403",
+      "bytes": 1325,
+      "exit": 0,
+      "error": ""
+    },
+    {
+      "rel": "bls-jolts.html",
+      "http": "403",
+      "bytes": 1325,
+      "exit": 0,
+      "error": ""
+    },
+    {
+      "rel": "bls-ppi.html",
+      "http": "403",
+      "bytes": 1325,
+      "exit": 0,
+      "error": ""
+    },
+    {
+      "rel": "cme.html",
+      "http": "403",
+      "bytes": 602,
+      "exit": 0,
+      "error": ""
+    }
+  ],
+  "curl_nonzero": []
+}

@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0",
+  "status": "open",
+  "reviewed_at": "2026-09-14T13:49:38-04:00",
+  "candidate_sha256": "f7accc9e3dc15d46fd69b7308dfce17c7757f405b7182b14ec02d5c8c8fc0066",
+  "review_sha256": "5dc078191657f57fe60f99cda7c0f007e348935ca2ab0edd5437b40f33fe0b56",
+  "source_review": "review/fed-boc/2026-09-14/iteration-05/pm-review.json",
+  "executive_summary": "Revise. The frozen candidate digest and all 61 iteration-05 evidence digests match, official Fed/BoC meeting facts and the Fed proxy arithmetic reproduce, and the CRAU26 horizon is correctly caveated. It is not yet safe for P&L use because the Canada CPI Actual/Forecast/Previous fields mix different measures, two refreshed market drivers retain stale observation timestamps, and two displayed market returns cannot be reproduced from the displayed prices without relying on hidden raw values.",
+  "failed_checks": [
+    "decision_usefulness",
+    "drivers",
+    "freshness",
+    "market_validation",
+    "pricing"
+  ],
+  "findings": [
+    {
+      "severity": "major",
+      "field": "drivers.boc.hawkish[id=boc_hawk_cpi_20260914].data.actual/forecast/previous",
+      "issue": "The new Canada CPI driver does not provide aligned Actual/Forecast/Previous values for the same series and unit. Actual combines headline YoY, CPI excluding gasoline YoY, and seasonally adjusted headline MoM; Forecast combines headline YoY with legacy-core MoM; Previous combines headline YoY, ex-gas YoY, and legacy-core YoY.",
+      "evidence": "The candidate fields at lines 521-527 mix 3.0% headline YoY, 2.4% ex-gas YoY, SA headline +0.2% MoM, headline forecast 3.0% YoY, legacy-core forecast +0.2% MoM, and legacy-core previous 2.3% YoY. Official StatCan evidence/statcan-cpi.html confirms headline 3.0% YoY, ex-gas 2.4% YoY and SA +0.2% MoM, while facts.json and the calendar provide separate FXStreet tuples: headline YoY 3.0/3.0/3.0, headline MoM -0.1/0.0/0.5, and core MoM 0.1/0.2/0.2.",
+      "pnl_impact": "A reader can interpret the card as a clean core-inflation beat even though its A/F/P columns compare different series and frequencies. That can bias BoC front-end, CAD and Canadian duration positioning toward a false surprise magnitude.",
+      "instruction": "Rebuild the CPI card with separate explicitly named aligned series, each containing its own Actual, Forecast and Previous: for example headline YoY 3.0/3.0/3.0, headline MoM -0.1/0.0/0.5, and core MoM 0.1/0.2/0.2. Keep ex-gas 2.4 versus 2.2 as a separate official breadth/context metric, label the source and units for every tuple, recalculate the rationale and 1.0 weight from the aligned evidence, and update the immutable candidate hash and handoff mapping."
+    },
+    {
+      "severity": "major",
+      "field": "drivers.fed.hawk_long_end_20260831 and drivers.boc.hawk_oil_20260821 observed_at_toronto",
+      "issue": "Both drivers contain refreshed Sep 14 intraday actuals but retain Sep 11 16:00 observed_at_toronto values. The displayed reading timestamp therefore does not identify the observation used in data, and the front-end freshness decay treats the current reading as older than it is.",
+      "evidence": "The long-end card says actual 10Y/30Y Sep 14 intraday at line 197 and cites source observations at 2026-09-14T13:18:42, but observed_at_toronto remains 2026-09-11T16:00:00 at line 209. The WTI card says actual 101.99 at 2026-09-14T13:23:44 at line 430 and source_observed_at_toronto is Sep 14 at line 440, but observed_at_toronto remains Sep 11 16:00 at line 438. The repository driver contract requires observed_at_toronto to be the timestamp of the reading in data.",
+      "pnl_impact": "Stale age decay understates the current rate/oil signal and misstates chronology at the exact pre-FOMC/BoC decision window. A PM can assign the wrong relative weight or infer that the cited market move was known earlier than it was.",
+      "instruction": "For each refreshed market driver, set observed_at_toronto to the exact bar timestamp used for the actual field, while preserving published_at_toronto as the first-entry timestamp. Re-evaluate side, weight, title, reason and any downstream rope totals after the timestamp correction; run econ.driver_quality.check_payload and freeze a new candidate."
+    },
+    {
+      "severity": "major",
+      "field": "market.tickers[ XLF/TLT ].price, chg_1d, chg_1w",
+      "issue": "The XLF and TLT percentage changes reproduce from raw_price but not from the displayed price field. The dashboard's visible price therefore creates a material arithmetic inconsistency unless the reader knows to use an undocumented hidden precision basis.",
+      "evidence": "Independent recomputation from candidate values gives XLF displayed-price 1d -0.5415% and weekly -1.9966%, versus claimed -0.5502% and -2.0052%; raw_price 56.9350013733 reproduces the claims. TLT displayed-price 1d +0.3833% and weekly -1.2529%, versus claimed +0.3771% and -1.2590%; raw_price 81.1750030518 reproduces the claims. Other tickers are materially consistent. The candidate exposes both rounded price and raw_price but does not state that returns are calculated exclusively from raw_price.",
+      "pnl_impact": "A PM checking the dashboard or reconstructing a signal from the visible quote gets different returns, undermining trust in the market tape and potentially distorting event-window attribution for financials and duration proxies.",
+      "instruction": "Either display sufficient precision consistent with the return calculation or recompute and round all return fields from the displayed price using one documented convention. Add an explicit return-basis note, update labels and raw/display fields consistently, then re-run every ticker arithmetic assertion before submitting a new immutable candidate."
+    },
+    {
+      "severity": "major",
+      "field": "drivers.fed.hawk_long_end_20260831 and drivers.boc.hawk_oil_20260821 market-data driver admission",
+      "issue": "The two market-price cards are being used as rope drivers while their titles and data are anchored to a single current intraday quote; the spec permits price drivers only with a stated transmission chain and a weeks-scale framing, not a single-day market observation presented as persistent macro evidence.",
+      "evidence": "The long-end reason cites Sep 14 intraday and Sep 11 close, and the WTI reason cites Sep 14 intraday and Sep 11/Sep 4 closes. The backend specification requires market drivers to use a describable chain and weeks rather than single-day closes, and says a market move must not be used as self-validation of the policy view. The candidate supplies no independent multi-week trend statistic or event-neutral fundamental source for either rope entry.",
+      "pnl_impact": "Including contemporaneous prices in the rope can double-count the same market information already shown in pricing/market validation and create false confirmation of the hawkish stance, leading to procyclical rates, CAD or energy exposure.",
+      "instruction": "Rebuild these entries as either independent multi-week fundamental drivers with explicit transmission evidence and a separate market-validation field, or remove them from drivers and retain the observations only in market context. Do not let current price direction determine the rope side or weight; re-evaluate the full Fed/BoC driver balance after the change."
+    }
+  ],
+  "required_recollection": [
+    "Rebuild the CPI card with separate explicitly named aligned series, each containing its own Actual, Forecast and Previous: for example headline YoY 3.0/3.0/3.0, headline MoM -0.1/0.0/0.5, and core MoM 0.1/0.2/0.2. Keep ex-gas 2.4 versus 2.2 as a separate official breadth/context metric, label the source and units for every tuple, recalculate the rationale and 1.0 weight from the aligned evidence, and update the immutable candidate hash and handoff mapping.",
+    "For each refreshed market driver, set observed_at_toronto to the exact bar timestamp used for the actual field, while preserving published_at_toronto as the first-entry timestamp. Re-evaluate side, weight, title, reason and any downstream rope totals after the timestamp correction; run econ.driver_quality.check_payload and freeze a new candidate.",
+    "Either display sufficient precision consistent with the return calculation or recompute and round all return fields from the displayed price using one documented convention. Add an explicit return-basis note, update labels and raw/display fields consistently, then re-run every ticker arithmetic assertion before submitting a new immutable candidate.",
+    "Rebuild these entries as either independent multi-week fundamental drivers with explicit transmission evidence and a separate market-validation field, or remove them from drivers and retain the observations only in market context. Do not let current price direction determine the rope side or weight; re-evaluate the full Fed/BoC driver balance after the change."
+  ],
+  "operator_instructions": [
+    "Keep publication fail-closed; do not archive, commit, sync or publish this candidate.",
+    "Rebuild the entire candidate, not only prose: align Canada CPI A/F/P tuples by series and unit, correct refreshed driver observation timestamps, and resolve the XLF/TLT displayed-price return basis.",
+    "Remove or fundamentally reframe the two market-price rope drivers unless an independent weeks-scale transmission chain is persisted; re-evaluate all driver sides, weights and net balance after rebuilding.",
+    "Re-trigger the affected official StatCan, Yahoo market and driver-quality checks, update the PM handoff/evidence mapping, freeze a new immutable candidate, recompute candidate.sha256, and submit it to a fresh independent PM review."
+  ],
+  "next_run_contract": [
+    "Read this feedback before collecting or editing the next candidate.",
+    "Re-trigger collection for every affected source and claim.",
+    "Rebuild the whole internally consistent candidate; do not patch prose only.",
+    "Submit the rebuilt candidate to a fresh independent PM review.",
+    "Do not publish until an exact-byte-bound approved review passes the gate."
+  ]
+}

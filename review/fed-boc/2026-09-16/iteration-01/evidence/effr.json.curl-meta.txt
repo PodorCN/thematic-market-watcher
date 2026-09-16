@@ -1,0 +1,10 @@
+requested_at_toronto=2026-09-16T05:08:56-04:00
+requested_url=https://markets.newyorkfed.org/api/rates/unsecured/effr/last/5.json
+http_code=200
+url_effective=https://markets.newyorkfed.org/api/rates/unsecured/effr/last/5.json
+size_download=1432
+time_total=0.236303
+content_type=application/json;charset=utf-8
+curl_exit=0
+curl_error=
+completed_at_toronto=2026-09-16T05:08:56-04:00

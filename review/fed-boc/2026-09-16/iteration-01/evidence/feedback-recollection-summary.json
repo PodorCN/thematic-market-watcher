@@ -1,0 +1,65 @@
+{
+  "completed_at_toronto": "2026-09-16T05:09:00-04:00",
+  "results": [
+    {
+      "file": "fxstreet-michigan.csv",
+      "http": 200,
+      "bytes": 3255,
+      "sha256": "17bab1bd9958e91af32f684ddb07a187d9825146f4ffe78cbe8dfc6ed40352fc"
+    },
+    {
+      "file": "fxstreet-ca-labour.csv",
+      "http": 200,
+      "bytes": 930,
+      "sha256": "f2e5f8dcc99a0cf0ce5c272e782f0e714e6477e49a5062afa41f24446227bc42"
+    },
+    {
+      "file": "fxstreet-ca-gdp.csv",
+      "http": 200,
+      "bytes": 413,
+      "sha256": "1c4886aebaafee2b08295cad933dd4fc161dff56c10abd838689acb5e2a2da94"
+    },
+    {
+      "file": "fxstreet-boc-decision.csv",
+      "http": 200,
+      "bytes": 745,
+      "sha256": "466765ef6e23283dab21a3520824d4cbbc2229540fa78f90cf83691c962ba53a"
+    },
+    {
+      "file": "fxstreet-uom-1y-detail.json",
+      "http": 200,
+      "bytes": 1370,
+      "sha256": "dd341638eb1eb69bb03e34483c22fef3c5be7851a8447a9163855f753d17af7b"
+    },
+    {
+      "file": "fxstreet-michigan-sentiment-detail.json",
+      "http": 200,
+      "bytes": 2400,
+      "sha256": "c5928108cb9571fbfedacd5e5d7a364895c06ae0e4146fb0cb7e6998d9f880ff"
+    },
+    {
+      "file": "fxstreet-ca-labour-detail.json",
+      "http": 200,
+      "bytes": 2077,
+      "sha256": "ff61dec92f36f519e73f1196a1cd56c37e898f0190eff2274d4fad3a2ca981e6"
+    },
+    {
+      "file": "fxstreet-ca-gdp-annualized-detail.json",
+      "http": 200,
+      "bytes": 1781,
+      "sha256": "82c1ea8fa212e0dc61559132aa738a38041a7b15f290fda371cba9d0b6a02a98"
+    },
+    {
+      "file": "fxstreet-ca-gdp-mom-detail.json",
+      "http": 200,
+      "bytes": 1678,
+      "sha256": "0bac18359e552df55aac3e135472323b3988a1b6badef460a64d6ef47cb9eee6"
+    },
+    {
+      "file": "fxstreet-boc-decision-detail.json",
+      "http": 200,
+      "bytes": 2138,
+      "sha256": "50ed8b40f7723358134a8d4d27021e92997aec584ad2796068e9601e9448036f"
+    }
+  ]
+}

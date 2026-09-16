@@ -1,0 +1,13 @@
+{
+  "requested_at_toronto": "2026-09-16T05:09:00-04:00",
+  "requested_url": "https://calendar-api.fxstreet.com/en/api/v1/eventDates/b8da849e-3653-441c-b145-7f1356419ee0",
+  "event_name": "BoC Interest Rate Decision",
+  "event_occurrence_id": "b8da849e-3653-441c-b145-7f1356419ee0",
+  "http_code": 200,
+  "url_effective": "https://calendar-api.fxstreet.com/en/api/v1/eventDates/b8da849e-3653-441c-b145-7f1356419ee0",
+  "size_download": 2138,
+  "content_type": "application/json; charset=utf-8",
+  "completed_at_toronto": "2026-09-16T05:09:00-04:00",
+  "sha256": "50ed8b40f7723358134a8d4d27021e92997aec584ad2796068e9601e9448036f",
+  "recollection_contract": "Exact occurrence detail was fetched to bind Actual/Forecast/Previous to a frozen source response for the open PM feedback."
+}

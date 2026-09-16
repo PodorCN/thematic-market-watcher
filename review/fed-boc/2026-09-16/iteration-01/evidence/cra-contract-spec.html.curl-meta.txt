@@ -1,0 +1,10 @@
+requested_at_toronto=2026-09-16T05:08:56-04:00
+requested_url=https://www.m-x.ca/en/markets/interest-rate-derivatives/cra
+http_code=200
+url_effective=https://www.m-x.ca/en/markets/interest-rate-derivatives/cra
+size_download=57379
+time_total=0.446323
+content_type=text/html; charset=UTF-8
+curl_exit=0
+curl_error=
+completed_at_toronto=2026-09-16T05:08:56-04:00

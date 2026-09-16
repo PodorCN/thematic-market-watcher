@@ -1,0 +1,10 @@
+requested_at_toronto=2026-09-16T05:08:57-04:00
+requested_url=https://www.ismworld.org/supply-management-news-and-reports/reports/ism-report-on-business/services/september/
+http_code=200
+url_effective=https://ecommerce.ismworld.org/SSO/Login.aspx?DPLF=Y&vi=10&vt=44fbc149f468cc24f1c5cd007ed7593e428fd88fe518533ac2764e5eaefc279887a22b123def43138894e136285188b13b5a5a37cad07224c8a99ad55c8fa44bd5e30457657aa82a08bca2b82b5e8a5866d46aae9edb40e1967e1274c8611e50f30a088389322a596b0f146ef9a46125a1c83db6be543ff26686ec079a547f4e
+size_download=922
+time_total=0.632496
+content_type=text/html
+curl_exit=0
+curl_error=
+completed_at_toronto=2026-09-16T05:08:57-04:00

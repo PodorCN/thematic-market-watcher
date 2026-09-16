@@ -1,0 +1,10 @@
+requested_at_toronto=2026-09-16T05:08:55-04:00
+requested_url=https://www.federalreserve.gov/feeds/testimony.xml
+http_code=200
+url_effective=https://www.federalreserve.gov/feeds/testimony.xml
+size_download=9491
+time_total=0.132460
+content_type=text/xml
+curl_exit=0
+curl_error=
+completed_at_toronto=2026-09-16T05:08:56-04:00

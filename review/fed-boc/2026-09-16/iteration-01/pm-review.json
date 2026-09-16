@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "reviewer_role": "independent_portfolio_manager",
+  "reviewed_at": "2026-09-16T05:26:09-04:00",
+  "candidate_sha256": "bdfe271a495cbddce93e715a0599340040b3a967ef7ce80f6acaf4c3eb6deabb",
+  "verdict": "approved",
+  "executive_summary": "Approved unconditionally for P&L decision-support use and publication. The frozen candidate digest matches candidate.sha256 exactly and all 171 evidence artifacts match the handoff manifest SHA-256 and byte counts. The open 2026-09-15 feedback is fully remediated field-by-field against frozen evidence: Michigan sentiment consensus 51.0 / previous 51.7 and 1Y inflation 4.6/4.0 (FXStreet occurrence records with hashes, bytes and retrieval timestamps); Canada labour -41.7k / +15.0k / +75.1k explicitly reconciled with the official StatCan -42,000 headline; Q1 asking-rent prior C$2,150 / -0.9%; June GDP +0.2% MoM / +3.4% annualized consensus with the two official StatCan release URLs named separately; and the BoC Sep 2 'Hold 2.25%' matched-consensus record (2.25 = 2.25). The CL=F weekly return now reproduces from the displayed bases (105.84 / 93.03 - 1 = 0.137698), resolving the iteration-03 finding. The Fed ZQU26/EFFR proxy reproduces exactly from the stated overnight 04:49:10 ET bar, EFFR 3.63, the 16/14 day split and the explicit 3.38/3.63/3.88 endpoints (post-meeting 3.855001%; hold 0.099995 / hike 0.900005; displayed 0.00/0.10/0.90) and remains explicitly labelled as not CME. CRAU26 quote-row fields equal the frozen row exactly (volume 342, OI 234,718, 32 trades) with pre-open state labels, and single-meeting BoC probabilities remain null over the Oct 28 + Dec 9 span. The four blocked-BLS cards keep neutral access-status titles at zero weight, and the long-end/WTI tombstones contribute nothing to the ropes; every candidate evidence reference resolves inside this iteration-01 folder. Official Fed/BoC facts, all ten ticker and three context visible-price calculations, session freshness (completed Sep 15 cash session; pre-open Sep 16 assembly) and the forward calendar all re-verify. No material findings; safe to publish.",
+  "checks": {
+    "official_policy": "pass",
+    "pricing": "pass",
+    "drivers": "pass",
+    "market_validation": "pass",
+    "freshness": "pass",
+    "decision_usefulness": "pass"
+  },
+  "findings": [],
+  "pnl_risks": [
+    "Fed pricing is an EFFR-anchored Yahoo ZQU26 desk-implied proxy from the overnight 2026-09-16 04:49:10 ET bar, not a direct CME FedWatch single-meeting probability distribution; the endpoint and 16/14 day-count assumptions remain model-dependent.",
+    "BoC CRAU26 is an observable quarterly-average market over the Sep 16-Dec 16 reference quarter spanning the Oct 28 and Dec 9 decisions, so no Oct 28 single-meeting probability is inferred; the pre-open liquidity fields (342 volume / 32 trades) are partial quote-row state, not session totals.",
+    "Yahoo ETF, Treasury-yield, WTI and futures observations are indicative proxies rather than executable venue settlements; the long-end and WTI cards are explicitly zero-weighted and retained as context only.",
+    "Michigan consensus, ADP, ISM, Empire and Ivey values are labelled third-party records (FXStreet structured occurrence records / Trading Economics), with blocked or non-value official probes recorded separately; provider revisions can change these tuples.",
+    "Dated pre-open snapshot: today's FOMC decision and SEP at 14:00 ET, the BoC Summary of Deliberations at 13:30 ET, and subsequent data revisions can invalidate this snapshot after its as-of time."
+  ],
+  "operator_instructions": []
+}

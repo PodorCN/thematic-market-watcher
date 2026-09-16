@@ -1,0 +1,17 @@
+Fresh ad-hoc verification re-run for this turn — all green (exit 0). This is ad-hoc, focused verification, not a project test suite: pm-review.json is a data artifact with no canonical build/test command; the repo's own review-gate validator is included in the script as the closest canonical gate.
+
+Temp script (recreated under C:\Users\zixia\AppData\Local\Temp as hermes-verify-200deiok.py, run with the repo venv python, removed afterward — cleanup verified):
+
+- PASS pm-review.json sha256 stable vs recorded (ed516c277e2537479229fbee79664b8cc89b8179da44631d8c337c65e5832fe5 — artifact unchanged since its write)
+- PASS parses as strict JSON (3607 bytes)
+- PASS validates against review/fed-boc/pm-review.schema.json (jsonschema)
+- PASS candidate_sha256 binds to exact candidate.json bytes (bdfe271a495cbddce93e715a0599340040b3a967ef7ce80f6acaf4c3eb6deabb); candidate.sha256 agrees
+- PASS approved-shape contract (all checks pass, findings [], operator_instructions [])
+- PASS all 171 frozen evidence artifacts still match the handoff manifest sha256+bytes
+- PASS econ/validate_pm_review.py --require-approved → "PM REVIEW GATE PASS: verdict=approved ... sha256=bdfe271a..."
+- PASS immutability witness: pm-review.json is the newest file in the repo (excl .git/.venv/__pycache__) — nothing else modified
+
+VERDICT: approved
+PATH: D:/git/thematic-market-watcher/review/fed-boc/2026-09-16/iteration-01/pm-review.json
+
+No repo files were written this turn; the only file I have created in this session remains pm-review.json, bound to the frozen candidate digest bdfe271a495cbddce93e715a0599340040b3a967ef7ce80f6acaf4c3eb6deabb.

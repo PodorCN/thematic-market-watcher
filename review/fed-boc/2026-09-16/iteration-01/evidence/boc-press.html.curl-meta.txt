@@ -1,0 +1,10 @@
+requested_at_toronto=2026-09-16T05:08:56-04:00
+requested_url=https://www.bankofcanada.ca/press/
+http_code=200
+url_effective=https://www.bankofcanada.ca/press/
+size_download=158257
+time_total=0.155347
+content_type=text/html; charset=UTF-8
+curl_exit=0
+curl_error=
+completed_at_toronto=2026-09-16T05:08:56-04:00

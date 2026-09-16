@@ -1,0 +1,13 @@
+{
+  "requested_at_toronto": "2026-09-16T05:09:00-04:00",
+  "requested_url": "https://calendar-api.fxstreet.com/en/api/v1/eventDates/753fbcb0-8c05-47a5-953c-f07c841da271",
+  "event_name": "Gross Domestic Product Annualized",
+  "event_occurrence_id": "753fbcb0-8c05-47a5-953c-f07c841da271",
+  "http_code": 200,
+  "url_effective": "https://calendar-api.fxstreet.com/en/api/v1/eventDates/753fbcb0-8c05-47a5-953c-f07c841da271",
+  "size_download": 1781,
+  "content_type": "application/json; charset=utf-8",
+  "completed_at_toronto": "2026-09-16T05:09:00-04:00",
+  "sha256": "82c1ea8fa212e0dc61559132aa738a38041a7b15f290fda371cba9d0b6a02a98",
+  "recollection_contract": "Exact occurrence detail was fetched to bind Actual/Forecast/Previous to a frozen source response for the open PM feedback."
+}

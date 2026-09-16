@@ -1,0 +1,10 @@
+requested_at_toronto=2026-09-16T05:08:56-04:00
+requested_url=https://www150.statcan.gc.ca/n1/daily-quotidien/260914/dq260914a-eng.htm
+http_code=200
+url_effective=https://www150.statcan.gc.ca/n1/daily-quotidien/260914/dq260914a-eng.htm
+size_download=34612
+time_total=0.140581
+content_type=text/html; charset=UTF-8
+curl_exit=0
+curl_error=
+completed_at_toronto=2026-09-16T05:08:56-04:00

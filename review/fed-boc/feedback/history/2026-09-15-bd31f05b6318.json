@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0",
+  "status": "open",
+  "reviewed_at": "2026-09-15T03:25:08-04:00",
+  "candidate_sha256": "4a1af4d502899f5477b9d6791fd26318425b9e0102e42bd5973c43533f904826",
+  "review_sha256": "bd31f05b6318293976f8f199fd13a546acda4bb31323256cbce348239e5ac12e",
+  "source_review": "review/fed-boc/2026-09-15/iteration-02/pm-review.json",
+  "executive_summary": "Revise. The candidate digest and all 144 iteration-02 evidence-manifest entries reproduce exactly, and the iteration-01 Ivey and BoC source-label findings are otherwise remediated. However, both active CRA observable-proxy evidence_path fields still point to iteration-01 evidence whose CRAU26 row differs from the iteration-02 row used in the candidate. The pricing provenance therefore cannot reproduce the displayed current quote and the candidate is not safe for unconditional publication.",
+  "failed_checks": [
+    "decision_usefulness",
+    "freshness",
+    "pricing"
+  ],
+  "findings": [
+    {
+      "severity": "major",
+      "field": "meetings.boc.pricing.observable_proxy.evidence_path and meetings.boc.pricing.observable_proxy.active_session_liquidity_snapshot.evidence_path",
+      "issue": "The active CRAU26 quote fields in the iteration-02 candidate are attributed to an iteration-01 evidence artifact. That path is stale for this frozen snapshot: the referenced iteration-01 row has a different last price, volume, bid size, ask size, net change, high, and number of trades than the iteration-02 row used to populate the candidate.",
+      "evidence": "candidate.json records iteration-02 CRAU26 values last 97.6000, bid 97.5950 x 49, ask 97.6000 x 107, volume 217, net change 0, high 97.6000, low 97.5900 and 7 trades, observed at 2026-09-15T03:15:24-04:00, but both evidence_path fields point to review/fed-boc/2026-09-15/iteration-01/evidence/cra.html. The iteration-01 frozen CRA row records last 97.5950, bid 97.5950 x 20, ask 97.6000 x 175, volume 197, net change -0.005, high 97.5950 and 6 trades. The iteration-02 handoff manifest correctly hashes evidence/cra.html at 95,425 bytes, but its field-level mapping omits these two candidate evidence_path fields. The iteration-02 CRA meta records HTTP 200 and completion at 2026-09-15T03:15:24-04:00, and the iteration-02 evidence contains the current row, so this is a cross-iteration attribution error rather than a missing-source problem.",
+      "pnl_impact": "A PM following either active evidence_path would reproduce an older CRA quote rather than the displayed overnight quote and liquidity snapshot. That can distort confidence in the BoC front-end proxy, especially volume, spread, and trade-count interpretation, and makes the frozen pricing block non-auditable for P&L decisions.",
+      "instruction": "Rebuild the whole candidate with both active CRA evidence_path fields pointing to the iteration-02 artifact review/fed-boc/2026-09-15/iteration-02/evidence/cra.html, add those fields to the handoff field-level remediation/evidence mapping, and reassert every CRA row field against that artifact. Recompute candidate.sha256 and candidate.sha256 file content, then submit a fresh independent PM review; do not publish this candidate."
+    }
+  ],
+  "required_recollection": [
+    "Rebuild the whole candidate with both active CRA evidence_path fields pointing to the iteration-02 artifact review/fed-boc/2026-09-15/iteration-02/evidence/cra.html, add those fields to the handoff field-level remediation/evidence mapping, and reassert every CRA row field against that artifact. Recompute candidate.sha256 and candidate.sha256 file content, then submit a fresh independent PM review; do not publish this candidate."
+  ],
+  "operator_instructions": [
+    "Keep publication fail-closed; do not archive, commit, sync, or publish this candidate.",
+    "Correct both active CRA observable-proxy evidence_path fields and the handoff mapping to reference the iteration-02 CRA artifact, then revalidate every quote-row value and timestamp.",
+    "Rebuild the whole internally consistent candidate rather than patching prose only, recompute the candidate digest, and submit it to a fresh independent PM review."
+  ],
+  "next_run_contract": [
+    "Read this feedback before collecting or editing the next candidate.",
+    "Re-trigger collection for every affected source and claim.",
+    "Rebuild the whole internally consistent candidate; do not patch prose only.",
+    "Submit the rebuilt candidate to a fresh independent PM review.",
+    "Do not publish until an exact-byte-bound approved review passes the gate."
+  ]
+}

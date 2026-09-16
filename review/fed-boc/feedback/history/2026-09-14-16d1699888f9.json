@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0",
+  "status": "open",
+  "reviewed_at": "2026-09-14T20:30:52-04:00",
+  "candidate_sha256": "fb84e80eb9a066d00a295e65100b0fc8c49021c6f058f3e0c6bb0294fea074d2",
+  "review_sha256": "16d1699888f9b12109cdac1b00e0dd68fef6f5701949759e2bc69ebc836fd977",
+  "source_review": "review/fed-boc/2026-09-14/iteration-07/pm-review.json",
+  "executive_summary": "Revise. The exact candidate digest, prior-review references, and all 130 iteration-07 evidence artifacts match their manifests. Official policy facts, aligned Canada CPI tuples, visible-price return arithmetic, zero-weight long-end/WTI treatment, Fed proxy arithmetic, CRAU26 post-close reset handling, and calendar timestamps reproduce. However, two weighted Fed drivers label their consensus source as FXStreet while their cited URLs and frozen evidence are TradingEconomics, leaving material forecast provenance ambiguous for P&L use.",
+  "failed_checks": [
+    "decision_usefulness",
+    "drivers"
+  ],
+  "findings": [
+    {
+      "severity": "major",
+      "field": "drivers.fed.dovish[id=fed_dove_adp_20260902].source/source_url and drivers.fed.hawkish[id=fed_hawk_ism_services_20260903].source/source_url",
+      "issue": "The source labels do not agree with the cited URLs or the frozen evidence. The ADP and ISM cards say 'via FXStreet economic calendar', but their source_url values point to TradingEconomics and the evidence artifacts are te-adp.html and te-ism.html. The candidate therefore does not identify one unambiguous source for the consensus fields used in the weighted driver signals.",
+      "evidence": "candidate.json names ADP source as 'ADP via FXStreet economic calendar' with https://tradingeconomics.com/united-states/adp-employment-change, and ISM source as 'ISM via FXStreet economic calendar' with https://tradingeconomics.com/united-states/non-manufacturing-pmi. pm-handoff.json maps the relevant evidence to evidence/te-adp.html, evidence/te-ism.html, and evidence/tradingeconomics-calendar.html; the handoff source_labels instead calls calendar consensus FXStreet canonical. The iteration-07 evidence hash manifest is internally intact, so this is a frozen provenance/label inconsistency rather than a missing-file issue.",
+      "pnl_impact": "Consensus provenance affects the measured surprise and hence the side and weight of the ADP/ISM drivers. A PM cannot distinguish whether the forecast came from FXStreet or TradingEconomics, assess methodology or revisions, or reproduce the stated miss/beat without resolving the label-to-evidence chain; this can distort Fed front-end, USD and duration risk decisions.",
+      "instruction": "Recollect or explicitly reconcile the ADP and ISM consensus sources. Make each card's source label, source_url, secondary URL if applicable, and evidence artifact agree on the actual provider; preserve the official/third-party distinction and identify the exact Actual/Forecast/Previous provenance. Re-evaluate both driver sides and weights after reconciliation, update the handoff remediation/evidence mapping, recompute the candidate digest, and submit a fresh independent review."
+    }
+  ],
+  "required_recollection": [
+    "Recollect or explicitly reconcile the ADP and ISM consensus sources. Make each card's source label, source_url, secondary URL if applicable, and evidence artifact agree on the actual provider; preserve the official/third-party distinction and identify the exact Actual/Forecast/Previous provenance. Re-evaluate both driver sides and weights after reconciliation, update the handoff remediation/evidence mapping, recompute the candidate digest, and submit a fresh independent review."
+  ],
+  "operator_instructions": [
+    "Keep publication fail-closed; do not archive, commit, sync or publish iteration-07.",
+    "Resolve the ADP and ISM source-label/evidence mismatch by recollecting or documenting the actual consensus provider and aligning source, URLs, and evidence artifacts.",
+    "Re-evaluate the affected driver sides, weights, rationale, and driver balance after provenance is resolved; rebuild the whole candidate rather than patching prose only.",
+    "Recompute candidate.sha256, update the PM handoff and evidence mapping, and submit the rebuilt exact-byte candidate to a fresh independent PM review."
+  ],
+  "next_run_contract": [
+    "Read this feedback before collecting or editing the next candidate.",
+    "Re-trigger collection for every affected source and claim.",
+    "Rebuild the whole internally consistent candidate; do not patch prose only.",
+    "Submit the rebuilt candidate to a fresh independent PM review.",
+    "Do not publish until an exact-byte-bound approved review passes the gate."
+  ]
+}

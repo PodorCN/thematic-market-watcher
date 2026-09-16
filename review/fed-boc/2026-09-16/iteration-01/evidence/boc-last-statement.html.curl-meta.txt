@@ -1,0 +1,10 @@
+requested_at_toronto=2026-09-16T05:08:56-04:00
+requested_url=https://www.bankofcanada.ca/2026/09/fad-press-release-2026-09-02/
+http_code=200
+url_effective=https://www.bankofcanada.ca/2026/09/fad-press-release-2026-09-02/
+size_download=135010
+time_total=0.322321
+content_type=text/html; charset=UTF-8
+curl_exit=0
+curl_error=
+completed_at_toronto=2026-09-16T05:08:56-04:00

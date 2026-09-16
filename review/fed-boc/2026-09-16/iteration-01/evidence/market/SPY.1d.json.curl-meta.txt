@@ -1,0 +1,10 @@
+requested_at_toronto=2026-09-16T05:08:57-04:00
+requested_url=https://query1.finance.yahoo.com/v8/finance/chart/SPY?range=1mo&interval=1d&includePrePost=false&events=history
+http_code=200
+url_effective=https://query1.finance.yahoo.com/v8/finance/chart/SPY?range=1mo&interval=1d&includePrePost=false&events=history
+size_download=3452
+time_total=0.198813
+content_type=application/json;charset=utf-8
+curl_exit=0
+curl_error=
+completed_at_toronto=2026-09-16T05:08:57-04:00

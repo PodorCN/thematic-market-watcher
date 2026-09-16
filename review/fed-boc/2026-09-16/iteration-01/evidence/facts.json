@@ -1,0 +1,1764 @@
+{
+  "collection_completed_at_toronto": "2026-09-16T05:11:00-04:00",
+  "clock_basis": "Python zoneinfo America/Toronto; MSYS date on this host incorrectly remained UTC despite TZ override",
+  "calendar": {
+    "fetched_at": "2026-09-16T09:08:49.022121+00:00",
+    "start": "2026-09-15",
+    "end": "2026-09-22",
+    "count": 73,
+    "countries": [
+      "US",
+      "CA",
+      "EMU",
+      "DE",
+      "FR",
+      "IT",
+      "ES",
+      "UK",
+      "CH"
+    ],
+    "impacts_filter": [
+      "HIGH",
+      "MEDIUM"
+    ],
+    "impact_counts": {
+      "MEDIUM": 47,
+      "HIGH": 26
+    },
+    "currency_counts": {
+      "GBP": 25,
+      "EUR": 23,
+      "USD": 23,
+      "CAD": 2
+    },
+    "current_ca_cpi_rows": [],
+    "current_us_sep15_rows": [
+      {
+        "event": "ADP Employment Change 4-week average",
+        "actual": "16.25",
+        "forecast": null,
+        "previous": "12.0",
+        "unit": null,
+        "datetime_utc": "2026-09-15T12:15:00"
+      },
+      {
+        "event": "NY Empire State Manufacturing Index",
+        "actual": "7.6",
+        "forecast": "14.75",
+        "previous": "20.6",
+        "unit": null,
+        "datetime_utc": "2026-09-15T12:30:00"
+      }
+    ]
+  },
+  "fed": {
+    "calendar_sep_15_16_2026": true,
+    "last_statement_target_3_50_3_75": true,
+    "last_statement_vote_9_3": true,
+    "last_statement_hike_dissenters": true,
+    "latest_press": {
+      "title": "Agencies seek comment on proposed third-party risk management guidance and issue statement on community bank engagement with core service providers",
+      "link": "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20260911a.htm",
+      "pubDate": "Fri, 11 Sep 2026 14:00:00 GMT"
+    },
+    "latest_speech": {
+      "title": "Waller, The Economic Outlook and Some Comments on My Policy Communication",
+      "link": "https://www.federalreserve.gov/newsevents/speech/waller20260903a.htm",
+      "pubDate": "Thu, 3 Sep 2026 12:30:00 GMT"
+    },
+    "latest_testimony": {
+      "title": "Warsh, Semiannual Monetary Policy Report to the Congress",
+      "link": "https://www.federalreserve.gov/newsevents/testimony/warsh20260714a.htm",
+      "pubDate": "Tue, 14 Jul 2026 12:30:00 GMT"
+    },
+    "effr": {
+      "effectiveDate": "2026-09-14",
+      "type": "EFFR",
+      "percentRate": 3.63,
+      "percentPercentile1": 3.6,
+      "percentPercentile25": 3.62,
+      "percentPercentile75": 3.63,
+      "percentPercentile99": 3.64,
+      "targetRateFrom": 3.5,
+      "targetRateTo": 3.75,
+      "volumeInBillions": 91,
+      "revisionIndicator": ""
+    },
+    "cme_direct": {
+      "http": {
+        "meta_present": true,
+        "requested_at_toronto": "2026-09-16T05:08:56-04:00",
+        "requested_url": "https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html",
+        "http_code": 403,
+        "url_effective": "https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html",
+        "size_download": 602,
+        "time_total": "0.107399",
+        "content_type": "application/json",
+        "curl_exit": "0",
+        "curl_error": "",
+        "completed_at_toronto": "2026-09-16T05:08:56-04:00"
+      },
+      "blocked": true,
+      "bytes": 602,
+      "recognizable_distribution": false,
+      "distribution_verified": false
+    },
+    "third_party_release_reconciliation": {
+      "adp": {
+        "provider": "Trading Economics",
+        "source_url": "https://tradingeconomics.com/united-states/adp-employment-change",
+        "actual": 38.0,
+        "forecast": 47.0,
+        "previous_revised": 46.0,
+        "unit": "thousand jobs",
+        "checks": {
+          "actual_38k": true,
+          "forecast_47k": true,
+          "previous_revised_46k": true
+        },
+        "official_home_probe": {
+          "meta_present": true,
+          "requested_at_toronto": "2026-09-16T05:08:56-04:00",
+          "requested_url": "https://adpemploymentreport.com/",
+          "http_code": 200,
+          "url_effective": "https://adpemploymentreport.com/",
+          "size_download": 1341,
+          "time_total": "0.188820",
+          "content_type": "text/html",
+          "curl_exit": "0",
+          "curl_error": "",
+          "completed_at_toronto": "2026-09-16T05:08:57-04:00"
+        }
+      },
+      "ism_services": {
+        "provider": "Trading Economics summary of ISM Services release",
+        "source_url": "https://tradingeconomics.com/united-states/non-manufacturing-pmi",
+        "headline_actual": 55.4,
+        "headline_forecast": 54.3,
+        "headline_previous": 54.1,
+        "prices_actual": 72.6,
+        "prices_previous": 70.3,
+        "new_orders_actual": 60.9,
+        "new_orders_previous": 57.2,
+        "employment_actual": 47.8,
+        "employment_previous": 47.4,
+        "checks": {
+          "headline_actual_55_4": true,
+          "headline_forecast_54_3": true,
+          "headline_previous_54_1": true,
+          "new_orders_60_9_previous_57_2": true,
+          "employment_47_8_previous_47_4": true,
+          "prices_72_6_previous_70_3": true
+        },
+        "official_page_probe": {
+          "meta_present": true,
+          "requested_at_toronto": "2026-09-16T05:08:57-04:00",
+          "requested_url": "https://www.ismworld.org/supply-management-news-and-reports/reports/ism-report-on-business/services/september/",
+          "http_code": 200,
+          "url_effective": "https://ecommerce.ismworld.org/SSO/Login.aspx?DPLF=Y&vi=10&vt=44fbc149f468cc24f1c5cd007ed7593e428fd88fe518533ac2764e5eaefc279887a22b123def43138894e136285188b13b5a5a37cad07224c8a99ad55c8fa44bd5e30457657aa82a08bca2b82b5e8a5866d46aae9edb40e1967e1274c8611e50f30a088389322a596b0f146ef9a46125a1c83db6be543ff26686ec079a547f4e",
+          "size_download": 922,
+          "time_total": "0.632496",
+          "content_type": "text/html",
+          "curl_exit": "0",
+          "curl_error": "",
+          "completed_at_toronto": "2026-09-16T05:08:57-04:00"
+        }
+      }
+    },
+    "empire_state": {
+      "official_provider": "Federal Reserve Bank of New York",
+      "official_source_url": "https://www.newyorkfed.org/survey/empire/empiresurvey_overview",
+      "consensus_provider": "Trading Economics",
+      "consensus_source_url": "https://tradingeconomics.com/united-states/ny-empire-state-manufacturing-index",
+      "calendar_source_url": "https://www.fxstreet.com/economic-calendar",
+      "released_at_toronto": "2026-09-15T08:30:00-04:00",
+      "actual": 7.6,
+      "forecast": 14.75,
+      "previous": 20.6,
+      "unit": "index points",
+      "checks": {
+        "official_actual_7_6": true,
+        "official_september_release": true,
+        "te_actual_7_6": true,
+        "te_forecast_14_75": true,
+        "te_previous_20_6": true,
+        "calendar_tuple": true
+      }
+    },
+    "zq_strip": {
+      "ZQU26.CBT": {
+        "price": 96.26499938964844,
+        "observed_at_toronto": "2026-09-16T04:49:10-04:00",
+        "price_session_date": "2026-09-16",
+        "previous_daily_close": 96.26249694824219,
+        "source_url": "https://finance.yahoo.com/quote/ZQU26.CBT",
+        "source_api_url": "https://query1.finance.yahoo.com/v8/finance/chart/ZQU26.CBT"
+      },
+      "ZQV26.CBT": {
+        "price": 96.125,
+        "observed_at_toronto": "2026-09-16T04:57:47-04:00",
+        "price_session_date": "2026-09-16",
+        "previous_daily_close": 96.125,
+        "source_url": "https://finance.yahoo.com/quote/ZQV26.CBT",
+        "source_api_url": "https://query1.finance.yahoo.com/v8/finance/chart/ZQV26.CBT"
+      },
+      "ZQX26.CBT": {
+        "price": 96.0199966430664,
+        "observed_at_toronto": "2026-09-16T04:57:53-04:00",
+        "price_session_date": "2026-09-16",
+        "previous_daily_close": 96.0199966430664,
+        "source_url": "https://finance.yahoo.com/quote/ZQX26.CBT",
+        "source_api_url": "https://query1.finance.yahoo.com/v8/finance/chart/ZQX26.CBT"
+      }
+    },
+    "zqu26_proxy": {
+      "price": 96.26499938964844,
+      "observed_at_toronto": "2026-09-16T04:49:10-04:00",
+      "price_session_date": "2026-09-16",
+      "previous_daily_close": 96.26249694824219,
+      "source_url": "https://finance.yahoo.com/quote/ZQU26.CBT",
+      "source_api_url": "https://query1.finance.yahoo.com/v8/finance/chart/ZQU26.CBT",
+      "monthly_average_rate": 3.7350006103515625,
+      "day_count_pre": 16,
+      "day_count_post": 14,
+      "implied_post_meeting_rate": 3.8550013078962055,
+      "cut_endpoint": 3.38,
+      "hold_endpoint": 3.63,
+      "hike_endpoint": 3.88,
+      "cut_25bp_exact": 0.0,
+      "hold_exact": 0.0999947684151774,
+      "hike_25bp_exact": 0.9000052315848226,
+      "display_cut_25bp": 0.0,
+      "display_hold": 0.1,
+      "display_hike_25bp": 0.9
+    },
+    "strip_implied_monthly_rates": {
+      "ZQU26.CBT": 3.7350006103515625,
+      "ZQV26.CBT": 3.875,
+      "ZQX26.CBT": 3.9800033569335938
+    }
+  },
+  "boc": {
+    "last_statement_hold_2_25": true,
+    "last_statement_bank_rate_2_5": true,
+    "last_statement_deposit_2_20": true,
+    "rate_table_sep_2_2_25": true,
+    "press_summary_sep_16": true,
+    "cra": {
+      "symbol": "CRAU26",
+      "class_symbol": "CRA",
+      "root_symbol": "CRA",
+      "underlying_symbol": "CRA",
+      "expiry_date": "2026-12-16",
+      "strike_price": 0,
+      "instrument_type": 1,
+      "last_price": 97.6175,
+      "volume": 342,
+      "bid_price": 97.6175,
+      "ask_price": 97.62,
+      "bid_size": 1,
+      "ask_size": 167,
+      "net_change": 0.0125,
+      "settlement_price": 97.605,
+      "open_interest": 234718,
+      "accrued_financing_value": 0,
+      "accrued_financing_date": "0000-00-00",
+      "corra_rate": 0,
+      "is_option": 0,
+      "is_weekly": 0,
+      "last_close_price": 97.605,
+      "open_price": 97.615,
+      "high_price": 97.6175,
+      "low_price": 97.615,
+      "nb_trades": 32,
+      "volatility": 0
+    },
+    "cra_mid": 97.61875,
+    "cra_implied_quarterly_average_rate": 2.3812499999999943,
+    "corra_latest": {
+      "d": "2026-09-14",
+      "AVG.INTWO": {
+        "v": "2.2800"
+      }
+    },
+    "policy_latest": {
+      "d": "2026-09-14",
+      "V39079": {
+        "v": "2.25"
+      }
+    },
+    "statcan_cpi": {
+      "release_url": "https://www150.statcan.gc.ca/n1/daily-quotidien/260914/dq260914a-eng.htm",
+      "released_at_toronto": "2026-09-14T08:30:00-04:00",
+      "headline_yoy_actual": 3.0,
+      "headline_yoy_previous": 3.0,
+      "ex_gas_yoy_actual": 2.4,
+      "ex_gas_yoy_previous": 2.2,
+      "seasonally_adjusted_mom_actual": 0.2,
+      "checks": {
+        "headline_yoy_3_0": true,
+        "headline_previous_yoy_3_0": true,
+        "ex_gas_yoy_2_4": true,
+        "ex_gas_previous_yoy_2_2": true,
+        "seasonally_adjusted_mom_0_2": true
+      }
+    },
+    "statcan_rents": {
+      "release_url": "https://www150.statcan.gc.ca/n1/daily-quotidien/260909/dq260909c-eng.htm",
+      "previous_release_url": "https://www150.statcan.gc.ca/n1/daily-quotidien/260609/dq260609c-eng.htm",
+      "released_at_toronto": "2026-09-09T08:30:00-04:00",
+      "previous_released_at_toronto": "2026-06-09T08:30:00-04:00",
+      "current_quarter": "2026-Q2",
+      "current_avg_asking_rent_2bed": 2130.0,
+      "current_yoy_change_percent": -3.6,
+      "previous_quarter": "2026-Q1",
+      "previous_avg_asking_rent_2bed": 2150.0,
+      "previous_yoy_change_percent": -0.9,
+      "checks": {
+        "current_q2_tuple": true,
+        "current_q2_release_date": true,
+        "current_q2_previous_release_link": true,
+        "previous_q1_tuple": true,
+        "previous_q1_release_date": true
+      }
+    },
+    "fxstreet_details": {
+      "uom_1y_detail": {
+        "requested_url": "https://calendar-api.fxstreet.com/en/api/v1/eventDates/cf53987b-ec2b-45cd-8fb5-2f6fbe1656cf",
+        "event_occurrence_id": "cf53987b-ec2b-45cd-8fb5-2f6fbe1656cf",
+        "observed_at_toronto": "2026-09-16T05:09:00-04:00",
+        "sha256": "dd341638eb1eb69bb03e34483c22fef3c5be7851a8447a9163855f753d17af7b",
+        "name": "UoM 1-year Consumer Inflation Expectations",
+        "dateUtc": "2026-09-11T14:00:00Z",
+        "periodDateUtc": "2026-09-03T00:00:00Z",
+        "actual": 4.6,
+        "revised": null,
+        "consensus": null,
+        "previous": 4.0,
+        "previousIsPreliminary": false,
+        "unit": "%",
+        "source": "University of Michigan",
+        "urlSource": "https://www.sca.isr.umich.edu/",
+        "nextReleaseDate": "2026-09-25T14:00:00Z"
+      },
+      "michigan_sentiment_detail": {
+        "requested_url": "https://calendar-api.fxstreet.com/en/api/v1/eventDates/c7d46fc3-7c5d-46d9-95fb-8f707bbc70ea",
+        "event_occurrence_id": "c7d46fc3-7c5d-46d9-95fb-8f707bbc70ea",
+        "observed_at_toronto": "2026-09-16T05:09:00-04:00",
+        "sha256": "c5928108cb9571fbfedacd5e5d7a364895c06ae0e4146fb0cb7e6998d9f880ff",
+        "name": "Michigan Consumer Sentiment Index",
+        "dateUtc": "2026-09-11T14:00:00Z",
+        "periodDateUtc": "2026-09-04T00:00:00Z",
+        "actual": 47.8,
+        "revised": null,
+        "consensus": 51.0,
+        "previous": 51.7,
+        "previousIsPreliminary": false,
+        "unit": null,
+        "source": "University of Michigan",
+        "urlSource": "https://www.sca.isr.umich.edu/",
+        "nextReleaseDate": "2026-09-25T14:00:00Z"
+      },
+      "ca_labour_detail": {
+        "requested_url": "https://calendar-api.fxstreet.com/en/api/v1/eventDates/08019d21-b6cb-4335-b3f5-13d77d3bbd28",
+        "event_occurrence_id": "08019d21-b6cb-4335-b3f5-13d77d3bbd28",
+        "observed_at_toronto": "2026-09-16T05:09:00-04:00",
+        "sha256": "ff61dec92f36f519e73f1196a1cd56c37e898f0190eff2274d4fad3a2ca981e6",
+        "name": "Net Change in Employment",
+        "dateUtc": "2026-09-04T12:30:00Z",
+        "periodDateUtc": "2026-08-01T00:00:00Z",
+        "actual": -41.7,
+        "revised": null,
+        "consensus": 15.0,
+        "previous": 75.1,
+        "previousIsPreliminary": false,
+        "unit": null,
+        "source": "Statistics Canada",
+        "urlSource": "https://www150.statcan.gc.ca/n1/daily-quotidien/260904/dq260904a-eng.htm?HPA=1",
+        "nextReleaseDate": "2026-10-09T12:30:00Z"
+      },
+      "ca_gdp_annualized_detail": {
+        "requested_url": "https://calendar-api.fxstreet.com/en/api/v1/eventDates/753fbcb0-8c05-47a5-953c-f07c841da271",
+        "event_occurrence_id": "753fbcb0-8c05-47a5-953c-f07c841da271",
+        "observed_at_toronto": "2026-09-16T05:09:00-04:00",
+        "sha256": "82c1ea8fa212e0dc61559132aa738a38041a7b15f290fda371cba9d0b6a02a98",
+        "name": "Gross Domestic Product Annualized",
+        "dateUtc": "2026-08-28T12:30:00Z",
+        "periodDateUtc": "2025-04-01T00:00:00Z",
+        "actual": 3.3,
+        "revised": 0.3,
+        "consensus": 3.4,
+        "previous": -0.1,
+        "previousIsPreliminary": false,
+        "unit": "%",
+        "source": "Statistics Canada",
+        "urlSource": "https://www.statcan.gc.ca/en/start",
+        "nextReleaseDate": "2026-12-01T13:30:00Z"
+      },
+      "ca_gdp_mom_detail": {
+        "requested_url": "https://calendar-api.fxstreet.com/en/api/v1/eventDates/516030b5-f19c-42b3-a83c-2064e83ade9e",
+        "event_occurrence_id": "516030b5-f19c-42b3-a83c-2064e83ade9e",
+        "observed_at_toronto": "2026-09-16T05:09:00-04:00",
+        "sha256": "0bac18359e552df55aac3e135472323b3988a1b6badef460a64d6ef47cb9eee6",
+        "name": "Gross Domestic Product (MoM)",
+        "dateUtc": "2026-08-28T12:30:00Z",
+        "periodDateUtc": "2026-06-02T00:00:00Z",
+        "actual": 0.3,
+        "revised": null,
+        "consensus": 0.2,
+        "previous": 0.3,
+        "previousIsPreliminary": false,
+        "unit": "%",
+        "source": null,
+        "urlSource": "https://www.statcan.gc.ca/search/results/site-search?q=gdp&op=&fq=stclac:2",
+        "nextReleaseDate": "2026-09-30T12:30:00Z"
+      },
+      "boc_decision_detail": {
+        "requested_url": "https://calendar-api.fxstreet.com/en/api/v1/eventDates/b8da849e-3653-441c-b145-7f1356419ee0",
+        "event_occurrence_id": "b8da849e-3653-441c-b145-7f1356419ee0",
+        "observed_at_toronto": "2026-09-16T05:09:00-04:00",
+        "sha256": "50ed8b40f7723358134a8d4d27021e92997aec584ad2796068e9601e9448036f",
+        "name": "BoC Interest Rate Decision",
+        "dateUtc": "2026-09-02T13:45:00Z",
+        "periodDateUtc": null,
+        "actual": 2.25,
+        "revised": null,
+        "consensus": 2.25,
+        "previous": 2.25,
+        "previousIsPreliminary": false,
+        "unit": "%",
+        "source": "Bank of Canada",
+        "urlSource": "https://www.bankofcanada.ca/2026/09/fad-press-release-2026-09-02/",
+        "nextReleaseDate": "2026-10-28T13:45:00Z"
+      }
+    },
+    "ivey": {
+      "provider": "Trading Economics Ivey PMI indicator record and dated release summary",
+      "source_url": "https://tradingeconomics.com/canada/business-confidence",
+      "release_source_url": "https://tradingeconomics.com/canada/business-confidence/news/581356",
+      "named_origin": "Ivey Business School",
+      "released_at_toronto": "2026-09-04T10:00:00-04:00",
+      "actual": 64.3,
+      "forecast": 56.2,
+      "previous": 55.1,
+      "unit": "index points",
+      "checks": {
+        "exact_page_title": true,
+        "actual_64_3": true,
+        "forecast_56_2": true,
+        "previous_55_1": true,
+        "dated_2026_09_04": true,
+        "named_origin": true
+      }
+    }
+  },
+  "bls": {
+    "jobs": {
+      "blocked": true,
+      "bytes": 1325,
+      "usable_release_body": false,
+      "http": {
+        "meta_present": true,
+        "requested_at_toronto": "2026-09-16T05:08:56-04:00",
+        "requested_url": "https://www.bls.gov/news.release/empsit.nr0.htm",
+        "http_code": 403,
+        "url_effective": "https://www.bls.gov/news.release/empsit.nr0.htm",
+        "size_download": 1325,
+        "time_total": "0.089975",
+        "content_type": "text/html",
+        "curl_exit": "0",
+        "curl_error": "",
+        "completed_at_toronto": "2026-09-16T05:08:56-04:00"
+      }
+    },
+    "jolts": {
+      "blocked": true,
+      "bytes": 1325,
+      "usable_release_body": false,
+      "http": {
+        "meta_present": true,
+        "requested_at_toronto": "2026-09-16T05:08:56-04:00",
+        "requested_url": "https://www.bls.gov/news.release/jolts.nr0.htm",
+        "http_code": 403,
+        "url_effective": "https://www.bls.gov/news.release/jolts.nr0.htm",
+        "size_download": 1325,
+        "time_total": "0.074746",
+        "content_type": "text/html",
+        "curl_exit": "0",
+        "curl_error": "",
+        "completed_at_toronto": "2026-09-16T05:08:56-04:00"
+      }
+    },
+    "ppi": {
+      "blocked": true,
+      "bytes": 1325,
+      "usable_release_body": false,
+      "http": {
+        "meta_present": true,
+        "requested_at_toronto": "2026-09-16T05:08:56-04:00",
+        "requested_url": "https://www.bls.gov/news.release/ppi.nr0.htm",
+        "http_code": 403,
+        "url_effective": "https://www.bls.gov/news.release/ppi.nr0.htm",
+        "size_download": 1325,
+        "time_total": "0.088628",
+        "content_type": "text/html",
+        "curl_exit": "0",
+        "curl_error": "",
+        "completed_at_toronto": "2026-09-16T05:08:56-04:00"
+      }
+    },
+    "cpi": {
+      "blocked": true,
+      "bytes": 1325,
+      "usable_release_body": false,
+      "http": {
+        "meta_present": true,
+        "requested_at_toronto": "2026-09-16T05:08:56-04:00",
+        "requested_url": "https://www.bls.gov/news.release/cpi.nr0.htm",
+        "http_code": 403,
+        "url_effective": "https://www.bls.gov/news.release/cpi.nr0.htm",
+        "size_download": 1325,
+        "time_total": "0.075534",
+        "content_type": "text/html",
+        "curl_exit": "0",
+        "curl_error": "",
+        "completed_at_toronto": "2026-09-16T05:08:56-04:00"
+      }
+    }
+  },
+  "bea": {
+    "schedule_accessible": true,
+    "http": {
+      "meta_present": true,
+      "requested_at_toronto": "2026-09-16T05:08:56-04:00",
+      "requested_url": "https://www.bea.gov/news/schedule",
+      "http_code": 200,
+      "url_effective": "https://www.bea.gov/news/schedule",
+      "size_download": 75123,
+      "time_total": "0.230517",
+      "content_type": "text/html; charset=UTF-8",
+      "curl_exit": "0",
+      "curl_error": "",
+      "completed_at_toronto": "2026-09-16T05:08:56-04:00"
+    },
+    "source_url": "https://www.bea.gov/news/schedule"
+  },
+  "statcan": {
+    "cpi_http": {
+      "meta_present": true,
+      "requested_at_toronto": "2026-09-16T05:08:56-04:00",
+      "requested_url": "https://www150.statcan.gc.ca/n1/daily-quotidien/260914/dq260914a-eng.htm",
+      "http_code": 200,
+      "url_effective": "https://www150.statcan.gc.ca/n1/daily-quotidien/260914/dq260914a-eng.htm",
+      "size_download": 34612,
+      "time_total": "0.140581",
+      "content_type": "text/html; charset=UTF-8",
+      "curl_exit": "0",
+      "curl_error": "",
+      "completed_at_toronto": "2026-09-16T05:08:56-04:00"
+    },
+    "lfs_accessible": true,
+    "rents_accessible": true,
+    "gdp_accessible": true,
+    "gdp_industry_accessible": true
+  },
+  "market": {
+    "SPY": {
+      "price": 757.3900146484375,
+      "observed_at_toronto": "2026-09-15T16:00:00-04:00",
+      "session_date": "2026-09-15",
+      "previous_session_date": "2026-09-14",
+      "previous_close": 760.8800048828125,
+      "weekly_base_date": "2026-09-08",
+      "weekly_base_close": 765.9600219726562,
+      "chg_1d": -0.004586781374170235,
+      "chg_1w": -0.011188583057047174,
+      "source_url": "https://finance.yahoo.com/quote/SPY",
+      "source_api_url": "https://query1.finance.yahoo.com/v8/finance/chart/SPY"
+    },
+    "QQQ": {
+      "price": 704.5399780273438,
+      "observed_at_toronto": "2026-09-15T16:00:00-04:00",
+      "session_date": "2026-09-15",
+      "previous_session_date": "2026-09-14",
+      "previous_close": 709.1799926757812,
+      "weekly_base_date": "2026-09-08",
+      "weekly_base_close": 718.3599853515625,
+      "chg_1d": -0.006542788426574742,
+      "chg_1w": -0.01923827552484747,
+      "source_url": "https://finance.yahoo.com/quote/QQQ",
+      "source_api_url": "https://query1.finance.yahoo.com/v8/finance/chart/QQQ"
+    },
+    "IWM": {
+      "price": 285.1400146484375,
+      "observed_at_toronto": "2026-09-15T16:00:00-04:00",
+      "session_date": "2026-09-15",
+      "previous_session_date": "2026-09-14",
+      "previous_close": 287.9100036621094,
+      "weekly_base_date": "2026-09-08",
+      "weekly_base_close": 294.6700134277344,
+      "chg_1d": -0.00962102385620034,
+      "chg_1w": -0.032341257491522946,
+      "source_url": "https://finance.yahoo.com/quote/IWM",
+      "source_api_url": "https://query1.finance.yahoo.com/v8/finance/chart/IWM"
+    },
+    "XLI": {
+      "price": 168.85000610351562,
+      "observed_at_toronto": "2026-09-15T16:00:00-04:00",
+      "session_date": "2026-09-15",
+      "previous_session_date": "2026-09-14",
+      "previous_close": 169.92999267578125,
+      "weekly_base_date": "2026-09-08",
+      "weekly_base_close": 174.4199981689453,
+      "chg_1d": -0.006355479425731447,
+      "chg_1w": -0.03193436603545041,
+      "source_url": "https://finance.yahoo.com/quote/XLI",
+      "source_api_url": "https://query1.finance.yahoo.com/v8/finance/chart/XLI"
+    },
+    "XLU": {
+      "price": 41.31999969482422,
+      "observed_at_toronto": "2026-09-15T16:00:00-04:00",
+      "session_date": "2026-09-15",
+      "previous_session_date": "2026-09-14",
+      "previous_close": 41.81999969482422,
+      "weekly_base_date": "2026-09-08",
+      "weekly_base_close": 43.45000076293945,
+      "chg_1d": -0.011956002000207633,
+      "chg_1w": -0.04902188793359041,
+      "source_url": "https://finance.yahoo.com/quote/XLU",
+      "source_api_url": "https://query1.finance.yahoo.com/v8/finance/chart/XLU"
+    },
+    "XLF": {
+      "price": 56.849998474121094,
+      "observed_at_toronto": "2026-09-15T16:00:00-04:00",
+      "session_date": "2026-09-15",
+      "previous_session_date": "2026-09-14",
+      "previous_close": 57.029998779296875,
+      "weekly_base_date": "2026-09-08",
+      "weekly_base_close": 57.29999923706055,
+      "chg_1d": -0.003156238979986181,
+      "chg_1w": -0.00785341656075278,
+      "source_url": "https://finance.yahoo.com/quote/XLF",
+      "source_api_url": "https://query1.finance.yahoo.com/v8/finance/chart/XLF"
+    },
+    "XLE": {
+      "price": 65.93000030517578,
+      "observed_at_toronto": "2026-09-15T16:00:00-04:00",
+      "session_date": "2026-09-15",
+      "previous_session_date": "2026-09-14",
+      "previous_close": 64.52999877929688,
+      "weekly_base_date": "2026-09-08",
+      "weekly_base_close": 64.7699966430664,
+      "chg_1d": 0.021695359559313454,
+      "chg_1w": 0.017909583483567415,
+      "source_url": "https://finance.yahoo.com/quote/XLE",
+      "source_api_url": "https://query1.finance.yahoo.com/v8/finance/chart/XLE"
+    },
+    "TLT": {
+      "price": 80.70999908447266,
+      "observed_at_toronto": "2026-09-15T16:00:00-04:00",
+      "session_date": "2026-09-15",
+      "previous_session_date": "2026-09-14",
+      "previous_close": 80.93000030517578,
+      "weekly_base_date": "2026-09-08",
+      "weekly_base_close": 82.19999694824219,
+      "chg_1d": -0.002718413689281274,
+      "chg_1w": -0.018126495366024398,
+      "source_url": "https://finance.yahoo.com/quote/TLT",
+      "source_api_url": "https://query1.finance.yahoo.com/v8/finance/chart/TLT"
+    },
+    "GLD": {
+      "price": 394.1499938964844,
+      "observed_at_toronto": "2026-09-15T16:00:00-04:00",
+      "session_date": "2026-09-15",
+      "previous_session_date": "2026-09-14",
+      "previous_close": 392.8399963378906,
+      "weekly_base_date": "2026-09-08",
+      "weekly_base_close": 399.7200012207031,
+      "chg_1d": 0.0033346847846598138,
+      "chg_1w": -0.013934772608847568,
+      "source_url": "https://finance.yahoo.com/quote/GLD",
+      "source_api_url": "https://query1.finance.yahoo.com/v8/finance/chart/GLD"
+    },
+    "ZEB.TO": {
+      "price": 74.33999633789062,
+      "observed_at_toronto": "2026-09-15T15:59:00-04:00",
+      "session_date": "2026-09-15",
+      "previous_session_date": "2026-09-14",
+      "previous_close": 74.55000305175781,
+      "weekly_base_date": "2026-09-08",
+      "weekly_base_close": 74.6500015258789,
+      "chg_1d": -0.0028169913517157585,
+      "chg_1w": -0.004152782071689787,
+      "source_url": "https://finance.yahoo.com/quote/ZEB.TO",
+      "source_api_url": "https://query1.finance.yahoo.com/v8/finance/chart/ZEB.TO"
+    },
+    "^TNX": {
+      "price": 4.995999813079834,
+      "observed_at_toronto": "2026-09-15T14:59:00-04:00",
+      "session_date": "2026-09-15",
+      "previous_session_date": "2026-09-14",
+      "previous_close": 4.960999965667725,
+      "weekly_base_date": "2026-09-08",
+      "weekly_base_close": 4.806000232696533,
+      "chg_1d": 0.0070549985193153475,
+      "chg_1w": 0.03953382671325767,
+      "source_url": "https://finance.yahoo.com/quote/%5ETNX",
+      "source_api_url": "https://query1.finance.yahoo.com/v8/finance/chart/%5ETNX",
+      "chg_1d_bp": 3.4999847412109375,
+      "chg_1w_bp": 18.999958038330078
+    },
+    "^TYX": {
+      "price": 5.363999843597412,
+      "observed_at_toronto": "2026-09-15T14:59:00-04:00",
+      "session_date": "2026-09-15",
+      "previous_session_date": "2026-09-14",
+      "previous_close": 5.328999996185303,
+      "weekly_base_date": "2026-09-08",
+      "weekly_base_close": 5.263999938964844,
+      "chg_1d": 0.006567807738255604,
+      "chg_1w": 0.018996942589674992,
+      "source_url": "https://finance.yahoo.com/quote/%5ETYX",
+      "source_api_url": "https://query1.finance.yahoo.com/v8/finance/chart/%5ETYX",
+      "chg_1d_bp": 3.4999847412109375,
+      "chg_1w_bp": 9.999990463256836
+    },
+    "CL=F": {
+      "price": 105.83999633789062,
+      "bar_timestamp_toronto": "2026-09-15T14:30:00-04:00",
+      "observed_at_toronto": "2026-09-15T14:30:00-04:00",
+      "session_date": "2026-09-15",
+      "previous_session_date": "2026-09-14",
+      "previous_close": 101.38999938964844,
+      "weekly_base_date": "2026-09-08",
+      "weekly_base_close": 93.02999877929688,
+      "chg_1d": 0.04388990013838101,
+      "chg_1w": 0.1376974924936205,
+      "source_url": "https://finance.yahoo.com/quote/CL%3DF",
+      "source_api_url": "https://query1.finance.yahoo.com/v8/finance/chart/CL%3DF",
+      "basis": "Yahoo 14:30 ET settlement-window minute bar; transparent market proxy, not a CME-certified settlement; later Globex quotes excluded"
+    }
+  },
+  "evidence_index": {
+    "adp-official.html": {
+      "bytes": 1341,
+      "sha256": "b35e5f825bd408958ce2e44103ee34fc3e44ce783ec56c45d3a07f689eefa680",
+      "retrieved_at_toronto": "2026-09-16T05:08:57-04:00",
+      "source_url": "https://adpemploymentreport.com/"
+    },
+    "adp-official.html.curl-meta.txt": {
+      "bytes": 298,
+      "sha256": "aea07220329634705e9dfd429378f41ea3ca9f26f0e3fa4f824a560e45b2d2fb",
+      "retrieved_at_toronto": "2026-09-16T05:08:57-04:00",
+      "source_url": "https://adpemploymentreport.com/"
+    },
+    "bea-schedule.html": {
+      "bytes": 75123,
+      "sha256": "e4cbc72054b7717b4bfd6729d8d71589039eb3dffab358afd7081d3291bae799",
+      "retrieved_at_toronto": "2026-09-16T05:08:56-04:00",
+      "source_url": "https://www.bea.gov/news/schedule"
+    },
+    "bea-schedule.html.curl-meta.txt": {
+      "bytes": 316,
+      "sha256": "a8fbfb1f96b62b5f6136d32f2a012f8a8580ce6a731df3d5d8001528b0a4c443",
+      "retrieved_at_toronto": "2026-09-16T05:08:56-04:00",
+      "source_url": "https://www.bea.gov/news/schedule"
+    },
+    "bls-cpi.html": {
+      "bytes": 1325,
+      "sha256": "e4d342665ed12072995c6e97373302fa442b39700ad185ec4301f4ddb400f8a1",
+      "retrieved_at_toronto": "2026-09-16T05:08:56-04:00",
+      "source_url": "https://www.bls.gov/news.release/cpi.nr0.htm"
+    },
+    "bls-cpi.html.curl-meta.txt": {
+      "bytes": 322,
+      "sha256": "88aa0c7a9b761f77f827b7f7e5a1ad379e9db7c0ef0ac48e4d91a0cd56b6e0e8",
+      "retrieved_at_toronto": "2026-09-16T05:08:56-04:00",
+      "source_url": "https://www.bls.gov/news.release/cpi.nr0.htm"
+    },
+    "bls-jobs.html": {
+      "bytes": 1325,
+      "sha256": "e6a98b82e75a6e44288563f969f15d94b6211d0b047b4e02a006f4274c3e5f0b",
+      "retrieved_at_toronto": "2026-09-16T05:08:56-04:00",
+      "source_url": "https://www.bls.gov/news.release/empsit.nr0.htm"
+    },
+    "bls-jobs.html.curl-meta.txt": {
+      "bytes": 328,
+      "sha256": "31c2202afc21354e50a6a5437a0b73273a15ff3d9bc6d8f3aae1747df3fc4df9",
+      "retrieved_at_toronto": "2026-09-16T05:08:56-04:00",
+      "source_url": "https://www.bls.gov/news.release/empsit.nr0.htm"
+    },
+    "bls-jolts.html": {
+      "bytes": 1325,
+      "sha256": "c6bd9866f2bf089709e6cf5759ede2d48309d572b14907321ac2594099916848",
+      "retrieved_at_toronto": "2026-09-16T05:08:56-04:00",
+      "source_url": "https://www.bls.gov/news.release/jolts.nr0.htm"
+    },
+    "bls-jolts.html.curl-meta.txt": {
+      "bytes": 326,
+      "sha256": "c94a38a233f6fa8e2fd11618ebd7608a27adec1155a7ae7cab4d0636958369e9",
+      "retrieved_at_toronto": "2026-09-16T05:08:56-04:00",
+      "source_url": "https://www.bls.gov/news.release/jolts.nr0.htm"
+    },
+    "bls-ppi.html": {
+      "bytes": 1325,
+      "sha256": "5654f84c9ee17d66cf58233e85a002c819fcae4b80148ebcebdcdfb04d8456bb",
+      "retrieved_at_toronto": "2026-09-16T05:08:56-04:00",
+      "source_url": "https://www.bls.gov/news.release/ppi.nr0.htm"
+    },
+    "bls-ppi.html.curl-meta.txt": {
+      "bytes": 322,
+      "sha256": "54a3fba2576a4f0057d4daa5eea3ee4d751adc53730e3f57ccc5dab4196dbbe7",
+      "retrieved_at_toronto": "2026-09-16T05:08:56-04:00",
+      "source_url": "https://www.bls.gov/news.release/ppi.nr0.htm"
+    },
+    "boc-last-statement.html": {
+      "bytes": 135010,
+      "sha256": "3325543eaaf9cc292fa31f3deadb9f1f4d6309ba026413573120f471496ebe80",
+      "retrieved_at_toronto": "2026-09-16T05:08:56-04:00",
+      "source_url": "https://www.bankofcanada.ca/2026/09/fad-press-release-2026-09-02/"
+    },
+    "boc-last-statement.html.curl-meta.txt": {
+      "bytes": 381,
+      "sha256": "9be6749e7f591b4ee623d4a839584a86e3e25fc0bfc2be1e402eab65a9aae69a",
+      "retrieved_at_toronto": "2026-09-16T05:08:56-04:00",
+      "source_url": "https://www.bankofcanada.ca/2026/09/fad-press-release-2026-09-02/"
+    },
+    "boc-policy.json": {
+      "bytes": 1461,
+      "sha256": "cee97719ff68941a98e70c402c09c68511f5286333e7fad0d5054cfc505d0f57",
+      "retrieved_at_toronto": "2026-09-16T05:08:56-04:00",
+      "source_url": "https://www.bankofcanada.ca/valet/observations/V39079/json?start_date=2026-09-01"
+    },
+    "boc-policy.json.curl-meta.txt": {
+      "bytes": 416,
+      "sha256": "fc509ee4b7a4af404e33b8a5743bd746ec51c14a1bf2eb4dc8ac7b5a6fd2c6a2",
+      "retrieved_at_toronto": "2026-09-16T05:08:56-04:00",
+      "source_url": "https://www.bankofcanada.ca/valet/observations/V39079/json?start_date=2026-09-01"
+    },
+    "boc-press.html": {
+      "bytes": 158257,
+      "sha256": "1ac6522b714c79624590e2bfbc695d0ff834e7bdb9586cafae6f23f4c52c0b6c",
+      "retrieved_at_toronto": "2026-09-16T05:08:56-04:00",
+      "source_url": "https://www.bankofcanada.ca/press/"
+    },
+    "boc-press.html.curl-meta.txt": {
+      "bytes": 319,
+      "sha256": "321014a16d2f3cc3736807b42d2b34df77c0d9e07cc2d65a718b85d14c80c609",
+      "retrieved_at_toronto": "2026-09-16T05:08:56-04:00",
+      "source_url": "https://www.bankofcanada.ca/press/"
+    },
+    "boc-rate.html": {
+      "bytes": 149202,
+      "sha256": "ef1052070360e000abe0003ccffa9398b79318bcc6a91e72d21c430064d83bc0",
+      "retrieved_at_toronto": "2026-09-16T05:08:56-04:00",
+      "source_url": "https://www.bankofcanada.ca/core-functions/monetary-policy/key-interest-rate/"
+    },
+    "boc-rate.html.curl-meta.txt": {
+      "bytes": 405,
+      "sha256": "84047f081f5b19c2debeeb04e14d6eed3adcc75038f4a847e4eb7c29a28d46e3",
+      "retrieved_at_toronto": "2026-09-16T05:08:56-04:00",
+      "source_url": "https://www.bankofcanada.ca/core-functions/monetary-policy/key-interest-rate/"
+    },
+    "cme.html": {
+      "bytes": 602,
+      "sha256": "eecde3fafbde4090c30e610a7ed4b8d877f8351c0490e4189574890e8a5a4f7e",
+      "retrieved_at_toronto": "2026-09-16T05:08:56-04:00",
+      "source_url": "https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html"
+    },
+    "cme.html.curl-meta.txt": {
+      "bytes": 380,
+      "sha256": "e3a56e9739e5b8b44343121f7098258454142157d94bfc06f93694a34d9a50e1",
+      "retrieved_at_toronto": "2026-09-16T05:08:56-04:00",
+      "source_url": "https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html"
+    },
+    "collection-summary.json": {
+      "bytes": 831,
+      "sha256": "b7f81c88db261225df5cd92dd8c7696382097d3b061e0d16d2686c2e84725220",
+      "retrieved_at_toronto": "2026-09-16T05:08:58-04:00",
+      "source_url": null
+    },
+    "corra.json": {
+      "bytes": 1525,
+      "sha256": "ee45b0982a231572b5fce6e684c2629a9c48a30841f065b0a22541328fa4d075",
+      "retrieved_at_toronto": "2026-09-16T05:08:56-04:00",
+      "source_url": "https://www.bankofcanada.ca/valet/observations/AVG.INTWO/json?start_date=2026-09-01"
+    },
+    "corra.json.curl-meta.txt": {
+      "bytes": 422,
+      "sha256": "3f906eba40ef354a958b595d086efc57a9ab609cfe5362a0fcb0ecdbf15b2019",
+      "retrieved_at_toronto": "2026-09-16T05:08:56-04:00",
+      "source_url": "https://www.bankofcanada.ca/valet/observations/AVG.INTWO/json?start_date=2026-09-01"
+    },
+    "cra-contract-spec.html": {
+      "bytes": 57379,
+      "sha256": "e42597db3fc20ad8ec0efcc8002298074291bb7ff2e6312ff342f8a5e1dd4075",
+      "retrieved_at_toronto": "2026-09-16T05:08:56-04:00",
+      "source_url": "https://www.m-x.ca/en/markets/interest-rate-derivatives/cra"
+    },
+    "cra-contract-spec.html.curl-meta.txt": {
+      "bytes": 368,
+      "sha256": "5ac38ec7a3d1e856f17d143323d2d204278f5ca40724122d9478372b99ecf036",
+      "retrieved_at_toronto": "2026-09-16T05:08:56-04:00",
+      "source_url": "https://www.m-x.ca/en/markets/interest-rate-derivatives/cra"
+    },
+    "cra-spec.html": {
+      "bytes": 81472,
+      "sha256": "4b3c5dd87fa8e8195f9482f46c958a369de0f8f9a5aa054310372601495e1467",
+      "retrieved_at_toronto": "2026-09-16T05:08:56-04:00",
+      "source_url": "https://www.m-x.ca/en/trading/tools/canadian-interest-rate-expectations"
+    },
+    "cra-spec.html.curl-meta.txt": {
+      "bytes": 392,
+      "sha256": "09657f40e9d6a0ef9dcea148876179271ca9253eb80ab603fee5fa4b8f313209",
+      "retrieved_at_toronto": "2026-09-16T05:08:56-04:00",
+      "source_url": "https://www.m-x.ca/en/trading/tools/canadian-interest-rate-expectations"
+    },
+    "cra.html": {
+      "bytes": 95383,
+      "sha256": "4ecb4254331877534dd633f5fb9550264f9aef119adc9e8d2d6764562923fec6",
+      "retrieved_at_toronto": "2026-09-16T05:08:56-04:00",
+      "source_url": "https://www.m-x.ca/en/trading/data/quotes?symbol=CRA%2A"
+    },
+    "cra.html.curl-meta.txt": {
+      "bytes": 360,
+      "sha256": "bfea753c983a270a44f368a40c7fdd00cc35abdbb84253fd0b1dad1dc97103de",
+      "retrieved_at_toronto": "2026-09-16T05:08:56-04:00",
+      "source_url": "https://www.m-x.ca/en/trading/data/quotes?symbol=CRA%2A"
+    },
+    "economic-calendar.json": {
+      "bytes": 85625,
+      "sha256": "e468cb67c75348379536a660823d176bc1f1a2a580081aeda587f2d4b4ae71c3",
+      "retrieved_at_toronto": "2026-09-16T05:08:49-04:00",
+      "source_url": "local canonical archive/2026-09-16/economic_calendar.json"
+    },
+    "economic-calendar.json.local-meta.json": {
+      "bytes": 140,
+      "sha256": "28c6223be7ea332e79b58695dca2cd6906d05f08f89b1ceb2b4912f9c504f2d3",
+      "retrieved_at_toronto": "2026-09-16T05:08:58-04:00",
+      "source_url": null
+    },
+    "effr.json": {
+      "bytes": 1432,
+      "sha256": "85f67e277e46a47cfe62bcf396d2d642dc2568aa8adbee6124eec83e9b94ac3e",
+      "retrieved_at_toronto": "2026-09-16T05:08:56-04:00",
+      "source_url": "https://markets.newyorkfed.org/api/rates/unsecured/effr/last/5.json"
+    },
+    "effr.json.curl-meta.txt": {
+      "bytes": 389,
+      "sha256": "7f56e65e7ef8e2224d03b7776cc83298924712344384c654898c31056e6845fb",
+      "retrieved_at_toronto": "2026-09-16T05:08:56-04:00",
+      "source_url": "https://markets.newyorkfed.org/api/rates/unsecured/effr/last/5.json"
+    },
+    "fed-last-statement.html": {
+      "bytes": 81213,
+      "sha256": "b3977eb874e0edeb5d3d0eed5eba92622c4a9930b285702e88f97e83b750a3a1",
+      "retrieved_at_toronto": "2026-09-16T05:08:56-04:00",
+      "source_url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260729a.htm"
+    },
+    "fed-last-statement.html.curl-meta.txt": {
+      "bytes": 389,
+      "sha256": "6fdd64c0d6d5484c7d98ada4956b2ba62d504059c01557c19de774f4b0d663c2",
+      "retrieved_at_toronto": "2026-09-16T05:08:56-04:00",
+      "source_url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260729a.htm"
+    },
+    "fed-press-2026.html": {
+      "bytes": 152261,
+      "sha256": "1f74c9723b43d6e1aab5b3fc74f0ac149c1cecb1dee0c4f41a99db79aa86db1a",
+      "retrieved_at_toronto": "2026-09-16T05:08:56-04:00",
+      "source_url": "https://www.federalreserve.gov/newsevents/pressreleases/2026-press.htm"
+    },
+    "fed-press-2026.html.curl-meta.txt": {
+      "bytes": 376,
+      "sha256": "155606f9503f7fe3e6875dc32cb6b0a0ab3c86b28025abc162fde8a6fefbd5fc",
+      "retrieved_at_toronto": "2026-09-16T05:08:56-04:00",
+      "source_url": "https://www.federalreserve.gov/newsevents/pressreleases/2026-press.htm"
+    },
+    "fed-press.xml": {
+      "bytes": 14620,
+      "sha256": "b95d76bc188bdbbc49ccc436cee436d7a3b69eaf98e8257af441372b396f6fa3",
+      "retrieved_at_toronto": "2026-09-16T05:08:56-04:00",
+      "source_url": "https://www.federalreserve.gov/feeds/press_all.xml"
+    },
+    "fed-press.xml.curl-meta.txt": {
+      "bytes": 334,
+      "sha256": "75058c52d615551bf1da8fb3f5bd0f82e5aba511e975c05d8e8d821faa804a3a",
+      "retrieved_at_toronto": "2026-09-16T05:08:56-04:00",
+      "source_url": "https://www.federalreserve.gov/feeds/press_all.xml"
+    },
+    "fed-speeches-2026.html": {
+      "bytes": 133862,
+      "sha256": "575d57d2670e678365e9e6300b9d3b02faf6f56a4dfb3eddd7127a32fcedff46",
+      "retrieved_at_toronto": "2026-09-16T05:08:56-04:00",
+      "source_url": "https://www.federalreserve.gov/newsevents/speech/2026-speeches.htm"
+    },
+    "fed-speeches-2026.html.curl-meta.txt": {
+      "bytes": 368,
+      "sha256": "c1f8cc915d3e85512d7678eb860318892b16557ebd779a8c22b9b6dc339621c3",
+      "retrieved_at_toronto": "2026-09-16T05:08:56-04:00",
+      "source_url": "https://www.federalreserve.gov/newsevents/speech/2026-speeches.htm"
+    },
+    "fed-speeches.xml": {
+      "bytes": 9738,
+      "sha256": "370595f49a80d3814951ccf74dbe74423f5c5844acd077727997a7664b199ed8",
+      "retrieved_at_toronto": "2026-09-16T05:08:56-04:00",
+      "source_url": "https://www.federalreserve.gov/feeds/speeches.xml"
+    },
+    "fed-speeches.xml.curl-meta.txt": {
+      "bytes": 331,
+      "sha256": "7528e19349e9ce9675128fdbc485de4c9d7ba1d864ea7a304942d4e9b1d44add",
+      "retrieved_at_toronto": "2026-09-16T05:08:56-04:00",
+      "source_url": "https://www.federalreserve.gov/feeds/speeches.xml"
+    },
+    "fed-testimony.xml": {
+      "bytes": 9491,
+      "sha256": "77fb2cfab34560d077485280233bdde36ea9a4bc56b9fbb8db05f91368c867cf",
+      "retrieved_at_toronto": "2026-09-16T05:08:56-04:00",
+      "source_url": "https://www.federalreserve.gov/feeds/testimony.xml"
+    },
+    "fed-testimony.xml.curl-meta.txt": {
+      "bytes": 333,
+      "sha256": "f7c054eca0dec2927b8db9ae9d28d83de999488159b9cf9f2c4bff8735df2db2",
+      "retrieved_at_toronto": "2026-09-16T05:08:56-04:00",
+      "source_url": "https://www.federalreserve.gov/feeds/testimony.xml"
+    },
+    "fed-waller.html": {
+      "bytes": 98411,
+      "sha256": "fa1a11a771af6d395d314a55604f72c2d904176d60b032c44812b0741b969e1e",
+      "retrieved_at_toronto": "2026-09-16T05:08:56-04:00",
+      "source_url": "https://www.federalreserve.gov/newsevents/speech/waller20260903a.htm"
+    },
+    "fed-waller.html.curl-meta.txt": {
+      "bytes": 371,
+      "sha256": "7f9946a39c32571d703d73eed971aa1b5a14c9a51ba991b2d64c79bee78feaf1",
+      "retrieved_at_toronto": "2026-09-16T05:08:56-04:00",
+      "source_url": "https://www.federalreserve.gov/newsevents/speech/waller20260903a.htm"
+    },
+    "fed-warsh.html": {
+      "bytes": 113630,
+      "sha256": "d5f178a9b398405be94a107ea5489fa871f304229b7461903c1136c376e8d83a",
+      "retrieved_at_toronto": "2026-09-16T05:08:56-04:00",
+      "source_url": "https://www.federalreserve.gov/newsevents/speech/warsh20260828a.htm"
+    },
+    "fed-warsh.html.curl-meta.txt": {
+      "bytes": 370,
+      "sha256": "7f15fe0acae4230e03de3318f4feb6b97da118c4a306250f8b22fd231e8fc3ba",
+      "retrieved_at_toronto": "2026-09-16T05:08:56-04:00",
+      "source_url": "https://www.federalreserve.gov/newsevents/speech/warsh20260828a.htm"
+    },
+    "feedback-recollection-summary.json": {
+      "bytes": 1964,
+      "sha256": "ee200366d12ea272ef0e9f767a2a491da819682adbd2ee6f0f1b0fb1a18ac642",
+      "retrieved_at_toronto": "2026-09-16T05:09:00-04:00",
+      "source_url": null
+    },
+    "fomc-calendar.html": {
+      "bytes": 164831,
+      "sha256": "a0af6c7d13b1ca8d91a036b7034512545a82c1366a09d40e2550ecfeab2b220c",
+      "retrieved_at_toronto": "2026-09-16T05:08:56-04:00",
+      "source_url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+    },
+    "fomc-calendar.html.curl-meta.txt": {
+      "bytes": 362,
+      "sha256": "b3e94c7831b7c691ddd03f203e106f53c787e8aab9566338195a6b255aa59200",
+      "retrieved_at_toronto": "2026-09-16T05:08:56-04:00",
+      "source_url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+    },
+    "fxstreet-boc-decision-detail.json": {
+      "bytes": 2138,
+      "sha256": "50ed8b40f7723358134a8d4d27021e92997aec584ad2796068e9601e9448036f",
+      "retrieved_at_toronto": "2026-09-16T05:09:00-04:00",
+      "source_url": "https://calendar-api.fxstreet.com/en/api/v1/eventDates/<occurrence-id>"
+    },
+    "fxstreet-boc-decision-detail.json.requests-meta.json": {
+      "bytes": 796,
+      "sha256": "b027db0828033babd6d7ee57b39d2de88da7126f0197267587c671926cac6808",
+      "retrieved_at_toronto": "2026-09-16T05:09:00-04:00",
+      "source_url": null
+    },
+    "fxstreet-boc-decision.csv": {
+      "bytes": 745,
+      "sha256": "466765ef6e23283dab21a3520824d4cbbc2229540fa78f90cf83691c962ba53a",
+      "retrieved_at_toronto": "2026-09-16T05:08:59-04:00",
+      "source_url": "https://calendar-api.fxstreet.com/en/api/v1/eventDates/2026-09-01T00:00:00Z/2026-09-03T23:59:59Z"
+    },
+    "fxstreet-boc-decision.csv.requests-meta.json": {
+      "bytes": 2075,
+      "sha256": "b5382b71df5f392e4e0b8c757c75b100a10b532a585a6049f33d37631e2fd429",
+      "retrieved_at_toronto": "2026-09-16T05:08:59-04:00",
+      "source_url": null
+    },
+    "fxstreet-ca-gdp-annualized-detail.json": {
+      "bytes": 1781,
+      "sha256": "82c1ea8fa212e0dc61559132aa738a38041a7b15f290fda371cba9d0b6a02a98",
+      "retrieved_at_toronto": "2026-09-16T05:09:00-04:00",
+      "source_url": "https://calendar-api.fxstreet.com/en/api/v1/eventDates/<occurrence-id>"
+    },
+    "fxstreet-ca-gdp-annualized-detail.json.requests-meta.json": {
+      "bytes": 803,
+      "sha256": "9ba12f49a0b9019361eba6e3fda48f3cd04dd0905b6dd2af4a0a433899acd3d7",
+      "retrieved_at_toronto": "2026-09-16T05:09:00-04:00",
+      "source_url": null
+    },
+    "fxstreet-ca-gdp-mom-detail.json": {
+      "bytes": 1678,
+      "sha256": "0bac18359e552df55aac3e135472323b3988a1b6badef460a64d6ef47cb9eee6",
+      "retrieved_at_toronto": "2026-09-16T05:09:00-04:00",
+      "source_url": "https://calendar-api.fxstreet.com/en/api/v1/eventDates/<occurrence-id>"
+    },
+    "fxstreet-ca-gdp-mom-detail.json.requests-meta.json": {
+      "bytes": 798,
+      "sha256": "9c726d7b89ccf088da1ede00616050806d8e1ce93097cf07284041b07bf29e53",
+      "retrieved_at_toronto": "2026-09-16T05:09:00-04:00",
+      "source_url": null
+    },
+    "fxstreet-ca-gdp.csv": {
+      "bytes": 413,
+      "sha256": "1c4886aebaafee2b08295cad933dd4fc161dff56c10abd838689acb5e2a2da94",
+      "retrieved_at_toronto": "2026-09-16T05:08:59-04:00",
+      "source_url": "https://calendar-api.fxstreet.com/en/api/v1/eventDates/2026-08-27T00:00:00Z/2026-08-29T23:59:59Z"
+    },
+    "fxstreet-ca-gdp.csv.requests-meta.json": {
+      "bytes": 2075,
+      "sha256": "3367c58d4790d05fb4910fbb71196c1221db6583dd7241d9386f89aec987102a",
+      "retrieved_at_toronto": "2026-09-16T05:08:59-04:00",
+      "source_url": null
+    },
+    "fxstreet-ca-labour-detail.json": {
+      "bytes": 2077,
+      "sha256": "ff61dec92f36f519e73f1196a1cd56c37e898f0190eff2274d4fad3a2ca981e6",
+      "retrieved_at_toronto": "2026-09-16T05:09:00-04:00",
+      "source_url": "https://calendar-api.fxstreet.com/en/api/v1/eventDates/<occurrence-id>"
+    },
+    "fxstreet-ca-labour-detail.json.requests-meta.json": {
+      "bytes": 794,
+      "sha256": "1af085ecc818858836d6bb7f8884da9d6c0ef05b8218442799326a41f95156c7",
+      "retrieved_at_toronto": "2026-09-16T05:09:00-04:00",
+      "source_url": null
+    },
+    "fxstreet-ca-labour.csv": {
+      "bytes": 930,
+      "sha256": "f2e5f8dcc99a0cf0ce5c272e782f0e714e6477e49a5062afa41f24446227bc42",
+      "retrieved_at_toronto": "2026-09-16T05:08:59-04:00",
+      "source_url": "https://calendar-api.fxstreet.com/en/api/v1/eventDates/2026-09-03T00:00:00Z/2026-09-05T23:59:59Z"
+    },
+    "fxstreet-ca-labour.csv.requests-meta.json": {
+      "bytes": 2075,
+      "sha256": "59d141fd4eb9cdf15b4fe0eb3a66885a0843f230d29076e147adb4163f5aff49",
+      "retrieved_at_toronto": "2026-09-16T05:08:59-04:00",
+      "source_url": null
+    },
+    "fxstreet-michigan-sentiment-detail.json": {
+      "bytes": 2400,
+      "sha256": "c5928108cb9571fbfedacd5e5d7a364895c06ae0e4146fb0cb7e6998d9f880ff",
+      "retrieved_at_toronto": "2026-09-16T05:09:00-04:00",
+      "source_url": "https://calendar-api.fxstreet.com/en/api/v1/eventDates/<occurrence-id>"
+    },
+    "fxstreet-michigan-sentiment-detail.json.requests-meta.json": {
+      "bytes": 803,
+      "sha256": "8da17dc1ea870662a0aacebcca72912bc1d034df5e213d85bed21422ae1b37a4",
+      "retrieved_at_toronto": "2026-09-16T05:09:00-04:00",
+      "source_url": null
+    },
+    "fxstreet-michigan.csv": {
+      "bytes": 3255,
+      "sha256": "17bab1bd9958e91af32f684ddb07a187d9825146f4ffe78cbe8dfc6ed40352fc",
+      "retrieved_at_toronto": "2026-09-16T05:08:59-04:00",
+      "source_url": "https://calendar-api.fxstreet.com/en/api/v1/eventDates/2026-09-10T00:00:00Z/2026-09-12T23:59:59Z"
+    },
+    "fxstreet-michigan.csv.requests-meta.json": {
+      "bytes": 2076,
+      "sha256": "e02027c4a250dc7f232b410b36b53e44630390875373b7789a39af4ba4a8070b",
+      "retrieved_at_toronto": "2026-09-16T05:08:59-04:00",
+      "source_url": null
+    },
+    "fxstreet-uom-1y-detail.json": {
+      "bytes": 1370,
+      "sha256": "dd341638eb1eb69bb03e34483c22fef3c5be7851a8447a9163855f753d17af7b",
+      "retrieved_at_toronto": "2026-09-16T05:09:00-04:00",
+      "source_url": "https://calendar-api.fxstreet.com/en/api/v1/eventDates/<occurrence-id>"
+    },
+    "fxstreet-uom-1y-detail.json.requests-meta.json": {
+      "bytes": 812,
+      "sha256": "7604c6f7545754770bdc75342cf16ae64b7bc1a4e1cbb564106a4886d611759f",
+      "retrieved_at_toronto": "2026-09-16T05:09:00-04:00",
+      "source_url": null
+    },
+    "ism-official.html": {
+      "bytes": 922,
+      "sha256": "2b00e9ba5232405175ee282eb5bee399299c655c105edb7531500a5ffaa006dc",
+      "retrieved_at_toronto": "2026-09-16T05:08:57-04:00",
+      "source_url": "https://www.ismworld.org/supply-management-news-and-reports/reports/ism-report-on-business/services/september/"
+    },
+    "ism-official.html.curl-meta.txt": {
+      "bytes": 661,
+      "sha256": "5ec9e56f0dd7fbaef6bcc32c0e6e2b12697bf13e24dc19f357e2928a6504ba90",
+      "retrieved_at_toronto": "2026-09-16T05:08:57-04:00",
+      "source_url": "https://www.ismworld.org/supply-management-news-and-reports/reports/ism-report-on-business/services/september/"
+    },
+    "market/%5ETNX.1d.json": {
+      "bytes": 3362,
+      "sha256": "0989d1f6e0b7cbb8b87bba34a808777bcea1305c79ca6e12bccd576836e96f56",
+      "retrieved_at_toronto": "2026-09-16T05:08:58-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/%5ETNX"
+    },
+    "market/%5ETNX.1d.json.curl-meta.txt": {
+      "bytes": 483,
+      "sha256": "ba46f708d937491d464c4427f00353d24360f059044a1fdc91cd1e44f92d2f0a",
+      "retrieved_at_toronto": "2026-09-16T05:08:58-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/%5ETNX"
+    },
+    "market/%5ETNX.1m.json": {
+      "bytes": 167404,
+      "sha256": "ed1b44574551ff8a99986c2da55acf05bed52e3f3ed8969587038cb29b7cb318",
+      "retrieved_at_toronto": "2026-09-16T05:08:58-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/%5ETNX"
+    },
+    "market/%5ETNX.1m.json.curl-meta.txt": {
+      "bytes": 483,
+      "sha256": "6188c09ba1fb18cdee4a82098913b2873f1b7e9c7a41d605783696f8b2319757",
+      "retrieved_at_toronto": "2026-09-16T05:08:58-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/%5ETNX"
+    },
+    "market/%5ETYX.1d.json": {
+      "bytes": 3359,
+      "sha256": "5ccc1e6cc39db7c0e70f28bb1b7ecfbb730637cd22e8283dbd3a8c284275d540",
+      "retrieved_at_toronto": "2026-09-16T05:08:58-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/%5ETYX"
+    },
+    "market/%5ETYX.1d.json.curl-meta.txt": {
+      "bytes": 483,
+      "sha256": "8df83328c743c9758f77d5a0238598ac45bf4b6a83d7541de0e1d0b5c7e9b7d8",
+      "retrieved_at_toronto": "2026-09-16T05:08:58-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/%5ETYX"
+    },
+    "market/%5ETYX.1m.json": {
+      "bytes": 170492,
+      "sha256": "b67f464f0651bc1b73c914112069c8bfb8091bb95572268164cf584568ffb4bf",
+      "retrieved_at_toronto": "2026-09-16T05:08:58-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/%5ETYX"
+    },
+    "market/%5ETYX.1m.json.curl-meta.txt": {
+      "bytes": 483,
+      "sha256": "083ec4685eeb2be7fd7a477a310d45fd085cc96e06864e9609fa318eec4d688a",
+      "retrieved_at_toronto": "2026-09-16T05:08:58-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/%5ETYX"
+    },
+    "market/CL%3DF.1d.json": {
+      "bytes": 3435,
+      "sha256": "50c49e8cdb00e44c5c9b5027616cfe245161f6f57fcada5d27c833e61f798550",
+      "retrieved_at_toronto": "2026-09-16T05:08:58-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/CL%3DF"
+    },
+    "market/CL%3DF.1d.json.curl-meta.txt": {
+      "bytes": 483,
+      "sha256": "8a012cac0ef03b8eaeaab5f68aca1f300710753c3e9d3b35a1a65308e9739365",
+      "retrieved_at_toronto": "2026-09-16T05:08:58-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/CL%3DF"
+    },
+    "market/CL%3DF.1m.json": {
+      "bytes": 446919,
+      "sha256": "28af4db40911b7048ec806ac6ba94b3dbfcc671c0827eeab0db5c2b40178ca55",
+      "retrieved_at_toronto": "2026-09-16T05:08:58-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/CL%3DF"
+    },
+    "market/CL%3DF.1m.json.curl-meta.txt": {
+      "bytes": 483,
+      "sha256": "fc69745a49421eab4d2c4a27640d178108bbfa8bc78bd81ab0a8ab2bb0628f26",
+      "retrieved_at_toronto": "2026-09-16T05:08:58-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/CL%3DF"
+    },
+    "market/GLD.1d.json": {
+      "bytes": 3447,
+      "sha256": "3d093ae1cc522a6d26f260f098cb5f7e1f4ffdee8888d1b75a840b4a7a6451ad",
+      "retrieved_at_toronto": "2026-09-16T05:08:58-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/GLD"
+    },
+    "market/GLD.1d.json.curl-meta.txt": {
+      "bytes": 477,
+      "sha256": "6c2eaa50ae1309c2a71ee4c74362536ef46361839b8f7b3cd985a908d7cb5c6f",
+      "retrieved_at_toronto": "2026-09-16T05:08:58-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/GLD"
+    },
+    "market/GLD.1m.json": {
+      "bytes": 172154,
+      "sha256": "995d929bc0c38668815382a4d2d8486c4ac935842030b8854d107eb3bab70fc8",
+      "retrieved_at_toronto": "2026-09-16T05:08:58-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/GLD"
+    },
+    "market/GLD.1m.json.curl-meta.txt": {
+      "bytes": 477,
+      "sha256": "580a7ddef1a76230bb0b3332f1c0e634830e50bce2fec8fa94b85e26086fd590",
+      "retrieved_at_toronto": "2026-09-16T05:08:58-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/GLD"
+    },
+    "market/IWM.1d.json": {
+      "bytes": 3542,
+      "sha256": "f9398632dd10729db3ae35a8a34a026c14a3139b33797a2393cf095182d644ad",
+      "retrieved_at_toronto": "2026-09-16T05:08:57-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/IWM"
+    },
+    "market/IWM.1d.json.curl-meta.txt": {
+      "bytes": 477,
+      "sha256": "90e139571a5f92df9e44025a20407a74e5855ee3d426aebcda204691c83f69a7",
+      "retrieved_at_toronto": "2026-09-16T05:08:57-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/IWM"
+    },
+    "market/IWM.1m.json": {
+      "bytes": 173226,
+      "sha256": "1a725ce8ac51595e36a2af0a5644929d4f4cc4ea892ed844d438bf89e18c667b",
+      "retrieved_at_toronto": "2026-09-16T05:08:57-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/IWM"
+    },
+    "market/IWM.1m.json.curl-meta.txt": {
+      "bytes": 477,
+      "sha256": "eed467e0756b9a702520082fdac9a42d97aff82293c764f12548632f9514c7cf",
+      "retrieved_at_toronto": "2026-09-16T05:08:57-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/IWM"
+    },
+    "market/QQQ.1d.json": {
+      "bytes": 3483,
+      "sha256": "bf761fe86f68f1e1538462013e841cc534a847b17d706535501f4ab8a6e3a9e5",
+      "retrieved_at_toronto": "2026-09-16T05:08:57-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/QQQ"
+    },
+    "market/QQQ.1d.json.curl-meta.txt": {
+      "bytes": 477,
+      "sha256": "7d0d470fd37f90d6f31af27a50a2b3b1fcfc5591747bf90677f17be3a856480e",
+      "retrieved_at_toronto": "2026-09-16T05:08:57-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/QQQ"
+    },
+    "market/QQQ.1m.json": {
+      "bytes": 169657,
+      "sha256": "74e11f9049030391553a556c6183ff8381ebc33be8133cd5efaaeb8c7e329abf",
+      "retrieved_at_toronto": "2026-09-16T05:08:57-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/QQQ"
+    },
+    "market/QQQ.1m.json.curl-meta.txt": {
+      "bytes": 477,
+      "sha256": "4b3614c81cf2b55f63ce95152ee4e814b46fab1c0ebb4db9c6455a96afeca215",
+      "retrieved_at_toronto": "2026-09-16T05:08:57-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/QQQ"
+    },
+    "market/SPY.1d.json": {
+      "bytes": 3452,
+      "sha256": "ab6cd9a186c2eafd8cf4a511666b9150549bc27ab8c523153497f855c9c910a4",
+      "retrieved_at_toronto": "2026-09-16T05:08:57-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/SPY"
+    },
+    "market/SPY.1d.json.curl-meta.txt": {
+      "bytes": 477,
+      "sha256": "2696302ddf91093e1f83e2edce6c2f4e0b03795e8a8630a82270c00d3698fd5d",
+      "retrieved_at_toronto": "2026-09-16T05:08:57-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/SPY"
+    },
+    "market/SPY.1m.json": {
+      "bytes": 169685,
+      "sha256": "2dd7a189ff08451a8a1f29ccdb1543fa460743d216c4ee43b4d0638a645dd816",
+      "retrieved_at_toronto": "2026-09-16T05:08:57-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/SPY"
+    },
+    "market/SPY.1m.json.curl-meta.txt": {
+      "bytes": 477,
+      "sha256": "8153811c91bb9587d6257ffb4d059f56337383a40a87f59c605e16005eb9920a",
+      "retrieved_at_toronto": "2026-09-16T05:08:57-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/SPY"
+    },
+    "market/TLT.1d.json": {
+      "bytes": 3450,
+      "sha256": "a4063bf5cf4fb9de061c3f90bd0d12fb0abe3b2ff2d886f9a90b7e53e0451c15",
+      "retrieved_at_toronto": "2026-09-16T05:08:58-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/TLT"
+    },
+    "market/TLT.1d.json.curl-meta.txt": {
+      "bytes": 477,
+      "sha256": "4e24d6d2b96e3547639b7315598cac5cb1da014904126b2af5b491ea5a67eb65",
+      "retrieved_at_toronto": "2026-09-16T05:08:58-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/TLT"
+    },
+    "market/TLT.1m.json": {
+      "bytes": 170988,
+      "sha256": "95ed3e1ce3c317a0969a0f56b4cb29a4387d8426375c1ce6c98f857fd33a8fbb",
+      "retrieved_at_toronto": "2026-09-16T05:08:58-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/TLT"
+    },
+    "market/TLT.1m.json.curl-meta.txt": {
+      "bytes": 477,
+      "sha256": "df57a36d1be52fb27c217c15ec0265e62cb35dd8b7d275b72a620ea554b0f426",
+      "retrieved_at_toronto": "2026-09-16T05:08:58-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/TLT"
+    },
+    "market/XLE.1d.json": {
+      "bytes": 3494,
+      "sha256": "cfe8df92bfde37f55b286b65be6a03942a39d8c8173e56367af7c4176c757d6d",
+      "retrieved_at_toronto": "2026-09-16T05:08:57-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/XLE"
+    },
+    "market/XLE.1d.json.curl-meta.txt": {
+      "bytes": 477,
+      "sha256": "38f68ecac7332a5589ca46f4eb976c7cd706ab32e6cb451349682579ef1aa3cb",
+      "retrieved_at_toronto": "2026-09-16T05:08:57-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/XLE"
+    },
+    "market/XLE.1m.json": {
+      "bytes": 170952,
+      "sha256": "3dca75828ad09179089288f8407660c4dd10ea1b1df4b691cf0c3904ec8a0087",
+      "retrieved_at_toronto": "2026-09-16T05:08:58-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/XLE"
+    },
+    "market/XLE.1m.json.curl-meta.txt": {
+      "bytes": 477,
+      "sha256": "1d03e433464952391ccbe6b63c461565b130c78f97e3368815353853dbd07f42",
+      "retrieved_at_toronto": "2026-09-16T05:08:58-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/XLE"
+    },
+    "market/XLF.1d.json": {
+      "bytes": 3519,
+      "sha256": "a1aa416ab68609bd3ad5802e6757fca514d4358463b3574adc2a26e0c3c9b7c4",
+      "retrieved_at_toronto": "2026-09-16T05:08:57-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/XLF"
+    },
+    "market/XLF.1d.json.curl-meta.txt": {
+      "bytes": 477,
+      "sha256": "beed13c53f2b49531d531ac7562cb55ece7abe4fda51f47cf90acc378b734aa7",
+      "retrieved_at_toronto": "2026-09-16T05:08:57-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/XLF"
+    },
+    "market/XLF.1m.json": {
+      "bytes": 174305,
+      "sha256": "b7e9188e3a249e498005dffc4502acdcf44533740a191e277cd4d3bf28501988",
+      "retrieved_at_toronto": "2026-09-16T05:08:57-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/XLF"
+    },
+    "market/XLF.1m.json.curl-meta.txt": {
+      "bytes": 477,
+      "sha256": "792803c89e15ce088f78e3c9fd9574c03aeebcf24e8845970fe2cfb80662ed79",
+      "retrieved_at_toronto": "2026-09-16T05:08:57-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/XLF"
+    },
+    "market/XLI.1d.json": {
+      "bytes": 3542,
+      "sha256": "79eb2bb63b06b8664b389c4f8176c5c159ac0e166cb393a117433664e7d2eac7",
+      "retrieved_at_toronto": "2026-09-16T05:08:57-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/XLI"
+    },
+    "market/XLI.1d.json.curl-meta.txt": {
+      "bytes": 477,
+      "sha256": "122fcd6de1df4e5ac8c94f8aaaa9936bb6395e6a7b512c5ab54219079c2d643a",
+      "retrieved_at_toronto": "2026-09-16T05:08:57-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/XLI"
+    },
+    "market/XLI.1m.json": {
+      "bytes": 175661,
+      "sha256": "4d916a45bd33a7c6d06e1857861bf05fac4134c7f6010006b69f3418ba847d1f",
+      "retrieved_at_toronto": "2026-09-16T05:08:57-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/XLI"
+    },
+    "market/XLI.1m.json.curl-meta.txt": {
+      "bytes": 477,
+      "sha256": "be9d0a1d7ceba63afed4ca750890a1439647f5ab9f24080e2314ca0b454d2e8d",
+      "retrieved_at_toronto": "2026-09-16T05:08:57-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/XLI"
+    },
+    "market/XLU.1d.json": {
+      "bytes": 3487,
+      "sha256": "b716187f7bc3ceb339d58abc7f4cee07c2aafa885919daac05c836ebb0ca408f",
+      "retrieved_at_toronto": "2026-09-16T05:08:57-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/XLU"
+    },
+    "market/XLU.1d.json.curl-meta.txt": {
+      "bytes": 477,
+      "sha256": "7e6812c5a9a5d523d35631a2a3479ca23c84a46be29ad38519ca985853bcb392",
+      "retrieved_at_toronto": "2026-09-16T05:08:57-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/XLU"
+    },
+    "market/XLU.1m.json": {
+      "bytes": 174135,
+      "sha256": "fc99f67c6f55edde58a4ea6d54d96d7859740e0c08e61e7d4ee1cef6f95e252f",
+      "retrieved_at_toronto": "2026-09-16T05:08:58-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/XLU"
+    },
+    "market/XLU.1m.json.curl-meta.txt": {
+      "bytes": 477,
+      "sha256": "2c85b2175738c6107036bdcab75ea63e262b222f9d4ed63ed6e5f710b30693f1",
+      "retrieved_at_toronto": "2026-09-16T05:08:58-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/XLU"
+    },
+    "market/ZEB.TO.1d.json": {
+      "bytes": 3297,
+      "sha256": "39dce49b00767bc1cff131479782db4f427d49b40a6bce134c26b039c8f01e34",
+      "retrieved_at_toronto": "2026-09-16T05:08:58-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/ZEB.TO"
+    },
+    "market/ZEB.TO.1d.json.curl-meta.txt": {
+      "bytes": 483,
+      "sha256": "412f2b0597c6c0eca5b258b72c873e05951f942159ebef79073d129ea4ee147b",
+      "retrieved_at_toronto": "2026-09-16T05:08:58-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/ZEB.TO"
+    },
+    "market/ZEB.TO.1m.json": {
+      "bytes": 146641,
+      "sha256": "c878ff8bcc346297eca53370adc437c875e9d15e1631070bd555fe3b5c5798c5",
+      "retrieved_at_toronto": "2026-09-16T05:08:58-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/ZEB.TO"
+    },
+    "market/ZEB.TO.1m.json.curl-meta.txt": {
+      "bytes": 483,
+      "sha256": "e6149d60aed7ff616b1e724b64157ed5656354d0fdfe54b36df998fc613446e0",
+      "retrieved_at_toronto": "2026-09-16T05:08:58-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/ZEB.TO"
+    },
+    "market/ZQU26.CBT.1d.json": {
+      "bytes": 3557,
+      "sha256": "511ed23c9d54fc33d7d1ab2b0f9c38e81f48b2ad170b8126f3c7230a8a6cdedf",
+      "retrieved_at_toronto": "2026-09-16T05:08:58-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/ZQU26.CBT"
+    },
+    "market/ZQU26.CBT.1d.json.curl-meta.txt": {
+      "bytes": 489,
+      "sha256": "5ccfd34b7a60b3acd1820d9c37b75300819fb3ed32b7c3969972935b3e68bfb8",
+      "retrieved_at_toronto": "2026-09-16T05:08:58-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/ZQU26.CBT"
+    },
+    "market/ZQU26.CBT.1m.json": {
+      "bytes": 264334,
+      "sha256": "360dad8b3ce833e632bccb2a9650e0a5add71e0fa4f17d4f4aa363740190f2cc",
+      "retrieved_at_toronto": "2026-09-16T05:08:58-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/ZQU26.CBT"
+    },
+    "market/ZQU26.CBT.1m.json.curl-meta.txt": {
+      "bytes": 489,
+      "sha256": "90b715f79cfc35c6c7f37a452a8721205b74069c741b7566fdd91838f15056b4",
+      "retrieved_at_toronto": "2026-09-16T05:08:58-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/ZQU26.CBT"
+    },
+    "market/ZQV26.CBT.1d.json": {
+      "bytes": 3444,
+      "sha256": "b3364ba26f351d7951e2726bbe0718dbdb391ab14d5d576b76b352b1c8159213",
+      "retrieved_at_toronto": "2026-09-16T05:08:58-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/ZQV26.CBT"
+    },
+    "market/ZQV26.CBT.1d.json.curl-meta.txt": {
+      "bytes": 489,
+      "sha256": "65b1d6b323fe2d4209f4d145bd8089058ac2b1b67f55e9b716946181256245db",
+      "retrieved_at_toronto": "2026-09-16T05:08:58-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/ZQV26.CBT"
+    },
+    "market/ZQV26.CBT.1m.json": {
+      "bytes": 273237,
+      "sha256": "cec5fc9b3b0f907edf970b355978fb981101bd201490f44ffde3138fb7a69361",
+      "retrieved_at_toronto": "2026-09-16T05:08:58-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/ZQV26.CBT"
+    },
+    "market/ZQV26.CBT.1m.json.curl-meta.txt": {
+      "bytes": 489,
+      "sha256": "cd767e42d402b4c4197c4a7ef15d0d5c2342802207cf2aac8f53d6cb8ed5cc70",
+      "retrieved_at_toronto": "2026-09-16T05:08:58-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/ZQV26.CBT"
+    },
+    "market/ZQX26.CBT.1d.json": {
+      "bytes": 3496,
+      "sha256": "dedf28ce6c635c0e9871644cd4ddd0f30beb596bcedc49c94575b08c6fc8bf53",
+      "retrieved_at_toronto": "2026-09-16T05:08:58-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/ZQX26.CBT"
+    },
+    "market/ZQX26.CBT.1d.json.curl-meta.txt": {
+      "bytes": 489,
+      "sha256": "403bbe666c7a17ac0ea84cf51324365f4cec81c311b192b64fcc40e74c9cf7a3",
+      "retrieved_at_toronto": "2026-09-16T05:08:58-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/ZQX26.CBT"
+    },
+    "market/ZQX26.CBT.1m.json": {
+      "bytes": 277559,
+      "sha256": "202710b4314947d025d3f70db43fee498f633bebe2ebfa96c4505faa32f6d599",
+      "retrieved_at_toronto": "2026-09-16T05:08:58-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/ZQX26.CBT"
+    },
+    "market/ZQX26.CBT.1m.json.curl-meta.txt": {
+      "bytes": 489,
+      "sha256": "041797620a900f755574b66aee18a568071ecb2910bc414026a102c16c8c0825",
+      "retrieved_at_toronto": "2026-09-16T05:08:58-04:00",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/ZQX26.CBT"
+    },
+    "michigan.html": {
+      "bytes": 6803,
+      "sha256": "7b5edef277e3631fada319d2451299d3324ce83082620aa4c437e794b3f93987",
+      "retrieved_at_toronto": "2026-09-16T05:08:57-04:00",
+      "source_url": "https://www.sca.isr.umich.edu/"
+    },
+    "michigan.html.curl-meta.txt": {
+      "bytes": 309,
+      "sha256": "c5d81b80753561214539124906e61f03bd1b56b1ad80aa787a0924e872f80dba",
+      "retrieved_at_toronto": "2026-09-16T05:08:57-04:00",
+      "source_url": "https://www.sca.isr.umich.edu/"
+    },
+    "nyfed-empire-overview.html": {
+      "bytes": 131719,
+      "sha256": "22698750bf0d1e750065e0a16cafcc81957eb7deccd93392453873262707ed8f",
+      "retrieved_at_toronto": "2026-09-16T05:08:57-04:00",
+      "source_url": "https://www.newyorkfed.org/survey/empire/empiresurvey_overview"
+    },
+    "nyfed-empire-overview.html.curl-meta.txt": {
+      "bytes": 375,
+      "sha256": "f46f51b093fe2d387d7615e8eaa896a0406af8026405aa2d584e1f9660dbe727",
+      "retrieved_at_toronto": "2026-09-16T05:08:57-04:00",
+      "source_url": "https://www.newyorkfed.org/survey/empire/empiresurvey_overview"
+    },
+    "statcan-cpi.html": {
+      "bytes": 34612,
+      "sha256": "a0bda8b8017c21932b3cc2bc7aeb737c66c65a9e7f2c5f264b73c759ca87f2d5",
+      "retrieved_at_toronto": "2026-09-16T05:08:56-04:00",
+      "source_url": "https://www150.statcan.gc.ca/n1/daily-quotidien/260914/dq260914a-eng.htm"
+    },
+    "statcan-cpi.html.curl-meta.txt": {
+      "bytes": 394,
+      "sha256": "4dc2c45d0b6d2a8365ec4333a6511906494bb6780f596d86bdc9f16c39d72828",
+      "retrieved_at_toronto": "2026-09-16T05:08:56-04:00",
+      "source_url": "https://www150.statcan.gc.ca/n1/daily-quotidien/260914/dq260914a-eng.htm"
+    },
+    "statcan-gdp-industry.html": {
+      "bytes": 42722,
+      "sha256": "0536195662c1ed9e12cac08288b502f76f072e4547c98cc8b20d1a3cfe5d6471",
+      "retrieved_at_toronto": "2026-09-16T05:08:57-04:00",
+      "source_url": "https://www150.statcan.gc.ca/n1/daily-quotidien/260828/dq260828b-eng.htm"
+    },
+    "statcan-gdp-industry.html.curl-meta.txt": {
+      "bytes": 394,
+      "sha256": "1bba046c1055f2f14564b6259cc9985c5801bd727ce4a5381ac25170b4e1fe63",
+      "retrieved_at_toronto": "2026-09-16T05:08:57-04:00",
+      "source_url": "https://www150.statcan.gc.ca/n1/daily-quotidien/260828/dq260828b-eng.htm"
+    },
+    "statcan-gdp.html": {
+      "bytes": 45568,
+      "sha256": "e14319b0610632df7d8f0394f9ca899e3cea9898d427ccbb853a9e32397560cf",
+      "retrieved_at_toronto": "2026-09-16T05:08:57-04:00",
+      "source_url": "https://www150.statcan.gc.ca/n1/daily-quotidien/260828/dq260828a-eng.htm"
+    },
+    "statcan-gdp.html.curl-meta.txt": {
+      "bytes": 394,
+      "sha256": "d12b495bf3cc826c0662d92d95f3a2a16e9092e67d050eee9018cda6a66b35b1",
+      "retrieved_at_toronto": "2026-09-16T05:08:57-04:00",
+      "source_url": "https://www150.statcan.gc.ca/n1/daily-quotidien/260828/dq260828a-eng.htm"
+    },
+    "statcan-lfs.html": {
+      "bytes": 73283,
+      "sha256": "c392f09c91d29b4596dc826c1324e2d2099624a019f63e79eb7b9bf84c6035f8",
+      "retrieved_at_toronto": "2026-09-16T05:08:56-04:00",
+      "source_url": "https://www150.statcan.gc.ca/n1/daily-quotidien/260904/dq260904a-eng.htm"
+    },
+    "statcan-lfs.html.curl-meta.txt": {
+      "bytes": 394,
+      "sha256": "cc66cfce946b23c90ea8db29924c93be6726826ed88c1c450caf050570d90a72",
+      "retrieved_at_toronto": "2026-09-16T05:08:56-04:00",
+      "source_url": "https://www150.statcan.gc.ca/n1/daily-quotidien/260904/dq260904a-eng.htm"
+    },
+    "statcan-rents-q1.html": {
+      "bytes": 23260,
+      "sha256": "4e7828e4bac796301f4fbbe204df03a02bbcb3cfa4856de56cba0f6c085a0b84",
+      "retrieved_at_toronto": "2026-09-16T05:08:57-04:00",
+      "source_url": "https://www150.statcan.gc.ca/n1/daily-quotidien/260609/dq260609c-eng.htm"
+    },
+    "statcan-rents-q1.html.curl-meta.txt": {
+      "bytes": 394,
+      "sha256": "60e1ed540b43a862f1cdd1c4e7be9d52ab394aae40f8c6a790fb97da64dbf9e9",
+      "retrieved_at_toronto": "2026-09-16T05:08:57-04:00",
+      "source_url": "https://www150.statcan.gc.ca/n1/daily-quotidien/260609/dq260609c-eng.htm"
+    },
+    "statcan-rents.html": {
+      "bytes": 27915,
+      "sha256": "1a4dd343a491e614d766c1483a949bbb08d6a3388a187ff52dedd687f53a111b",
+      "retrieved_at_toronto": "2026-09-16T05:08:57-04:00",
+      "source_url": "https://www150.statcan.gc.ca/n1/daily-quotidien/260909/dq260909c-eng.htm"
+    },
+    "statcan-rents.html.curl-meta.txt": {
+      "bytes": 394,
+      "sha256": "87f4c73c1282096b20f4f04a916fc03048034ae3791ff80c73d062b9dd4d42ef",
+      "retrieved_at_toronto": "2026-09-16T05:08:57-04:00",
+      "source_url": "https://www150.statcan.gc.ca/n1/daily-quotidien/260909/dq260909c-eng.htm"
+    },
+    "te-adp.html": {
+      "bytes": 358962,
+      "sha256": "9dd56fc2aea8fcaf87b283aa9aaf3c7af53ad57cbaf7b42ea50092e8ffd4b302",
+      "retrieved_at_toronto": "2026-09-16T05:08:57-04:00",
+      "source_url": "https://tradingeconomics.com/united-states/adp-employment-change"
+    },
+    "te-adp.html.curl-meta.txt": {
+      "bytes": 379,
+      "sha256": "ff80b33653358042e126ae5cb05ba183bf75ae2f4245b23f1e8a6e0f83c8674c",
+      "retrieved_at_toronto": "2026-09-16T05:08:57-04:00",
+      "source_url": "https://tradingeconomics.com/united-states/adp-employment-change"
+    },
+    "te-empire-alt.html": {
+      "bytes": 322424,
+      "sha256": "20dcbeeba04c69eeef29fbb7c95d978f84443a67979e422612f17f822f0ce935",
+      "retrieved_at_toronto": "2026-09-16T05:08:57-04:00",
+      "source_url": "https://tradingeconomics.com/united-states/new-york-empire-state-manufacturing-index"
+    },
+    "te-empire-alt.html.curl-meta.txt": {
+      "bytes": 419,
+      "sha256": "71f3364b5eef04f61ce3f2e4f54c9dd8df8d2679ee5e792206986a74154b7280",
+      "retrieved_at_toronto": "2026-09-16T05:08:57-04:00",
+      "source_url": "https://tradingeconomics.com/united-states/new-york-empire-state-manufacturing-index"
+    },
+    "te-empire.html": {
+      "bytes": 356010,
+      "sha256": "291fb069d0463b8fb4cfcafe722055deff777fb8d1600a5d4dba8d8de2975396",
+      "retrieved_at_toronto": "2026-09-16T05:08:58-04:00",
+      "source_url": "https://tradingeconomics.com/united-states/ny-empire-state-manufacturing-index"
+    },
+    "te-empire.html.curl-meta.txt": {
+      "bytes": 407,
+      "sha256": "2fe0d33021d932168ceecdecb9ec2ecba1a75b928902c38ed338eba376f00765",
+      "retrieved_at_toronto": "2026-09-16T05:08:58-04:00",
+      "source_url": "https://tradingeconomics.com/united-states/ny-empire-state-manufacturing-index"
+    },
+    "te-ism.html": {
+      "bytes": 346358,
+      "sha256": "718227abdc293e6af2c194912c514de18ddc6612ee2e9c223972688b6d588e42",
+      "retrieved_at_toronto": "2026-09-16T05:08:57-04:00",
+      "source_url": "https://tradingeconomics.com/united-states/non-manufacturing-pmi"
+    },
+    "te-ism.html.curl-meta.txt": {
+      "bytes": 379,
+      "sha256": "9f67b415098c98aa1cd6b16e6e16f7b8c5e2631237385509d71530ba59c263e4",
+      "retrieved_at_toronto": "2026-09-16T05:08:57-04:00",
+      "source_url": "https://tradingeconomics.com/united-states/non-manufacturing-pmi"
+    },
+    "te-ivey-business-confidence.html": {
+      "bytes": 308877,
+      "sha256": "b3cc83be66ef0bb333cadd5283850153709ec9338e0624d531a47ca7558d1c64",
+      "retrieved_at_toronto": "2026-09-16T05:08:58-04:00",
+      "source_url": "https://tradingeconomics.com/canada/business-confidence"
+    },
+    "te-ivey-business-confidence.html.curl-meta.txt": {
+      "bytes": 361,
+      "sha256": "42ff426bd5f35e6aac69ea596b39b051144f4787bd71aca232374d2faaf7537a",
+      "retrieved_at_toronto": "2026-09-16T05:08:58-04:00",
+      "source_url": "https://tradingeconomics.com/canada/business-confidence"
+    },
+    "te-ivey-news-581356.html": {
+      "bytes": 182979,
+      "sha256": "ce9cd15a3902d59e598a2dac408be44c878299de179d76e7b628f87d251eef52",
+      "retrieved_at_toronto": "2026-09-16T05:08:57-04:00",
+      "source_url": "https://tradingeconomics.com/canada/business-confidence/news/581356"
+    },
+    "te-ivey-news-581356.html.curl-meta.txt": {
+      "bytes": 385,
+      "sha256": "6ffdfde737e9d8062139ed4260f1b456248b4d4f00ceff0c9bd460d38c8ca27a",
+      "retrieved_at_toronto": "2026-09-16T05:08:57-04:00",
+      "source_url": "https://tradingeconomics.com/canada/business-confidence/news/581356"
+    },
+    "tradingeconomics-calendar.html": {
+      "bytes": 1556198,
+      "sha256": "d88f1d64e995349601213182a1993a303f097e8705ec0453b91eba0b9addad86",
+      "retrieved_at_toronto": "2026-09-16T05:08:56-04:00",
+      "source_url": "https://tradingeconomics.com/calendar"
+    },
+    "tradingeconomics-calendar.html.curl-meta.txt": {
+      "bytes": 326,
+      "sha256": "21a35a6c7641956b0a7ba5aeaaa03a4bb5e7eaf09603806d8486f6e66bd0ffdb",
+      "retrieved_at_toronto": "2026-09-16T05:08:56-04:00",
+      "source_url": "https://tradingeconomics.com/calendar"
+    }
+  }
+}

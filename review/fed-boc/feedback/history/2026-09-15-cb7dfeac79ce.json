@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "status": "open",
+  "reviewed_at": "2026-09-15T03:11:55-04:00",
+  "candidate_sha256": "80e5158ce928d18c599372fbe37f695dcc168f3fe40c82353208d82c738fe663",
+  "review_sha256": "cb7dfeac79ce16edd84a8a564b563c1e120c19599ec54365cd6e43a2d13e3ed1",
+  "source_review": "review/fed-boc/2026-09-15/iteration-01/pm-review.json",
+  "executive_summary": "Revise. The frozen candidate digest and all 133 evidence-manifest entries verify byte-for-byte, and the open ADP/ISM provenance feedback was materially remediated: Trading Economics is consistently identified for displayed values while official probes are non-value probes. Official policy facts, Fed proxy arithmetic and explicit non-CME distinction, CRAU26 fields and multi-meeting limitation, aligned CPI tuples, zero-weight tombstones, cash-session cutoff, and visible-price calculations are otherwise reproducible. However, the weighted Ivey driver lacks a source-observation timestamp and an explicit field-level evidence mapping, and the BoC pricing proxy_source_url is mislabeled as a BoC Valet URL although the observable proxy is the TMX CRA quote. These provenance/freshness defects prevent unconditional P&L approval.",
+  "failed_checks": [
+    "decision_usefulness",
+    "drivers",
+    "freshness",
+    "pricing"
+  ],
+  "findings": [
+    {
+      "severity": "major",
+      "field": "drivers.boc.hawkish[id=boc_hawk_ivey_20260904].source/source_url/source_observed_at_toronto and pm-handoff evidence mapping",
+      "issue": "The weighted Ivey PMI driver has no source_observed_at_toronto or observed_at_toronto field and is not given a dedicated evidence-chain mapping in pm-handoff.json. Its generic TradingEconomics calendar URL identifies a landing page rather than the exact event/value record. The displayed 64.3 Actual, 56.2 Forecast, and 55.1 Previous therefore cannot be independently tied to a timestamped frozen provider record at review time.",
+      "evidence": "candidate.json contains boc_hawk_ivey_20260904 with weight 1.5, published_at_toronto 2026-09-04T10:00:00-04:00, source_url https://tradingeconomics.com/calendar, and no observed_at_toronto or source_observed_at_toronto. The handoff field_by_field_remediation_evidence_mapping covers ADP, ISM, whole-candidate consistency, and older invariants, but contains no Ivey mapping; the manifest only includes the broad tradingeconomics-calendar.html artifact without a field-level Ivey reference.",
+      "pnl_impact": "A 1.5-weight hawkish activity signal can alter the BoC balance and influence CAD, front-end rates, and duration decisions. Without a timestamped exact evidence chain, the PM cannot distinguish the stated Ivey release tuple from a stale, revised, or differently defined calendar row.",
+      "instruction": "Recollect the exact Ivey PMI provider record and add a matching frozen evidence artifact or precise existing artifact mapping. Add source_observed_at_toronto, preserve the release timestamp, identify the exact provider URL/record for Actual/Forecast/Previous, and re-evaluate the hawkish side and 1.5 weight before rebuilding the whole candidate and recomputing its SHA-256."
+    },
+    {
+      "severity": "major",
+      "field": "meetings.boc.pricing.proxy_source_url",
+      "issue": "The field named proxy_source_url points to the Bank of Canada CORRA Valet series, while the stated observable pricing proxy is the TMX/MX CRAU26 quote. This is a source-label mismatch in the BoC pricing block even though source_url and observable_proxy.source_url correctly point to TMX.",
+      "evidence": "candidate.json meetings.boc.pricing.source says TMX/MX CRA quarterly CORRA futures observable and source_url is https://www.m-x.ca/en/trading/data/quotes?symbol=CRA%2A, but proxy_source_url is https://www.bankofcanada.ca/valet/observations/AVG.INTWO/json?start_date=2026-09-01. The CRA quote evidence verifies the 97.595 last, 97.595 bid x 20, 97.600 ask x 175, settlement 97.6000, volume 197, OI 230466, and 6 trades; the BoC URL is the separate CORRA reference series, not the CRA quote source.",
+      "pnl_impact": "A PM following proxy_source_url could retrieve CORRA rather than the quoted CRAU26 instrument and fail to reproduce the displayed price, liquidity, and quarterly-average inference. That creates avoidable misidentification risk in BoC front-end and CAD positioning decisions.",
+      "instruction": "Align proxy_source_url with the TMX/MX CRA quote source, or rename and clearly separate the CORRA reference-series field from the instrument source. Rebuild and re-hash the candidate, then submit a fresh independent review with the corrected provenance and evidence mapping."
+    }
+  ],
+  "required_recollection": [
+    "Recollect the exact Ivey PMI provider record and add a matching frozen evidence artifact or precise existing artifact mapping. Add source_observed_at_toronto, preserve the release timestamp, identify the exact provider URL/record for Actual/Forecast/Previous, and re-evaluate the hawkish side and 1.5 weight before rebuilding the whole candidate and recomputing its SHA-256.",
+    "Align proxy_source_url with the TMX/MX CRA quote source, or rename and clearly separate the CORRA reference-series field from the instrument source. Rebuild and re-hash the candidate, then submit a fresh independent review with the corrected provenance and evidence mapping."
+  ],
+  "operator_instructions": [
+    "Keep publication fail-closed; do not archive, commit, sync, or publish this candidate.",
+    "Resolve the weighted Ivey PMI timestamp and exact evidence-chain gap, re-evaluate its side and weight, and rebuild the whole candidate rather than patching prose only.",
+    "Correct the BoC pricing proxy-source labeling so the CRA instrument URL and CORRA reference URL are unambiguous and independently reproducible.",
+    "Recompute candidate.sha256, update the PM handoff and evidence mapping, and submit the rebuilt exact-byte candidate to a fresh independent PM review."
+  ],
+  "next_run_contract": [
+    "Read this feedback before collecting or editing the next candidate.",
+    "Re-trigger collection for every affected source and claim.",
+    "Rebuild the whole internally consistent candidate; do not patch prose only.",
+    "Submit the rebuilt candidate to a fresh independent PM review.",
+    "Do not publish until an exact-byte-bound approved review passes the gate."
+  ]
+}

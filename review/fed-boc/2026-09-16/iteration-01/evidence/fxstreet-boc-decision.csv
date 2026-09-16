@@ -1,0 +1,9 @@
+Id,Start,Name,Impact,Currency
+789d953f-93b7-43b1-ac20-842dc0e4e12e,09/01/2026 13:30:00,S&P Global Manufacturing PMI,MEDIUM,CAD
+b8da849e-3653-441c-b145-7f1356419ee0,09/02/2026 13:45:00,BoC Interest Rate Decision,HIGH,CAD
+ddf40a44-eacb-41ee-90b6-621b677e7518,09/02/2026 13:45:00,BoC Monetary Policy Statement,HIGH,CAD
+11c4ee57-a95d-43d1-8526-fab6ef18b214,09/02/2026 14:30:00,BoC Press Conference,HIGH,CAD
+352d37b0-8b8c-4e8a-9748-bd89ec19dcb4,09/03/2026 12:30:00,Exports,LOW,CAD
+8c0c4f86-33e5-432e-9a26-a2940c7b07be,09/03/2026 12:30:00,Imports,LOW,CAD
+beb6a696-183d-44cf-9d11-33b2ce405549,09/03/2026 12:30:00,International Merchandise Trade,LOW,CAD
+6ec28cd4-3283-4157-9eb8-06c46fa5249d,09/03/2026 12:30:00,Labor Productivity (QoQ),LOW,CAD
