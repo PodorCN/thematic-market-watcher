@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Global Economic Calendar — 2026-11-10 to 2026-11-16 | PodorM</title>
+<title>Global Economic Calendar — 2026-11-11 to 2026-11-17 | PodorM</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&display=swap">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
@@ -134,10 +134,10 @@
   <div class="section-head">
     <h2>Global Economic Calendar</h2>
     <div class="rule-fade"></div>
-    <span class="caption">2026-11-10 to 2026-11-16</span>
+    <span class="caption">2026-11-11 to 2026-11-17</span>
     <div class="snapshot-control">
       <label for="snapshotDate">View snapshot</label>
-      <select id="snapshotDate" aria-label="View calendar snapshot by date"><option value="2026-11-10">2026-11-10</option></select>
+      <select id="snapshotDate" aria-label="View calendar snapshot by date"><option value="2026-11-11">2026-11-11</option></select>
     </div>
   </div>
 </section>
@@ -162,9 +162,15 @@
       </div>
 
       <div class="card elev-sm chart-card">
-        <h3><img src="https://flagcdn.com/w20/us.png" srcset="https://flagcdn.com/w40/us.png 2x" width="24" height="18" alt="USD" class="flag-img"> Initial Jobless Claims</h3>
-        <div class="sub">Latest <strong>189.0</strong> · Next forecast <span class="forecast-pill">195.0</span> · Nov 12 at 8:30 AM</div>
+        <h3><img src="https://flagcdn.com/w20/gb.png" srcset="https://flagcdn.com/w40/gb.png 2x" width="24" height="18" alt="GBP" class="flag-img"> Employment Change (3M)</h3>
+        <div class="sub">Latest <strong>102.0</strong> · Nov 17 at 2:00 AM</div>
         <canvas id="chart-2" width="420" height="200"></canvas>
+      </div>
+
+      <div class="card elev-sm chart-card">
+        <h3><img src="https://flagcdn.com/w20/gb.png" srcset="https://flagcdn.com/w40/gb.png 2x" width="24" height="18" alt="GBP" class="flag-img"> ILO Unemployment Rate (3M)</h3>
+        <div class="sub">Latest <strong>4.7%</strong> · Nov 17 at 2:00 AM</div>
+        <canvas id="chart-3" width="420" height="200"></canvas>
       </div>
 
     </div>
@@ -177,37 +183,37 @@
       <div class="card elev-sm chart-card">
         <h3><img src="https://flagcdn.com/w20/ca.png" srcset="https://flagcdn.com/w40/ca.png 2x" width="24" height="18" alt="CAD" class="flag-img"> BoC Consumer Price Index Core</h3>
         <div class="sub">Annual change · Latest <strong>2.2%</strong> · Nov 16 at 8:30 AM</div>
-        <canvas id="chart-3" width="420" height="200"></canvas>
+        <canvas id="chart-4" width="420" height="200"></canvas>
       </div>
 
       <div class="card elev-sm chart-card">
         <h3><img src="https://flagcdn.com/w20/us.png" srcset="https://flagcdn.com/w40/us.png 2x" width="24" height="18" alt="USD" class="flag-img"> Consumer Price Index</h3>
         <div class="sub">Monthly change · Latest <strong>0.4%</strong> · Next forecast <span class="forecast-pill">0.3%</span> · Nov 10 at 8:30 AM</div>
-        <canvas id="chart-4" width="420" height="200"></canvas>
+        <canvas id="chart-5" width="420" height="200"></canvas>
       </div>
 
       <div class="card elev-sm chart-card">
         <h3><img src="https://flagcdn.com/w20/ca.png" srcset="https://flagcdn.com/w40/ca.png 2x" width="24" height="18" alt="CAD" class="flag-img"> Consumer Price Index</h3>
         <div class="sub">Annual change · Latest <strong>3.1%</strong> · Nov 16 at 8:30 AM</div>
-        <canvas id="chart-5" width="420" height="200"></canvas>
+        <canvas id="chart-6" width="420" height="200"></canvas>
       </div>
 
       <div class="card elev-sm chart-card">
         <h3><img src="https://flagcdn.com/w20/us.png" srcset="https://flagcdn.com/w40/us.png 2x" width="24" height="18" alt="USD" class="flag-img"> Consumer Price Index ex Food &amp; Energy</h3>
         <div class="sub">Monthly change · Latest <strong>0.3%</strong> · Next forecast <span class="forecast-pill">0.2%</span> · Nov 10 at 8:30 AM</div>
-        <canvas id="chart-6" width="420" height="200"></canvas>
+        <canvas id="chart-7" width="420" height="200"></canvas>
       </div>
 
       <div class="card elev-sm chart-card">
         <h3><img src="https://flagcdn.com/w20/eu.png" srcset="https://flagcdn.com/w40/eu.png 2x" width="24" height="18" alt="EUR" class="flag-img"> Harmonized Index of Consumer Prices</h3>
         <div class="sub">Annual change · Latest <strong>2.8%</strong> · Next forecast <span class="forecast-pill">2.8%</span> · Nov 11 at 2:00 AM</div>
-        <canvas id="chart-7" width="420" height="200"></canvas>
+        <canvas id="chart-8" width="420" height="200"></canvas>
       </div>
 
       <div class="card elev-sm chart-card">
         <h3><img src="https://flagcdn.com/w20/us.png" srcset="https://flagcdn.com/w40/us.png 2x" width="24" height="18" alt="USD" class="flag-img"> Producer Price Index ex Food &amp; Energy</h3>
         <div class="sub">Annual change · Latest <strong>5.0%</strong> · Next forecast <span class="forecast-pill">5.0%</span> · Nov 13 at 8:30 AM</div>
-        <canvas id="chart-8" width="420" height="200"></canvas>
+        <canvas id="chart-9" width="420" height="200"></canvas>
       </div>
 
     </div>
@@ -220,13 +226,38 @@
       <div class="card elev-sm chart-card">
         <h3><img src="https://flagcdn.com/w20/gb.png" srcset="https://flagcdn.com/w40/gb.png 2x" width="24" height="18" alt="GBP" class="flag-img"> Gross Domestic Product</h3>
         <div class="sub">Annual change · Latest <strong>1.4%</strong> · Next forecast <span class="forecast-pill">1.9%</span> · Nov 12 at 2:00 AM</div>
-        <canvas id="chart-9" width="420" height="200"></canvas>
+        <canvas id="chart-10" width="420" height="200"></canvas>
       </div>
 
       <div class="card elev-sm chart-card">
         <h3><img src="https://flagcdn.com/w20/gb.png" srcset="https://flagcdn.com/w40/gb.png 2x" width="24" height="18" alt="GBP" class="flag-img"> Gross Domestic Product</h3>
         <div class="sub">Quarterly change · Latest <strong>0.5%</strong> · Next forecast <span class="forecast-pill">0.7%</span> · Nov 12 at 2:00 AM</div>
-        <canvas id="chart-10" width="420" height="200"></canvas>
+        <canvas id="chart-11" width="420" height="200"></canvas>
+      </div>
+
+      <div class="card elev-sm chart-card">
+        <h3><img src="https://flagcdn.com/w20/us.png" srcset="https://flagcdn.com/w40/us.png 2x" width="24" height="18" alt="USD" class="flag-img"> Retail Sales</h3>
+        <div class="sub">Monthly change · Latest <strong>0.8%</strong> · Nov 17 at 8:30 AM</div>
+        <canvas id="chart-12" width="420" height="200"></canvas>
+      </div>
+
+      <div class="card elev-sm chart-card">
+        <h3><img src="https://flagcdn.com/w20/us.png" srcset="https://flagcdn.com/w40/us.png 2x" width="24" height="18" alt="USD" class="flag-img"> Retail Sales Control Group</h3>
+        <div class="sub">Latest <strong>0.1%</strong> · Nov 17 at 8:30 AM</div>
+        <canvas id="chart-13" width="420" height="200"></canvas>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="chart-group">
+    <h3 class="chart-group-title">Other</h3>
+    <div class="charts-grid">
+
+      <div class="card elev-sm chart-card">
+        <h3><img src="https://flagcdn.com/w20/gb.png" srcset="https://flagcdn.com/w40/gb.png 2x" width="24" height="18" alt="GBP" class="flag-img"> Claimant Count Change</h3>
+        <div class="sub">Latest <strong>30.3</strong> · Nov 17 at 2:00 AM</div>
+        <canvas id="chart-14" width="420" height="200"></canvas>
       </div>
 
     </div>
@@ -251,80 +282,27 @@
       <button class="btn" data-impact="LOW">Low</button>
     </div>
     <select id="currencyFilter"><option value="ALL">All currencies</option><option value="CAD">CAD</option><option value="EUR">EUR</option><option value="GBP">GBP</option><option value="USD">USD</option></select>
-    <select id="dateFilter"><option value="ALL">All dates</option><option value="2026-11-09">2026-11-09</option><option value="2026-11-10">2026-11-10</option><option value="2026-11-11">2026-11-11</option><option value="2026-11-12">2026-11-12</option><option value="2026-11-13">2026-11-13</option><option value="2026-11-14">2026-11-14</option><option value="2026-11-16">2026-11-16</option></select>
+    <select id="dateFilter"><option value="ALL">All dates</option><option value="2026-11-09">2026-11-09</option><option value="2026-11-10">2026-11-10</option><option value="2026-11-11">2026-11-11</option><option value="2026-11-12">2026-11-12</option><option value="2026-11-13">2026-11-13</option><option value="2026-11-14">2026-11-14</option><option value="2026-11-16">2026-11-16</option><option value="2026-11-17">2026-11-17</option></select>
   </div>
 
 
   <div class="day-group" data-date="2026-11-09" style="margin-bottom:28px">
     <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:10px; border-bottom:1px solid var(--color-neutral-800); padding-bottom:8px;">
-      <span style="font-family:var(--font-mono); font-size:13px; letter-spacing:.18em; text-transform:uppercase; color:var(--color-neutral-300);">2026-11-09 <span class="muted">Mon</span><span class="previous-day-pill">Previous day</span></span>
+      <span style="font-family:var(--font-mono); font-size:13px; letter-spacing:.18em; text-transform:uppercase; color:var(--color-neutral-300);">2026-11-09 <span class="muted">Mon</span></span>
     </div>
     <div class="timeline-grid">
 
 
       <div class="timeline-region" data-region="us">
-        <div class="timeline-region-head"><span>United States</span><span class="timeline-region-count">3 events</span></div>
+        <div class="timeline-region-head"><span>United States</span><span class="timeline-region-count">0 events</span></div>
 
-        <div class="timeline-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th style="width:110px">Time (Toronto)</th>
-              <th style="width:90px">Currency</th>
-              <th style="width:95px">Importance</th>
-              <th>Event</th>
-              <th style="width:90px">Actual</th>
-              <th style="width:90px">Forecast</th>
-              <th style="width:90px">Previous</th>
-            </tr>
-          </thead>
-          <tbody>
-
-
-
-          <tr class="medium" data-impact="MEDIUM" data-currency="USD" data-search="fed&#39;s bowman speech usd us" style="border-left:4px solid #e8a54a;">
-            <td class="time">8:40 AM</td>
-            <td><img src="https://flagcdn.com/w20/us.png" srcset="https://flagcdn.com/w40/us.png 2x" width="20" height="15" alt="USD" class="flag-img" style="margin-right:6px;"><span class="cur">USD</span></td>
-            <td><span class="importance importance-medium" aria-label="Medium importance">★★</span></td>
-            <td class="event-name">Fed&#39;s Bowman speech</td>
-            <td style="font-family:var(--font-mono); font-weight:700;">—</td>
-            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">—</td>
-            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">—</td>
-          </tr>
-
-
-
-          <tr class="medium" data-impact="MEDIUM" data-currency="USD" data-search="fed&#39;s goolsbee speech usd us" style="border-left:4px solid #e8a54a;">
-            <td class="time">10:00 AM</td>
-            <td><img src="https://flagcdn.com/w20/us.png" srcset="https://flagcdn.com/w40/us.png 2x" width="20" height="15" alt="USD" class="flag-img" style="margin-right:6px;"><span class="cur">USD</span></td>
-            <td><span class="importance importance-medium" aria-label="Medium importance">★★</span></td>
-            <td class="event-name">Fed&#39;s Goolsbee speech</td>
-            <td style="font-family:var(--font-mono); font-weight:700;">—</td>
-            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">—</td>
-            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">—</td>
-          </tr>
-
-
-
-          <tr class="medium" data-impact="MEDIUM" data-currency="USD" data-search="fed&#39;s barkin speech usd us" style="border-left:4px solid #e8a54a;">
-            <td class="time">12:15 PM</td>
-            <td><img src="https://flagcdn.com/w20/us.png" srcset="https://flagcdn.com/w40/us.png 2x" width="20" height="15" alt="USD" class="flag-img" style="margin-right:6px;"><span class="cur">USD</span></td>
-            <td><span class="importance importance-medium" aria-label="Medium importance">★★</span></td>
-            <td class="event-name">Fed&#39;s Barkin speech</td>
-            <td style="font-family:var(--font-mono); font-weight:700;">—</td>
-            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">—</td>
-            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">—</td>
-          </tr>
-
-          </tbody>
-        </table>
-        </div>
+        <div class="timeline-empty">No scheduled events</div>
 
       </div>
 
 
       <div class="timeline-region" data-region="other">
-        <div class="timeline-region-head"><span>Other regions</span><span class="timeline-region-count">5 events</span></div>
+        <div class="timeline-region-head"><span>Other regions</span><span class="timeline-region-count">1 events</span></div>
 
         <div class="timeline-wrap">
         <table>
@@ -340,54 +318,6 @@
             </tr>
           </thead>
           <tbody>
-
-
-
-          <tr class="medium" data-impact="MEDIUM" data-currency="EUR" data-search="trade balance s.a. eur emu" style="border-left:4px solid #e8a54a;">
-            <td class="time">2:00 AM</td>
-            <td><img src="https://flagcdn.com/w20/eu.png" srcset="https://flagcdn.com/w40/eu.png 2x" width="20" height="15" alt="EUR" class="flag-img" style="margin-right:6px;"><span class="cur">EUR</span></td>
-            <td><span class="importance importance-medium" aria-label="Medium importance">★★</span></td>
-            <td class="event-name">Trade Balance s.a.</td>
-            <td style="font-family:var(--font-mono); font-weight:700;">15.6€</td>
-            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">19.2€</td>
-            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">19.5€</td>
-          </tr>
-
-
-
-          <tr class="medium" data-impact="MEDIUM" data-currency="EUR" data-search="eurogroup meeting eur emu" style="border-left:4px solid #e8a54a;">
-            <td class="time">2:00 AM</td>
-            <td><img src="https://flagcdn.com/w20/eu.png" srcset="https://flagcdn.com/w40/eu.png 2x" width="20" height="15" alt="EUR" class="flag-img" style="margin-right:6px;"><span class="cur">EUR</span></td>
-            <td><span class="importance importance-medium" aria-label="Medium importance">★★</span></td>
-            <td class="event-name">Eurogroup Meeting</td>
-            <td style="font-family:var(--font-mono); font-weight:700;">—</td>
-            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">—</td>
-            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">—</td>
-          </tr>
-
-
-
-          <tr class="medium" data-impact="MEDIUM" data-currency="EUR" data-search="sentix investor confidence eur emu" style="border-left:4px solid #e8a54a;">
-            <td class="time">4:30 AM</td>
-            <td><img src="https://flagcdn.com/w20/eu.png" srcset="https://flagcdn.com/w40/eu.png 2x" width="20" height="15" alt="EUR" class="flag-img" style="margin-right:6px;"><span class="cur">EUR</span></td>
-            <td><span class="importance importance-medium" aria-label="Medium importance">★★</span></td>
-            <td class="event-name">Sentix Investor Confidence</td>
-            <td style="font-family:var(--font-mono); font-weight:700;">2.4</td>
-            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">—</td>
-            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">2.7</td>
-          </tr>
-
-
-
-          <tr class="high" data-impact="HIGH" data-currency="GBP" data-search="boe&#39;s governor bailey speech gbp uk" style="border-left:4px solid #e85d5d;">
-            <td class="time">12:25 PM</td>
-            <td><img src="https://flagcdn.com/w20/gb.png" srcset="https://flagcdn.com/w40/gb.png 2x" width="20" height="15" alt="GBP" class="flag-img" style="margin-right:6px;"><span class="cur">GBP</span></td>
-            <td><span class="importance importance-high" aria-label="High importance">★★★</span></td>
-            <td class="event-name">BoE&#39;s Governor Bailey speech</td>
-            <td style="font-family:var(--font-mono); font-weight:700;">—</td>
-            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">—</td>
-            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">—</td>
-          </tr>
 
 
 
@@ -412,13 +342,13 @@
 
   <div class="day-group" data-date="2026-11-10" style="margin-bottom:28px">
     <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:10px; border-bottom:1px solid var(--color-neutral-800); padding-bottom:8px;">
-      <span style="font-family:var(--font-mono); font-size:13px; letter-spacing:.18em; text-transform:uppercase; color:var(--color-neutral-300);">2026-11-10 <span class="muted">Tue</span></span>
+      <span style="font-family:var(--font-mono); font-size:13px; letter-spacing:.18em; text-transform:uppercase; color:var(--color-neutral-300);">2026-11-10 <span class="muted">Tue</span><span class="previous-day-pill">Previous day</span></span>
     </div>
     <div class="timeline-grid">
 
 
       <div class="timeline-region" data-region="us">
-        <div class="timeline-region-head"><span>United States</span><span class="timeline-region-count">8 events</span></div>
+        <div class="timeline-region-head"><span>United States</span><span class="timeline-region-count">10 events</span></div>
 
         <div class="timeline-wrap">
         <table>
@@ -497,6 +427,18 @@
 
 
 
+          <tr class="medium" data-impact="MEDIUM" data-currency="USD" data-search="fed&#39;s schmid speech usd us" style="border-left:4px solid #e8a54a;">
+            <td class="time">2:00 PM</td>
+            <td><img src="https://flagcdn.com/w20/us.png" srcset="https://flagcdn.com/w40/us.png 2x" width="20" height="15" alt="USD" class="flag-img" style="margin-right:6px;"><span class="cur">USD</span></td>
+            <td><span class="importance importance-medium" aria-label="Medium importance">★★</span></td>
+            <td class="event-name">Fed&#39;s Schmid speech</td>
+            <td style="font-family:var(--font-mono); font-weight:700;">—</td>
+            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">—</td>
+            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">—</td>
+          </tr>
+
+
+
           <tr class="medium" data-impact="MEDIUM" data-currency="USD" data-search="fed&#39;s bowman speech usd us" style="border-left:4px solid #e8a54a;">
             <td class="time">3:30 PM</td>
             <td><img src="https://flagcdn.com/w20/us.png" srcset="https://flagcdn.com/w40/us.png 2x" width="20" height="15" alt="USD" class="flag-img" style="margin-right:6px;"><span class="cur">USD</span></td>
@@ -526,6 +468,18 @@
             <td><img src="https://flagcdn.com/w20/us.png" srcset="https://flagcdn.com/w40/us.png 2x" width="20" height="15" alt="USD" class="flag-img" style="margin-right:6px;"><span class="cur">USD</span></td>
             <td><span class="importance importance-medium" aria-label="Medium importance">★★</span></td>
             <td class="event-name">Fed&#39;s Paulson speech</td>
+            <td style="font-family:var(--font-mono); font-weight:700;">—</td>
+            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">—</td>
+            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">—</td>
+          </tr>
+
+
+
+          <tr class="medium" data-impact="MEDIUM" data-currency="USD" data-search="fed&#39;s goolsbee speech usd us" style="border-left:4px solid #e8a54a;">
+            <td class="time">6:40 PM</td>
+            <td><img src="https://flagcdn.com/w20/us.png" srcset="https://flagcdn.com/w40/us.png 2x" width="20" height="15" alt="USD" class="flag-img" style="margin-right:6px;"><span class="cur">USD</span></td>
+            <td><span class="importance importance-medium" aria-label="Medium importance">★★</span></td>
+            <td class="event-name">Fed&#39;s Goolsbee speech</td>
             <td style="font-family:var(--font-mono); font-weight:700;">—</td>
             <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">—</td>
             <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">—</td>
@@ -761,7 +715,7 @@
             <td><img src="https://flagcdn.com/w20/eu.png" srcset="https://flagcdn.com/w40/eu.png 2x" width="20" height="15" alt="EUR" class="flag-img" style="margin-right:6px;"><span class="cur">EUR</span></td>
             <td><span class="importance importance-high" aria-label="High importance">★★★</span></td>
             <td class="event-name">Harmonized Index of Consumer Prices</td>
-            <td style="font-family:var(--font-mono); font-weight:700;"><div class="period-value"><span class="period-label">MoM</span><span>—</span></div><div class="period-value"><span class="period-label">YoY</span><span>—</span></div></td>
+            <td style="font-family:var(--font-mono); font-weight:700;"><div class="period-value"><span class="period-label">MoM</span><span>-0.1%</span></div><div class="period-value"><span class="period-label">YoY</span><span>2.8%</span></div></td>
             <td style="font-family:var(--font-mono); color:var(--color-neutral-400)"><div class="period-value"><span class="period-label">MoM</span><span>-0.1%</span></div><div class="period-value"><span class="period-label">YoY</span><span>2.8%</span></div></td>
             <td style="font-family:var(--font-mono); color:var(--color-neutral-400)"><div class="period-value"><span class="period-label">MoM</span><span>-0.1%</span></div><div class="period-value"><span class="period-label">YoY</span><span>2.8%</span></div></td>
           </tr>
@@ -819,7 +773,7 @@
 
 
       <div class="timeline-region" data-region="us">
-        <div class="timeline-region-head"><span>United States</span><span class="timeline-region-count">8 events</span></div>
+        <div class="timeline-region-head"><span>United States</span><span class="timeline-region-count">9 events</span></div>
 
         <div class="timeline-wrap">
         <table>
@@ -910,13 +864,25 @@
 
 
 
+          <tr class="medium" data-impact="MEDIUM" data-currency="USD" data-search="fed&#39;s schmid speech usd us" style="border-left:4px solid #e8a54a;">
+            <td class="time">1:30 PM</td>
+            <td><img src="https://flagcdn.com/w20/us.png" srcset="https://flagcdn.com/w40/us.png 2x" width="20" height="15" alt="USD" class="flag-img" style="margin-right:6px;"><span class="cur">USD</span></td>
+            <td><span class="importance importance-medium" aria-label="Medium importance">★★</span></td>
+            <td class="event-name">Fed&#39;s Schmid speech</td>
+            <td style="font-family:var(--font-mono); font-weight:700;">—</td>
+            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">—</td>
+            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">—</td>
+          </tr>
+
+
+
           <tr class="medium" data-impact="MEDIUM" data-currency="USD" data-search="monthly budget statement usd us" style="border-left:4px solid #e8a54a;">
             <td class="time">2:00 PM</td>
             <td><img src="https://flagcdn.com/w20/us.png" srcset="https://flagcdn.com/w40/us.png 2x" width="20" height="15" alt="USD" class="flag-img" style="margin-right:6px;"><span class="cur">USD</span></td>
             <td><span class="importance importance-medium" aria-label="Medium importance">★★</span></td>
             <td class="event-name">Monthly Budget Statement</td>
             <td style="font-family:var(--font-mono); font-weight:700;">—</td>
-            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">—</td>
+            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">-298.6$</td>
             <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">-27.0$</td>
           </tr>
 
@@ -1498,6 +1464,293 @@
     </div>
   </div>
 
+  <div class="day-group" data-date="2026-11-17" style="margin-bottom:28px">
+    <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:10px; border-bottom:1px solid var(--color-neutral-800); padding-bottom:8px;">
+      <span style="font-family:var(--font-mono); font-size:13px; letter-spacing:.18em; text-transform:uppercase; color:var(--color-neutral-300);">2026-11-17 <span class="muted">Tue</span></span>
+    </div>
+    <div class="timeline-grid">
+
+
+      <div class="timeline-region" data-region="us">
+        <div class="timeline-region-head"><span>United States</span><span class="timeline-region-count">8 events</span></div>
+
+        <div class="timeline-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:110px">Time (Toronto)</th>
+              <th style="width:90px">Currency</th>
+              <th style="width:95px">Importance</th>
+              <th>Event</th>
+              <th style="width:90px">Actual</th>
+              <th style="width:90px">Forecast</th>
+              <th style="width:90px">Previous</th>
+            </tr>
+          </thead>
+          <tbody>
+
+
+
+          <tr class="medium" data-impact="MEDIUM" data-currency="USD" data-search="fed&#39;s musalem speech usd us" style="border-left:4px solid #e8a54a;">
+            <td class="time">7:30 AM</td>
+            <td><img src="https://flagcdn.com/w20/us.png" srcset="https://flagcdn.com/w40/us.png 2x" width="20" height="15" alt="USD" class="flag-img" style="margin-right:6px;"><span class="cur">USD</span></td>
+            <td><span class="importance importance-medium" aria-label="Medium importance">★★</span></td>
+            <td class="event-name">Fed&#39;s Musalem speech</td>
+            <td style="font-family:var(--font-mono); font-weight:700;">—</td>
+            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">—</td>
+            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">—</td>
+          </tr>
+
+
+
+          <tr class="medium" data-impact="MEDIUM" data-currency="USD" data-search="adp employment change 4-week average usd us" style="border-left:4px solid #e8a54a;">
+            <td class="time">8:15 AM</td>
+            <td><img src="https://flagcdn.com/w20/us.png" srcset="https://flagcdn.com/w40/us.png 2x" width="20" height="15" alt="USD" class="flag-img" style="margin-right:6px;"><span class="cur">USD</span></td>
+            <td><span class="importance importance-medium" aria-label="Medium importance">★★</span></td>
+            <td class="event-name">ADP Employment Change 4-week average</td>
+            <td style="font-family:var(--font-mono); font-weight:700;">—</td>
+            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">—</td>
+            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">19.75</td>
+          </tr>
+
+
+
+          <tr class="high" data-impact="HIGH" data-currency="USD" data-search="retail sales (mom) usd us" style="border-left:4px solid #e85d5d;">
+            <td class="time">8:30 AM</td>
+            <td><img src="https://flagcdn.com/w20/us.png" srcset="https://flagcdn.com/w40/us.png 2x" width="20" height="15" alt="USD" class="flag-img" style="margin-right:6px;"><span class="cur">USD</span></td>
+            <td><span class="importance importance-high" aria-label="High importance">★★★</span></td>
+            <td class="event-name">Retail Sales (MoM)</td>
+            <td style="font-family:var(--font-mono); font-weight:700;">—</td>
+            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">—</td>
+            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">0.8%</td>
+          </tr>
+
+
+
+          <tr class="high" data-impact="HIGH" data-currency="USD" data-search="retail sales control group usd us" style="border-left:4px solid #e85d5d;">
+            <td class="time">8:30 AM</td>
+            <td><img src="https://flagcdn.com/w20/us.png" srcset="https://flagcdn.com/w40/us.png 2x" width="20" height="15" alt="USD" class="flag-img" style="margin-right:6px;"><span class="cur">USD</span></td>
+            <td><span class="importance importance-high" aria-label="High importance">★★★</span></td>
+            <td class="event-name">Retail Sales Control Group</td>
+            <td style="font-family:var(--font-mono); font-weight:700;">—</td>
+            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">—</td>
+            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">0.1%</td>
+          </tr>
+
+
+
+          <tr class="medium" data-impact="MEDIUM" data-currency="USD" data-search="retail sales ex autos (mom) usd us" style="border-left:4px solid #e8a54a;">
+            <td class="time">8:30 AM</td>
+            <td><img src="https://flagcdn.com/w20/us.png" srcset="https://flagcdn.com/w40/us.png 2x" width="20" height="15" alt="USD" class="flag-img" style="margin-right:6px;"><span class="cur">USD</span></td>
+            <td><span class="importance importance-medium" aria-label="Medium importance">★★</span></td>
+            <td class="event-name">Retail Sales ex Autos (MoM)</td>
+            <td style="font-family:var(--font-mono); font-weight:700;">—</td>
+            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">—</td>
+            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">0.9%</td>
+          </tr>
+
+
+
+          <tr class="medium" data-impact="MEDIUM" data-currency="USD" data-search="industrial production (mom) usd us" style="border-left:4px solid #e8a54a;">
+            <td class="time">9:15 AM</td>
+            <td><img src="https://flagcdn.com/w20/us.png" srcset="https://flagcdn.com/w40/us.png 2x" width="20" height="15" alt="USD" class="flag-img" style="margin-right:6px;"><span class="cur">USD</span></td>
+            <td><span class="importance importance-medium" aria-label="Medium importance">★★</span></td>
+            <td class="event-name">Industrial Production (MoM)</td>
+            <td style="font-family:var(--font-mono); font-weight:700;">—</td>
+            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">—</td>
+            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">0.7%</td>
+          </tr>
+
+
+
+          <tr class="medium" data-impact="MEDIUM" data-currency="USD" data-search="fed&#39;s hammack speech usd us" style="border-left:4px solid #e8a54a;">
+            <td class="time">9:30 AM</td>
+            <td><img src="https://flagcdn.com/w20/us.png" srcset="https://flagcdn.com/w40/us.png 2x" width="20" height="15" alt="USD" class="flag-img" style="margin-right:6px;"><span class="cur">USD</span></td>
+            <td><span class="importance importance-medium" aria-label="Medium importance">★★</span></td>
+            <td class="event-name">Fed&#39;s Hammack speech</td>
+            <td style="font-family:var(--font-mono); font-weight:700;">—</td>
+            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">—</td>
+            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">—</td>
+          </tr>
+
+
+
+          <tr class="medium" data-impact="MEDIUM" data-currency="USD" data-search="fed&#39;s williams speech usd us" style="border-left:4px solid #e8a54a;">
+            <td class="time">2:25 PM</td>
+            <td><img src="https://flagcdn.com/w20/us.png" srcset="https://flagcdn.com/w40/us.png 2x" width="20" height="15" alt="USD" class="flag-img" style="margin-right:6px;"><span class="cur">USD</span></td>
+            <td><span class="importance importance-medium" aria-label="Medium importance">★★</span></td>
+            <td class="event-name">Fed&#39;s Williams speech</td>
+            <td style="font-family:var(--font-mono); font-weight:700;">—</td>
+            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">—</td>
+            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">—</td>
+          </tr>
+
+          </tbody>
+        </table>
+        </div>
+
+      </div>
+
+
+      <div class="timeline-region" data-region="other">
+        <div class="timeline-region-head"><span>Other regions</span><span class="timeline-region-count">11 events</span></div>
+
+        <div class="timeline-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:110px">Time (Toronto)</th>
+              <th style="width:90px">Currency</th>
+              <th style="width:95px">Importance</th>
+              <th>Event</th>
+              <th style="width:90px">Actual</th>
+              <th style="width:90px">Forecast</th>
+              <th style="width:90px">Previous</th>
+            </tr>
+          </thead>
+          <tbody>
+
+
+
+          <tr class="medium" data-impact="MEDIUM" data-currency="GBP" data-search="average earnings excluding bonus (3mo/yr) gbp uk" style="border-left:4px solid #e8a54a;">
+            <td class="time">2:00 AM</td>
+            <td><img src="https://flagcdn.com/w20/gb.png" srcset="https://flagcdn.com/w40/gb.png 2x" width="20" height="15" alt="GBP" class="flag-img" style="margin-right:6px;"><span class="cur">GBP</span></td>
+            <td><span class="importance importance-medium" aria-label="Medium importance">★★</span></td>
+            <td class="event-name">Average Earnings Excluding Bonus (3Mo/Yr)</td>
+            <td style="font-family:var(--font-mono); font-weight:700;">—</td>
+            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">—</td>
+            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">3.7%</td>
+          </tr>
+
+
+
+          <tr class="medium" data-impact="MEDIUM" data-currency="GBP" data-search="average earnings including bonus (3mo/yr) gbp uk" style="border-left:4px solid #e8a54a;">
+            <td class="time">2:00 AM</td>
+            <td><img src="https://flagcdn.com/w20/gb.png" srcset="https://flagcdn.com/w40/gb.png 2x" width="20" height="15" alt="GBP" class="flag-img" style="margin-right:6px;"><span class="cur">GBP</span></td>
+            <td><span class="importance importance-medium" aria-label="Medium importance">★★</span></td>
+            <td class="event-name">Average Earnings Including Bonus (3Mo/Yr)</td>
+            <td style="font-family:var(--font-mono); font-weight:700;">—</td>
+            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">—</td>
+            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">3.7%</td>
+          </tr>
+
+
+
+          <tr class="high" data-impact="HIGH" data-currency="GBP" data-search="claimant count change gbp uk" style="border-left:4px solid #e85d5d;">
+            <td class="time">2:00 AM</td>
+            <td><img src="https://flagcdn.com/w20/gb.png" srcset="https://flagcdn.com/w40/gb.png 2x" width="20" height="15" alt="GBP" class="flag-img" style="margin-right:6px;"><span class="cur">GBP</span></td>
+            <td><span class="importance importance-high" aria-label="High importance">★★★</span></td>
+            <td class="event-name">Claimant Count Change</td>
+            <td style="font-family:var(--font-mono); font-weight:700;">—</td>
+            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">—</td>
+            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">30.3</td>
+          </tr>
+
+
+
+          <tr class="medium" data-impact="MEDIUM" data-currency="GBP" data-search="claimant count rate gbp uk" style="border-left:4px solid #e8a54a;">
+            <td class="time">2:00 AM</td>
+            <td><img src="https://flagcdn.com/w20/gb.png" srcset="https://flagcdn.com/w40/gb.png 2x" width="20" height="15" alt="GBP" class="flag-img" style="margin-right:6px;"><span class="cur">GBP</span></td>
+            <td><span class="importance importance-medium" aria-label="Medium importance">★★</span></td>
+            <td class="event-name">Claimant Count Rate</td>
+            <td style="font-family:var(--font-mono); font-weight:700;">—</td>
+            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">—</td>
+            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">4.4%</td>
+          </tr>
+
+
+
+          <tr class="high" data-impact="HIGH" data-currency="GBP" data-search="employment change (3m) gbp uk" style="border-left:4px solid #e85d5d;">
+            <td class="time">2:00 AM</td>
+            <td><img src="https://flagcdn.com/w20/gb.png" srcset="https://flagcdn.com/w40/gb.png 2x" width="20" height="15" alt="GBP" class="flag-img" style="margin-right:6px;"><span class="cur">GBP</span></td>
+            <td><span class="importance importance-high" aria-label="High importance">★★★</span></td>
+            <td class="event-name">Employment Change (3M)</td>
+            <td style="font-family:var(--font-mono); font-weight:700;">—</td>
+            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">—</td>
+            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">102.0</td>
+          </tr>
+
+
+
+          <tr class="high" data-impact="HIGH" data-currency="GBP" data-search="ilo unemployment rate (3m) gbp uk" style="border-left:4px solid #e85d5d;">
+            <td class="time">2:00 AM</td>
+            <td><img src="https://flagcdn.com/w20/gb.png" srcset="https://flagcdn.com/w40/gb.png 2x" width="20" height="15" alt="GBP" class="flag-img" style="margin-right:6px;"><span class="cur">GBP</span></td>
+            <td><span class="importance importance-high" aria-label="High importance">★★★</span></td>
+            <td class="event-name">ILO Unemployment Rate (3M)</td>
+            <td style="font-family:var(--font-mono); font-weight:700;">—</td>
+            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">—</td>
+            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">4.7%</td>
+          </tr>
+
+
+
+          <tr class="medium" data-impact="MEDIUM" data-currency="EUR" data-search="consumer price index (eu norm) (yoy) eur emu" style="border-left:4px solid #e8a54a;">
+            <td class="time">4:00 AM</td>
+            <td><img src="https://flagcdn.com/w20/eu.png" srcset="https://flagcdn.com/w40/eu.png 2x" width="20" height="15" alt="EUR" class="flag-img" style="margin-right:6px;"><span class="cur">EUR</span></td>
+            <td><span class="importance importance-medium" aria-label="Medium importance">★★</span></td>
+            <td class="event-name">Consumer Price Index (EU Norm) (YoY)</td>
+            <td style="font-family:var(--font-mono); font-weight:700;">—</td>
+            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">5.6%</td>
+            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">5.6%</td>
+          </tr>
+
+
+
+          <tr class="medium" data-impact="MEDIUM" data-currency="EUR" data-search="consumer price index (yoy) eur emu" style="border-left:4px solid #e8a54a;">
+            <td class="time">4:00 AM</td>
+            <td><img src="https://flagcdn.com/w20/eu.png" srcset="https://flagcdn.com/w40/eu.png 2x" width="20" height="15" alt="EUR" class="flag-img" style="margin-right:6px;"><span class="cur">EUR</span></td>
+            <td><span class="importance importance-medium" aria-label="Medium importance">★★</span></td>
+            <td class="event-name">Consumer Price Index (YoY)</td>
+            <td style="font-family:var(--font-mono); font-weight:700;">—</td>
+            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">5.4%</td>
+            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">5.4%</td>
+          </tr>
+
+
+
+          <tr class="medium" data-impact="MEDIUM" data-currency="EUR" data-search="zew survey – current situation eur emu" style="border-left:4px solid #e8a54a;">
+            <td class="time">5:00 AM</td>
+            <td><img src="https://flagcdn.com/w20/eu.png" srcset="https://flagcdn.com/w40/eu.png 2x" width="20" height="15" alt="EUR" class="flag-img" style="margin-right:6px;"><span class="cur">EUR</span></td>
+            <td><span class="importance importance-medium" aria-label="Medium importance">★★</span></td>
+            <td class="event-name">ZEW Survey – Current Situation</td>
+            <td style="font-family:var(--font-mono); font-weight:700;">—</td>
+            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">—</td>
+            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">-35.9</td>
+          </tr>
+
+
+
+          <tr class="medium" data-impact="MEDIUM" data-currency="EUR" data-search="zew survey – economic sentiment eur emu" style="border-left:4px solid #e8a54a;">
+            <td class="time">5:00 AM</td>
+            <td><img src="https://flagcdn.com/w20/eu.png" srcset="https://flagcdn.com/w40/eu.png 2x" width="20" height="15" alt="EUR" class="flag-img" style="margin-right:6px;"><span class="cur">EUR</span></td>
+            <td><span class="importance importance-medium" aria-label="Medium importance">★★</span></td>
+            <td class="event-name">ZEW Survey – Economic Sentiment</td>
+            <td style="font-family:var(--font-mono); font-weight:700;">—</td>
+            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">—</td>
+            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">28.1</td>
+          </tr>
+
+
+
+          <tr class="medium" data-impact="MEDIUM" data-currency="EUR" data-search="zew survey – economic sentiment eur emu" style="border-left:4px solid #e8a54a;">
+            <td class="time">5:00 AM</td>
+            <td><img src="https://flagcdn.com/w20/eu.png" srcset="https://flagcdn.com/w40/eu.png 2x" width="20" height="15" alt="EUR" class="flag-img" style="margin-right:6px;"><span class="cur">EUR</span></td>
+            <td><span class="importance importance-medium" aria-label="Medium importance">★★</span></td>
+            <td class="event-name">ZEW Survey – Economic Sentiment</td>
+            <td style="font-family:var(--font-mono); font-weight:700;">—</td>
+            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">—</td>
+            <td style="font-family:var(--font-mono); color:var(--color-neutral-400)">18.5</td>
+          </tr>
+
+          </tbody>
+        </table>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
 </section>
 
 <footer class="site-footer">
@@ -1511,7 +1764,7 @@
 
 <script>
 const snapshotSelect = document.getElementById('snapshotDate');
-const currentSnapshot = "2026-11-10";
+const currentSnapshot = "2026-11-11";
 const isArchivedSnapshot = /\/economic-calendar\/archive\/[^/]+\.html$/.test(window.location.pathname);
 const snapshotManifestURL = isArchivedSnapshot ? '../../data/economic-calendar/dates.json' : 'data/economic-calendar/dates.json';
 
@@ -1573,7 +1826,7 @@ function applyFilters(){
     g.style.display = vis ? '' : 'none';
   });
 }
-const chartData = [{"actuals": [15.0, 8.25, 9.5, 11.75, 12.0, 16.25, 20.0, 23.75, 24.75, 18.5, 16.8, 19.75], "forecast": null, "id": "chart-1", "labels": ["Jul 04", "Jul 18", "Jul 25", "Aug 01", "Aug 15", "Aug 22", "Aug 29", "Sep 12", "Sep 19", "Sep 26", "Oct 03", "Oct 17"], "latest_actual": 19.75, "unit": ""}, {"actuals": [206.0, 203.0, 206.0, 206.0, 196.0, 197.0, 197.0, 197.0, 199.0, 194.0, 194.0, 189.0], "forecast": 195.0, "id": "chart-2", "labels": ["Aug 14", "Aug 21", "Aug 28", "Sep 04", "Sep 11", "Sep 18", "Sep 25", "Oct 02", "Oct 09", "Oct 16", "Oct 23", "Oct 30"], "latest_actual": 189.0, "unit": ""}, {"actuals": [2.9, 2.9, 2.8, 2.6, 2.3, 2.5, 2.1, 2.2, 2.1, 2.3, 2.4, 2.2], "forecast": null, "id": "chart-3", "labels": ["Oct \u002725", "Nov \u002725", "Dec \u002725", "Jan \u002726", "Feb \u002726", "Mar \u002726", "Apr \u002726", "May \u002726", "Jun \u002726", "Jul \u002726", "Aug \u002726", "Sep \u002726"], "latest_actual": 2.2, "unit": "%"}, {"actuals": [0.3, 0.3, 0.2, 0.3, 0.9, 0.6, 0.5, -0.4, 0.1, 0.4, 0.6, 0.4], "forecast": 0.3, "id": "chart-4", "labels": ["Sep \u002725", "Dec \u002725", "Jan \u002726", "Feb \u002726", "Mar \u002726", "Apr \u002726", "May \u002726", "Jun \u002726", "Jul \u002726", "Aug \u002726", "Sep \u002726", "Oct \u002726"], "latest_actual": 0.4, "unit": "%"}, {"actuals": [2.2, 2.2, 2.4, 2.3, 1.8, 2.4, 2.8, 3.2, 2.8, 3.0, 3.0, 3.1], "forecast": null, "id": "chart-5", "labels": ["Oct \u002725", "Nov \u002725", "Dec \u002725", "Jan \u002726", "Feb \u002726", "Mar \u002726", "Apr \u002726", "May \u002726", "Jun \u002726", "Jul \u002726", "Aug \u002726", "Sep \u002726"], "latest_actual": 3.1, "unit": "%"}, {"actuals": [0.2, 0.2, 0.3, 0.2, 0.2, 0.4, 0.2, 0.0, 0.2, 0.3, 0.3, 0.3], "forecast": 0.2, "id": "chart-6", "labels": ["Sep \u002725", "Dec \u002725", "Jan \u002726", "Feb \u002726", "Mar \u002726", "Apr \u002726", "May \u002726", "Jun \u002726", "Jul \u002726", "Aug \u002726", "Sep \u002726", "Oct \u002726"], "latest_actual": 0.3, "unit": "%"}, {"actuals": [2.9, 2.7, 2.7, 2.4, 2.4, 2.8, 2.8, 2.9, 2.9, 3.3, 3.3, 2.8], "forecast": 2.8, "id": "chart-7", "labels": ["Apr \u002726", "May \u002726", "May \u002726", "Jun \u002726", "Jun \u002726", "Jul \u002726", "Jul \u002726", "Aug \u002726", "Aug \u002726", "Sep \u002726", "Sep \u002726", "Oct \u002726"], "latest_actual": 2.8, "unit": "%"}, {"actuals": [2.9, 3.0, 3.3, 3.6, 3.9, 3.8, 5.2, 4.9, 4.7, 4.2, 4.6, 5.0], "forecast": 5.0, "id": "chart-8", "labels": ["Oct \u002725", "Nov \u002725", "Dec \u002725", "Jan \u002726", "Feb \u002726", "Mar \u002726", "Apr \u002726", "May \u002726", "Jun \u002726", "Jul \u002726", "Aug \u002726", "Sep \u002726"], "latest_actual": 5.0, "unit": "%"}, {"actuals": [1.3, 1.3, 1.2, 1.4, 1.3, 1.3, 1.0, 1.0, 1.1, 0.9, 1.2, 1.4], "forecast": 1.9, "id": "chart-9", "labels": ["Jan 01", "Jan 01", "Apr 01", "Apr 01", "Jul 01", "Jul 01", "Oct 01", "Oct 01", "Jan 01", "Jan 01", "Apr 01", "Apr 01"], "latest_actual": 1.4, "unit": "%"}, {"actuals": [0.7, 0.7, 0.3, 0.3, 0.1, 0.1, 0.1, 0.1, 0.6, 0.6, 0.4, 0.5], "forecast": 0.7, "id": "chart-10", "labels": ["Jan 01", "Jan 01", "Apr 01", "Apr 01", "Jul 01", "Jul 01", "Oct 01", "Oct 01", "Jan 01", "Jan 01", "Apr 01", "Apr 01"], "latest_actual": 0.5, "unit": "%"}];
+const chartData = [{"actuals": [15.0, 8.25, 9.5, 11.75, 12.0, 16.25, 20.0, 23.75, 24.75, 18.5, 16.8, 19.75], "forecast": null, "id": "chart-1", "labels": ["Jul 04", "Jul 18", "Jul 25", "Aug 01", "Aug 15", "Aug 22", "Aug 29", "Sep 12", "Sep 19", "Sep 26", "Oct 03", "Oct 17"], "latest_actual": 19.75, "unit": ""}, {"actuals": [-22.0, -17.0, 82.0, 52.0, 84.0, 25.0, 148.0, 100.0, 147.0, 83.0, 67.0, 102.0], "forecast": null, "id": "chart-2", "labels": ["Sep \u002725", "Oct \u002725", "Nov \u002725", "Dec \u002725", "Jan \u002726", "Feb \u002726", "Mar \u002726", "Apr \u002726", "May \u002726", "Jun \u002726", "Jul \u002726", "Aug \u002726"], "latest_actual": 102.0, "unit": ""}, {"actuals": [5.0, 5.1, 5.1, 5.2, 5.2, 4.9, 5.0, 4.9, 4.9, 4.9, 4.9, 4.7], "forecast": null, "id": "chart-3", "labels": ["Sep \u002725", "Oct \u002725", "Nov \u002725", "Dec \u002725", "Jan \u002726", "Feb \u002726", "Mar \u002726", "Apr \u002726", "May \u002726", "Jun \u002726", "Jul \u002726", "Aug \u002726"], "latest_actual": 4.7, "unit": "%"}, {"actuals": [2.9, 2.9, 2.8, 2.6, 2.3, 2.5, 2.1, 2.2, 2.1, 2.3, 2.4, 2.2], "forecast": null, "id": "chart-4", "labels": ["Oct \u002725", "Nov \u002725", "Dec \u002725", "Jan \u002726", "Feb \u002726", "Mar \u002726", "Apr \u002726", "May \u002726", "Jun \u002726", "Jul \u002726", "Aug \u002726", "Sep \u002726"], "latest_actual": 2.2, "unit": "%"}, {"actuals": [0.3, 0.3, 0.2, 0.3, 0.9, 0.6, 0.5, -0.4, 0.1, 0.4, 0.6, 0.4], "forecast": 0.3, "id": "chart-5", "labels": ["Sep \u002725", "Dec \u002725", "Jan \u002726", "Feb \u002726", "Mar \u002726", "Apr \u002726", "May \u002726", "Jun \u002726", "Jul \u002726", "Aug \u002726", "Sep \u002726", "Oct \u002726"], "latest_actual": 0.4, "unit": "%"}, {"actuals": [2.2, 2.2, 2.4, 2.3, 1.8, 2.4, 2.8, 3.2, 2.8, 3.0, 3.0, 3.1], "forecast": null, "id": "chart-6", "labels": ["Oct \u002725", "Nov \u002725", "Dec \u002725", "Jan \u002726", "Feb \u002726", "Mar \u002726", "Apr \u002726", "May \u002726", "Jun \u002726", "Jul \u002726", "Aug \u002726", "Sep \u002726"], "latest_actual": 3.1, "unit": "%"}, {"actuals": [0.2, 0.2, 0.3, 0.2, 0.2, 0.4, 0.2, 0.0, 0.2, 0.3, 0.3, 0.3], "forecast": 0.2, "id": "chart-7", "labels": ["Sep \u002725", "Dec \u002725", "Jan \u002726", "Feb \u002726", "Mar \u002726", "Apr \u002726", "May \u002726", "Jun \u002726", "Jul \u002726", "Aug \u002726", "Sep \u002726", "Oct \u002726"], "latest_actual": 0.3, "unit": "%"}, {"actuals": [2.7, 2.7, 2.4, 2.4, 2.8, 2.8, 2.9, 2.9, 3.3, 3.3, 2.8, 2.8], "forecast": 2.8, "id": "chart-8", "labels": ["May 01", "May 01", "Jun 01", "Jun 01", "Jul 01", "Jul 01", "Aug 01", "Aug 01", "Sep 01", "Sep 01", "Oct 01", "Oct 01"], "latest_actual": 2.8, "unit": "%"}, {"actuals": [2.9, 3.0, 3.3, 3.6, 3.9, 3.8, 5.2, 4.9, 4.7, 4.2, 4.6, 5.0], "forecast": 5.0, "id": "chart-9", "labels": ["Oct \u002725", "Nov \u002725", "Dec \u002725", "Jan \u002726", "Feb \u002726", "Mar \u002726", "Apr \u002726", "May \u002726", "Jun \u002726", "Jul \u002726", "Aug \u002726", "Sep \u002726"], "latest_actual": 5.0, "unit": "%"}, {"actuals": [1.3, 1.3, 1.2, 1.4, 1.3, 1.3, 1.0, 1.0, 1.1, 0.9, 1.2, 1.4], "forecast": 1.9, "id": "chart-10", "labels": ["Jan 01", "Jan 01", "Apr 01", "Apr 01", "Jul 01", "Jul 01", "Oct 01", "Oct 01", "Jan 01", "Jan 01", "Apr 01", "Apr 01"], "latest_actual": 1.4, "unit": "%"}, {"actuals": [0.7, 0.7, 0.3, 0.3, 0.1, 0.1, 0.1, 0.1, 0.6, 0.6, 0.4, 0.5], "forecast": 0.7, "id": "chart-11", "labels": ["Jan 01", "Jan 01", "Apr 01", "Apr 01", "Jul 01", "Jul 01", "Oct 01", "Oct 01", "Jan 01", "Jan 01", "Apr 01", "Apr 01"], "latest_actual": 0.5, "unit": "%"}, {"actuals": [0.0, 0.6, 0.0, -0.2, 0.6, 1.7, 0.5, 0.9, 0.2, -0.6, 1.2, 0.8], "forecast": null, "id": "chart-12", "labels": ["Oct \u002725", "Nov \u002725", "Dec \u002725", "Jan \u002726", "Feb \u002726", "Mar \u002726", "Apr \u002726", "May \u002726", "Jun \u002726", "Jul \u002726", "Aug \u002726", "Sep \u002726"], "latest_actual": 0.8, "unit": "%"}, {"actuals": [0.8, 0.4, -0.1, 0.3, 0.5, 0.7, 0.5, 0.7, 0.5, -0.4, 1.4, 0.1], "forecast": null, "id": "chart-13", "labels": ["Oct \u002725", "Nov \u002725", "Dec \u002725", "Jan \u002726", "Feb \u002726", "Mar \u002726", "Apr \u002726", "May \u002726", "Jun \u002726", "Jul \u002726", "Aug \u002726", "Sep \u002726"], "latest_actual": 0.1, "unit": "%"}, {"actuals": [29.0, 20.1, 17.9, 28.6, 24.7, 26.8, 26.5, 31.2, 6.7, -11.0, 27.8, 30.3], "forecast": null, "id": "chart-14", "labels": ["Oct \u002725", "Nov \u002725", "Dec \u002725", "Jan \u002726", "Feb \u002726", "Mar \u002726", "Apr \u002726", "May \u002726", "Jun \u002726", "Jul \u002726", "Aug \u002726", "Sep \u002726"], "latest_actual": 30.3, "unit": ""}];
 chartData.forEach(ch=>{
   const canvas = document.getElementById(ch.id);
   if(!canvas) return;
