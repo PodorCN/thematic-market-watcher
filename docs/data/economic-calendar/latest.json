@@ -1,7 +1,7 @@
 {
-  "start": "2026-11-12",
-  "end": "2026-11-19",
-  "fetched_at": "2026-11-13T20:26:49.784488+00:00",
+  "start": "2026-11-13",
+  "end": "2026-11-20",
+  "fetched_at": "2026-11-14T18:42:39.610280+00:00",
   "source": "fxstreet",
   "countries": [
     "US",
@@ -19,348 +19,8 @@
     "MEDIUM"
   ],
   "currencies_filter": null,
-  "count": 101,
+  "count": 103,
   "events": [
-    {
-      "id": "40455840-fa15-4e0a-8c75-368a81b0d725",
-      "datetime_utc": "2026-11-12T07:00:00",
-      "date": "2026-11-12",
-      "time": "07:00",
-      "country": "UK",
-      "currency": "GBP",
-      "event": "Gross Domestic Product (MoM)",
-      "title": "Gross Domestic Product (MoM)",
-      "impact": "MEDIUM",
-      "volatility": "MEDIUM",
-      "actual": "0.2",
-      "forecast": "0.0",
-      "previous": "0.1",
-      "source": "fxstreet",
-      "url": null,
-      "eventId": "61b1d6bb-698e-41f7-8100-dc668c635c8b",
-      "unit": "%",
-      "hasHistorical": "True"
-    },
-    {
-      "id": "fc01aba5-e83f-4495-8921-fc0be8980a1f",
-      "datetime_utc": "2026-11-12T07:00:00",
-      "date": "2026-11-12",
-      "time": "07:00",
-      "country": "UK",
-      "currency": "GBP",
-      "event": "Gross Domestic Product (QoQ)",
-      "title": "Gross Domestic Product (QoQ)",
-      "impact": "HIGH",
-      "volatility": "HIGH",
-      "actual": "0.7",
-      "forecast": "0.7",
-      "previous": "0.5",
-      "source": "fxstreet",
-      "url": null,
-      "eventId": "cafae3e0-3d9a-43f4-876c-ec7490465d3e",
-      "unit": "%",
-      "hasHistorical": "True"
-    },
-    {
-      "id": "6f25fb9f-106c-4e71-984e-2ff911567cb3",
-      "datetime_utc": "2026-11-12T07:00:00",
-      "date": "2026-11-12",
-      "time": "07:00",
-      "country": "UK",
-      "currency": "GBP",
-      "event": "Gross Domestic Product (YoY)",
-      "title": "Gross Domestic Product (YoY)",
-      "impact": "HIGH",
-      "volatility": "HIGH",
-      "actual": "1.9",
-      "forecast": "1.9",
-      "previous": "1.4",
-      "source": "fxstreet",
-      "url": null,
-      "eventId": "c8e75081-4d7e-4ca3-b29b-968f71a5d480",
-      "unit": "%",
-      "hasHistorical": "True"
-    },
-    {
-      "id": "6b51811c-aebe-4034-95fd-fe97dc69dbb5",
-      "datetime_utc": "2026-11-12T07:00:00",
-      "date": "2026-11-12",
-      "time": "07:00",
-      "country": "UK",
-      "currency": "GBP",
-      "event": "Industrial Production (MoM)",
-      "title": "Industrial Production (MoM)",
-      "impact": "MEDIUM",
-      "volatility": "MEDIUM",
-      "actual": "0.3",
-      "forecast": "-0.3",
-      "previous": "0.8",
-      "source": "fxstreet",
-      "url": null,
-      "eventId": "727dc859-0e7d-4209-8f28-70acb2ea2d61",
-      "unit": "%",
-      "hasHistorical": "True"
-    },
-    {
-      "id": "29213a26-7f8a-4cc2-bc78-ceea2a1f1643",
-      "datetime_utc": "2026-11-12T07:00:00",
-      "date": "2026-11-12",
-      "time": "07:00",
-      "country": "UK",
-      "currency": "GBP",
-      "event": "Manufacturing Production (MoM)",
-      "title": "Manufacturing Production (MoM)",
-      "impact": "MEDIUM",
-      "volatility": "MEDIUM",
-      "actual": "0.7",
-      "forecast": "-0.5",
-      "previous": "1.2",
-      "source": "fxstreet",
-      "url": null,
-      "eventId": "015035d6-7dfe-4bb0-a138-5362dbcdf309",
-      "unit": "%",
-      "hasHistorical": "True"
-    },
-    {
-      "id": "7983d8ec-e298-483e-a5cf-c68fb930b853",
-      "datetime_utc": "2026-11-12T09:00:00",
-      "date": "2026-11-12",
-      "time": "09:00",
-      "country": "EMU",
-      "currency": "EUR",
-      "event": "Economic Bulletin",
-      "title": "Economic Bulletin",
-      "impact": "MEDIUM",
-      "volatility": "MEDIUM",
-      "actual": null,
-      "forecast": null,
-      "previous": null,
-      "source": "fxstreet",
-      "url": null,
-      "eventId": "feea8818-4293-403d-9a01-a9edd5fa39ea",
-      "unit": null,
-      "hasHistorical": "True"
-    },
-    {
-      "id": "ede3cb20-255d-46a8-ab72-b4551790d64d",
-      "datetime_utc": "2026-11-12T13:30:00",
-      "date": "2026-11-12",
-      "time": "13:30",
-      "country": "US",
-      "currency": "USD",
-      "event": "Initial Jobless Claims",
-      "title": "Initial Jobless Claims",
-      "impact": "MEDIUM",
-      "volatility": "MEDIUM",
-      "actual": "200.0",
-      "forecast": "195.0",
-      "previous": "189.0",
-      "source": "fxstreet",
-      "url": null,
-      "eventId": "9c689bbf-af2a-4f65-81a8-c5f5e2b78d70",
-      "unit": null,
-      "hasHistorical": "True"
-    },
-    {
-      "id": "34652fb5-cf8a-47cc-b003-ad48165bf92a",
-      "datetime_utc": "2026-11-12T14:00:00",
-      "date": "2026-11-12",
-      "time": "14:00",
-      "country": "US",
-      "currency": "USD",
-      "event": "Fed's Hammack speech",
-      "title": "Fed's Hammack speech",
-      "impact": "MEDIUM",
-      "volatility": "MEDIUM",
-      "actual": null,
-      "forecast": null,
-      "previous": null,
-      "source": "fxstreet",
-      "url": null,
-      "eventId": "c707d7d3-5893-48c2-bfa1-b816e622ea42",
-      "unit": null,
-      "hasHistorical": "True"
-    },
-    {
-      "id": "39a5cbcc-bc44-41c3-916d-58b3a7c51611",
-      "datetime_utc": "2026-11-12T15:00:00",
-      "date": "2026-11-12",
-      "time": "15:00",
-      "country": "US",
-      "currency": "USD",
-      "event": "Existing Home Sales Change (MoM)",
-      "title": "Existing Home Sales Change (MoM)",
-      "impact": "MEDIUM",
-      "volatility": "MEDIUM",
-      "actual": "-5.5",
-      "forecast": null,
-      "previous": "1.5",
-      "source": "fxstreet",
-      "url": null,
-      "eventId": "077378bd-22f0-402c-9db2-4d0d9c86181a",
-      "unit": "%",
-      "hasHistorical": "True"
-    },
-    {
-      "id": "1b35ecaa-91ac-4ae7-b418-e399bdbb834f",
-      "datetime_utc": "2026-11-12T15:00:00",
-      "date": "2026-11-12",
-      "time": "15:00",
-      "country": "US",
-      "currency": "USD",
-      "event": "Fed's Barr speech",
-      "title": "Fed's Barr speech",
-      "impact": "MEDIUM",
-      "volatility": "MEDIUM",
-      "actual": null,
-      "forecast": null,
-      "previous": null,
-      "source": "fxstreet",
-      "url": null,
-      "eventId": "39d601bc-6ca9-4561-8798-247306b4a2c4",
-      "unit": null,
-      "hasHistorical": "True"
-    },
-    {
-      "id": "e2fbd84a-8adc-4022-ab93-a7d73aba6b6e",
-      "datetime_utc": "2026-11-12T15:30:00",
-      "date": "2026-11-12",
-      "time": "15:30",
-      "country": "EMU",
-      "currency": "EUR",
-      "event": "ECB's Vujčić speech",
-      "title": "ECB's Vujčić speech",
-      "impact": "MEDIUM",
-      "volatility": "MEDIUM",
-      "actual": null,
-      "forecast": null,
-      "previous": null,
-      "source": "fxstreet",
-      "url": null,
-      "eventId": "62e8e92c-4663-4173-b762-9f6bc06bd007",
-      "unit": null,
-      "hasHistorical": "True"
-    },
-    {
-      "id": "aa6d33ea-53f2-4be9-84a7-83b22bbe33d1",
-      "datetime_utc": "2026-11-12T16:15:00",
-      "date": "2026-11-12",
-      "time": "16:15",
-      "country": "US",
-      "currency": "USD",
-      "event": "Fed's Goolsbee speech",
-      "title": "Fed's Goolsbee speech",
-      "impact": "MEDIUM",
-      "volatility": "MEDIUM",
-      "actual": null,
-      "forecast": null,
-      "previous": null,
-      "source": "fxstreet",
-      "url": null,
-      "eventId": "7928c38a-9491-4165-be36-94322686a296",
-      "unit": null,
-      "hasHistorical": "True"
-    },
-    {
-      "id": "fe364bdb-fc6b-4573-8e90-0a13292d56da",
-      "datetime_utc": "2026-11-12T18:10:00",
-      "date": "2026-11-12",
-      "time": "18:10",
-      "country": "US",
-      "currency": "USD",
-      "event": "Fed's Daly speech",
-      "title": "Fed's Daly speech",
-      "impact": "MEDIUM",
-      "volatility": "MEDIUM",
-      "actual": null,
-      "forecast": null,
-      "previous": null,
-      "source": "fxstreet",
-      "url": null,
-      "eventId": "83887e19-1352-453f-96e9-7406bc598f40",
-      "unit": null,
-      "hasHistorical": "True"
-    },
-    {
-      "id": "41ca579d-014c-4cc5-bc9d-851d72692c71",
-      "datetime_utc": "2026-11-12T18:30:00",
-      "date": "2026-11-12",
-      "time": "18:30",
-      "country": "US",
-      "currency": "USD",
-      "event": "Fed's Schmid speech",
-      "title": "Fed's Schmid speech",
-      "impact": "MEDIUM",
-      "volatility": "MEDIUM",
-      "actual": null,
-      "forecast": null,
-      "previous": null,
-      "source": "fxstreet",
-      "url": null,
-      "eventId": "52a4f9fb-270a-4f85-bd92-c8effdcf8857",
-      "unit": null,
-      "hasHistorical": "True"
-    },
-    {
-      "id": "849a9a10-92f4-46e8-820d-65af826f7b10",
-      "datetime_utc": "2026-11-12T19:00:00",
-      "date": "2026-11-12",
-      "time": "19:00",
-      "country": "US",
-      "currency": "USD",
-      "event": "Monthly Budget Statement",
-      "title": "Monthly Budget Statement",
-      "impact": "MEDIUM",
-      "volatility": "MEDIUM",
-      "actual": "-404.1",
-      "forecast": "-298.6",
-      "previous": "-27.0",
-      "source": "fxstreet",
-      "url": null,
-      "eventId": "cba6f39e-5566-4fc8-86b3-1d0771fd5e3b",
-      "unit": "$",
-      "hasHistorical": "True"
-    },
-    {
-      "id": "414610bb-2b4e-45ba-9ffb-3300a17a903e",
-      "datetime_utc": "2026-11-12T19:30:00",
-      "date": "2026-11-12",
-      "time": "19:30",
-      "country": "EMU",
-      "currency": "EUR",
-      "event": "ECB's President Lagarde speech",
-      "title": "ECB's President Lagarde speech",
-      "impact": "HIGH",
-      "volatility": "HIGH",
-      "actual": null,
-      "forecast": null,
-      "previous": null,
-      "source": "fxstreet",
-      "url": null,
-      "eventId": "9dd4293c-754b-4956-a244-7b49bea538a2",
-      "unit": null,
-      "hasHistorical": "True"
-    },
-    {
-      "id": "4924d4fe-67e7-4aed-8712-40ccc8815b62",
-      "datetime_utc": "2026-11-12T23:30:00",
-      "date": "2026-11-12",
-      "time": "23:30",
-      "country": "US",
-      "currency": "USD",
-      "event": "Fed's Williams speech",
-      "title": "Fed's Williams speech",
-      "impact": "MEDIUM",
-      "volatility": "MEDIUM",
-      "actual": null,
-      "forecast": null,
-      "previous": null,
-      "source": "fxstreet",
-      "url": null,
-      "eventId": "94b5a38c-5bf5-4f48-b286-1773b8dbeac5",
-      "unit": null,
-      "hasHistorical": "True"
-    },
     {
       "id": "7b78d08f-3b85-4645-9a4e-b103a7bdf817",
       "datetime_utc": "2026-11-13T00:00:00",
@@ -873,7 +533,7 @@
       "impact": "MEDIUM",
       "volatility": "MEDIUM",
       "actual": null,
-      "forecast": null,
+      "forecast": "0.2",
       "previous": "0.0",
       "source": "fxstreet",
       "url": null,
@@ -1013,7 +673,7 @@
       "impact": "MEDIUM",
       "volatility": "MEDIUM",
       "actual": null,
-      "forecast": null,
+      "forecast": "17.6",
       "previous": "25.5",
       "source": "fxstreet",
       "url": null,
@@ -1113,7 +773,7 @@
       "impact": "HIGH",
       "volatility": "HIGH",
       "actual": null,
-      "forecast": null,
+      "forecast": "28.1",
       "previous": "30.3",
       "source": "fxstreet",
       "url": null,
@@ -1173,7 +833,7 @@
       "impact": "HIGH",
       "volatility": "HIGH",
       "actual": null,
-      "forecast": null,
+      "forecast": "4.7",
       "previous": "4.7",
       "source": "fxstreet",
       "url": null,
@@ -1293,7 +953,7 @@
       "impact": "MEDIUM",
       "volatility": "MEDIUM",
       "actual": null,
-      "forecast": null,
+      "forecast": "18.3",
       "previous": "18.5",
       "source": "fxstreet",
       "url": null,
@@ -1553,7 +1213,7 @@
       "impact": "HIGH",
       "volatility": "HIGH",
       "actual": null,
-      "forecast": null,
+      "forecast": "2.8",
       "previous": "2.8",
       "source": "fxstreet",
       "url": null,
@@ -1613,7 +1273,7 @@
       "impact": "MEDIUM",
       "volatility": "MEDIUM",
       "actual": null,
-      "forecast": null,
+      "forecast": "0.6",
       "previous": "0.8",
       "source": "fxstreet",
       "url": null,
@@ -1793,7 +1453,7 @@
       "impact": "MEDIUM",
       "volatility": "MEDIUM",
       "actual": null,
-      "forecast": null,
+      "forecast": "-2.3",
       "previous": "-7.3",
       "source": "fxstreet",
       "url": null,
@@ -1973,7 +1633,7 @@
       "impact": "MEDIUM",
       "volatility": "MEDIUM",
       "actual": null,
-      "forecast": null,
+      "forecast": "19.2",
       "previous": "20.9",
       "source": "fxstreet",
       "url": null,
@@ -2037,136 +1697,392 @@
       "previous": null,
       "source": "fxstreet",
       "url": null,
-      "eventId": null,
+      "eventId": "810bdd07-87cb-4e26-8dc2-db4841cdc0ff",
       "unit": null,
-      "hasHistorical": null
+      "hasHistorical": "True"
+    },
+    {
+      "id": "08a5281c-800b-4f16-b290-b1187b9ee781",
+      "datetime_utc": "2026-11-20T00:01:00",
+      "date": "2026-11-20",
+      "time": "00:01",
+      "country": "UK",
+      "currency": "GBP",
+      "event": "GfK Consumer Confidence",
+      "title": "GfK Consumer Confidence",
+      "impact": "MEDIUM",
+      "volatility": "MEDIUM",
+      "actual": null,
+      "forecast": "-22.0",
+      "previous": "-24.0",
+      "source": "fxstreet",
+      "url": null,
+      "eventId": "86ab275d-83f3-4760-a9f3-3a51f842029f",
+      "unit": null,
+      "hasHistorical": "True"
+    },
+    {
+      "id": "244d2baa-45bb-43f1-964d-d33b352e499f",
+      "datetime_utc": "2026-11-20T03:10:00",
+      "date": "2026-11-20",
+      "time": "03:10",
+      "country": "EMU",
+      "currency": "EUR",
+      "event": "ECB's Cipollone speech",
+      "title": "ECB's Cipollone speech",
+      "impact": "MEDIUM",
+      "volatility": "MEDIUM",
+      "actual": null,
+      "forecast": null,
+      "previous": null,
+      "source": "fxstreet",
+      "url": null,
+      "eventId": "c5d3de6d-d688-48e6-93c3-06b3db317169",
+      "unit": null,
+      "hasHistorical": "True"
+    },
+    {
+      "id": "82431d39-a250-428d-83a4-c238190127a4",
+      "datetime_utc": "2026-11-20T07:00:00",
+      "date": "2026-11-20",
+      "time": "07:00",
+      "country": "EMU",
+      "currency": "EUR",
+      "event": "Producer Price Index (MoM)",
+      "title": "Producer Price Index (MoM)",
+      "impact": "MEDIUM",
+      "volatility": "MEDIUM",
+      "actual": null,
+      "forecast": "0.5",
+      "previous": "1.9",
+      "source": "fxstreet",
+      "url": null,
+      "eventId": "9808b682-ae10-4a70-89f2-5ccec6c33aad",
+      "unit": "%",
+      "hasHistorical": "True"
+    },
+    {
+      "id": "cf1a51e5-5c6a-4c69-a56f-ed75f13f279d",
+      "datetime_utc": "2026-11-20T07:00:00",
+      "date": "2026-11-20",
+      "time": "07:00",
+      "country": "EMU",
+      "currency": "EUR",
+      "event": "Producer Price Index (YoY)",
+      "title": "Producer Price Index (YoY)",
+      "impact": "MEDIUM",
+      "volatility": "MEDIUM",
+      "actual": null,
+      "forecast": null,
+      "previous": "6.7",
+      "source": "fxstreet",
+      "url": null,
+      "eventId": "6c7aaf26-837f-482f-8482-cc95756a3627",
+      "unit": "%",
+      "hasHistorical": "True"
+    },
+    {
+      "id": "ea2929cb-b55a-4ab6-9f2e-78bb35c1d03f",
+      "datetime_utc": "2026-11-20T07:00:00",
+      "date": "2026-11-20",
+      "time": "07:00",
+      "country": "UK",
+      "currency": "GBP",
+      "event": "Retail Sales (MoM)",
+      "title": "Retail Sales (MoM)",
+      "impact": "HIGH",
+      "volatility": "HIGH",
+      "actual": null,
+      "forecast": "0.0",
+      "previous": "-0.4",
+      "source": "fxstreet",
+      "url": null,
+      "eventId": "9f9b4613-21ff-4cb7-8170-d3f59d2b2fe2",
+      "unit": "%",
+      "hasHistorical": "True"
+    },
+    {
+      "id": "820d87d7-c7e7-412a-8c51-98b748d79557",
+      "datetime_utc": "2026-11-20T07:00:00",
+      "date": "2026-11-20",
+      "time": "07:00",
+      "country": "UK",
+      "currency": "GBP",
+      "event": "Retail Sales (YoY)",
+      "title": "Retail Sales (YoY)",
+      "impact": "MEDIUM",
+      "volatility": "MEDIUM",
+      "actual": null,
+      "forecast": null,
+      "previous": "0.8",
+      "source": "fxstreet",
+      "url": null,
+      "eventId": "febce648-9291-4b5a-9ab7-c09f7f6c7bfe",
+      "unit": "%",
+      "hasHistorical": "True"
+    },
+    {
+      "id": "468df006-b152-4c5b-af50-2ee03942d171",
+      "datetime_utc": "2026-11-20T07:00:00",
+      "date": "2026-11-20",
+      "time": "07:00",
+      "country": "UK",
+      "currency": "GBP",
+      "event": "Retail Sales ex-Fuel (MoM)",
+      "title": "Retail Sales ex-Fuel (MoM)",
+      "impact": "MEDIUM",
+      "volatility": "MEDIUM",
+      "actual": null,
+      "forecast": null,
+      "previous": "-0.7",
+      "source": "fxstreet",
+      "url": null,
+      "eventId": "514d8c78-f78a-42a3-a150-4fa3091d918f",
+      "unit": "%",
+      "hasHistorical": "True"
+    },
+    {
+      "id": "b5fa24bb-ea69-4acd-a624-037d64b84be9",
+      "datetime_utc": "2026-11-20T07:00:00",
+      "date": "2026-11-20",
+      "time": "07:00",
+      "country": "UK",
+      "currency": "GBP",
+      "event": "Retail Sales ex-Fuel (YoY)",
+      "title": "Retail Sales ex-Fuel (YoY)",
+      "impact": "MEDIUM",
+      "volatility": "MEDIUM",
+      "actual": null,
+      "forecast": null,
+      "previous": "0.8",
+      "source": "fxstreet",
+      "url": null,
+      "eventId": "d2447136-aa7c-4643-b524-7def0d379852",
+      "unit": "%",
+      "hasHistorical": "True"
+    },
+    {
+      "id": "7be59cc3-34bd-47a2-933e-47e1f7959a40",
+      "datetime_utc": "2026-11-20T08:30:00",
+      "date": "2026-11-20",
+      "time": "08:30",
+      "country": "EMU",
+      "currency": "EUR",
+      "event": "ECB's President Lagarde speech",
+      "title": "ECB's President Lagarde speech",
+      "impact": "HIGH",
+      "volatility": "HIGH",
+      "actual": null,
+      "forecast": null,
+      "previous": null,
+      "source": "fxstreet",
+      "url": null,
+      "eventId": "9dd4293c-754b-4956-a244-7b49bea538a2",
+      "unit": null,
+      "hasHistorical": "True"
+    },
+    {
+      "id": "b54a8763-d018-4e85-91c2-36eaa52a57a9",
+      "datetime_utc": "2026-11-20T13:00:00",
+      "date": "2026-11-20",
+      "time": "13:00",
+      "country": "EMU",
+      "currency": "EUR",
+      "event": "ECB's Nagel speech",
+      "title": "ECB's Nagel speech",
+      "impact": "MEDIUM",
+      "volatility": "MEDIUM",
+      "actual": null,
+      "forecast": null,
+      "previous": null,
+      "source": "fxstreet",
+      "url": null,
+      "eventId": "b5cee791-8ea3-4cc8-8fea-573f85b8851c",
+      "unit": null,
+      "hasHistorical": "True"
+    },
+    {
+      "id": "cf0fc744-9e8a-4f14-96b2-8463cd944887",
+      "datetime_utc": "2026-11-20T13:25:00",
+      "date": "2026-11-20",
+      "time": "13:25",
+      "country": "US",
+      "currency": "USD",
+      "event": "Fed's Waller speech",
+      "title": "Fed's Waller speech",
+      "impact": "MEDIUM",
+      "volatility": "MEDIUM",
+      "actual": null,
+      "forecast": null,
+      "previous": null,
+      "source": "fxstreet",
+      "url": null,
+      "eventId": "ad33871b-d7b2-4dec-b301-eae4a1b43564",
+      "unit": null,
+      "hasHistorical": "True"
+    },
+    {
+      "id": "7778882c-f48b-4ec0-8a6f-d701a8afd900",
+      "datetime_utc": "2026-11-20T13:30:00",
+      "date": "2026-11-20",
+      "time": "13:30",
+      "country": "CA",
+      "currency": "CAD",
+      "event": "Retail Sales (MoM)",
+      "title": "Retail Sales (MoM)",
+      "impact": "MEDIUM",
+      "volatility": "MEDIUM",
+      "actual": null,
+      "forecast": "0.7",
+      "previous": "1.2",
+      "source": "fxstreet",
+      "url": null,
+      "eventId": "fea0737b-54f5-439d-b6f0-b3e0452fa603",
+      "unit": "%",
+      "hasHistorical": "True"
+    },
+    {
+      "id": "c315eeed-17a2-47f5-8414-f61eba791243",
+      "datetime_utc": "2026-11-20T13:30:00",
+      "date": "2026-11-20",
+      "time": "13:30",
+      "country": "CA",
+      "currency": "CAD",
+      "event": "Retail Sales ex Autos (MoM)",
+      "title": "Retail Sales ex Autos (MoM)",
+      "impact": "MEDIUM",
+      "volatility": "MEDIUM",
+      "actual": null,
+      "forecast": "0.7",
+      "previous": "1.2",
+      "source": "fxstreet",
+      "url": null,
+      "eventId": "e5cccfd6-1d5a-468e-8d79-abadf48d5e66",
+      "unit": "%",
+      "hasHistorical": "True"
+    },
+    {
+      "id": "00483e59-4e05-4420-b7fe-0aa378f3d364",
+      "datetime_utc": "2026-11-20T15:00:00",
+      "date": "2026-11-20",
+      "time": "15:00",
+      "country": "EMU",
+      "currency": "EUR",
+      "event": "Consumer Confidence",
+      "title": "Consumer Confidence",
+      "impact": "MEDIUM",
+      "volatility": "MEDIUM",
+      "actual": null,
+      "forecast": "-17.3",
+      "previous": "-17.9",
+      "source": "fxstreet",
+      "url": null,
+      "eventId": "1f448283-3319-4405-aebb-3dee56d30b25",
+      "unit": null,
+      "hasHistorical": "True"
+    },
+    {
+      "id": "327a2365-a1ac-4567-b2ba-2dad26b47ef1",
+      "datetime_utc": "2026-11-20T15:00:00",
+      "date": "2026-11-20",
+      "time": "15:00",
+      "country": "US",
+      "currency": "USD",
+      "event": "Michigan Consumer Expectations Index",
+      "title": "Michigan Consumer Expectations Index",
+      "impact": "MEDIUM",
+      "volatility": "MEDIUM",
+      "actual": null,
+      "forecast": null,
+      "previous": "50.9",
+      "source": "fxstreet",
+      "url": null,
+      "eventId": "555f4f73-4d16-4817-b068-7a2f70e3fbc8",
+      "unit": null,
+      "hasHistorical": "True"
+    },
+    {
+      "id": "00ca8cbc-5856-4362-96a4-5afeb41711b6",
+      "datetime_utc": "2026-11-20T15:00:00",
+      "date": "2026-11-20",
+      "time": "15:00",
+      "country": "US",
+      "currency": "USD",
+      "event": "Michigan Consumer Sentiment Index",
+      "title": "Michigan Consumer Sentiment Index",
+      "impact": "MEDIUM",
+      "volatility": "MEDIUM",
+      "actual": null,
+      "forecast": "51.0",
+      "previous": "51.0",
+      "source": "fxstreet",
+      "url": null,
+      "eventId": "608ffc81-99e8-4b1c-b673-633100761034",
+      "unit": null,
+      "hasHistorical": "True"
+    },
+    {
+      "id": "4a6697ae-befa-4bc0-802a-90772eadff1b",
+      "datetime_utc": "2026-11-20T15:00:00",
+      "date": "2026-11-20",
+      "time": "15:00",
+      "country": "US",
+      "currency": "USD",
+      "event": "UoM 1-year Consumer Inflation Expectations",
+      "title": "UoM 1-year Consumer Inflation Expectations",
+      "impact": "MEDIUM",
+      "volatility": "MEDIUM",
+      "actual": null,
+      "forecast": null,
+      "previous": "4.3",
+      "source": "fxstreet",
+      "url": null,
+      "eventId": "194c5bef-886a-48a1-aa8e-5ff4067c27ac",
+      "unit": "%",
+      "hasHistorical": "True"
+    },
+    {
+      "id": "96e1a763-8236-4aa0-ab99-153eb80fd0ff",
+      "datetime_utc": "2026-11-20T15:00:00",
+      "date": "2026-11-20",
+      "time": "15:00",
+      "country": "US",
+      "currency": "USD",
+      "event": "UoM 5-year Consumer Inflation Expectation",
+      "title": "UoM 5-year Consumer Inflation Expectation",
+      "impact": "MEDIUM",
+      "volatility": "MEDIUM",
+      "actual": null,
+      "forecast": "3.4",
+      "previous": "3.4",
+      "source": "fxstreet",
+      "url": null,
+      "eventId": "375f089e-b51b-4c95-9217-188bb36803f3",
+      "unit": "%",
+      "hasHistorical": "True"
+    },
+    {
+      "id": "330a0fe7-0652-47e1-90e2-e4da4f9744b2",
+      "datetime_utc": "2026-11-20T17:15:00",
+      "date": "2026-11-20",
+      "time": "17:15",
+      "country": "US",
+      "currency": "USD",
+      "event": "Fed's Cook speech",
+      "title": "Fed's Cook speech",
+      "impact": "MEDIUM",
+      "volatility": "MEDIUM",
+      "actual": null,
+      "forecast": null,
+      "previous": null,
+      "source": "fxstreet",
+      "url": null,
+      "eventId": "86e26884-a1b0-4529-9f7f-2ea7e454de99",
+      "unit": null,
+      "hasHistorical": "True"
     }
   ],
   "history": {
-    "31b216da-2502-4428-af5b-d3c54b68ebe4": [
-      {
-        "dateUtc": "2025-12-16T13:30:00Z",
-        "periodDateUtc": "2025-10-01T00:00:00Z",
-        "actual": 0.0,
-        "consensus": 0.1,
-        "previous": 0.2,
-        "date": "2025-12-16"
-      },
-      {
-        "dateUtc": "2026-01-14T13:30:00Z",
-        "periodDateUtc": "2025-11-01T00:00:00Z",
-        "actual": 0.6,
-        "consensus": 0.4,
-        "previous": 0.0,
-        "date": "2026-01-14"
-      },
-      {
-        "dateUtc": "2026-02-10T13:30:00Z",
-        "periodDateUtc": "2025-12-01T00:00:00Z",
-        "actual": 0.0,
-        "consensus": 0.4,
-        "previous": 0.6,
-        "date": "2026-02-10"
-      },
-      {
-        "dateUtc": "2026-03-06T13:30:00Z",
-        "periodDateUtc": "2026-01-01T00:00:00Z",
-        "actual": -0.2,
-        "consensus": -0.3,
-        "previous": 0.0,
-        "date": "2026-03-06"
-      },
-      {
-        "dateUtc": "2026-04-01T12:30:00Z",
-        "periodDateUtc": "2026-02-01T00:00:00Z",
-        "actual": 0.6,
-        "consensus": 0.5,
-        "previous": -0.2,
-        "date": "2026-04-01"
-      },
-      {
-        "dateUtc": "2026-04-21T12:30:00Z",
-        "periodDateUtc": "2026-03-01T00:00:00Z",
-        "actual": 1.7,
-        "consensus": 1.4,
-        "previous": 0.6,
-        "date": "2026-04-21"
-      },
-      {
-        "dateUtc": "2026-05-14T12:30:00Z",
-        "periodDateUtc": "2026-04-01T00:00:00Z",
-        "actual": 0.5,
-        "consensus": 0.5,
-        "previous": 1.7,
-        "date": "2026-05-14"
-      },
-      {
-        "dateUtc": "2026-06-17T12:30:00Z",
-        "periodDateUtc": "2026-05-01T00:00:00Z",
-        "actual": 0.9,
-        "consensus": 0.5,
-        "previous": 0.5,
-        "date": "2026-06-17"
-      },
-      {
-        "dateUtc": "2026-07-16T12:30:00Z",
-        "periodDateUtc": "2026-06-01T00:00:00Z",
-        "actual": 0.2,
-        "consensus": 0.2,
-        "previous": 0.9,
-        "date": "2026-07-16"
-      },
-      {
-        "dateUtc": "2026-08-14T12:30:00Z",
-        "periodDateUtc": "2026-07-01T00:00:00Z",
-        "actual": -0.6,
-        "consensus": 0.1,
-        "previous": 0.2,
-        "date": "2026-08-14"
-      },
-      {
-        "dateUtc": "2026-09-16T12:30:00Z",
-        "periodDateUtc": "2026-08-01T00:00:00Z",
-        "actual": 1.2,
-        "consensus": 0.8,
-        "previous": -0.6,
-        "date": "2026-09-16"
-      },
-      {
-        "dateUtc": "2026-10-15T12:30:00Z",
-        "periodDateUtc": "2026-09-01T00:00:00Z",
-        "actual": 0.8,
-        "consensus": 0.3,
-        "previous": 1.2,
-        "date": "2026-10-15"
-      }
-    ],
-    "324a517e-e181-402c-a246-861e9f6f14b0": [
-      {
-        "dateUtc": "2026-07-01T13:00:00Z",
-        "periodDateUtc": null,
-        "actual": null,
-        "consensus": null,
-        "previous": null,
-        "date": "2026-07-01"
-      },
-      {
-        "dateUtc": "2026-08-28T14:00:00Z",
-        "periodDateUtc": null,
-        "actual": null,
-        "consensus": null,
-        "previous": null,
-        "date": "2026-08-28"
-      },
-      {
-        "dateUtc": "2026-10-16T03:30:00Z",
-        "periodDateUtc": null,
-        "actual": null,
-        "consensus": null,
-        "previous": null,
-        "date": "2026-10-16"
-      }
-    ],
     "ae8bd4b2-1a5f-4b9f-9b9c-6df04d23faee": [
       {
         "dateUtc": "2026-01-14T13:30:05Z",
@@ -2363,102 +2279,128 @@
         "date": "2026-10-15"
       }
     ],
-    "e10a1f69-915d-44b1-ad1d-0b8edf7853f3": [
+    "324a517e-e181-402c-a246-861e9f6f14b0": [
       {
-        "dateUtc": "2025-05-28T18:00:00Z",
+        "dateUtc": "2026-07-01T13:00:00Z",
         "periodDateUtc": null,
         "actual": null,
         "consensus": null,
         "previous": null,
-        "date": "2025-05-28"
+        "date": "2026-07-01"
       },
       {
-        "dateUtc": "2025-07-09T18:00:00Z",
+        "dateUtc": "2026-08-28T14:00:00Z",
         "periodDateUtc": null,
         "actual": null,
         "consensus": null,
         "previous": null,
-        "date": "2025-07-09"
+        "date": "2026-08-28"
       },
       {
-        "dateUtc": "2025-08-20T18:00:00Z",
+        "dateUtc": "2026-10-16T03:30:00Z",
         "periodDateUtc": null,
         "actual": null,
         "consensus": null,
         "previous": null,
-        "date": "2025-08-20"
+        "date": "2026-10-16"
+      }
+    ],
+    "31b216da-2502-4428-af5b-d3c54b68ebe4": [
+      {
+        "dateUtc": "2025-12-16T13:30:00Z",
+        "periodDateUtc": "2025-10-01T00:00:00Z",
+        "actual": 0.0,
+        "consensus": 0.1,
+        "previous": 0.2,
+        "date": "2025-12-16"
       },
       {
-        "dateUtc": "2025-10-08T18:00:00Z",
-        "periodDateUtc": null,
-        "actual": null,
-        "consensus": null,
-        "previous": null,
-        "date": "2025-10-08"
+        "dateUtc": "2026-01-14T13:30:00Z",
+        "periodDateUtc": "2025-11-01T00:00:00Z",
+        "actual": 0.6,
+        "consensus": 0.4,
+        "previous": 0.0,
+        "date": "2026-01-14"
       },
       {
-        "dateUtc": "2025-11-19T19:00:00Z",
-        "periodDateUtc": null,
-        "actual": null,
-        "consensus": null,
-        "previous": null,
-        "date": "2025-11-19"
+        "dateUtc": "2026-02-10T13:30:00Z",
+        "periodDateUtc": "2025-12-01T00:00:00Z",
+        "actual": 0.0,
+        "consensus": 0.4,
+        "previous": 0.6,
+        "date": "2026-02-10"
       },
       {
-        "dateUtc": "2025-12-30T19:00:00Z",
-        "periodDateUtc": null,
-        "actual": null,
-        "consensus": null,
-        "previous": null,
-        "date": "2025-12-30"
+        "dateUtc": "2026-03-06T13:30:00Z",
+        "periodDateUtc": "2026-01-01T00:00:00Z",
+        "actual": -0.2,
+        "consensus": -0.3,
+        "previous": 0.0,
+        "date": "2026-03-06"
       },
       {
-        "dateUtc": "2026-02-18T19:00:00Z",
-        "periodDateUtc": null,
-        "actual": null,
-        "consensus": null,
-        "previous": null,
-        "date": "2026-02-18"
+        "dateUtc": "2026-04-01T12:30:00Z",
+        "periodDateUtc": "2026-02-01T00:00:00Z",
+        "actual": 0.6,
+        "consensus": 0.5,
+        "previous": -0.2,
+        "date": "2026-04-01"
       },
       {
-        "dateUtc": "2026-04-08T18:00:00Z",
-        "periodDateUtc": null,
-        "actual": null,
-        "consensus": null,
-        "previous": null,
-        "date": "2026-04-08"
+        "dateUtc": "2026-04-21T12:30:00Z",
+        "periodDateUtc": "2026-03-01T00:00:00Z",
+        "actual": 1.7,
+        "consensus": 1.4,
+        "previous": 0.6,
+        "date": "2026-04-21"
       },
       {
-        "dateUtc": "2026-05-20T18:00:00Z",
-        "periodDateUtc": null,
-        "actual": null,
-        "consensus": null,
-        "previous": null,
-        "date": "2026-05-20"
+        "dateUtc": "2026-05-14T12:30:00Z",
+        "periodDateUtc": "2026-04-01T00:00:00Z",
+        "actual": 0.5,
+        "consensus": 0.5,
+        "previous": 1.7,
+        "date": "2026-05-14"
       },
       {
-        "dateUtc": "2026-07-08T18:00:00Z",
-        "periodDateUtc": null,
-        "actual": null,
-        "consensus": null,
-        "previous": null,
-        "date": "2026-07-08"
+        "dateUtc": "2026-06-17T12:30:00Z",
+        "periodDateUtc": "2026-05-01T00:00:00Z",
+        "actual": 0.9,
+        "consensus": 0.5,
+        "previous": 0.5,
+        "date": "2026-06-17"
       },
       {
-        "dateUtc": "2026-08-19T18:00:00Z",
-        "periodDateUtc": null,
-        "actual": null,
-        "consensus": null,
-        "previous": null,
-        "date": "2026-08-19"
+        "dateUtc": "2026-07-16T12:30:00Z",
+        "periodDateUtc": "2026-06-01T00:00:00Z",
+        "actual": 0.2,
+        "consensus": 0.2,
+        "previous": 0.9,
+        "date": "2026-07-16"
       },
       {
-        "dateUtc": "2026-10-07T18:00:00Z",
-        "periodDateUtc": null,
-        "actual": null,
-        "consensus": null,
-        "previous": null,
-        "date": "2026-10-07"
+        "dateUtc": "2026-08-14T12:30:00Z",
+        "periodDateUtc": "2026-07-01T00:00:00Z",
+        "actual": -0.6,
+        "consensus": 0.1,
+        "previous": 0.2,
+        "date": "2026-08-14"
+      },
+      {
+        "dateUtc": "2026-09-16T12:30:00Z",
+        "periodDateUtc": "2026-08-01T00:00:00Z",
+        "actual": 1.2,
+        "consensus": 0.8,
+        "previous": -0.6,
+        "date": "2026-09-16"
+      },
+      {
+        "dateUtc": "2026-10-15T12:30:00Z",
+        "periodDateUtc": "2026-09-01T00:00:00Z",
+        "actual": 0.8,
+        "consensus": 0.3,
+        "previous": 1.2,
+        "date": "2026-10-15"
       }
     ],
     "5ed90e34-d662-4c22-b5b1-3424d1bc5a30": [
@@ -2657,6 +2599,104 @@
         "date": "2026-10-19"
       }
     ],
+    "e10a1f69-915d-44b1-ad1d-0b8edf7853f3": [
+      {
+        "dateUtc": "2025-05-28T18:00:00Z",
+        "periodDateUtc": null,
+        "actual": null,
+        "consensus": null,
+        "previous": null,
+        "date": "2025-05-28"
+      },
+      {
+        "dateUtc": "2025-07-09T18:00:00Z",
+        "periodDateUtc": null,
+        "actual": null,
+        "consensus": null,
+        "previous": null,
+        "date": "2025-07-09"
+      },
+      {
+        "dateUtc": "2025-08-20T18:00:00Z",
+        "periodDateUtc": null,
+        "actual": null,
+        "consensus": null,
+        "previous": null,
+        "date": "2025-08-20"
+      },
+      {
+        "dateUtc": "2025-10-08T18:00:00Z",
+        "periodDateUtc": null,
+        "actual": null,
+        "consensus": null,
+        "previous": null,
+        "date": "2025-10-08"
+      },
+      {
+        "dateUtc": "2025-11-19T19:00:00Z",
+        "periodDateUtc": null,
+        "actual": null,
+        "consensus": null,
+        "previous": null,
+        "date": "2025-11-19"
+      },
+      {
+        "dateUtc": "2025-12-30T19:00:00Z",
+        "periodDateUtc": null,
+        "actual": null,
+        "consensus": null,
+        "previous": null,
+        "date": "2025-12-30"
+      },
+      {
+        "dateUtc": "2026-02-18T19:00:00Z",
+        "periodDateUtc": null,
+        "actual": null,
+        "consensus": null,
+        "previous": null,
+        "date": "2026-02-18"
+      },
+      {
+        "dateUtc": "2026-04-08T18:00:00Z",
+        "periodDateUtc": null,
+        "actual": null,
+        "consensus": null,
+        "previous": null,
+        "date": "2026-04-08"
+      },
+      {
+        "dateUtc": "2026-05-20T18:00:00Z",
+        "periodDateUtc": null,
+        "actual": null,
+        "consensus": null,
+        "previous": null,
+        "date": "2026-05-20"
+      },
+      {
+        "dateUtc": "2026-07-08T18:00:00Z",
+        "periodDateUtc": null,
+        "actual": null,
+        "consensus": null,
+        "previous": null,
+        "date": "2026-07-08"
+      },
+      {
+        "dateUtc": "2026-08-19T18:00:00Z",
+        "periodDateUtc": null,
+        "actual": null,
+        "consensus": null,
+        "previous": null,
+        "date": "2026-08-19"
+      },
+      {
+        "dateUtc": "2026-10-07T18:00:00Z",
+        "periodDateUtc": null,
+        "actual": null,
+        "consensus": null,
+        "previous": null,
+        "date": "2026-10-07"
+      }
+    ],
     "1d36c821-bedf-45e9-87c7-9da31d6b0b72": [
       {
         "dateUtc": "2025-11-11T07:00:00Z",
@@ -2755,102 +2795,200 @@
         "date": "2026-10-20"
       }
     ],
-    "cafae3e0-3d9a-43f4-876c-ec7490465d3e": [
+    "ada74045-2df5-46bb-aedd-7bc667307fb4": [
       {
-        "dateUtc": "2025-06-30T06:00:00Z",
-        "periodDateUtc": "2025-01-01T00:00:00Z",
-        "actual": 0.7,
-        "consensus": 0.7,
-        "previous": 0.7,
-        "date": "2025-06-30"
-      },
-      {
-        "dateUtc": "2025-08-14T06:00:00Z",
-        "periodDateUtc": "2025-04-01T00:00:00Z",
-        "actual": 0.3,
-        "consensus": 0.1,
-        "previous": 0.7,
-        "date": "2025-08-14"
-      },
-      {
-        "dateUtc": "2025-09-30T06:00:00Z",
-        "periodDateUtc": "2025-04-01T00:00:00Z",
-        "actual": 0.3,
-        "consensus": 0.3,
-        "previous": 0.3,
-        "date": "2025-09-30"
-      },
-      {
-        "dateUtc": "2025-11-13T07:00:00Z",
-        "periodDateUtc": "2025-07-01T00:00:00Z",
-        "actual": 0.1,
-        "consensus": 0.2,
-        "previous": 0.3,
-        "date": "2025-11-13"
-      },
-      {
-        "dateUtc": "2025-12-22T07:00:00Z",
-        "periodDateUtc": "2025-07-01T00:00:00Z",
-        "actual": 0.1,
-        "consensus": 0.1,
-        "previous": 0.1,
-        "date": "2025-12-22"
-      },
-      {
-        "dateUtc": "2026-02-12T07:00:00Z",
+        "dateUtc": "2025-11-11T07:00:00Z",
         "periodDateUtc": "2025-10-01T00:00:00Z",
-        "actual": 0.1,
-        "consensus": 0.2,
-        "previous": 0.1,
-        "date": "2026-02-12"
+        "actual": 29.0,
+        "consensus": 20.3,
+        "previous": 25.8,
+        "date": "2025-11-11"
       },
       {
-        "dateUtc": "2026-03-31T06:00:00Z",
-        "periodDateUtc": "2025-10-01T00:00:00Z",
-        "actual": 0.1,
-        "consensus": 0.1,
-        "previous": 0.1,
-        "date": "2026-03-31"
+        "dateUtc": "2025-12-16T07:00:00Z",
+        "periodDateUtc": "2025-11-01T00:00:00Z",
+        "actual": 20.1,
+        "consensus": 22.3,
+        "previous": 29.0,
+        "date": "2025-12-16"
       },
       {
-        "dateUtc": "2026-05-14T06:00:00Z",
+        "dateUtc": "2026-01-20T07:00:00Z",
+        "periodDateUtc": "2025-12-01T00:00:00Z",
+        "actual": 17.9,
+        "consensus": 18.8,
+        "previous": 20.1,
+        "date": "2026-01-20"
+      },
+      {
+        "dateUtc": "2026-02-17T07:00:00Z",
         "periodDateUtc": "2026-01-01T00:00:00Z",
-        "actual": 0.6,
-        "consensus": 0.6,
-        "previous": 0.1,
-        "date": "2026-05-14"
+        "actual": 28.6,
+        "consensus": 22.8,
+        "previous": 17.9,
+        "date": "2026-02-17"
       },
       {
-        "dateUtc": "2026-06-30T06:00:00Z",
-        "periodDateUtc": "2025-01-01T00:00:00Z",
-        "actual": 0.6,
-        "consensus": 0.6,
-        "previous": 0.6,
-        "date": "2026-06-30"
+        "dateUtc": "2026-03-19T07:00:00Z",
+        "periodDateUtc": "2026-02-01T00:00:00Z",
+        "actual": 24.7,
+        "consensus": 25.8,
+        "previous": 28.6,
+        "date": "2026-03-19"
       },
       {
-        "dateUtc": "2026-08-13T06:00:00Z",
+        "dateUtc": "2026-04-21T06:00:00Z",
+        "periodDateUtc": "2026-03-01T00:00:00Z",
+        "actual": 26.8,
+        "consensus": 21.4,
+        "previous": 24.7,
+        "date": "2026-04-21"
+      },
+      {
+        "dateUtc": "2026-05-19T06:00:00Z",
         "periodDateUtc": "2026-04-01T00:00:00Z",
+        "actual": 26.5,
+        "consensus": 27.3,
+        "previous": 26.8,
+        "date": "2026-05-19"
+      },
+      {
+        "dateUtc": "2026-06-18T06:00:00Z",
+        "periodDateUtc": "2026-05-01T00:00:00Z",
+        "actual": 31.2,
+        "consensus": 25.8,
+        "previous": 26.5,
+        "date": "2026-06-18"
+      },
+      {
+        "dateUtc": "2026-07-21T06:00:00Z",
+        "periodDateUtc": "2026-06-01T00:00:00Z",
+        "actual": 6.7,
+        "consensus": 28.3,
+        "previous": 31.2,
+        "date": "2026-07-21"
+      },
+      {
+        "dateUtc": "2026-08-18T06:00:00Z",
+        "periodDateUtc": "2026-07-01T00:00:00Z",
+        "actual": -11.0,
+        "consensus": 11.2,
+        "previous": 6.7,
+        "date": "2026-08-18"
+      },
+      {
+        "dateUtc": "2026-09-15T06:00:00Z",
+        "periodDateUtc": "2026-08-01T00:00:00Z",
+        "actual": 27.8,
+        "consensus": 8.3,
+        "previous": -11.0,
+        "date": "2026-09-15"
+      },
+      {
+        "dateUtc": "2026-10-20T06:00:00Z",
+        "periodDateUtc": "2026-09-01T00:00:00Z",
+        "actual": 30.3,
+        "consensus": 19.4,
+        "previous": 27.8,
+        "date": "2026-10-20"
+      }
+    ],
+    "b501e1eb-7555-4eac-8c76-0613cdf7db3d": [
+      {
+        "dateUtc": "2025-11-19T07:00:00Z",
+        "periodDateUtc": "2025-10-01T00:00:00Z",
         "actual": 0.4,
         "consensus": 0.4,
-        "previous": 0.6,
-        "date": "2026-08-13"
+        "previous": 0.0,
+        "date": "2025-11-19"
       },
       {
-        "dateUtc": "2026-09-30T06:00:00Z",
-        "periodDateUtc": "2025-04-01T00:00:00Z",
-        "actual": 0.5,
-        "consensus": 0.4,
+        "dateUtc": "2025-12-17T07:00:00Z",
+        "periodDateUtc": "2025-11-01T00:00:00Z",
+        "actual": -0.2,
+        "consensus": 0.0,
         "previous": 0.4,
-        "date": "2026-09-30"
+        "date": "2025-12-17"
       },
       {
-        "dateUtc": "2026-11-12T07:00:00Z",
-        "periodDateUtc": "2026-07-01T00:00:00Z",
+        "dateUtc": "2026-01-21T07:00:00Z",
+        "periodDateUtc": "2025-12-01T00:00:00Z",
+        "actual": 0.4,
+        "consensus": 0.4,
+        "previous": -0.2,
+        "date": "2026-01-21"
+      },
+      {
+        "dateUtc": "2026-02-18T07:00:00Z",
+        "periodDateUtc": "2026-01-01T00:00:00Z",
+        "actual": -0.5,
+        "consensus": -0.5,
+        "previous": 0.4,
+        "date": "2026-02-18"
+      },
+      {
+        "dateUtc": "2026-03-25T07:00:00Z",
+        "periodDateUtc": "2026-02-01T00:00:00Z",
+        "actual": 0.4,
+        "consensus": 0.4,
+        "previous": -0.5,
+        "date": "2026-03-25"
+      },
+      {
+        "dateUtc": "2026-04-22T06:00:00Z",
+        "periodDateUtc": "2026-03-01T00:00:00Z",
         "actual": 0.7,
-        "consensus": 0.7,
+        "consensus": 0.6,
+        "previous": 0.4,
+        "date": "2026-04-22"
+      },
+      {
+        "dateUtc": "2026-05-20T06:00:00Z",
+        "periodDateUtc": "2026-04-01T00:00:00Z",
+        "actual": 0.7,
+        "consensus": 0.9,
+        "previous": 0.7,
+        "date": "2026-05-20"
+      },
+      {
+        "dateUtc": "2026-06-17T06:00:00Z",
+        "periodDateUtc": "2026-05-01T00:00:00Z",
+        "actual": 0.2,
+        "consensus": 0.4,
+        "previous": 0.7,
+        "date": "2026-06-17"
+      },
+      {
+        "dateUtc": "2026-07-22T06:00:00Z",
+        "periodDateUtc": "2026-06-01T00:00:00Z",
+        "actual": 0.1,
+        "consensus": 0.1,
+        "previous": 0.2,
+        "date": "2026-07-22"
+      },
+      {
+        "dateUtc": "2026-08-19T06:00:00Z",
+        "periodDateUtc": "2026-07-01T00:00:00Z",
+        "actual": 0.3,
+        "consensus": 0.3,
+        "previous": 0.1,
+        "date": "2026-08-19"
+      },
+      {
+        "dateUtc": "2026-09-16T06:00:00Z",
+        "periodDateUtc": "2026-08-01T00:00:00Z",
+        "actual": 0.5,
+        "consensus": 0.5,
+        "previous": 0.3,
+        "date": "2026-09-16"
+      },
+      {
+        "dateUtc": "2026-10-21T06:00:00Z",
+        "periodDateUtc": "2026-09-01T00:00:00Z",
+        "actual": 0.4,
+        "consensus": 0.3,
         "previous": 0.5,
-        "date": "2026-11-12"
+        "date": "2026-10-21"
       }
     ],
     "98bb2374-b9f9-46ae-93e3-9f7e8a4391c1": [
@@ -2948,300 +3086,6 @@
         "actual": 4.7,
         "consensus": 4.9,
         "previous": 4.9,
-        "date": "2026-10-20"
-      }
-    ],
-    "c8e75081-4d7e-4ca3-b29b-968f71a5d480": [
-      {
-        "dateUtc": "2025-06-30T06:00:00Z",
-        "periodDateUtc": "2025-01-01T00:00:00Z",
-        "actual": 1.3,
-        "consensus": 1.3,
-        "previous": 1.3,
-        "date": "2025-06-30"
-      },
-      {
-        "dateUtc": "2025-08-14T06:00:00Z",
-        "periodDateUtc": "2025-04-01T00:00:00Z",
-        "actual": 1.2,
-        "consensus": 1.0,
-        "previous": 1.3,
-        "date": "2025-08-14"
-      },
-      {
-        "dateUtc": "2025-09-30T06:00:00Z",
-        "periodDateUtc": "2025-04-01T00:00:00Z",
-        "actual": 1.4,
-        "consensus": 1.2,
-        "previous": 1.2,
-        "date": "2025-09-30"
-      },
-      {
-        "dateUtc": "2025-11-13T07:00:00Z",
-        "periodDateUtc": "2025-07-01T00:00:00Z",
-        "actual": 1.3,
-        "consensus": 1.4,
-        "previous": 1.4,
-        "date": "2025-11-13"
-      },
-      {
-        "dateUtc": "2025-12-22T07:00:00Z",
-        "periodDateUtc": "2025-07-01T00:00:00Z",
-        "actual": 1.3,
-        "consensus": 1.3,
-        "previous": 1.3,
-        "date": "2025-12-22"
-      },
-      {
-        "dateUtc": "2026-02-12T07:00:00Z",
-        "periodDateUtc": "2025-10-01T00:00:00Z",
-        "actual": 1.0,
-        "consensus": 1.2,
-        "previous": 1.3,
-        "date": "2026-02-12"
-      },
-      {
-        "dateUtc": "2026-03-31T06:00:00Z",
-        "periodDateUtc": "2025-10-01T00:00:00Z",
-        "actual": 1.0,
-        "consensus": 1.0,
-        "previous": 1.0,
-        "date": "2026-03-31"
-      },
-      {
-        "dateUtc": "2026-05-14T06:00:00Z",
-        "periodDateUtc": "2026-01-01T00:00:00Z",
-        "actual": 1.1,
-        "consensus": 0.8,
-        "previous": 1.0,
-        "date": "2026-05-14"
-      },
-      {
-        "dateUtc": "2026-06-30T06:00:00Z",
-        "periodDateUtc": "2025-01-01T00:00:00Z",
-        "actual": 0.9,
-        "consensus": 1.1,
-        "previous": 1.1,
-        "date": "2026-06-30"
-      },
-      {
-        "dateUtc": "2026-08-13T06:00:00Z",
-        "periodDateUtc": "2026-04-01T00:00:00Z",
-        "actual": 1.2,
-        "consensus": 1.1,
-        "previous": 0.9,
-        "date": "2026-08-13"
-      },
-      {
-        "dateUtc": "2026-09-30T06:00:00Z",
-        "periodDateUtc": "2025-04-01T00:00:00Z",
-        "actual": 1.4,
-        "consensus": 1.2,
-        "previous": 1.2,
-        "date": "2026-09-30"
-      },
-      {
-        "dateUtc": "2026-11-12T07:00:00Z",
-        "periodDateUtc": "2026-07-01T00:00:00Z",
-        "actual": 1.9,
-        "consensus": 1.9,
-        "previous": 1.4,
-        "date": "2026-11-12"
-      }
-    ],
-    "9dd4293c-754b-4956-a244-7b49bea538a2": [
-      {
-        "dateUtc": "2026-09-22T12:00:00Z",
-        "periodDateUtc": null,
-        "actual": null,
-        "consensus": null,
-        "previous": null,
-        "date": "2026-09-22"
-      },
-      {
-        "dateUtc": "2026-09-28T13:30:00Z",
-        "periodDateUtc": null,
-        "actual": null,
-        "consensus": null,
-        "previous": null,
-        "date": "2026-09-28"
-      },
-      {
-        "dateUtc": "2026-09-29T11:00:00Z",
-        "periodDateUtc": null,
-        "actual": null,
-        "consensus": null,
-        "previous": null,
-        "date": "2026-09-29"
-      },
-      {
-        "dateUtc": "2026-10-01T13:30:00Z",
-        "periodDateUtc": null,
-        "actual": null,
-        "consensus": null,
-        "previous": null,
-        "date": "2026-10-01"
-      },
-      {
-        "dateUtc": "2026-10-14T02:10:00Z",
-        "periodDateUtc": null,
-        "actual": null,
-        "consensus": null,
-        "previous": null,
-        "date": "2026-10-14"
-      },
-      {
-        "dateUtc": "2026-10-14T08:30:00Z",
-        "periodDateUtc": null,
-        "actual": null,
-        "consensus": null,
-        "previous": null,
-        "date": "2026-10-14"
-      },
-      {
-        "dateUtc": "2026-10-21T16:30:00Z",
-        "periodDateUtc": null,
-        "actual": null,
-        "consensus": null,
-        "previous": null,
-        "date": "2026-10-21"
-      },
-      {
-        "dateUtc": "2026-10-27T17:00:00Z",
-        "periodDateUtc": null,
-        "actual": null,
-        "consensus": null,
-        "previous": null,
-        "date": "2026-10-27"
-      },
-      {
-        "dateUtc": "2026-11-05T12:00:00Z",
-        "periodDateUtc": null,
-        "actual": null,
-        "consensus": null,
-        "previous": null,
-        "date": "2026-11-05"
-      },
-      {
-        "dateUtc": "2026-11-05T16:00:00Z",
-        "periodDateUtc": null,
-        "actual": null,
-        "consensus": null,
-        "previous": null,
-        "date": "2026-11-05"
-      },
-      {
-        "dateUtc": "2026-11-11T09:45:00Z",
-        "periodDateUtc": null,
-        "actual": null,
-        "consensus": null,
-        "previous": null,
-        "date": "2026-11-11"
-      },
-      {
-        "dateUtc": "2026-11-12T19:30:00Z",
-        "periodDateUtc": null,
-        "actual": null,
-        "consensus": null,
-        "previous": null,
-        "date": "2026-11-12"
-      }
-    ],
-    "ada74045-2df5-46bb-aedd-7bc667307fb4": [
-      {
-        "dateUtc": "2025-11-11T07:00:00Z",
-        "periodDateUtc": "2025-10-01T00:00:00Z",
-        "actual": 29.0,
-        "consensus": 20.3,
-        "previous": 25.8,
-        "date": "2025-11-11"
-      },
-      {
-        "dateUtc": "2025-12-16T07:00:00Z",
-        "periodDateUtc": "2025-11-01T00:00:00Z",
-        "actual": 20.1,
-        "consensus": 22.3,
-        "previous": 29.0,
-        "date": "2025-12-16"
-      },
-      {
-        "dateUtc": "2026-01-20T07:00:00Z",
-        "periodDateUtc": "2025-12-01T00:00:00Z",
-        "actual": 17.9,
-        "consensus": 18.8,
-        "previous": 20.1,
-        "date": "2026-01-20"
-      },
-      {
-        "dateUtc": "2026-02-17T07:00:00Z",
-        "periodDateUtc": "2026-01-01T00:00:00Z",
-        "actual": 28.6,
-        "consensus": 22.8,
-        "previous": 17.9,
-        "date": "2026-02-17"
-      },
-      {
-        "dateUtc": "2026-03-19T07:00:00Z",
-        "periodDateUtc": "2026-02-01T00:00:00Z",
-        "actual": 24.7,
-        "consensus": 25.8,
-        "previous": 28.6,
-        "date": "2026-03-19"
-      },
-      {
-        "dateUtc": "2026-04-21T06:00:00Z",
-        "periodDateUtc": "2026-03-01T00:00:00Z",
-        "actual": 26.8,
-        "consensus": 21.4,
-        "previous": 24.7,
-        "date": "2026-04-21"
-      },
-      {
-        "dateUtc": "2026-05-19T06:00:00Z",
-        "periodDateUtc": "2026-04-01T00:00:00Z",
-        "actual": 26.5,
-        "consensus": 27.3,
-        "previous": 26.8,
-        "date": "2026-05-19"
-      },
-      {
-        "dateUtc": "2026-06-18T06:00:00Z",
-        "periodDateUtc": "2026-05-01T00:00:00Z",
-        "actual": 31.2,
-        "consensus": 25.8,
-        "previous": 26.5,
-        "date": "2026-06-18"
-      },
-      {
-        "dateUtc": "2026-07-21T06:00:00Z",
-        "periodDateUtc": "2026-06-01T00:00:00Z",
-        "actual": 6.7,
-        "consensus": 28.3,
-        "previous": 31.2,
-        "date": "2026-07-21"
-      },
-      {
-        "dateUtc": "2026-08-18T06:00:00Z",
-        "periodDateUtc": "2026-07-01T00:00:00Z",
-        "actual": -11.0,
-        "consensus": 11.2,
-        "previous": 6.7,
-        "date": "2026-08-18"
-      },
-      {
-        "dateUtc": "2026-09-15T06:00:00Z",
-        "periodDateUtc": "2026-08-01T00:00:00Z",
-        "actual": 27.8,
-        "consensus": 8.3,
-        "previous": -11.0,
-        "date": "2026-09-15"
-      },
-      {
-        "dateUtc": "2026-10-20T06:00:00Z",
-        "periodDateUtc": "2026-09-01T00:00:00Z",
-        "actual": 30.3,
-        "consensus": 19.4,
-        "previous": 27.8,
         "date": "2026-10-20"
       }
     ],
@@ -3343,102 +3187,298 @@
         "date": "2026-10-21"
       }
     ],
-    "b501e1eb-7555-4eac-8c76-0613cdf7db3d": [
+    "9dd4293c-754b-4956-a244-7b49bea538a2": [
+      {
+        "dateUtc": "2026-09-22T12:00:00Z",
+        "periodDateUtc": null,
+        "actual": null,
+        "consensus": null,
+        "previous": null,
+        "date": "2026-09-22"
+      },
+      {
+        "dateUtc": "2026-09-28T13:30:00Z",
+        "periodDateUtc": null,
+        "actual": null,
+        "consensus": null,
+        "previous": null,
+        "date": "2026-09-28"
+      },
+      {
+        "dateUtc": "2026-09-29T11:00:00Z",
+        "periodDateUtc": null,
+        "actual": null,
+        "consensus": null,
+        "previous": null,
+        "date": "2026-09-29"
+      },
+      {
+        "dateUtc": "2026-10-01T13:30:00Z",
+        "periodDateUtc": null,
+        "actual": null,
+        "consensus": null,
+        "previous": null,
+        "date": "2026-10-01"
+      },
+      {
+        "dateUtc": "2026-10-14T02:10:00Z",
+        "periodDateUtc": null,
+        "actual": null,
+        "consensus": null,
+        "previous": null,
+        "date": "2026-10-14"
+      },
+      {
+        "dateUtc": "2026-10-14T08:30:00Z",
+        "periodDateUtc": null,
+        "actual": null,
+        "consensus": null,
+        "previous": null,
+        "date": "2026-10-14"
+      },
+      {
+        "dateUtc": "2026-10-21T16:30:00Z",
+        "periodDateUtc": null,
+        "actual": null,
+        "consensus": null,
+        "previous": null,
+        "date": "2026-10-21"
+      },
+      {
+        "dateUtc": "2026-10-27T17:00:00Z",
+        "periodDateUtc": null,
+        "actual": null,
+        "consensus": null,
+        "previous": null,
+        "date": "2026-10-27"
+      },
+      {
+        "dateUtc": "2026-11-05T12:00:00Z",
+        "periodDateUtc": null,
+        "actual": null,
+        "consensus": null,
+        "previous": null,
+        "date": "2026-11-05"
+      },
+      {
+        "dateUtc": "2026-11-05T16:00:00Z",
+        "periodDateUtc": null,
+        "actual": null,
+        "consensus": null,
+        "previous": null,
+        "date": "2026-11-05"
+      },
+      {
+        "dateUtc": "2026-11-11T09:45:00Z",
+        "periodDateUtc": null,
+        "actual": null,
+        "consensus": null,
+        "previous": null,
+        "date": "2026-11-11"
+      },
+      {
+        "dateUtc": "2026-11-12T19:30:00Z",
+        "periodDateUtc": null,
+        "actual": null,
+        "consensus": null,
+        "previous": null,
+        "date": "2026-11-12"
+      }
+    ],
+    "0205d838-1106-4d7d-abdd-692f33fb5686": [
       {
         "dateUtc": "2025-11-19T07:00:00Z",
         "periodDateUtc": "2025-10-01T00:00:00Z",
-        "actual": 0.4,
-        "consensus": 0.4,
-        "previous": 0.0,
+        "actual": 3.4,
+        "consensus": 3.4,
+        "previous": 3.5,
         "date": "2025-11-19"
       },
       {
         "dateUtc": "2025-12-17T07:00:00Z",
         "periodDateUtc": "2025-11-01T00:00:00Z",
-        "actual": -0.2,
-        "consensus": 0.0,
-        "previous": 0.4,
+        "actual": 3.2,
+        "consensus": 3.4,
+        "previous": 3.4,
         "date": "2025-12-17"
       },
       {
         "dateUtc": "2026-01-21T07:00:00Z",
         "periodDateUtc": "2025-12-01T00:00:00Z",
-        "actual": 0.4,
-        "consensus": 0.4,
-        "previous": -0.2,
+        "actual": 3.2,
+        "consensus": 3.2,
+        "previous": 3.2,
         "date": "2026-01-21"
       },
       {
         "dateUtc": "2026-02-18T07:00:00Z",
         "periodDateUtc": "2026-01-01T00:00:00Z",
-        "actual": -0.5,
-        "consensus": -0.5,
-        "previous": 0.4,
+        "actual": 3.1,
+        "consensus": 3.1,
+        "previous": 3.2,
         "date": "2026-02-18"
       },
       {
         "dateUtc": "2026-03-25T07:00:00Z",
         "periodDateUtc": "2026-02-01T00:00:00Z",
-        "actual": 0.4,
-        "consensus": 0.4,
-        "previous": -0.5,
+        "actual": 3.2,
+        "consensus": 3.1,
+        "previous": 3.1,
         "date": "2026-03-25"
       },
       {
         "dateUtc": "2026-04-22T06:00:00Z",
         "periodDateUtc": "2026-03-01T00:00:00Z",
-        "actual": 0.7,
-        "consensus": 0.6,
-        "previous": 0.4,
+        "actual": 3.1,
+        "consensus": 3.2,
+        "previous": 3.2,
         "date": "2026-04-22"
       },
       {
         "dateUtc": "2026-05-20T06:00:00Z",
         "periodDateUtc": "2026-04-01T00:00:00Z",
-        "actual": 0.7,
-        "consensus": 0.9,
-        "previous": 0.7,
+        "actual": 2.5,
+        "consensus": 2.6,
+        "previous": 3.1,
         "date": "2026-05-20"
       },
       {
         "dateUtc": "2026-06-17T06:00:00Z",
         "periodDateUtc": "2026-05-01T00:00:00Z",
-        "actual": 0.2,
-        "consensus": 0.4,
-        "previous": 0.7,
+        "actual": 2.6,
+        "consensus": 2.7,
+        "previous": 2.5,
         "date": "2026-06-17"
       },
       {
         "dateUtc": "2026-07-22T06:00:00Z",
         "periodDateUtc": "2026-06-01T00:00:00Z",
-        "actual": 0.1,
-        "consensus": 0.1,
-        "previous": 0.2,
+        "actual": 2.6,
+        "consensus": 2.5,
+        "previous": 2.6,
         "date": "2026-07-22"
       },
       {
         "dateUtc": "2026-08-19T06:00:00Z",
         "periodDateUtc": "2026-07-01T00:00:00Z",
-        "actual": 0.3,
-        "consensus": 0.3,
-        "previous": 0.1,
+        "actual": 2.6,
+        "consensus": 2.5,
+        "previous": 2.6,
         "date": "2026-08-19"
       },
       {
         "dateUtc": "2026-09-16T06:00:00Z",
         "periodDateUtc": "2026-08-01T00:00:00Z",
-        "actual": 0.5,
-        "consensus": 0.5,
-        "previous": 0.3,
+        "actual": 2.6,
+        "consensus": 2.6,
+        "previous": 2.6,
         "date": "2026-09-16"
       },
       {
         "dateUtc": "2026-10-21T06:00:00Z",
         "periodDateUtc": "2026-09-01T00:00:00Z",
-        "actual": 0.4,
-        "consensus": 0.3,
-        "previous": 0.5,
+        "actual": 2.8,
+        "consensus": 2.7,
+        "previous": 2.6,
         "date": "2026-10-21"
+      }
+    ],
+    "9f9b4613-21ff-4cb7-8170-d3f59d2b2fe2": [
+      {
+        "dateUtc": "2025-11-21T07:00:00Z",
+        "periodDateUtc": "2025-10-01T00:00:00Z",
+        "actual": -1.1,
+        "consensus": 0.0,
+        "previous": 0.5,
+        "date": "2025-11-21"
+      },
+      {
+        "dateUtc": "2025-12-19T07:00:00Z",
+        "periodDateUtc": "2025-11-01T00:00:00Z",
+        "actual": -0.1,
+        "consensus": 0.4,
+        "previous": -1.1,
+        "date": "2025-12-19"
+      },
+      {
+        "dateUtc": "2026-01-23T07:00:00Z",
+        "periodDateUtc": "2025-12-01T00:00:00Z",
+        "actual": 0.4,
+        "consensus": -0.1,
+        "previous": -0.1,
+        "date": "2026-01-23"
+      },
+      {
+        "dateUtc": "2026-02-20T07:00:00Z",
+        "periodDateUtc": "2026-01-01T00:00:00Z",
+        "actual": 1.8,
+        "consensus": 0.2,
+        "previous": 0.4,
+        "date": "2026-02-20"
+      },
+      {
+        "dateUtc": "2026-03-27T07:00:00Z",
+        "periodDateUtc": "2026-02-01T00:00:00Z",
+        "actual": -0.4,
+        "consensus": -0.8,
+        "previous": 1.8,
+        "date": "2026-03-27"
+      },
+      {
+        "dateUtc": "2026-04-24T06:00:00Z",
+        "periodDateUtc": "2026-03-01T00:00:00Z",
+        "actual": 0.7,
+        "consensus": 0.2,
+        "previous": -0.4,
+        "date": "2026-04-24"
+      },
+      {
+        "dateUtc": "2026-05-22T06:00:00Z",
+        "periodDateUtc": "2026-04-01T00:00:00Z",
+        "actual": -1.3,
+        "consensus": -0.6,
+        "previous": 0.7,
+        "date": "2026-05-22"
+      },
+      {
+        "dateUtc": "2026-06-19T06:00:00Z",
+        "periodDateUtc": "2026-05-01T00:00:00Z",
+        "actual": 1.2,
+        "consensus": 0.5,
+        "previous": -1.3,
+        "date": "2026-06-19"
+      },
+      {
+        "dateUtc": "2026-07-24T06:00:00Z",
+        "periodDateUtc": "2026-06-01T00:00:00Z",
+        "actual": 1.0,
+        "consensus": -0.3,
+        "previous": 1.2,
+        "date": "2026-07-24"
+      },
+      {
+        "dateUtc": "2026-08-21T06:00:00Z",
+        "periodDateUtc": "2026-07-01T00:00:00Z",
+        "actual": -0.5,
+        "consensus": -0.5,
+        "previous": 1.0,
+        "date": "2026-08-21"
+      },
+      {
+        "dateUtc": "2026-09-18T06:00:00Z",
+        "periodDateUtc": "2026-08-01T00:00:00Z",
+        "actual": 0.5,
+        "consensus": -0.2,
+        "previous": -0.5,
+        "date": "2026-09-18"
+      },
+      {
+        "dateUtc": "2026-10-23T06:00:00Z",
+        "periodDateUtc": "2026-09-01T00:00:00Z",
+        "actual": -0.4,
+        "consensus": -0.1,
+        "previous": 0.5,
+        "date": "2026-10-23"
       }
     ]
   },
@@ -3497,24 +3537,6 @@
       "unit": "%",
       "impact": "HIGH"
     },
-    "cafae3e0-3d9a-43f4-876c-ec7490465d3e": {
-      "event": "Gross Domestic Product (QoQ)",
-      "currency": "GBP",
-      "unit": "%",
-      "impact": "HIGH"
-    },
-    "c8e75081-4d7e-4ca3-b29b-968f71a5d480": {
-      "event": "Gross Domestic Product (YoY)",
-      "currency": "GBP",
-      "unit": "%",
-      "impact": "HIGH"
-    },
-    "9dd4293c-754b-4956-a244-7b49bea538a2": {
-      "event": "ECB's President Lagarde speech",
-      "currency": "EUR",
-      "unit": null,
-      "impact": "HIGH"
-    },
     "ada74045-2df5-46bb-aedd-7bc667307fb4": {
       "event": "Claimant Count Change",
       "currency": "GBP",
@@ -3529,6 +3551,24 @@
     },
     "3ac4e096-06c8-4981-b973-622269563b1f": {
       "event": "Consumer Price Index (YoY)",
+      "currency": "GBP",
+      "unit": "%",
+      "impact": "HIGH"
+    },
+    "0205d838-1106-4d7d-abdd-692f33fb5686": {
+      "event": "Core Consumer Price Index (YoY)",
+      "currency": "GBP",
+      "unit": "%",
+      "impact": "HIGH"
+    },
+    "9dd4293c-754b-4956-a244-7b49bea538a2": {
+      "event": "ECB's President Lagarde speech",
+      "currency": "EUR",
+      "unit": null,
+      "impact": "HIGH"
+    },
+    "9f9b4613-21ff-4cb7-8170-d3f59d2b2fe2": {
+      "event": "Retail Sales (MoM)",
       "currency": "GBP",
       "unit": "%",
       "impact": "HIGH"
